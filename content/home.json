@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "eyebrow": "Comunidade · Blog · Loja",
+    "title": "Seu espaço pra ser alternativo.",
+    "text": "Um lugar pra geeks, nerds, góticos e a galera underground se encontrar, criar e mostrar a própria arte. A gente joga junto, escreve junto e transforma ideia em produto.",
+    "channels": ["boas-vindas", "desafio-do-mês", "vote-no-drop", "artistas", "papo-geek"],
+    "membersOnline": null
+  },
+  "marquee": ["Comunidade", "Blog", "Desafio do mês", "Drops votados pela galera"],
+  "challenge": {
+    "month": "[MÊS]",
+    "theme": "[TEMA DO DESAFIO]",
+    "endsAt": "[DATA]",
+    "artCount": null,
+    "steps": [
+      "Posta a sua arte no Discord ou no Instagram",
+      "A comunidade vota na favorita",
+      "A vencedora vira produto e o artista é creditado"
+    ]
+  },
+  "vote": {
+    "closesAt": "[DATA]",
+    "options": [
+      { "title": "[COLEÇÃO A]", "image": null },
+      { "title": "[COLEÇÃO B]", "image": null },
+      { "title": "[COLEÇÃO C]", "image": null }
+    ]
+  },
+  "quiz": {
+    "title": "Qual personagem alternativo é você?",
+    "text": "Leva 2 minutos. No final, você descobre o resultado e compartilha com a galera."
+  },
+  "store": {
+    "eyebrow": "Loja · Rick and Rick",
+    "title": "Item raro desbloqueado.",
+    "text": "Arte exclusiva, com o nome de quem criou. Dá pra personalizar a sua também.",
+    "products": [
+      { "name": "Caneca Rick and Rick 01", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "image": null },
+      { "name": "Caneca Rick and Rick 02", "tag": "Crossover", "artist": "@[ARTISTA]", "price": "[PREÇO]", "image": null },
+      { "name": "Almofada Rick and Rick", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "image": null }
+    ]
+  },
+  "partners": [
+    { "title": "Revenda", "text": "Compre no atacado e revenda na sua loja ou no seu evento. [CONDIÇÕES: PEDIDO MÍNIMO E DESCONTO].", "cta": "Quero revender" },
+    { "title": "Afiliados", "text": "Receba um link ou cupom próprio e ganhe [COMISSÃO] por cada venda que vier de você.", "cta": "Quero ser afiliado" },
+    { "title": "Criadores e streamers", "text": "Produtos com a sua cara e a sua marca, feitos por artistas da comunidade.", "cta": "Quero uma collab" }
+  ],
+  "newsletter": { "frequency": "[FREQUÊNCIA]" }
+}
