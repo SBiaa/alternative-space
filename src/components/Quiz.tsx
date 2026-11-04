@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { scoreAnswers, type QuizData } from "@/lib/quiz";
+import { salvarResultado } from "@/app/actions/tripulante";
 
 export function Quiz({ slug, questions }: { slug: string; questions: QuizData["questions"] }) {
   const router = useRouter();
@@ -12,10 +13,14 @@ export function Quiz({ slug, questions }: { slug: string; questions: QuizData["q
   const done = step >= total;
   const current = questions[Math.min(step, total - 1)];
 
-  function choose(result: string) {
+  async function choose(result: string) {
     const next = [...answers, result];
     setAnswers(next);
-    if (next.length >= total) router.push(`/quiz/${slug}/${scoreAnswers(next)}`);
+    if (next.length < total) return;
+    const final = scoreAnswers(next);
+    // Salva no diário de bordo de quem está logado; sem login (ou se falhar) só segue pro resultado.
+    await salvarResultado(slug, final).catch(() => false);
+    router.push(`/quiz/${slug}/${final}`);
   }
 
   return (

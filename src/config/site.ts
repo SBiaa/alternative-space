@@ -15,6 +15,8 @@ export const site = {
     { label: "Comunidade", href: "/#comunidade" },
     { label: "Blog", href: "/blog" },
     { label: "Desafio", href: "/#desafio" },
+    { label: "Coleções", href: "/colecoes" },
+    { label: "Quizzes", href: "/quiz" },
     { label: "Loja", href: "/#loja" },
     { label: "Parceiros", href: "/parceiros" },
   ],

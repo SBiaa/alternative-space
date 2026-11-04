@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { Logo } from "./Logo";
+import { AccountLink, AccountLinkFallback } from "./AccountLink";
 import { site, joinHref } from "@/config/site";
 
 export function Header() {
@@ -17,9 +19,14 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <a href={joinHref} className="btn order-2 bg-laranja text-noite !px-5 !py-3 !text-[1.05rem] !shadow-duro-sm md:order-3">
-          Receber novidades
-        </a>
+        <div className="order-2 flex items-center gap-5 md:order-3">
+          <Suspense fallback={<AccountLinkFallback />}>
+            <AccountLink />
+          </Suspense>
+          <a href={joinHref} className="btn bg-laranja text-noite !px-5 !py-3 !text-[1.05rem] !shadow-duro-sm">
+            Receber novidades
+          </a>
+        </div>
       </div>
     </header>
   );

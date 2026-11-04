@@ -1,0 +1,16 @@
+{
+  "name": "Rick and Rick",
+  "status": "Nova",
+  "date": "[MÊS/ANO]",
+  "tagline": "Item raro desbloqueado.",
+  "text": "[TEXTO DA COLEÇÃO: A IDEIA, O TEMA E QUEM CRIOU AS ARTES.]",
+  "color": "laranja",
+  "preview": 2,
+  "pieces": [
+    { "name": "Caneca Rick and Rick 01", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null },
+    { "name": "Caneca Rick and Rick 02", "tag": "Crossover", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null },
+    { "name": "Almofada Rick and Rick", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null },
+    { "name": "[PEÇA 04]", "tag": "Exclusiva", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null },
+    { "name": "[PEÇA 05]", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null }
+  ]
+}

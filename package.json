@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@neon/auth": "^0.8.2",
+    "@neondatabase/serverless": "^1.2.0",
     "gray-matter": "^4.0.3",
     "next": "16.4.3",
     "next-mdx-remote": "^6.0.0",

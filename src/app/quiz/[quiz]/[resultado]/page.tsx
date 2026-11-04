@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { SaveResult } from "@/components/SaveResult";
 import { ShareButton } from "@/components/ShareButton";
 import { Star } from "@/components/Star";
 import { getQuiz, quizzes, resultTheme } from "@/lib/quiz";
@@ -65,6 +66,10 @@ async function Result({ params }: { params: Params }) {
           ))}
         </ul>
       </div>
+
+      <Suspense fallback={<div className="h-[76px] rounded-xl border-2 border-noite bg-creme-claro" />}>
+        <SaveResult quiz={slug} result={resultado} />
+      </Suspense>
 
       <div className="flex flex-wrap items-start gap-4">
         <ShareButton
