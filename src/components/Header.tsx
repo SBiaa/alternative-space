@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
-import { site, discordHref } from "@/config/site";
+import { site, joinHref } from "@/config/site";
 
 export function Header() {
   return (
@@ -17,8 +17,8 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <a href={discordHref} className="btn order-2 bg-laranja text-noite !px-5 !py-3 !text-[1.05rem] !shadow-duro-sm md:order-3">
-          Entrar na base
+        <a href={joinHref} className="btn order-2 bg-laranja text-noite !px-5 !py-3 !text-[1.05rem] !shadow-duro-sm md:order-3">
+          Receber novidades
         </a>
       </div>
     </header>

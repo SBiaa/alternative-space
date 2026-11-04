@@ -1,9 +1,8 @@
 import { site } from "@/config/site";
 
 export function Footer() {
-  const { discord, instagram, whatsapp, email } = site.links;
+  const { instagram, whatsapp, email } = site.links;
   const items = [
-    discord && { label: "Discord", href: discord, text: discord.replace(/^https?:\/\//, "") },
     instagram && { label: "Instagram", href: instagram, text: instagram.replace(/^https?:\/\/(www\.)?instagram\.com\//, "@").replace(/\/$/, "") },
     whatsapp && { label: "WhatsApp", href: whatsapp, text: "Chamar no WhatsApp" },
     email && { label: "E-mail", href: `mailto:${email}`, text: email },

@@ -7,7 +7,6 @@ export const site = {
     "Comunidade para geeks, nerds, góticos e a galera underground: blog, desafio do mês, votação de drops e loja.",
   url: "https://alternativespace.com.br",
   links: {
-    discord: "",
     instagram: "",
     whatsapp: "",
     email: "",
@@ -21,4 +20,5 @@ export const site = {
   ],
 };
 
-export const discordHref = site.links.discord || "/#comunidade";
+// Destino dos botões de entrada enquanto não há comunidade aberta.
+export const joinHref = "/#newsletter";

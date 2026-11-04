@@ -5,7 +5,7 @@ import { PostCard } from "@/components/PostCard";
 import { Ph } from "@/components/Ph";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { Star } from "@/components/Star";
-import { discordHref } from "@/config/site";
+import { joinHref } from "@/config/site";
 
 export default function Home() {
   const posts = getPosts().slice(0, 3);
@@ -23,7 +23,7 @@ export default function Home() {
             </h1>
             <p className="max-w-[540px] text-[1.2rem] leading-relaxed text-tinta">{hero.text}</p>
             <div className="flex flex-wrap gap-3.5">
-              <a href={discordHref} className="btn bg-laranja text-noite">Entrar no Discord</a>
+              <a href={joinHref} className="btn bg-laranja text-noite">Receber novidades</a>
               <Link href="/blog" className="btn bg-creme-claro text-noite">Ler o blog</Link>
             </div>
           </div>
@@ -42,8 +42,8 @@ export default function Home() {
               <div className="flex flex-col gap-2.5 px-[22px] pb-6 pt-5 font-ficha text-[15px]">
                 <span className="text-[11px] tracking-widest text-neutro">CANAIS</span>
                 {hero.channels.map((c) => <span key={c}># {c}</span>)}
-                <a href={discordHref} className="mt-2 rounded-full border-2 border-noite bg-laranja px-4 py-2.5 text-center font-titulo text-base font-bold text-noite no-underline">
-                  Entrar no servidor
+                <a href={joinHref} className="mt-2 rounded-full border-2 border-noite bg-laranja px-4 py-2.5 text-center font-titulo text-base font-bold text-noite no-underline">
+                  Receber novidades
                 </a>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function Home() {
                 </li>
               ))}
             </ol>
-            <div><a href={discordHref} className="btn bg-azul text-creme">Quero participar</a></div>
+            <div><a href={joinHref} className="btn bg-azul text-creme">Quero participar</a></div>
           </div>
           <div className="flex min-w-0 flex-[1_1_380px] justify-center">
             <div className="flex w-full max-w-[460px] rotate-2 flex-col gap-[18px] rounded-[14px] border-[3px] border-noite bg-laranja px-8 py-9 shadow-duro-lg">
