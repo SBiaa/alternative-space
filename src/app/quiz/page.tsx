@@ -1,16 +1,26 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Quiz } from "@/components/Quiz";
+import { Star } from "@/components/Star";
+import { quiz } from "@/lib/quiz";
 
-export const metadata: Metadata = { title: "Quiz" };
+export const metadata: Metadata = {
+  title: "Quiz",
+  description: quiz.intro.text,
+  openGraph: { title: quiz.intro.title, description: quiz.intro.text },
+};
 
 export default function Page() {
+  const { intro } = quiz;
   return (
-    <section className="secao">
-      <div className="miolo flex flex-col items-start gap-5">
-        <span className="etiqueta text-azul">Fase 2</span>
-        <h1 className="h2 text-azul">Quiz chegando.</h1>
-        <p className="text-lg">Essa parte ainda está sendo montada. Enquanto isso, passa na base.</p>
-        <Link href="/" className="btn bg-laranja text-noite">Voltar pra home</Link>
+    <section className="secao relative overflow-hidden !pt-16">
+      <div className="mx-auto flex max-w-[860px] flex-col gap-9">
+        <div className="relative flex flex-col gap-4">
+          <span className="etiqueta text-azul">{intro.eyebrow}</span>
+          <h1 className="font-titulo font-bold leading-[1] text-azul" style={{ fontSize: "clamp(2.4rem, 6vw, 4.25rem)" }}>{intro.title}</h1>
+          <p className="max-w-[620px] text-lg leading-relaxed text-tinta">{intro.text}</p>
+          <Star className="absolute -top-4 right-0 hidden sm:block" />
+        </div>
+        <Quiz />
       </div>
     </section>
   );

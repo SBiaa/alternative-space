@@ -1,0 +1,111 @@
+{
+  "intro": {
+    "eyebrow": "Quiz · 8 perguntas",
+    "title": "Qual personagem alternativo é você?",
+    "text": "Responde no instinto, sem pensar muito. No final você descobre quem mora aí dentro e manda pra galera."
+  },
+  "results": {
+    "noite": {
+      "name": "Criatura da Noite",
+      "tagline": "Você floresce quando o sol vai embora.",
+      "text": "Preto não é cor, é estado de espírito. Você coleciona poesia triste, playlists que ninguém entende e uma calma que assusta quem não te conhece. Por trás da cara séria tem alguém que sente tudo no volume máximo.",
+      "traits": ["Lua cheia", "Velas e vinil", "Estética impecável"],
+      "color": "azul"
+    },
+    "laboratorio": {
+      "name": "Mente de Laboratório",
+      "tagline": "Se dá pra desmontar, você já desmontou.",
+      "text": "Curiosidade é seu combustível. Você abre 47 abas sobre um assunto aleatório às 3 da manhã, tem opinião forte sobre teclado mecânico e transforma qualquer problema num projeto paralelo.",
+      "traits": ["Hiperfoco", "Gambiarra genial", "Tela sempre acesa"],
+      "color": "noite"
+    },
+    "mesa": {
+      "name": "Mestre de Mesa",
+      "tagline": "Toda conversa sua vira campanha.",
+      "text": "Você vive em mundos que ainda não existem. Cria lore pra tudo, lembra o nome de cada NPC e é quem junta a galera em volta da mesa. Contar história é seu superpoder, e os dados sempre rolam a seu favor (quase sempre).",
+      "traits": ["Imaginação sem limite", "Dados na mochila", "Líder do grupo"],
+      "color": "laranja"
+    },
+    "porao": {
+      "name": "Alma de Porão",
+      "tagline": "Se é mainstream, você já cansou.",
+      "text": "Você conhece a banda antes dela existir. Faz zine, customiza a própria roupa e acredita que tudo fica melhor feito à mão. Barulho, atitude e coletivo: o rolê é seu lugar no mundo.",
+      "traits": ["Faça você mesmo", "Show pequeno, som alto", "Coração de coletivo"],
+      "color": "estrela"
+    }
+  },
+  "questions": [
+    {
+      "q": "É sexta à noite. Qual é o plano?",
+      "options": [
+        { "text": "Show de uma banda que ninguém conhece num porão abafado", "result": "porao" },
+        { "text": "Sessão de RPG que vai até o sol nascer", "result": "mesa" },
+        { "text": "Cemitério histórico, chá e um livro de poesia", "result": "noite" },
+        { "text": "Terminar aquele projeto que eu comecei às 22h", "result": "laboratorio" }
+      ]
+    },
+    {
+      "q": "Qual dessas peças não pode faltar no seu guarda-roupa?",
+      "options": [
+        { "text": "Camiseta de evento tech ou de jogo", "result": "laboratorio" },
+        { "text": "Sobretudo preto que arrasta no chão", "result": "noite" },
+        { "text": "Jaqueta cheia de patch e alfinete", "result": "porao" },
+        { "text": "Algo com dragão. Sempre algo com dragão.", "result": "mesa" }
+      ]
+    },
+    {
+      "q": "Seu grupo de amigos te chama quando…",
+      "options": [
+        { "text": "Alguém precisa de uma história pra sair do tédio", "result": "mesa" },
+        { "text": "O computador de alguém resolveu morrer", "result": "laboratorio" },
+        { "text": "Tem um rolê novo e ninguém sabe onde é", "result": "porao" },
+        { "text": "Alguém precisa desabafar às 2 da manhã", "result": "noite" }
+      ]
+    },
+    {
+      "q": "Escolhe um superpoder:",
+      "options": [
+        { "text": "Falar com fantasmas", "result": "noite" },
+        { "text": "Amplificar qualquer som com as mãos", "result": "porao" },
+        { "text": "Entender qualquer máquina só de tocar", "result": "laboratorio" },
+        { "text": "Mudar a realidade escrevendo nela", "result": "mesa" }
+      ]
+    },
+    {
+      "q": "Qual trilha toca na sua cabeça agora?",
+      "options": [
+        { "text": "Synthwave pra codar", "result": "laboratorio" },
+        { "text": "Trilha épica de taverna", "result": "mesa" },
+        { "text": "Darkwave com muito reverb", "result": "noite" },
+        { "text": "Punk de garagem gravado no celular", "result": "porao" }
+      ]
+    },
+    {
+      "q": "Se você tivesse uma loja, ela venderia…",
+      "options": [
+        { "text": "Zines, discos e camiseta serigrafada", "result": "porao" },
+        { "text": "Velas, cristais e livros antigos", "result": "noite" },
+        { "text": "Miniaturas, dados e mapas desenhados à mão", "result": "mesa" },
+        { "text": "Peças, cabos e gadgets que só você entende", "result": "laboratorio" }
+      ]
+    },
+    {
+      "q": "Qual frase é a sua cara?",
+      "options": [
+        { "text": "\"Rola iniciativa.\"", "result": "mesa" },
+        { "text": "\"Funciona na minha máquina.\"", "result": "laboratorio" },
+        { "text": "\"Faz você mesmo.\"", "result": "porao" },
+        { "text": "\"A noite é uma criança. Uma criança triste.\"", "result": "noite" }
+      ]
+    },
+    {
+      "q": "No desafio do mês, sua arte seria…",
+      "options": [
+        { "text": "Uma colagem barulhenta com recorte de revista", "result": "porao" },
+        { "text": "Uma ilustração sombria em preto e branco", "result": "noite" },
+        { "text": "Pixel art ou algo gerado por código", "result": "laboratorio" },
+        { "text": "Um personagem com ficha completa e história", "result": "mesa" }
+      ]
+    }
+  ]
+}
