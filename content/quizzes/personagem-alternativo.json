@@ -4,6 +4,7 @@
     "title": "Qual personagem alternativo é você?",
     "text": "Responde no instinto, sem pensar muito. No final você descobre quem mora aí dentro e manda pra galera."
   },
+  "resultPrefix": "Eu sou",
   "results": {
     "noite": {
       "name": "Criatura da Noite",

@@ -2,20 +2,20 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { quiz, scoreAnswers } from "@/lib/quiz";
+import { scoreAnswers, type QuizData } from "@/lib/quiz";
 
-export function Quiz() {
+export function Quiz({ slug, questions }: { slug: string; questions: QuizData["questions"] }) {
   const router = useRouter();
   const [answers, setAnswers] = useState<string[]>([]);
-  const total = quiz.questions.length;
+  const total = questions.length;
   const step = answers.length;
   const done = step >= total;
-  const current = quiz.questions[Math.min(step, total - 1)];
+  const current = questions[Math.min(step, total - 1)];
 
   function choose(result: string) {
     const next = [...answers, result];
     setAnswers(next);
-    if (next.length >= total) router.push(`/quiz/${scoreAnswers(next)}`);
+    if (next.length >= total) router.push(`/quiz/${slug}/${scoreAnswers(next)}`);
   }
 
   return (

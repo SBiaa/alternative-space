@@ -1,0 +1,96 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import { ShareButton } from "@/components/ShareButton";
+import { Star } from "@/components/Star";
+import { getQuiz, quizzes, resultTheme } from "@/lib/quiz";
+import { joinHref, site } from "@/config/site";
+
+type Params = PageProps<"/quiz/[quiz]/[resultado]">["params"];
+
+export function generateStaticParams() {
+  return Object.entries(quizzes).flatMap(([quiz, q]) => Object.keys(q.results).map((resultado) => ({ quiz, resultado })));
+}
+
+async function load(params: Params) {
+  const { quiz: slug, resultado } = await params;
+  const quiz = getQuiz(slug);
+  const result = quiz?.results[resultado];
+  return quiz && result ? { slug, resultado, quiz, result } : null;
+}
+
+export async function generateMetadata({ params }: PageProps<"/quiz/[quiz]/[resultado]">): Promise<Metadata> {
+  const data = await load(params);
+  if (!data) return {};
+  const { slug, resultado, quiz, result } = data;
+  const title = `${quiz.resultPrefix} ${result.name}`;
+  return {
+    title,
+    description: result.tagline,
+    openGraph: { title: `${title} · ${quiz.intro.title}`, description: result.tagline, url: `${site.url}/quiz/${slug}/${resultado}` },
+  };
+}
+
+export default function ResultPage({ params }: PageProps<"/quiz/[quiz]/[resultado]">) {
+  return (
+    <section className="secao !pt-16">
+      <div className="mx-auto flex max-w-[860px] flex-col gap-12">
+        <Suspense fallback={<p className="font-titulo text-2xl font-bold text-azul">Carregando resultado…</p>}>
+          <Result params={params} />
+        </Suspense>
+      </div>
+    </section>
+  );
+}
+
+async function Result({ params }: { params: Params }) {
+  const data = await load(params);
+  if (!data) notFound();
+  const { slug, resultado, quiz, result: r } = data;
+  const theme = resultTheme[r.color] ?? resultTheme.azul;
+  const others = Object.entries(quiz.results).filter(([id]) => id !== resultado);
+
+  return (
+    <>
+      <div className={`relative flex flex-col gap-5 rounded-2xl border-[3px] border-noite px-8 py-10 shadow-duro-lg sm:px-12 sm:py-12 ${theme.card}`}>
+        <Star className="absolute -right-5 -top-6" color={r.color === "creme" ? "#ab392f" : "#ece3be"} />
+        <span className={`etiqueta text-[13px] ${theme.label}`}>Seu resultado{r.label && ` · ${r.label}`}</span>
+        <h1 className="font-titulo font-bold leading-[0.98]" style={{ fontSize: "clamp(2.6rem, 7vw, 4.75rem)" }}>{r.name}</h1>
+        <p className="font-titulo text-[1.5rem] font-semibold leading-tight">{r.tagline}</p>
+        <p className="max-w-[640px] text-lg leading-relaxed">{r.text}</p>
+        <ul className="flex list-none flex-wrap gap-2.5 p-0">
+          {r.traits.map((t) => (
+            <li key={t} className="rounded-full border-2 border-current px-4 py-1.5 font-ficha text-[13px] uppercase tracking-wider">{t}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="flex flex-wrap items-start gap-4">
+        <ShareButton
+          title={`${quiz.resultPrefix} ${r.name}`}
+          text={`Fiz o quiz "${quiz.intro.title}" da ${site.name}: ${quiz.resultPrefix.toLowerCase()} ${r.name}. E você?`}
+          className="bg-laranja text-noite"
+        />
+        <Link href={`/quiz/${slug}`} className="btn bg-creme-claro text-noite">Refazer o quiz</Link>
+        <a href={joinHref} className="btn bg-azul text-creme">Entrar pra base</a>
+      </div>
+
+      <div className="flex flex-col gap-5">
+        <span className="etiqueta text-azul">Os outros resultados</span>
+        <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 p-0">
+          {others.map(([id, o]) => (
+            <li key={id}>
+              <Link href={`/quiz/${slug}/${id}`} className="card flex h-full flex-col gap-2 p-5 text-noite no-underline">
+                <span className="font-titulo text-[1.35rem] font-bold text-azul">{o.name}</span>
+                <span className="leading-snug text-tinta">{o.tagline}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link href="/quiz" className="font-titulo text-xl font-bold text-azul">Fazer outro quiz →</Link>
+      </div>
+      {quiz.note && <p className="font-ficha text-xs text-neutro">{quiz.note}</p>}
+    </>
+  );
+}

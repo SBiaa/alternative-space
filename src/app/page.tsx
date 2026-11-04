@@ -142,7 +142,10 @@ export default function Home() {
             <h2 className="font-titulo font-bold leading-[1.02]" style={{ fontSize: "clamp(2rem, 5vw, 3.4rem)" }}>{quiz.title}</h2>
             <p className="text-lg leading-normal">{quiz.text}</p>
           </div>
-          <Link href="/quiz" className="btn bg-noite text-creme !shadow-none">Fazer o quiz</Link>
+          <div className="flex flex-col items-start gap-3">
+            <Link href={`/quiz/${quiz.slug}`} className="btn bg-noite text-creme !shadow-none">Fazer o quiz</Link>
+            <Link href="/quiz" className="font-titulo text-lg font-bold text-noite">Ver todos os quizzes →</Link>
+          </div>
         </div>
       </section>
 

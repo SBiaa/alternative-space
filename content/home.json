@@ -27,6 +27,7 @@
     ]
   },
   "quiz": {
+    "slug": "personagem-alternativo",
     "title": "Qual personagem alternativo é você?",
     "text": "Leva 2 minutos. No final, você descobre o resultado e compartilha com a galera."
   },

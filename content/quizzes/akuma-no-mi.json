@@ -1,0 +1,142 @@
+{
+  "intro": {
+    "eyebrow": "Quiz · One Piece · 9 perguntas",
+    "title": "Qual Akuma no Mi você comeria?",
+    "text": "Responde como se já estivesse na Grand Line. No final você descobre qual fruta é a sua. E sim: você nunca mais vai conseguir nadar."
+  },
+  "resultPrefix": "Eu comeria a",
+  "note": "Quiz feito por fãs, sem ligação oficial com One Piece ou seus detentores.",
+  "results": {
+    "gomu": {
+      "name": "Gomu Gomu no Mi",
+      "label": "Paramecia… ou será que não?",
+      "tagline": "Seu corpo estica. Sua liberdade, mais ainda.",
+      "text": "Você não planeja, você vai. Arrasta os amigos pra aventura, ri na cara do perigo e está com fome o tempo todo. Ninguém entende como, mas no fim tudo dá certo e todo mundo acaba te seguindo.",
+      "traits": ["Liberdade acima de tudo", "Fome infinita", "Sorriso que contagia"],
+      "color": "laranja"
+    },
+    "ope": {
+      "name": "Ope Ope no Mi",
+      "label": "Paramecia",
+      "tagline": "Dentro da sua Room, quem manda é você.",
+      "text": "Calma de quem já previu tudo. Você pensa três passos à frente, tem um plano B pro plano B e resolve o caos com precisão cirúrgica. Por fora, pura frieza. Por dentro, uma lealdade que não aparece no mapa.",
+      "traits": ["Plano A, B e C", "Olheira de estimação", "Precisão cirúrgica"],
+      "color": "azul"
+    },
+    "mera": {
+      "name": "Mera Mera no Mi",
+      "label": "Logia",
+      "tagline": "Você é fogo. Literalmente.",
+      "text": "Intensidade é seu sobrenome. Você sente tudo no máximo, defende os seus com unhas e chamas e não sabe o que é meio-termo. Quem tem você por perto nunca passa frio.",
+      "traits": ["Lealdade em chamas", "Pavio curto", "Coração enorme"],
+      "color": "estrela"
+    },
+    "horo": {
+      "name": "Horo Horo no Mi",
+      "label": "Paramecia",
+      "tagline": "Seus fantasmas deixam qualquer inimigo sem vontade de viver.",
+      "text": "Gótico fofo em forma de fruta. Você ama o que é sombrio e o que é fofo na mesma medida, tem um humor ácido que desarma qualquer um e um quarto que parece castelo mal-assombrado.",
+      "traits": ["Fantasminhas negativos", "Renda e babado", "Sarcasmo afiado"],
+      "color": "noite"
+    },
+    "hana": {
+      "name": "Hana Hana no Mi",
+      "label": "Paramecia",
+      "tagline": "Mil mãos e um livro em cada uma.",
+      "text": "Mistério por fora, humor mórbido por dentro. Você lê de tudo, fala pouco e guarda segredos que ninguém sabe que existem. Resolve qualquer problema de longe, sem nem levantar da cadeira.",
+      "traits": ["Leitura sem fim", "Humor mórbido", "Olhos em todo lugar"],
+      "color": "creme"
+    },
+    "fenix": {
+      "name": "Tori Tori no Mi, Modelo Fênix",
+      "label": "Zoan Mítica",
+      "tagline": "Você cura os outros e renasce das cinzas.",
+      "text": "Você é quem todo mundo procura quando o mundo desaba. Calma, paciência e um instinto de proteção que não cansa. Cai, levanta e ainda volta pra buscar quem ficou pra trás.",
+      "traits": ["Chamas que curam", "Calma inabalável", "Protege o bando"],
+      "color": "azul"
+    }
+  },
+  "questions": [
+    {
+      "q": "Você acorda num navio pirata. Qual é a primeira coisa que faz?",
+      "options": [
+        { "text": "Vou direto pra cozinha ver o que tem pra comer", "result": "gomu" },
+        { "text": "Abro o mapa e calculo a rota", "result": "ope" },
+        { "text": "Subo no mastro pra ver se tem briga no horizonte", "result": "mera" },
+        { "text": "Vou ver se alguém do bando está machucado", "result": "fenix" }
+      ]
+    },
+    {
+      "q": "Qual é o seu papel no bando?",
+      "options": [
+        { "text": "Capitão. Ninguém votou, mas tudo bem", "result": "gomu" },
+        { "text": "Quem decifra os mapas e os textos antigos", "result": "hana" },
+        { "text": "Quem assombra o navio e decora tudo de preto", "result": "horo" },
+        { "text": "Cirurgião de bordo, frio e preciso", "result": "ope" }
+      ]
+    },
+    {
+      "q": "No meio da luta, você…",
+      "options": [
+        { "text": "Parte pra cima e bota fogo em tudo", "result": "mera" },
+        { "text": "Deixa o inimigo tão deprimido que ele desiste sozinho", "result": "horo" },
+        { "text": "Ataca de longe, sem nem sair do lugar", "result": "hana" },
+        { "text": "Aguenta o tranco na frente pra proteger o resto", "result": "fenix" }
+      ]
+    },
+    {
+      "q": "Seu lugar favorito no navio:",
+      "options": [
+        { "text": "Sentado na figura de proa, olhando o mar", "result": "gomu" },
+        { "text": "A biblioteca, com um café", "result": "hana" },
+        { "text": "O porão escuro, onde ninguém incomoda", "result": "horo" },
+        { "text": "O laboratório, organizado do meu jeito", "result": "ope" }
+      ]
+    },
+    {
+      "q": "Que tipo de amigo você é?",
+      "options": [
+        { "text": "Leal até o fim: mexeu com os meus, mexeu comigo", "result": "mera" },
+        { "text": "O que aparece com sopa quando alguém fica doente", "result": "fenix" },
+        { "text": "O que arrasta todo mundo pra aventura", "result": "gomu" },
+        { "text": "O de humor ácido que ama todo mundo em segredo", "result": "horo" }
+      ]
+    },
+    {
+      "q": "Qual dessas frases você diria?",
+      "options": [
+        { "text": "\"Tudo está indo conforme o plano.\"", "result": "ope" },
+        { "text": "\"Que história interessante. E que fim trágico.\"", "result": "hana" },
+        { "text": "\"Não ouse encostar em quem eu amo.\"", "result": "mera" },
+        { "text": "\"Pode ir, eu seguro aqui.\"", "result": "fenix" }
+      ]
+    },
+    {
+      "q": "Escolhe um visual:",
+      "options": [
+        { "text": "Gótico fofo: renda, babado e fantasminhas", "result": "horo" },
+        { "text": "Camisa aberta, chapéu e tatuagem no braço", "result": "mera" },
+        { "text": "Tudo preto, tatuagem nas mãos e olheira", "result": "ope" },
+        { "text": "Sobretudo, óculos escuros e mistério", "result": "hana" }
+      ]
+    },
+    {
+      "q": "O que você mais teme perder?",
+      "options": [
+        { "text": "Minha liberdade", "result": "gomu" },
+        { "text": "As pessoas que eu protejo", "result": "fenix" },
+        { "text": "A verdade sobre o passado", "result": "hana" },
+        { "text": "Meu cantinho e minhas coisas fofas", "result": "horo" }
+      ]
+    },
+    {
+      "q": "Prato pra comemorar a vitória:",
+      "options": [
+        { "text": "Uma montanha de carne", "result": "gomu" },
+        { "text": "Qualquer coisa bem apimentada", "result": "mera" },
+        { "text": "Qualquer coisa, menos pão", "result": "ope" },
+        { "text": "Uma sopa quentinha pra galera toda", "result": "fenix" }
+      ]
+    }
+  ]
+}
