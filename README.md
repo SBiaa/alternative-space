@@ -20,6 +20,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Testes
+
+Os testes usam [Vitest](https://vitest.dev) e Testing Library. Não precisam de banco nem de chaves: banco, login e APIs externas são simulados.
+
+```bash
+npm test            # roda tudo uma vez
+npm run test:watch  # roda de novo a cada mudança
+```
+
+- `src/**/*.test.ts(x)`: lógica dos quizzes, formulários, rotas de API, ações de conta e componentes.
+- `tests/content.test.ts`: confere os JSON de `content/` (toda opção aponta pra um resultado que existe, cores válidas, imagens que existem, posts do blog). Rode depois de criar ou editar um quiz.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
