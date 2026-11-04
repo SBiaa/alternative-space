@@ -1,5 +1,6 @@
 import personagem from "../../content/quizzes/personagem-alternativo.json";
 import akuma from "../../content/quizzes/akuma-no-mi.json";
+import tripulacao from "../../content/quizzes/tripulacao.json";
 
 export type QuizResult = {
   name: string;
@@ -20,6 +21,7 @@ export type QuizData = {
 
 // Para adicionar um quiz: crie o JSON em content/quizzes e registre aqui. A ordem é a da página /quiz.
 export const quizzes: Record<string, QuizData> = {
+  tripulacao,
   "akuma-no-mi": akuma,
   "personagem-alternativo": personagem,
 };
