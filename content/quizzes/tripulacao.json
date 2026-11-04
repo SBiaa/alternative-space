@@ -12,7 +12,11 @@
       "label": "Capitão: Monkey D. Luffy",
       "tagline": "Seu sonho é grande demais pra caber em terra firme.",
       "text": "Família escolhida, caos organizado e coragem sem juízo. Cada pessoa do bando tem um sonho impossível, e todo mundo luta pelo sonho do outro como se fosse o seu. Ninguém te pergunta se você é forte. Perguntam só se você quer vir.",
-      "traits": ["Sonho impossível", "Família escolhida", "Banquete toda noite"],
+      "traits": [
+        "Sonho impossível",
+        "Família escolhida",
+        "Banquete toda noite"
+      ],
       "color": "laranja"
     },
     "ruivo": {
@@ -20,7 +24,11 @@
       "label": "Capitão: Shanks",
       "tagline": "Você não precisa provar nada pra ninguém.",
       "text": "Tranquilidade de quem sabe a força que tem. Você prefere uma boa festa a uma briga, ri das provocações e só levanta da cadeira quando a coisa é séria. E quando levanta, o mar inteiro sente.",
-      "traits": ["Paz e festa", "Respeito no olhar", "Leal aos amigos"],
+      "traits": [
+        "Paz e festa",
+        "Respeito no olhar",
+        "Leal aos amigos"
+      ],
       "color": "estrela"
     },
     "coracao": {
@@ -28,7 +36,11 @@
       "label": "Capitão: Trafalgar Law",
       "tagline": "Discreto por fora, letal por dentro.",
       "text": "Você trabalha nos bastidores, pensa antes de agir e confia num grupo pequeno e muito unido. Uniforme combinando, plano bem traçado e um submarino longe dos holofotes. Quem te subestima descobre tarde demais.",
-      "traits": ["Plano calculado", "Equipe pequena e fiel", "Longe dos holofotes"],
+      "traits": [
+        "Plano calculado",
+        "Equipe pequena e fiel",
+        "Longe dos holofotes"
+      ],
       "color": "creme"
     },
     "barbabranca": {
@@ -36,7 +48,11 @@
       "label": "Capitão: Edward Newgate",
       "tagline": "Pra você, tripulação é família.",
       "text": "Você acolhe quem ninguém acolheu, protege os seus com a vida e acredita que um grupo unido é mais forte que qualquer exército. Seus amigos te chamam de porto seguro, e com razão.",
-      "traits": ["Família enorme", "Proteção total", "Ninguém fica pra trás"],
+      "traits": [
+        "Família enorme",
+        "Proteção total",
+        "Ninguém fica pra trás"
+      ],
       "color": "azul"
     },
     "kid": {
@@ -44,7 +60,11 @@
       "label": "Capitão: Eustass Kid",
       "tagline": "Barulho, metal e zero respeito por autoridade.",
       "text": "Você não pede licença. Estilo pesado, atitude explosiva e um orgulho que não dobra pra ninguém. Pode até ser encrenca, mas quem é do seu bando sabe que pode contar com você em qualquer briga.",
-      "traits": ["Atitude punk", "Orgulho de ferro", "Encrenca garantida"],
+      "traits": [
+        "Atitude punk",
+        "Orgulho de ferro",
+        "Encrenca garantida"
+      ],
       "color": "noite"
     },
     "revolucionario": {
@@ -52,90 +72,202 @@
       "label": "Líder: Monkey D. Dragon",
       "tagline": "Você não quer o tesouro. Quer mudar o mundo.",
       "text": "Você enxerga as injustiças que todo mundo finge não ver e não consegue ficar parado. Age no underground, organiza a galera e acredita que o amanhecer vai chegar. Não é uma tripulação, é uma causa.",
-      "traits": ["Causa acima de tudo", "Underground de verdade", "Organiza a revolução"],
+      "traits": [
+        "Causa acima de tudo",
+        "Underground de verdade",
+        "Organiza a revolução"
+      ],
       "color": "azul"
     }
   },
   "questions": [
     {
-      "q": "Por que você se lançaria ao mar?",
+      "q": "Se você largasse tudo amanhã, seria pra quê?",
       "options": [
-        { "text": "Pra realizar um sonho que todo mundo acha impossível", "result": "palha" },
-        { "text": "Pra mudar o mundo, custe o que custar", "result": "revolucionario" },
-        { "text": "Porque ninguém manda em mim", "result": "kid" },
-        { "text": "Pela aventura e pelas festas no caminho", "result": "ruivo" }
+        {
+          "text": "Correr atrás de um sonho que todo mundo acha loucura",
+          "result": "palha"
+        },
+        {
+          "text": "Me dedicar a uma causa em que eu acredito",
+          "result": "revolucionario"
+        },
+        {
+          "text": "Nunca mais ter chefe na vida",
+          "result": "kid"
+        },
+        {
+          "text": "Viajar sem data pra voltar",
+          "result": "ruivo"
+        }
       ]
     },
     {
-      "q": "O que você procura num capitão?",
+      "q": "Num chefe ou professor, o que mais importa pra você?",
       "options": [
-        { "text": "Que trate a tripulação como família", "result": "barbabranca" },
-        { "text": "Que tenha um plano bem calculado", "result": "coracao" },
-        { "text": "Que me deixe ser quem eu sou", "result": "palha" },
-        { "text": "Que seja tão encrenqueiro quanto eu", "result": "kid" }
+        {
+          "text": "Que cuide da equipe como se fosse família",
+          "result": "barbabranca"
+        },
+        {
+          "text": "Que saiba exatamente o que está fazendo",
+          "result": "coracao"
+        },
+        {
+          "text": "Que me deixe ser quem eu sou",
+          "result": "palha"
+        },
+        {
+          "text": "Que não fique no meu pé",
+          "result": "kid"
+        }
       ]
     },
     {
-      "q": "Qual navio você escolheria?",
+      "q": "Onde você moraria?",
       "options": [
-        { "text": "Um submarino discreto, longe dos holofotes", "result": "coracao" },
-        { "text": "Um navio gigante com espaço pra todo mundo", "result": "barbabranca" },
-        { "text": "Um navio com cara de bicho, grama no convés e cozinha cheia", "result": "palha" },
-        { "text": "Qualquer um, desde que o governo não esteja de olho", "result": "revolucionario" }
+        {
+          "text": "Num apê pequeno, discreto e bem equipado",
+          "result": "coracao"
+        },
+        {
+          "text": "Numa casa enorme, com a família toda junta",
+          "result": "barbabranca"
+        },
+        {
+          "text": "Numa casa colorida, sempre cheia de amigos",
+          "result": "palha"
+        },
+        {
+          "text": "Numa ocupação cultural no centro da cidade",
+          "result": "revolucionario"
+        }
       ]
     },
     {
-      "q": "Começou uma briga no bar. Você…",
+      "q": "Começou uma discussão no churrasco. Você…",
       "options": [
-        { "text": "Encerra tudo só com o olhar e volta pra bebida", "result": "ruivo" },
-        { "text": "Foi você que começou", "result": "kid" },
-        { "text": "Protege quem não tem nada a ver com a história", "result": "barbabranca" },
-        { "text": "Já calculou a saída mais rápida", "result": "coracao" }
+        {
+          "text": "Acalma todo mundo e puxa outro assunto",
+          "result": "ruivo"
+        },
+        {
+          "text": "Foi você que começou",
+          "result": "kid"
+        },
+        {
+          "text": "Defende quem está sendo atacado",
+          "result": "barbabranca"
+        },
+        {
+          "text": "Sai de fininho antes de sobrar pra você",
+          "result": "coracao"
+        }
       ]
     },
     {
-      "q": "Escolhe um visual:",
+      "q": "Seu fim de semana ideal:",
       "options": [
-        { "text": "Casaco de pele, maquiagem escura e muito metal", "result": "kid" },
-        { "text": "Macacão igual ao da equipe inteira", "result": "coracao" },
-        { "text": "Capa com capuz e uma causa estampada no peito", "result": "revolucionario" },
-        { "text": "Camisa aberta, chinelo e cicatriz com história", "result": "ruivo" }
+        {
+          "text": "Show de metal ou punk, quanto mais barulho melhor",
+          "result": "kid"
+        },
+        {
+          "text": "Maratona de série com os poucos amigos de confiança",
+          "result": "coracao"
+        },
+        {
+          "text": "Sarau, ato ou feira independente",
+          "result": "revolucionario"
+        },
+        {
+          "text": "Churrasco que começa ao meio-dia e acaba de madrugada",
+          "result": "ruivo"
+        }
       ]
     },
     {
       "q": "O que te tira do sério?",
       "options": [
-        { "text": "Injustiça e gente que abusa do poder", "result": "revolucionario" },
-        { "text": "Alguém machucar um dos meus", "result": "barbabranca" },
-        { "text": "Gente que estraga a festa", "result": "ruivo" },
-        { "text": "Ver um amigo chorando", "result": "palha" }
+        {
+          "text": "Injustiça e gente que abusa do poder",
+          "result": "revolucionario"
+        },
+        {
+          "text": "Alguém mexer com a minha família",
+          "result": "barbabranca"
+        },
+        {
+          "text": "Gente que estraga a festa",
+          "result": "ruivo"
+        },
+        {
+          "text": "Ver um amigo chorando",
+          "result": "palha"
+        }
       ]
     },
     {
-      "q": "Qual é o seu maior objetivo?",
+      "q": "Caiu um dinheiro inesperado na sua conta. Você…",
       "options": [
-        { "text": "Ser livre de verdade, mais que qualquer um", "result": "palha" },
-        { "text": "Chegar no topo e esfregar na cara de quem duvidou", "result": "kid" },
-        { "text": "Descobrir a verdade que esconderam de todo mundo", "result": "coracao" },
-        { "text": "Ter uma família grande e unida", "result": "barbabranca" }
+        {
+          "text": "Paga um rolê inesquecível pra galera toda",
+          "result": "palha"
+        },
+        {
+          "text": "Compra a jaqueta, o instrumento ou a tatuagem que sempre quis",
+          "result": "kid"
+        },
+        {
+          "text": "Guarda quase tudo e investe o resto",
+          "result": "coracao"
+        },
+        {
+          "text": "Ajuda a família a pagar as contas",
+          "result": "barbabranca"
+        }
       ]
     },
     {
-      "q": "Uma frase pra tatuar:",
+      "q": "Uma frase que é a sua cara:",
       "options": [
-        { "text": "\"Aposto meu braço que vai dar certo.\"", "result": "ruivo" },
-        { "text": "\"O amanhecer vai chegar.\"", "result": "revolucionario" },
-        { "text": "\"Ninguém me para.\"", "result": "kid" },
-        { "text": "\"Ninguém fica pra trás.\"", "result": "barbabranca" }
+        {
+          "text": "\"Relaxa, vai dar tudo certo.\"",
+          "result": "ruivo"
+        },
+        {
+          "text": "\"Se ninguém faz, eu faço.\"",
+          "result": "revolucionario"
+        },
+        {
+          "text": "\"Ninguém me para.\"",
+          "result": "kid"
+        },
+        {
+          "text": "\"Ninguém fica pra trás.\"",
+          "result": "barbabranca"
+        }
       ]
     },
     {
-      "q": "O rolê perfeito depois de uma vitória:",
+      "q": "Depois de uma semana pesada, você…",
       "options": [
-        { "text": "Banquete com todo mundo cantando e dançando", "result": "palha" },
-        { "text": "Festa até de manhã, com os rivais convidados", "result": "ruivo" },
-        { "text": "Voltar pro submarino e dormir 12 horas", "result": "coracao" },
-        { "text": "Planejar a próxima missão em segredo", "result": "revolucionario" }
+        {
+          "text": "Junta os amigos pra comer até não aguentar",
+          "result": "palha"
+        },
+        {
+          "text": "Sai pra beber com quem estiver por perto, até com quem não gosta",
+          "result": "ruivo"
+        },
+        {
+          "text": "Desliga o celular e dorme 12 horas",
+          "result": "coracao"
+        },
+        {
+          "text": "Vai pra reunião do coletivo",
+          "result": "revolucionario"
+        }
       ]
     }
   ]

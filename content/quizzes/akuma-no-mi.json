@@ -12,7 +12,11 @@
       "label": "Paramecia… ou será que não?",
       "tagline": "Seu corpo estica. Sua liberdade, mais ainda.",
       "text": "Você não planeja, você vai. Arrasta os amigos pra aventura, ri na cara do perigo e está com fome o tempo todo. Ninguém entende como, mas no fim tudo dá certo e todo mundo acaba te seguindo.",
-      "traits": ["Liberdade acima de tudo", "Fome infinita", "Sorriso que contagia"],
+      "traits": [
+        "Liberdade acima de tudo",
+        "Fome infinita",
+        "Sorriso que contagia"
+      ],
       "color": "laranja"
     },
     "ope": {
@@ -20,7 +24,11 @@
       "label": "Paramecia",
       "tagline": "Dentro da sua Room, quem manda é você.",
       "text": "Calma de quem já previu tudo. Você pensa três passos à frente, tem um plano B pro plano B e resolve o caos com precisão cirúrgica. Por fora, pura frieza. Por dentro, uma lealdade que não aparece no mapa.",
-      "traits": ["Plano A, B e C", "Olheira de estimação", "Precisão cirúrgica"],
+      "traits": [
+        "Plano A, B e C",
+        "Olheira de estimação",
+        "Precisão cirúrgica"
+      ],
       "color": "azul"
     },
     "mera": {
@@ -28,7 +36,11 @@
       "label": "Logia",
       "tagline": "Você é fogo. Literalmente.",
       "text": "Intensidade é seu sobrenome. Você sente tudo no máximo, defende os seus com unhas e chamas e não sabe o que é meio-termo. Quem tem você por perto nunca passa frio.",
-      "traits": ["Lealdade em chamas", "Pavio curto", "Coração enorme"],
+      "traits": [
+        "Lealdade em chamas",
+        "Pavio curto",
+        "Coração enorme"
+      ],
       "color": "estrela"
     },
     "horo": {
@@ -36,7 +48,11 @@
       "label": "Paramecia",
       "tagline": "Seus fantasmas deixam qualquer inimigo sem vontade de viver.",
       "text": "Gótico fofo em forma de fruta. Você ama o que é sombrio e o que é fofo na mesma medida, tem um humor ácido que desarma qualquer um e um quarto que parece castelo mal-assombrado.",
-      "traits": ["Fantasminhas negativos", "Renda e babado", "Sarcasmo afiado"],
+      "traits": [
+        "Fantasminhas negativos",
+        "Renda e babado",
+        "Sarcasmo afiado"
+      ],
       "color": "noite"
     },
     "hana": {
@@ -44,7 +60,11 @@
       "label": "Paramecia",
       "tagline": "Mil mãos e um livro em cada uma.",
       "text": "Mistério por fora, humor mórbido por dentro. Você lê de tudo, fala pouco e guarda segredos que ninguém sabe que existem. Resolve qualquer problema de longe, sem nem levantar da cadeira.",
-      "traits": ["Leitura sem fim", "Humor mórbido", "Olhos em todo lugar"],
+      "traits": [
+        "Leitura sem fim",
+        "Humor mórbido",
+        "Olhos em todo lugar"
+      ],
       "color": "creme"
     },
     "fenix": {
@@ -52,90 +72,202 @@
       "label": "Zoan Mítica",
       "tagline": "Você cura os outros e renasce das cinzas.",
       "text": "Você é quem todo mundo procura quando o mundo desaba. Calma, paciência e um instinto de proteção que não cansa. Cai, levanta e ainda volta pra buscar quem ficou pra trás.",
-      "traits": ["Chamas que curam", "Calma inabalável", "Protege o bando"],
+      "traits": [
+        "Chamas que curam",
+        "Calma inabalável",
+        "Protege o bando"
+      ],
       "color": "azul"
     }
   },
   "questions": [
     {
-      "q": "Você acorda num navio pirata. Qual é a primeira coisa que faz?",
+      "q": "Acordou num sábado sem plano nenhum. O que rola?",
       "options": [
-        { "text": "Vou direto pra cozinha ver o que tem pra comer", "result": "gomu" },
-        { "text": "Abro o mapa e calculo a rota", "result": "ope" },
-        { "text": "Subo no mastro pra ver se tem briga no horizonte", "result": "mera" },
-        { "text": "Vou ver se alguém do bando está machucado", "result": "fenix" }
+        {
+          "text": "Saio de casa e vejo no que dá",
+          "result": "gomu"
+        },
+        {
+          "text": "Faço uma lista do que dá pra resolver no dia",
+          "result": "ope"
+        },
+        {
+          "text": "Chamo a galera pra algo intenso: show, treino, rolê",
+          "result": "mera"
+        },
+        {
+          "text": "Mando mensagem pra saber como a família e os amigos estão",
+          "result": "fenix"
+        }
       ]
     },
     {
-      "q": "Qual é o seu papel no bando?",
+      "q": "Trabalho em grupo na escola ou no trampo. Você é quem…",
       "options": [
-        { "text": "Capitão. Ninguém votou, mas tudo bem", "result": "gomu" },
-        { "text": "Quem decifra os mapas e os textos antigos", "result": "hana" },
-        { "text": "Quem assombra o navio e decora tudo de preto", "result": "horo" },
-        { "text": "Cirurgião de bordo, frio e preciso", "result": "ope" }
+        {
+          "text": "Tem a ideia maluca que todo mundo topa",
+          "result": "gomu"
+        },
+        {
+          "text": "Faz a pesquisa que ninguém quis fazer",
+          "result": "hana"
+        },
+        {
+          "text": "Reclama o tempo todo, mas entrega a parte mais bonita",
+          "result": "horo"
+        },
+        {
+          "text": "Divide as tarefas e cobra os prazos",
+          "result": "ope"
+        }
       ]
     },
     {
-      "q": "No meio da luta, você…",
+      "q": "Alguém furou a fila na sua frente. Você…",
       "options": [
-        { "text": "Parte pra cima e bota fogo em tudo", "result": "mera" },
-        { "text": "Deixa o inimigo tão deprimido que ele desiste sozinho", "result": "horo" },
-        { "text": "Ataca de longe, sem nem sair do lugar", "result": "hana" },
-        { "text": "Aguenta o tranco na frente pra proteger o resto", "result": "fenix" }
+        {
+          "text": "Fala na hora, sem filtro",
+          "result": "mera"
+        },
+        {
+          "text": "Solta um comentário tão ácido que a pessoa volta sozinha",
+          "result": "horo"
+        },
+        {
+          "text": "Não fala nada, mas nunca mais esquece aquela cara",
+          "result": "hana"
+        },
+        {
+          "text": "Deixa pra lá, vai que a pessoa está num dia ruim",
+          "result": "fenix"
+        }
       ]
     },
     {
-      "q": "Seu lugar favorito no navio:",
+      "q": "Seu canto preferido da casa:",
       "options": [
-        { "text": "Sentado na figura de proa, olhando o mar", "result": "gomu" },
-        { "text": "A biblioteca, com um café", "result": "hana" },
-        { "text": "O porão escuro, onde ninguém incomoda", "result": "horo" },
-        { "text": "O laboratório, organizado do meu jeito", "result": "ope" }
+        {
+          "text": "A cozinha, perto da geladeira",
+          "result": "gomu"
+        },
+        {
+          "text": "Um cantinho com livro e café",
+          "result": "hana"
+        },
+        {
+          "text": "O quarto, de luz apagada e cheio de coisinha fofa",
+          "result": "horo"
+        },
+        {
+          "text": "A mesa onde tudo está organizado do meu jeito",
+          "result": "ope"
+        }
       ]
     },
     {
-      "q": "Que tipo de amigo você é?",
+      "q": "No seu grupo de amigos, você é…",
       "options": [
-        { "text": "Leal até o fim: mexeu com os meus, mexeu comigo", "result": "mera" },
-        { "text": "O que aparece com sopa quando alguém fica doente", "result": "fenix" },
-        { "text": "O que arrasta todo mundo pra aventura", "result": "gomu" },
-        { "text": "O de humor ácido que ama todo mundo em segredo", "result": "horo" }
+        {
+          "text": "Quem compra a briga de qualquer amigo",
+          "result": "mera"
+        },
+        {
+          "text": "Quem aparece com remédio e sopa quando alguém fica doente",
+          "result": "fenix"
+        },
+        {
+          "text": "Quem inventa o rolê e arrasta todo mundo",
+          "result": "gomu"
+        },
+        {
+          "text": "Quem zoa todo mundo, mas ama em segredo",
+          "result": "horo"
+        }
       ]
     },
     {
-      "q": "Qual dessas frases você diria?",
+      "q": "Como está o seu celular agora?",
       "options": [
-        { "text": "\"Tudo está indo conforme o plano.\"", "result": "ope" },
-        { "text": "\"Que história interessante. E que fim trágico.\"", "result": "hana" },
-        { "text": "\"Não ouse encostar em quem eu amo.\"", "result": "mera" },
-        { "text": "\"Pode ir, eu seguro aqui.\"", "result": "fenix" }
+        {
+          "text": "Pastas organizadas e zero notificação",
+          "result": "ope"
+        },
+        {
+          "text": "Mil abas abertas sobre assuntos aleatórios",
+          "result": "hana"
+        },
+        {
+          "text": "Cheio de áudio de cinco minutos que você mandou",
+          "result": "mera"
+        },
+        {
+          "text": "Cheio de gente pedindo conselho",
+          "result": "fenix"
+        }
       ]
     },
     {
-      "q": "Escolhe um visual:",
+      "q": "Qual roupa você pega primeiro no armário?",
       "options": [
-        { "text": "Gótico fofo: renda, babado e fantasminhas", "result": "horo" },
-        { "text": "Camisa aberta, chapéu e tatuagem no braço", "result": "mera" },
-        { "text": "Tudo preto, tatuagem nas mãos e olheira", "result": "ope" },
-        { "text": "Sobretudo, óculos escuros e mistério", "result": "hana" }
+        {
+          "text": "Preto com um detalhe fofo: renda, laço ou caveirinha",
+          "result": "horo"
+        },
+        {
+          "text": "Algo vermelho ou estampado, pra ninguém deixar de te ver",
+          "result": "mera"
+        },
+        {
+          "text": "Moletom escuro, confortável e sem estampa",
+          "result": "ope"
+        },
+        {
+          "text": "Um casaco comprido que te deixa com ar misterioso",
+          "result": "hana"
+        }
       ]
     },
     {
-      "q": "O que você mais teme perder?",
+      "q": "O que mais te estressa?",
       "options": [
-        { "text": "Minha liberdade", "result": "gomu" },
-        { "text": "As pessoas que eu protejo", "result": "fenix" },
-        { "text": "A verdade sobre o passado", "result": "hana" },
-        { "text": "Meu cantinho e minhas coisas fofas", "result": "horo" }
+        {
+          "text": "Ter horário pra tudo",
+          "result": "gomu"
+        },
+        {
+          "text": "Ver alguém que eu gosto sofrendo",
+          "result": "fenix"
+        },
+        {
+          "text": "Gente falando alto enquanto eu tento ler",
+          "result": "hana"
+        },
+        {
+          "text": "Ter que sair de casa num dia frio",
+          "result": "horo"
+        }
       ]
     },
     {
-      "q": "Prato pra comemorar a vitória:",
+      "q": "Pra comemorar uma conquista, você pede…",
       "options": [
-        { "text": "Uma montanha de carne", "result": "gomu" },
-        { "text": "Qualquer coisa bem apimentada", "result": "mera" },
-        { "text": "Qualquer coisa, menos pão", "result": "ope" },
-        { "text": "Uma sopa quentinha pra galera toda", "result": "fenix" }
+        {
+          "text": "Rodízio, até não aguentar mais",
+          "result": "gomu"
+        },
+        {
+          "text": "Algo bem apimentado",
+          "result": "mera"
+        },
+        {
+          "text": "Qualquer coisa, menos pão",
+          "result": "ope"
+        },
+        {
+          "text": "Uma sopa ou um caldo pra dividir com todo mundo",
+          "result": "fenix"
+        }
       ]
     }
   ]
