@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { sair } from "@/app/actions/tripulante";
 import { getUser } from "@/lib/auth/server";
-import { quizzes, resultTheme } from "@/lib/quiz";
+import { getResult, quizzes, resultTheme } from "@/lib/quiz";
 import { latestResults } from "@/lib/tripulante";
 
 export const metadata: Metadata = { title: "Diário de bordo", robots: { index: false } };
@@ -45,7 +45,7 @@ async function Diario() {
       <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 p-0">
         {Object.entries(quizzes).map(([slug, q]) => {
           const s = saved.get(slug);
-          const r = s && q.results[s.result];
+          const r = s && getResult(q, s.result);
           if (!r) {
             return (
               <li key={slug}>

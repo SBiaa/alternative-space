@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { KnowledgeQuiz } from "@/components/KnowledgeQuiz";
+import { PartyQuiz } from "@/components/PartyQuiz";
 import { Quiz } from "@/components/Quiz";
 import { Star } from "@/components/Star";
 import { getQuiz, quizSlugs } from "@/lib/quiz";
@@ -44,7 +46,13 @@ async function QuizBody({ params }: { params: PageProps<"/quiz/[quiz]">["params"
         <p className="max-w-[620px] text-lg leading-relaxed text-tinta">{intro.text}</p>
         <Star className="absolute -top-4 right-0 hidden sm:block" />
       </div>
-      <Quiz key={slug} slug={slug} questions={quiz.questions} />
+      {quiz.kind === "conhecimento" ? (
+        <KnowledgeQuiz key={slug} slug={slug} questions={quiz.questions} />
+      ) : quiz.kind === "party" ? (
+        <PartyQuiz key={slug} slug={slug} slots={quiz.slots} />
+      ) : (
+        <Quiz key={slug} slug={slug} questions={quiz.questions} />
+      )}
       {quiz.note && <p className="font-ficha text-xs text-neutro">{quiz.note}</p>}
     </>
   );

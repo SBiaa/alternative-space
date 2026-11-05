@@ -1,9 +1,12 @@
 import { sql } from "@/lib/db";
-import { getQuiz } from "@/lib/quiz";
+import { getQuiz, getResult } from "@/lib/quiz";
 
 export type SavedResult = { quiz: string; result: string; created_at: string };
 
-export const isValidResult = (quiz: string, result: string) => Boolean(getQuiz(quiz)?.results[result]);
+export const isValidResult = (quiz: string, result: string) => {
+  const q = getQuiz(quiz);
+  return Boolean(q && getResult(q, result));
+};
 
 // Guarda o resultado. Refazer o quiz e cair no mesmo resultado em menos de 10 min não duplica a linha.
 export async function saveResult(userId: string, quiz: string, result: string) {

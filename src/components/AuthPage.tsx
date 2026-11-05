@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { AuthForm } from "@/components/AuthForm";
 import { Star } from "@/components/Star";
 import { getUser } from "@/lib/auth/server";
-import { getQuiz } from "@/lib/quiz";
+import { getQuiz, getResult } from "@/lib/quiz";
 import { safeNext } from "@/lib/tripulante";
 
 type Search = Promise<Record<string, string | string[] | undefined>>;
@@ -55,7 +55,8 @@ async function Form({ mode, searchParams }: { mode: "cadastro" | "entrar"; searc
 
   const salvar = one("salvar");
   const [quiz, result] = salvar?.split("/") ?? [];
-  const pending = quiz && result ? getQuiz(quiz)?.results[result] : undefined;
+  const q = quiz ? getQuiz(quiz) : undefined;
+  const pending = q && result ? getResult(q, result) : undefined;
   const c = copy[mode];
   const qs = new URLSearchParams({ ...(one("next") && { next }), ...(pending && { salvar }) }).toString();
 

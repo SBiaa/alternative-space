@@ -1,0 +1,87 @@
+{
+  "kind": "party",
+  "intro": {
+    "eyebrow": "Quiz · RPG · 5 escolhas",
+    "title": "Monte sua party de RPG",
+    "text": "Escolhe quem vai em cada posição. No final você descobre que tipo de grupo montou, e pode mandar pra galera montar a dela."
+  },
+  "resultPrefix": "Minha party:",
+  "vibes": {
+    "caos": {
+      "name": "Os Arruaceiros da Taverna",
+      "tagline": "Plano? Que plano?",
+      "text": "Sua party resolve tudo no improviso e quase sempre sai viva. Vocês já foram expulsos de três cidades, devem dinheiro em duas e são lendários em todas. O mestre desistiu de prever o que vocês vão fazer.",
+      "color": "laranja"
+    },
+    "ordem": {
+      "name": "A Guilda dos Estrategistas",
+      "tagline": "Cada passo calculado, cada loot dividido.",
+      "text": "Sua party tem mapa, cronograma e planilha de inventário. Vocês estudam o dungeon antes de entrar e nunca caem na mesma armadilha duas vezes. O mestre tem medo de vocês.",
+      "color": "azul"
+    },
+    "sombra": {
+      "name": "O Conclave das Sombras",
+      "tagline": "Ninguém sabe o nome de vocês. E é melhor assim.",
+      "text": "Sua party anda de capa, fala baixo e resolve tudo antes do sol nascer. Os moradores da vila cruzam a rua quando vocês passam, mas é a vocês que eles recorrem quando a coisa fica feia.",
+      "color": "noite"
+    },
+    "luz": {
+      "name": "Os Guardiões da Aurora",
+      "tagline": "Vocês salvam a vila e ainda ajudam a lavar a louça.",
+      "text": "Sua party é a que as crianças da vila querem ser quando crescer. Vocês protegem os fracos, perdoam os vilões arrependidos e sempre dividem o último pedaço de pão.",
+      "color": "creme"
+    }
+  },
+  "slots": [
+    {
+      "role": "Linha de frente",
+      "q": "Quem vai na frente segurando a porrada?",
+      "options": [
+        { "name": "Brutus, o Bárbaro", "text": "Entra na briga antes de perguntar o motivo.", "vibe": "caos" },
+        { "name": "Sir Aldric, o Paladino", "text": "Escudo erguido, formação perfeita. Nunca dá um passo fora do lugar.", "vibe": "ordem" },
+        { "name": "Morgana, a Cavaleira da Morte", "text": "Já morreu uma vez e não gostou da experiência.", "vibe": "sombra" },
+        { "name": "Tia Bê, a Anã Ferreira", "text": "Abraço que quebra costela, escudo que não quebra nunca.", "vibe": "luz" }
+      ]
+    },
+    {
+      "role": "Cura",
+      "q": "Quem cura a party quando dá ruim?",
+      "options": [
+        { "name": "Irmã Celeste, a Sacerdotisa", "text": "Tem as poções organizadas por cor e data de validade.", "vibe": "ordem" },
+        { "name": "Lírio, o Druida", "text": "Fala com as plantas, e elas respondem.", "vibe": "luz" },
+        { "name": "Frei Pinguço, o Clérigo de Taverna", "text": "Cura com fé e com um gole do cantil.", "vibe": "caos" },
+        { "name": "Vex, o Necromante Arrependido", "text": "Cura mais ou menos. Às vezes você volta meio esverdeado.", "vibe": "sombra" }
+      ]
+    },
+    {
+      "role": "Magia",
+      "q": "Quem solta o dano mágico?",
+      "options": [
+        { "name": "Lady Nyx, a Bruxa do Pântano", "text": "Fez um pacto com algo que ninguém quer saber o nome.", "vibe": "sombra" },
+        { "name": "Faísca, a Feiticeira Instável", "text": "Metade das vezes acerta o inimigo. Na outra metade, explode a taverna.", "vibe": "caos" },
+        { "name": "Sol, o Mago Aprendiz", "text": "Ainda erra o feitiço, mas nunca a boa intenção.", "vibe": "luz" },
+        { "name": "Mestre Orvalho, o Arquimago", "text": "Tem um feitiço pra cada problema e uma nota de rodapé pra cada feitiço.", "vibe": "ordem" }
+      ]
+    },
+    {
+      "role": "Furtividade",
+      "q": "Quem abre as fechaduras e resolve no sigilo?",
+      "options": [
+        { "name": "Mel, a Ladra de Bom Coração", "text": "Rouba dos ricos e deixa um bilhete pedindo desculpas.", "vibe": "luz" },
+        { "name": "Corvo, a Espiã Sem Rosto", "text": "Ninguém sabe o nome verdadeiro dela. Nem ela.", "vibe": "sombra" },
+        { "name": "Kael, o Assassino de Contrato", "text": "Lê o contrato inteiro, inclusive as letras miúdas.", "vibe": "ordem" },
+        { "name": "Pipoca, o Goblin Larápio", "text": "Rouba até o que não precisa. Principalmente o que não precisa.", "vibe": "caos" }
+      ]
+    },
+    {
+      "role": "Suporte",
+      "q": "Quem anima a party nas longas viagens?",
+      "options": [
+        { "name": "Banjo, o Bardo de Rua", "text": "Só sabe três músicas, e todas falam mal do vilão.", "vibe": "caos" },
+        { "name": "Lamento, o Menestrel Gótico", "text": "Toca baladas tão tristes que o inimigo chora e desiste.", "vibe": "sombra" },
+        { "name": "Dona Pena, a Cronista", "text": "Registra cada batalha com data, hora e placar.", "vibe": "ordem" },
+        { "name": "Bolota, o Esquilo Falante", "text": "O mascote que acredita em todo mundo, até no goblin.", "vibe": "luz" }
+      ]
+    }
+  ]
+}

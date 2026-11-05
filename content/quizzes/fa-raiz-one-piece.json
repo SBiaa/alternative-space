@@ -1,0 +1,99 @@
+{
+  "kind": "conhecimento",
+  "intro": {
+    "eyebrow": "Desafio · One Piece · 10 perguntas",
+    "title": "Só fã raiz acerta 10/10: One Piece",
+    "text": "Dez perguntas sobre o bando do chapéu de palha. Sem consulta e sem pausar o anime pra conferir. Acertou tudo? Desafia a galera."
+  },
+  "resultPrefix": "Acertei",
+  "note": "Quiz feito por fãs, sem ligação oficial com One Piece ou seus detentores.",
+  "bands": [
+    {
+      "min": 0,
+      "name": "Grumete de primeira viagem",
+      "text": "Você ainda está no East Blue, e tudo bem: toda grande aventura começa assim. Bora maratonar e voltar aqui pra revanche?",
+      "color": "creme"
+    },
+    {
+      "min": 4,
+      "name": "Pirata em formação",
+      "text": "Você conhece o bando, mas ainda tem uns arcos pra rever. Mais uns episódios e esse placar sobe fácil.",
+      "color": "azul"
+    },
+    {
+      "min": 7,
+      "name": "Nakama de verdade",
+      "text": "Você acompanha o bando de perto e lembra dos detalhes que muita gente esquece. O Luffy te chamaria pra tripulação sem pensar duas vezes.",
+      "color": "laranja"
+    },
+    {
+      "min": 10,
+      "name": "Fã raiz, sem discussão",
+      "label": "Placar perfeito",
+      "text": "Gabaritou. Você sabe mais de One Piece do que muita gente que vive da Grand Line. Agora manda pros amigos e vê quem chega perto.",
+      "color": "noite"
+    }
+  ],
+  "questions": [
+    {
+      "q": "Qual foi a primeira recompensa do Luffy?",
+      "options": ["3 milhões de berries", "30 milhões de berries", "100 milhões de berries", "300 milhões de berries"],
+      "answer": 1,
+      "fact": "Foram 30 milhões de berries, depois de derrotar Arlong."
+    },
+    {
+      "q": "Quem deu o chapéu de palha pro Luffy?",
+      "options": ["Garp", "Ace", "Shanks", "Gol D. Roger"],
+      "answer": 2,
+      "fact": "Foi o Shanks. Antes disso, o chapéu tinha sido do Gol D. Roger."
+    },
+    {
+      "q": "Qual é o sonho do Sanji?",
+      "options": ["Encontrar o All Blue", "Ser o maior espadachim do mundo", "Desenhar o mapa do mundo", "Virar um bravo guerreiro do mar"],
+      "answer": 0,
+      "fact": "O All Blue é o mar lendário onde vivem peixes de todos os mares do mundo."
+    },
+    {
+      "q": "Qual era o nome do primeiro navio dos Chapéus de Palha?",
+      "options": ["Thousand Sunny", "Red Force", "Moby Dick", "Going Merry"],
+      "answer": 3,
+      "fact": "O Going Merry foi um presente da Kaya, amiga do Usopp na vila de Syrup."
+    },
+    {
+      "q": "Qual Akuma no Mi o Chopper comeu?",
+      "options": ["Inu Inu no Mi", "Hito Hito no Mi", "Ushi Ushi no Mi", "Tori Tori no Mi"],
+      "answer": 1,
+      "fact": "A Hito Hito no Mi deu ao Chopper, uma rena, a capacidade de virar humano."
+    },
+    {
+      "q": "Quantas espadas o Zoro usa no seu estilo de luta?",
+      "options": ["Uma", "Duas", "Três", "Quatro"],
+      "answer": 2,
+      "fact": "É o Santoryu, o estilo de três espadas: uma em cada mão e outra na boca."
+    },
+    {
+      "q": "Qual música o Brook toca e virou um hino do bando?",
+      "options": ["Binks no Sake", "We Are!", "Canção de Ninar do Mar", "Hino de Wano"],
+      "answer": 0,
+      "fact": "Binks no Sake é a canção dos piratas que o Brook tocava com a antiga tripulação."
+    },
+    {
+      "q": "Quem construiu o Thousand Sunny?",
+      "options": ["Usopp", "Iceburg", "Tom", "Franky"],
+      "answer": 3,
+      "fact": "O Franky construiu o Sunny com madeira de Adão, uma das árvores mais resistentes do mundo."
+    },
+    {
+      "q": "Como se chama a ilha final, onde está o One Piece?",
+      "options": ["Elbaf", "Marineford", "Laugh Tale", "Wano"],
+      "answer": 2,
+      "fact": "O nome Laugh Tale foi dado pelo próprio Roger quando chegou lá."
+    },
+    {
+      "q": "Quem é o avô do Luffy?",
+      "options": ["Sengoku", "Garp", "Rayleigh", "Dragon"],
+      "answer": 1,
+      "fact": "Monkey D. Garp, vice-almirante da Marinha. O Dragon é o pai do Luffy."
+    }
+  ]
+}

@@ -5,19 +5,19 @@ import { Suspense } from "react";
 import { SaveResult } from "@/components/SaveResult";
 import { ShareButton } from "@/components/ShareButton";
 import { Star } from "@/components/Star";
-import { getQuiz, quizzes, resultTheme } from "@/lib/quiz";
+import { getQuiz, getResult, otherResults, quizzes, resultTheme, staticResultIds } from "@/lib/quiz";
 import { joinHref, site } from "@/config/site";
 
 type Params = PageProps<"/quiz/[quiz]/[resultado]">["params"];
 
 export function generateStaticParams() {
-  return Object.entries(quizzes).flatMap(([quiz, q]) => Object.keys(q.results).map((resultado) => ({ quiz, resultado })));
+  return Object.entries(quizzes).flatMap(([quiz, q]) => staticResultIds(q).map((resultado) => ({ quiz, resultado })));
 }
 
 async function load(params: Params) {
   const { quiz: slug, resultado } = await params;
   const quiz = getQuiz(slug);
-  const result = quiz?.results[resultado];
+  const result = quiz && getResult(quiz, resultado);
   return quiz && result ? { slug, resultado, quiz, result } : null;
 }
 
@@ -50,7 +50,8 @@ async function Result({ params }: { params: Params }) {
   if (!data) notFound();
   const { slug, resultado, quiz, result: r } = data;
   const theme = resultTheme[r.color] ?? resultTheme.azul;
-  const others = Object.entries(quiz.results).filter(([id]) => id !== resultado);
+  const others = otherResults(quiz, resultado);
+  const again = quiz.kind === "conhecimento" ? "Tentar de novo" : quiz.kind === "party" ? "Montar outra party" : "Refazer o quiz";
 
   return (
     <>
@@ -67,6 +68,18 @@ async function Result({ params }: { params: Params }) {
         </ul>
       </div>
 
+      {r.members && (
+        <ol className="grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 p-0">
+          {r.members.map((m) => (
+            <li key={m.role} className="card flex flex-col gap-1.5 p-5">
+              <span className="etiqueta text-xs text-azul">{m.role}</span>
+              <span className="font-titulo text-[1.3rem] font-bold leading-tight">{m.name}</span>
+              <span className="leading-snug text-tinta">{m.text}</span>
+            </li>
+          ))}
+        </ol>
+      )}
+
       <Suspense fallback={<div className="h-[76px] rounded-xl border-2 border-noite bg-creme-claro" />}>
         <SaveResult quiz={slug} result={resultado} />
       </Suspense>
@@ -77,22 +90,26 @@ async function Result({ params }: { params: Params }) {
           text={`Fiz o quiz "${quiz.intro.title}" da ${site.name}: ${quiz.resultPrefix.toLowerCase()} ${r.name}. E você?`}
           className="bg-laranja text-noite"
         />
-        <Link href={`/quiz/${slug}`} className="btn bg-creme-claro text-noite">Refazer o quiz</Link>
+        <Link href={`/quiz/${slug}`} className="btn bg-creme-claro text-noite">{again}</Link>
         <a href={joinHref} className="btn bg-azul text-creme">Entrar pra base</a>
       </div>
 
       <div className="flex flex-col gap-5">
-        <span className="etiqueta text-azul">Os outros resultados</span>
-        <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 p-0">
-          {others.map(([id, o]) => (
-            <li key={id}>
-              <Link href={`/quiz/${slug}/${id}`} className="card flex h-full flex-col gap-2 p-5 text-noite no-underline">
-                <span className="font-titulo text-[1.35rem] font-bold text-azul">{o.name}</span>
-                <span className="leading-snug text-tinta">{o.tagline}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {others.length > 0 && (
+          <>
+            <span className="etiqueta text-azul">Os outros resultados</span>
+            <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 p-0">
+              {others.map(([id, o]) => (
+                <li key={id}>
+                  <Link href={`/quiz/${slug}/${id}`} className="card flex h-full flex-col gap-2 p-5 text-noite no-underline">
+                    <span className="font-titulo text-[1.35rem] font-bold text-azul">{o.name}</span>
+                    <span className="leading-snug text-tinta">{o.tagline}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
         <Link href="/quiz" className="font-titulo text-xl font-bold text-azul">Fazer outro quiz →</Link>
       </div>
       {quiz.note && <p className="font-ficha text-xs text-neutro">{quiz.note}</p>}

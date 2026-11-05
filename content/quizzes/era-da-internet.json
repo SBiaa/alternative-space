@@ -1,0 +1,137 @@
+{
+  "intro": {
+    "eyebrow": "Quiz · Nostalgia · 10 perguntas",
+    "title": "Qual era da internet você é?",
+    "text": "Orkut, MSN, Fotolog, Tumblr ou Habbo? Responde pensando em quem você é hoje e descobre de qual época da internet você nunca saiu."
+  },
+  "resultPrefix": "Eu sou da",
+  "results": {
+    "orkut": {
+      "name": "Era Orkut",
+      "tagline": "Você é a comunidade \"Eu amo meus amigos\" em pessoa.",
+      "text": "Você conecta as pessoas, lembra o aniversário de todo mundo e ainda escreve depoimento caprichado. Pra você, internet boa é a que junta a galera, e grupo bom é o que nunca some.",
+      "traits": ["Depoimento caprichado", "Amigo de todo mundo", "Comunidade pra tudo"],
+      "color": "azul"
+    },
+    "msn": {
+      "name": "Era MSN",
+      "tagline": "Seu nick sempre tem uma indireta.",
+      "text": "Você vive pras conversas longas. Status \"ocupado\" só de charme, música tocando no \"ouvindo agora\" e aquela janela tremendo quando alguém some. Intensidade, paixão e drama na medida certa.",
+      "traits": ["Nick com indireta", "Conversa até as 3h", "Chamar atenção"],
+      "color": "laranja"
+    },
+    "fotolog": {
+      "name": "Era Fotolog",
+      "tagline": "Uma foto por dia, e ela tem que ser perfeita.",
+      "text": "Franja no olho, foto tirada de cima e legenda com letra de música. Você tem estética, tem atitude e sabe que um bom ângulo resolve qualquer coisa. Os anos 2000 nunca saíram de você.",
+      "traits": ["Franja no olho", "Foto de cima", "Letra de música na legenda"],
+      "color": "estrela"
+    },
+    "tumblr": {
+      "name": "Era Tumblr",
+      "tagline": "Sua vida tem trilha sonora e filtro preto e branco.",
+      "text": "Você sente tudo, escreve sobre tudo e transforma qualquer tarde chuvosa em poesia. Tem um fandom de estimação, uma playlist pra cada humor e um bom gosto que ninguém consegue copiar.",
+      "traits": ["Poesia em GIF", "Fandom de estimação", "Estética impecável"],
+      "color": "creme"
+    },
+    "habbo": {
+      "name": "Era Habbo",
+      "tagline": "Você construiu um mundo inteiro com pixel e zoeira.",
+      "text": "Criatividade e zoeira são o seu forte. Você transforma qualquer canto em ponto de encontro, tem amigos do Brasil inteiro que nunca viu pessoalmente e sempre inventa a próxima festa da galera.",
+      "traits": ["Mobília rara", "Amigos do Brasil todo", "Festa no quarto"],
+      "color": "noite"
+    }
+  },
+  "questions": [
+    {
+      "q": "Como você puxa assunto com alguém novo?",
+      "options": [
+        { "text": "Descubro os amigos em comum e começo por aí", "result": "orkut" },
+        { "text": "Mando mensagem e fico vendo se a pessoa está digitando", "result": "msn" },
+        { "text": "Comento numa foto dela, com elogio e emoji", "result": "fotolog" },
+        { "text": "Mando uma música que me lembrou a pessoa", "result": "tumblr" }
+      ]
+    },
+    {
+      "q": "O seu status ou a sua bio agora é…",
+      "options": [
+        { "text": "Uma piada interna que ninguém de fora entende", "result": "habbo" },
+        { "text": "Uma indireta que só uma pessoa vai entender", "result": "msn" },
+        { "text": "Um trecho de poesia", "result": "tumblr" },
+        { "text": "Uma selfie tirada de cima, com filtro", "result": "fotolog" }
+      ]
+    },
+    {
+      "q": "No grupo de amigos, você é quem…",
+      "options": [
+        { "text": "Tira as fotos e decide quais podem ser postadas", "result": "fotolog" },
+        { "text": "Conhece todo mundo e apresenta as pessoas", "result": "orkut" },
+        { "text": "Inventa a zoeira que vira tradição", "result": "habbo" },
+        { "text": "Fala pouco, mas manda a frase que todo mundo printa", "result": "tumblr" }
+      ]
+    },
+    {
+      "q": "Seu fim de semana ideal:",
+      "options": [
+        { "text": "Jogando online com gente que você nunca viu pessoalmente", "result": "habbo" },
+        { "text": "Conversando até de madrugada com aquela pessoa", "result": "msn" },
+        { "text": "Reencontrando a galera antiga e rindo das mesmas histórias", "result": "orkut" },
+        { "text": "Quarto, fone, chá e um caderno", "result": "tumblr" }
+      ]
+    },
+    {
+      "q": "Qual frase é a sua cara?",
+      "options": [
+        { "text": "\"Me marca nessa foto!\"", "result": "fotolog" },
+        { "text": "\"Era só zoeira, relaxa.\"", "result": "habbo" },
+        { "text": "\"Esse grupo precisa voltar a se encontrar.\"", "result": "orkut" },
+        { "text": "\"Visualizou e não respondeu, né?\"", "result": "msn" }
+      ]
+    },
+    {
+      "q": "Qual música toca na sua cabeça agora?",
+      "options": [
+        { "text": "Indie triste de uma banda com nome difícil", "result": "tumblr" },
+        { "text": "Aquele pop que todo mundo canta junto no rolê", "result": "orkut" },
+        { "text": "A música que você deixaria no \"ouvindo agora\"", "result": "msn" },
+        { "text": "Emo dos anos 2000 no último volume", "result": "fotolog" }
+      ]
+    },
+    {
+      "q": "O que tem demais no seu celular?",
+      "options": [
+        { "text": "Conversas arquivadas que você ainda relê", "result": "msn" },
+        { "text": "Prints de frases bonitas e cenas de filme", "result": "tumblr" },
+        { "text": "Um jogo que você abre todo santo dia", "result": "habbo" },
+        { "text": "Trezentas selfies quase iguais", "result": "fotolog" }
+      ]
+    },
+    {
+      "q": "Qual peça não sai do seu guarda-roupa?",
+      "options": [
+        { "text": "Moletom com estampa de jogo ou de meme", "result": "habbo" },
+        { "text": "Tênis xadrez e munhequeira", "result": "fotolog" },
+        { "text": "Camiseta de algum evento que você foi com a galera", "result": "orkut" },
+        { "text": "Peça de brechó que ninguém mais tem", "result": "tumblr" }
+      ]
+    },
+    {
+      "q": "Quando fica chateado com alguém, você…",
+      "options": [
+        { "text": "Muda o status e espera a pessoa perceber", "result": "msn" },
+        { "text": "Desabafa com os amigos e recebe apoio de todo mundo", "result": "orkut" },
+        { "text": "Faz um meme da situação", "result": "habbo" },
+        { "text": "Escreve um textão e não manda pra ninguém", "result": "tumblr" }
+      ]
+    },
+    {
+      "q": "Do que você mais sente falta na internet antiga?",
+      "options": [
+        { "text": "Das comunidades com nomes absurdos", "result": "orkut" },
+        { "text": "De fazer a janela da conversa tremer", "result": "msn" },
+        { "text": "Das festas em quartos virtuais com gente do Brasil todo", "result": "habbo" },
+        { "text": "De ter só uma foto por dia pra postar", "result": "fotolog" }
+      ]
+    }
+  ]
+}
