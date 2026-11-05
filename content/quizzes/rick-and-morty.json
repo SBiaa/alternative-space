@@ -1,0 +1,148 @@
+{
+  "intro": {
+    "eyebrow": "Quiz · Rick and Morty · 9 perguntas",
+    "title": "Qual personagem de Rick and Morty você é?",
+    "text": "Nada de pergunta sobre portal ou nave espacial: são situações do seu dia a dia. No final você descobre quem seria na família Smith (ou fora dela)."
+  },
+  "resultPrefix": "Meu personagem:",
+  "note": "Quiz feito por fãs, sem ligação oficial com Rick and Morty ou seus detentores.",
+  "results": {
+    "rick": {
+      "name": "Rick",
+      "label": "O gênio do caos",
+      "tagline": "Você é a pessoa mais inteligente da sala e faz questão que todo mundo saiba.",
+      "text": "Você resolve em cinco minutos o que os outros levam uma semana, mas foge de qualquer conversa sobre sentimentos. Cínico por fora, leal por dentro. Só não conta isso pra ninguém.",
+      "traits": ["Gênio sem paciência", "Plano? Improviso", "Sarcasmo no máximo"],
+      "color": "azul",
+      "image": null
+    },
+    "morty": {
+      "name": "Morty",
+      "label": "O coração da dupla",
+      "tagline": "Você tem o maior coração da dimensão, e a maior ansiedade também.",
+      "text": "Você se preocupa com todo mundo, pensa duas vezes antes de agir e sofre por antecipação. Mas quando importa de verdade, é você quem faz a coisa certa, mesmo tremendo.",
+      "traits": ["Bússola moral", "Ansiedade em dia", "Coragem na hora H"],
+      "color": "laranja",
+      "image": null
+    },
+    "summer": {
+      "name": "Summer",
+      "label": "A subestimada",
+      "tagline": "Todo mundo te subestima, até ver você em ação.",
+      "text": "Celular na mão, resposta afiada na ponta da língua e uma coragem que surpreende até você. Você quer ser vista, quer ser ouvida e, quando decide alguma coisa, ninguém segura.",
+      "traits": ["Resposta afiada", "Sempre online", "Coragem escondida"],
+      "color": "estrela",
+      "image": null
+    },
+    "beth": {
+      "name": "Beth",
+      "label": "A que resolve",
+      "tagline": "Você resolve tudo, de preferência do seu jeito.",
+      "text": "Competência é o seu sobrenome. Você trabalha muito, cuida de todo mundo e não aceita nada pela metade. Só precisa lembrar que também pode descansar e que não tem que provar nada pra ninguém.",
+      "traits": ["Perfeccionismo", "Mão firme", "Agenda lotada"],
+      "color": "noite",
+      "image": null
+    },
+    "jerry": {
+      "name": "Jerry",
+      "label": "O rei das pequenas alegrias",
+      "tagline": "Você não quer salvar o universo. Quer um sofá bom.",
+      "text": "Uma série de comédia, um lanche gostoso e a família por perto: pra você, isso já é a vida boa. Às vezes você se enrola, mas sempre tenta de novo, e isso é mais do que muita gente faz.",
+      "traits": ["Otimismo teimoso", "Sofá e série", "Sempre tenta de novo"],
+      "color": "creme",
+      "image": null
+    },
+    "meeseeks": {
+      "name": "Sr. Meeseeks",
+      "label": "O que existe pra resolver",
+      "tagline": "Te dão uma tarefa, você cumpre. Simples assim.",
+      "text": "Animação total no começo, foco absoluto no meio e uma crise existencial se a coisa demorar demais. Você não descansa enquanto a lista não estiver zerada. Produtividade é o seu idioma.",
+      "traits": ["Foco total", "Tarefa cumprida", "Odeia enrolação"],
+      "color": "azul",
+      "image": null
+    }
+  },
+  "questions": [
+    {
+      "q": "O despertador tocou. E agora?",
+      "options": [
+        { "text": "Já estou de pé antes dele tocar, com a agenda pronta", "result": "beth" },
+        { "text": "Desligo e volto a dormir. Horário é coisa de gente comum", "result": "rick" },
+        { "text": "Olho o celular antes de abrir os dois olhos", "result": "summer" },
+        { "text": "Levanto já ansioso com o que pode dar errado hoje", "result": "morty" }
+      ]
+    },
+    {
+      "q": "Num trabalho em grupo, você…",
+      "options": [
+        { "text": "Pega uma tarefa e só sossega quando ela termina", "result": "meeseeks" },
+        { "text": "Tenta agradar todo mundo e fica com a parte mais chata", "result": "morty" },
+        { "text": "Faz tudo sozinho em dez minutos e reclama de todo mundo", "result": "rick" },
+        { "text": "Fica com a parte mais fácil e mesmo assim se enrola", "result": "jerry" }
+      ]
+    },
+    {
+      "q": "Um amigo pediu ajuda na mudança. Você…",
+      "options": [
+        { "text": "Assume o comando e organiza até a casa nova", "result": "beth" },
+        { "text": "Derruba uma caixa e passa o resto do dia pedindo desculpa", "result": "jerry" },
+        { "text": "Ajuda, mas posta stories o tempo todo", "result": "summer" },
+        { "text": "Chega cedo, carrega tudo e vai embora assim que acaba", "result": "meeseeks" }
+      ]
+    },
+    {
+      "q": "Como está a sua geladeira agora?",
+      "options": [
+        { "text": "Pudim, iogurte e um lanche escondido do resto da casa", "result": "jerry" },
+        { "text": "Só bebida e uma coisa estranha que ninguém pode tocar", "result": "rick" },
+        { "text": "Só o que a família comprou, você não escolheu nada", "result": "morty" },
+        { "text": "Um único ingrediente, comprado pra uma única receita", "result": "meeseeks" }
+      ]
+    },
+    {
+      "q": "No meio de uma discussão, você…",
+      "options": [
+        { "text": "Só quer resolver logo pra seguir em paz", "result": "meeseeks" },
+        { "text": "Revira os olhos e solta uma resposta afiada", "result": "summer" },
+        { "text": "Prova que tem razão, com argumento e tom de chefe", "result": "beth" },
+        { "text": "Ganha no cansaço e ainda arrota no meio", "result": "rick" }
+      ]
+    },
+    {
+      "q": "Qual é o seu maior medo?",
+      "options": [
+        { "text": "Ficar invisível pra todo mundo", "result": "summer" },
+        { "text": "Ficar igualzinho aos meus pais", "result": "beth" },
+        { "text": "Decepcionar quem eu amo", "result": "morty" },
+        { "text": "Ser deixado de lado pela família", "result": "jerry" }
+      ]
+    },
+    {
+      "q": "Domingo à noite, você está…",
+      "options": [
+        { "text": "No sofá, com série de comédia e comida reconfortante", "result": "jerry" },
+        { "text": "Resolvendo todas as pendências da semana de uma vez", "result": "meeseeks" },
+        { "text": "Num rolê com os amigos, sem hora pra voltar", "result": "summer" },
+        { "text": "Pensando em tudo que pode dar errado na segunda", "result": "morty" }
+      ]
+    },
+    {
+      "q": "Uma frase que é a sua cara:",
+      "options": [
+        { "text": "\"Me fala o que precisa que eu faço agora!\"", "result": "meeseeks" },
+        { "text": "\"Hoje vai ser diferente, eu sinto.\"", "result": "jerry" },
+        { "text": "\"Sou a pessoa mais inteligente dessa sala. De qualquer sala.\"", "result": "rick" },
+        { "text": "\"Deixa que eu resolvo. Eu sempre resolvo.\"", "result": "beth" }
+      ]
+    },
+    {
+      "q": "Seu jeito de viajar:",
+      "options": [
+        { "text": "Vai porque te arrastaram, mas no fim se diverte", "result": "morty" },
+        { "text": "Roteiro impresso, horários e tudo reservado", "result": "beth" },
+        { "text": "Sem mala, sem plano e sem avisar ninguém", "result": "rick" },
+        { "text": "O destino tem que render foto boa", "result": "summer" }
+      ]
+    }
+  ]
+}
