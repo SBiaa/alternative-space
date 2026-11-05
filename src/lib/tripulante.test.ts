@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const sql = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/db", () => ({ sql }));
 
-import { latestResultFor, safeNext, saveResult } from "./tripulante";
+import { latestResultFor, lerPendente, mascararEmail, safeNext, saveResult } from "./tripulante";
 
 beforeEach(() => {
   sql.mockReset().mockResolvedValue([]);
@@ -17,6 +17,7 @@ describe("safeNext", () => {
   it.each([
     ["https://golpe.com", "URL externa"],
     ["//golpe.com", "URL sem protocolo"],
+    ["/\\golpe.com", "barra invertida"],
     ["conta", "sem barra"],
     ["", "vazio"],
     [null, "null"],
@@ -54,5 +55,28 @@ describe("latestResultFor", () => {
 
   it("devolve null quando não tem nada salvo", async () => {
     expect(await latestResultFor("user-1", "tripulacao")).toBeNull();
+  });
+});
+
+describe("lerPendente", () => {
+  it("lê o cookie de quem espera o código", () => {
+    const v = JSON.stringify({ email: "bia@a.co", next: "/quiz/x/y", salvar: "x/y" });
+    expect(lerPendente(v)).toEqual({ email: "bia@a.co", next: "/quiz/x/y", salvar: "x/y" });
+  });
+
+  it("não deixa o cookie mandar pra fora do site", () => {
+    const v = JSON.stringify({ email: "bia@a.co", next: "https://golpe.com" });
+    expect(lerPendente(v)?.next).toBe("/conta");
+  });
+
+  it.each([undefined, "", "lixo", "{}", JSON.stringify({ email: 1 })])("ignora valor inválido %j", (v) => {
+    expect(lerPendente(v)).toBeNull();
+  });
+});
+
+describe("mascararEmail", () => {
+  it("esconde o nome e mostra o domínio", () => {
+    expect(mascararEmail("bianca@gmail.com")).toBe("b*****@gmail.com");
+    expect(mascararEmail("b@a.co")).toBe("b**@a.co");
   });
 });

@@ -36,4 +36,25 @@ export async function latestResultFor(userId: string, quiz: string): Promise<str
 
 // Só aceita caminhos internos depois do login.
 export const safeNext = (v: FormDataEntryValue | string | null | undefined) =>
-  typeof v === "string" && v.startsWith("/") && !v.startsWith("//") ? v : "/conta";
+  typeof v === "string" && v.startsWith("/") && !v.startsWith("//") && !v.startsWith("/\\") ? v : "/conta";
+
+// Cadastro esperando o código do e-mail (cookie httpOnly, 30 min).
+export const PENDENTE = "tripulante_pendente";
+export type Pendente = { email: string; next: string; salvar: string };
+
+export function lerPendente(v: string | undefined): Pendente | null {
+  if (!v) return null;
+  try {
+    const p = JSON.parse(v);
+    if (typeof p?.email !== "string" || !p.email.includes("@")) return null;
+    return { email: p.email, next: safeNext(p.next), salvar: typeof p.salvar === "string" ? p.salvar : "" };
+  } catch {
+    return null;
+  }
+}
+
+// "bia@gmail.com" vira "b**@gmail.com" na tela de código.
+export const mascararEmail = (email: string) => {
+  const [nome, dominio] = email.split("@");
+  return `${nome.slice(0, 1)}${"*".repeat(Math.max(nome.length - 1, 2))}@${dominio}`;
+};

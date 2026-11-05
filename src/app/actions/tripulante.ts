@@ -1,15 +1,28 @@
 "use server";
 
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { refresh } from "next/cache";
 import { auth, getUser } from "@/lib/auth/server";
-import { safeNext, saveResult } from "@/lib/tripulante";
+import { PENDENTE, lerPendente, safeNext, saveResult, type Pendente } from "@/lib/tripulante";
 
 export type AuthState = { error?: string; name?: string; email?: string } | null;
+export type VerifyState = { error?: string; ok?: string } | null;
+
+type AuthError = { message?: string; code?: string; status?: number } | null | undefined;
+
+// O SDK tem auth.emailOtp em tempo de execução (rotas /email-otp/* do Neon Auth), mas a tipagem dele sai como unknown.
+const otpApi = auth.emailOtp as {
+  sendVerificationOtp(body: { email: string; type: "email-verification" }): Promise<{ error?: AuthError }>;
+  verifyEmail(body: { email: string; otp: string }): Promise<{
+    data?: { token: string | null; user: { id: string } } | null;
+    error?: AuthError;
+  }>;
+};
 
 // "salvar" chega como "quiz/resultado" quando a pessoa se cadastra a partir de uma página de resultado.
-async function saveFromForm(userId: string, f: FormData) {
-  const [quiz, result] = String(f.get("salvar") ?? "").split("/");
+async function saveFrom(userId: string, salvar: unknown) {
+  const [quiz, result] = String(salvar ?? "").split("/");
   if (quiz && result) await saveResult(userId, quiz, result);
 }
 
@@ -22,9 +35,24 @@ const traduz = (msg?: string) => {
   return "Não deu certo agora. Tenta de novo em instantes.";
 };
 
+const naoVerificado = (e: AuthError) =>
+  e?.code === "EMAIL_NOT_VERIFIED" || (e?.message ?? "").toLowerCase().includes("not verified");
+
+// Guarda quem está esperando o código num cookie que o navegador não lê, pra o e-mail não ir pro endereço da página.
+async function aguardarCodigo(p: Pendente): Promise<never> {
+  (await cookies()).set(PENDENTE, JSON.stringify(p), {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: 60 * 30,
+  });
+  redirect("/cadastro/verificar");
+}
+
 export async function cadastrar(_: AuthState, f: FormData): Promise<AuthState> {
   const name = String(f.get("name") ?? "").trim();
-  const email = String(f.get("email") ?? "").trim();
+  const email = String(f.get("email") ?? "").trim().toLowerCase();
   const password = String(f.get("password") ?? "");
   const keep = { name, email };
   if (!name) return { ...keep, error: "Como a gente te chama?" };
@@ -32,18 +60,61 @@ export async function cadastrar(_: AuthState, f: FormData): Promise<AuthState> {
 
   const { data, error } = await auth.signUp.email({ name, email, password });
   if (error || !data?.user) return { ...keep, error: traduz(error?.message) };
-  await saveFromForm(data.user.id, f);
-  redirect(safeNext(f.get("next")));
+
+  const next = safeNext(f.get("next"));
+  const salvar = String(f.get("salvar") ?? "");
+  // Sem sessão = o Neon pediu confirmação do e-mail (e já mandou o código).
+  // O resultado do quiz só é salvo depois de confirmar: com e-mail já cadastrado o Neon devolve um usuário de mentira.
+  if (!data.token) await aguardarCodigo({ email, next, salvar });
+  await saveFrom(data.user.id, salvar);
+  redirect(next);
 }
 
 export async function entrar(_: AuthState, f: FormData): Promise<AuthState> {
-  const { data, error } = await auth.signIn.email({
-    email: String(f.get("email") ?? "").trim(),
-    password: String(f.get("password") ?? ""),
-  });
-  if (error || !data?.user) return { email: String(f.get("email") ?? ""), error: traduz(error?.message) };
-  await saveFromForm(data.user.id, f);
+  const email = String(f.get("email") ?? "").trim().toLowerCase();
+  const { data, error } = await auth.signIn.email({ email, password: String(f.get("password") ?? "") });
+  if (naoVerificado(error)) {
+    // Só chega aqui quem acertou a senha, então dá pra mandar o código de novo.
+    await otpApi.sendVerificationOtp({ email, type: "email-verification" });
+    await aguardarCodigo({ email, next: safeNext(f.get("next")), salvar: String(f.get("salvar") ?? "") });
+  }
+  if (error || !data?.user) return { email, error: traduz(error?.message) };
+  await saveFrom(data.user.id, f.get("salvar"));
   redirect(safeNext(f.get("next")));
+}
+
+const traduzCodigo = (e: AuthError) => {
+  const m = `${e?.code ?? ""} ${e?.message ?? ""}`.toLowerCase();
+  if (m.includes("expired")) return "Esse código expirou. Pede um novo aqui embaixo.";
+  if (m.includes("too many") || m.includes("too_many")) return "Muitas tentativas. Pede um código novo aqui embaixo.";
+  if (m.includes("invalid") || m.includes("otp")) return "Código errado. Confere no seu e-mail.";
+  return "Não deu certo agora. Tenta de novo em instantes.";
+};
+
+export async function verificar(_: VerifyState, f: FormData): Promise<VerifyState> {
+  const store = await cookies();
+  const p = lerPendente(store.get(PENDENTE)?.value);
+  if (!p) return { error: "Esse pedido expirou. Faz o cadastro ou entra de novo." };
+
+  const otp = String(f.get("codigo") ?? "").replace(/\D/g, "");
+  if (otp.length !== 6) return { error: "O código tem 6 números." };
+
+  const { data, error } = await otpApi.verifyEmail({ email: p.email, otp });
+  if (error || !data?.user) return { error: traduzCodigo(error) };
+
+  store.delete(PENDENTE);
+  // Com "entrar depois de confirmar" ligado no Neon, a sessão já vem junto.
+  if (!data.token) redirect(`/entrar?next=${encodeURIComponent(p.next)}`);
+  await saveFrom(data.user.id, p.salvar);
+  redirect(p.next);
+}
+
+export async function reenviarCodigo(): Promise<VerifyState> {
+  const p = lerPendente((await cookies()).get(PENDENTE)?.value);
+  if (!p) return { error: "Esse pedido expirou. Faz o cadastro ou entra de novo." };
+  const { error } = await otpApi.sendVerificationOtp({ email: p.email, type: "email-verification" });
+  if (error) return { error: "Espera um minutinho antes de pedir outro código." };
+  return { ok: "Código novo enviado. Confere o e-mail (e o spam)." };
 }
 
 export async function sair() {
