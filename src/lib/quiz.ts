@@ -4,6 +4,7 @@ import tripulacao from "../../content/quizzes/tripulacao.json";
 import eraInternet from "../../content/quizzes/era-da-internet.json";
 import faRaiz from "../../content/quizzes/fa-raiz-one-piece.json";
 import partyRpg from "../../content/quizzes/party-rpg.json";
+import rickAndMorty from "../../content/quizzes/rick-and-morty.json";
 
 export type QuizResult = {
   name: string;
@@ -50,6 +51,7 @@ export type QuizData = PersonalityQuiz | KnowledgeQuiz | PartyQuiz;
 
 // Para adicionar um quiz: crie o JSON em content/quizzes e registre aqui. A ordem é a da página /quiz.
 export const quizzes: Record<string, QuizData> = {
+  "rick-and-morty": rickAndMorty,
   "era-da-internet": eraInternet,
   "fa-raiz-one-piece": faRaiz as KnowledgeQuiz,
   "party-rpg": partyRpg as PartyQuiz,
