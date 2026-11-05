@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { PartyQuiz as PartyQuizData } from "@/lib/quiz";
 import { QuizProgress, optionClass } from "@/components/QuizProgress";
@@ -47,8 +48,12 @@ export function PartyQuiz({ slug, slots }: { slug: string; slots: PartyQuizData[
           <ul className="grid list-none grid-cols-1 gap-3.5 p-0 sm:grid-cols-2">
             {current.options.map((o, i) => (
               <li key={o.name}>
-                <button type="button" onClick={() => choose(i)} className={optionClass}>
-                  <span className="font-ficha text-sm font-bold text-azul">{String.fromCharCode(65 + i)}</span>
+                <button type="button" onClick={() => choose(i)} className={`${optionClass} !items-center`}>
+                  {o.image ? (
+                    <Image src={o.image} alt="" width={88} height={88} className="size-[88px] shrink-0 rounded-lg border-2 border-noite bg-creme-escuro" />
+                  ) : (
+                    <span className="font-ficha text-sm font-bold text-azul">{String.fromCharCode(65 + i)}</span>
+                  )}
                   <span className="flex flex-col gap-1">
                     <span className="font-titulo text-lg font-bold">{o.name}</span>
                     <span className="text-[0.98rem] text-tinta">{o.text}</span>

@@ -17,7 +17,8 @@
         "Família escolhida",
         "Banquete toda noite"
       ],
-      "color": "laranja"
+      "color": "laranja",
+      "image": null
     },
     "ruivo": {
       "name": "Piratas do Ruivo",
@@ -29,7 +30,8 @@
         "Respeito no olhar",
         "Leal aos amigos"
       ],
-      "color": "estrela"
+      "color": "estrela",
+      "image": null
     },
     "coracao": {
       "name": "Piratas do Coração",
@@ -41,7 +43,8 @@
         "Equipe pequena e fiel",
         "Longe dos holofotes"
       ],
-      "color": "creme"
+      "color": "creme",
+      "image": null
     },
     "barbabranca": {
       "name": "Piratas do Barba Branca",
@@ -53,7 +56,8 @@
         "Proteção total",
         "Ninguém fica pra trás"
       ],
-      "color": "azul"
+      "color": "azul",
+      "image": null
     },
     "kid": {
       "name": "Piratas do Kid",
@@ -65,7 +69,8 @@
         "Orgulho de ferro",
         "Encrenca garantida"
       ],
-      "color": "noite"
+      "color": "noite",
+      "image": null
     },
     "revolucionario": {
       "name": "Exército Revolucionário",
@@ -77,7 +82,8 @@
         "Underground de verdade",
         "Organiza a revolução"
       ],
-      "color": "azul"
+      "color": "azul",
+      "image": null
     }
   },
   "questions": [

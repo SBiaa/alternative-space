@@ -11,35 +11,40 @@
       "tagline": "Você é a comunidade \"Eu amo meus amigos\" em pessoa.",
       "text": "Você conecta as pessoas, lembra o aniversário de todo mundo e ainda escreve depoimento caprichado. Pra você, internet boa é a que junta a galera, e grupo bom é o que nunca some.",
       "traits": ["Depoimento caprichado", "Amigo de todo mundo", "Comunidade pra tudo"],
-      "color": "azul"
+      "color": "azul",
+      "image": "/quiz/era-da-internet/orkut.webp"
     },
     "msn": {
       "name": "Era MSN",
       "tagline": "Seu nick sempre tem uma indireta.",
       "text": "Você vive pras conversas longas. Status \"ocupado\" só de charme, música tocando no \"ouvindo agora\" e aquela janela tremendo quando alguém some. Intensidade, paixão e drama na medida certa.",
       "traits": ["Nick com indireta", "Conversa até as 3h", "Chamar atenção"],
-      "color": "laranja"
+      "color": "laranja",
+      "image": "/quiz/era-da-internet/msn.webp"
     },
     "fotolog": {
       "name": "Era Fotolog",
       "tagline": "Uma foto por dia, e ela tem que ser perfeita.",
       "text": "Franja no olho, foto tirada de cima e legenda com letra de música. Você tem estética, tem atitude e sabe que um bom ângulo resolve qualquer coisa. Os anos 2000 nunca saíram de você.",
       "traits": ["Franja no olho", "Foto de cima", "Letra de música na legenda"],
-      "color": "estrela"
+      "color": "estrela",
+      "image": "/quiz/era-da-internet/fotolog.webp"
     },
     "tumblr": {
       "name": "Era Tumblr",
       "tagline": "Sua vida tem trilha sonora e filtro preto e branco.",
       "text": "Você sente tudo, escreve sobre tudo e transforma qualquer tarde chuvosa em poesia. Tem um fandom de estimação, uma playlist pra cada humor e um bom gosto que ninguém consegue copiar.",
       "traits": ["Poesia em GIF", "Fandom de estimação", "Estética impecável"],
-      "color": "creme"
+      "color": "creme",
+      "image": "/quiz/era-da-internet/tumblr.webp"
     },
     "habbo": {
       "name": "Era Habbo",
       "tagline": "Você construiu um mundo inteiro com pixel e zoeira.",
       "text": "Criatividade e zoeira são o seu forte. Você transforma qualquer canto em ponto de encontro, tem amigos do Brasil inteiro que nunca viu pessoalmente e sempre inventa a próxima festa da galera.",
       "traits": ["Mobília rara", "Amigos do Brasil todo", "Festa no quarto"],
-      "color": "noite"
+      "color": "noite",
+      "image": "/quiz/era-da-internet/habbo.webp"
     }
   },
   "questions": [

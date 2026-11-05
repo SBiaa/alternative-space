@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { QuizArt } from "@/components/QuizArt";
 import { SaveResult } from "@/components/SaveResult";
 import { ShareButton } from "@/components/ShareButton";
 import { Star } from "@/components/Star";
@@ -29,7 +30,12 @@ export async function generateMetadata({ params }: PageProps<"/quiz/[quiz]/[resu
   return {
     title,
     description: result.tagline,
-    openGraph: { title: `${title} · ${quiz.intro.title}`, description: result.tagline, url: `${site.url}/quiz/${slug}/${resultado}` },
+    openGraph: {
+      title: `${title} · ${quiz.intro.title}`,
+      description: result.tagline,
+      url: `${site.url}/quiz/${slug}/${resultado}`,
+      ...(result.image && { images: [{ url: result.image, width: 640, height: 640 }] }),
+    },
   };
 }
 
@@ -55,26 +61,32 @@ async function Result({ params }: { params: Params }) {
 
   return (
     <>
-      <div className={`relative flex flex-col gap-5 rounded-2xl border-[3px] border-noite px-8 py-10 shadow-duro-lg sm:px-12 sm:py-12 ${theme.card}`}>
-        <Star className="absolute -right-5 -top-6" color={r.color === "creme" ? "#ab392f" : "#ece3be"} />
-        <span className={`etiqueta text-[13px] ${theme.label}`}>Seu resultado{r.label && ` · ${r.label}`}</span>
-        <h1 className="font-titulo font-bold leading-[0.98]" style={{ fontSize: "clamp(2.6rem, 7vw, 4.75rem)" }}>{r.name}</h1>
-        <p className="font-titulo text-[1.5rem] font-semibold leading-tight">{r.tagline}</p>
-        <p className="max-w-[640px] text-lg leading-relaxed">{r.text}</p>
-        <ul className="flex list-none flex-wrap gap-2.5 p-0">
-          {r.traits.map((t) => (
-            <li key={t} className="rounded-full border-2 border-current px-4 py-1.5 font-ficha text-[13px] uppercase tracking-wider">{t}</li>
-          ))}
-        </ul>
+      <div className={`relative flex flex-col gap-8 rounded-2xl border-[3px] border-noite px-8 py-10 shadow-duro-lg sm:px-12 sm:py-12 md:flex-row md:items-center ${theme.card}`}>
+        <Star className="absolute -right-5 -top-6 z-10" color={r.color === "creme" ? "#ab392f" : "#ece3be"} />
+        <div className="flex min-w-0 flex-1 flex-col gap-5">
+          <span className={`etiqueta text-[13px] ${theme.label}`}>Seu resultado{r.label && ` · ${r.label}`}</span>
+          <h1 className="font-titulo font-bold leading-[0.98]" style={{ fontSize: "clamp(2.6rem, 7vw, 4.75rem)" }}>{r.name}</h1>
+          <p className="font-titulo text-[1.5rem] font-semibold leading-tight">{r.tagline}</p>
+          <p className="max-w-[640px] text-lg leading-relaxed">{r.text}</p>
+          <ul className="flex list-none flex-wrap gap-2.5 p-0">
+            {r.traits.map((t) => (
+              <li key={t} className="rounded-full border-2 border-current px-4 py-1.5 font-ficha text-[13px] uppercase tracking-wider">{t}</li>
+            ))}
+          </ul>
+        </div>
+        <QuizArt image={r.image} alt={r.name} sizes="(min-width: 768px) 280px, 90vw" className="w-full max-w-[320px] shrink-0 self-center md:w-[280px]" />
       </div>
 
       {r.members && (
         <ol className="grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 p-0">
           {r.members.map((m) => (
-            <li key={m.role} className="card flex flex-col gap-1.5 p-5">
-              <span className="etiqueta text-xs text-azul">{m.role}</span>
-              <span className="font-titulo text-[1.3rem] font-bold leading-tight">{m.name}</span>
-              <span className="leading-snug text-tinta">{m.text}</span>
+            <li key={m.role} className="card flex flex-col overflow-hidden">
+              <QuizArt image={m.image} alt={m.name} sizes="(min-width: 768px) 280px, 90vw" className="!rounded-none !border-0 border-b-2 !border-b-noite" />
+              <div className="flex flex-col gap-1.5 p-5">
+                <span className="etiqueta text-xs text-azul">{m.role}</span>
+                <span className="font-titulo text-[1.3rem] font-bold leading-tight">{m.name}</span>
+                <span className="leading-snug text-tinta">{m.text}</span>
+              </div>
             </li>
           ))}
         </ol>
@@ -101,9 +113,12 @@ async function Result({ params }: { params: Params }) {
             <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 p-0">
               {others.map(([id, o]) => (
                 <li key={id}>
-                  <Link href={`/quiz/${slug}/${id}`} className="card flex h-full flex-col gap-2 p-5 text-noite no-underline">
-                    <span className="font-titulo text-[1.35rem] font-bold text-azul">{o.name}</span>
-                    <span className="leading-snug text-tinta">{o.tagline}</span>
+                  <Link href={`/quiz/${slug}/${id}`} className="card flex h-full items-start gap-4 p-5 text-noite no-underline">
+                    {o.image && <QuizArt image={o.image} alt="" sizes="72px" className="w-[72px] shrink-0 !rounded-lg" />}
+                    <span className="flex flex-col gap-2">
+                      <span className="font-titulo text-[1.35rem] font-bold text-azul">{o.name}</span>
+                      <span className="leading-snug text-tinta">{o.tagline}</span>
+                    </span>
                   </Link>
                 </li>
               ))}

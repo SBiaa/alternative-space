@@ -17,7 +17,8 @@
         "Fome infinita",
         "Sorriso que contagia"
       ],
-      "color": "laranja"
+      "color": "laranja",
+      "image": null
     },
     "ope": {
       "name": "Ope Ope no Mi",
@@ -29,7 +30,8 @@
         "Olheira de estimação",
         "Precisão cirúrgica"
       ],
-      "color": "azul"
+      "color": "azul",
+      "image": null
     },
     "mera": {
       "name": "Mera Mera no Mi",
@@ -41,7 +43,8 @@
         "Pavio curto",
         "Coração enorme"
       ],
-      "color": "estrela"
+      "color": "estrela",
+      "image": null
     },
     "horo": {
       "name": "Horo Horo no Mi",
@@ -53,7 +56,8 @@
         "Renda e babado",
         "Sarcasmo afiado"
       ],
-      "color": "noite"
+      "color": "noite",
+      "image": null
     },
     "hana": {
       "name": "Hana Hana no Mi",
@@ -65,7 +69,8 @@
         "Humor mórbido",
         "Olhos em todo lugar"
       ],
-      "color": "creme"
+      "color": "creme",
+      "image": null
     },
     "fenix": {
       "name": "Tori Tori no Mi, Modelo Fênix",
@@ -77,7 +82,8 @@
         "Calma inabalável",
         "Protege o bando"
       ],
-      "color": "azul"
+      "color": "azul",
+      "image": null
     }
   },
   "questions": [

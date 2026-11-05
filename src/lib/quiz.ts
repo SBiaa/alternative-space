@@ -12,9 +12,10 @@ export type QuizResult = {
   traits: string[];
   color: string;
   label?: string; // aparece ao lado de "Seu resultado"
+  image?: string | null; // caminho em /public; null = "arte em breve"
 };
 
-export type PartyMember = { role: string; name: string; text: string };
+export type PartyMember = { role: string; name: string; text: string; image?: string | null };
 export type ResolvedResult = QuizResult & { members?: PartyMember[] };
 
 type Base = {
@@ -41,7 +42,7 @@ export type KnowledgeQuiz = Base & {
 // o nome da party vem da "vibe" que mais aparece entre os escolhidos.
 export type PartyQuiz = Base & {
   kind: "party";
-  slots: { role: string; q: string; options: { name: string; text: string; vibe: string }[] }[];
+  slots: { role: string; q: string; options: { name: string; text: string; vibe: string; image?: string | null }[] }[];
   vibes: Record<string, Omit<QuizResult, "traits">>;
 };
 
@@ -88,7 +89,7 @@ function partyResult(quiz: PartyQuiz, code: string): ResolvedResult | undefined 
   if (picks.some((p) => !p)) return undefined;
   const vibe = quiz.vibes[scoreAnswers(picks.map((p) => p.vibe))];
   if (!vibe) return undefined;
-  return { ...vibe, traits: [], members: picks.map((p, i) => ({ role: quiz.slots[i].role, name: p.name, text: p.text })) };
+  return { ...vibe, traits: [], members: picks.map((p, i) => ({ role: quiz.slots[i].role, name: p.name, text: p.text, image: p.image })) };
 }
 
 function knowledgeResult(quiz: KnowledgeQuiz, id: string): ResolvedResult | undefined {
