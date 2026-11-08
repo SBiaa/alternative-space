@@ -15,6 +15,12 @@ const jogos = [
     texto: "Chapéu, cicatriz, arma, roupa e bichinho. Monta do seu jeito e usa como avatar do perfil.",
   },
   {
+    href: "/jogos/picles-no-ralo",
+    tag: "Rick and Morty · um botão",
+    nome: "Picles no Ralo",
+    texto: "Segura pra subir, solta pra descer. Leve o Picles Rick pelo esgoto sem virar janta de rato.",
+  },
+  {
     href: "/jogos/fabrica-de-ajudantes",
     tag: "Clicker · pedidos absurdos",
     nome: "Fábrica de Ajudantes",
