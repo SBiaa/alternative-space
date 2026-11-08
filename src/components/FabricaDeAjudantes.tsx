@@ -326,6 +326,24 @@ function boneco(ctx: CanvasRenderingContext2D, a: Ajudante, pac: number, t: numb
     ctx.stroke();
   }
   ctx.restore();
+
+  // Barrinha de paciência em cima da cabeça: esvazia até a pane.
+  if (!a.pane && nasc >= 1) {
+    const resta = 1 - stress;
+    const bx = a.x - 14;
+    const by = a.y - 76;
+    ctx.fillStyle = "#fff";
+    ctx.strokeStyle = NOITE;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.roundRect(bx, by, 28, 6, 3);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = resta > 0.5 ? "#4caf50" : resta > 0.25 ? "#f2c230" : "#ab392f";
+    ctx.beginPath();
+    ctx.roundRect(bx + 1, by + 1, 26 * resta, 4, 2);
+    ctx.fill();
+  }
 }
 
 function balao(ctx: CanvasRenderingContext2D, a: Ajudante, fonte: string) {
@@ -408,11 +426,15 @@ export function FabricaDeAjudantes() {
       textos.current.push({ x, y, texto, cor, vida: grande ? 1.6 : 1.1, grande });
     };
 
-    const frame = (agora: number) => {
-      const dt = Math.min(1 / 20, (agora - antes) / 1000);
+    const tick = (agora: number) => {
+      // O jogo anda em tempo real mesmo se o navegador engasgar: o tempo passado
+      // (até 1s) é simulado em passos pequenos. Efeitos visuais usam o dt curto.
+      const passou = Math.min(1, Math.max(0, (agora - antes) / 1000));
       antes = agora;
+      const dt = Math.min(0.1, passou);
       const e = estado.current;
-      step(e, dt);
+      const passos = Math.ceil(passou / (1 / 30));
+      for (let i = 0; i < passos; i++) step(e, passou / passos);
 
       for (const ev of e.eventos) {
         if (ev.tipo === "poof") nuvem(ev.x, ev.y, 6, "#ffffff");
@@ -528,9 +550,20 @@ export function FabricaDeAjudantes() {
         ultimoSave = agora;
         salvar(e);
       }
-      raf = requestAnimationFrame(frame);
     };
-    raf = requestAnimationFrame(frame);
+    const loop = (agora: number) => {
+      tick(agora);
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    // Reserva: se o navegador parar de animar com a página visível (janela
+    // estrangulada, painel embutido), o jogo continua andando. Aba escondida
+    // de verdade fica pausada, pra ninguém voltar e achar a fábrica em pane.
+    const reserva = setInterval(() => {
+      if (document.hidden) return;
+      const agora = performance.now();
+      if (agora - antes > 250) tick(agora);
+    }, 250);
 
     const onKey = (ev: KeyboardEvent) => {
       if (ev.code !== "Space" || ev.repeat) return;
@@ -545,6 +578,7 @@ export function FabricaDeAjudantes() {
     window.addEventListener("pagehide", onSair);
     return () => {
       cancelAnimationFrame(raf);
+      clearInterval(reserva);
       salvar(estado.current);
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("pagehide", onSair);
@@ -583,6 +617,27 @@ export function FabricaDeAjudantes() {
         @keyframes fab-pisca { 0%,100% { opacity: 1 } 50% { opacity: .35 } }
       `}</style>
 
+      {/* Como jogar */}
+      <details open className="card !p-4 sm:!p-5">
+        <summary className="cursor-pointer font-titulo text-xl font-bold text-azul">Como jogar</summary>
+        <ol className="mt-3 grid list-none gap-3 p-0 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["1", "Aperta a caixa", "Cada aperto cria um ajudante azul. Ele anda até a mesa e trabalha no pedido."],
+            ["2", "Cumpre o pedido", "Quando a barra do pedido enche, todos somem e você ganha favores."],
+            ["3", "Cuidado com a paciência", "A barrinha em cima de cada um vai esvaziando. Zerou: pane! Ele corre, rouba favores e senta nos botões."],
+            ["4", "Clica nos que surtarem", "Clique num ajudante em pane pra ele sumir. Gaste favores na loja pra crescer."],
+          ].map(([n, t, d]) => (
+            <li key={n} className="flex gap-3">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-noite bg-[#86cdf6] font-titulo font-bold">{n}</span>
+              <span className="text-sm leading-snug text-tinta">
+                <strong className="block text-noite">{t}</strong>
+                {d}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </details>
+
       {/* Pedido atual + favores */}
       <div className="grid gap-4 sm:grid-cols-[1fr_auto]">
         <div className={`card flex flex-col gap-2 !p-5 ${p.absurdo ? "!bg-laranja-claro" : ""}`}>
@@ -613,7 +668,9 @@ export function FabricaDeAjudantes() {
         <div className="card flex min-w-[200px] flex-col items-center justify-center gap-1 !p-5 text-center">
           <span className="etiqueta text-[12px] text-azul">Favores</span>
           <p className="font-titulo text-4xl font-bold leading-none text-noite">{formatar(ui.favores)}</p>
-          <span className="text-sm text-neutro">{ui.cumpridos} pedidos cumpridos</span>
+          <span className="text-sm text-neutro">
+            {ui.cumpridos} {ui.cumpridos === 1 ? "pedido cumprido" : "pedidos cumpridos"}
+          </span>
           <span className="etiqueta text-[11px] text-laranja">{titulo(ui.cumpridos)}</span>
         </div>
       </div>
