@@ -27,6 +27,12 @@ const jogos = [
     texto: "Crie ajudantes azuis pra cumprir pedidos absurdos. Se demorar demais, eles entram em pane e a fábrica vira caos.",
   },
   {
+    href: "/jogos/fruta-misteriosa",
+    tag: "Plataforma · protótipo",
+    nome: "Fruta Misteriosa",
+    texto: "Atravesse as ilhas até o baú sem encostar na água. Em breve: uma fruta sorteada muda tudo.",
+  },
+  {
     href: "/jogos/duelo-pirata",
     tag: "One Piece · luta 1x1",
     nome: "Duelo Pirata",
