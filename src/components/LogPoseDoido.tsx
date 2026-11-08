@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  AVISO_BUSSOLA,
+  AVISO_LOGPOSE,
   H,
   MILHAS_POR_NIVEL,
   NAVIO_R,
@@ -19,12 +19,12 @@ import {
   step,
   type Estado,
   type Rei,
-} from "@/lib/bussola";
+} from "@/lib/logpose";
 
 type Fase = "menu" | "jogando" | "pausado" | "morto";
 type Gota = { x: number; y: number; vx: number; vy: number; vida: number; cor: string };
 
-const CHAVE_RECORDE = "bussola-doida:recorde";
+const CHAVE_RECORDE = "log-pose-doido:recorde";
 const TECLAS: Record<string, [number, number]> = {
   ArrowUp: [0, -1],
   KeyW: [0, -1],
@@ -361,46 +361,71 @@ function navio(ctx: CanvasRenderingContext2D, e: Estado, morto: boolean) {
   ctx.restore();
 }
 
-function bussolaHud(ctx: CanvasRenderingContext2D, e: Estado, fonte: string) {
+function logPoseHud(ctx: CanvasRenderingContext2D, e: Estado, fonte: string) {
   const cx = W - 56;
   const cy = 58;
   const aviso = avisandoGiro(e);
   const treme = aviso ? Math.sin(e.tempo * 50) * 0.5 : 0;
   ctx.save();
   ctx.translate(cx, cy);
-  ctx.fillStyle = "#ece3be";
   ctx.strokeStyle = "#01121e";
-  ctx.lineWidth = 4;
+  ctx.lineWidth = 3;
+  // Pulseira atrás
+  ctx.fillStyle = "#6b4423";
+  ctx.fillRect(-48, 18, 96, 16);
+  ctx.strokeRect(-48, 18, 96, 16);
+  ctx.fillStyle = "#c9a227";
+  ctx.fillRect(-4, 20, 8, 12);
+  // Base de madeira
+  ctx.fillStyle = "#8a5a2b";
   ctx.beginPath();
-  ctx.arc(0, 0, 38, 0, Math.PI * 2);
+  ctx.ellipse(0, 22, 26, 9, 0, 0, Math.PI * 2);
   ctx.fill();
   ctx.stroke();
-  ctx.strokeStyle = aviso ? "#ff3b2f" : "#b8925a";
-  ctx.lineWidth = 3;
+  // Bolha de vidro
+  const vidro = ctx.createRadialGradient(-9, -12, 3, 0, 0, 32);
+  vidro.addColorStop(0, "rgba(255,255,255,0.95)");
+  vidro.addColorStop(0.35, "rgba(190,230,250,0.85)");
+  vidro.addColorStop(1, aviso ? "rgba(255,140,120,0.9)" : "rgba(120,190,225,0.9)");
+  ctx.fillStyle = vidro;
   ctx.beginPath();
-  ctx.arc(0, 0, 31, 0, Math.PI * 2);
+  ctx.arc(0, -6, 28, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.lineWidth = 3.5;
   ctx.stroke();
-  // Agulha: aponta pra onde o ↑ leva.
-  const [nx, ny] = girar(0, -1, e.bussola.rot);
+  // Agulha flutuando dentro: aponta pra onde o ↑ leva.
+  ctx.save();
+  ctx.translate(0, -6);
+  const [nx, ny] = girar(0, -1, e.logPose.rot);
   ctx.rotate(Math.atan2(ny, nx) + Math.PI / 2 + treme);
+  ctx.lineWidth = 2;
   ctx.fillStyle = "#ff3b2f";
   ctx.beginPath();
-  ctx.moveTo(0, -27);
-  ctx.lineTo(7, 0);
-  ctx.lineTo(-7, 0);
+  ctx.moveTo(0, -22);
+  ctx.lineTo(5, 0);
+  ctx.lineTo(-5, 0);
   ctx.closePath();
   ctx.fill();
-  ctx.fillStyle = "#01121e";
+  ctx.stroke();
+  ctx.fillStyle = "#3a4a55";
   ctx.beginPath();
-  ctx.moveTo(0, 27);
-  ctx.lineTo(7, 0);
-  ctx.lineTo(-7, 0);
+  ctx.moveTo(0, 18);
+  ctx.lineTo(5, 0);
+  ctx.lineTo(-5, 0);
   ctx.closePath();
   ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = "#c9a227";
   ctx.beginPath();
-  ctx.arc(0, 0, 4, 0, Math.PI * 2);
-  ctx.fillStyle = "#ece3be";
+  ctx.arc(0, 0, 3.5, 0, Math.PI * 2);
   ctx.fill();
+  ctx.stroke();
+  ctx.restore();
+  // Brilho do vidro por cima
+  ctx.strokeStyle = "rgba(255,255,255,0.8)";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.arc(0, -6, 21, Math.PI * 1.1, Math.PI * 1.45);
   ctx.stroke();
   ctx.restore();
 
@@ -409,7 +434,7 @@ function bussolaHud(ctx: CanvasRenderingContext2D, e: Estado, fonte: string) {
   ctx.textBaseline = "top";
   ctx.lineWidth = 4;
   ctx.strokeStyle = "#01121e";
-  const t = aviso ? "vai girar!" : `↑ = ${cimaVira(e.bussola.rot)}`;
+  const t = aviso ? "vai girar!" : `↑ = ${cimaVira(e.logPose.rot)}`;
   ctx.strokeText(t, cx, cy + 44);
   ctx.fillStyle = aviso ? "#ff8a7a" : "#ece3be";
   ctx.fillText(t, cx, cy + 44);
@@ -465,9 +490,9 @@ function hud(ctx: CanvasRenderingContext2D, e: Estado, recorde: number, fonte: s
     ctx.fillText(t, W - 110, 14);
   }
 
-  bussolaHud(ctx, e, fonte);
+  logPoseHud(ctx, e, fonte);
 
-  // Avisos grandes no meio: nível novo e bússola girada.
+  // Avisos grandes no meio: nível novo e Log Pose girado.
   const aviso = (texto: string, sub: string, desde: number, cor: string) => {
     if (desde >= 1.8 || e.morto) return;
     const a = desde < 0.2 ? desde / 0.2 : desde > 1.4 ? (1.8 - desde) / 0.4 : 1;
@@ -491,12 +516,12 @@ function hud(ctx: CanvasRenderingContext2D, e: Estado, recorde: number, fonte: s
     ctx.fillText(sub, 0, 44);
     ctx.restore();
   };
-  const desdeGiro = e.tempo - e.bussola.giradaEm;
+  const desdeGiro = e.tempo - e.logPose.giradaEm;
   const desdeNivel = e.tempo - e.nivelEm;
   if (desdeGiro < 1.8) {
-    const rot = e.bussola.rot;
+    const rot = e.logPose.rot;
     const sub = rot === 0 ? "voltou ao normal. por enquanto." : rot === 2 ? "tudo invertido!" : `agora ↑ leva pra ${cimaVira(rot)}`;
-    aviso("A bússola mudou de ideia!", sub, desdeGiro, "#ffd23f");
+    aviso("O Log Pose mudou de ideia!", sub, desdeGiro, "#ffd23f");
   } else if (desdeNivel < 1.8) {
     aviso(`Nível ${e.nivel}!`, e.nivel === NIVEL_MAX ? "nível máximo. boa sorte." : "mar mais bravo", desdeNivel, "#9fe3ff");
   }
@@ -504,7 +529,7 @@ function hud(ctx: CanvasRenderingContext2D, e: Estado, recorde: number, fonte: s
 
 // ---------- componente ----------
 
-export function BussolaDoida() {
+export function LogPoseDoido() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const caixaRef = useRef<HTMLDivElement>(null);
   // Rand fixo na renderização (o Next não aceita Math.random() aqui); cada partida sorteia o seu.
@@ -554,7 +579,7 @@ export function BussolaDoida() {
     const entrada = () => {
       const e = estado.current;
       if (toque.current) {
-        // Toque/mouse: "rema" na direção do dedo (e a bússola gira isso também).
+        // Toque/mouse: "rema" na direção do dedo (e o Log Pose gira isso também).
         const dx = toque.current.x - e.x;
         const dy = toque.current.y - e.y;
         const d = Math.hypot(dx, dy);
@@ -658,9 +683,9 @@ export function BussolaDoida() {
         ctx.fill();
       }
       ctx.globalAlpha = 1;
-      // Tela treme de leve quando a bússola está pra girar.
+      // Tela treme de leve quando o Log Pose está pra girar.
       if (f === "jogando" && avisandoGiro(e)) {
-        const k = 1 - (e.bussola.trocaEm - e.tempo) / AVISO_BUSSOLA;
+        const k = 1 - (e.logPose.trocaEm - e.tempo) / AVISO_LOGPOSE;
         ctx.fillStyle = `rgba(255,210,63,${0.08 * k})`;
         ctx.fillRect(0, 0, W, H);
       }
@@ -734,15 +759,15 @@ export function BussolaDoida() {
       onPointerCancel={() => (toque.current = null)}
       onContextMenu={(ev) => ev.preventDefault()}
     >
-      <canvas ref={canvasRef} className="block h-full w-full" aria-label="Bússola Doida: jogo de navegar desviando de redemoinhos, raios e reis do mar" />
+      <canvas ref={canvasRef} className="block h-full w-full" aria-label="Log Pose Doido: jogo de navegar desviando de redemoinhos, raios e reis do mar" />
 
       {faseUi === "menu" && (
         <div className="absolute inset-0 flex flex-col items-center justify-end gap-3 bg-gradient-to-t from-noite/85 via-noite/20 to-transparent p-5 text-center sm:justify-center sm:bg-noite/40">
           <h2 className="font-titulo text-4xl font-bold leading-none text-creme sm:text-6xl" style={{ textShadow: "3px 3px 0 #01121e" }}>
-            Bússola Doida
+            Log Pose Doido
           </h2>
           <p className="max-w-md text-sm text-creme sm:text-base">
-            Guie o navio com as <strong>setas</strong> (ou segurando o dedo na tela). De vez em quando a bússola <strong>gira</strong> e as direções giram junto.
+            Guie o navio com as <strong>setas</strong> (ou segurando o dedo na tela). De vez em quando o Log Pose <strong>gira</strong> e as direções giram junto.
           </p>
           <button type="button" onClick={comecar} className="btn bg-laranja text-noite !px-6 !py-2.5 !text-lg">
             Zarpar

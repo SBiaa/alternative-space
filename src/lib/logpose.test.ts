@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
-  AVISO_BUSSOLA,
+  AVISO_LOGPOSE,
   H,
   NAVIO_R,
   PX_POR_MILHA,
@@ -16,7 +16,7 @@ import {
   regras,
   step,
   type Estado,
-} from "./bussola";
+} from "./logpose";
 
 // Rand previsível pra o mundo ser sempre igual nos testes.
 function seq(seed = 1) {
@@ -34,7 +34,7 @@ function limpo(e: Estado): Estado {
   e.coisas = [];
   e.proximo = 1e9;
   e.reiTimer = 1e9;
-  e.bussola.trocaEm = 1e9;
+  e.logPose.trocaEm = 1e9;
   return e;
 }
 
@@ -52,22 +52,22 @@ describe("girar", () => {
   });
 });
 
-describe("bússola", () => {
+describe("Log Pose", () => {
   it("avisa antes de girar e depois troca a rotação", () => {
     const rand = seq();
     const e = novoEstado(rand);
     e.reiTimer = 1e9;
-    const alvo = e.bussola.proxima;
-    const quando = e.bussola.trocaEm;
+    const alvo = e.logPose.proxima;
+    const quando = e.logPose.trocaEm;
     expect(alvo).not.toBe(0);
 
-    while (e.tempo < quando - AVISO_BUSSOLA - 0.1) step(e, 1 / 60, parado, rand);
+    while (e.tempo < quando - AVISO_LOGPOSE - 0.1) step(e, 1 / 60, parado, rand);
     expect(avisandoGiro(e)).toBe(false);
     while (e.tempo < quando - 0.1) step(e, 1 / 60, parado, rand);
     expect(avisandoGiro(e)).toBe(true);
-    expect(e.bussola.rot).toBe(0);
+    expect(e.logPose.rot).toBe(0);
     while (e.tempo < quando + 0.05) step(e, 1 / 60, parado, rand);
-    expect(e.bussola.rot).toBe(alvo);
+    expect(e.logPose.rot).toBe(alvo);
     expect(avisandoGiro(e)).toBe(false);
   });
 
@@ -76,9 +76,9 @@ describe("bússola", () => {
     expect(regras(5).rotacoes).toEqual([0, 1, 2, 3]);
   });
 
-  it("com a bússola invertida, apertar → leva pra esquerda", () => {
+  it("com o Log Pose invertido, apertar → leva pra esquerda", () => {
     const e = limpo(novoEstado(seq()));
-    e.bussola.rot = 2;
+    e.logPose.rot = 2;
     const x0 = e.x;
     for (let i = 0; i < 30; i++) step(e, 1 / 60, { x: 1, y: 0 }, seq());
     expect(e.x).toBeLessThan(x0);

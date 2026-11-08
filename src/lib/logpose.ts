@@ -1,7 +1,7 @@
-// Lógica pura do "Bússola Doida": nada de DOM aqui, só estado e física.
-// O componente BussolaDoida chama step() a cada frame e desenha o resultado.
+// Lógica pura do "Log Pose Doido": nada de DOM aqui, só estado e física.
+// O componente LogPoseDoido chama step() a cada frame e desenha o resultado.
 //
-// O mar anda pra esquerda; o navio se move livre pela tela. A pegadinha: a bússola
+// O mar anda pra esquerda; o navio se move livre pela tela. A pegadinha: o Log Pose
 // gira de vez em quando e as direções giram junto (↑ pode virar →, ← pode virar →...).
 
 export const W = 800;
@@ -11,7 +11,7 @@ export const PX_POR_MILHA = 30;
 export const MILHAS_POR_NIVEL = 150;
 export const NIVEL_MAX = 8;
 export const VIDAS = 3;
-export const AVISO_BUSSOLA = 1.5; // segundos de tremedeira antes de girar
+export const AVISO_LOGPOSE = 1.5; // segundos de tremedeira antes de girar
 const ACEL = 1500;
 const ATRITO = 4;
 const VMAX = 300;
@@ -26,8 +26,8 @@ export function regras(nivel: number) {
     espacoExtra: 200 - 10 * n,
     chanceTempestade: n === 0 ? 0 : 0.16 + 0.03 * n,
     reiCada: n === 0 ? Infinity : Math.max(5, 13 - 1.2 * n), // segundos entre reis do mar
-    trocaCada: Math.max(4, 11 - 0.9 * n), // segundos entre giros da bússola
-    rotacoes: n < 2 ? [0, 2] : [0, 1, 2, 3], // nos 2 primeiros níveis ela só inverte
+    trocaCada: Math.max(4, 11 - 0.9 * n), // segundos entre giros do Log Pose
+    rotacoes: n < 2 ? [0, 2] : [0, 1, 2, 3], // nos 2 primeiros níveis ele só inverte
     raioCada: 1.4 - 0.08 * n,
     ventoForca: 140 + 20 * n,
   };
@@ -54,7 +54,7 @@ export type Rei = { y: number; aviso: number; cabeca: number };
 
 export type Causa = "redemoinho" | "raio" | "rei";
 
-export type Bussola = { rot: number; proxima: number; trocaEm: number; giradaEm: number };
+export type LogPose = { rot: number; proxima: number; trocaEm: number; giradaEm: number };
 
 export type Estado = {
   x: number;
@@ -76,7 +76,7 @@ export type Estado = {
   semTempestadeAte: number;
   raioTimer: number;
   reiTimer: number;
-  bussola: Bussola;
+  logPose: LogPose;
   danoEm: number;
   morto: boolean;
   causa: Causa | null;
@@ -113,7 +113,7 @@ export function novoEstado(rand: Rand = Math.random): Estado {
     raioTimer: 1,
     reiTimer: 6,
     // Primeiro giro com uma folguinha pra pessoa entender o controle normal.
-    bussola: { rot: 0, proxima: sortearRot(0, r0.rotacoes, rand), trocaEm: 8, giradaEm: -99 },
+    logPose: { rot: 0, proxima: sortearRot(0, r0.rotacoes, rand), trocaEm: 8, giradaEm: -99 },
     danoEm: -99,
     morto: false,
     causa: null,
@@ -130,7 +130,7 @@ export function girar(x: number, y: number, rot: number): [number, number] {
 }
 
 export function avisandoGiro(e: Estado): boolean {
-  return e.tempo >= e.bussola.trocaEm - AVISO_BUSSOLA;
+  return e.tempo >= e.logPose.trocaEm - AVISO_LOGPOSE;
 }
 
 export function pontos(e: Pick<Estado, "dist" | "moedas">): number {
@@ -200,13 +200,13 @@ export function step(e: Estado, dt: number, entrada: Entrada, rand: Rand = Math.
   e.tempo += dt;
   e.invulneravel = Math.max(0, e.invulneravel - dt);
 
-  // Bússola
+  // Log Pose
   const r0 = regras(e.nivel);
-  if (e.tempo >= e.bussola.trocaEm) {
-    e.bussola.rot = e.bussola.proxima;
-    e.bussola.giradaEm = e.tempo;
-    e.bussola.proxima = sortearRot(e.bussola.rot, r0.rotacoes, rand);
-    e.bussola.trocaEm = e.tempo + r0.trocaCada + rand() * 3;
+  if (e.tempo >= e.logPose.trocaEm) {
+    e.logPose.rot = e.logPose.proxima;
+    e.logPose.giradaEm = e.tempo;
+    e.logPose.proxima = sortearRot(e.logPose.rot, r0.rotacoes, rand);
+    e.logPose.trocaEm = e.tempo + r0.trocaCada + rand() * 3;
   }
 
   // Mar e nível
@@ -219,8 +219,8 @@ export function step(e: Estado, dt: number, entrada: Entrada, rand: Rand = Math.
     e.proximo = Math.max(e.proximo, e.dist + W + 300); // respiro
   }
 
-  // Navio: entrada girada pela bússola.
-  let [ix, iy] = girar(entrada.x, entrada.y, e.bussola.rot);
+  // Navio: entrada girada pelo Log Pose.
+  let [ix, iy] = girar(entrada.x, entrada.y, e.logPose.rot);
   const len = Math.hypot(ix, iy);
   if (len > 1) {
     ix /= len;
@@ -327,7 +327,7 @@ export function step(e: Estado, dt: number, entrada: Entrada, rand: Rand = Math.
 
 export const frasesMorte: Record<Causa, string[]> = {
   redemoinho: [
-    "A bússola disse norte. O redemoinho disse pra baixo.",
+    "O Log Pose disse norte. O redemoinho disse pra baixo.",
     "Girou, girou e foi parar no fundo do mar.",
     "Pelo menos agora o navio para de balançar.",
   ],
@@ -339,14 +339,14 @@ export const frasesMorte: Record<Causa, string[]> = {
   rei: [
     "O Rei do Mar mandou lembranças. E dentes.",
     "Virou lanchinho de serpente gigante.",
-    "A bússola apontava pra boca dele o tempo todo.",
+    "O Log Pose apontava pra boca dele o tempo todo.",
   ],
 };
 
 export function rank(p: number): { titulo: string; texto: string } {
   if (p < 80) return { titulo: "Grumete de banheira", texto: "O porto ainda está ali atrás. Dá pra ver." };
-  if (p < 250) return { titulo: "Marujo enjoado", texto: "Já sabe que bússola não é pra confiar." };
-  if (p < 500) return { titulo: "Navegador teimoso", texto: "A bússola gira e você gira junto, sem reclamar." };
+  if (p < 250) return { titulo: "Marujo enjoado", texto: "Já sabe que Log Pose não é pra confiar." };
+  if (p < 500) return { titulo: "Navegador teimoso", texto: "O Log Pose gira e você gira junto, sem reclamar." };
   if (p < 900) return { titulo: "Capitão sem norte", texto: "Quem precisa de norte com um instinto desses?" };
   return { titulo: "Lenda dos sete mares", texto: "Os reis do mar contam histórias sobre você pros filhotes." };
 }
