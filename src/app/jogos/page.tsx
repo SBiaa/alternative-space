@@ -14,6 +14,12 @@ const jogos = [
     nome: "Fábrica de Ajudantes",
     texto: "Crie ajudantes azuis pra cumprir pedidos absurdos. Se demorar demais, eles entram em pane e a fábrica vira caos.",
   },
+  {
+    href: "/jogos/duelo-pirata",
+    tag: "One Piece · luta 1x1",
+    nome: "Duelo Pirata",
+    texto: "Luffy, Zoro, Sanji ou Nami no convés. Contra a CPU ou contra um amigo, melhor de 3.",
+  },
 ];
 
 export default function Page() {
