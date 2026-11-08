@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 const jogos = [
   {
+    href: "/jogos/monte-seu-pirata",
+    tag: "Vestir bonequinho · vira avatar",
+    nome: "Monte seu Pirata",
+    texto: "Chapéu, cicatriz, arma, roupa e bichinho. Monta do seu jeito e usa como avatar do perfil.",
+  },
+  {
     href: "/jogos/fabrica-de-ajudantes",
     tag: "Clicker · pedidos absurdos",
     nome: "Fábrica de Ajudantes",
