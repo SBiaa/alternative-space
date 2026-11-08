@@ -83,7 +83,7 @@ function Pieces({ pieces, full }: { pieces: Piece[]; full: boolean }) {
       {pieces.map((p) => (
         <li key={p.name}>
           <article className="card flex h-full flex-col overflow-hidden bg-creme">
-            <Ph image={p.image} label={`[FOTO ${p.name.toUpperCase()}]`} />
+            <Ph image={p.image} label={`[FOTO ${p.name.toUpperCase()}]`} ratio="1/1" />
             <div className="flex flex-1 flex-col gap-1.5 px-5 pb-5 pt-4">
               <span className="font-ficha text-xs text-tinta">{p.tag && `${p.tag.toUpperCase()} · `}ARTE: {p.artist}</span>
               <h2 className="font-titulo text-[1.4rem] font-semibold">{p.name}</h2>

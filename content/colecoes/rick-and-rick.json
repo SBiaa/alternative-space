@@ -7,9 +7,9 @@
   "color": "laranja",
   "preview": 2,
   "pieces": [
-    { "name": "Caneca Rick and Rick 01", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null },
-    { "name": "Caneca Rick and Rick 02", "tag": "Crossover", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null },
-    { "name": "Almofada Rick and Rick", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null },
+    { "name": "Caneca Rick and Rick 01", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": "/colecoes/rick-and-rick/caneca-01.png" },
+    { "name": "Caneca Rick and Rick 02", "tag": "Crossover", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": "/colecoes/rick-and-rick/caneca-02.png" },
+    { "name": "Almofada Rick and Rick", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": "/colecoes/rick-and-rick/almofada.webp" },
     { "name": "[PEÇA 04]", "tag": "Exclusiva", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null },
     { "name": "[PEÇA 05]", "tag": "", "artist": "@[ARTISTA]", "price": "[PREÇO]", "text": "[DETALHES DA PEÇA: MATERIAL, TAMANHO, ACABAMENTO]", "image": null }
   ]
