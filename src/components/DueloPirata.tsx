@@ -122,7 +122,7 @@ function BotaoToque({ rotulo, tecla, onMuda, className = "" }: { rotulo: string;
   return (
     <button
       type="button"
-      className={`flex select-none items-center justify-center rounded-full border-2 border-creme/70 bg-noite/45 font-titulo font-bold text-creme active:bg-laranja/80 ${className}`}
+      className={`flex select-none items-center justify-center rounded-full border-2 border-noite bg-noite font-titulo font-bold text-creme shadow-duro active:translate-y-0.5 active:bg-laranja active:text-noite ${className}`}
       style={{ touchAction: "none" }}
       onPointerDown={(ev: PE) => {
         ev.preventDefault();
@@ -336,9 +336,17 @@ export function DueloPirata() {
 
   const tituloEscolha = !escolha[0] ? "Jogador 1, escolha seu pirata" : modo === "cpu" ? "Agora escolha quem a CPU controla" : "Jogador 2, escolha seu pirata";
 
+  // No celular os botões ficam fora da tela do jogo: embaixo com o aparelho em pé, dos lados deitado.
+  const comControles = toqueAtivo && (telaUi === "luta" || telaUi === "pausa");
+
   return (
     <div
-      className="relative w-full select-none overflow-hidden rounded-2xl border-2 border-noite bg-noite shadow-duro"
+      className={comControles ? "flex select-none flex-col gap-3 landscape:flex-row landscape:items-center landscape:justify-center" : ""}
+      style={{ WebkitTouchCallout: "none" }}
+      onContextMenu={(ev) => ev.preventDefault()}
+    >
+    <div
+      className={`relative w-full select-none overflow-hidden rounded-2xl border-2 border-noite bg-noite shadow-duro ${comControles ? "landscape:order-2 landscape:min-w-0 landscape:flex-1 landscape:max-w-[calc(88dvh*16/9)]" : ""}`}
       style={{ aspectRatio: `${W} / ${H}`, WebkitTouchCallout: "none" }}
       onContextMenu={(ev) => ev.preventDefault()}
     >
@@ -487,29 +495,40 @@ export function DueloPirata() {
         </div>
       )}
 
-      {toqueAtivo && telaUi === "luta" && (
-        <>
-          <div className="absolute bottom-[12%] left-2 grid grid-cols-3 grid-rows-2 gap-1">
+    </div>
+
+      {comControles && (
+        <div
+          className={`flex items-end justify-between gap-3 px-1 landscape:contents ${telaUi === "pausa" ? "pointer-events-none opacity-50" : ""}`}
+        >
+          <div className="grid shrink-0 grid-cols-3 grid-rows-3 gap-1 landscape:order-1">
             <span />
-            <BotaoToque rotulo="▲" tecla="cima" onMuda={mudarToque} className="h-11 w-11" />
+            <BotaoToque rotulo="▲" tecla="cima" onMuda={mudarToque} className="h-14 w-14 text-xl" />
             <span />
-            <BotaoToque rotulo="◀" tecla="esq" onMuda={mudarToque} className="h-11 w-11" />
-            <BotaoToque rotulo="▼" tecla="baixo" onMuda={mudarToque} className="h-11 w-11" />
-            <BotaoToque rotulo="▶" tecla="dir" onMuda={mudarToque} className="h-11 w-11" />
+            <BotaoToque rotulo="◀" tecla="esq" onMuda={mudarToque} className="h-14 w-14 text-xl" />
+            <span />
+            <BotaoToque rotulo="▶" tecla="dir" onMuda={mudarToque} className="h-14 w-14 text-xl" />
+            <span />
+            <BotaoToque rotulo="▼" tecla="baixo" onMuda={mudarToque} className="h-14 w-14 text-xl" />
+            <span />
           </div>
-          <div className="absolute bottom-[12%] right-2 flex items-end gap-1.5">
-            <BotaoToque rotulo="Soco" tecla="soco" onMuda={mudarToque} className="h-12 w-12 text-xs" />
-            <BotaoToque rotulo="Chute" tecla="chute" onMuda={mudarToque} className="mb-6 h-12 w-12 text-xs" />
-            <BotaoToque rotulo="Esp." tecla="especial" onMuda={mudarToque} className="h-12 w-12 bg-laranja/60 text-xs" />
+          <div className="flex shrink-0 flex-col items-end gap-2 landscape:order-3">
+            <button
+              type="button"
+              onClick={() => mudarTela("pausa")}
+              className="pointer-events-auto rounded-full border-2 border-noite bg-creme-claro px-4 py-1 font-titulo text-sm font-bold text-noite"
+              aria-label="Pausar"
+            >
+              II
+            </button>
+            <div className="grid grid-cols-2 gap-2">
+              <span />
+              <BotaoToque rotulo="Esp." tecla="especial" onMuda={mudarToque} className="h-16 w-16 !bg-laranja text-sm !text-noite" />
+              <BotaoToque rotulo="Soco" tecla="soco" onMuda={mudarToque} className="h-16 w-16 text-sm" />
+              <BotaoToque rotulo="Chute" tecla="chute" onMuda={mudarToque} className="h-16 w-16 text-sm" />
+            </div>
           </div>
-          <button
-            type="button"
-            onClick={() => mudarTela("pausa")}
-            className="absolute left-1/2 top-[14%] -translate-x-1/2 rounded-full border-2 border-creme/70 bg-noite/50 px-3 text-sm font-bold text-creme"
-          >
-            II
-          </button>
-        </>
+        </div>
       )}
     </div>
   );

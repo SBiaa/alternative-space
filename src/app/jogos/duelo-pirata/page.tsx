@@ -51,7 +51,7 @@ export default function Page() {
             </tbody>
           </table>
           <p className="mt-2 text-xs text-neutro">
-            * No modo 2 jogadores, o Jogador 1 usa WASD + F G H. Controle de videogame também funciona (X soco, A chute, B/Y especial). No celular aparecem botões na tela. Esc pausa.
+            * No modo 2 jogadores, o Jogador 1 usa WASD + F G H. Controle de videogame também funciona (X soco, A chute, B/Y especial). No celular aparecem botões embaixo do jogo (ou dos lados, com o celular deitado). Esc pausa.
           </p>
         </div>
         <p className="etiqueta text-center text-[12px] text-neutro">jogo de fã, sem ligação oficial com One Piece</p>
