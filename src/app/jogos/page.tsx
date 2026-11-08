@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 const jogos = [
   {
+    href: "/jogos/defenda-o-navio",
+    tag: "Tower defense · 12 ondas",
+    nome: "Defenda o Navio",
+    texto: "A marinha invade pelo convés. Posicione a tripulação, cada um com seu jeito de lutar, e não deixe levarem o tesouro.",
+  },
+  {
     href: "/jogos/log-pose-doido",
     tag: "One Piece · controles malucos",
     nome: "Log Pose Doido",
