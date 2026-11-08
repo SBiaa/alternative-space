@@ -24,7 +24,7 @@ export function BlogList({ posts, categories }: { posts: PostMeta[]; categories:
         ))}
       </div>
       {shown.length ? (
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-7">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
           {shown.map((p) => <PostCard key={p.slug} post={p} />)}
         </div>
       ) : (

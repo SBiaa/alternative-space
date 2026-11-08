@@ -12,14 +12,11 @@ export const site = {
     email: "",
   },
   nav: [
-    { label: "Comunidade", href: "/#comunidade" },
-    { label: "Blog", href: "/blog" },
-    { label: "Desafio", href: "/#desafio" },
-    { label: "Coleções", href: "/colecoes" },
     { label: "Quizzes", href: "/quiz" },
     { label: "Fichas", href: "/fichas" },
     { label: "Jogos", href: "/jogos" },
-    { label: "Loja", href: "/#loja" },
+    { label: "Blog", href: "/blog" },
+    { label: "Coleções", href: "/colecoes" },
     { label: "Parceiros", href: "/parceiros" },
   ],
 };

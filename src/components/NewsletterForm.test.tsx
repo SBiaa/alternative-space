@@ -13,8 +13,8 @@ describe("<NewsletterForm>", () => {
     const user = userEvent.setup();
     render(<NewsletterForm />);
 
-    await user.type(screen.getByLabelText("SEU E-MAIL"), "a@b.co");
-    await user.click(screen.getByRole("button", { name: "Quero receber" }));
+    await user.type(screen.getByLabelText("Seu e-mail"), "a@b.co");
+    await user.click(screen.getByRole("button", { name: "Assinar" }));
 
     expect(await screen.findByText("Pronto! Confere seu e-mail.")).toBeTruthy();
     expect(fetch.mock.calls[0][0]).toBe("/api/newsletter");
@@ -26,8 +26,8 @@ describe("<NewsletterForm>", () => {
     const user = userEvent.setup();
     render(<NewsletterForm />);
 
-    await user.type(screen.getByLabelText("SEU E-MAIL"), "a@b.co");
-    await user.click(screen.getByRole("button", { name: "Quero receber" }));
+    await user.type(screen.getByLabelText("Seu e-mail"), "a@b.co");
+    await user.click(screen.getByRole("button", { name: "Assinar" }));
 
     expect(await screen.findByText("Confere o e-mail e tenta de novo.")).toBeTruthy();
   });

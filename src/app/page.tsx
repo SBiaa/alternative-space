@@ -1,88 +1,149 @@
+import Image from "next/image";
 import Link from "next/link";
 import { home } from "@/lib/home";
 import { getPosts } from "@/lib/blog";
+import { getQuiz } from "@/lib/quiz";
 import { PostCard } from "@/components/PostCard";
 import { Ph } from "@/components/Ph";
 import { NewsletterForm } from "@/components/NewsletterForm";
-import { Star } from "@/components/Star";
-import { joinHref } from "@/config/site";
+import { Planeta } from "@/components/Logo";
+
+// Até quatro artes de resultado do quiz em destaque, para o painel ao lado do convite.
+function artesDoQuiz(slug: string): string[] {
+  const q = getQuiz(slug);
+  if (!q || !("results" in q)) return [];
+  return Object.values(q.results).flatMap((r) => (r.image ? [r.image] : [])).slice(0, 4);
+}
+
+function Cabecalho({ etiqueta, titulo, id, children }: { etiqueta: string; titulo: string; id: string; children?: React.ReactNode }) {
+  return (
+    <div className="flex flex-wrap items-end justify-between gap-3">
+      <div className="flex flex-col gap-2">
+        <span className="etiqueta text-laranja-claro">{etiqueta}</span>
+        <h2 id={id} className="h2">{titulo}</h2>
+      </div>
+      {children}
+    </div>
+  );
+}
 
 export default function Home() {
   const posts = getPosts().slice(0, 3);
-  const { hero, marquee, challenge, vote, quiz, store, partners, newsletter } = home;
+  const { hero, howItWorks, challenge, vote, quiz, store, partners, newsletter } = home;
+  const artes = artesDoQuiz(quiz.slug);
 
   return (
     <>
       {/* Topo */}
-      <section id="comunidade" className="relative overflow-hidden px-6 pb-22 pt-18">
-        <div className="miolo flex flex-wrap items-center gap-14">
-          <div className="flex min-w-0 flex-[1_1_440px] flex-col gap-6">
-            <span className="etiqueta text-azul">{hero.eyebrow}</span>
-            <h1 className="font-titulo font-bold leading-[0.98] text-azul" style={{ fontSize: "clamp(2.75rem, 7vw, 5.25rem)" }}>
+      <section className="relative px-6 pb-[clamp(56px,8vw,112px)] pt-[clamp(48px,7vw,96px)]">
+        <div className="miolo flex flex-wrap items-center gap-12">
+          <div className="flex min-w-0 flex-[1_1_460px] flex-col gap-[22px]">
+            <span className="etiqueta text-[13px] text-laranja-claro">{hero.eyebrow}</span>
+            <h1 className="font-semibold leading-[1.02] tracking-[-0.025em]" style={{ fontSize: "clamp(2.5rem, 6vw, 4.75rem)" }}>
               {hero.title}
             </h1>
-            <p className="max-w-[540px] text-[1.2rem] leading-relaxed text-tinta">{hero.text}</p>
-            <div className="flex flex-wrap gap-3.5">
-              <a href={joinHref} className="btn bg-laranja text-noite">Receber novidades</a>
-              <Link href="/blog" className="btn bg-creme-claro text-noite">Ler o blog</Link>
+            <p className="max-w-[540px] text-[clamp(1.0625rem,1.5vw,1.25rem)] leading-[1.55] text-areia">{hero.text}</p>
+            <div className="flex flex-wrap gap-3 pt-1">
+              <Link href="/cadastro" className="btn bg-laranja !px-[22px] !py-4 !text-[17px] text-noite">Criar minha cabine</Link>
+              <Link href="/quiz" className="btn btn-fantasma !px-[22px] !py-[15px] !text-[17px]">Fazer um quiz</Link>
             </div>
           </div>
-          <div className="relative flex min-w-0 flex-[1_1_360px] justify-center py-6">
-            <svg viewBox="0 0 560 360" aria-hidden="true" className="absolute left-[-10%] top-[18%] w-[120%]">
-              <ellipse cx="280" cy="180" rx="270" ry="90" fill="none" stroke="#01121e" strokeWidth="2" opacity="0.4" transform="rotate(-14 280 180)" />
-              <circle cx="30" cy="240" r="16" fill="#01121e" />
-              <circle cx="520" cy="96" r="11" fill="#01121e" />
-              <circle cx="430" cy="270" r="8" fill="#dd5d05" />
-            </svg>
-            <div className="relative w-full max-w-[440px] -rotate-2 overflow-hidden rounded-[14px] border-[3px] border-noite bg-creme-claro shadow-duro-lg">
-              <div className="flex items-center justify-between border-b-[3px] border-noite bg-azul px-[22px] py-4 text-creme">
-                <span className="font-titulo text-[1.4rem] font-bold">Base Alternative Space</span>
-                {hero.membersOnline != null && <span className="font-ficha text-xs">{hero.membersOnline} ONLINE</span>}
-              </div>
-              <div className="flex flex-col gap-2.5 px-[22px] pb-6 pt-5 font-ficha text-[15px]">
-                <span className="text-[11px] tracking-widest text-neutro">CANAIS</span>
-                {hero.channels.map((c) => <span key={c}># {c}</span>)}
-                <a href={joinHref} className="mt-2 rounded-full border-2 border-noite bg-laranja px-4 py-2.5 text-center font-titulo text-base font-bold text-noite no-underline">
-                  Receber novidades
-                </a>
-              </div>
+
+          <div className="relative flex min-w-0 flex-[1_1_380px] justify-center pb-[30px] pt-2.5">
+            <div className="aspect-square w-[min(380px,86%)] rounded-full bg-creme p-[5%] shadow-duro-lg">
+              <svg viewBox="0 0 300 300" role="img" aria-label="Janela redonda de uma cabine espacial, com um planeta laranja e estrelas" className="block size-full rounded-full">
+                <rect width="300" height="300" fill="#072f5c" />
+                <g fill="#ece3be">
+                  <circle cx="50" cy="60" r="1.6" /><circle cx="230" cy="44" r="1.3" /><circle cx="262" cy="200" r="1.6" />
+                  <circle cx="64" cy="236" r="1.2" /><circle cx="160" cy="30" r="1" /><circle cx="110" cy="270" r="1" />
+                </g>
+                <circle cx="166" cy="166" r="70" fill="#dd5d05" />
+                <path d="M114 150 C140 140 186 142 218 160" stroke="#ab392f" strokeWidth="9" fill="none" strokeLinecap="round" opacity="0.7" />
+                <path d="M106 184 C144 174 186 180 222 194" stroke="#f2a66e" strokeWidth="7" fill="none" strokeLinecap="round" opacity="0.8" />
+                <ellipse cx="166" cy="166" rx="116" ry="28" fill="none" stroke="#ece3be" strokeWidth="3" transform="rotate(-16 166 166)" />
+                <path d="M70 92 C72 104 75 107 87 109 C75 111 72 114 70 126 C68 114 65 111 53 109 C65 107 68 104 70 92Z" fill="#f2a66e" />
+              </svg>
             </div>
-            <Star className="absolute right-[4%] top-0" />
+            <div className="absolute bottom-0 left-0 flex max-w-[250px] items-center gap-2.5 rounded-lg bg-creme-claro px-3.5 py-3 text-noite shadow-duro">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-cabine">
+                <Planeta size={28} />
+              </span>
+              <span className="flex min-w-0 flex-col gap-0.5">
+                <span className="font-ficha text-[9px] tracking-[0.12em] text-azul">A CABINE DE</span>
+                <span className="text-[15px] font-semibold">@você</span>
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Faixa */}
-      <div className="border-y-2 border-noite bg-azul px-6 py-[18px] text-creme">
-        <ul className="miolo flex list-none flex-wrap justify-center gap-x-7 gap-y-2 p-0 font-ficha text-sm uppercase tracking-widest">
-          {marquee.map((m) => <li key={m}>✦ {m}</li>)}
-        </ul>
-      </div>
+      {/* Como funciona */}
+      <section aria-labelledby="como" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
+        <div className="miolo flex flex-col gap-7">
+          <Cabecalho etiqueta="Como funciona" titulo="Três coisas que você faz na base" id="como" />
+          <ol className="grid list-none grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 p-0">
+            {howItWorks.map((s, i) => (
+              <li key={s.title} className="card flex flex-col gap-2.5 p-[22px]">
+                <span className="font-ficha text-[13px] text-laranja-claro">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="text-[21px] font-semibold">{s.title}</h3>
+                <p className="text-[15px] leading-[1.55] text-areia">{s.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
-      {/* Desafio */}
-      <section id="desafio" className="secao">
-        <div className="miolo flex flex-wrap items-center gap-14">
+      {/* Quiz em destaque */}
+      <section id="quiz" aria-labelledby="quiz-titulo" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
+        <div className="painel miolo flex flex-wrap overflow-hidden !shadow-none">
+          <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-3.5 p-[clamp(24px,4vw,48px)]">
+            <span className="etiqueta text-azul">Quiz em destaque</span>
+            <h2 id="quiz-titulo" className="font-bold leading-[1.05] tracking-[-0.02em] text-azul" style={{ fontSize: "clamp(1.75rem, 3.4vw, 2.75rem)" }}>
+              {quiz.title}
+            </h2>
+            <p className="max-w-[460px] text-base leading-[1.55] text-tinta">{quiz.text}</p>
+            <div className="flex flex-wrap gap-3 pt-1.5">
+              <Link href={`/quiz/${quiz.slug}`} className="btn bg-laranja text-noite">Começar o quiz</Link>
+              <Link href="/quiz" className="btn btn-contorno">Ver todos</Link>
+            </div>
+          </div>
+          <div className="grid min-h-60 flex-[1_1_320px] grid-cols-2 bg-azul">
+            {artes.length > 0 ? (
+              artes.map((src) => (
+                <div key={src} className={`relative ${artes.length < 3 ? "row-span-2" : ""} ${artes.length === 1 ? "col-span-2" : ""}`}>
+                  <Image src={src} alt="" fill sizes="(min-width: 768px) 20vw, 50vw" className="object-cover" />
+                </div>
+              ))
+            ) : (
+              <div className="col-span-2 flex items-center justify-center"><Planeta size={96} /></div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Desafio do mês */}
+      <section id="desafio" aria-labelledby="desafio-titulo" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
+        <div className="miolo flex flex-wrap items-center gap-10">
           <div className="flex min-w-0 flex-[1_1_440px] flex-col gap-5">
-            <span className="etiqueta text-azul">Desafio do mês</span>
-            <h2 className="h2 text-azul">Sua arte pode virar produto.</h2>
-            <p className="text-lg leading-relaxed text-tinta">
+            <Cabecalho etiqueta="Desafio do mês" titulo="Sua arte pode virar produto." id="desafio-titulo" />
+            <p className="text-[17px] leading-[1.55] text-areia">
               Todo mês a gente solta um tema. A comunidade cria, a galera vota e a arte mais votada vira peça da loja, com o nome de quem criou.
             </p>
             <ol className="flex list-none flex-col gap-3 p-0">
               {challenge.steps.map((s, i) => (
                 <li key={s} className="flex items-center gap-4">
-                  <span className="font-ficha text-2xl font-bold text-azul">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="text-[1.05rem]">{s}</span>
+                  <span className="font-ficha text-[13px] text-laranja-claro">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-base">{s}</span>
                 </li>
               ))}
             </ol>
-            <div><a href={joinHref} className="btn bg-azul text-creme">Quero participar</a></div>
+            <div><a href="#newsletter" className="btn btn-fantasma">Quero participar</a></div>
           </div>
-          <div className="flex min-w-0 flex-[1_1_380px] justify-center">
-            <div className="flex w-full max-w-[460px] rotate-2 flex-col gap-[18px] rounded-[14px] border-[3px] border-noite bg-laranja px-8 py-9 shadow-duro-lg">
-              <span className="etiqueta text-[13px]">Desafio de {challenge.month}</span>
-              <span className="font-titulo text-[2.9rem] font-bold leading-none">{challenge.theme}</span>
-              <div className="flex justify-between gap-3 border-t-2 border-dashed border-noite pt-4 font-ficha text-[13px]">
+          <div className="flex min-w-0 flex-[1_1_360px] justify-center">
+            <div className="flex w-full max-w-[440px] flex-col gap-4 rounded-lg border border-dashed border-laranja-claro/70 p-8">
+              <span className="etiqueta text-laranja-claro">Desafio de {challenge.month}</span>
+              <span className="text-[2.5rem] font-semibold leading-none tracking-[-0.02em]">{challenge.theme}</span>
+              <div className="flex justify-between gap-3 border-t border-creme/15 pt-4 font-ficha text-xs text-areia">
                 <span>ENCERRA EM {challenge.endsAt}</span>
                 {challenge.artCount != null && <span>{challenge.artCount} ARTES</span>}
               </div>
@@ -91,114 +152,88 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Voto */}
-      <section id="voto" className="secao border-y-2 border-noite bg-azul text-creme">
-        <div className="miolo flex flex-col gap-10">
-          <div className="flex max-w-[760px] flex-col gap-3">
-            <span className="etiqueta text-laranja-claro">Vote no próximo drop</span>
-            <h2 className="h2">Quem escolhe a próxima coleção é você.</h2>
-            <p className="text-lg leading-relaxed text-azul-claro">
-              Três ideias na mesa. A mais votada ganha arte, mockup e vira lançamento. Quem votou ainda sai na frente na hora da compra.
-            </p>
-          </div>
-          <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-6 p-0">
-            {vote.options.map((o, i) => (
-              <li key={o.title} className="card flex flex-col overflow-hidden bg-creme text-noite">
-                <Ph image={o.image} label={`[IMAGEM OPÇÃO ${String.fromCharCode(65 + i)}]`} />
-                <div className="flex flex-col gap-3.5 px-[22px] pb-6 pt-5">
-                  <h3 className="font-titulo text-2xl font-semibold">{o.title}</h3>
-                  <Link href="/votar" className="btn self-start bg-laranja !px-5 !py-2.5 !text-base !shadow-none">Votar</Link>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <span className="font-ficha text-[13px] text-azul-claro">VOTAÇÃO ABERTA ATÉ {vote.closesAt}</span>
-        </div>
-      </section>
-
       {/* Blog */}
       {posts.length > 0 && (
-        <section id="blog" className="secao">
-          <div className="miolo flex flex-col gap-9">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div className="flex flex-col gap-3">
-                <span className="etiqueta text-azul">Blog</span>
-                <h2 className="h2 text-azul">Nada de mais do mesmo.</h2>
-              </div>
-              <Link href="/blog" className="font-titulo text-xl font-bold text-azul">Ver todos os posts →</Link>
-            </div>
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-7">
+        <section id="blog" aria-labelledby="blog-titulo" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
+          <div className="miolo flex flex-col gap-6">
+            <Cabecalho etiqueta="Transmissões da base" titulo="No blog" id="blog-titulo">
+              <Link href="/blog" className="link-ficha">Ver todos os posts</Link>
+            </Cabecalho>
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-4">
               {posts.map((p) => <PostCard key={p.slug} post={p} />)}
             </div>
           </div>
         </section>
       )}
 
-      {/* Quiz */}
-      <section id="quiz" className="px-6 pb-22">
-        <div className="miolo flex flex-wrap items-center justify-between gap-7 rounded-2xl border-[3px] border-noite bg-laranja px-10 py-12 shadow-duro-lg">
-          <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-2.5">
-            <span className="etiqueta text-[13px]">Quiz</span>
-            <h2 className="font-titulo font-bold leading-[1.02]" style={{ fontSize: "clamp(2rem, 5vw, 3.4rem)" }}>{quiz.title}</h2>
-            <p className="text-lg leading-normal">{quiz.text}</p>
-          </div>
-          <div className="flex flex-col items-start gap-3">
-            <Link href={`/quiz/${quiz.slug}`} className="btn bg-noite text-creme !shadow-none">Fazer o quiz</Link>
-            <Link href="/quiz" className="font-titulo text-lg font-bold text-noite">Ver todos os quizzes →</Link>
-          </div>
+      {/* Votação */}
+      <section id="voto" aria-labelledby="voto-titulo" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
+        <div className="miolo flex flex-col gap-6">
+          <Cabecalho etiqueta="Vote no próximo drop" titulo="Quem escolhe a próxima coleção é você." id="voto-titulo">
+            <span className="font-ficha text-xs text-areia">VOTAÇÃO ABERTA ATÉ {vote.closesAt}</span>
+          </Cabecalho>
+          <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 p-0">
+            {vote.options.map((o, i) => (
+              <li key={o.title} className="card flex flex-col overflow-hidden">
+                <Ph image={o.image} label={`[IMAGEM OPÇÃO ${String.fromCharCode(65 + i)}]`} />
+                <div className="flex items-center justify-between gap-3 p-4">
+                  <h3 className="text-[17px] font-semibold">{o.title}</h3>
+                  <Link href="/votar" className="btn bg-laranja !px-4 !py-2.5 !text-[15px] text-noite">Votar</Link>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* Loja */}
-      <section id="loja" className="secao border-y-2 border-noite bg-creme-claro">
-        <div className="miolo flex flex-col gap-9">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div className="flex max-w-[640px] flex-col gap-3">
-              <span className="etiqueta text-azul">{store.eyebrow}</span>
-              <h2 className="font-titulo font-bold leading-[1.02] text-azul" style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)" }}>{store.title}</h2>
-              <p className="text-[1.05rem] leading-normal text-tinta">{store.text}</p>
-            </div>
-            <a href="#loja" className="font-titulo text-xl font-bold text-azul">Ver a loja completa →</a>
-          </div>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6">
+      <section id="loja" aria-labelledby="loja-titulo" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
+        <div className="miolo flex flex-col gap-6">
+          <Cabecalho etiqueta={store.eyebrow} titulo={store.title} id="loja-titulo">
+            <Link href="/colecoes" className="link-ficha">Ver a loja</Link>
+          </Cabecalho>
+          <p className="-mt-2 max-w-[640px] text-[15px] leading-[1.55] text-areia">{store.text}</p>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
             {store.products.map((p) => (
-              <article key={p.name} className="card flex flex-col overflow-hidden bg-creme">
-                <Ph image={p.image} label={`[FOTO ${p.name.toUpperCase()}]`} />
-                <div className="flex flex-col gap-1.5 px-5 pb-5 pt-4">
-                  <span className="font-ficha text-xs text-tinta">{p.tag && `${p.tag.toUpperCase()} · `}ARTE: {p.artist}</span>
-                  <h3 className="font-titulo text-[1.4rem] font-semibold">{p.name}</h3>
-                  <div className="mt-1.5 flex items-center justify-between">
-                    <span className="font-titulo text-[1.4rem] font-bold text-azul">R$ {p.price}</span>
-                    <a href="#loja" className="rounded-full border-2 border-noite bg-laranja px-4 py-2 font-titulo text-[15px] font-bold text-noite no-underline">Quero</a>
+              <article key={p.name} className="card flex flex-col overflow-hidden">
+                <Ph image={p.image} label={`[FOTO ${p.name.toUpperCase()}]`} ratio="1/1" />
+                <div className="flex flex-col gap-1 p-3.5">
+                  <span className="font-ficha text-[11px] text-areia">{p.tag && `${p.tag.toUpperCase()} · `}ARTE: {p.artist}</span>
+                  <div className="flex justify-between gap-2">
+                    <h3 className="text-base font-semibold">{p.name}</h3>
+                    <span className="shrink-0 font-ficha text-sm text-laranja-claro">R$ {p.price}</span>
                   </div>
                 </div>
               </article>
             ))}
-            <article className="card flex flex-col justify-center gap-3 bg-azul p-6 text-creme">
-              <span className="etiqueta text-xs text-laranja-claro">Personalizado</span>
-              <h3 className="font-titulo text-[1.6rem] font-semibold leading-[1.1]">Você imagina, a gente materializa.</h3>
-              <p className="text-[15px] leading-normal text-azul-claro">Conta a ideia, um artista cria e você aprova o mockup antes de produzir.</p>
-              <a href="#loja" className="btn self-start bg-laranja text-noite !px-[18px] !py-2.5 !text-base !shadow-none">Personalizar a minha</a>
+            <article className="flex flex-col justify-center gap-3 rounded-lg border border-dashed border-laranja-claro/70 p-5">
+              <span className="etiqueta text-laranja-claro">Personalizado</span>
+              <h3 className="text-[19px] font-semibold leading-[1.2]">Você imagina, a gente materializa.</h3>
+              <p className="text-sm leading-normal text-areia">Conta a ideia, um artista cria e você aprova o mockup antes de produzir.</p>
+              <Link href="/colecoes" className="btn btn-fantasma self-start !px-3.5 !py-2.5 !text-sm">Personalizar a minha</Link>
             </article>
           </div>
         </div>
       </section>
 
       {/* Parceiros */}
-      <section id="parceiros" className="secao">
-        <div className="miolo flex flex-col gap-9">
-          <div className="flex max-w-[760px] flex-col gap-3">
-            <span className="etiqueta text-azul">Parceiros</span>
-            <h2 className="h2 text-azul">Cresça com a gente.</h2>
-            <p className="text-lg leading-relaxed text-tinta">Tem loja, canal ou comunidade própria? Dá pra revender, indicar ou criar peças com a sua marca.</p>
+      <section id="parceiros" aria-labelledby="parceiros-titulo" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
+        <div className="miolo flex flex-col gap-6 rounded-lg border border-dashed border-laranja-claro/70 p-[clamp(22px,3.4vw,40px)]">
+          <div className="flex flex-wrap items-center justify-between gap-5">
+            <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-2">
+              <span className="etiqueta text-laranja-claro">Parceiros</span>
+              <h2 id="parceiros-titulo" className="text-[clamp(1.5rem,2.6vw,2rem)] font-semibold tracking-[-0.01em]">Revenda, afiliados e criadores</h2>
+              <p className="text-[15px] leading-[1.55] text-areia">Tem loja, canal ou comunidade própria? Dá pra revender, indicar ou criar peças com a sua marca.</p>
+            </div>
+            <Link href="/parceiros" className="btn btn-fantasma shrink-0">Quero ser parceiro</Link>
           </div>
-          <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 p-0">
+          <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 border-t border-creme/15 p-0 pt-6">
             {partners.map((p, i) => (
-              <li key={p.title} className="card flex flex-col gap-3 p-7">
-                <span className="font-ficha text-3xl font-bold text-azul">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="font-titulo text-[1.6rem] font-semibold">{p.title}</h3>
-                <p className="leading-normal text-tinta">{p.text}</p>
-                <Link href="/parceiros" className="font-titulo text-[1.05rem] font-bold text-azul">{p.cta} →</Link>
+              <li key={p.title} className="flex flex-col gap-1.5">
+                <span className="font-ficha text-[13px] text-laranja-claro">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="text-[17px] font-semibold">{p.title}</h3>
+                <p className="text-sm leading-normal text-areia">{p.text}</p>
+                <Link href="/parceiros" className="mt-1 text-sm font-medium text-laranja-claro hover:text-creme">{p.cta} →</Link>
               </li>
             ))}
           </ul>
@@ -206,13 +241,13 @@ export default function Home() {
       </section>
 
       {/* Newsletter */}
-      <section id="newsletter" className="secao bg-noite text-creme">
-        <div className="miolo flex flex-wrap items-center justify-between gap-8">
-          <div className="flex min-w-0 flex-[1_1_520px] flex-col gap-3.5">
-            <span className="etiqueta text-laranja-claro">Newsletter</span>
-            <h2 className="h2">O melhor da base, no seu e-mail.</h2>
-            <p className="text-lg leading-relaxed text-[#c9ced4]">
-              Posts novos, desafio do mês, votação e drops antes de todo mundo. Chega {newsletter.frequency}, sem spam.
+      <section id="newsletter" aria-labelledby="news-titulo" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
+        <div className="painel miolo flex flex-wrap items-center gap-6 p-[clamp(24px,4vw,48px)] !shadow-none">
+          <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-2">
+            <span className="etiqueta text-azul">Newsletter</span>
+            <h2 id="news-titulo" className="text-[clamp(1.5rem,2.8vw,2.125rem)] font-bold tracking-[-0.015em] text-azul">Notícias da base no seu e-mail</h2>
+            <p className="text-[15px] leading-[1.55] text-tinta">
+              Quizzes novos, posts, desafio do mês e lançamentos da loja. Chega {newsletter.frequency}, sem spam, e dá pra sair quando quiser.
             </p>
           </div>
           <NewsletterForm />
