@@ -17,11 +17,30 @@ import {
   type Estado,
   type Obstaculo,
 } from "@/lib/picles";
+import { PiclesComoJogar } from "./PiclesComoJogar";
 
 type Fase = "menu" | "jogando" | "pausado" | "morto";
 type Gota = { x: number; y: number; vx: number; vy: number; vida: number; cor: string };
 
 const CHAVE_RECORDE = "picles-no-ralo:recorde";
+const CHAVE_GUIA = "picles-no-ralo:viu-guia";
+
+// Primeira visita: abre o guia sozinho uma vez.
+function jaViuGuia() {
+  try {
+    return Boolean(localStorage.getItem(CHAVE_GUIA));
+  } catch {
+    return true; // sem storage, melhor não abrir toda vez
+  }
+}
+
+function marcarGuiaVisto() {
+  try {
+    localStorage.setItem(CHAVE_GUIA, "1");
+  } catch {
+    // tudo bem: só abre de novo na próxima visita
+  }
+}
 
 function lerRecorde() {
   try {
@@ -312,6 +331,8 @@ export function PiclesNoRalo() {
   const morteEm = useRef(0);
   const recorde = useRef(0);
   const [faseUi, setFaseUi] = useState<Fase>("menu");
+  const [ajuda, setAjuda] = useState(false);
+  const ajudaAberta = useRef(false);
   const [fim, setFim] = useState<{ m: number; nivel: number; frase: string; novo: boolean; recorde: number } | null>(null);
 
   const mudarFase = useCallback((f: Fase) => {
@@ -343,8 +364,35 @@ export function PiclesNoRalo() {
     segurando.current = false;
   }, []);
 
+  const abrirAjuda = useCallback(() => {
+    segurando.current = false;
+    if (fase.current === "jogando") mudarFase("pausado");
+    ajudaAberta.current = true;
+    setAjuda(true);
+  }, [mudarFase]);
+
+  const fecharAjuda = useCallback(() => {
+    ajudaAberta.current = false;
+    setAjuda(false);
+  }, []);
+
+  // Último passo do guia: continua a partida pausada ou começa uma nova.
+  const jogarDaAjuda = useCallback(() => {
+    fecharAjuda();
+    if (fase.current === "pausado") mudarFase("jogando");
+    else comecar(false);
+  }, [fecharAjuda, mudarFase, comecar]);
+
   useEffect(() => {
     recorde.current = lerRecorde();
+    // Depois do primeiro frame, pra não brigar com a hidratação.
+    // Marca só quando abre de fato (em dev o React monta o efeito duas vezes).
+    const guia = jaViuGuia()
+      ? 0
+      : window.setTimeout(() => {
+          marcarGuiaVisto();
+          abrirAjuda();
+        }, 300);
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -440,6 +488,7 @@ export function PiclesNoRalo() {
     raf = requestAnimationFrame(frame);
 
     const onKeyDown = (ev: KeyboardEvent) => {
+      if (ajudaAberta.current) return; // a modal cuida do próprio teclado
       if (!["Space", "ArrowUp", "KeyW"].includes(ev.code)) return;
       const alvo = ev.target as HTMLElement | null;
       if (alvo && ["INPUT", "TEXTAREA", "SELECT", "BUTTON", "A"].includes(alvo.tagName)) return;
@@ -460,17 +509,25 @@ export function PiclesNoRalo() {
     window.addEventListener("blur", onVis);
     document.addEventListener("visibilitychange", onVis);
     return () => {
+      window.clearTimeout(guia);
       cancelAnimationFrame(raf);
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onVis);
       document.removeEventListener("visibilitychange", onVis);
     };
-  }, [apertar, soltar, mudarFase]);
+  }, [apertar, soltar, mudarFase, abrirAjuda]);
 
   const r = fim ? rank(fim.m) : null;
 
+  const botaoAjuda = (classe = "") => (
+    <button type="button" onClick={abrirAjuda} className={`font-titulo font-bold underline-offset-4 hover:underline ${classe}`}>
+      Como jogar?
+    </button>
+  );
+
   return (
+    <>
     <div
       className="relative w-full select-none overflow-hidden rounded-2xl border-2 border-noite bg-noite shadow-duro"
       style={{ aspectRatio: `${W} / ${H}`, touchAction: "none", WebkitTouchCallout: "none" }}
@@ -496,7 +553,7 @@ export function PiclesNoRalo() {
           <button type="button" onClick={() => comecar(false)} className="btn bg-laranja text-noite !px-6 !py-2.5 !text-lg">
             Jogar
           </button>
-          <p className="etiqueta hidden text-[11px] text-creme/70 sm:block">clique, toque ou barra de espaço</p>
+          {botaoAjuda("text-base text-creme")}
         </div>
       )}
 
@@ -504,6 +561,7 @@ export function PiclesNoRalo() {
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-noite/60 text-center">
           <p className="font-titulo text-4xl font-bold text-creme">Pausado</p>
           <p className="text-creme">Toca ou aperta espaço pra continuar.</p>
+          {botaoAjuda("mt-2 text-lg text-laranja-claro")}
         </div>
       )}
 
@@ -519,9 +577,28 @@ export function PiclesNoRalo() {
             <button type="button" onClick={() => comecar(false)} className="btn mt-1 bg-laranja text-noite !px-5 !py-2 !text-base">
               Jogar de novo
             </button>
+            {botaoAjuda("text-sm text-azul")}
           </div>
         </div>
       )}
+
+      {faseUi === "jogando" && (
+        <button
+          type="button"
+          onClick={abrirAjuda}
+          aria-label="Como jogar (pausa a partida)"
+          className="absolute bottom-2 right-2 grid h-8 w-8 place-items-center rounded-full border-2 border-noite bg-creme/80 font-titulo text-base font-bold text-noite hover:bg-creme sm:bottom-3 sm:right-3 sm:h-9 sm:w-9"
+        >
+          ?
+        </button>
+      )}
     </div>
+    <PiclesComoJogar
+      aberto={ajuda}
+      aoFechar={fecharAjuda}
+      aoJogar={jogarDaAjuda}
+      rotuloJogar={faseUi === "pausado" ? "Continuar" : faseUi === "morto" ? "Jogar de novo" : "Bora jogar!"}
+    />
+    </>
   );
 }
