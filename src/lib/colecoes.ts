@@ -14,6 +14,7 @@ export type Colecao = {
 };
 
 // Para adicionar uma coleção: crie o JSON em content/colecoes e registre aqui. A primeira é a mais nova.
+// Fotos das peças ficam em public/colecoes/<slug>/.
 export const colecoes: Record<string, Colecao> = {
   "rick-and-rick": rickAndRick,
 };
