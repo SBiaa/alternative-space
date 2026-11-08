@@ -18,6 +18,7 @@ export const site = {
     { label: "Coleções", href: "/colecoes" },
     { label: "Quizzes", href: "/quiz" },
     { label: "Fichas", href: "/fichas" },
+    { label: "Jogos", href: "/jogos" },
     { label: "Loja", href: "/#loja" },
     { label: "Parceiros", href: "/parceiros" },
   ],
