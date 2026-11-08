@@ -1,5 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { POST } from "./route";
+import { dentroDoLimite } from "@/lib/limite";
+
+vi.mock("@/lib/limite", async (orig) => ({ ...(await orig<typeof import("@/lib/limite")>()), dentroDoLimite: vi.fn() }));
 
 const req = (body: unknown) =>
   new Request("http://localhost/api/newsletter", { method: "POST", body: typeof body === "string" ? body : JSON.stringify(body) });
@@ -17,6 +20,7 @@ describe("POST /api/newsletter", () => {
     vi.stubEnv("MAILERLITE_GROUP_ID", "");
     fetch = vi.fn().mockResolvedValue(new Response("{}", { status: 200 }));
     vi.stubGlobal("fetch", fetch);
+    vi.mocked(dentroDoLimite).mockResolvedValue(true);
   });
 
   it("recusa corpo que não é JSON", async () => {
@@ -55,5 +59,16 @@ describe("POST /api/newsletter", () => {
   it("devolve 502 quando o MailerLite falha", async () => {
     fetch.mockResolvedValue(new Response("{}", { status: 500 }));
     expect((await call({ email: "a@b.co" })).status).toBe(502);
+  });
+});
+
+describe("POST /api/newsletter com limite", () => {
+  it("devolve 429 e não chama o MailerLite depois de muitos envios", async () => {
+    vi.stubEnv("MAILERLITE_API_KEY", "chave-teste");
+    const fetch = vi.fn();
+    vi.stubGlobal("fetch", fetch);
+    vi.mocked(dentroDoLimite).mockResolvedValue(false);
+    expect(await call({ email: "a@b.co" })).toEqual({ status: 429, message: "Muitos envios seguidos. Tenta de novo daqui a pouco." });
+    expect(fetch).not.toHaveBeenCalled();
   });
 });

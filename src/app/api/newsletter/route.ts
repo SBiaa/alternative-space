@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { emailOk } from "@/lib/forms";
+import { MUITOS_ENVIOS, dentroDoLimite } from "@/lib/limite";
 
 // MailerLite: https://developers.mailerlite.com/docs/subscribers.html
 // Para Beehiiv ou outra ferramenta, troque só o bloco do fetch.
@@ -10,6 +11,9 @@ export async function POST(req: Request) {
 
   const key = process.env.MAILERLITE_API_KEY;
   if (!key) return NextResponse.json({ message: "Newsletter ainda não configurada." }, { status: 503 });
+
+  // Até 5 inscrições a cada 10 minutos por pessoa.
+  if (!(await dentroDoLimite("newsletter", req, 5, 600))) return NextResponse.json({ message: MUITOS_ENVIOS }, { status: 429 });
 
   const group = process.env.MAILERLITE_GROUP_ID;
   const res = await fetch("https://connect.mailerlite.com/api/subscribers", {

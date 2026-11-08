@@ -1,5 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { POST } from "./route";
+import { dentroDoLimite } from "@/lib/limite";
+
+vi.mock("@/lib/limite", async (orig) => ({ ...(await orig<typeof import("@/lib/limite")>()), dentroDoLimite: vi.fn() }));
 
 async function call(body: unknown) {
   const res = await POST(new Request("http://localhost/api/parceiros", { method: "POST", body: JSON.stringify(body) }));
@@ -15,6 +18,7 @@ describe("POST /api/parceiros", () => {
     vi.stubEnv("PARTNERS_WEBHOOK_URL", "https://hooks.example.test/parceiros");
     fetch = vi.fn().mockResolvedValue(new Response("ok", { status: 200 }));
     vi.stubGlobal("fetch", fetch);
+    vi.mocked(dentroDoLimite).mockResolvedValue(true);
   });
 
   it("recusa bots que preenchem o honeypot", async () => {
@@ -52,5 +56,16 @@ describe("POST /api/parceiros", () => {
   it("devolve 502 quando o webhook falha", async () => {
     fetch.mockResolvedValue(new Response("", { status: 500 }));
     expect((await call(lead)).status).toBe(502);
+  });
+});
+
+describe("POST /api/parceiros com limite", () => {
+  it("devolve 429 e não chama o webhook depois de muitos envios", async () => {
+    vi.stubEnv("PARTNERS_WEBHOOK_URL", "https://hooks.example.test/parceiros");
+    const fetch = vi.fn();
+    vi.stubGlobal("fetch", fetch);
+    vi.mocked(dentroDoLimite).mockResolvedValue(false);
+    expect((await call(lead)).status).toBe(429);
+    expect(fetch).not.toHaveBeenCalled();
   });
 });

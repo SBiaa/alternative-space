@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { emailOk, text } from "@/lib/forms";
+import { MUITOS_ENVIOS, dentroDoLimite } from "@/lib/limite";
 
 // Envia o interesse para um webhook (Google Apps Script de planilha, Zapier, Make, etc.).
 export async function POST(req: Request) {
@@ -20,6 +21,9 @@ export async function POST(req: Request) {
 
   const url = process.env.PARTNERS_WEBHOOK_URL;
   if (!url) return NextResponse.json({ message: "Formulário ainda não configurado." }, { status: 503 });
+
+  // Até 3 propostas a cada 10 minutos por pessoa.
+  if (!(await dentroDoLimite("parceiros", req, 3, 600))) return NextResponse.json({ message: MUITOS_ENVIOS }, { status: 429 });
 
   const res = await fetch(url, {
     method: "POST",
