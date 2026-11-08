@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 const jogos = [
   {
+    href: "/jogos/bussola-doida",
+    tag: "Navegação · controles malucos",
+    nome: "Bússola Doida",
+    texto: "Guie o navio entre redemoinhos, tempestades e reis do mar. A bússola muda de ideia o tempo todo.",
+  },
+  {
     href: "/jogos/monte-seu-pirata",
     tag: "Vestir bonequinho · vira avatar",
     nome: "Monte seu Pirata",
