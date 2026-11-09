@@ -47,6 +47,15 @@ export const jogos: Jogo[] = [
     recorde: { chave: "picles-no-ralo:recorde", formato: (n) => `${n} m` },
   },
   {
+    slug: "corrida-de-chakra",
+    nome: "Corrida de Chakra",
+    tipo: "Um botão",
+    resumo: "Segura, concentra e solta na hora certa.",
+    texto: "Suba na árvore, ande na água e monte o Rasengan. Segura pra juntar chakra e solta bem na faixa certa.",
+    cor: "#2b2f7a",
+    recorde: { chave: "corrida-de-chakra:recorde", formato: (n) => `${n} pontos` },
+  },
+  {
     slug: "duelo-pirata",
     nome: "Duelo Pirata",
     tipo: "Habilidade",
