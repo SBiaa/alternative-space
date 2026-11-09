@@ -13,7 +13,8 @@ export type Jogo = {
   // Fundo e desenho da arte do cartão.
   cor: string;
   // Onde o jogo guarda o recorde no navegador, e como mostrar.
-  recorde?: { chave: string; formato: (n: number) => string };
+  // max: maior valor possível, pro ranking recusar número inventado.
+  recorde?: { chave: string; formato: (n: number) => string; max?: number };
 };
 
 export const tipos: Tipo[] = ["Um botão", "Habilidade", "Estratégia", "Rapidinho", "Criativo"];
@@ -26,7 +27,7 @@ export const jogos: Jogo[] = [
     resumo: "Tower defense no convés, 12 ondas.",
     texto: "A marinha invade pelo convés. Posicione a tripulação, cada um com seu jeito de lutar, e não deixe levarem o tesouro.",
     cor: "#093f7a",
-    recorde: { chave: "defenda-o-navio:recorde", formato: (n) => `onda ${n}` },
+    recorde: { chave: "defenda-o-navio:recorde", formato: (n) => (n > 12 ? "venceu as 12 ondas" : `onda ${n}`), max: 13 },
   },
   {
     slug: "log-pose-doido",
@@ -65,6 +66,15 @@ export const jogos: Jogo[] = [
     recorde: { chave: "fuga-da-akatsuki:recorde", formato: (n) => `${n} pontos` },
   },
   {
+    slug: "ramen-do-ichiraku",
+    nome: "Ramen do Ichiraku",
+    tipo: "Rapidinho",
+    resumo: "Monte tigelas antes da fila cansar.",
+    texto: "Leia o pedido, escolha o caldo, junte os ingredientes e sirva rapidinho. Acertos seguidos viram combo.",
+    cor: "#7a2a2a",
+    recorde: { chave: "ramen-do-ichiraku:recorde", formato: (n) => `${n} pontos` },
+  },
+  {
     slug: "duelo-pirata",
     nome: "Duelo Pirata",
     tipo: "Habilidade",
@@ -87,6 +97,14 @@ export const jogos: Jogo[] = [
     resumo: "16 ninjas, 4 grupos escondidos.",
     texto: "Separe os 16 nomes em 4 grupos: quem usa Sharingan, quem é da Akatsuki, quem é do time 7... e cuidado com as pegadinhas.",
     cor: "#3d2a6e",
+  },
+  {
+    slug: "dilemas-shinobi",
+    nome: "Dilemas Shinobi",
+    tipo: "Rapidinho",
+    resumo: "O que você faria? Vote e compare.",
+    texto: "Cumprir a ordem ou salvar o clã? Escolha o que você faria e veja o que o resto da tripulação respondeu.",
+    cor: "#5a3a1a",
   },
   {
     slug: "fabrica-de-ajudantes",
@@ -150,4 +168,13 @@ export function lerRecorde(j: Jogo): number {
   } catch {
     return 0;
   }
+}
+
+export const jogosComRanking = () => jogos.filter((j) => j.recorde);
+
+// O ranking só aceita inteiro positivo, de jogo que tem recorde, até o máximo do jogo.
+export function recordeValido(slug: unknown, valor: unknown): boolean {
+  const j = jogos.find((x) => x.slug === slug);
+  if (!j?.recorde) return false;
+  return Number.isInteger(valor) && (valor as number) > 0 && (valor as number) <= (j.recorde.max ?? 1_000_000);
 }

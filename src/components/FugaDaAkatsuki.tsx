@@ -1,5 +1,6 @@
 "use client";
 
+import { mandarProRanking } from "@/lib/enviarRecorde";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { H, NINJA_A, NINJA_L, NINJA_X, VIDAS, W, apertar as apertarLogica, novoEstado, pontos, rank, soltar as soltarLogica, step, type Estado } from "@/lib/akatsuki";
 
@@ -25,6 +26,7 @@ function salvarRecorde(n: number) {
   } catch {
     // Sem storage: o recorde vale só nesta visita.
   }
+  mandarProRanking("fuga-da-akatsuki", n);
 }
 
 // ---------- desenho ----------

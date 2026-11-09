@@ -1,5 +1,6 @@
 "use client";
 
+import { mandarProRanking } from "@/lib/enviarRecorde";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   AVISO_LOGPOSE,
@@ -51,6 +52,7 @@ function salvarRecorde(p: number) {
   } catch {
     // Sem storage: o recorde vale só nesta visita.
   }
+  mandarProRanking("log-pose-doido", p);
 }
 
 // Pra onde a seta ↑ leva agora, como seta.

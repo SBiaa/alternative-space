@@ -1,5 +1,6 @@
 "use client";
 
+import { mandarProRanking } from "@/lib/enviarRecorde";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   H,
@@ -56,6 +57,7 @@ function salvarRecorde(m: number) {
   } catch {
     // Sem storage (aba anônima, bloqueado): o recorde vale só nesta visita.
   }
+  mandarProRanking("picles-no-ralo", m);
 }
 
 // ---------- desenho ----------

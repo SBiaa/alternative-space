@@ -1,32 +1,28 @@
 "use client";
 
+import { mandarProRanking } from "@/lib/enviarRecorde";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   FASES,
   H,
-  VIDAS,
   W,
   apertar as apertarLogica,
   cancelar,
-  multiplicador,
   novoEstado,
   rank,
   soltar as soltarLogica,
   step,
   zona,
   type Estado,
+  type FaseId,
   type Status,
 } from "@/lib/chakra";
+import { AZUL, anel, aura, aviso, barra, cena, esfera, frente, hud, ninja, pose, reflexo, vinheta, type Modo, type Onda } from "@/lib/chakraDesenho";
 
 type Ui = "menu" | Status;
 type Faisca = { x: number; y: number; vx: number; vy: number; vida: number; cor: string; r: number; g: number };
-type Onda = { x: number; y: number; em: number };
 
 const CHAVE_RECORDE = "corrida-de-chakra:recorde";
-const AZUL = "#4fc3ff";
-const NOITE = "#01121e";
-const CREME = "#ece3be";
-const LARANJA = "#dd5d05";
 
 function lerRecorde() {
   try {
@@ -42,468 +38,7 @@ function salvarRecorde(n: number) {
   } catch {
     // Sem storage: o recorde vale só nesta visita.
   }
-}
-
-// ---------- onde o ninja fica em cada fase ----------
-
-type Pose = { x: number; y: number; rot: number; s: number; ax: number; ay: number };
-
-function pose(fase: number, prog: number, falha: number): Pose {
-  if (fase === 0) {
-    // De lado no tronco, andando pra cima. Falha: escorrega um pouco.
-    const y = 382 - prog * 64 + falha * 22;
-    return { x: 250, y, rot: -Math.PI / 2, s: 1.1, ax: 214, ay: y };
-  }
-  if (fase === 1) {
-    // Andando sobre o lago. Falha: afunda e volta.
-    const x = 90 + prog * 95;
-    const y = 300 + falha * 30;
-    return { x, y, rot: 0, s: 1.1, ax: x, ay: y - 36 };
-  }
-  return { x: 190, y: 384, rot: 0, s: 1.5, ax: 190, ay: 384 - 54 };
-}
-
-// ---------- desenho ----------
-
-function ceu(ctx: CanvasRenderingContext2D, fase: number) {
-  const cores = [
-    ["#0b2340", "#1f4a3c"],
-    ["#07152b", "#1d3b66"],
-    ["#160f38", "#3d2a5e"],
-  ][fase];
-  const g = ctx.createLinearGradient(0, 0, 0, H);
-  g.addColorStop(0, cores[0]);
-  g.addColorStop(1, cores[1]);
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = CREME;
-  for (let i = 0; i < 28; i++) {
-    const x = (i * 137.5) % 640;
-    const y = (i * 71.3) % 220;
-    ctx.globalAlpha = 0.25 + ((i * 7) % 5) * 0.1;
-    ctx.fillRect(x, y, 2, 2);
-  }
-  ctx.globalAlpha = 1;
-}
-
-function cenaArvore(ctx: CanvasRenderingContext2D, passo: number, total: number) {
-  // Mata ao fundo
-  ctx.fillStyle = "#123326";
-  for (let i = 0; i < 9; i++) {
-    const x = i * 80 - 20;
-    const h = 150 + ((i * 53) % 90);
-    ctx.beginPath();
-    ctx.moveTo(x, 420);
-    ctx.lineTo(x + 40, 420 - h);
-    ctx.lineTo(x + 80, 420);
-    ctx.fill();
-  }
-  // Chão
-  ctx.fillStyle = "#1b3a22";
-  ctx.fillRect(0, 410, 640, 40);
-  // Tronco
-  const g = ctx.createLinearGradient(250, 0, 370, 0);
-  g.addColorStop(0, "#6b4426");
-  g.addColorStop(0.5, "#8a5a33");
-  g.addColorStop(1, "#4d2f1a");
-  ctx.fillStyle = g;
-  ctx.fillRect(250, 0, 120, 412);
-  ctx.strokeStyle = NOITE;
-  ctx.lineWidth = 3;
-  ctx.strokeRect(250, -4, 120, 416);
-  // Casca
-  ctx.strokeStyle = "rgba(1,18,30,0.35)";
-  ctx.lineWidth = 2;
-  for (let i = 0; i < 14; i++) {
-    const x = 262 + ((i * 37) % 96);
-    const y = (i * 61) % 400;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.quadraticCurveTo(x + 4, y + 18, x, y + 34);
-    ctx.stroke();
-  }
-  // Galho e copa lá em cima
-  ctx.fillStyle = "#2c5a2e";
-  ctx.beginPath();
-  ctx.arc(310, -10, 110, 0, Math.PI);
-  ctx.fill();
-  // Marcas de kunai: cada passo é um risco no tronco
-  for (let k = 1; k <= total; k++) {
-    const y = 382 - k * 64;
-    ctx.strokeStyle = k <= passo ? "#f2a66e" : "rgba(236,227,190,0.25)";
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.moveTo(254, y);
-    ctx.lineTo(282, y - 6);
-    ctx.stroke();
-  }
-}
-
-function cenaAgua(ctx: CanvasRenderingContext2D, t: number, ondas: Onda[], passo: number, total: number) {
-  // Lua
-  ctx.fillStyle = "#f6f0d6";
-  ctx.beginPath();
-  ctx.arc(520, 86, 34, 0, Math.PI * 2);
-  ctx.fill();
-  // Margem do outro lado
-  ctx.fillStyle = "#0d2238";
-  ctx.beginPath();
-  ctx.moveTo(0, 300);
-  for (let x = 0; x <= 640; x += 40) ctx.lineTo(x, 286 - Math.abs(Math.sin(x * 0.02)) * 26);
-  ctx.lineTo(640, 300);
-  ctx.fill();
-  // Lago
-  const g = ctx.createLinearGradient(0, 300, 0, H);
-  g.addColorStop(0, "#1d4a7a");
-  g.addColorStop(1, "#08203f");
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 300, 640, 150);
-  // Reflexo da lua
-  ctx.fillStyle = "rgba(246,240,214,0.18)";
-  for (let i = 0; i < 6; i++) {
-    const y = 316 + i * 20;
-    const w = 50 - i * 5 + Math.sin(t * 2 + i) * 8;
-    ctx.fillRect(520 - w / 2, y, w, 3);
-  }
-  // Linhas de onda
-  ctx.strokeStyle = "rgba(160,210,255,0.18)";
-  ctx.lineWidth = 2;
-  for (let i = 0; i < 5; i++) {
-    const y = 330 + i * 24;
-    ctx.beginPath();
-    for (let x = 0; x <= 640; x += 16) ctx.lineTo(x, y + Math.sin(x * 0.04 + t * 1.5 + i) * 3);
-    ctx.stroke();
-  }
-  // Pedra de chegada
-  ctx.fillStyle = "#3a4a5a";
-  ctx.beginPath();
-  ctx.ellipse(90 + total * 95 + 30, 304, 34, 12, 0, Math.PI, 0);
-  ctx.fill();
-  // Pegadas de chakra nos passos já dados
-  ctx.fillStyle = "rgba(79,195,255,0.35)";
-  for (let k = 1; k <= passo; k++) {
-    ctx.beginPath();
-    ctx.ellipse(90 + k * 95, 302, 10, 3, 0, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  // Ondinhas dos passos
-  for (const o of ondas) {
-    const idade = t - o.em;
-    if (idade < 0 || idade > 1.4) continue;
-    ctx.strokeStyle = `rgba(200,235,255,${0.6 * (1 - idade / 1.4)})`;
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.ellipse(o.x, o.y, 10 + idade * 50, 3 + idade * 10, 0, 0, Math.PI * 2);
-    ctx.stroke();
-  }
-}
-
-function cenaRasengan(ctx: CanvasRenderingContext2D, passo: number) {
-  // Campo de treino
-  ctx.fillStyle = "#241a3e";
-  ctx.beginPath();
-  ctx.moveTo(0, 384);
-  for (let x = 0; x <= 640; x += 32) ctx.lineTo(x, 330 - Math.abs(Math.sin(x * 0.013)) * 60);
-  ctx.lineTo(640, 384);
-  ctx.fill();
-  ctx.fillStyle = "#2e3b2a";
-  ctx.fillRect(0, 384, 640, 66);
-  // Postes de treino
-  ctx.fillStyle = "#6b4426";
-  for (const x of [60, 600]) ctx.fillRect(x, 320, 14, 66);
-  // Pedra alvo, rachando a cada acerto
-  ctx.fillStyle = "#6a6a78";
-  ctx.strokeStyle = NOITE;
-  ctx.lineWidth = 3;
-  ctx.beginPath();
-  ctx.moveTo(430, 386);
-  ctx.lineTo(444, 300);
-  ctx.lineTo(500, 276);
-  ctx.lineTo(556, 300);
-  ctx.lineTo(570, 386);
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
-  const rachas = [
-    [[470, 300], [486, 330], [478, 356]],
-    [[530, 296], [516, 326], [528, 360]],
-    [[452, 340], [482, 344], [500, 372]],
-    [[498, 282], [500, 318], [520, 340]],
-  ];
-  ctx.lineWidth = 2.5;
-  for (let i = 0; i < Math.min(passo, rachas.length); i++) {
-    ctx.beginPath();
-    rachas[i].forEach(([x, y], j) => (j ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
-    ctx.stroke();
-  }
-}
-
-function esfera(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, t: number) {
-  if (r <= 0.5) return;
-  const g = ctx.createRadialGradient(x, y, 0, x, y, r * 1.8);
-  g.addColorStop(0, "rgba(255,255,255,0.95)");
-  g.addColorStop(0.35, "rgba(140,220,255,0.9)");
-  g.addColorStop(0.6, "rgba(79,195,255,0.45)");
-  g.addColorStop(1, "rgba(79,195,255,0)");
-  ctx.fillStyle = g;
-  ctx.beginPath();
-  ctx.arc(x, y, r * 1.8, 0, Math.PI * 2);
-  ctx.fill();
-  // Espirais girando
-  ctx.strokeStyle = "rgba(255,255,255,0.8)";
-  ctx.lineWidth = 1.5;
-  for (let i = 0; i < 3; i++) {
-    const a0 = t * 9 + (i * Math.PI * 2) / 3;
-    ctx.beginPath();
-    for (let k = 0; k <= 12; k++) {
-      const a = a0 + k * 0.32;
-      const rr = (r * k) / 12;
-      ctx.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr * 0.8);
-    }
-    ctx.stroke();
-  }
-}
-
-// Ninja de lado, virado pra direita, com os pés em (0,0).
-function ninja(ctx: CanvasRenderingContext2D, p: Pose, t: number, anda: number, bracoFrente: boolean) {
-  ctx.save();
-  ctx.translate(p.x, p.y);
-  ctx.rotate(p.rot);
-  ctx.scale(p.s, p.s);
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-  const sw = Math.sin(t * 10) * 0.5 * anda;
-  const vento = Math.sin(t * 6);
-
-  // Pernas
-  ctx.strokeStyle = "#14213d";
-  ctx.lineWidth = 6;
-  for (const lado of [1, -1]) {
-    const a = sw * lado;
-    ctx.beginPath();
-    ctx.moveTo(0, -24);
-    ctx.lineTo(Math.sin(a) * 22, -24 + Math.cos(a) * 24);
-    ctx.stroke();
-  }
-  // Fitas da bandana, voando pra trás
-  ctx.strokeStyle = "#2f4f8a";
-  ctx.lineWidth = 3;
-  ctx.beginPath();
-  ctx.moveTo(-10, -63);
-  ctx.quadraticCurveTo(-20, -62 + vento * 3, -28, -58 + vento * 5);
-  ctx.moveTo(-10, -62);
-  ctx.quadraticCurveTo(-18, -58 + vento * 2, -24, -52 + vento * 4);
-  ctx.stroke();
-  // Corpo
-  ctx.fillStyle = "#1d3557";
-  ctx.strokeStyle = NOITE;
-  ctx.lineWidth = 2.5;
-  ctx.beginPath();
-  ctx.roundRect(-9, -48, 18, 27, 5);
-  ctx.fill();
-  ctx.stroke();
-  // Cachecol
-  ctx.fillStyle = LARANJA;
-  ctx.beginPath();
-  ctx.roundRect(-10, -49, 20, 6, 3);
-  ctx.fill();
-  ctx.beginPath();
-  ctx.moveTo(-8, -46);
-  ctx.quadraticCurveTo(-18, -44 + vento * 3, -24, -38 + vento * 4);
-  ctx.lineTo(-20, -36 + vento * 4);
-  ctx.quadraticCurveTo(-14, -42, -6, -43);
-  ctx.fill();
-  // Braço
-  ctx.strokeStyle = "#1d3557";
-  ctx.lineWidth = 5.5;
-  ctx.beginPath();
-  ctx.moveTo(0, -43);
-  if (bracoFrente) ctx.lineTo(19, -40);
-  else ctx.lineTo(-Math.sin(sw) * 12, -27);
-  ctx.stroke();
-  // Cabeça
-  ctx.fillStyle = "#f1c79a";
-  ctx.strokeStyle = NOITE;
-  ctx.lineWidth = 2.5;
-  ctx.beginPath();
-  ctx.arc(0, -58, 11, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.stroke();
-  // Cabelo espetado
-  ctx.fillStyle = "#2a2a2a";
-  ctx.beginPath();
-  ctx.moveTo(-12, -60);
-  ctx.lineTo(-16, -70);
-  ctx.lineTo(-8, -68);
-  ctx.lineTo(-6, -78);
-  ctx.lineTo(1, -70);
-  ctx.lineTo(7, -76);
-  ctx.lineTo(9, -67);
-  ctx.lineTo(12, -62);
-  ctx.closePath();
-  ctx.fill();
-  // Bandana com placa lisa
-  ctx.fillStyle = "#2f4f8a";
-  ctx.fillRect(-11, -66, 22, 5);
-  ctx.fillStyle = "#c9ccd6";
-  ctx.fillRect(-2, -67.5, 11, 7);
-  // Olho
-  ctx.fillStyle = NOITE;
-  ctx.beginPath();
-  ctx.arc(6, -56, 1.8, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.restore();
-}
-
-function aura(ctx: CanvasRenderingContext2D, x: number, y: number, forca: number, passou: boolean, t: number) {
-  if (forca <= 0.01) return;
-  const r = 30 + forca * 34 + Math.sin(t * 18) * 3;
-  const cor = passou ? "255,120,80" : "79,195,255";
-  const g = ctx.createRadialGradient(x, y, 4, x, y, r);
-  g.addColorStop(0, `rgba(${cor},${0.15 + forca * 0.35})`);
-  g.addColorStop(1, `rgba(${cor},0)`);
-  ctx.fillStyle = g;
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, Math.PI * 2);
-  ctx.fill();
-}
-
-function barra(ctx: CanvasRenderingContext2D, e: Estado, fonte: string) {
-  ctx.fillStyle = "rgba(1,18,30,0.55)";
-  ctx.fillRect(640, 0, 160, H);
-  const x = 690;
-  const y0 = 64;
-  const h = 330;
-  const w = 60;
-  const yDe = (v: number) => y0 + h * (1 - v);
-
-  ctx.font = `700 15px ${fonte}`;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillStyle = CREME;
-  ctx.fillText("CHAKRA", x + w / 2, 40);
-
-  ctx.fillStyle = "#0b1a2a";
-  ctx.beginPath();
-  ctx.roundRect(x, y0, w, h, 8);
-  ctx.fill();
-
-  // Faixa certa e o miolo "perfeito"
-  const z = zona(e);
-  const mostra = e.status === "pronto" || e.status === "carregando" || e.status === "resultado";
-  if (mostra) {
-    ctx.fillStyle = "rgba(124,194,67,0.45)";
-    ctx.fillRect(x, yDe(z.centro + z.largura / 2), w, h * z.largura);
-    ctx.fillStyle = "rgba(200,240,140,0.85)";
-    const miolo = z.largura * 0.35;
-    ctx.fillRect(x, yDe(z.centro + miolo / 2), w, h * miolo);
-  }
-
-  // Carga
-  if (e.carga > 0) {
-    const passou = e.carga > z.centro + z.largura / 2;
-    const g = ctx.createLinearGradient(0, y0 + h, 0, y0);
-    g.addColorStop(0, "#1a6fb0");
-    g.addColorStop(1, passou ? "#ff7a50" : AZUL);
-    ctx.fillStyle = g;
-    ctx.globalAlpha = 0.85;
-    ctx.fillRect(x + 8, yDe(e.carga), w - 16, h * e.carga);
-    ctx.globalAlpha = 1;
-    ctx.strokeStyle = "#ffffff";
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(x - 6, yDe(e.carga));
-    ctx.lineTo(x + w + 6, yDe(e.carga));
-    ctx.stroke();
-  }
-
-  // Topo da barra: daqui estoura
-  ctx.fillStyle = "#ab392f";
-  ctx.fillRect(x, y0, w, 6);
-  ctx.strokeStyle = CREME;
-  ctx.lineWidth = 3;
-  ctx.beginPath();
-  ctx.roundRect(x, y0, w, h, 8);
-  ctx.stroke();
-}
-
-function texto(ctx: CanvasRenderingContext2D, s: string, x: number, y: number, cor: string) {
-  ctx.strokeText(s, x, y);
-  ctx.fillStyle = cor;
-  ctx.fillText(s, x, y);
-}
-
-function hud(ctx: CanvasRenderingContext2D, e: Estado, recorde: number, fonte: string) {
-  const f = FASES[e.fase];
-  ctx.textAlign = "left";
-  ctx.textBaseline = "top";
-  ctx.lineJoin = "round";
-  ctx.strokeStyle = NOITE;
-  ctx.lineWidth = 5;
-  ctx.font = `700 20px ${fonte}`;
-  texto(ctx, `Fase ${e.fase + 1}/3 · ${f.nome}`, 16, 14, CREME);
-  ctx.font = `700 16px ${fonte}`;
-  const combo = e.combo > 0 ? `  combo x${multiplicador(e.combo).toFixed(1)}` : "";
-  texto(ctx, `${e.pontos} pts${combo}`, 16, 42, "#f2a66e");
-  if (recorde > 0) texto(ctx, `recorde ${recorde}`, 16, 64, "rgba(236,227,190,0.7)");
-
-  // Passos da fase
-  for (let k = 0; k < f.passos; k++) {
-    ctx.beginPath();
-    ctx.arc(26 + k * 20, 98, 6, 0, Math.PI * 2);
-    ctx.fillStyle = k < e.passo ? AZUL : "rgba(236,227,190,0.2)";
-    ctx.fill();
-    ctx.strokeStyle = NOITE;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-  }
-  // Vidas: gotinhas de chakra
-  for (let k = 0; k < VIDAS; k++) {
-    const x = 26 + k * 22;
-    const y = 124;
-    ctx.beginPath();
-    ctx.moveTo(x, y - 9);
-    ctx.quadraticCurveTo(x + 8, y, x, y + 7);
-    ctx.quadraticCurveTo(x - 8, y, x, y - 9);
-    ctx.fillStyle = k < e.vidas ? "#ff6b6b" : "rgba(236,227,190,0.15)";
-    ctx.fill();
-    ctx.stroke();
-  }
-}
-
-function aviso(ctx: CanvasRenderingContext2D, e: Estado, fonte: string) {
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.strokeStyle = NOITE;
-  ctx.lineJoin = "round";
-  const u = e.ultima;
-  if (u && e.status === "resultado") {
-    const idade = e.t - u.em;
-    const esc = 0.8 + 0.2 * Math.min(1, idade / 0.12);
-    ctx.save();
-    ctx.globalAlpha = Math.max(0, Math.min(1, (0.9 - idade) / 0.25));
-    ctx.translate(320, 190 - idade * 20);
-    ctx.scale(esc, esc);
-    ctx.lineWidth = 8;
-    ctx.font = `700 48px ${fonte}`;
-    const f = FASES[e.fase];
-    const [txt, cor] =
-      u.nota === "perfeito" ? ["Perfeito!", "#c8f0ff"] : u.nota === "bom" ? ["Boa!", CREME] : [f.falhas[u.nota], "#ff8a6e"];
-    texto(ctx, txt, 0, 0, cor);
-    if (u.pontos > 0) {
-      ctx.lineWidth = 5;
-      ctx.font = `700 22px ${fonte}`;
-      texto(ctx, `+${u.pontos}`, 0, 40, "#f2a66e");
-    }
-    ctx.restore();
-  }
-  if (e.status === "pronto") {
-    ctx.globalAlpha = 0.6 + 0.4 * Math.sin(e.t * 5);
-    ctx.lineWidth = 5;
-    ctx.font = `700 20px ${fonte}`;
-    texto(ctx, "Segura pra concentrar chakra", 320, 432, CREME);
-    ctx.globalAlpha = 1;
-  }
+  mandarProRanking("corrida-de-chakra", n);
 }
 
 // ---------- componente ----------
@@ -563,6 +98,8 @@ export function CorridaDeChakra() {
     let faiscas: Faisca[] = [];
     let ondas: Onda[] = [];
     let sacode = 0;
+    let anelEm = -99;
+    let flash = { em: -99, cor: "255,255,255" };
 
     const espalhar = (x: number, y: number, n: number, cor: string, vel: number, gravidade = 300) => {
       for (let i = 0; i < n; i++) {
@@ -605,32 +142,41 @@ export function CorridaDeChakra() {
       const p0 = pose(e.fase, prog, 0);
       if (e.ultima && e.ultima.em !== ultimaVista) {
         ultimaVista = e.ultima.em;
-        const acerto = e.ultima.nota === "perfeito" || e.ultima.nota === "bom";
-        if (acerto) {
-          espalhar(p0.ax, p0.ay, e.ultima.nota === "perfeito" ? 26 : 14, AZUL, 220, 0);
-          if (e.fase === 1) ondas.push({ x: 90 + e.passo * 95, y: 302, em: relogio });
+        const nota = e.ultima.nota;
+        if (nota === "perfeito" || nota === "bom") {
+          espalhar(p0.ax, p0.ay, nota === "perfeito" ? 30 : 14, AZUL, 240, 0);
+          if (nota === "perfeito") {
+            anelEm = relogio;
+            flash = { em: relogio, cor: "200,240,255" };
+          }
+          if (e.fase === 1) ondas.push({ x: 70 + e.passo * 96, y: 336, em: relogio });
         } else {
           falhaEm = relogio;
           sacode = 0.3;
+          flash = { em: relogio, cor: "171,57,47" };
           const cor = e.fase === 0 ? "#8a5a33" : e.fase === 1 ? "#bfe6ff" : AZUL;
-          espalhar(e.fase === 2 ? 240 : p0.ax, e.fase === 2 ? 320 : p0.ay, 22, cor, 260, e.fase === 2 ? 0 : 500);
-          if (e.fase === 1) ondas.push({ x: p0.x, y: 304, em: relogio });
+          const [fx, fy] = e.fase === 2 ? [p0.x + 50, p0.y - 75] : [p0.ax, p0.ay];
+          espalhar(fx, fy, 24, cor, 260, e.fase === 2 ? 0 : 500);
+          if (e.fase === 1) ondas.push({ x: p0.x, y: 338, em: relogio });
         }
       }
       const idadeFalha = relogio - falhaEm;
       const falha = idadeFalha < 0.7 ? Math.sin((idadeFalha / 0.7) * Math.PI) : 0;
       const p = pose(e.fase, prog, falha);
+      const carregando = e.status === "carregando";
+      const z = zona(e);
+      const passou = e.carga > z.centro + z.largura / 2;
 
       // Fagulhas de chakra subindo enquanto segura
-      if (e.status === "carregando" && Math.random() < 0.6) {
+      if (carregando && Math.random() < 0.7) {
         faiscas.push({
-          x: p.ax + (Math.random() - 0.5) * 40,
-          y: p.ay + 20,
+          x: p.ax + (Math.random() - 0.5) * 50,
+          y: p.ay + 24,
           vx: (Math.random() - 0.5) * 30,
-          vy: -60 - Math.random() * 80 * (1 + e.carga),
+          vy: -60 - Math.random() * 90 * (1 + e.carga),
           vida: 0.6,
-          cor: AZUL,
-          r: 2,
+          cor: passou ? "#ff9a7e" : AZUL,
+          r: 1.5 + Math.random() * 1.5,
           g: 0,
         });
       }
@@ -644,27 +190,27 @@ export function CorridaDeChakra() {
       sacode = Math.max(0, sacode - dt);
 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.save();
       if (sacode > 0) ctx.translate((Math.random() - 0.5) * 30 * sacode, (Math.random() - 0.5) * 30 * sacode);
-      ceu(ctx, e.fase);
-      const f = FASES[e.fase];
-      if (e.fase === 0) cenaArvore(ctx, e.passo, f.passos);
-      else if (e.fase === 1) cenaAgua(ctx, relogio, ondas, e.passo, f.passos);
-      else cenaRasengan(ctx, e.passo);
+      cena(ctx, e.fase, relogio, p.cam, e.passo, ondas);
 
-      const z = zona(e);
-      aura(ctx, p.ax, p.ay, e.status === "carregando" ? e.carga : 0, e.carga > z.centro + z.largura / 2, relogio);
       const andando = e.fase !== 2 && Math.abs(e.passo - prog) > 0.05 ? 1 : 0;
-      const parado = !emJogo && e.fase !== 2 ? 0.25 : 0; // no menu ele "marcha" de leve
-      ninja(ctx, p, relogio, Math.max(andando, parado), e.fase === 2);
+      const modo: Modo = e.fase === 2 ? "esfera" : carregando ? "selo" : "normal";
+      const desenharNinja = () => ninja(ctx, p, relogio, andando, modo, carregando);
+      if (e.fase === 1) reflexo(ctx, p, desenharNinja);
+      aura(ctx, p.ax, p.ay, p.s, carregando ? e.carga : 0, passou, relogio);
+      desenharNinja();
 
       if (e.fase === 2) {
         // A esfera cresce a cada acerto e incha enquanto segura
-        const base = 6 + prog * 7;
-        const extra = e.status === "carregando" ? e.carga * 12 : 0;
-        const r = falha > 0 ? base * (1 - falha * 0.6) : base + extra;
-        esfera(ctx, p.x + 19 * p.s + r * 0.6, p.y - 40 * p.s, r, relogio);
+        const base = 8 + prog * 8;
+        const extra = carregando ? e.carga * 14 : 0;
+        const r = falha > 0 ? base * (1 - falha * 0.7) : base + extra;
+        esfera(ctx, p.x + 24 * p.s + r * 0.7, p.y - 43 * p.s, r, relogio, carregando && passou);
       }
 
+      ctx.save();
+      ctx.globalCompositeOperation = "lighter";
       for (const fa of faiscas) {
         ctx.globalAlpha = Math.max(0, Math.min(1, fa.vida * 2));
         ctx.fillStyle = fa.cor;
@@ -672,10 +218,20 @@ export function CorridaDeChakra() {
         ctx.arc(fa.x, fa.y, fa.r, 0, Math.PI * 2);
         ctx.fill();
       }
-      ctx.globalAlpha = 1;
+      ctx.restore();
+      anel(ctx, p.ax, p.ay, relogio - anelEm);
+      frente(ctx, e.fase, relogio);
+      vinheta(ctx);
+      ctx.restore();
 
+      const idadeFlash = relogio - flash.em;
+      if (idadeFlash < 0.3) {
+        ctx.fillStyle = `rgba(${flash.cor},${0.2 * (1 - idadeFlash / 0.3)})`;
+        ctx.fillRect(0, 0, W, H);
+      }
+
+      barra(ctx, e, relogio, fonte);
       if (emJogo) {
-        barra(ctx, e, fonte);
         hud(ctx, e, recorde.current, fonte);
         aviso(ctx, e, fonte);
       }
@@ -729,27 +285,52 @@ export function CorridaDeChakra() {
       <canvas ref={canvasRef} className="block h-full w-full" aria-label="Corrida de Chakra: jogo de segurar e soltar na hora certa" />
 
       {uiState === "menu" && (
-        <div className="absolute inset-0 flex flex-col items-center justify-end gap-3 bg-gradient-to-t from-noite/85 via-noite/20 to-transparent p-5 text-center sm:justify-center sm:bg-noite/45">
-          <h2 className="font-titulo text-4xl font-bold leading-none text-creme sm:text-6xl" style={{ textShadow: "3px 3px 0 #01121e" }}>
+        <div className="absolute inset-0 flex flex-col items-center justify-end gap-2.5 bg-gradient-to-t from-noite/90 via-noite/30 to-transparent p-4 text-center sm:justify-center sm:gap-4 sm:bg-noite/50">
+          <span className="etiqueta hidden rounded-full border border-[#4fc3ff]/50 bg-noite/60 px-3 py-1 text-[11px] text-[#9fdcff] sm:inline">
+            3 fases · 1 botão
+          </span>
+          <h2
+            className="font-titulo text-[28px] font-bold leading-none text-creme sm:text-6xl"
+            style={{ textShadow: "3px 3px 0 #01121e, 0 0 24px rgb(79 195 255 / 0.55)" }}
+          >
             Corrida de Chakra
           </h2>
-          <p className="max-w-md text-sm text-creme sm:text-base">
-            <strong>Segura</strong> pra concentrar chakra, <strong>solta</strong> quando a barra estiver na faixa verde.
+          <p className="hidden max-w-md text-base text-creme sm:block">
+            <strong>Segura</strong> pra concentrar chakra e <strong>solta</strong> quando a barra estiver na faixa verde.
           </p>
-          <button type="button" onClick={comecar} className="btn bg-laranja text-noite !px-6 !py-2.5 !text-lg">
+          <ul className="hidden list-none gap-2 p-0 sm:flex">
+            {FASES.map((f, i) => (
+              <li key={f.id} className="flex items-center gap-1.5 rounded-full border border-creme/20 bg-noite/60 py-1 pl-1 pr-3 text-xs text-areia">
+                <Emblema id={f.id} className="size-6" />
+                {i + 1}. {f.nome}
+              </li>
+            ))}
+          </ul>
+          <button type="button" onClick={comecar} className="btn bg-laranja text-noite !px-5 !py-1.5 !text-base sm:!px-7 sm:!py-2.5 sm:!text-lg">
             Jogar
           </button>
         </div>
       )}
 
       {uiState === "intro" && (
-        <div className="absolute inset-0 flex items-center justify-center bg-noite/45 p-3">
-          <div className="card flex w-full max-w-sm flex-col items-center gap-1.5 !p-4 text-center sm:gap-2 sm:!p-6">
-            <span className="etiqueta text-[11px] text-estrela">Fase {faseUi + 1} de {FASES.length}</span>
-            <p className="font-titulo text-3xl font-bold leading-none text-azul sm:text-4xl">{fase.nome}</p>
-            <p className="text-sm leading-snug text-tinta sm:text-base">{fase.dica}</p>
-            <p className="etiqueta text-[11px] text-neutro">{fase.passos} acertos pra passar</p>
-            <button type="button" onClick={comecarFase} className="btn mt-1 bg-laranja text-noite !px-5 !py-2 !text-base">
+        <div className="absolute inset-0 flex items-center justify-center bg-noite/50 p-3">
+          <div className="flex w-full max-w-sm flex-col items-center gap-1 rounded-xl border border-[#4fc3ff]/40 bg-noite/85 p-3 text-center shadow-[0_0_40px_rgb(79_195_255/0.2)] sm:gap-3 sm:p-6">
+            <div className="hidden items-center gap-1.5 sm:flex" aria-label={`Fase ${faseUi + 1} de ${FASES.length}`}>
+              {FASES.map((f, i) => (
+                <span
+                  key={f.id}
+                  className={`h-1.5 rounded-full ${i === faseUi ? "w-8 bg-[#4fc3ff]" : i < faseUi ? "w-4 bg-[#4fc3ff]/50" : "w-4 bg-creme/20"}`}
+                />
+              ))}
+            </div>
+            <Emblema id={fase.id} className="hidden size-16 sm:block" />
+            <span className="etiqueta text-[10px] text-laranja-claro sm:text-[11px]">
+              Fase {faseUi + 1} de {FASES.length}
+            </span>
+            <p className="font-titulo text-2xl font-bold leading-none text-creme sm:text-4xl">{fase.nome}</p>
+            <p className="hidden text-base leading-snug text-areia sm:block">{fase.dica}</p>
+            <p className="etiqueta text-[10px] text-[#9fdcff] sm:text-[11px]">{fase.passos} acertos pra passar</p>
+            <button type="button" onClick={comecarFase} className="btn mt-1 bg-laranja text-noite !px-5 !py-1.5 !text-sm sm:!px-6 sm:!py-2 sm:!text-base">
               Começar
             </button>
           </div>
@@ -757,21 +338,61 @@ export function CorridaDeChakra() {
       )}
 
       {(uiState === "fim" || uiState === "vitoria") && fim && r && (
-        <div className="absolute inset-0 flex items-center justify-center bg-noite/55 p-3">
-          <div className="card flex w-full max-w-sm flex-col items-center gap-1.5 !p-4 text-center sm:gap-2 sm:!p-6">
-            <span className="etiqueta text-[11px] text-estrela">{fim.novo ? "Novo recorde!" : `recorde ${fim.recorde} pontos`}</span>
-            <p className="font-titulo text-4xl font-bold leading-none text-azul sm:text-5xl">{fim.pontos} pts</p>
-            <p className="etiqueta text-[11px] text-azul">
-              {fim.venceu ? "passou pelas 3 fases" : `parou em ${fase.nome.toLowerCase()}`} · {fim.acertos} acertos · {fim.perfeitos} perfeitos
-            </p>
-            <p className="font-titulo text-lg font-bold leading-tight sm:text-xl">{r.titulo}</p>
-            <p className="text-sm text-tinta">{r.texto}</p>
-            <button type="button" onClick={comecar} className="btn mt-1 bg-laranja text-noite !px-5 !py-2 !text-base">
+        <div className="absolute inset-0 flex items-center justify-center bg-noite/60 p-3">
+          <div className="card flex w-full max-w-sm flex-col items-center gap-1 !p-3 text-center sm:gap-2.5 sm:!p-6">
+            <span className="etiqueta text-[11px] text-estrela">
+              {fim.venceu ? "Treino completo!" : `Parou em ${fase.nome}`}
+              {fim.novo ? " · novo recorde!" : ""}
+            </span>
+            <p className="font-titulo text-3xl font-bold leading-none text-azul sm:text-5xl">{fim.pontos} pts</p>
+            <p className="font-titulo text-base font-bold leading-tight sm:text-xl">{r.titulo}</p>
+            <p className="hidden text-sm text-tinta sm:block">{r.texto}</p>
+            <dl className="m-0 hidden w-full grid-cols-3 gap-2 sm:grid">
+              {[
+                ["acertos", fim.acertos],
+                ["perfeitos", fim.perfeitos],
+                ["recorde", fim.recorde],
+              ].map(([rotulo, valor]) => (
+                <div key={rotulo} className="rounded-md bg-azul/8 px-1 py-1.5 sm:py-2">
+                  <dd className="m-0 font-titulo text-lg font-bold leading-none text-azul sm:text-xl">{valor}</dd>
+                  <dt className="etiqueta mt-1 text-[9px] text-neutro sm:text-[10px]">{rotulo}</dt>
+                </div>
+              ))}
+            </dl>
+            <button type="button" onClick={comecar} className="btn mt-1 bg-laranja text-noite !px-5 !py-1.5 !text-sm sm:!px-6 sm:!py-2 sm:!text-base">
               Jogar de novo
             </button>
           </div>
         </div>
       )}
     </div>
+  );
+}
+
+// Selo redondo de cada fase, pros cartões.
+function Emblema({ id, className = "" }: { id: FaseId; className?: string }) {
+  const traco = { fill: "none", stroke: "#ece3be", strokeWidth: 3, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
+      <circle cx="24" cy="24" r="22" fill="#0b2340" stroke="#4fc3ff" strokeWidth="2" />
+      {id === "arvore" && (
+        <g {...traco}>
+          <path d="M24 38V22" />
+          <path d="M24 10l9 12h-5l6 8H14l6-8h-5z" fill="#2f7148" />
+        </g>
+      )}
+      {id === "agua" && (
+        <g {...traco}>
+          <path d="M10 22q4-4 7 0t7 0 7 0 7 0" stroke="#4fc3ff" />
+          <path d="M10 30q4-4 7 0t7 0 7 0 7 0" />
+        </g>
+      )}
+      {id === "rasengan" && (
+        <g {...traco}>
+          <circle cx="24" cy="24" r="11" fill="#4fc3ff" fillOpacity="0.35" stroke="#4fc3ff" />
+          <path d="M24 24q5-1 5 4t-7 5q-8 0-8-8 0-10 10-11 11 0 12 11" />
+        </g>
+      )}
+    </svg>
   );
 }

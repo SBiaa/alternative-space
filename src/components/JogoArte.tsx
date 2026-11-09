@@ -50,6 +50,14 @@ function Icone({ slug }: { slug: string }) {
           <path d="M74 30l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" />
         </g>
       );
+    case "ramen-do-ichiraku":
+      return (
+        <g {...traco}>
+          <path d="M20 54h60q-4 28-30 28t-30-28z" />
+          <path d="M36 20l18 30M48 18l12 32" stroke={LARANJA} />
+          <path d="M34 42q4-6 8 0M50 40q4-6 8 0" strokeDasharray="3 4" />
+        </g>
+      );
     case "duelo-pirata":
       return (
         <g {...traco}>
@@ -68,6 +76,14 @@ function Icone({ slug }: { slug: string }) {
       return (
         <g {...traco}>
           {[30, 50, 70].flatMap((x) => [30, 50, 70].map((y) => <circle key={`${x}${y}`} cx={x} cy={y} r="6" fill={y === 50 ? LARANJA : "none"} stroke={y === 50 ? LARANJA : CREME} />))}
+        </g>
+      );
+    case "dilemas-shinobi":
+      return (
+        <g {...traco}>
+          <path d="M50 24v52M30 40h40" />
+          <path d="M30 40l-8 16h16zM70 40l-8 16h16z" />
+          <circle cx="30" cy="58" r="4" fill={LARANJA} stroke={LARANJA} />
         </g>
       );
     case "fabrica-de-ajudantes":

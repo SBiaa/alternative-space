@@ -1,7 +1,8 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 import { JogoArte } from "./JogoArte";
 import { JogoRecorde, JogoTela } from "./JogoTela";
+import { RankingJogo, RankingCarregando } from "./RankingJogo";
 import { acharJogo, hrefJogo, outrosJogos } from "@/lib/jogos";
 
 type Props = {
@@ -31,6 +32,12 @@ export function JogoPagina({ slug, children, comoJogar, extra, largo }: Props) {
           </div>
           <JogoRecorde slug={slug} />
         </div>
+
+        {jogo.recorde && (
+          <Suspense fallback={<RankingCarregando />}>
+            <RankingJogo slug={slug} />
+          </Suspense>
+        )}
 
         {extra}
 

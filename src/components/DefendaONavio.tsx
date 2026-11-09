@@ -1,5 +1,6 @@
 "use client";
 
+import { mandarProRanking } from "@/lib/enviarRecorde";
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 import {
   CELL,
@@ -53,6 +54,7 @@ function salvarRecorde(onda: number) {
   } catch {
     // Sem storage: o recorde vale só nesta visita.
   }
+  mandarProRanking("defenda-o-navio", onda);
 }
 
 // ---------- desenho: cenário ----------

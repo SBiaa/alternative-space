@@ -21,7 +21,10 @@ export default function Page() {
             <h1 className="text-[28px] font-semibold leading-[1.05] tracking-[-0.02em] sm:text-[44px]">Fliperama</h1>
             <p className="hidden text-base text-areia sm:block">Joguinhos rápidos pra uma pausa na base.</p>
           </div>
-          <JogarAbas atual="fliperama" />
+          <div className="flex items-center gap-3">
+            <Link href="/jogos/ranking" className="btn border border-creme/35 bg-creme/8 !px-4 !py-2.75 !text-[15px] text-creme no-underline hover:bg-creme/16">Ranking</Link>
+            <JogarAbas atual="fliperama" />
+          </div>
         </div>
         <Destaque />
         <Fliperama />

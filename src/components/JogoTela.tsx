@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { mandarProRanking } from "@/lib/enviarRecorde";
 import { acharJogo, lerRecorde } from "@/lib/jogos";
 
 // Topo da página do jogo (voltar, nome, tela cheia) e a área onde o jogo roda.
@@ -58,8 +59,11 @@ export function JogoRecorde({ slug }: { slug: string }) {
   const jogo = acharJogo(slug);
   const [valor, setValor] = useState<number | null>(null);
   useEffect(() => {
+    const v = lerRecorde(jogo);
     // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage só existe no navegador
-    setValor(lerRecorde(jogo));
+    setValor(v);
+    // Recorde de antes do ranking existir (ou feito sem conta): sobe agora. Sem conta, o servidor ignora.
+    if (v > 0) mandarProRanking(jogo.slug, v);
   }, [jogo]);
   if (!jogo.recorde) return null;
   return (
@@ -67,7 +71,7 @@ export function JogoRecorde({ slug }: { slug: string }) {
       <span className="etiqueta text-[10px] text-azul">Seu recorde</span>
       <span className="text-2xl font-bold leading-tight text-azul">{valor ? jogo.recorde.formato(valor) : "—"}</span>
       <span className="text-[13px] leading-snug text-neutro">
-        {valor ? "Fica salvo neste navegador. Bate de novo?" : "Ainda não jogou aqui. A primeira partida já vira recorde."}
+        {valor ? "Fica salvo neste navegador e, com conta, vai pro ranking." : "Ainda não jogou aqui. A primeira partida já vira recorde."}
       </span>
     </div>
   );
