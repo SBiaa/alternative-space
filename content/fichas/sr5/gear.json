@@ -1,0 +1,6641 @@
+[
+  {
+    "id": "75ccb148-e774-429c-b854-a27816439626",
+    "name": "Spare Clip",
+    "namePt": "Pente Extra",
+    "source": "SR5",
+    "page": 433,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "f87701a0-4ea2-47db-bcac-f5b8396c369e",
+    "name": "Speed Loader",
+    "namePt": "Carregador Rápido",
+    "source": "SR5",
+    "page": 433,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "ef9c8aae-26df-4fe6-88b3-79fbb5eb77c5",
+    "name": "Ammo: APDS",
+    "namePt": "Munição: Penetrante de Armadura",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "120",
+      "value": 120
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "0bf4113c-dedb-411d-8981-7b6af169f056",
+    "name": "Ammo: Assault Cannon",
+    "namePt": "Munição: Canhão de Assalto",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "400",
+      "value": 400
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "1315cecd-1c13-4d69-9828-a3ea535675da",
+    "name": "Ammo: Explosive Rounds",
+    "namePt": "Munição: Projéteis Explosivos",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "9F",
+      "value": 9,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "95bff6e2-d788-407b-9069-093250f89fcb",
+    "name": "Ammo: Flechette Rounds",
+    "namePt": "Munição: Projéteis Flechette",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "65",
+      "value": 65
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "0c8d16cb-6e96-4d95-8454-104a36091cf9",
+    "name": "Ammo: Gel Rounds",
+    "namePt": "Munição: Projéteis de Gel",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f486f414-ee2c-46db-92ea-c682861d8fe0",
+    "name": "Ammo: Hollow Points",
+    "namePt": "Munição: Projéteis de Ponta Oca",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "70",
+      "value": 70
+    },
+    "avail": {
+      "raw": "4F",
+      "value": 4,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "638c81a2-328b-4e22-8fb0-ee37c5e2f6c9",
+    "name": "Ammo: Injection Darts",
+    "namePt": "Munição: Dardos de Injeção",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "75",
+      "value": 75
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "63AA2CA3-E0B7-4193-8B15-290F6B5DD21E",
+    "name": "Ammo: Taurus Omni-6 Heavy",
+    "namePt": "Munição: Taurus Omni-6 Pesada",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "b2a0b340-c793-4322-8422-8b03d18a6fae",
+    "name": "Ammo: Regular Ammo",
+    "namePt": "Munição: Munição Comum",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "d9f69780-93eb-41ff-9a9c-893f8c52794e",
+    "name": "Ammo: Stick-n-Shock",
+    "namePt": "Munição: Gruda-Choque",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "e0d7aea7-52ac-4670-bac3-b13ce144257c",
+    "name": "Ammo: Tracer",
+    "namePt": "Munição: Cartuchos de Rastro",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "60",
+      "value": 60
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "8afe5065-5815-4a98-b047-2a7fed85db55",
+    "name": "Ammo: Taser Dart",
+    "namePt": "Munição: Dardos de Taser",
+    "source": "SR5",
+    "page": 434,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "3",
+      "value": 3,
+      "restriction": null
+    }
+  },
+  {
+    "id": "9bb893c0-2cab-4f7f-a0cf-bdacc940254b",
+    "name": "Ammo: DMSO Rounds",
+    "source": "SR5",
+    "page": 436,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "9e7a685f-e612-4b6b-955c-a7bc42b23682",
+    "name": "Arrow: Standard",
+    "namePt": "Flecha: Padrão",
+    "source": "SR5",
+    "page": 423,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "Rating * 2",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 12
+  },
+  {
+    "id": "775d2fed-57ab-4e63-b2e4-638ccf4a21d0",
+    "name": "Arrow: Injection",
+    "namePt": "Flecha: Injeção",
+    "source": "SR5",
+    "page": 424,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "Rating * 20",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating + 2)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 12
+  },
+  {
+    "id": "c3c2fa27-36a7-4296-aadd-627078e6e052",
+    "name": "Bolt: Standard",
+    "namePt": "Virote: Padrão",
+    "source": "SR5",
+    "page": 424,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "7d697849-0a11-4a38-8f07-2e5becf8efe0",
+    "name": "Bolt: Injection",
+    "namePt": "Virote: Injeção",
+    "source": "SR5",
+    "page": 424,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "d9bf2003-1911-4e65-b6a1-8babb761dd85",
+    "name": "Throwing Knife",
+    "namePt": "Faca de Arremesso",
+    "source": "SR5",
+    "page": 424,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "b4bbdbd3-1f65-44e5-b196-6ccbee1cc182",
+    "name": "Shuriken",
+    "namePt": "Shuriken",
+    "source": "SR5",
+    "page": 424,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f4b92e14-fe1f-4be4-ad73-aed10e1f73b4",
+    "name": "Grenade: Flash-Bang",
+    "namePt": "Granada: Atordoamento",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "8e04c493-b04d-4511-ba68-7b2e0edbf3aa",
+    "name": "Grenade: Flash-Pak",
+    "namePt": "Granada: Ofuscante",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "125",
+      "value": 125
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "7c5e7573-d75e-43e3-949c-cb4c9d70329b",
+    "name": "Grenade: Fragmentation",
+    "namePt": "Granada: Fragmentação",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "e61c5487-2074-4fc8-8da0-9891b15482e7",
+    "name": "Grenade: High Explosive",
+    "namePt": "Granada: Altamente Explosiva",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "06798b15-40bb-4464-b6a8-a01466ee9b9e",
+    "name": "Grenade: Gas",
+    "namePt": "Granada: Gás",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "84c6921e-dfa0-42ca-a01f-87c459ffc000",
+    "name": "Grenade: Smoke",
+    "namePt": "Granada: Fumaça",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f3472dc1-4c7b-403a-8001-6441bb65a687",
+    "name": "Grenade: Thermal Smoke",
+    "namePt": "Granada: Fumaça Térmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "60",
+      "value": 60
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f092fca8-46a9-4351-a06a-362846e6546a",
+    "name": "Minigrenade: Flash-Bang",
+    "namePt": "Minigranada: Atordoamento",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "7c00891f-6554-497d-9726-058d7c4a598e",
+    "name": "Minigrenade: Flash-Pak",
+    "namePt": "Minigranada: Ofuscante",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "125",
+      "value": 125
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "8e1583bf-4cc5-4498-a800-36cb61d3fb27",
+    "name": "Minigrenade: Fragmentation",
+    "namePt": "Minigranada: Fragmentação",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "daecdfc8-15d5-4864-9e20-13e4a0dca88e",
+    "name": "Minigrenade: High Explosive",
+    "namePt": "Minigranada: Altamente Explosiva",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "74284124-57a0-479b-9ab1-3433bdb9e3b7",
+    "name": "Minigrenade: Gas",
+    "namePt": "Minigranada: Gás",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "b6381691-1a96-4299-b9df-129ffee64c45",
+    "name": "Minigrenade: Smoke",
+    "namePt": "Minigranada: Fumaça",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "e2252b3c-1bae-496e-adbb-f1c3d6e0b32b",
+    "name": "Minigrenade: Thermal Smoke",
+    "namePt": "Minigranada: Fumaça Térmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "60",
+      "value": 60
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "922c2a9b-88a8-47bf-a3ac-378a0e86be9c",
+    "name": "Grenade: Flash-Bang, Aerodynamic",
+    "namePt": "Granada: Atordoamento, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "4d27ebbf-02e8-45e7-9c0a-7151f1e4faae",
+    "name": "Grenade: Flash-Pak, Aerodynamic",
+    "namePt": "Granada: Ofuscante, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "125",
+      "value": 125
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "afde3ea3-2db2-4049-b54a-f471e8c11102",
+    "name": "Grenade: Fragmentation, Aerodynamic",
+    "namePt": "Granada: Fragmentação, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "e7a602bd-33f4-485b-8a18-a253b7e73a77",
+    "name": "Grenade: High Explosive, Aerodynamic",
+    "namePt": "Granada: Altamente Explosiva, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "1ceef439-32d7-4e1b-a13b-0223dfadf784",
+    "name": "Grenade: Gas, Aerodynamic",
+    "namePt": "Granada: Gás, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "13208e69-2cc6-43c4-98ff-e0295cdf3b68",
+    "name": "Grenade: Smoke, Aerodynamic",
+    "namePt": "Granada: Fumaça, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "2b58af45-2097-4607-a0d4-e251b64332af",
+    "name": "Grenade: Thermal Smoke, Aerodynamic",
+    "namePt": "Granada: Fumaça Térmica, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "60",
+      "value": 60
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "60d28c15-42dd-4837-bc5f-8d8a15393655",
+    "name": "Rocket: Anti-Vehicle",
+    "namePt": "Foguete: Anti-Veículo",
+    "source": "SR5",
+    "page": 436,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "2800",
+      "value": 2800
+    },
+    "avail": {
+      "raw": "18F",
+      "value": 18,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "4c5be084-c975-42d2-962c-dc2add203b6b",
+    "name": "Rocket: Fragmentation",
+    "namePt": "Foguete: Fragmentação",
+    "source": "SR5",
+    "page": 436,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "d5136e8b-bf34-401d-967d-c52f8cc175c1",
+    "name": "Rocket: High Explosive",
+    "namePt": "Foguete: Altamente Explosivo",
+    "source": "SR5",
+    "page": 436,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "2100",
+      "value": 2100
+    },
+    "avail": {
+      "raw": "18F",
+      "value": 18,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "a42b7377-5a2e-456d-b729-8783873465f0",
+    "name": "Missile: Anti-Vehicle",
+    "namePt": "Míssil: Anti-Veículo",
+    "source": "SR5",
+    "page": 436,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "2800",
+      "value": 2800
+    },
+    "avail": {
+      "raw": "22F",
+      "value": 22,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "bb40694a-59de-4fb8-9cee-697f37377a55",
+    "name": "Missile: Fragmentation",
+    "namePt": "Míssil: Fragmentação",
+    "source": "SR5",
+    "page": 436,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "838a308e-a638-433e-b5bc-54222fb645c9",
+    "name": "Missile: High Explosive",
+    "namePt": "Míssil: Altamente Explosivo",
+    "source": "SR5",
+    "page": 436,
+    "category": "Ammunition",
+    "categoryPt": "Munições",
+    "cost": {
+      "raw": "2100",
+      "value": 2100
+    },
+    "avail": {
+      "raw": "22F",
+      "value": 22,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "48eca1ec-bce2-4878-bfdc-5b37639e9d6f",
+    "name": "Commercial Explosive",
+    "namePt": "Explosivo Comercial",
+    "source": "SR5",
+    "page": 436,
+    "category": "Explosives",
+    "categoryPt": "Explosivos",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "rating": 5
+  },
+  {
+    "id": "0183db3c-974e-40f8-ab73-ccf733beadd5",
+    "name": "Foam Explosive",
+    "namePt": "Espuma Explosiva",
+    "source": "SR5",
+    "page": 436,
+    "category": "Explosives",
+    "categoryPt": "Explosivos",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "rating": 25
+  },
+  {
+    "id": "0b5b01f5-9c02-4513-8393-7bd64e1ca86c",
+    "name": "Plastic Explosive",
+    "namePt": "Explosivo Plástico",
+    "source": "SR5",
+    "page": 436,
+    "category": "Explosives",
+    "categoryPt": "Explosivos",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    },
+    "rating": 25
+  },
+  {
+    "id": "2c98be77-22d7-4116-90fc-e8489944578d",
+    "name": "Detonator Cap",
+    "namePt": "Cápsula Detonadora",
+    "source": "SR5",
+    "page": 436,
+    "category": "Explosives",
+    "categoryPt": "Explosivos",
+    "cost": {
+      "raw": "75",
+      "value": 75
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "d63eb841-7b15-4539-9026-b90a4924aeeb",
+    "name": "Custom Commlink",
+    "namePt": "Com-Link Personalizado",
+    "source": "SR5",
+    "page": 438,
+    "category": "Commlinks",
+    "categoryPt": "Com-Links",
+    "cost": {
+      "raw": "FixedValues(100,700,1000,2500,3000,5000,8000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 7
+  },
+  {
+    "id": "89a0f3c9-5ef6-41cd-981f-4ac690ee2ab3",
+    "name": "Meta Link",
+    "namePt": "Meta Link",
+    "source": "SR5",
+    "page": 438,
+    "category": "Commlinks",
+    "categoryPt": "Com-Links",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "d808ba12-db93-4a7b-85a1-9e9f6229087f",
+    "name": "Sony Emperor",
+    "namePt": "Sony Emperor",
+    "source": "SR5",
+    "page": 438,
+    "category": "Commlinks",
+    "categoryPt": "Com-Links",
+    "cost": {
+      "raw": "700",
+      "value": 700
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "15a6c42b-12a4-494e-8ca5-e6c3a1052314",
+    "name": "Renraku Sensei",
+    "namePt": "Renraku Sensei",
+    "source": "SR5",
+    "page": 438,
+    "category": "Commlinks",
+    "categoryPt": "Com-Links",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    }
+  },
+  {
+    "id": "72d1ca07-71b1-4085-8a4d-bd720a6b1908",
+    "name": "Erika Elite",
+    "namePt": "Erika Elite",
+    "source": "SR5",
+    "page": 438,
+    "category": "Commlinks",
+    "categoryPt": "Com-Links",
+    "cost": {
+      "raw": "2500",
+      "value": 2500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    }
+  },
+  {
+    "id": "6de5a1b0-30e2-4c74-8646-971f698cb231",
+    "name": "Hermes Ikon",
+    "namePt": "Hermes Ikon",
+    "source": "SR5",
+    "page": 438,
+    "category": "Commlinks",
+    "categoryPt": "Com-Links",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    }
+  },
+  {
+    "id": "01077e2d-4f67-428a-850d-250faad2007c",
+    "name": "Transys Avalon",
+    "namePt": "Transys Avalon",
+    "source": "SR5",
+    "page": 438,
+    "category": "Commlinks",
+    "categoryPt": "Com-Links",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    }
+  },
+  {
+    "id": "1522dd91-99d9-42f9-ab19-b43e8e3c7322",
+    "name": "Fairlight Caliban",
+    "namePt": "Fairlight Caliban",
+    "source": "SR5",
+    "page": 438,
+    "category": "Commlinks",
+    "categoryPt": "Com-Links",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "14",
+      "value": 14,
+      "restriction": null
+    }
+  },
+  {
+    "id": "d589142e-a71f-4cd9-b916-967168721eea",
+    "name": "Sim Module",
+    "namePt": "Módulo Simulador",
+    "source": "SR5",
+    "page": 438,
+    "category": "Commlink Accessories",
+    "categoryPt": "Acessórios de Com-Links",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "b7da0596-da6e-4122-adc3-21d7f3f9e3f1",
+    "name": "Sim Module, Hot",
+    "namePt": "Módulo Simulador, Aberto",
+    "source": "SR5",
+    "page": 439,
+    "category": "Commlink Accessories",
+    "categoryPt": "Acessórios de Com-Links",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4F",
+      "value": 4,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "b6d1476d-a08c-43fc-be0e-68ca9330a43e",
+    "name": "Erika MCD-1",
+    "namePt": "Erika MCD-1",
+    "source": "SR5",
+    "page": 439,
+    "category": "Cyberdecks",
+    "categoryPt": "Ciberdecks",
+    "cost": {
+      "raw": "49500",
+      "value": 49500
+    },
+    "avail": {
+      "raw": "3R",
+      "value": 3,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "540831fa-7866-443a-9187-112c5c5cbf7b",
+    "name": "Microdeck Summit",
+    "namePt": "Microdeck Summit",
+    "source": "SR5",
+    "page": 439,
+    "category": "Cyberdecks",
+    "categoryPt": "Ciberdecks",
+    "cost": {
+      "raw": "58000",
+      "value": 58000
+    },
+    "avail": {
+      "raw": "3R",
+      "value": 3,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "d0815d76-b7b7-4f50-b700-9eb873096408",
+    "name": "Microtrónica Azteca 200",
+    "namePt": "Microtrónica Azteca 200",
+    "source": "SR5",
+    "page": 439,
+    "category": "Cyberdecks",
+    "categoryPt": "Ciberdecks",
+    "cost": {
+      "raw": "110250",
+      "value": 110250
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "785179f5-1500-46b6-b04f-063effa3a457",
+    "name": "Hermes Chariot",
+    "namePt": "Hermes Chariot",
+    "source": "SR5",
+    "page": 439,
+    "category": "Cyberdecks",
+    "categoryPt": "Ciberdecks",
+    "cost": {
+      "raw": "123000",
+      "value": 123000
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "ab0a7547-3cb4-4816-a65a-cb03dd2186ac",
+    "name": "Novatech Navigator",
+    "namePt": "Novatech Navigator",
+    "source": "SR5",
+    "page": 439,
+    "category": "Cyberdecks",
+    "categoryPt": "Ciberdecks",
+    "cost": {
+      "raw": "205750",
+      "value": 205750
+    },
+    "avail": {
+      "raw": "9R",
+      "value": 9,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "5f4c41eb-abaa-4725-86ce-62fe11eeee0b",
+    "name": "Renraku Tsurugi",
+    "namePt": "Renraku Tsurugi",
+    "source": "SR5",
+    "page": 439,
+    "category": "Cyberdecks",
+    "categoryPt": "Ciberdecks",
+    "cost": {
+      "raw": "214125",
+      "value": 214125
+    },
+    "avail": {
+      "raw": "9R",
+      "value": 9,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "79134070-7441-416a-8f14-922a5b7f490d",
+    "name": "Sony CIY-720",
+    "namePt": "Sony CIY-720",
+    "source": "SR5",
+    "page": 439,
+    "category": "Cyberdecks",
+    "categoryPt": "Ciberdecks",
+    "cost": {
+      "raw": "345000",
+      "value": 345000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "c3f15a4a-1987-4879-ba74-5b93d602ca8c",
+    "name": "Shiawase Cyber-5",
+    "namePt": "Shiawase Cyber-5",
+    "source": "SR5",
+    "page": 439,
+    "category": "Cyberdecks",
+    "categoryPt": "Ciberdecks",
+    "cost": {
+      "raw": "549375",
+      "value": 549375
+    },
+    "avail": {
+      "raw": "15R",
+      "value": 15,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "5d649de9-aa6f-450e-893b-63e5ad166388",
+    "name": "Fairlight Excalibur",
+    "namePt": "Fairlight Excalibur",
+    "source": "SR5",
+    "page": 439,
+    "category": "Cyberdecks",
+    "categoryPt": "Ciberdecks",
+    "cost": {
+      "raw": "823250",
+      "value": 823250
+    },
+    "avail": {
+      "raw": "18R",
+      "value": 18,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "18eb72a1-2b4d-4800-9669-d9e62ecc50b3",
+    "name": "Scratch-Built Junk",
+    "namePt": "Treco de Sucata",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "1400",
+      "value": 1400
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "9d410862-89ae-408c-8342-82f7e6c1ae8f",
+    "name": "Radio Shack Remote Controller",
+    "namePt": "Controle Remoto Radio Shack",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "d157fdf9-2315-4402-af6e-2aa4924f6a82",
+    "name": "Essy Motors DroneMaster",
+    "namePt": "Essy Motors DroneMaster",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "16000",
+      "value": 16000
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f35d6a78-de2c-4b99-9509-2c87c5e382b4",
+    "name": "CompuForce TaskMaster",
+    "namePt": "CompuForce TaskMaster",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "32000",
+      "value": 32000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "a2c33659-d930-4eb8-9fac-238a67009def",
+    "name": "Maersk Spider",
+    "namePt": "Aranha Maersk",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "34000",
+      "value": 34000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "3f1e53d0-3f2f-4672-8cca-9f6d7ee979de",
+    "name": "Maser Industrial Electronics",
+    "namePt": "Indústria Eletrônica Maser",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "64000",
+      "value": 64000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "c8642e4c-6d1e-4338-8a7b-dd63c866a485",
+    "name": "Vulcan Liegelord",
+    "namePt": "Vulcan Liegelord",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "66000",
+      "value": 66000
+    },
+    "avail": {
+      "raw": "10R",
+      "value": 10,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f9941dbe-1db1-4948-a8be-d760733446ea",
+    "name": "Proteus Poseidon",
+    "namePt": "Proteus Poseidon",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "68000",
+      "value": 68000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "4eebf70d-6e0f-4bbb-9356-3eaac0150d4d",
+    "name": "Lone Star Remote Commander",
+    "namePt": "Comandante Remoto Lone Star",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "75000",
+      "value": 75000
+    },
+    "avail": {
+      "raw": "14R",
+      "value": 14,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f13946fe-8e30-466f-8fc4-9aba7ba7b0f8",
+    "name": "MCT Drone Web",
+    "namePt": "Rede de Drone MTC",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "95000",
+      "value": 95000
+    },
+    "avail": {
+      "raw": "16R",
+      "value": 16,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "fe9d2aa1-f914-4e3b-b1ec-29cc97312c34",
+    "name": "Triox UberMensch",
+    "namePt": "Triox UberMensch",
+    "source": "SR5",
+    "page": 266,
+    "category": "Rigger Command Consoles",
+    "categoryPt": "Console de Comando do Fusor",
+    "cost": {
+      "raw": "140000",
+      "value": 140000
+    },
+    "avail": {
+      "raw": "18R",
+      "value": 18,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "b3c0a6bd-e086-4971-be77-dc9a9cb2e174",
+    "name": "Browse",
+    "namePt": "Navegador",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "0e9a4de8-c78e-498e-8f3b-8e581bc73e43",
+    "name": "Configurator",
+    "namePt": "Configurador",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "fe598c15-fe7a-46f9-bc84-751cb32735e2",
+    "name": "Edit",
+    "namePt": "Edição",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "d3bb1242-73b0-4b8a-89ab-27c272ebc900",
+    "name": "Encryption",
+    "namePt": "Encriptação",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "1662e26b-7370-4ade-9d9d-c9b92b0d145b",
+    "name": "Signal Scrub",
+    "namePt": "Limpeza de Sinal",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "cffae49c-30d1-42df-b47c-a407f3a86e7a",
+    "name": "Toolbox",
+    "namePt": "Caixa de Ferramentas",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "7b8f4a4e-0bdb-4e05-ade4-bf558daf60a6",
+    "name": "Virtual Machine",
+    "namePt": "Máquina Virtual",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "a1e4b783-0751-43eb-b5bd-ee00f84b7bb3",
+    "name": "Armor",
+    "namePt": "Armadura",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "a37b8000-495b-4ab8-a73b-16a36a6a410e",
+    "name": "Baby Monitor",
+    "namePt": "Babá Eletrônica",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "e631585a-0cce-4c95-873d-74b278a661df",
+    "name": "Biofeedback",
+    "namePt": "Bioretroalimentação",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "7bc33fe3-96b0-4f3c-a459-7c85ede9f8c1",
+    "name": "Biofeedback Filter",
+    "namePt": "Filtro de Bioretroalimentação",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f3134808-861c-41df-8bdf-2d2c855e78a4",
+    "name": "Blackout",
+    "namePt": "Blecaute",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "5217388a-e2ce-4add-bcc0-b0b1672f156c",
+    "name": "Decryption",
+    "namePt": "Decriptação",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "168b8c61-9ea4-4816-8cf4-cb996067b6d6",
+    "name": "Defuse",
+    "namePt": "Desarme",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "3da01b93-3830-4211-b563-f41c7fcf4ab0",
+    "name": "Demolition",
+    "namePt": "Demolição",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "67ea7c0c-1703-412b-80d3-9c23cc6d8291",
+    "name": "Exploit",
+    "namePt": "Intrusão",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "69a87be8-6f05-453d-a344-b02d9fab055c",
+    "name": "Fork",
+    "namePt": "Divisão",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "ea3178a2-535f-43b7-8555-deca95ac837d",
+    "name": "Guard",
+    "namePt": "Guarda",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "a3851f14-3fdc-47d6-82b4-07caf00202ce",
+    "name": "Hammer",
+    "namePt": "Martelo",
+    "source": "SR5",
+    "page": 246,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "70be200d-5b83-4842-83b5-725839330808",
+    "name": "Lockdown",
+    "namePt": "Confinamento",
+    "source": "SR5",
+    "page": 246,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "62d165f6-bc3f-4204-afb7-47b3485e25ad",
+    "name": "Mugger",
+    "namePt": "Salteador",
+    "source": "SR5",
+    "page": 246,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "84a3e0d5-ed40-4706-9b96-7f07567bcbef",
+    "name": "Shell",
+    "namePt": "Isolação",
+    "source": "SR5",
+    "page": 246,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "8920c83c-f4f2-4dfa-81a4-b150ba6ae1c0",
+    "name": "Sneak",
+    "namePt": "Despistador",
+    "source": "SR5",
+    "page": 246,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "d5877f46-03e0-4603-b77a-f27e278202ab",
+    "name": "Stealth",
+    "namePt": "Furtividade",
+    "source": "SR5",
+    "page": 246,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "9bfce6cb-99ea-4b63-ad9f-e1bceb87bbd6",
+    "name": "Track",
+    "namePt": "Rastreador",
+    "source": "SR5",
+    "page": 246,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "4a33f713-566b-4233-bdd2-985000097648",
+    "name": "Wrapper",
+    "namePt": "Empacotador",
+    "source": "SR5",
+    "page": 246,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "2d8396ff-a4a9-4382-ab69-70d198856e7f",
+    "name": "Agent",
+    "namePt": "Agente",
+    "source": "SR5",
+    "page": 246,
+    "category": "Software",
+    "categoryPt": "Software",
+    "cost": {
+      "raw": "FixedValues(1000,2000,3000,8000,10000,12000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "c4da5448-0069-447c-b3e4-4147e6bf4ca7",
+    "name": "Activesoft",
+    "namePt": "Ativosoft",
+    "source": "SR5",
+    "page": 442,
+    "category": "Skillsofts",
+    "categoryPt": "Periciasofts",
+    "cost": {
+      "raw": "Rating * 5000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "d9d017c4-b3b5-4d28-9c41-870d69287cfb",
+    "name": "Knowsoft",
+    "namePt": "Conhecisoft",
+    "source": "SR5",
+    "page": 442,
+    "category": "Skillsofts",
+    "categoryPt": "Periciasofts",
+    "cost": {
+      "raw": "Rating * 2000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "c4599705-6b8c-45d0-8687-63a720043f7d",
+    "name": "Linguasoft",
+    "namePt": "Linguasoft",
+    "source": "SR5",
+    "page": 442,
+    "category": "Skillsofts",
+    "categoryPt": "Periciasofts",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "1a55fbe3-b3c1-4568-882f-abe4dedb8572",
+    "name": "Datasoft",
+    "namePt": "Dadossoft",
+    "source": "SR5",
+    "page": 441,
+    "category": "Software",
+    "categoryPt": "Software",
+    "cost": {
+      "raw": "120",
+      "value": 120
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "2f30c3cc-a62e-4ac1-8e1f-5fa217cadae4",
+    "name": "Mapsoft",
+    "namePt": "Mapasoft",
+    "source": "SR5",
+    "page": 441,
+    "category": "Software",
+    "categoryPt": "Software",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "fc8da0ad-bbfd-4961-a311-71db32f86130",
+    "name": "Shopsoft",
+    "namePt": "Comprasoft",
+    "source": "SR5",
+    "page": 441,
+    "category": "Software",
+    "categoryPt": "Software",
+    "cost": {
+      "raw": "150",
+      "value": 150
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "21afa914-713e-45a2-9018-9640ab75ae2d",
+    "name": "Tutorsoft",
+    "namePt": "Tutorsoft",
+    "source": "SR5",
+    "page": 442,
+    "category": "Software",
+    "categoryPt": "Software",
+    "cost": {
+      "raw": "Rating * 400",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "149a8dd2-dfef-473f-94a4-1bdd77e4f855",
+    "name": "Clearsight Autosoft",
+    "namePt": "Autosoft de Clarovisão",
+    "source": "SR5",
+    "page": 269,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "f84179b8-34b2-4fb1-bb24-099b0b700b5b",
+    "name": "Electronic Warfare Autosoft",
+    "namePt": "Autosoft de Guerra Eletrônica",
+    "source": "SR5",
+    "page": 269,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "80137629-41f0-41da-bfed-c8a1388b759e",
+    "name": "[Model] Evasion Autosoft",
+    "namePt": "Autosoft de Evasão [Modelo]",
+    "source": "SR5",
+    "page": 269,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "9d81218f-ee70-4304-9a09-ac865d84b8e0",
+    "name": "[Model] Maneuvering Autosoft",
+    "namePt": "Autosoft de Manobragem [Modelo]",
+    "source": "SR5",
+    "page": 269,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "c29a96f9-25bf-4ebc-8c56-f4c8afc3c002",
+    "name": "[Model] Stealth Autosoft",
+    "namePt": "Autosoft de Furtividade [Modelo]",
+    "source": "SR5",
+    "page": 270,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "0949997a-acb7-49d9-9905-5ae2cd35626f",
+    "name": "[Weapon] Targeting Autosoft",
+    "namePt": "Autosoft de Mira [Arma]",
+    "source": "SR5",
+    "page": 270,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "2e409fba-8b1a-42c4-8fa5-4d256ccd540d",
+    "name": "AR Gloves",
+    "namePt": "Luvas de RA",
+    "source": "SR5",
+    "page": 439,
+    "category": "Electronics Accessories",
+    "categoryPt": "Acessóries Eletrônicos",
+    "cost": {
+      "raw": "150",
+      "value": 150
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "e0a8b465-3a3b-455d-83ca-8d8b1777a04c",
+    "name": "Biometric Reader",
+    "namePt": "Leitor Biométrico",
+    "source": "SR5",
+    "page": 439,
+    "category": "Electronics Accessories",
+    "categoryPt": "Acessóries Eletrônicos",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "566afc73-6047-46e2-9532-fd540c8b3838",
+    "name": "Electronic Paper",
+    "namePt": "Papel Eletrônico",
+    "source": "SR5",
+    "page": 439,
+    "category": "Electronics Accessories",
+    "categoryPt": "Acessóries Eletrônicos",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "35b38293-313a-462c-9a24-f90056567883",
+    "name": "Printer",
+    "namePt": "Impressora",
+    "source": "SR5",
+    "page": 439,
+    "category": "Electronics Accessories",
+    "categoryPt": "Acessóries Eletrônicos",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "37aaf8a5-78ee-4143-88f0-a4fae3383e71",
+    "name": "Satellite Link",
+    "namePt": "Conexão de Satélite",
+    "source": "SR5",
+    "page": 439,
+    "category": "Electronics Accessories",
+    "categoryPt": "Acessóries Eletrônicos",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    }
+  },
+  {
+    "id": "2dda7452-c594-410d-923d-2933e8c0f236",
+    "name": "Simrig",
+    "namePt": "Fuso-Simulador",
+    "source": "SR5",
+    "page": 439,
+    "category": "Electronics Accessories",
+    "categoryPt": "Acessóries Eletrônicos",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    }
+  },
+  {
+    "id": "7bdc5866-88ae-45a6-a525-ec03f161f086",
+    "name": "Subvocal Mic",
+    "namePt": "Microfone Subvocal",
+    "source": "SR5",
+    "page": 439,
+    "category": "Electronics Accessories",
+    "categoryPt": "Acessóries Eletrônicos",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "fb8bc051-f4b2-42f3-98e6-9c5d614cbd9d",
+    "name": "Trid Projector",
+    "namePt": "Projetor de Trídeo",
+    "source": "SR5",
+    "page": 439,
+    "category": "Electronics Accessories",
+    "categoryPt": "Acessóries Eletrônicos",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "418d5ba1-dd19-4179-add8-074be445a7b2",
+    "name": "Trodes",
+    "namePt": "Trodos",
+    "source": "SR5",
+    "page": 439,
+    "category": "Electronics Accessories",
+    "categoryPt": "Acessóries Eletrônicos",
+    "cost": {
+      "raw": "70",
+      "value": 70
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "84bb92e7-ce13-4eb6-bf9e-15bf3887469c",
+    "name": "Standard Tags",
+    "namePt": "Etiquetas Padrão",
+    "source": "SR5",
+    "page": 440,
+    "category": "RFID Tags",
+    "categoryPt": "Etiquetas IDRA",
+    "cost": {
+      "raw": "1",
+      "value": 1
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "5deb8e1d-98bf-4cd4-9dce-b74d67546a1d",
+    "name": "Datachip",
+    "namePt": "Chip de Dados",
+    "source": "SR5",
+    "page": 440,
+    "category": "RFID Tags",
+    "categoryPt": "Etiquetas IDRA",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "cb405ce6-6133-4b34-8d71-60387e78dd0c",
+    "name": "Security Tags",
+    "namePt": "Etiquetas de Segurança",
+    "source": "SR5",
+    "page": 440,
+    "category": "RFID Tags",
+    "categoryPt": "Etiquetas IDRA",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "3",
+      "value": 3,
+      "restriction": null
+    }
+  },
+  {
+    "id": "8751915f-0573-4c99-b97e-cb74b3788a8a",
+    "name": "Sensor Tags",
+    "namePt": "Etiquetas de Sensor",
+    "source": "SR5",
+    "page": 440,
+    "category": "RFID Tags",
+    "categoryPt": "Etiquetas IDRA",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "5",
+      "value": 5,
+      "restriction": null
+    }
+  },
+  {
+    "id": "baa9ba27-f93b-48da-91b7-cfcce0ba274d",
+    "name": "Stealth Tags",
+    "namePt": "Etiquetas de Furtividade",
+    "source": "SR5",
+    "page": 440,
+    "category": "RFID Tags",
+    "categoryPt": "Etiquetas IDRA",
+    "cost": {
+      "raw": "10",
+      "value": 10
+    },
+    "avail": {
+      "raw": "7R",
+      "value": 7,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "0918742f-6fc8-46ac-91e0-2b7260841923",
+    "name": "Bug Scanner",
+    "namePt": "Scanner de Escutas",
+    "source": "SR5",
+    "page": 440,
+    "category": "Communications and Countermeasures",
+    "categoryPt": "Comunicações e Contramedidas",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "8f351e25-d734-4bd0-86da-80b68a4cae68",
+    "name": "Data Tap",
+    "namePt": "Tomada de Dados",
+    "source": "SR5",
+    "page": 440,
+    "category": "Communications and Countermeasures",
+    "categoryPt": "Comunicações e Contramedidas",
+    "cost": {
+      "raw": "300",
+      "value": 300
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "3447ab94-a2b1-4e98-a805-4754a2bd0614",
+    "name": "Headjammer",
+    "namePt": "Embaralhador Craniano",
+    "source": "SR5",
+    "page": 441,
+    "category": "Communications and Countermeasures",
+    "categoryPt": "Comunicações e Contramedidas",
+    "cost": {
+      "raw": "Rating * 150",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "6576cfa9-f2f5-4624-bbde-60a8f3f13785",
+    "name": "Jammer, Area",
+    "namePt": "Embaralhador, Área",
+    "source": "SR5",
+    "page": 441,
+    "category": "Communications and Countermeasures",
+    "categoryPt": "Comunicações e Contramedidas",
+    "cost": {
+      "raw": "Rating * 200",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)F",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "f47ee634-8f59-43c5-8502-32e447f03980",
+    "name": "Jammer, Directional",
+    "namePt": "Embaralhador, Direcional",
+    "source": "SR5",
+    "page": 441,
+    "category": "Communications and Countermeasures",
+    "categoryPt": "Comunicações e Contramedidas",
+    "cost": {
+      "raw": "Rating * 200",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 2)F",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "d1fca845-ae01-4b39-a176-1506da699e0e",
+    "name": "Micro-Transceiver",
+    "namePt": "Micro-Emissor",
+    "source": "SR5",
+    "page": 441,
+    "category": "Communications and Countermeasures",
+    "categoryPt": "Comunicações e Contramedidas",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "d0eb5971-03d6-4822-9fb5-c524bf16bf62",
+    "name": "Tag Eraser",
+    "namePt": "Apagador de Etiquetas",
+    "source": "SR5",
+    "page": 441,
+    "category": "Communications and Countermeasures",
+    "categoryPt": "Comunicações e Contramedidas",
+    "cost": {
+      "raw": "450",
+      "value": 450
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "7e887224-6896-4588-a5d3-cace6a8506d2",
+    "name": "White Noise Generator",
+    "namePt": "Gerador de Ruído Branco",
+    "source": "SR5",
+    "page": 441,
+    "category": "Communications and Countermeasures",
+    "categoryPt": "Comunicações e Contramedidas",
+    "cost": {
+      "raw": "Rating * 50",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating)",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "45b1f2c4-99a3-421b-8c83-a7f574ecd39f",
+    "name": "Nuyen (¥)",
+    "namePt": "Neoiene (¥)",
+    "source": "SR5",
+    "page": 442,
+    "category": "Currency",
+    "categoryPt": "Moeda",
+    "cost": {
+      "raw": "1",
+      "value": 1
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "c56554d1-4102-446f-8d3e-acd0c7404c3a",
+    "name": "Certified Credstick, Standard",
+    "namePt": "Credstick Certificado, Padrão",
+    "source": "SR5",
+    "page": 442,
+    "category": "ID/Credsticks",
+    "categoryPt": "Identidade/Bastões de Crédito",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "4f5b4fbc-78c4-4aa4-a5c2-7739f12e9b39",
+    "name": "Certified Credstick, Silver",
+    "namePt": "Credstick Certificado, Prata",
+    "source": "SR5",
+    "page": 442,
+    "category": "ID/Credsticks",
+    "categoryPt": "Identidade/Bastões de Crédito",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "697ef5f4-8cde-434d-aca6-1bddd4d526d3",
+    "name": "Certified Credstick, Gold",
+    "namePt": "Credstick Certificado, Ouro",
+    "source": "SR5",
+    "page": 442,
+    "category": "ID/Credsticks",
+    "categoryPt": "Identidade/Bastões de Crédito",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "5",
+      "value": 5,
+      "restriction": null
+    }
+  },
+  {
+    "id": "a19055f0-02ab-4bc2-ab43-0ef82e1b9100",
+    "name": "Certified Credstick, Platinum",
+    "namePt": "Credstick Certificado, Platina",
+    "source": "SR5",
+    "page": 442,
+    "category": "ID/Credsticks",
+    "categoryPt": "Identidade/Bastões de Crédito",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    }
+  },
+  {
+    "id": "fd2c8afe-7c0f-4b98-ae93-a6108531b236",
+    "name": "Certified Credstick, Ebony",
+    "namePt": "Credstick Certificado, Ébano",
+    "source": "SR5",
+    "page": 442,
+    "category": "ID/Credsticks",
+    "categoryPt": "Identidade/Bastões de Crédito",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "20",
+      "value": 20,
+      "restriction": null
+    }
+  },
+  {
+    "id": "8a16bbb2-8028-4c74-b22b-7aad9d001073",
+    "name": "Fake License",
+    "namePt": "Licença Falsa",
+    "source": "SR5",
+    "page": 443,
+    "category": "ID/Credsticks",
+    "categoryPt": "Identidade/Bastões de Crédito",
+    "cost": {
+      "raw": "Rating * 200",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)F",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "0c800bca-e6ff-475b-a014-c2069f5e364c",
+    "name": "Fake SIN",
+    "namePt": "SIN Falso",
+    "source": "SR5",
+    "page": 442,
+    "category": "ID/Credsticks",
+    "categoryPt": "Identidade/Bastões de Crédito",
+    "cost": {
+      "raw": "Rating * 2500",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)F",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "64fa5212-1d58-4e94-9cc1-9e3eb10773ed",
+    "name": "Tool Kit",
+    "namePt": "Kit de Ferramentas",
+    "source": "SR5",
+    "page": 443,
+    "category": "Tools",
+    "categoryPt": "Ferramentas",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "4edec80a-e8df-4817-9728-4a6fc04d183e",
+    "name": "Tool Shop",
+    "namePt": "Oficina de Ferramentas",
+    "source": "SR5",
+    "page": 443,
+    "category": "Tools",
+    "categoryPt": "Ferramentas",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    }
+  },
+  {
+    "id": "d0c85aa4-5686-452b-9f1a-7c603ac43258",
+    "name": "Tool Facility",
+    "namePt": "Instalação de Ferramentas",
+    "source": "SR5",
+    "page": 443,
+    "category": "Tools",
+    "categoryPt": "Ferramentas",
+    "cost": {
+      "raw": "50000",
+      "value": 50000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    }
+  },
+  {
+    "id": "1c6db3ed-a360-40b4-8118-9aca9d96001c",
+    "name": "Binoculars",
+    "namePt": "Binóculos",
+    "source": "SR5",
+    "page": 443,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "Rating * 50",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 3
+  },
+  {
+    "id": "fa2851aa-841e-4d9c-a1e4-96a5e5eb4462",
+    "name": "Binoculars, Optical",
+    "namePt": "Binóculos, Ótico",
+    "source": "SR5",
+    "page": 443,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "07805498-75ea-441f-bd27-6536d4131b51",
+    "name": "Camera",
+    "namePt": "Câmera",
+    "source": "SR5",
+    "page": 443,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "fa6fa434-107b-4f36-a138-f98b044dae76",
+    "name": "Camera, Micro",
+    "namePt": "Câmera, Micro",
+    "source": "SR5",
+    "page": 443,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "1a3a9204-959b-4db5-83de-094f921c5e7f",
+    "name": "Contacts",
+    "namePt": "Lentes de Contato",
+    "source": "SR5",
+    "page": 443,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "Rating * 200",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "rating": 3
+  },
+  {
+    "id": "22ceb53b-7863-424b-8ee5-d04bb520d97d",
+    "name": "Endoscope",
+    "namePt": "Endoscópio",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    }
+  },
+  {
+    "id": "b218dbd1-5706-4d9e-a6a7-ab9b658c3acd",
+    "name": "Glasses",
+    "namePt": "Óculos",
+    "source": "SR5",
+    "page": 443,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 4
+  },
+  {
+    "id": "e8d0a618-b3d6-4bd5-b134-377d848be31a",
+    "name": "Goggles",
+    "namePt": "Óculos de Proteção",
+    "source": "SR5",
+    "page": 443,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "Rating * 50",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "535d41b8-d1f7-4675-a256-951bb0eac974",
+    "name": "Mage Sight Goggles",
+    "namePt": "Óculos de Proteção de Visão do Mago",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "324e2a5f-de77-4e64-9c95-676bd987c772",
+    "name": "Monocle",
+    "namePt": "Monóculo",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "Rating * 120",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 4
+  },
+  {
+    "id": "5b0c94f2-437f-431a-b7f4-9cb00a0820eb",
+    "name": "Periscope",
+    "namePt": "Periscópio",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Devices",
+    "categoryPt": "Dispositivos de Imagem",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "3",
+      "value": 3,
+      "restriction": null
+    }
+  },
+  {
+    "id": "7fc23c2f-b41a-46b0-9ed7-9dc93986fab3",
+    "name": "Flare Compensation",
+    "namePt": "Compensação de Ofuscamento",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Enhancements",
+    "categoryPt": "Melhorias de Visão",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "+1",
+      "value": 1,
+      "restriction": null
+    }
+  },
+  {
+    "id": "2886d77a-1321-4a29-aec8-8040b9c5776f",
+    "name": "Image Link",
+    "namePt": "Conexão de Imagens",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Enhancements",
+    "categoryPt": "Melhorias de Visão",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "+0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "287c6d58-2217-48b2-9e14-6ba23584939a",
+    "name": "Low Light",
+    "namePt": "Visão na Penumbra",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Enhancements",
+    "categoryPt": "Melhorias de Visão",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "+4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "b0eef1d1-31ad-4e5c-bd55-27b2ae492327",
+    "name": "Smartlink",
+    "namePt": "Neuroconexão",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Enhancements",
+    "categoryPt": "Melhorias de Visão",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "+4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f7f74a85-bd3b-4a46-9c3b-80688c72ef51",
+    "name": "Thermographic Vision",
+    "namePt": "Visão Termográfica",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Enhancements",
+    "categoryPt": "Melhorias de Visão",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "+6",
+      "value": 6,
+      "restriction": null
+    }
+  },
+  {
+    "id": "588c3193-4298-4a73-b45a-c5f8fd175133",
+    "name": "Vision Enhancement",
+    "namePt": "Melhoria de Visão",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Enhancements",
+    "categoryPt": "Melhorias de Visão",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "+(Rating *2)",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3
+  },
+  {
+    "id": "adf3533a-461c-46ae-9ee7-77dfd31c5d5a",
+    "name": "Vision Magnification",
+    "namePt": "Ampliação de Visão",
+    "source": "SR5",
+    "page": 444,
+    "category": "Vision Enhancements",
+    "categoryPt": "Melhorias de Visão",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "+2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "5d69d002-c33d-4d0f-9c4d-d78db4d78e5d",
+    "name": "Earbuds",
+    "namePt": "Fones de Ouvido",
+    "source": "SR5",
+    "page": 445,
+    "category": "Audio Devices",
+    "categoryPt": "Dispositivos de Áudio",
+    "cost": {
+      "raw": "Rating * 50",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 3
+  },
+  {
+    "id": "c6084c7a-ab84-4ea6-999e-ff99b91f9bf0",
+    "name": "Headphones",
+    "namePt": "Fones",
+    "source": "SR5",
+    "page": 445,
+    "category": "Audio Devices",
+    "categoryPt": "Dispositivos de Áudio",
+    "cost": {
+      "raw": "Rating * 50",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "0e713b88-ab10-4fed-8373-df0a4d8546cc",
+    "name": "Microphone, Directional",
+    "namePt": "Microfone, Direcional",
+    "source": "SR5",
+    "page": 445,
+    "category": "Audio Devices",
+    "categoryPt": "Dispositivos de Áudio",
+    "cost": {
+      "raw": "Rating * 50",
+      "value": null
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "026f00c9-376e-4b4a-b615-9242db87afb3",
+    "name": "Microphone, Laser",
+    "namePt": "Microfone, Laser",
+    "source": "SR5",
+    "page": 445,
+    "category": "Audio Devices",
+    "categoryPt": "Dispositivos de Áudio",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "rating": 6
+  },
+  {
+    "id": "f42df886-b644-4691-a993-e672f2b77de0",
+    "name": "Microphone, Omni-Directional",
+    "namePt": "Microfone, Omnidirecional",
+    "source": "SR5",
+    "page": 445,
+    "category": "Audio Devices",
+    "categoryPt": "Dispositivos de Áudio",
+    "cost": {
+      "raw": "Rating * 50",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "3ca6be75-6efb-4cf4-809f-da72eb83e909",
+    "name": "Microphone, Omni-Directional, Micro",
+    "namePt": "Microfone, Omnidirecional, Micro",
+    "source": "SR5",
+    "page": 445,
+    "category": "Audio Devices",
+    "categoryPt": "Dispositivos de Áudio",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 1
+  },
+  {
+    "id": "eced7e9a-0959-4c4a-a67f-66abc0dd5228",
+    "name": "Audio Enhancement",
+    "namePt": "Melhoria de Áudio",
+    "source": "SR5",
+    "page": 445,
+    "category": "Audio Enhancements",
+    "categoryPt": "Melhorias de Áudio",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "+(Rating *2)",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3
+  },
+  {
+    "id": "e7291814-96a9-4c77-b2bb-7665db7a447b",
+    "name": "Select Sound Filter",
+    "namePt": "Filtro de Som Selecionável",
+    "source": "SR5",
+    "page": 445,
+    "category": "Audio Enhancements",
+    "categoryPt": "Melhorias de Áudio",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "+(Rating * 3)",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3
+  },
+  {
+    "id": "3f086e04-8de6-4d4e-a503-a19cba8295f5",
+    "name": "Spatial Recognizer",
+    "namePt": "Reconhecedor Espacial",
+    "source": "SR5",
+    "page": 445,
+    "category": "Audio Enhancements",
+    "categoryPt": "Melhorias de Áudio",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "+4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "49bbc9d3-860d-47db-b4bc-8417f5b6ab65",
+    "name": "Handheld Housing",
+    "namePt": "Invólucro Portátil",
+    "source": "SR5",
+    "page": 445,
+    "category": "Sensor Housings",
+    "categoryPt": "Invólucros de Sensor",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 3
+  },
+  {
+    "id": "5e4772d7-5cba-4cc4-988d-38ef79b41fd3",
+    "name": "Wall-Mounted Housing",
+    "namePt": "Invólucro Montado na Parede",
+    "source": "SR5",
+    "page": 445,
+    "category": "Sensor Housings",
+    "categoryPt": "Invólucros de Sensor",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "2ca81a10-d0f7-4b39-ac93-a84f2f69f9d9",
+    "name": "Sensor Array",
+    "namePt": "Gama de Sensores",
+    "source": "SR5",
+    "page": 445,
+    "category": "Sensors",
+    "categoryPt": "Sensores",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "7",
+      "value": 7,
+      "restriction": null
+    },
+    "rating": 8
+  },
+  {
+    "id": "2d4edef2-2891-4383-83f6-81f05cfbd046",
+    "name": "Single Sensor",
+    "namePt": "Sensor Único",
+    "source": "SR5",
+    "page": 445,
+    "category": "Sensors",
+    "categoryPt": "Sensores",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "5",
+      "value": 5,
+      "restriction": null
+    },
+    "rating": 8
+  },
+  {
+    "id": "5c3b9966-ad7e-42e3-b0e0-f656021784cf",
+    "name": "Atmosphere Sensor",
+    "namePt": "Sensor Atmosférico",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "ffc069af-d3ec-4201-887c-0178dcdfeef9",
+    "name": "Camera",
+    "namePt": "Câmera",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "c6f60201-524f-4e3f-adc7-727eace4c7bd",
+    "name": "Cyberware Scanner",
+    "namePt": "Scanner de Cibernético",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "1345a189-50d2-44e0-aeea-73ce0f28390b",
+    "name": "Directional Microphone",
+    "namePt": "Microfone Direcional",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "d98f419f-7625-4228-9723-0217950d8155",
+    "name": "Geiger Counter",
+    "namePt": "Contador Geiger",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "f25e4819-209c-4cbf-b24f-668359a7a2ad",
+    "name": "Laser Microphone",
+    "namePt": "Microfone Laser",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "3a79e046-8106-4089-a1ab-895eee956b86",
+    "name": "Laser Range Finder",
+    "namePt": "Telêmetro Laser",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "ff0f7ab6-ee55-47aa-bdec-0646acca4bff",
+    "name": "MAD Scanner",
+    "namePt": "Scanner de DAM",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "e853967a-a2b8-4d89-9a97-773034489a16",
+    "name": "Motion Sensor",
+    "namePt": "Sensor de Movimento",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "c763fac2-8b08-4c61-8dc2-6291d905a2df",
+    "name": "Olfactory Scanner",
+    "namePt": "Scanner Olfativo",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "0f13599a-2a4e-4b75-80e2-fab4405a7a87",
+    "name": "Omni-directional Microphone",
+    "namePt": "Microfone Omnidirecional",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "4d12e4a1-edd3-4abf-830f-aa95874b7531",
+    "name": "Radio Signal Scanner",
+    "namePt": "Scanner de Sinal de Rádio",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "e140b671-dc22-429d-b12a-dfbf46951049",
+    "name": "Ultrasound",
+    "namePt": "Ultrasom",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "c68da753-6ee3-4e14-8234-26676b7735f6",
+    "name": "Vision Magnification",
+    "namePt": "Ampliação de Visão",
+    "source": "SR5",
+    "page": 446,
+    "category": "Sensor Functions",
+    "categoryPt": "Funções de Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "2bcc17b8-33bb-4567-887d-8be9593f7899",
+    "name": "Key Lock",
+    "namePt": "Fechadura de Chave",
+    "source": "SR5",
+    "page": 446,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "Rating * 10",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "4a2468f8-0ec5-4f33-9a5d-46861e8a79f4",
+    "name": "Combination Lock",
+    "namePt": "Fechadura de Combinação",
+    "source": "SR5",
+    "page": 446,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "Rating * 10",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "d0cde5ea-d524-451d-9fd6-eeccd1439293",
+    "name": "Maglock",
+    "namePt": "Trava Magnética",
+    "source": "SR5",
+    "page": 447,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "a2953d6e-8bb8-40a8-b7f6-997be35947cf",
+    "name": "Keypad",
+    "namePt": "Teclado",
+    "source": "SR5",
+    "page": 447,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "71a4cc20-19f0-4ed1-92f8-d049ba370134",
+    "name": "Card Reader",
+    "namePt": "Leitor de Cartão",
+    "source": "SR5",
+    "page": 447,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "+50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "caa0f85d-e6f0-415a-98c7-fc4f16139964",
+    "name": "Anti-Tamper Circuits",
+    "namePt": "Circuitos Antifraude",
+    "source": "SR5",
+    "page": 447,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "Rating*250",
+      "value": null
+    },
+    "avail": {
+      "raw": "+Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4
+  },
+  {
+    "id": "b380cbde-7569-44d9-ba06-fe74278a12cd",
+    "name": "Biometric Reader",
+    "namePt": "Leitor Biométrico",
+    "source": "SR5",
+    "page": 447,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "+200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "+4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "b9812675-b4c3-43ce-b564-c47a5f66b0fc",
+    "name": "Restraint, Metal",
+    "namePt": "Amarras, Metal",
+    "source": "SR5",
+    "page": 447,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "7abaa077-48ee-4a28-9a10-6dff788ccb1d",
+    "name": "Restraint, Plasteel",
+    "namePt": "Amarras, Plastiaço",
+    "source": "SR5",
+    "page": 447,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "53c0b4cc-b209-4db4-bb0d-6710b3f4349a",
+    "name": "Restraint, Plastic",
+    "namePt": "Amarras, Plástico",
+    "source": "SR5",
+    "page": 447,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "75ed6157-a4f4-4fdc-9482-22cf7521b20d",
+    "name": "Restraint, Containment Manacles",
+    "namePt": "Amarras, Algemas de Contenção",
+    "source": "SR5",
+    "page": 447,
+    "category": "Security Devices",
+    "categoryPt": "Dispositivos de Segurança",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "af829cba-8d5e-40fd-b37b-e5266c29c55a",
+    "name": "Autopicker",
+    "namePt": "Auto-arrombador",
+    "source": "SR5",
+    "page": 447,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "rating": 6
+  },
+  {
+    "id": "d90a58cd-f89c-486d-b785-991d2fecf32f",
+    "name": "Cellular Glove Molder",
+    "namePt": "Luva de Molde Celular",
+    "source": "SR5",
+    "page": 447,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "rating": 4
+  },
+  {
+    "id": "f5ac4b53-82ad-4a2f-8f3d-990e075951f7",
+    "name": "Chisel",
+    "namePt": "Cinzel",
+    "source": "SR5",
+    "page": 447,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "de595490-7f88-4b1c-b239-009a6c5c10f4",
+    "name": "Crowbar",
+    "namePt": "Pé-de-Cabra",
+    "source": "SR5",
+    "page": 447,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "dcab11fa-b31a-49bd-ba43-3a9009072e4e",
+    "name": "Keycard Copier",
+    "namePt": "Copiador de Cartão-Chave",
+    "source": "SR5",
+    "page": 447,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "Rating * 600",
+      "value": null
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "rating": 6
+  },
+  {
+    "id": "0fdeb240-743c-4a9d-9cf1-fef0990575bb",
+    "name": "Lockpick Set",
+    "namePt": "Conjunto de Gazuas",
+    "source": "SR5",
+    "page": 448,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "ea6c4929-0bd5-413f-a023-f9ca0a9f4ea3",
+    "name": "Maglock Passkey",
+    "namePt": "Chave de Acesso de Trava Magnética",
+    "source": "SR5",
+    "page": 448,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "Rating * 2000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)F",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4
+  },
+  {
+    "id": "a210be88-be16-4d66-afcb-7d58b8e1397f",
+    "name": "Miniwelder",
+    "namePt": "Mini-Soldador",
+    "source": "SR5",
+    "page": 448,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "97f888dd-7e0d-4f33-b4cc-396cddecdf62",
+    "name": "Miniwelder Fuel Canister",
+    "namePt": "Mini-Soldador, Lata de Combustível",
+    "source": "SR5",
+    "page": 448,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "17a4ed15-a9d3-40a6-b5d4-4a69f6c8b9d3",
+    "name": "Monofilament Chainsaw",
+    "namePt": "Motoserra de Monofilamento",
+    "source": "SR5",
+    "page": 448,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    }
+  },
+  {
+    "id": "fe4ea7f4-df9b-4bda-a0ca-26347ca85738",
+    "name": "Sequencer",
+    "namePt": "Sequenciador",
+    "source": "SR5",
+    "page": 448,
+    "category": "Breaking and Entering Gear",
+    "categoryPt": "Equipamentos de Arrombamento e Invasão",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)F",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "9d775d72-29ca-4784-b617-a667469fe192",
+    "name": "Glue Solvent",
+    "namePt": "Solvente de Cola",
+    "source": "SR5",
+    "page": 448,
+    "category": "Chemicals",
+    "categoryPt": "Químicos",
+    "cost": {
+      "raw": "90",
+      "value": 90
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "8b2b55ed-89d2-4133-b478-41cd9d996c96",
+    "name": "Glue Sprayer",
+    "namePt": "Spray de Cola",
+    "source": "SR5",
+    "page": 448,
+    "category": "Chemicals",
+    "categoryPt": "Químicos",
+    "cost": {
+      "raw": "150",
+      "value": 150
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "a5f6b922-53db-4813-91db-caa5953bc5b1",
+    "name": "Thermite Burning Bar",
+    "namePt": "Barra Incendiária Termite",
+    "source": "SR5",
+    "page": 448,
+    "category": "Chemicals",
+    "categoryPt": "Químicos",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "16R",
+      "value": 16,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "4a925049-5390-4394-8842-6cb46423cf00",
+    "name": "Chemsuit",
+    "namePt": "Traje Químico",
+    "source": "SR5",
+    "page": 448,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "Rating * 150",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "a17cae86-4d6f-4e00-acb6-03f0ccfb2807",
+    "name": "Climbing Gear",
+    "namePt": "Equipamento de Escalada",
+    "source": "SR5",
+    "page": 448,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "927c8a62-2c67-4121-abeb-235ebde7b90a",
+    "name": "Diving Gear",
+    "namePt": "Equipamento de Mergulho",
+    "source": "SR5",
+    "page": 448,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    }
+  },
+  {
+    "id": "c49a893a-d445-4aac-bec0-c8501cba4c2c",
+    "name": "Flashlight",
+    "namePt": "Lanterna",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "44acc4c0-5795-47a4-84fb-bd2374276360",
+    "name": "Flashlight, Low-light",
+    "namePt": "Lanterna, Penumbra",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "58ae0574-bf03-45c3-9fee-0322069a3b18",
+    "name": "Flashlight, Infrared",
+    "namePt": "Lanterna, Infravermelho",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "2633cf38-90a6-4843-b475-e3ee1132fb5f",
+    "name": "Gas Mask",
+    "namePt": "Máscara de Gás",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "8bed8fa9-b75e-44ad-8181-a9dcd1f110cd",
+    "name": "Gecko Tape Gloves",
+    "namePt": "Luvas de Lagartixa",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    }
+  },
+  {
+    "id": "a39501ca-0df5-4fb7-8992-97b765383d17",
+    "name": "Hazmat Suit",
+    "namePt": "Traje NBQ",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    }
+  },
+  {
+    "id": "c658ec7e-48c1-4ead-8083-f3ee0eab92e4",
+    "name": "Light Stick",
+    "namePt": "Bastão de Luz",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "08fb5b81-af99-4311-8588-f7d680d3fa5c",
+    "name": "Magnesium Torch",
+    "namePt": "Tocha de Magnésio",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "78f71833-4104-4dfb-b811-9bcabff95ecf",
+    "name": "Micro Flare Launcher",
+    "namePt": "Lançador de Mini Clarões",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "175",
+      "value": 175
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "f3d0d8f1-a2be-45d9-83a6-b5461afb62de",
+    "name": "Micro Flares",
+    "namePt": "Micro Clarões",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "2bb6956f-c00e-452c-ab99-6b4613d7bb3e",
+    "name": "Rappelling Gloves",
+    "namePt": "Luvas de Rapel",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "241e831d-230a-403b-a4a1-1e601b1afdc3",
+    "name": "Respirator",
+    "namePt": "Respirador",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "Rating * 50",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "27f9775d-cd14-4900-827f-ba00d26e0c67",
+    "name": "Survival Kit",
+    "namePt": "Kit de Sobrevivência",
+    "source": "SR5",
+    "page": 449,
+    "category": "Survival Gear",
+    "categoryPt": "Equipamentos de Sobrevivência",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "59561c08-3269-470d-9d8b-3cde8a8ccbf8",
+    "name": "Grapple Gun",
+    "namePt": "Arma de Gancho",
+    "source": "SR5",
+    "page": 449,
+    "category": "Grapple Gun",
+    "categoryPt": "Arma de Gancho",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "dff54f55-846d-4017-84e2-dd1f1c29861f",
+    "name": "Catalyst Stick",
+    "namePt": "Bastão Catalisador",
+    "source": "SR5",
+    "page": 449,
+    "category": "Grapple Gun",
+    "categoryPt": "Arma de Gancho",
+    "cost": {
+      "raw": "120",
+      "value": 120
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "fc0987f2-b3cf-4ba2-8777-0610ed97e90e",
+    "name": "Microwire (100m)",
+    "namePt": "Micro-Fio (100m)",
+    "source": "SR5",
+    "page": 449,
+    "category": "Grapple Gun",
+    "categoryPt": "Arma de Gancho",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "14243f3e-8d05-480d-8e74-b90ee615e6ff",
+    "name": "Myomeric Rope (10m)",
+    "namePt": "Corda Miomérica (10m)",
+    "source": "SR5",
+    "page": 449,
+    "category": "Grapple Gun",
+    "categoryPt": "Arma de Gancho",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    }
+  },
+  {
+    "id": "8adaecd5-0c24-4982-8803-e4459e16589f",
+    "name": "Standard Rope (100m)",
+    "namePt": "Corda Padrão(100m)",
+    "source": "SR5",
+    "page": 449,
+    "category": "Grapple Gun",
+    "categoryPt": "Arma de Gancho",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "76890101-9f90-41db-a6f0-6f5fd4802896",
+    "name": "Stealth Rope (100m)",
+    "namePt": "Corda Furtiva (100m)",
+    "source": "SR5",
+    "page": 449,
+    "category": "Grapple Gun",
+    "categoryPt": "Arma de Gancho",
+    "cost": {
+      "raw": "85",
+      "value": 85
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "e97c478c-f10a-494e-98ba-0d9c3076cd73",
+    "name": "Biomonitor",
+    "namePt": "Biomonitor",
+    "source": "SR5",
+    "page": 450,
+    "category": "Biotech",
+    "categoryPt": "Biotecnologia",
+    "cost": {
+      "raw": "300",
+      "value": 300
+    },
+    "avail": {
+      "raw": "3",
+      "value": 3,
+      "restriction": null
+    }
+  },
+  {
+    "id": "6cf42a40-a0cf-4815-82b1-ca30adcbabad",
+    "name": "Disposable Syringe",
+    "namePt": "Seringa Descartável",
+    "source": "SR5",
+    "page": 450,
+    "category": "Biotech",
+    "categoryPt": "Biotecnologia",
+    "cost": {
+      "raw": "10",
+      "value": 10
+    },
+    "avail": {
+      "raw": "3",
+      "value": 3,
+      "restriction": null
+    }
+  },
+  {
+    "id": "ae9c37df-6d82-44c1-aa21-6c87e45e2dc1",
+    "name": "Medkit",
+    "namePt": "Kit Médico",
+    "source": "SR5",
+    "page": 450,
+    "category": "Biotech",
+    "categoryPt": "Biotecnologia",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "76aca45d-0d4f-45a3-a532-c47ac0b26b89",
+    "name": "Medkit Supplies",
+    "namePt": "Suprimentos de Kit Médico",
+    "source": "SR5",
+    "page": 450,
+    "category": "Biotech",
+    "categoryPt": "Biotecnologia",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "47e12d78-cb99-4e20-aff5-11cbed1e715e",
+    "name": "Slap Patch, Antidote Patch",
+    "namePt": "Emplastro de Antídoto",
+    "source": "SR5",
+    "page": 451,
+    "category": "Biotech",
+    "categoryPt": "Biotecnologia",
+    "cost": {
+      "raw": "Rating * 50",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "d1c0cab8-b4ea-4f08-b462-75b18246e1d8",
+    "name": "Slap Patch, Chem Patch",
+    "namePt": "Emplastro Químico",
+    "source": "SR5",
+    "page": 451,
+    "category": "Biotech",
+    "categoryPt": "Biotecnologia",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    }
+  },
+  {
+    "id": "320bd9e3-e261-4a45-aa03-c740b6855e73",
+    "name": "Slap Patch, Stim Patch",
+    "namePt": "Emplastro Estimulante",
+    "source": "SR5",
+    "page": 451,
+    "category": "Biotech",
+    "categoryPt": "Biotecnologia",
+    "cost": {
+      "raw": "Rating * 25",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6
+  },
+  {
+    "id": "5e4f9fdf-cf51-4ea1-9de0-8ca4f33af8b1",
+    "name": "Slap Patch, Tranq Patch",
+    "namePt": "Emplastro Tranquilizante",
+    "source": "SR5",
+    "page": 451,
+    "category": "Biotech",
+    "categoryPt": "Biotecnologia",
+    "cost": {
+      "raw": "Rating * 20",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 10
+  },
+  {
+    "id": "5de1956f-0ec3-4fad-9e9a-d8b90ac1e3f4",
+    "name": "Slap Patch, Trauma Patch",
+    "namePt": "Emplastro Antitrauma",
+    "source": "SR5",
+    "page": 451,
+    "category": "Biotech",
+    "categoryPt": "Biotecnologia",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    }
+  },
+  {
+    "id": "2f40c4cd-7582-4358-8752-91c9f94f5b6e",
+    "name": "Symbiotes Upkeep (1 Month Advance Payment)",
+    "namePt": "Simbiontes (1 Mês de Pagamento Adiantado)",
+    "source": "SR5",
+    "page": 459,
+    "category": "Contracts/Upkeep",
+    "categoryPt": "Contratos/Manutenção",
+    "cost": {
+      "raw": "Rating * 200",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 4
+  },
+  {
+    "id": "6b28b36a-416a-4041-9561-558083158d7c",
+    "name": "DocWagon Contract, Basic (1 Year Advance Payment)",
+    "namePt": "Contrato DocWagon, Básico (1 Ano de Pagamento Adiantado)",
+    "source": "SR5",
+    "page": 450,
+    "category": "Contracts/Upkeep",
+    "categoryPt": "Contratos/Manutenção",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "c985f952-df28-4b69-a7b7-b24a291cd651",
+    "name": "DocWagon Contract, Gold (1 Year Advance Payment)",
+    "namePt": "Contrato DocWagon, Ouro (1 Ano de Pagamento Adiantado)",
+    "source": "SR5",
+    "page": 450,
+    "category": "Contracts/Upkeep",
+    "categoryPt": "Contratos/Manutenção",
+    "cost": {
+      "raw": "25000",
+      "value": 25000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "aabed898-177f-413b-aeb6-5b862da67c6b",
+    "name": "DocWagon Contract, Platinum (1 Year Advance Payment)",
+    "namePt": "Contrato DocWagon, Platina (1 Ano de Pagamento Adiantado)",
+    "source": "SR5",
+    "page": 450,
+    "category": "Contracts/Upkeep",
+    "categoryPt": "Contratos/Manutenção",
+    "cost": {
+      "raw": "50000",
+      "value": 50000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "7c8251b6-b195-4c8f-90f0-c036f8a9146f",
+    "name": "DocWagon Contract, Super-Platinum (1 Year Advance Payment)",
+    "namePt": "Contrato DocWagon, Super-Platina (1 Ano de Pagamento Adiantado)",
+    "source": "SR5",
+    "page": 450,
+    "category": "Contracts/Upkeep",
+    "categoryPt": "Contratos/Manutenção",
+    "cost": {
+      "raw": "100000",
+      "value": 100000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "93d81bd8-52bf-4461-b2da-394aca4ce262",
+    "name": "Alchemical Focus",
+    "namePt": "Foco Alquímico",
+    "source": "SR5",
+    "page": 318,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 5000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "1efc3ad3-c5d7-4534-ab97-a059f08f1b74",
+    "name": "Disenchanting Focus",
+    "namePt": "Foco de Desencantação",
+    "source": "SR5",
+    "page": 319,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 5000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "12e54f08-070f-421c-a523-c0088cbafcfc",
+    "name": "Centering Focus",
+    "namePt": "Foco de Centragem",
+    "source": "SR5",
+    "page": 319,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 9000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "e946041a-0c16-49a5-811f-dfd2fba0ae8f",
+    "name": "Flexible Signature Focus",
+    "namePt": "Foco de Assinatura Flexível",
+    "source": "SR5",
+    "page": 319,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 9000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "62df3c6c-d080-4db9-98c0-24fc5e9a0604",
+    "name": "Masking Focus",
+    "namePt": "Foco de Mascarar",
+    "source": "SR5",
+    "page": 319,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 9000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "ff779a68-a360-4a68-9e57-9a363b5de0d0",
+    "name": "Spell Shaping Focus",
+    "namePt": "Foco de Moldar Feitiços",
+    "source": "SR5",
+    "page": 319,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 9000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "62bfb38d-5515-440b-83ed-289ed926d27e",
+    "name": "Power Focus",
+    "namePt": "Foco de Poder",
+    "source": "SR5",
+    "page": 319,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 18000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 4)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "a64c073c-8aa9-4383-b885-267f8ce1ea99",
+    "name": "Qi Focus",
+    "namePt": "Foco de Qi",
+    "source": "SR5",
+    "page": 319,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 3000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "30bdbf30-929a-4221-9982-f9de8574f87b",
+    "name": "Counterspelling Focus, Combat",
+    "namePt": "Foco de Contramágica, Combate",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "e1b66500-1c39-4747-87a6-071b8b1966cc",
+    "name": "Ritual Spellcasting Focus, Combat",
+    "namePt": "Foco de Conjuração Ritual, Combate",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "2f485376-54c1-41be-8678-79cc98e04ebc",
+    "name": "Spellcasting Focus, Combat",
+    "namePt": "Foco de Conjuração, Combate",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "39f2f34b-14e2-47f3-8e24-a401015a645a",
+    "name": "Sustaining Focus, Combat",
+    "namePt": "Foco de Sustentação, Combate",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "a56807b8-e430-479d-847d-e0e294b5e937",
+    "name": "Counterspelling Focus, Detection",
+    "namePt": "Foco de Contramágica, Detecção",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "2c465730-38cb-41d4-9d19-366435fb71bb",
+    "name": "Ritual Spellcasting Focus, Detection",
+    "namePt": "Foco de Conjuração Ritual, Detecção",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "90885434-a40c-416d-8eb3-2d93b96414c2",
+    "name": "Spellcasting Focus, Detection",
+    "namePt": "Foco de Conjuração, Detecção",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "724d1b39-72e9-4df3-aba1-b4ccbe56f32c",
+    "name": "Sustaining Focus, Detection",
+    "namePt": "Foco de Sustentação, Detecção",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "49e7fc11-d3c6-4021-9162-cdf217a4579a",
+    "name": "Counterspelling Focus, Health",
+    "namePt": "Foco de Contramágica, Saúde",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "41842bc7-e48b-446c-b5ce-73f8399f64c0",
+    "name": "Ritual Spellcasting Focus, Health",
+    "namePt": "Foco de Conjuração Ritual, Saúde",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "630114f3-b538-4a4f-ad02-36df0e577d9c",
+    "name": "Spellcasting Focus, Health",
+    "namePt": "Foco de Conjuração, Saúde",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "1e024c0b-d43b-49b1-87e0-c4e4474645fe",
+    "name": "Sustaining Focus, Health",
+    "namePt": "Foco de Sustentação, Saúde",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "8f69fd55-e5ff-404f-99ec-45a9c8498657",
+    "name": "Counterspelling Focus, Illusion",
+    "namePt": "Foco de Contramágica, Ilusão",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "db0e5016-8ae3-4190-ad94-fe3f318f3f3f",
+    "name": "Ritual Spellcasting Focus, Illusion",
+    "namePt": "Foco de Conjuração Ritual, Ilusão",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "aa849313-adf9-4134-b86b-1f6a15f6620f",
+    "name": "Spellcasting Focus, Illusion",
+    "namePt": "Foco de Conjuração, Ilusão",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "e491973f-0bb0-4297-9c32-f02a483ecc8e",
+    "name": "Sustaining Focus, Illusion",
+    "namePt": "Foco de Sustentação, Ilusão",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "2f4f52bb-a198-4d7a-ab4c-d82de4f80cbf",
+    "name": "Counterspelling Focus, Manipulation",
+    "namePt": "Foco de Contramágica, Manipulação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "7057c240-d998-4b45-a119-de8a3ffaa717",
+    "name": "Ritual Spellcasting Focus, Manipulation",
+    "namePt": "Foco de Conjuração Ritual, Manipulação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "8783e50c-f80b-4efe-b440-d2963b55c54e",
+    "name": "Spellcasting Focus, Manipulation",
+    "namePt": "Foco de Conjuração, Manipulação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "d6cae23b-0d69-4505-a98c-a75876b457ed",
+    "name": "Sustaining Focus, Manipulation",
+    "namePt": "Foco de Sustentação, Manipulação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "469f16ea-fe25-4f01-b663-166442850018",
+    "name": "Summoning Focus",
+    "namePt": "Foco de Invocação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "5fae16cf-c68c-46e8-91b2-ca5220824ba5",
+    "name": "Banishing Focus",
+    "namePt": "Foco de Banimento",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "082b52f1-9109-40aa-bf0e-8cb364fa2f8c",
+    "name": "Binding Focus",
+    "namePt": "Foco de Vinculação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "25b0168d-7052-4f76-b8e5-162d67b8ab6e",
+    "name": "Weapon Focus",
+    "namePt": "Foco de Arma",
+    "source": "SR5",
+    "page": 320,
+    "category": "Foci",
+    "categoryPt": "Focos",
+    "cost": {
+      "raw": "Rating * 7000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 4)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "4d620cf5-8443-448a-9e3e-0e887d889789",
+    "name": "Alchemical Focus Formula",
+    "namePt": "Fórmula de Foco Alquímico",
+    "source": "SR5",
+    "page": 318,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1250",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "7676d897-ac6e-40ed-abd1-378ecf2ed36e",
+    "name": "Disenchanting Focus Formula",
+    "namePt": "Fórmula de Foco Desencantação",
+    "source": "SR5",
+    "page": 319,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1250",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "d597f728-596a-4304-9ea4-e457d6d708f7",
+    "name": "Centering Focus Formula",
+    "namePt": "Fórmula de Foco de Centragem",
+    "source": "SR5",
+    "page": 319,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 2250",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "9b4244d8-621c-4a04-b3a2-74b6181b9d27",
+    "name": "Flexible Signature Focus Formula",
+    "namePt": "Fórmula de Foco de Assinatura Flexível",
+    "source": "SR5",
+    "page": 319,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 2250",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "d19ba087-be20-4d0b-8b73-b8c09ecccfef",
+    "name": "Masking Focus Formula",
+    "namePt": "Fórmula de Foco de Mascarar",
+    "source": "SR5",
+    "page": 319,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 2250",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "6d512bcd-685f-44c8-bd1b-f17b45354294",
+    "name": "Spell Shaping Focus Formula",
+    "namePt": "Fórmula de Foco Moldar Feitiços",
+    "source": "SR5",
+    "page": 319,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 2250",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "6afdcc4f-416b-4171-b04a-f202c9736d59",
+    "name": "Power Focus Formula",
+    "namePt": "Fórmula de Foco de Poder",
+    "source": "SR5",
+    "page": 319,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 4500",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 4)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "d817509a-49fd-41ae-a99d-6501161ee3a2",
+    "name": "Qi Focus Formula",
+    "namePt": "Fórmula de Foco de Qi",
+    "source": "SR5",
+    "page": 319,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 750",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "2003dcde-a778-4447-be67-eabdab02e243",
+    "name": "Counterspelling Focus Formula, Combat",
+    "namePt": "Fórmula de Foco de Contramágica, Combate",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "8d589212-a086-4fbf-908a-e3818c75721d",
+    "name": "Ritual Spellcasting Focus Formula, Combat",
+    "namePt": "Fórmula de Foco de Conjuração Ritual, Combate",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "4f2b39f9-f219-4735-b69d-786043e249fd",
+    "name": "Spellcasting Focus Formula, Combat",
+    "namePt": "Fórmula de Foco de Conjuração, Combate",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "ba8fa866-ab50-45d8-b9c3-375d688d9d5f",
+    "name": "Sustaining Focus Formula, Combat",
+    "namePt": "Fórmula de Foco de Sustentação, Combate",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "913f2412-ee15-4a04-a120-ace6346a5221",
+    "name": "Counterspelling Focus Formula, Detection",
+    "namePt": "Fórmula de Foco de Contramágica, Detecção",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "65eee2b5-6b25-4f59-9ae5-c5506f3957fe",
+    "name": "Ritual Spellcasting Focus Formula, Detection",
+    "namePt": "Fórmula de Foco de Conjuração Ritual, Detecção",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "291da6dd-0791-43e9-8df7-885711f86159",
+    "name": "Spellcasting Focus Formula, Detection",
+    "namePt": "Fórmula de Foco de Conjuração, Detecção",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "3039945f-bd0c-46e0-8136-2bf5e6b3d4d6",
+    "name": "Sustaining Focus Formula, Detection",
+    "namePt": "Fórmula de Foco de Sustentação, Detecção",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "63066d38-fc93-4696-824a-e1fc146a6a8e",
+    "name": "Counterspelling Focus Formula, Health",
+    "namePt": "Fórmula de Foco de Contramágica, Saúde",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "338412ce-1e32-4513-8f37-bd649264b699",
+    "name": "Ritual Spellcasting Focus Formula, Health",
+    "namePt": "Fórmula de Foco de Conjuração Ritual, Saúde",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "125316e5-227b-431b-b84d-3f698951ed7a",
+    "name": "Spellcasting Focus Formula, Health",
+    "namePt": "Fórmula de Foco de Conjuração, Saúde",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "53e90b06-8b7a-4de5-ad00-1f0658219992",
+    "name": "Sustaining Focus Formula, Health",
+    "namePt": "Fórmula de Foco de Sustentação, Saúde",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "aca6fc75-c330-420a-b7e6-2d7c9e41d7c4",
+    "name": "Counterspelling Focus Formula, Illusion",
+    "namePt": "Fórmula de Foco de Contramágica, Ilusão",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "78e1ad22-b0cc-415e-acb7-69e6ada79f55",
+    "name": "Ritual Spellcasting Focus Formula, Illusion",
+    "namePt": "Fórmula de Foco de Conjuração Ritual, Ilusão",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "b3608901-2f35-4e09-b5b4-d91265a60439",
+    "name": "Spellcasting Focus Formula, Illusion",
+    "namePt": "Fórmula de Foco de Conjuração, Ilusão",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "890daab7-7e6d-480c-b638-1f208cc10036",
+    "name": "Sustaining Focus Formula, Illusion",
+    "namePt": "Fórmula de Foco de Sustentação, Ilusão",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "fe57e4c5-a6c2-47b9-9444-2099742383f8",
+    "name": "Counterspelling Focus Formula, Manipulation",
+    "namePt": "Fórmula de Foco de Contramágica, Manipulação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "2856260d-e53c-4c99-8d1b-f248d8cf88cd",
+    "name": "Ritual Spellcasting Focus Formula, Manipulation",
+    "namePt": "Fórmula de Foco de Conjuração Ritual, Manipulação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "ef5d5ebe-62f8-4d0a-9e54-fed48629b156",
+    "name": "Spellcasting Focus Formula, Manipulation",
+    "namePt": "Fórmula de Foco de Conjuração, Manipulação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "0d308699-7e57-442f-897e-d9f005d14bcd",
+    "name": "Sustaining Focus Formula, Manipulation",
+    "namePt": "Fórmula de Foco de Sustentação, Manipulação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "59206083-9102-4961-82b0-ebff82e5b7fd",
+    "name": "Summoning Focus Formula",
+    "namePt": "Fórmula de Foco de Invocação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "b6d50e0c-8c72-458c-8985-3088300fca1a",
+    "name": "Banishing Focus Formula",
+    "namePt": "Fórmula de Foco de Banimento",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "70ce43e0-2182-4f24-bdfd-9bc57c510edb",
+    "name": "Binding Focus Formula",
+    "namePt": "Fórmula de Foco de Vinculação",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "ead947af-b88b-4b0e-9736-c04d6b21024c",
+    "name": "Weapon Focus Formula",
+    "namePt": "Fórmula de Foco de Arma",
+    "source": "SR5",
+    "page": 320,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "Rating * 1750",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 4)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 18
+  },
+  {
+    "id": "6006ea2c-55b2-44cd-88ea-1b2184716485",
+    "name": "Spell Formula, Combat",
+    "namePt": "Fórmula de Feitiço, Combate",
+    "source": "SR5",
+    "page": 326,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "eb5f507b-bc3c-4d51-b140-80a0098a1e8b",
+    "name": "Spell Formula, Detection",
+    "namePt": "Fórmula de Feitiço, Detecção",
+    "source": "SR5",
+    "page": 326,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "ddd25c4d-c165-4840-8525-70197a0fbb3c",
+    "name": "Spell Formula, Health",
+    "namePt": "Fórmula de Feitiço, Saúde",
+    "source": "SR5",
+    "page": 326,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "369de39c-e1e0-4357-ac63-a23a3765f21a",
+    "name": "Spell Formula, Illusion",
+    "namePt": "Fórmula de Feitiço, Ilusão",
+    "source": "SR5",
+    "page": 326,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "c5b7dddf-8e33-401d-998f-fe89956aa75f",
+    "name": "Spell Formula, Manipulation",
+    "namePt": "Fórmula de Feitiço, Manipulação",
+    "source": "SR5",
+    "page": 326,
+    "category": "Formulae",
+    "categoryPt": "Fórmulas",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f8151303-b838-4af1-ba9d-d43ff0892b40",
+    "name": "Magical Lodge Materials",
+    "namePt": "Materiais de Estância Mágica",
+    "source": "SR5",
+    "page": 326,
+    "category": "Magical Supplies",
+    "categoryPt": "Suprimentos Mágicos",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 20
+  },
+  {
+    "id": "ef37af30-1204-4918-af66-dfbdd33cd045",
+    "name": "Reagents, per dram",
+    "namePt": "Reagentes, por dracma",
+    "source": "SR5",
+    "page": 317,
+    "category": "Magical Supplies",
+    "categoryPt": "Suprimentos Mágicos",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "a1c4884b-b9b2-471e-99fd-6fb31a62ad52",
+    "name": "Orichalcum",
+    "namePt": "Oricalco",
+    "source": "SR5",
+    "page": 316,
+    "category": "Magical Supplies",
+    "categoryPt": "Suprimentos Mágicos",
+    "cost": {
+      "raw": "140000",
+      "value": 140000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    }
+  },
+  {
+    "id": "1445f60b-49e1-45c9-98e4-054a79ca80f8",
+    "name": "CS/Tear Gas",
+    "namePt": "CS/Gás Lacrimogêneo",
+    "source": "SR5",
+    "page": 409,
+    "category": "Toxins",
+    "categoryPt": "Toxinas",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "e90016cf-cf44-4cd2-9343-c0f2a58e1aa2",
+    "name": "Gamma-Scopolamine",
+    "namePt": "Gama-Escopolamina",
+    "source": "SR5",
+    "page": 410,
+    "category": "Toxins",
+    "categoryPt": "Toxinas",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "14F",
+      "value": 14,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "875bf273-1a0d-4a42-80ab-6547d7a1235a",
+    "name": "Narcoject",
+    "namePt": "Narcojeção",
+    "source": "SR5",
+    "page": 410,
+    "category": "Toxins",
+    "categoryPt": "Toxinas",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "ee90d254-cb65-4a03-92e5-abe7037ff5e3",
+    "name": "Nausea Gas",
+    "namePt": "Gás Nauseante",
+    "source": "SR5",
+    "page": 410,
+    "category": "Toxins",
+    "categoryPt": "Toxinas",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "24e87c73-22be-480d-bb79-978277672a1d",
+    "name": "Neuro-Stun VIII",
+    "namePt": "Neurotordoamento VIII",
+    "source": "SR5",
+    "page": 410,
+    "category": "Toxins",
+    "categoryPt": "Toxinas",
+    "cost": {
+      "raw": "60",
+      "value": 60
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f81d9a2e-5c2d-49ad-93b4-1a7a71439bf3",
+    "name": "Neuro-Stun IX",
+    "namePt": "Neurotordoamento IX",
+    "source": "SR5",
+    "page": 410,
+    "category": "Toxins",
+    "categoryPt": "Toxinas",
+    "cost": {
+      "raw": "60",
+      "value": 60
+    },
+    "avail": {
+      "raw": "13R",
+      "value": 13,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "4ad3f9ea-4ee0-45f8-a57b-ed40c660d0b0",
+    "name": "Neuro-Stun X",
+    "namePt": "Neurotordoamento X",
+    "source": "SR5",
+    "page": 410,
+    "category": "Toxins",
+    "categoryPt": "Toxinas",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "14R",
+      "value": 14,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "a79225da-7507-4b40-8cc1-867213a3c7d8",
+    "name": "Pepper Punch",
+    "namePt": "Porrada de Pimenta",
+    "source": "SR5",
+    "page": 410,
+    "category": "Toxins",
+    "categoryPt": "Toxinas",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "189c3bb8-357b-412a-afc4-ce931ea8871d",
+    "name": "Seven-7",
+    "namePt": "Seven-7",
+    "source": "SR5",
+    "page": 410,
+    "category": "Toxins",
+    "categoryPt": "Toxinas",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "62bffcd7-4a43-45cd-9cf7-3067ba9688f6",
+    "name": "Bliss",
+    "namePt": "Glória",
+    "source": "SR5",
+    "page": 411,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "15",
+      "value": 15
+    },
+    "avail": {
+      "raw": "3F",
+      "value": 3,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "8dc829b9-8b94-4510-ab1a-2305cbad69c9",
+    "name": "Cram",
+    "namePt": "Baque",
+    "source": "SR5",
+    "page": 411,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "10",
+      "value": 10
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "5f5bc907-ce31-4f34-b7cf-a48d9d5d10b3",
+    "name": "Deepweed",
+    "namePt": "Profunderva",
+    "source": "SR5",
+    "page": 411,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "400",
+      "value": 400
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "929c4835-1754-4999-9215-9859e8ec5384",
+    "name": "Jazz",
+    "namePt": "Jazz",
+    "source": "SR5",
+    "page": 411,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "75",
+      "value": 75
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "098bf489-bea9-4f17-b3d9-aead979fdc32",
+    "name": "Kamikaze",
+    "namePt": "Kamikaze",
+    "source": "SR5",
+    "page": 412,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "d4cf626d-0af1-41f7-bec0-e53b4dba2eb1",
+    "name": "Long Haul",
+    "namePt": "Reboque",
+    "source": "SR5",
+    "page": 412,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "d7ec13fa-8601-4f9c-a59c-6a86573b40ee",
+    "name": "Nitro",
+    "namePt": "Nitro",
+    "source": "SR5",
+    "page": 412,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "836f54d5-1e11-49ea-b115-34c14ed843c9",
+    "name": "Novacoke",
+    "namePt": "Novacoca",
+    "source": "SR5",
+    "page": 412,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "10",
+      "value": 10
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "778eefae-94ad-4f8c-ad03-8b9039b5c48e",
+    "name": "Psyche",
+    "namePt": "Pira",
+    "source": "SR5",
+    "page": 412,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "3a946800-be1e-4bbb-899a-c3d1c48a3a31",
+    "name": "Zen",
+    "namePt": "Zen",
+    "source": "SR5",
+    "page": 412,
+    "category": "Drugs",
+    "categoryPt": "Drogas",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "483ca04a-8522-4d12-96ab-4e21dd9a4300",
+    "name": "Dreamchip",
+    "namePt": "Sonhochip",
+    "source": "SR5",
+    "page": 413,
+    "category": "BTLs",
+    "categoryPt": "MQTs",
+    "cost": {
+      "raw": "20",
+      "value": 20
+    },
+    "avail": {
+      "raw": "4F",
+      "value": 4,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "ea044b03-009c-4515-baef-d37b6b1138af",
+    "name": "Moodchip",
+    "namePt": "Emochip",
+    "source": "SR5",
+    "page": 413,
+    "category": "BTLs",
+    "categoryPt": "MQTs",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "4F",
+      "value": 4,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "2e98e2af-6a0e-4b2f-a573-1766552b4ba4",
+    "name": "Personafix",
+    "namePt": "Personafix",
+    "source": "SR5",
+    "page": 413,
+    "category": "BTLs",
+    "categoryPt": "MQTs",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "4F",
+      "value": 4,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "de2bd382-6339-479d-8120-59dd65bde6e6",
+    "name": "Tripchip",
+    "namePt": "Tripchip",
+    "source": "SR5",
+    "page": 413,
+    "category": "BTLs",
+    "categoryPt": "MQTs",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "4F",
+      "value": 4,
+      "restriction": "F"
+    }
+  },
+  {
+    "id": "e8e7b222-99da-4a4f-9c4e-8ffa61838017",
+    "name": "Concealable Holster",
+    "namePt": "Coldre Ocultável",
+    "source": "SR5",
+    "page": 431,
+    "category": "Armor Enhancements",
+    "categoryPt": "Melhorias de Armaduras",
+    "cost": {
+      "raw": "150",
+      "value": 150
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "5977fb0b-b74e-4eb9-b433-9b7c9877b14f",
+    "name": "Holster",
+    "namePt": "Coldre",
+    "source": "SR5",
+    "page": 431,
+    "category": "Armor Enhancements",
+    "categoryPt": "Melhorias de Armaduras",
+    "cost": {
+      "raw": "150",
+      "value": 150
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    }
+  },
+  {
+    "id": "f057b962-1439-4f8e-aa35-2e432a1c833d",
+    "name": "Quick-Draw Holster",
+    "namePt": "Coldre de Saque Rápido",
+    "source": "SR5",
+    "page": 432,
+    "category": "Armor Enhancements",
+    "categoryPt": "Melhorias de Armaduras",
+    "cost": {
+      "raw": "175",
+      "value": 175
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    }
+  },
+  {
+    "id": "f77fc093-d5cf-4be6-bfeb-311653ecd64e",
+    "name": "Micro Flare Launcher",
+    "namePt": "Lançador de Micro Clarões",
+    "source": "SR5",
+    "page": 449,
+    "category": "Armor Enhancements",
+    "categoryPt": "Melhorias de Armaduras",
+    "cost": {
+      "raw": "175",
+      "value": 175
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "d8960057-bd49-4ed0-8dc9-75cb7262c158",
+    "name": "Cyberdeck Form Factor, Hackpack",
+    "namePt": "Formato de Ciberdeck, Hackpack",
+    "source": "SR5",
+    "page": 227,
+    "category": "Commlink/Cyberdeck Form Factors",
+    "categoryPt": "Formatos de Com-Link/Ciberdeck",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "0025f1c7-45a4-4ec5-a692-e18aab2f97a9",
+    "name": "Custom Item",
+    "namePt": "Item Personalizado",
+    "source": "SR5",
+    "page": 1,
+    "category": "Custom",
+    "categoryPt": "Personalizado",
+    "cost": {
+      "raw": "Variable(0-1000000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  }
+]

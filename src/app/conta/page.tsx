@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { sair } from "@/app/actions/tripulante";
 import { Avatar } from "@/components/Avatar";
-import { sistemasAtivos } from "@/config/fichas";
+import { sistemasFicha } from "@/config/fichas";
 import { getUser } from "@/lib/auth/server";
 import { anteriores, getPerfil, historico, totalQuizzes } from "@/lib/perfil";
 import { getResult, quizzes, resultTheme } from "@/lib/quiz";
@@ -55,7 +55,7 @@ async function Base() {
   const desde = (user as { createdAt?: string | Date }).createdAt;
   const ultimo = hist.find((h) => h.quiz in quizzes);
   const ultimoNome = ultimo && getResult(quizzes[ultimo.quiz], ultimo.result)?.name;
-  const sistemas = sistemasAtivos();
+  const sistemas = sistemasFicha;
   const primeiroNome = user.name.trim().split(/\s+/)[0] || user.name;
 
   return (
@@ -131,8 +131,7 @@ async function Base() {
             <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-3.5 p-0">
               {sistemas.map((s) => (
                 <li key={s.slug}>
-                  {/* <a> e não <Link>: cada sistema é outro app, a navegação precisa recarregar a página. */}
-                  <a href={`/fichas/${s.slug}`} className="card flex h-full items-center gap-3 p-4 text-creme no-underline hover:bg-creme/10">
+                  <Link href={`/fichas/${s.slug}`} className="card flex h-full items-center gap-3 p-4 text-creme no-underline hover:bg-creme/10">
                     <span className="flex size-[52px] shrink-0 items-center justify-center rounded-md bg-cabine font-ficha text-lg text-laranja-claro" aria-hidden="true">
                       {s.name.trim()[0]}
                     </span>
@@ -140,7 +139,7 @@ async function Base() {
                       <span className="text-base font-semibold">{s.name}</span>
                       <span className="text-[13px] text-areia">Criar um personagem novo</span>
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

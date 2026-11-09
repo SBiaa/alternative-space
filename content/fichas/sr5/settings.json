@@ -1,0 +1,42 @@
+{
+  "name": "Standard",
+  "books": [
+    "SR5"
+  ],
+  "priorityTable": "standard",
+  "startingKarma": 25,
+  "qualityKarmaLimit": 25,
+  "maxKarmaToNuyen": 10,
+  "nuyenPerKarma": 2000,
+  "maxAvailability": 12,
+  "maxAttributesAtMax": 1,
+  "maxSkillRating": 6,
+  "maxSkillRatingWithAptitude": 7,
+  "contactPointsExpr": "{CHAUnaug} * 3",
+  "knowledgePointsExpr": "({INTUnaug} + {LOGUnaug}) * 2",
+  "bannedWareGrades": [
+    "Betaware",
+    "Deltaware",
+    "Gammaware"
+  ],
+  "initiativeDice": {
+    "min": 1,
+    "max": 5
+  },
+  "karmaCosts": {
+    "attribute": 5,
+    "quality": 1,
+    "specialization": 7,
+    "newKnowledgeSkill": 1,
+    "newActiveSkill": 2,
+    "newSkillGroup": 5,
+    "improveKnowledgeSkill": 1,
+    "improveActiveSkill": 2,
+    "improveSkillGroup": 5,
+    "spell": 5,
+    "newComplexForm": 4,
+    "contact": 1,
+    "carryover": 7,
+    "mysticAdeptPowerPoint": 5
+  }
+}

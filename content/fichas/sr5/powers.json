@@ -1,0 +1,279 @@
+[
+  {
+    "id": "8caaadf4-75b4-4535-928a-5648d395c13a",
+    "name": "Adrenaline Boost",
+    "namePt": "Pulso de Adrenalina",
+    "source": "SR5",
+    "page": 308,
+    "points": 0.25,
+    "levels": true,
+    "maxLevels": null,
+    "action": "Free"
+  },
+  {
+    "id": "39224ecf-f3d0-40b6-95a6-2f047f95d736",
+    "name": "Astral Perception",
+    "namePt": "Percepção Astral",
+    "source": "SR5",
+    "page": 309,
+    "points": 1,
+    "levels": false,
+    "maxLevels": null,
+    "action": "Simple"
+  },
+  {
+    "id": "ddcca815-d6fe-41ed-b174-2e7255320f17",
+    "name": "Attribute Boost",
+    "namePt": "Ampliar Atributo",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.25,
+    "levels": true,
+    "maxLevels": null,
+    "action": "Simple"
+  },
+  {
+    "id": "76337564-7688-497f-84f9-302c6ece10fe",
+    "name": "Combat Sense",
+    "namePt": "Sentido de Combate",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.5,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "dbf16604-164c-485c-96c8-fe3136cd5caa",
+    "name": "Critical Strike",
+    "namePt": "Golpe Crítico",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.5,
+    "levels": false,
+    "maxLevels": null
+  },
+  {
+    "id": "980d6575-c28f-4076-9b36-881cea018335",
+    "name": "Danger Sense",
+    "namePt": "Sentido de Perigo",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.25,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "974d2aba-1772-474b-aaff-c84a12766e5f",
+    "name": "Enhanced Perception",
+    "namePt": "Percepção Ampliada",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.5,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "e009da31-0301-4604-b13f-49b071aa25a1",
+    "name": "Enhanced Accuracy (skill)",
+    "namePt": "Precisão Ampliada (perícia)",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.25,
+    "levels": false,
+    "maxLevels": null
+  },
+  {
+    "id": "75821fb7-a180-4012-aa16-daa92ac3bb63",
+    "name": "Improved Ability (skill)",
+    "namePt": "Habilidade Melhorada (perícia)",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.5,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "901d2af5-246a-447a-a8e2-b2e8c10593df",
+    "name": "Improved Physical Attribute",
+    "namePt": "Atributo Físico Melhorado",
+    "source": "SR5",
+    "page": 309,
+    "points": 1,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "1fde7231-e5cc-4fa3-a1fe-b80b00212417",
+    "name": "Improved Potential (Social)",
+    "namePt": "Potencial Melhorado (Social)",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.5,
+    "levels": false,
+    "maxLevels": null
+  },
+  {
+    "id": "2a7abc86-aa01-4127-b4b1-f73b49a2b5db",
+    "name": "Improved Potential (Mental)",
+    "namePt": "Potencial Melhorado (Mental)",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.5,
+    "levels": false,
+    "maxLevels": null
+  },
+  {
+    "id": "d9b811f4-aa64-46fb-b67d-2995134eda4e",
+    "name": "Improved Potential (Physical)",
+    "namePt": "Potencial Melhorado (Físico)",
+    "source": "SR5",
+    "page": 309,
+    "points": 0.5,
+    "levels": false,
+    "maxLevels": null
+  },
+  {
+    "id": "fea9e769-5f2c-4bae-9610-56c0825e145a",
+    "name": "Improved Reflexes",
+    "namePt": "Reflexos Melhorados",
+    "source": "SR5",
+    "page": 310,
+    "points": 1,
+    "levels": true,
+    "maxLevels": 3,
+    "extraPointCost": 0.5
+  },
+  {
+    "id": "1376c13b-9a01-4873-b935-5b7d91e03785",
+    "name": "Improved Sense",
+    "namePt": "Sentido Melhorado",
+    "source": "SR5",
+    "page": 310,
+    "points": 0.25,
+    "levels": false,
+    "maxLevels": null
+  },
+  {
+    "id": "23636777-44df-44f1-8742-db29dc3c4fdf",
+    "name": "Killing Hands",
+    "namePt": "Mãos Letais",
+    "source": "SR5",
+    "page": 310,
+    "points": 0.5,
+    "levels": false,
+    "maxLevels": null,
+    "action": "Free"
+  },
+  {
+    "id": "f1e8a618-ba12-4972-91f0-974500387893",
+    "name": "Kinesics",
+    "namePt": "Cinésica",
+    "source": "SR5",
+    "page": 310,
+    "points": 0.25,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "ce7df757-792e-4fac-a86e-6b587586deb2",
+    "name": "Light Body",
+    "namePt": "Corpo Leve",
+    "source": "SR5",
+    "page": 310,
+    "points": 0.25,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "c152dcba-8bb7-4a2a-86bb-6f854ea53b55",
+    "name": "Missile Parry",
+    "namePt": "Aparar Projétil",
+    "source": "SR5",
+    "page": 310,
+    "points": 0.25,
+    "levels": true,
+    "maxLevels": null,
+    "action": "Interrupt"
+  },
+  {
+    "id": "da5f9389-a5fd-48ed-8825-8852ff5c56a8",
+    "name": "Mystic Armor",
+    "namePt": "Armadura Mística",
+    "source": "SR5",
+    "page": 310,
+    "points": 0.5,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "98b59b41-6a91-4abc-a6d2-e8debaa3b5aa",
+    "name": "Natural Immunity",
+    "namePt": "Imunidade Natural",
+    "source": "SR5",
+    "page": 311,
+    "points": 0.25,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "545a4bec-c144-42a1-b553-6d6c0c91f07f",
+    "name": "Pain Resistance",
+    "namePt": "Resistência à Dor",
+    "source": "SR5",
+    "page": 311,
+    "points": 0.5,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "4676b6f7-120d-4344-81ac-5922445a521b",
+    "name": "Rapid Healing",
+    "namePt": "Cura Rápida",
+    "source": "SR5",
+    "page": 311,
+    "points": 0.5,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "82d8c376-7509-468a-be17-8c9cba4c86c4",
+    "name": "Spell Resistance",
+    "namePt": "Resistência à Feitiços",
+    "source": "SR5",
+    "page": 311,
+    "points": 0.5,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "3f3fcdbc-c046-4a95-bd46-511a76d75b56",
+    "name": "Traceless Walk",
+    "namePt": "Passos sem Pegadas",
+    "source": "SR5",
+    "page": 311,
+    "points": 1,
+    "levels": false,
+    "maxLevels": null
+  },
+  {
+    "id": "71692391-e01f-4902-98f0-abbbf5431680",
+    "name": "Voice Control",
+    "namePt": "Controle Vocal",
+    "source": "SR5",
+    "page": 311,
+    "points": 0.5,
+    "levels": true,
+    "maxLevels": null
+  },
+  {
+    "id": "bfd1e09c-5765-423b-b079-f5d8e794485a",
+    "name": "Wall Running",
+    "namePt": "Correr na Parede",
+    "source": "SR5",
+    "page": 311,
+    "points": 0.5,
+    "levels": false,
+    "maxLevels": null,
+    "action": "Simple"
+  }
+]

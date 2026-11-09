@@ -1,0 +1,437 @@
+[
+  {
+    "id": "a53d885d-a4a4-443d-b6a6-b0a55b0a96c7",
+    "name": "Human",
+    "namePt": "Humano",
+    "source": "SR5",
+    "page": 50,
+    "category": "Metahuman",
+    "categoryPt": "Meta-Humano",
+    "attributes": {
+      "BOD": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "AGI": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "REA": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "STR": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "CHA": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "INT": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "LOG": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "WIL": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "EDG": {
+        "min": 2,
+        "max": 7,
+        "aug": 7
+      },
+      "MAG": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "RES": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "ESS": {
+        "min": 0,
+        "max": 6,
+        "aug": 6
+      }
+    },
+    "initiative": {
+      "min": 2,
+      "max": 12,
+      "aug": 20
+    },
+    "movement": {
+      "walk": 2,
+      "run": 4,
+      "sprint": 2
+    },
+    "racialQualityIds": [],
+    "bonus": {},
+    "metavariants": []
+  },
+  {
+    "id": "b3259991-b315-4dbe-ae3c-51f71a1116e2",
+    "name": "Elf",
+    "namePt": "Elfo",
+    "source": "SR5",
+    "page": 50,
+    "category": "Metahuman",
+    "categoryPt": "Meta-Humano",
+    "attributes": {
+      "BOD": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "AGI": {
+        "min": 2,
+        "max": 7,
+        "aug": 11
+      },
+      "REA": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "STR": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "CHA": {
+        "min": 3,
+        "max": 8,
+        "aug": 12
+      },
+      "INT": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "LOG": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "WIL": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "EDG": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "MAG": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "RES": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "ESS": {
+        "min": 0,
+        "max": 6,
+        "aug": 6
+      }
+    },
+    "initiative": {
+      "min": 2,
+      "max": 12,
+      "aug": 20
+    },
+    "movement": {
+      "walk": 2,
+      "run": 4,
+      "sprint": 2
+    },
+    "racialQualityIds": [
+      "8ec5c9bb-aeb9-42f2-a436-a60f764adfe4"
+    ],
+    "bonus": {},
+    "metavariants": []
+  },
+  {
+    "id": "08f2c9cc-f9f8-4f1a-9efb-63555af71788",
+    "name": "Dwarf",
+    "namePt": "Anão",
+    "source": "SR5",
+    "page": 50,
+    "category": "Metahuman",
+    "categoryPt": "Meta-Humano",
+    "attributes": {
+      "BOD": {
+        "min": 3,
+        "max": 8,
+        "aug": 12
+      },
+      "AGI": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "REA": {
+        "min": 1,
+        "max": 5,
+        "aug": 9
+      },
+      "STR": {
+        "min": 3,
+        "max": 8,
+        "aug": 12
+      },
+      "CHA": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "INT": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "LOG": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "WIL": {
+        "min": 2,
+        "max": 7,
+        "aug": 11
+      },
+      "EDG": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "MAG": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "RES": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "ESS": {
+        "min": 0,
+        "max": 6,
+        "aug": 6
+      }
+    },
+    "initiative": {
+      "min": 2,
+      "max": 11,
+      "aug": 19
+    },
+    "movement": {
+      "walk": 2,
+      "run": 4,
+      "sprint": 1
+    },
+    "racialQualityIds": [
+      "02e76a38-304e-4a0e-93a3-ad2938306afc",
+      "139ca69c-e9d3-4540-a4c6-b8c778e70185"
+    ],
+    "bonus": {
+      "lifestyleCostPct": 20
+    },
+    "metavariants": []
+  },
+  {
+    "id": "8ed6892f-88e6-42d0-a704-b805778ec13e",
+    "name": "Ork",
+    "namePt": "Ork",
+    "source": "SR5",
+    "page": 50,
+    "category": "Metahuman",
+    "categoryPt": "Meta-Humano",
+    "attributes": {
+      "BOD": {
+        "min": 4,
+        "max": 9,
+        "aug": 13
+      },
+      "AGI": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "REA": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "STR": {
+        "min": 3,
+        "max": 8,
+        "aug": 12
+      },
+      "CHA": {
+        "min": 1,
+        "max": 5,
+        "aug": 9
+      },
+      "INT": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "LOG": {
+        "min": 1,
+        "max": 5,
+        "aug": 9
+      },
+      "WIL": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "EDG": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "MAG": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "RES": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "ESS": {
+        "min": 0,
+        "max": 6,
+        "aug": 6
+      }
+    },
+    "initiative": {
+      "min": 2,
+      "max": 12,
+      "aug": 20
+    },
+    "movement": {
+      "walk": 2,
+      "run": 4,
+      "sprint": 2
+    },
+    "racialQualityIds": [
+      "8ec5c9bb-aeb9-42f2-a436-a60f764adfe4"
+    ],
+    "bonus": {},
+    "metavariants": []
+  },
+  {
+    "id": "77fa1ed8-f4e6-4763-9f0b-f125318b9782",
+    "name": "Troll",
+    "namePt": "Troll",
+    "source": "SR5",
+    "page": 50,
+    "category": "Metahuman",
+    "categoryPt": "Meta-Humano",
+    "attributes": {
+      "BOD": {
+        "min": 5,
+        "max": 10,
+        "aug": 14
+      },
+      "AGI": {
+        "min": 1,
+        "max": 5,
+        "aug": 9
+      },
+      "REA": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "STR": {
+        "min": 5,
+        "max": 10,
+        "aug": 14
+      },
+      "CHA": {
+        "min": 1,
+        "max": 4,
+        "aug": 8
+      },
+      "INT": {
+        "min": 1,
+        "max": 5,
+        "aug": 9
+      },
+      "LOG": {
+        "min": 1,
+        "max": 5,
+        "aug": 9
+      },
+      "WIL": {
+        "min": 1,
+        "max": 6,
+        "aug": 10
+      },
+      "EDG": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "MAG": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "RES": {
+        "min": 1,
+        "max": 6,
+        "aug": 6
+      },
+      "ESS": {
+        "min": 0,
+        "max": 6,
+        "aug": 6
+      }
+    },
+    "initiative": {
+      "min": 2,
+      "max": 11,
+      "aug": 19
+    },
+    "movement": {
+      "walk": 2,
+      "run": 4,
+      "sprint": 1
+    },
+    "racialQualityIds": [
+      "02e76a38-304e-4a0e-93a3-ad2938306afc"
+    ],
+    "bonus": {
+      "armor": 1,
+      "reach": 1,
+      "lifestyleCostPct": 100
+    },
+    "metavariants": []
+  }
+]

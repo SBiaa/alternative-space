@@ -1,0 +1,28 @@
+[
+  {
+    "id": "19320625-bc1a-492f-8904-da6a847e5700",
+    "name": "Hermetic",
+    "namePt": "Hermética",
+    "source": "SR5",
+    "page": 279,
+    "drain": "{WIL} + {LOG}",
+    "spiritCombat": "Spirit of Fire",
+    "spiritDetection": "Spirit of Air",
+    "spiritHealth": "Spirit of Man",
+    "spiritIllusion": "Spirit of Water",
+    "spiritManipulation": "Spirit of Earth"
+  },
+  {
+    "id": "8d185e0e-5f49-4992-babd-d1ac9c848f68",
+    "name": "Shamanic",
+    "namePt": "Xamânica",
+    "source": "SR5",
+    "page": 279,
+    "drain": "{WIL} + {CHA}",
+    "spiritCombat": "Spirit of Beasts",
+    "spiritDetection": "Spirit of Water",
+    "spiritHealth": "Spirit of Earth",
+    "spiritIllusion": "Spirit of Air",
+    "spiritManipulation": "Spirit of Man"
+  }
+]

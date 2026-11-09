@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chummer>
+  <chummer file="books.xml">
+    <books>
+      <book><id>b-sr5</id><name>Shadowrun 5th Edition</name><translate>Shadowrun 5ª Edição</translate></book>
+    </books>
+  </chummer>
+  <chummer file="lifestyles.xml">
+    <lifestyles>
+      <lifestyle><id>ls-low</id><name>Low</name><translate>Baixo</translate></lifestyle>
+      <lifestyle><name>Street</name><translate>Rua</translate></lifestyle>
+    </lifestyles>
+  </chummer>
+  <chummer file="spells.xml">
+    <categories>
+      <category translate="Combate">Combat</category>
+    </categories>
+    <spells>
+      <spell><id>sp-bolt</id><name>Manabolt</name><translate>Raio de Mana</translate></spell>
+    </spells>
+  </chummer>
+</chummer>

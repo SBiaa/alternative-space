@@ -1,0 +1,424 @@
+{
+  "letters": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "rows": {
+    "A": {
+      "letter": "A",
+      "metatypes": [
+        {
+          "metatypeId": "a53d885d-a4a4-443d-b6a6-b0a55b0a96c7",
+          "specialPoints": 9,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "b3259991-b315-4dbe-ae3c-51f71a1116e2",
+          "specialPoints": 8,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "08f2c9cc-f9f8-4f1a-9efb-63555af71788",
+          "specialPoints": 7,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "8ed6892f-88e6-42d0-a704-b805778ec13e",
+          "specialPoints": 7,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "77fa1ed8-f4e6-4763-9f0b-f125318b9782",
+          "specialPoints": 5,
+          "karmaCost": 0,
+          "metavariants": []
+        }
+      ],
+      "talents": [
+        {
+          "key": "magician",
+          "name": "Magician - 6 Magic/10 Spells",
+          "namePt": "Mago - 6 Magia/10 Feitiços",
+          "qualityId": "0e741331-d776-4be8-abc5-4101228abdef",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 6,
+          "freeSpells": 10,
+          "freeSkills": {
+            "count": 2,
+            "rating": 5,
+            "kind": "magic"
+          }
+        },
+        {
+          "key": "mysticAdept",
+          "name": "Mystic Adept - 6 Magic/10 Spells",
+          "namePt": "Adepto Místico - 6 Magia/10 Feitiços",
+          "qualityId": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 6,
+          "freeSpells": 10,
+          "freeSkills": {
+            "count": 2,
+            "rating": 5,
+            "kind": "magic"
+          }
+        },
+        {
+          "key": "technomancer",
+          "name": "Technomancer - 6 Resonance/7 Complex Forms",
+          "namePt": "Tecnomante - 6 Ressonância/7 Formas Complexas",
+          "qualityId": "c4b35412-bd91-45b4-b428-29da7edd5ff4",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [
+            "Metahuman"
+          ],
+          "resonance": 6,
+          "freeComplexForms": 7,
+          "freeSkills": {
+            "count": 3,
+            "rating": 5,
+            "kind": "resonance"
+          }
+        }
+      ],
+      "attributePoints": 24,
+      "skillPoints": 46,
+      "skillGroupPoints": 10,
+      "resources": {
+        "standard": 450000,
+        "primeRunner": 500000,
+        "streetLevel": 75000
+      }
+    },
+    "B": {
+      "letter": "B",
+      "metatypes": [
+        {
+          "metatypeId": "a53d885d-a4a4-443d-b6a6-b0a55b0a96c7",
+          "specialPoints": 7,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "b3259991-b315-4dbe-ae3c-51f71a1116e2",
+          "specialPoints": 6,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "08f2c9cc-f9f8-4f1a-9efb-63555af71788",
+          "specialPoints": 4,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "8ed6892f-88e6-42d0-a704-b805778ec13e",
+          "specialPoints": 4,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "77fa1ed8-f4e6-4763-9f0b-f125318b9782",
+          "specialPoints": 0,
+          "karmaCost": 0,
+          "metavariants": []
+        }
+      ],
+      "talents": [
+        {
+          "key": "adept",
+          "name": "Adept - 6 Magic",
+          "namePt": "Adepto - 6 Magia",
+          "qualityId": "55247bdc-c313-4614-ae15-5012308096ff",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 6,
+          "freeSkills": {
+            "count": 1,
+            "rating": 4,
+            "kind": "nonMagicActive"
+          }
+        },
+        {
+          "key": "magician",
+          "name": "Magician - 4 Magic/7 Spells",
+          "namePt": "Mago - 4 Magia/7 Feitiços",
+          "qualityId": "0e741331-d776-4be8-abc5-4101228abdef",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 4,
+          "freeSpells": 7,
+          "freeSkills": {
+            "count": 2,
+            "rating": 4,
+            "kind": "magic"
+          }
+        },
+        {
+          "key": "mysticAdept",
+          "name": "Mystic Adept - 4 Magic/7 Spells",
+          "namePt": "Adepto Místico - 4 Magia/7 Feitiços",
+          "qualityId": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 4,
+          "freeSpells": 7,
+          "freeSkills": {
+            "count": 2,
+            "rating": 4,
+            "kind": "magic"
+          }
+        },
+        {
+          "key": "aspectedMagician",
+          "name": "Aspected Magician - 5 Magic",
+          "namePt": "Mago de Aspecto - 5 Magia",
+          "qualityId": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 5,
+          "freeSkillGroup": {
+            "count": 1,
+            "rating": 4,
+            "choices": [
+              "conjuring",
+              "enchanting",
+              "sorcery"
+            ]
+          }
+        },
+        {
+          "key": "technomancer",
+          "name": "Technomancer - 4 Resonance/4 Complex Forms",
+          "namePt": "Tecnomante - 4 Ressonância/4 Formas Complexas",
+          "qualityId": "c4b35412-bd91-45b4-b428-29da7edd5ff4",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [
+            "Metahuman"
+          ],
+          "resonance": 4,
+          "freeComplexForms": 4,
+          "freeSkills": {
+            "count": 3,
+            "rating": 4,
+            "kind": "resonance"
+          }
+        }
+      ],
+      "attributePoints": 20,
+      "skillPoints": 36,
+      "skillGroupPoints": 5,
+      "resources": {
+        "standard": 275000,
+        "primeRunner": 325000,
+        "streetLevel": 50000
+      }
+    },
+    "C": {
+      "letter": "C",
+      "metatypes": [
+        {
+          "metatypeId": "a53d885d-a4a4-443d-b6a6-b0a55b0a96c7",
+          "specialPoints": 5,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "b3259991-b315-4dbe-ae3c-51f71a1116e2",
+          "specialPoints": 3,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "08f2c9cc-f9f8-4f1a-9efb-63555af71788",
+          "specialPoints": 1,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "8ed6892f-88e6-42d0-a704-b805778ec13e",
+          "specialPoints": 0,
+          "karmaCost": 0,
+          "metavariants": []
+        }
+      ],
+      "talents": [
+        {
+          "key": "adept",
+          "name": "Adept - 4 Magic",
+          "namePt": "Adepto - 4 Magia",
+          "qualityId": "55247bdc-c313-4614-ae15-5012308096ff",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 4,
+          "freeSkills": {
+            "count": 1,
+            "rating": 2,
+            "kind": "nonMagicActive"
+          }
+        },
+        {
+          "key": "magician",
+          "name": "Magician - 3 Magic/5 Spells",
+          "namePt": "Mago - 3 Magia/5 Feitiços",
+          "qualityId": "0e741331-d776-4be8-abc5-4101228abdef",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 3,
+          "freeSpells": 5
+        },
+        {
+          "key": "mysticAdept",
+          "name": "Mystic Adept - 3 Magic/5 Spells",
+          "namePt": "Adepto Místico - 3 Magia/5 Feitiços",
+          "qualityId": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 3,
+          "freeSpells": 5
+        },
+        {
+          "key": "aspectedMagician",
+          "name": "Aspected Magician - 3 Magic",
+          "namePt": "Mago de Aspecto - 3 Magia",
+          "qualityId": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 3,
+          "freeSkillGroup": {
+            "count": 1,
+            "rating": 2,
+            "choices": [
+              "conjuring",
+              "enchanting",
+              "sorcery"
+            ]
+          }
+        },
+        {
+          "key": "technomancer",
+          "name": "Technomancer - 3 Resonance/3 Complex Forms",
+          "namePt": "Tecnomante - 3 Ressonância/3 Formas Complexas",
+          "qualityId": "c4b35412-bd91-45b4-b428-29da7edd5ff4",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [
+            "Metahuman"
+          ],
+          "resonance": 3,
+          "freeComplexForms": 3,
+          "freeSkills": {
+            "count": 3,
+            "rating": 2,
+            "kind": "resonance"
+          }
+        }
+      ],
+      "attributePoints": 16,
+      "skillPoints": 28,
+      "skillGroupPoints": 2,
+      "resources": {
+        "standard": 140000,
+        "primeRunner": 210000,
+        "streetLevel": 25000
+      }
+    },
+    "D": {
+      "letter": "D",
+      "metatypes": [
+        {
+          "metatypeId": "a53d885d-a4a4-443d-b6a6-b0a55b0a96c7",
+          "specialPoints": 3,
+          "karmaCost": 0,
+          "metavariants": []
+        },
+        {
+          "metatypeId": "b3259991-b315-4dbe-ae3c-51f71a1116e2",
+          "specialPoints": 0,
+          "karmaCost": 0,
+          "metavariants": []
+        }
+      ],
+      "talents": [
+        {
+          "key": "adept",
+          "name": "Adept - 2 Magic",
+          "namePt": "Adepto - 2 Magia",
+          "qualityId": "55247bdc-c313-4614-ae15-5012308096ff",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 2
+        },
+        {
+          "key": "aspectedMagician",
+          "name": "Aspected Magician - 2 Magic",
+          "namePt": "Mago de Aspecto - 2 Magia",
+          "qualityId": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": [],
+          "magic": 2
+        }
+      ],
+      "attributePoints": 14,
+      "skillPoints": 22,
+      "skillGroupPoints": 0,
+      "resources": {
+        "standard": 50000,
+        "primeRunner": 150000,
+        "streetLevel": 15000
+      }
+    },
+    "E": {
+      "letter": "E",
+      "metatypes": [
+        {
+          "metatypeId": "a53d885d-a4a4-443d-b6a6-b0a55b0a96c7",
+          "specialPoints": 1,
+          "karmaCost": 0,
+          "metavariants": []
+        }
+      ],
+      "talents": [
+        {
+          "key": "mundane",
+          "name": "Mundane",
+          "namePt": "Mundano",
+          "forbiddenMetatypeIds": [],
+          "requiredMetatypeIds": [],
+          "requiredMetatypeCategories": []
+        }
+      ],
+      "attributePoints": 12,
+      "skillPoints": 18,
+      "skillGroupPoints": 0,
+      "resources": {
+        "standard": 6000,
+        "primeRunner": 100000,
+        "streetLevel": 6000
+      }
+    }
+  }
+}

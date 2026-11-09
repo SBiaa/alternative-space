@@ -1,0 +1,28 @@
+{
+  "app": "fixer-sr5",
+  "format": 1,
+  "exportedAt": "2026-01-01T00:00:00.000Z",
+  "draft": {
+    "schemaVersion": 1,
+    "concept": { "name": "Mariana Kowalski", "alias": "Agulha", "role": "Samurai de rua" },
+    "priorities": { "attributes": "A", "resources": "B", "skills": "C", "metatype": "D", "talent": "E" },
+    "metatypeId": "a53d885d-a4a4-443d-b6a6-b0a55b0a96c7",
+    "talent": "mundane",
+    "attributes": {
+      "BOD": { "points": 3, "karma": 0 }, "AGI": { "points": 3, "karma": 0 },
+      "REA": { "points": 3, "karma": 0 }, "STR": { "points": 3, "karma": 0 },
+      "CHA": { "points": 3, "karma": 0 }, "INT": { "points": 3, "karma": 0 },
+      "LOG": { "points": 3, "karma": 0 }, "WIL": { "points": 3, "karma": 0 }
+    },
+    "special": { "EDG": { "points": 3, "karma": 0 }, "MAG": { "points": 0, "karma": 0 }, "RES": { "points": 0, "karma": 0 } },
+    "magic": { "spellIds": [], "complexFormIds": [], "powers": [], "powerPointsBought": 0, "freeSkillIds": [] },
+    "qualities": [],
+    "skills": [],
+    "skillGroups": [],
+    "knowledge": [],
+    "contacts": [],
+    "gear": [],
+    "lifestyles": [],
+    "karmaToNuyen": 0
+  }
+}

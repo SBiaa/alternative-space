@@ -1,0 +1,230 @@
+[
+  {
+    "id": "31c68476-6328-476a-ae8a-94f65d505a04",
+    "name": "Clothing",
+    "namePt": "Roupas",
+    "source": "SR5",
+    "page": 437,
+    "category": "Clothing",
+    "categoryPt": "Roupas",
+    "cost": {
+      "raw": "Variable(20-100000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "armor": "0"
+  },
+  {
+    "id": "5a650844-8f24-48e7-829f-0443d9ff5cf7",
+    "name": "Actioneer Business Clothes",
+    "namePt": "Roupas de Executivo Actioneer",
+    "source": "SR5",
+    "page": 437,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "armor": "8"
+  },
+  {
+    "id": "40826eaa-c22a-43da-8730-bc1867ea65a1",
+    "name": "Armor Clothing",
+    "namePt": "Roupa Blindada",
+    "source": "SR5",
+    "page": 437,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "450",
+      "value": 450
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "armor": "6"
+  },
+  {
+    "id": "36a4cd30-c32c-44d0-847a-0c15fb51072a",
+    "name": "Armor Jacket",
+    "namePt": "Jaqueta Blindada",
+    "source": "SR5",
+    "page": 437,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "armor": "12"
+  },
+  {
+    "id": "4ad1eeab-daf3-4495-a73d-fbb0ce89be5b",
+    "name": "Armor Vest",
+    "namePt": "Colete Blindado",
+    "source": "SR5",
+    "page": 437,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "armor": "9"
+  },
+  {
+    "id": "aacafde3-ff9a-4de0-85ac-3870645a9197",
+    "name": "Chameleon Suit",
+    "namePt": "Traje Camaleão",
+    "source": "SR5",
+    "page": 437,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "1700",
+      "value": 1700
+    },
+    "avail": {
+      "raw": "10R",
+      "value": 10,
+      "restriction": "R"
+    },
+    "armor": "9"
+  },
+  {
+    "id": "9ee80c97-9197-4dd5-baed-f77cfd2cee17",
+    "name": "Full Body Armor",
+    "namePt": "Armadura Corporal Completa",
+    "source": "SR5",
+    "page": 437,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "14R",
+      "value": 14,
+      "restriction": "R"
+    },
+    "armor": "15"
+  },
+  {
+    "id": "013b9f3f-533b-4545-aa51-c6cf8d50f3b6",
+    "name": "Lined Coat",
+    "namePt": "Casacão Revestido",
+    "source": "SR5",
+    "page": 437,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "900",
+      "value": 900
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "armor": "9"
+  },
+  {
+    "id": "d8d9154d-c8d3-4593-a408-9f5b259f0363",
+    "name": "Urban Explorer Jumpsuit",
+    "namePt": "Macacão do Explorador Urbano",
+    "source": "SR5",
+    "page": 437,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "650",
+      "value": 650
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "armor": "9"
+  },
+  {
+    "id": "fd6e194b-89ea-4030-9203-87341442eadb",
+    "name": "Helmet",
+    "namePt": "Capacete",
+    "source": "SR5",
+    "page": 438,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "armor": "+2"
+  },
+  {
+    "id": "943d19f7-ee6b-4ce9-8a43-93d3fe5100f2",
+    "name": "Ballistic Shield",
+    "namePt": "Escudo Balístico",
+    "source": "SR5",
+    "page": 438,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "1200",
+      "value": 1200
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "armor": "+6"
+  },
+  {
+    "id": "b0d6d8a6-b74a-4ea3-9c04-cc0d057e51b6",
+    "name": "Riot Shield",
+    "namePt": "Escudo de Choque",
+    "source": "SR5",
+    "page": 438,
+    "category": "Armor",
+    "categoryPt": "Armaduras",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "10R",
+      "value": 10,
+      "restriction": "R"
+    },
+    "armor": "+6"
+  }
+]

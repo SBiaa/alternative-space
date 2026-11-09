@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 
+import { ComCaminho } from "./ComCaminho";
 import { ativo, type ItemMenu } from "@/lib/menu";
 
 // Menu principal: links no meio do cabeçalho e, no celular, uma gaveta com o que não cabe nas abas de baixo.
@@ -11,7 +11,6 @@ import { ativo, type ItemMenu } from "@/lib/menu";
 type Props = { links: ItemMenu[]; mais: ItemMenu[]; logado: boolean; entrar: boolean; children: React.ReactNode };
 
 export function Navegacao({ links, mais, logado, entrar, children }: Props) {
-  const path = usePathname();
   const [aberto, setAberto] = useState(false);
   const fechar = () => setAberto(false);
 
@@ -25,7 +24,7 @@ export function Navegacao({ links, mais, logado, entrar, children }: Props) {
             : "hidden flex-1 justify-center gap-x-6 text-[15px] font-medium lg:flex"
         }
       >
-        {links.map((l) => {
+        <ComCaminho render={(path) => links.map((l) => {
           const atual = ativo(path, l);
           return (
             <Link
@@ -41,7 +40,7 @@ export function Navegacao({ links, mais, logado, entrar, children }: Props) {
               {l.label}
             </Link>
           );
-        })}
+        })} />
       </nav>
 
       <div className="flex shrink-0 items-center gap-2">
@@ -65,7 +64,7 @@ export function Navegacao({ links, mais, logado, entrar, children }: Props) {
       {aberto && (
         <nav id="menu-celular" aria-label="Menu" className="absolute inset-x-0 top-full z-20 border-b border-creme/20 bg-cabine px-5 pb-5 pt-2 lg:hidden">
           <div className="flex flex-col">
-            {[...links, ...mais].map((l, i) => (
+            <ComCaminho render={(path) => [...links, ...mais].map((l, i) => (
               <Link
                 key={l.href}
                 href={l.href}
@@ -76,7 +75,7 @@ export function Navegacao({ links, mais, logado, entrar, children }: Props) {
                 {l.label}
                 <span className="font-ficha text-[11px] text-laranja-claro">{String(i + 1).padStart(2, "0")}</span>
               </Link>
-            ))}
+            ))} />
           </div>
           {entrar && (
             <Link href="/entrar" onClick={fechar} className="btn btn-fantasma mt-4 block text-center">
