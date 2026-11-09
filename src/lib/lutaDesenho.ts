@@ -1,4 +1,4 @@
-// Desenho do "Duelo Pirata": cenário, lutadores (tudo vetorial, sem imagens), golpes, partículas e HUD.
+// Desenho do "Duelo Pirata" e do "Duelo Ninja": cenários, lutadores (tudo vetorial, sem imagens), golpes, partículas e HUD.
 import { CHAO, H, W, type Luta, type Lutador, type Projetil, type Visual } from "./luta";
 
 type P = { x: number; y: number };
@@ -34,6 +34,9 @@ export type Esqueleto = {
   rastro: { de: number; ate: number } | null; // arco do corte
   rajada: boolean;
   fogo: boolean;
+  esfera: number; // 0 a 1: tamanho do Rasengan/Chidori na mão
+  selos: boolean;
+  shuriken: boolean; // shuriken na mão, antes de lançar
 };
 
 function base(bob: number): Esqueleto {
@@ -51,6 +54,9 @@ function base(bob: number): Esqueleto {
     rastro: null,
     rajada: false,
     fogo: false,
+    esfera: 0,
+    selos: false,
+    shuriken: false,
   };
 }
 
@@ -206,6 +212,67 @@ function golpePose(e: Esqueleto, f: Lutador, tempo: number) {
       e.arma = lerp(-1.1, -1.57, k);
       break;
     }
+    case "esfera": {
+      // Junta chakra na mão, abaixado, e depois dispara pra frente.
+      if (t < g.inicio) {
+        Object.assign(e, { quadril: { x: -2, y: -62 }, ombro: { x: -4, y: -112 }, cabeca: { x: 0, y: -137 }, maoF: { x: -14, y: -78 }, maoT: { x: 2, y: -84 }, peF: { x: 30, y: 0 }, peT: { x: -30, y: 0 } });
+        e.esfera = 0.3 + 0.7 * wu;
+      } else {
+        const k = ativo ? 1 : 1 - rec;
+        e.quadril = { x: 6 * k, y: -66 };
+        e.ombro = { x: 4 + 22 * k, y: -116 };
+        e.cabeca = { x: 10 + 26 * k, y: -138 };
+        e.maoF = lp({ x: 34, y: -104 }, { x: c.dx + c.w * 0.75, y: -c.alt }, k);
+        e.maoT = { x: -26 * k, y: -96 };
+        e.peF = { x: 40, y: 0 };
+        e.peT = { x: -40, y: -6 * k };
+        e.esfera = k;
+      }
+      break;
+    }
+    case "selos": {
+      // Mãos juntas fazendo os selos, depois sopra o fogo.
+      const solta = t >= g.inicio;
+      const tremido = solta ? 0 : Math.sin(tempo * 40) * 2;
+      e.selos = !solta;
+      e.maoF = { x: 24 + tremido, y: -118 };
+      e.maoT = { x: 20 - tremido, y: -116 };
+      if (solta) {
+        e.ombro = { x: 0, y: -122 };
+        e.cabeca = { x: 12, y: -146 };
+        e.maoF = { x: 18, y: -138 };
+        e.maoT = { x: 14, y: -132 };
+      }
+      e.peF = { x: 28, y: 0 };
+      e.peT = { x: -28, y: 0 };
+      break;
+    }
+    case "arremesso": {
+      const atras = { x: -24, y: -134 };
+      e.shuriken = t < g.inicio;
+      e.maoF = t < g.inicio ? lp({ x: 34, y: -104 }, atras, wu) : lp(atras, { x: 60, y: -112 }, Math.min(1, (t - g.inicio) / 0.08));
+      e.ombro.x = t < g.inicio ? -4 : 10;
+      e.cabeca.x = e.ombro.x + 4;
+      e.peF = { x: 30, y: 0 };
+      e.peT = { x: -30, y: 0 };
+      break;
+    }
+    case "socoChao": {
+      if (t < g.inicio) {
+        // Punho lá em cima, juntando força.
+        Object.assign(e, { ombro: { x: 0, y: -126 }, cabeca: { x: 4, y: -151 }, maoF: { x: 6, y: -196 }, maoT: { x: -20, y: -104 }, peF: { x: 26, y: 0 }, peT: { x: -26, y: 0 } });
+      } else {
+        const k = 1 - rec * 0.6;
+        e.quadril = { x: 0, y: lerp(-72, -42, k) };
+        e.ombro = { x: lerp(4, 24, k), y: lerp(-124, -88, k) };
+        e.cabeca = { x: lerp(8, 34, k), y: lerp(-149, -108, k) };
+        e.maoF = lp({ x: 34, y: -104 }, { x: 62, y: -6 }, k);
+        e.maoT = { x: -18, y: -70 };
+        e.peF = { x: 34, y: 0 };
+        e.peT = { x: -34, y: 0 };
+      }
+      break;
+    }
   }
 }
 
@@ -309,6 +376,54 @@ function bastao(ctx: CanvasRenderingContext2D, mao: P, ang: number) {
   for (const k of [0.25, 0.55, 0.85]) bola(ctx, lp(a, b, k), 3.5, "#2b5d8a");
 }
 
+function kunai(ctx: CanvasRenderingContext2D, mao: P, ang: number) {
+  const dx = Math.cos(ang);
+  const dy = Math.sin(ang);
+  const ponta = { x: mao.x + dx * 30, y: mao.y + dy * 30 };
+  const base = { x: mao.x + dx * 6, y: mao.y + dy * 6 };
+  poligono(ctx, [{ x: base.x - dy * 5, y: base.y + dx * 5 }, ponta, { x: base.x + dy * 5, y: base.y - dx * 5 }], "#aab6c2");
+  linha(ctx, [{ x: mao.x - dx * 10, y: mao.y - dy * 10 }, base], 4, "#2b2b33");
+  ctx.beginPath();
+  ctx.arc(mao.x - dx * 14, mao.y - dy * 14, 3.5, 0, Math.PI * 2);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = CONTORNO;
+  ctx.stroke();
+}
+
+function estrelaNinja(ctx: CanvasRenderingContext2D, c: P, r: number, giro: number) {
+  const pts: P[] = [];
+  for (let i = 0; i < 8; i++) {
+    const a = giro + (i / 8) * Math.PI * 2;
+    const rr = i % 2 ? r * 0.32 : r;
+    pts.push({ x: c.x + Math.cos(a) * rr, y: c.y + Math.sin(a) * rr });
+  }
+  poligono(ctx, pts, "#9aa6b4");
+  bola(ctx, c, r * 0.18, "#3a4250");
+}
+
+// Bandana ninja com a plaquinha de metal na testa. "torta" cobre o olho da frente.
+function bandana(ctx: CanvasRenderingContext2D, c: P, pano: string, tempo: number, torta = false, pontas = true) {
+  const dy = torta ? 7 : 0;
+  if (pontas) {
+    const b = Math.sin(tempo * 6) * 3;
+    linha(ctx, [{ x: c.x - 15, y: c.y - 9 }, { x: c.x - 30, y: c.y - 4 + b }], 5, CONTORNO);
+    linha(ctx, [{ x: c.x - 15, y: c.y - 9 }, { x: c.x - 30, y: c.y - 4 + b }], 3, pano);
+    linha(ctx, [{ x: c.x - 15, y: c.y - 7 }, { x: c.x - 27, y: c.y + 4 + b }], 5, CONTORNO);
+    linha(ctx, [{ x: c.x - 15, y: c.y - 7 }, { x: c.x - 27, y: c.y + 4 + b }], 3, pano);
+  }
+  poligono(ctx, [{ x: c.x - 17, y: c.y - 14 }, { x: c.x + 17, y: c.y - 14 + dy }, { x: c.x + 17, y: c.y - 5 + dy }, { x: c.x - 17, y: c.y - 6 }], pano);
+  const m = (k: number, a: number): P => ({ x: c.x + k, y: c.y + a + (dy * (k + 17)) / 34 });
+  poligono(ctx, [m(1, -15), m(17, -15), m(17, -4), m(1, -4)], "#c7d1da");
+  // Rabisco em espiral na plaquinha
+  const centro = m(9, -9.5);
+  ctx.beginPath();
+  ctx.arc(centro.x, centro.y, 3, 0.3, Math.PI * 1.8);
+  ctx.lineTo(centro.x + 4.5, centro.y - 3.5);
+  ctx.lineWidth = 1.4;
+  ctx.strokeStyle = CONTORNO;
+  ctx.stroke();
+}
+
 // ---------- cabeça ----------
 
 function cabeca(ctx: CanvasRenderingContext2D, c: P, v: Visual, f: Lutador, tempo: number, comEspada: boolean) {
@@ -333,7 +448,9 @@ function cabeca(ctx: CanvasRenderingContext2D, c: P, v: Visual, f: Lutador, temp
   ctx.lineWidth = 2;
   const olhoF = { x: c.x + 11, y: c.y - 1 };
   const olhoT = { x: c.x + 3, y: c.y - 1 };
-  const olhos = v.estilo === "sanji" ? [olhoT] : [olhoT, olhoF];
+  const olhos = v.estilo === "sanji" || v.estilo === "kakashi" ? [olhoT] : [olhoT, olhoF];
+  // Olhos vermelhos do Sasuke no especial.
+  const olhoVermelho = v.estilo === "sasuke" && f.estado === "golpe" && f.golpe === "especial";
   for (const o of olhos) {
     if (dor) {
       ctx.beginPath();
@@ -344,13 +461,23 @@ function cabeca(ctx: CanvasRenderingContext2D, c: P, v: Visual, f: Lutador, temp
       ctx.stroke();
     } else {
       ctx.beginPath();
-      ctx.ellipse(o.x, o.y, 2, 3.2, 0, 0, Math.PI * 2);
+      ctx.ellipse(o.x, o.y, olhoVermelho ? 2.6 : 2, 3.2, 0, 0, Math.PI * 2);
+      ctx.fillStyle = olhoVermelho ? "#d81e1e" : CONTORNO;
       ctx.fill();
+      ctx.fillStyle = CONTORNO;
     }
   }
   // Boca
   ctx.beginPath();
-  if (f.estado === "vitoria" || (v.estilo === "luffy" && f.estado === "livre")) {
+  if (v.estilo === "kakashi") {
+    // Máscara cobre a boca.
+    ctx.arc(c.x, c.y, 17, -0.12, Math.PI + 0.12);
+    ctx.closePath();
+    ctx.fillStyle = "#26304a";
+    ctx.fill();
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+  } else if (f.estado === "vitoria" || (v.estilo === "luffy" && f.estado === "livre")) {
     ctx.arc(c.x + 9, c.y + 6, 5, 0.1, Math.PI - 0.1);
     ctx.fillStyle = "#fff";
     ctx.fill();
@@ -472,6 +599,89 @@ function cabeca(ctx: CanvasRenderingContext2D, c: P, v: Visual, f: Lutador, temp
       ], v.cabelo);
       break;
     }
+    case "naruto": {
+      // Marquinhas de bigode
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      for (const dy of [2, 5.5, 9]) {
+        ctx.moveTo(c.x + 5, c.y + dy);
+        ctx.lineTo(c.x + 12, c.y + dy - 1);
+      }
+      ctx.stroke();
+      // Cabelo bem espetado
+      poligono(ctx, [
+        { x: c.x - 16, y: c.y + 4 },
+        { x: c.x - 26, y: c.y - 2 },
+        { x: c.x - 18, y: c.y - 10 },
+        { x: c.x - 26, y: c.y - 20 },
+        { x: c.x - 12, y: c.y - 19 },
+        { x: c.x - 12, y: c.y - 32 },
+        { x: c.x - 2, y: c.y - 22 },
+        { x: c.x + 6, y: c.y - 33 },
+        { x: c.x + 10, y: c.y - 21 },
+        { x: c.x + 22, y: c.y - 25 },
+        { x: c.x + 18, y: c.y - 13 },
+        { x: c.x + 24, y: c.y - 6 },
+        { x: c.x + 14, y: c.y - 6 },
+        { x: c.x - 10, y: c.y - 6 },
+      ], v.cabelo);
+      bandana(ctx, c, "#2b4f9c", tempo);
+      break;
+    }
+    case "sasuke": {
+      // Cabelo escuro espetado pra trás
+      poligono(ctx, [
+        { x: c.x + 14, y: c.y + 8 },
+        { x: c.x + 18, y: c.y - 8 },
+        { x: c.x + 8, y: c.y - 19 },
+        { x: c.x - 8, y: c.y - 21 },
+        { x: c.x - 30, y: c.y - 28 },
+        { x: c.x - 22, y: c.y - 16 },
+        { x: c.x - 34, y: c.y - 12 },
+        { x: c.x - 22, y: c.y - 4 },
+        { x: c.x - 30, y: c.y + 4 },
+        { x: c.x - 16, y: c.y + 4 },
+        { x: c.x - 6, y: c.y - 6 },
+        { x: c.x + 8, y: c.y - 6 },
+      ], v.cabelo);
+      bandana(ctx, c, "#2b4f9c", tempo, false, false);
+      break;
+    }
+    case "sakura": {
+      // Cabelo rosa na altura do queixo, com a bandana de tiara
+      poligono(ctx, [
+        { x: c.x + 16, y: c.y + 10 },
+        { x: c.x + 19, y: c.y - 8 },
+        { x: c.x + 8, y: c.y - 20 },
+        { x: c.x - 10, y: c.y - 20 },
+        { x: c.x - 20, y: c.y - 8 },
+        { x: c.x - 22, y: c.y + 16 },
+        { x: c.x - 10, y: c.y + 20 },
+        { x: c.x - 6, y: c.y + 4 },
+        { x: c.x + 2, y: c.y - 6 },
+        { x: c.x + 10, y: c.y - 2 },
+      ], v.cabelo);
+      bandana(ctx, { x: c.x - 2, y: c.y - 5 }, "#c9302f", tempo, false, false);
+      break;
+    }
+    case "kakashi": {
+      // Cabelo prateado em pé, tombando pra trás
+      poligono(ctx, [
+        { x: c.x + 16, y: c.y - 8 },
+        { x: c.x + 10, y: c.y - 24 },
+        { x: c.x + 2, y: c.y - 20 },
+        { x: c.x - 2, y: c.y - 40 },
+        { x: c.x - 10, y: c.y - 24 },
+        { x: c.x - 22, y: c.y - 38 },
+        { x: c.x - 20, y: c.y - 20 },
+        { x: c.x - 34, y: c.y - 24 },
+        { x: c.x - 24, y: c.y - 10 },
+        { x: c.x - 18, y: c.y + 2 },
+        { x: c.x - 8, y: c.y - 8 },
+      ], v.cabelo);
+      bandana(ctx, c, "#26304a", tempo, true, false);
+      break;
+    }
   }
 }
 
@@ -513,7 +723,80 @@ function tronco(ctx: CanvasRenderingContext2D, e: Esqueleto, v: Visual) {
       for (const k of [0.62, 0.76, 0.9]) linha(ctx, [em(k, 1), em(k, -1)], 4, v.camisa);
       faixa(0, 0.12, v.calca);
       break;
+    case "naruto":
+      faixa(0, 1, v.camisa);
+      faixa(0.78, 1, "#2b3550");
+      linha(ctx, [em(0.97, 0.25), em(0.15, 0.25)], 2.5, "#f4f1e8");
+      break;
+    case "sasuke":
+      faixa(0, 1, v.camisa);
+      faixa(0.88, 1.05, escurecer(v.camisa, 0.8));
+      faixa(0, 0.14, v.calca);
+      break;
+    case "sakura":
+      faixa(0, 1, v.camisa);
+      linha(ctx, [em(0.98, 0.15), em(0.35, 0.15)], 2.5, "#f4f1e8");
+      faixa(0, 0.14, v.calca);
+      break;
+    case "kakashi":
+      faixa(0, 1, "#26304a");
+      poligono(ctx, [em(1, 1), em(1, 0.2), em(0.08, 0.2), em(0.08, 1)], v.camisa);
+      poligono(ctx, [em(1, -1), em(1, -0.2), em(0.08, -0.2), em(0.08, -1)], v.camisa);
+      for (const k of [0.35, 0.6]) poligono(ctx, [em(k, 0.85), em(k + 0.16, 0.85), em(k + 0.16, 0.3), em(k, 0.3)], escurecer(v.camisa, 0.85));
+      break;
   }
+}
+
+// ---------- jutsus na mão ----------
+
+function esfera(ctx: CanvasRenderingContext2D, c: P, k: number, tipo: "rasengan" | "chidori", tempo: number) {
+  const r = 6 + 14 * k;
+  ctx.save();
+  if (tipo === "rasengan") {
+    ctx.shadowColor = "#7fd0ff";
+    ctx.shadowBlur = 18;
+    ctx.fillStyle = "rgba(120,200,255,0.55)";
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, r * 1.25, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#d9f3ff";
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, r * 0.75, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    // Redemoinho girando
+    ctx.strokeStyle = "rgba(40,130,220,0.9)";
+    ctx.lineWidth = 2;
+    for (let i = 0; i < 3; i++) {
+      const a = tempo * 14 + (i * Math.PI * 2) / 3;
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, r * (0.5 + i * 0.22), a, a + 2.2);
+      ctx.stroke();
+    }
+  } else {
+    // Chidori: raios saindo da mão
+    ctx.shadowColor = "#bfe6ff";
+    ctx.shadowBlur = 20;
+    ctx.fillStyle = "rgba(200,235,255,0.7)";
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, r * 0.8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.lineCap = "round";
+    for (let i = 0; i < 7; i++) {
+      const a = (i / 7) * Math.PI * 2 + Math.sin(tempo * 50 + i) * 0.6;
+      const pts: P[] = [c];
+      let x = c.x;
+      let y = c.y;
+      for (let j = 1; j <= 3; j++) {
+        x += Math.cos(a) * r * 0.7 + Math.sin(tempo * 70 + i * 3 + j) * 6;
+        y += Math.sin(a) * r * 0.7 + Math.cos(tempo * 60 + i * 2 + j) * 6;
+        pts.push({ x, y });
+      }
+      linha(ctx, pts, 3, "rgba(150,210,255,0.8)");
+      linha(ctx, pts, 1.2, "#ffffff");
+    }
+  }
+  ctx.restore();
 }
 
 // ---------- lutador ----------
@@ -543,6 +826,7 @@ export function desenharLutador(ctx: CanvasRenderingContext2D, f: Lutador, tempo
   ctx.lineJoin = "round";
   const zoroArmado = v.estilo === "zoro" && f.estado === "golpe";
   const estica = v.esticar;
+  const mangaLonga = v.estilo === "sanji" || v.estilo === "naruto" || v.estilo === "kakashi";
 
   // Espadas na cintura (Zoro parado)
   if (v.estilo === "zoro" && !zoroArmado) {
@@ -551,7 +835,7 @@ export function desenharLutador(ctx: CanvasRenderingContext2D, f: Lutador, tempo
 
   // Lado de trás
   const tras = escurecer(v.pele, 0.82);
-  membro(ctx, e.ombro, e.maoT, 30, 1, 10, escurecer(v.braco, 0.82), v.estilo === "sanji" ? escurecer(v.braco, 0.82) : tras, estica);
+  membro(ctx, e.ombro, e.maoT, 30, 1, 10, escurecer(v.braco, 0.82), mangaLonga ? escurecer(v.braco, 0.82) : tras, estica);
   bola(ctx, e.maoT, 6.5, tras);
   if (e.armaT !== null) katana(ctx, e.maoT, e.armaT);
   const peT = membro(ctx, e.quadril, e.peT, 38, -1, 13, escurecer(v.calca, 0.8), escurecer(v.canela, 0.82), estica);
@@ -600,12 +884,22 @@ export function desenharLutador(ctx: CanvasRenderingContext2D, f: Lutador, tempo
   }
 
   // Braço da frente
-  membro(ctx, e.ombro, e.maoF, 30, 1, 10, v.braco, v.estilo === "sanji" ? v.braco : v.pele, estica);
+  membro(ctx, e.ombro, e.maoF, 30, 1, 10, v.braco, mangaLonga ? v.braco : v.pele, estica);
   bola(ctx, e.maoF, e.rajada ? 9 : 7, v.pele);
   if (e.arma !== null) {
     if (v.estilo === "nami") bastao(ctx, e.maoF, e.arma);
     else if (zoroArmado) katana(ctx, e.maoF, e.arma);
+    else if (v.estilo === "sasuke") kunai(ctx, e.maoF, e.arma);
   }
+  if (e.shuriken) estrelaNinja(ctx, e.maoF, 9, tempo * 4);
+  if (e.selos) {
+    // Brilho de chakra nas mãos
+    ctx.fillStyle = `rgba(255,170,60,${0.35 + 0.25 * Math.sin(tempo * 30)})`;
+    ctx.beginPath();
+    ctx.arc(e.maoF.x - 2, e.maoF.y, 14, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  if (e.esfera > 0 && v.esfera) esfera(ctx, e.maoF, e.esfera, v.esfera, tempo);
 
   // Rastro do corte
   if (e.rastro) {
@@ -627,6 +921,61 @@ export function desenharLutador(ctx: CanvasRenderingContext2D, f: Lutador, tempo
 
 export function desenharProjetil(ctx: CanvasRenderingContext2D, p: Projetil, tempo: number) {
   const y = CHAO - p.alt;
+  if (p.tipo === "shuriken") {
+    estrelaNinja(ctx, { x: p.x, y }, 13, tempo * 22 * p.face);
+    return;
+  }
+  if (p.tipo === "fogo") {
+    ctx.save();
+    // Rastro de chamas atrás da bola
+    for (let i = 5; i >= 1; i--) {
+      const x = p.x - p.face * i * 16;
+      const r = p.w * 0.5 * (1 - i * 0.13);
+      ctx.fillStyle = i % 2 ? "rgba(255,120,30,0.5)" : "rgba(255,200,60,0.45)";
+      ctx.beginPath();
+      ctx.arc(x, y + Math.sin(tempo * 30 + i) * 5, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.shadowColor = "#ff8a2a";
+    ctx.shadowBlur = 30;
+    const pulsa = Math.sin(tempo * 25) * 3;
+    ctx.fillStyle = "#ff5a1f";
+    ctx.beginPath();
+    ctx.arc(p.x, y, p.w / 2 + pulsa, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#ffb02e";
+    ctx.beginPath();
+    ctx.arc(p.x + p.face * 6, y - 4, p.w / 2 - 12, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#fff2a8";
+    ctx.beginPath();
+    ctx.arc(p.x + p.face * 10, y - 6, p.w / 2 - 28, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+    return;
+  }
+  if (p.tipo === "tremor") {
+    // Chão rachando e pedras pulando
+    const k = c01(p.vida / 0.3);
+    const x0 = p.x - p.face * (p.w / 2);
+    ctx.save();
+    ctx.globalAlpha = 0.5 + 0.5 * k;
+    ctx.lineCap = "round";
+    for (let i = 0; i < 5; i++) {
+      const pts: P[] = [{ x: x0, y: CHAO - 2 }];
+      for (let j = 1; j <= 5; j++) pts.push({ x: x0 + p.face * j * (p.w / 5), y: CHAO - 2 + Math.sin(i * 7.3 + j * 2.1) * (6 + i * 3) });
+      linha(ctx, pts, 4, CONTORNO);
+    }
+    const sobe = (1 - k) * 90;
+    for (let i = 0; i < 7; i++) {
+      const x = x0 + p.face * ((i + 0.5) * (p.w / 7));
+      const h = 20 + ((i * 37) % 30);
+      const yy = CHAO - sobe * (0.5 + ((i * 13) % 10) / 20) - h * 0.3;
+      poligono(ctx, [{ x: x - 12, y: yy + 8 }, { x: x - 6, y: yy - h * 0.4 }, { x: x + 8, y: yy - h * 0.3 }, { x: x + 12, y: yy + 8 }], i % 2 ? "#8a6a4a" : "#a5825c");
+    }
+    ctx.restore();
+    return;
+  }
   if (p.tipo === "corte") {
     ctx.save();
     ctx.translate(p.x, y);
@@ -922,6 +1271,155 @@ export function cenario(ctx: CanvasRenderingContext2D, tempo: number) {
   ctx.stroke();
 }
 
+// ---------- cenário: campo de treino de uma vila ninja ----------
+
+export function cenarioVila(ctx: CanvasRenderingContext2D, tempo: number) {
+  const ceu = ctx.createLinearGradient(0, 0, 0, 330);
+  ceu.addColorStop(0, "#4f8fd6");
+  ceu.addColorStop(1, "#cfe8f5");
+  ctx.fillStyle = ceu;
+  ctx.fillRect(0, 0, W, 340);
+
+  // Nuvens
+  ctx.fillStyle = "rgba(255,255,255,0.85)";
+  for (let i = 0; i < 4; i++) {
+    const x = ((i * 290 + tempo * (6 + i * 2)) % (W + 260)) - 130;
+    const y = 50 + i * 30;
+    for (const [ox, oy, r] of [[0, 0, 20], [24, -8, 26], [52, 0, 20], [26, 6, 22]]) {
+      ctx.beginPath();
+      ctx.arc(x + ox, y + oy, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  // Paredão de pedra no fundo
+  ctx.fillStyle = "#b59a7a";
+  ctx.beginPath();
+  ctx.moveTo(-10, 300);
+  for (const [x, y] of [[60, 150], [200, 120], [380, 130], [520, 110], [700, 140], [860, 120], [W + 10, 170], [W + 10, 300]]) ctx.lineTo(x, y);
+  ctx.closePath();
+  ctx.fill();
+  ctx.strokeStyle = "rgba(1,18,30,0.25)";
+  ctx.lineWidth = 2;
+  for (const [x, y, h] of [[150, 160, 60], [330, 150, 80], [560, 140, 70], [760, 160, 60]]) {
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + 14, y + h);
+    ctx.stroke();
+  }
+
+  // Casas da vila
+  const casas: [number, number, number, string][] = [
+    [20, 250, 90, "#c1533a"], [120, 236, 70, "#2e7d6b"], [205, 256, 100, "#c1533a"], [320, 240, 80, "#d6873a"],
+    [600, 246, 90, "#2e7d6b"], [700, 232, 70, "#c1533a"], [790, 252, 110, "#d6873a"],
+  ];
+  for (const [x, y, w, cor] of casas) {
+    ctx.fillStyle = "#efe2c4";
+    ctx.fillRect(x, y, w, 330 - y);
+    ctx.strokeStyle = CONTORNO;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(x, y, w, 330 - y);
+    ctx.fillStyle = "#4b5a6e";
+    for (let wx = x + 12; wx < x + w - 14; wx += 26) ctx.fillRect(wx, y + 18, 12, 12);
+    poligono(ctx, [{ x: x - 8, y: y + 2 }, { x: x + w / 2, y: y - 22 }, { x: x + w + 8, y: y + 2 }], cor);
+  }
+  // Torre redonda no meio
+  ctx.fillStyle = "#e9c88a";
+  ctx.fillRect(430, 190, 120, 140);
+  ctx.strokeStyle = CONTORNO;
+  ctx.strokeRect(430, 190, 120, 140);
+  ctx.beginPath();
+  ctx.ellipse(490, 196, 76, 22, 0, Math.PI, 0);
+  ctx.closePath();
+  ctx.fillStyle = "#c1533a";
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = "#4b5a6e";
+  for (const wx of [448, 482, 516]) ctx.fillRect(wx, 220, 16, 20);
+
+  // Mato atrás da cerca (cobre a tela inteira até o chão: o canvas não é limpo entre um quadro e outro)
+  ctx.fillStyle = "#2a5f33";
+  ctx.fillRect(0, 330, W, CHAO - 330);
+
+  // Copas das árvores
+  ctx.fillStyle = "#3f8a4a";
+  for (let x = -20; x < W + 40; x += 70) {
+    const r = 44 + ((x * 7) % 18);
+    ctx.beginPath();
+    ctx.arc(x, 340 - r * 0.4, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.fillStyle = "#2f6e3a";
+  for (let x = 15; x < W + 40; x += 90) {
+    ctx.beginPath();
+    ctx.arc(x, 372, 40, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Cerca de madeira
+  ctx.fillStyle = "#8a5f36";
+  ctx.strokeStyle = CONTORNO;
+  ctx.lineWidth = 2.5;
+  for (let x = 10; x < W; x += 48) {
+    ctx.fillRect(x, 388, 12, CHAO - 388);
+    ctx.strokeRect(x, 388, 12, CHAO - 388);
+  }
+  for (const y of [404, 432]) {
+    ctx.fillRect(-4, y, W + 8, 9);
+    ctx.strokeRect(-4, y, W + 8, 9);
+  }
+
+  // Três troncos de treino
+  for (const x of [150, 480, 810]) {
+    ctx.fillStyle = "#9b6a3d";
+    ctx.fillRect(x - 14, 360, 28, CHAO - 360);
+    ctx.strokeRect(x - 14, 360, 28, CHAO - 360);
+    ctx.beginPath();
+    ctx.ellipse(x, 360, 14, 5, 0, 0, Math.PI * 2);
+    ctx.fillStyle = "#c79a64";
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = "#e9e1c8";
+    ctx.fillRect(x - 14, 396, 28, 7);
+  }
+
+  // Chão de terra batida
+  const chao = ctx.createLinearGradient(0, CHAO, 0, H);
+  chao.addColorStop(0, "#9fbf6a");
+  chao.addColorStop(0.25, "#c3a273");
+  chao.addColorStop(1, "#8f6f48");
+  ctx.fillStyle = chao;
+  ctx.fillRect(0, CHAO - 6, W, H - CHAO + 6);
+  ctx.fillStyle = "rgba(1,18,30,0.15)";
+  for (let i = 0; i < 26; i++) {
+    const x = (i * 137) % W;
+    const y = CHAO + 12 + ((i * 53) % (H - CHAO - 16));
+    ctx.beginPath();
+    ctx.ellipse(x, y, 6 + (i % 3) * 3, 2.5, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.strokeStyle = CONTORNO;
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(0, CHAO - 6);
+  ctx.lineTo(W, CHAO - 6);
+  ctx.stroke();
+
+  // Folhas caindo
+  for (let i = 0; i < 9; i++) {
+    const x = ((i * 113 + tempo * (30 + i * 4)) % (W + 40)) - 20;
+    const y = ((i * 71 + tempo * (40 + i * 5)) % (CHAO + 20)) - 10;
+    ctx.save();
+    ctx.translate(x + Math.sin(tempo * 2 + i) * 12, y);
+    ctx.rotate(tempo * 2 + i);
+    ctx.fillStyle = i % 3 ? "#6fb54a" : "#e2b33a";
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 6, 3, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
 // ---------- HUD ----------
 
 export type Faixa = { texto: string; quem: 0 | 1; vida: number };
@@ -938,7 +1436,7 @@ function texto(ctx: CanvasRenderingContext2D, s: string, x: number, y: number, t
   ctx.fillText(s, x, y);
 }
 
-export function hud(ctx: CanvasRenderingContext2D, l: Luta, rastro: [number, number], faixas: Faixa[], fonte: string, tempo: number) {
+export function hud(ctx: CanvasRenderingContext2D, l: Luta, rastro: [number, number], faixas: Faixa[], fonte: string, tempo: number, energia = "ESPECIAL") {
   const larg = 370;
   const lutadores = [l.a, l.b] as const;
   lutadores.forEach((f, i) => {
@@ -992,7 +1490,7 @@ export function hud(ctx: CanvasRenderingContext2D, l: Luta, rastro: [number, num
     ctx.fillStyle = "#fff";
     const mx = i === 0 ? ex + 240 * (custo / 100) : ex + 240 - 240 * (custo / 100);
     ctx.fillRect(mx - 1, ey - 3, 2, 20);
-    texto(ctx, pronto ? "ESPECIAL PRONTO!" : "ESPECIAL", i === 0 ? ex : ex + 240, ey - 14, 14, pronto ? "#a8ecff" : "#d6deec", fonte, i === 0 ? "left" : "right", 4);
+    texto(ctx, pronto ? `${energia} PRONTO!` : energia, i === 0 ? ex : ex + 240, ey - 14, 14, pronto ? "#a8ecff" : "#d6deec", fonte, i === 0 ? "left" : "right", 4);
   });
 
   // Relógio

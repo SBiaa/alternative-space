@@ -1,4 +1,4 @@
-// Lógica pura do "Duelo Pirata": personagens, golpes, física, acertos, rounds e CPU.
+// Lógica pura do "Duelo Pirata" e do "Duelo Ninja": personagens, golpes, física, acertos, rounds e CPU.
 // Nada de DOM aqui. O componente DueloPirata chama passo() a cada frame e desenha o resultado.
 
 export const W = 960;
@@ -25,11 +25,14 @@ export type Entrada = {
 
 export const entradaVazia = (): Entrada => ({ esq: false, dir: false, cima: false, baixo: false, soco: false, chute: false, especial: false });
 
-export type Pose = "soco" | "rajada" | "chute" | "chuteAlto" | "rasteira" | "corte" | "corteBaixo" | "chuteFogo" | "bastao" | "raio";
+export type Pose =
+  | "soco" | "rajada" | "chute" | "chuteAlto" | "rasteira" | "corte" | "corteBaixo" | "chuteFogo" | "bastao" | "raio"
+  // ninjas
+  | "esfera" | "selos" | "arremesso" | "socoChao";
 
 export type Projetil = {
   dono: 0 | 1;
-  tipo: "corte" | "raio";
+  tipo: "corte" | "raio" | "fogo" | "shuriken" | "tremor";
   x: number; // centro
   alt: number; // altura do centro acima do chão
   vx: number;
@@ -39,6 +42,7 @@ export type Projetil = {
   vida: number;
   atraso: number; // tempo até "nascer" (o raio forma a nuvem antes)
   face: 1 | -1;
+  fraco?: boolean; // não derruba (shuriken)
 };
 
 export type Golpe = {
@@ -62,13 +66,14 @@ export type Golpe = {
 export type Visual = {
   pele: string;
   cabelo: string;
-  estilo: "luffy" | "zoro" | "sanji" | "nami";
+  estilo: "luffy" | "zoro" | "sanji" | "nami" | "naruto" | "sasuke" | "sakura" | "kakashi";
   camisa: string;
   calca: string;
   canela: string; // cor da canela: pele (bermuda) ou calça
   sapato: string;
   braco: string; // manga ou pele
   esticar: boolean; // braços/pernas de borracha
+  esfera?: "rasengan" | "chidori"; // o que aparece na mão no golpe "esfera"
 };
 
 export type Personagem = {
@@ -168,7 +173,103 @@ export const PERSONAGENS: Personagem[] = [
   },
 ];
 
-export const personagem = (id: string) => PERSONAGENS.find((p) => p.id === id) ?? PERSONAGENS[0];
+// Elenco do "Duelo Ninja". Mesmo motor, outros golpes.
+export const NINJAS: Personagem[] = [
+  {
+    id: "naruto",
+    nome: "Naruto",
+    titulo: "Ninja Cabeça-Dura",
+    cor: "#f07a1a",
+    vel: 310,
+    pulo: 1060,
+    vida: 1000,
+    golpes: {
+      soco: { nome: "Soco", pose: "soco", inicio: 0.1, ativo: 0.1, fim: 0.2, caixa: { dx: 15, alt: 112, w: 70, h: 40 }, dano: 60, empurra: 220, atordoa: 0.3 },
+      chute: { nome: "Uzumaki Rendan", pose: "chuteAlto", inicio: 0.14, ativo: 0.12, fim: 0.26, caixa: { dx: 15, alt: 120, w: 100, h: 60 }, dano: 80, empurra: 300, atordoa: 0.36, derruba: true },
+      especial: { nome: "Rasengan!", pose: "esfera", custo: 35, inicio: 0.3, ativo: 0.32, fim: 0.3, avanco: 560, caixa: { dx: 10, alt: 105, w: 80, h: 70 }, hits: 4, dano: 34, empurra: 200, atordoa: 0.4, derruba: true },
+    },
+    visual: { pele: "#f3c591", cabelo: "#f7d23a", estilo: "naruto", camisa: "#f07a1a", calca: "#f07a1a", canela: "#f07a1a", sapato: "#2b4f9c", braco: "#f07a1a", esticar: false, esfera: "rasengan" },
+  },
+  {
+    id: "sasuke",
+    nome: "Sasuke",
+    titulo: "Ninja Vingador",
+    cor: "#2c3f8f",
+    vel: 320,
+    pulo: 1080,
+    vida: 950,
+    golpes: {
+      soco: { nome: "Kunai", pose: "corte", inicio: 0.09, ativo: 0.09, fim: 0.2, caixa: { dx: 10, alt: 105, w: 95, h: 80 }, dano: 62, empurra: 220, atordoa: 0.3 },
+      chute: { nome: "Shishi Rendan", pose: "chute", inicio: 0.15, ativo: 0.1, fim: 0.28, caixa: { dx: 15, alt: 80, w: 110, h: 54 }, dano: 85, empurra: 380, atordoa: 0.38, derruba: true },
+      especial: {
+        nome: "Katon: Bola de Fogo!",
+        pose: "selos",
+        custo: 30,
+        inicio: 0.4,
+        ativo: 0.05,
+        fim: 0.35,
+        dano: 0,
+        empurra: 0,
+        atordoa: 0,
+        projetil: { tipo: "fogo", dx: 70, alt: 115, vx: 470, w: 90, h: 90, dano: 115, vida: 1.8, atraso: 0 },
+      },
+    },
+    visual: { pele: "#f4d3b0", cabelo: "#1d2238", estilo: "sasuke", camisa: "#2c3f8f", calca: "#e9e6dc", canela: "#f4d3b0", sapato: "#2b3a6e", braco: "#f4d3b0", esticar: false },
+  },
+  {
+    id: "sakura",
+    nome: "Sakura",
+    titulo: "Punho de Aço",
+    cor: "#e8659a",
+    vel: 295,
+    pulo: 1030,
+    vida: 980,
+    golpes: {
+      soco: { nome: "Shannaro!", pose: "soco", inicio: 0.16, ativo: 0.1, fim: 0.26, caixa: { dx: 15, alt: 110, w: 80, h: 48 }, dano: 90, empurra: 380, atordoa: 0.38 },
+      chute: { nome: "Chute Baixo", pose: "rasteira", inicio: 0.12, ativo: 0.1, fim: 0.24, caixa: { dx: 10, alt: 22, w: 100, h: 44 }, dano: 55, empurra: 160, atordoa: 0.3, derruba: true },
+      especial: {
+        nome: "Punho que Racha o Chão!",
+        pose: "socoChao",
+        custo: 35,
+        inicio: 0.35,
+        ativo: 0.05,
+        fim: 0.4,
+        dano: 0,
+        empurra: 0,
+        atordoa: 0,
+        projetil: { tipo: "tremor", dx: 150, alt: 40, vx: 0, w: 260, h: 80, dano: 135, vida: 0.3, atraso: 0 },
+      },
+    },
+    visual: { pele: "#f7d2b0", cabelo: "#f29cc0", estilo: "sakura", camisa: "#c9302f", calca: "#3b3f4a", canela: "#f7d2b0", sapato: "#2b3a6e", braco: "#f7d2b0", esticar: false },
+  },
+  {
+    id: "kakashi",
+    nome: "Kakashi",
+    titulo: "Ninja Copiador",
+    cor: "#4f6b4a",
+    vel: 300,
+    pulo: 1050,
+    vida: 1020,
+    golpes: {
+      soco: { nome: "Golpe Rápido", pose: "soco", inicio: 0.08, ativo: 0.08, fim: 0.18, caixa: { dx: 15, alt: 112, w: 70, h: 40 }, dano: 55, empurra: 200, atordoa: 0.28 },
+      chute: {
+        nome: "Shuriken",
+        pose: "arremesso",
+        inicio: 0.14,
+        ativo: 0.05,
+        fim: 0.3,
+        dano: 0,
+        empurra: 0,
+        atordoa: 0,
+        projetil: { tipo: "shuriken", dx: 50, alt: 110, vx: 760, w: 30, h: 30, dano: 45, vida: 1.4, atraso: 0, fraco: true },
+      },
+      especial: { nome: "Chidori!", pose: "esfera", custo: 35, inicio: 0.3, ativo: 0.28, fim: 0.32, avanco: 700, caixa: { dx: 10, alt: 100, w: 80, h: 70 }, hits: 3, dano: 44, empurra: 240, atordoa: 0.42, derruba: true },
+    },
+    visual: { pele: "#f1cfac", cabelo: "#d6dde3", estilo: "kakashi", camisa: "#5c7a52", calca: "#26304a", canela: "#26304a", sapato: "#26304a", braco: "#26304a", esticar: false, esfera: "chidori" },
+  },
+];
+
+export const personagem = (id: string) => PERSONAGENS.find((p) => p.id === id) ?? NINJAS.find((p) => p.id === id) ?? PERSONAGENS[0];
 
 export type EstadoLutador = "livre" | "golpe" | "atingido" | "bloqueio" | "caido" | "vitoria";
 
@@ -526,14 +627,14 @@ function atualizarProjeteis(l: Luta, dt: number) {
     const r = retProjetil(p);
     if (alvo && sobrepoe(r, alvo)) {
       const ponto = { x: def.x, y: (Math.max(r.y0, alvo.y0) + Math.min(r.y1, alvo.y1)) / 2 };
-      acertar(l, lut[p.dono], def, defLado, p.dano, 340, 0.45, true, lut[p.dono].x, ponto);
+      acertar(l, lut[p.dono], def, defLado, p.dano, p.fraco ? 180 : 340, p.fraco ? 0.3 : 0.45, !p.fraco, lut[p.dono].x, ponto);
       p.vida = 0;
     }
   }
-  // Cortes voadores se anulam.
+  // Projéteis que voam (corte, fogo, shuriken) se anulam.
   for (const p of l.projeteis)
     for (const q of l.projeteis)
-      if (p !== q && p.dono !== q.dono && p.vida > 0 && q.vida > 0 && p.atraso <= 0 && q.atraso <= 0 && p.tipo === "corte" && q.tipo === "corte" && sobrepoe(retProjetil(p), retProjetil(q))) {
+      if (p !== q && p.dono !== q.dono && p.vida > 0 && q.vida > 0 && p.atraso <= 0 && q.atraso <= 0 && p.vx !== 0 && q.vx !== 0 && sobrepoe(retProjetil(p), retProjetil(q))) {
         p.vida = 0;
         q.vida = 0;
         l.eventos.push({ tipo: "bloqueio", x: (p.x + q.x) / 2, y: CHAO - p.alt });

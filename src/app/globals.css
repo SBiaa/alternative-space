@@ -1,26 +1,38 @@
 @import "tailwindcss";
 
 @theme {
+  /* Fundo e superfícies escuras */
+  --color-espaco: #0b2340;
+  --color-cabine: #072f5c;
+  --color-noite: #01121e;
+  --color-azul: #093f7a;
+
+  /* Creme: texto sobre o escuro e painéis claros */
   --color-creme: #ece3be;
   --color-creme-claro: #f6f0d6;
   --color-creme-escuro: #e3d8ac;
-  --color-azul: #093f7a;
-  --color-noite: #01121e;
+  --color-areia: #d9d2b0;
+  --color-poeira: #c8c3a6;
+
+  /* Destaques */
   --color-laranja: #dd5d05;
-  --color-estrela: #ab392f;
   --color-laranja-claro: #f2a66e;
+  --color-estrela: #ab392f;
+
+  /* Texto sobre painéis claros */
   --color-tinta: #2a2a2a;
   --color-neutro: #5a5a5a;
   --color-azul-claro: #d6deec;
 
-  --font-titulo: var(--font-fredoka), ui-rounded, sans-serif;
-  --font-texto: var(--font-dm-sans), system-ui, sans-serif;
+  --font-titulo: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-texto: var(--font-space-grotesk), system-ui, sans-serif;
   --font-ficha: var(--font-space-mono), ui-monospace, monospace;
 
-  --shadow-duro: 6px 6px 0 #01121e;
-  --shadow-duro-sm: 3px 3px 0 #01121e;
-  --shadow-duro-md: 4px 4px 0 #01121e;
-  --shadow-duro-lg: 10px 10px 0 #01121e;
+  /* Nomes antigos mantidos; agora são sombras suaves. */
+  --shadow-duro: 0 10px 30px rgb(0 0 0 / 0.25);
+  --shadow-duro-sm: 0 4px 14px rgb(0 0 0 / 0.2);
+  --shadow-duro-md: 0 6px 20px rgb(0 0 0 / 0.22);
+  --shadow-duro-lg: 0 20px 60px rgb(0 0 0 / 0.4);
 }
 
 html {
@@ -28,65 +40,142 @@ html {
 }
 
 body {
-  background: var(--color-creme);
-  color: var(--color-noite);
+  background: var(--color-espaco);
+  color: var(--color-creme);
   font-family: var(--font-texto);
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-noite);
+  outline: 3px solid var(--color-laranja-claro);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-.on-dark :focus-visible,
-.bg-azul :focus-visible,
-.bg-noite :focus-visible {
-  outline-color: var(--color-laranja-claro);
+.painel :focus-visible,
+.bg-creme :focus-visible,
+.bg-creme-claro :focus-visible {
+  outline-color: var(--color-azul);
 }
 
 @layer components {
+  /* Cartão sobre o fundo escuro */
   .card {
+    background: rgb(236 227 190 / 0.06);
+    border: 1px solid rgb(236 227 190 / 0.18);
+    border-radius: 8px;
+  }
+  /* Painel claro, para destaques */
+  .painel {
     background: var(--color-creme-claro);
-    border: 2px solid var(--color-noite);
-    border-radius: 12px;
-    box-shadow: var(--shadow-duro);
+    color: var(--color-noite);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.25);
   }
   .btn {
     display: inline-block;
-    border: 2px solid var(--color-noite);
-    border-radius: 999px;
+    border: 1px solid transparent;
+    border-radius: 6px;
     font-family: var(--font-titulo);
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: none;
-    box-shadow: var(--shadow-duro-md);
-    padding: 0.9rem 1.6rem;
-    font-size: 1.15rem;
-    transition: transform 0.12s, box-shadow 0.12s;
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    cursor: pointer;
+    transition: filter 0.12s, background-color 0.12s;
   }
   .btn:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 var(--color-noite);
+    filter: brightness(1.08);
+  }
+  /* Botão secundário sobre o escuro */
+  .btn-fantasma {
+    background: rgb(236 227 190 / 0.1);
+    border-color: rgb(236 227 190 / 0.4);
+    color: var(--color-creme);
+    font-weight: 500;
+  }
+  .btn-fantasma:hover {
+    background: rgb(236 227 190 / 0.16);
+    filter: none;
+  }
+  /* Botão secundário sobre painel claro */
+  .btn-contorno {
+    background: transparent;
+    border-color: var(--color-noite);
+    color: var(--color-noite);
+    font-weight: 500;
+  }
+  .btn-contorno:hover {
+    background: rgb(1 18 30 / 0.06);
+    filter: none;
   }
   .etiqueta {
     font-family: var(--font-ficha);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
+  .link-ficha {
+    font-family: var(--font-ficha);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    color: var(--color-laranja-claro);
+    padding: 10px 0;
+  }
+  .link-ficha:hover {
+    color: var(--color-creme);
+  }
   .h2 {
     font-family: var(--font-titulo);
-    font-weight: 700;
-    line-height: 1.02;
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   }
   .secao {
-    padding: 88px 24px;
+    padding: 72px 24px;
   }
   .miolo {
     max-width: 1200px;
     margin: 0 auto;
   }
+}
+
+/*
+  Compatibilidade com as páginas que ainda estão no visual claro antigo.
+  Elas usam texto escuro (azul, tinta, noite) pensando num fundo creme. Fora de uma
+  superfície clara, essas cores viram as equivalentes do tema escuro.
+  Fica fora de @layer de propósito, para valer sobre os utilitários.
+  Quando todas as páginas estiverem no visual novo, este bloco pode sair.
+*/
+:where(.text-azul, .text-noite):not(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white, :is(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white) *) {
+  color: var(--color-creme);
+}
+:where(.etiqueta.text-azul, .text-estrela):not(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white, :is(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white) *) {
+  color: var(--color-laranja-claro);
+}
+:where(.text-tinta):not(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white, :is(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white) *) {
+  color: var(--color-areia);
+}
+:where(.text-neutro):not(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white, :is(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white) *) {
+  color: var(--color-poeira);
+}
+:where(.border-noite):not(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white, :is(.painel, .bg-creme, .bg-creme-claro, .bg-creme-escuro, .bg-laranja, .bg-laranja-claro, .bg-azul-claro, .bg-white) *) {
+  border-color: rgb(236 227 190 / 0.25);
+}
+
+/* Tela cheia dos jogos: fundo do espaço e a tela 16:9 o maior possível. */
+.jogo-area:fullscreen {
+  background: var(--color-espaco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  overflow: auto;
+}
+.jogo-area:fullscreen > * {
+  width: min(100%, calc((100dvh - 24px) * 16 / 9));
 }
 
 @media (prefers-reduced-motion: reduce) {

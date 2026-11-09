@@ -1,33 +1,59 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { Logo } from "./Logo";
-import { AccountLink, AccountLinkFallback } from "./AccountLink";
-import { site, joinHref } from "@/config/site";
+import { Avatar } from "./Avatar";
+import { Navegacao } from "./Navegacao";
+import { BarraDeAbas } from "./BarraDeAbas";
+import { site } from "@/config/site";
+import { getUser } from "@/lib/auth/server";
+import { isAdminRole } from "@/lib/auth/admin";
 
 export function Header() {
   return (
-    <header className="border-b-2 border-noite bg-creme px-6 py-4">
-      <div className="miolo flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
-        <Logo />
-        <nav
-          aria-label="Principal"
-          className="order-3 flex flex-1 basis-full flex-wrap justify-center gap-x-5 gap-y-1 font-ficha text-sm uppercase tracking-wider md:order-2 md:basis-auto"
-        >
-          {site.nav.map((n) => (
-            <Link key={n.href} href={n.href} className="py-2.5 text-noite no-underline hover:underline">
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="order-2 flex items-center gap-5 md:order-3">
-          <Suspense fallback={<AccountLinkFallback />}>
-            <AccountLink />
-          </Suspense>
-          <a href={joinHref} className="btn bg-laranja text-noite !px-5 !py-3 !text-[1.05rem] !shadow-duro-sm">
-            Receber novidades
-          </a>
-        </div>
+    <header className="relative z-10 border-b border-creme/15 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-x-3 gap-y-2 sm:gap-x-6">
+        {/* A sessão só existe na hora do pedido; até lá, mostra a versão de quem não entrou. */}
+        <Suspense fallback={<Publico />}>
+          <ComSessao />
+        </Suspense>
       </div>
     </header>
+  );
+}
+
+function Publico() {
+  return (
+    <>
+      <Logo />
+      <Navegacao links={site.nav} mais={site.navMais} logado={false} entrar>
+        <Link href="/entrar" className="hidden px-2.5 py-3 text-[15px] font-medium text-creme no-underline hover:text-laranja-claro sm:inline-block">
+          Entrar
+        </Link>
+        <Link href="/cadastro" className="btn bg-laranja !px-3 !py-3 !text-[15px] whitespace-nowrap text-noite sm:!px-3.5">
+          Criar conta
+        </Link>
+      </Navegacao>
+      <BarraDeAbas entrou={false} />
+    </>
+  );
+}
+
+async function ComSessao() {
+  const user = await getUser();
+  if (!user) return <Publico />;
+  // Só decide se o link aparece. Quem protege o painel é requireAdmin(), que confere no banco.
+  const admin = isAdminRole((user as { role?: unknown }).role);
+  const links = [{ label: "Base", href: "/conta", exato: true }, ...site.nav, ...(admin ? [{ label: "Painel", href: "/admin" }] : [])];
+  return (
+    <>
+      <Logo href="/conta" />
+      <Navegacao links={links} mais={site.navMais} logado entrar={false}>
+        <Link href="/conta/editar" aria-label={`Sua cabine (${user.name})`} className="flex items-center gap-2.5 py-1 text-creme no-underline">
+          <span className="hidden max-w-[160px] truncate text-sm text-areia sm:inline">{user.name}</span>
+          <Avatar name={user.name} image={user.image} size={40} />
+        </Link>
+      </Navegacao>
+      <BarraDeAbas entrou />
+    </>
   );
 }

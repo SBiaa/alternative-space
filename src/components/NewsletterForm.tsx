@@ -14,16 +14,16 @@ export function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex min-w-0 flex-[1_1_340px] flex-col gap-2.5">
-      <label htmlFor="email-lista" className="font-ficha text-[13px] tracking-wider">SEU E-MAIL</label>
+    <form onSubmit={onSubmit} className="flex min-w-0 flex-[1_1_360px] flex-col gap-2">
+      <label htmlFor="email-lista" className="text-sm font-medium">Seu e-mail</label>
       <div className="flex flex-wrap gap-2.5">
-        <input id="email-lista" name="email" type="email" required autoComplete="email" placeholder="voce@email.com" className="min-w-0 flex-[1_1_200px] rounded-full border-2 border-creme bg-transparent px-4 py-3.5 text-base text-creme placeholder:text-[#9aa3ab]" />
+        <input id="email-lista" name="email" type="email" required autoComplete="email" placeholder="voce@email.com" className="min-w-0 flex-[1_1_200px] rounded-md border border-noite bg-white px-3.5 py-3.5 text-base text-noite placeholder:text-neutro" />
         <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
-        <button type="submit" disabled={state.status === "sending"} className="cursor-pointer rounded-full border-2 border-creme bg-laranja px-[22px] py-3.5 font-titulo text-[1.05rem] font-bold text-noite disabled:opacity-60">
-          {state.status === "sending" ? "Enviando..." : "Quero receber"}
+        <button type="submit" disabled={state.status === "sending"} className="btn bg-laranja text-noite disabled:opacity-60">
+          {state.status === "sending" ? "Enviando..." : "Assinar"}
         </button>
       </div>
-      <p role="status" aria-live="polite" className={`min-h-6 text-sm ${state.status === "error" ? "text-laranja-claro" : "text-creme"}`}>
+      <p role="status" aria-live="polite" className={`min-h-6 text-sm ${state.status === "error" ? "font-medium text-estrela" : "text-tinta"}`}>
         {state.message}
       </p>
     </form>

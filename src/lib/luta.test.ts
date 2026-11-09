@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CHAO, MARGEM, PERSONAGENS, VITORIAS, W, cpu, entradaVazia, novaLuta, novaMente, passo, vencedorDaLuta, type Entrada, type Luta } from "./luta";
+import { CHAO, MARGEM, NINJAS, PERSONAGENS, VITORIAS, W, cpu, entradaVazia, novaLuta, novaMente, passo, vencedorDaLuta, type Entrada, type Luta } from "./luta";
 
 const DT = 1 / 60;
 
@@ -119,4 +119,57 @@ describe("luta", () => {
         expect(l.fase).toBe("fim");
       }
   }, 30_000); // 16 lutas inteiras: demora em máquina carregada
+});
+
+describe("duelo ninja", () => {
+  it("shuriken do Kakashi tira vida mas não derruba", () => {
+    const l = emLuta("kakashi", "naruto");
+    rodar(l, 1, (i) => ({ chute: i === 0 }));
+    expect(l.b.vida).toBeLessThan(l.b.p.vida);
+    expect(l.b.estado).not.toBe("caido");
+  });
+
+  it("bola de fogo do Sasuke atravessa a tela e derruba", () => {
+    const l = emLuta("sasuke", "sakura");
+    l.a.energia = 100;
+    rodar(l, 0.5, (i) => ({ especial: i === 0 })); // 0,4 s de selos antes do fogo sair
+    expect(l.projeteis.some((p) => p.tipo === "fogo")).toBe(true);
+    rodar(l, 1);
+    expect(l.b.vida).toBeLessThan(l.b.p.vida);
+  });
+
+  it("soco no chão da Sakura não pega quem está pulando", () => {
+    const l = emLuta("sakura", "kakashi");
+    colar(l);
+    l.a.energia = 100;
+    // O Kakashi pula na hora em que o chão racha.
+    rodar(l, 0.8, (i) => ({ especial: i === 0 }), (i) => ({ cima: i === 14 }));
+    expect(l.b.vida).toBe(l.b.p.vida);
+  });
+
+  it("shuriken e bola de fogo se anulam no meio do caminho", () => {
+    const l = emLuta("sasuke", "kakashi");
+    l.a.energia = 100;
+    rodar(l, 1.2, (i) => ({ especial: i === 0 }), (i) => ({ chute: i === 18 }));
+    expect(l.a.vida).toBe(l.a.p.vida);
+    expect(l.b.vida).toBe(l.b.p.vida);
+  });
+
+  it("CPU contra CPU com ninjas termina a luta", () => {
+    for (const a of NINJAS)
+      for (const b of NINJAS) {
+        const l = novaLuta(a.id, b.id);
+        const ma = novaMente();
+        const mb = novaMente();
+        const r = seq(a.id.length * 5 + b.id.length);
+        for (let i = 0; i < 60 * 240 && l.fase !== "fim"; i++) {
+          passo(l, DT, cpu(l, 0, ma, "dificil", r, DT), cpu(l, 1, mb, "normal", r, DT));
+          for (const f of [l.a, l.b]) {
+            expect(f.x).toBeGreaterThanOrEqual(MARGEM);
+            expect(f.x).toBeLessThanOrEqual(W - MARGEM);
+          }
+        }
+        expect(l.fase).toBe("fim");
+      }
+  }, 30_000);
 });
