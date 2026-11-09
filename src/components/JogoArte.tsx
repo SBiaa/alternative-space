@@ -56,6 +56,12 @@ function Icone({ slug }: { slug: string }) {
           <circle cx="50" cy="50" r="6" fill={LARANJA} stroke={LARANJA} />
         </g>
       );
+    case "conexoes-shinobi":
+      return (
+        <g {...traco}>
+          {[30, 50, 70].flatMap((x) => [30, 50, 70].map((y) => <circle key={`${x}${y}`} cx={x} cy={y} r="6" fill={y === 50 ? LARANJA : "none"} stroke={y === 50 ? LARANJA : CREME} />))}
+        </g>
+      );
     case "fabrica-de-ajudantes":
       return (
         <g {...traco}>

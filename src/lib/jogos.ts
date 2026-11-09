@@ -72,6 +72,14 @@ export const jogos: Jogo[] = [
     cor: "#b4521a",
   },
   {
+    slug: "conexoes-shinobi",
+    nome: "Conexões Shinobi",
+    tipo: "Rapidinho",
+    resumo: "16 ninjas, 4 grupos escondidos.",
+    texto: "Separe os 16 nomes em 4 grupos: quem usa Sharingan, quem é da Akatsuki, quem é do time 7... e cuidado com as pegadinhas.",
+    cor: "#3d2a6e",
+  },
+  {
     slug: "fabrica-de-ajudantes",
     nome: "Fábrica de Ajudantes",
     tipo: "Rapidinho",
