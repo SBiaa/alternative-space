@@ -1,22 +1,30 @@
 'use client';
 
 import { useFormStatus } from 'react-dom';
-import { createCharacterAction } from '@/app/fichas/actions';
+import { createCharacterAction, createPf2eAction } from '@/app/fichas/actions';
 import { Button } from '../ui';
 
 export function NewCharacterButton() {
   return (
     <form action={createCharacterAction}>
-      <Submit />
+      <Submit label="Nova ficha de Shadowrun" />
     </form>
   );
 }
 
-function Submit() {
+export function NewPathfinderButton() {
+  return (
+    <form action={createPf2eAction}>
+      <Submit label="Nova ficha de Pathfinder" />
+    </form>
+  );
+}
+
+function Submit({ label }: { label: string }) {
   const { pending } = useFormStatus();
   return (
     <Button type="submit" variant="primary" disabled={pending}>
-      {pending ? 'Criando…' : 'Nova ficha'}
+      {pending ? 'Criando…' : label}
     </Button>
   );
 }

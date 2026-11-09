@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { CharacterCardActions } from "@/components/fichas/characters/CharacterCardActions";
 import { LocalImportBanner } from "@/components/fichas/characters/LocalImportBanner";
-import { NewCharacterButton } from "@/components/fichas/characters/NewCharacterButton";
+import { NewCharacterButton, NewPathfinderButton } from "@/components/fichas/characters/NewCharacterButton";
 import { sistemasFicha } from "@/config/fichas";
 import { getUser } from "@/lib/auth/server";
 import { listCharacters, type CharacterSummary } from "@/lib/fichas/server/characters";
@@ -68,15 +68,16 @@ async function MinhasFichas() {
     <section aria-labelledby="minhas-fichas" className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 id="minhas-fichas" className="text-2xl font-semibold tracking-[-0.015em]">Minhas fichas</h2>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Link href="/fichas/times" className="btn btn-fantasma !px-4 !py-2.5 !text-[15px]">Times</Link>
           <NewCharacterButton />
+          <NewPathfinderButton />
         </div>
       </div>
       <LocalImportBanner />
       {list.length === 0 ? (
         <p className="rounded-lg border border-dashed border-line-strong p-8 text-center text-muted">
-          Nenhuma ficha ainda. Clique em <strong className="text-ink">Nova ficha</strong> pra criar a primeira.
+          Nenhuma ficha ainda. Clique em <strong className="text-ink">Nova ficha</strong> de um dos sistemas pra criar a primeira.
         </p>
       ) : (
         <ul className="grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
@@ -88,6 +89,10 @@ async function MinhasFichas() {
     </section>
   );
 }
+
+const NOME_SISTEMA: Record<string, string> = Object.fromEntries(
+  sistemasFicha.map((s) => [s.id, s.name.split(" ")[0]]),
+);
 
 const STATUS_LABEL: Record<CharacterSummary["status"], string> = {
   draft: "Em criação",
@@ -109,7 +114,10 @@ function CharacterCard({ character: c }: { character: CharacterSummary }) {
           <h3 className="font-display text-xl font-semibold">{c.name}</h3>
           <span className="shrink-0 rounded-full border border-line-strong px-2 py-0.5 text-xs text-muted">{STATUS_LABEL[c.status]}</span>
         </div>
-        {c.role && <p className="text-sm text-muted">{c.role}</p>}
+        <p className="text-sm text-muted">
+          <span className="etiqueta mr-1.5 text-[10px] text-accent">{NOME_SISTEMA[c.system] ?? c.system}</span>
+          {c.role}
+        </p>
         <p className="mt-3 text-xs text-faint">Atualizada em {updatedFormat.format(c.updatedAt)}</p>
       </Link>
       <CharacterCardActions id={c.id} name={c.name} />

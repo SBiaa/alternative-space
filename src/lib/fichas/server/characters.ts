@@ -16,6 +16,7 @@ import {
   normalizeDraft,
   type CharacterDraft,
 } from '@/lib/fichas/sr5/character';
+import { FICHA_VAZIA, resumoFicha } from '@/lib/pathfinder';
 
 /** Limite de tamanho da ficha salva (uma ficha real tem poucos KB). */
 const MAX_DRAFT_BYTES = 256 * 1024;
@@ -52,6 +53,8 @@ function parseStep(step: unknown): number {
 
 export interface CharacterSummary {
   id: string;
+  /** Sistema de jogo ('sr5', 'pf2e'). */
+  system: string;
   name: string;
   role: string;
   status: 'draft' | 'active' | 'retired';
@@ -60,17 +63,26 @@ export interface CharacterSummary {
 
 export async function listCharacters(): Promise<CharacterSummary[]> {
   const userId = await requireUserId();
-  return db()
+  const rows = await db()
     .select({
       id: characters.id,
+      system: characters.system,
       name: characters.name,
-      role: sql<string>`coalesce(${characters.draft}->'concept'->>'role', '')`,
+      // Shadowrun: o papel do conceito. Pathfinder: ancestralidade e classe, traduzidos em listCharacters.
+      role: sql<string>`case when ${characters.system} = 'pf2e'
+        then coalesce(${characters.draft}->>'ancestralidade', '') || '|' || coalesce(${characters.draft}->>'classe', '')
+        else coalesce(${characters.draft}->'concept'->>'role', '') end`,
       status: characters.status,
       updatedAt: characters.updatedAt,
     })
     .from(characters)
     .where(eq(characters.ownerId, userId))
     .orderBy(desc(characters.updatedAt));
+  return rows.map((r) => {
+    if (r.system !== 'pf2e') return r;
+    const [ancestralidade, classe] = r.role.split('|');
+    return { ...r, role: resumoFicha({ ...FICHA_VAZIA, ancestralidade, classe }) || 'Pathfinder 2e' };
+  });
 }
 
 export async function getCharacter(id: string, next?: string) {
@@ -79,7 +91,7 @@ export async function getCharacter(id: string, next?: string) {
   const [row] = await db()
     .select()
     .from(characters)
-    .where(and(eq(characters.id, id), eq(characters.ownerId, userId)));
+    .where(and(eq(characters.id, id), eq(characters.ownerId, userId), eq(characters.system, 'sr5')));
   if (!row) throw new NotFoundError();
   return { ...row, draft: normalizeDraft(row.draft) };
 }
@@ -111,7 +123,7 @@ export async function saveCharacter(id: string, rawDraft: unknown, rawStep: unkn
       schemaVersion: DRAFT_SCHEMA_VERSION,
       updatedAt: new Date(),
     })
-    .where(and(eq(characters.id, id), eq(characters.ownerId, userId), eq(characters.status, 'draft')))
+    .where(and(eq(characters.id, id), eq(characters.ownerId, userId), eq(characters.system, 'sr5'), eq(characters.status, 'draft')))
     .returning({ updatedAt: characters.updatedAt });
   if (!row) throw new NotFoundError();
   return row.updatedAt;

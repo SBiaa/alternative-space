@@ -19,4 +19,11 @@ export const sistemasFicha: SistemaFicha[] = [
     tagline: "Cyberpunk, magia e corridas nas sombras.",
     text: "Criador guiado pelo sistema de prioridades, passo a passo e pensado pra quem nunca jogou.",
   },
+  {
+    slug: "pathfinder",
+    id: "pf2e",
+    name: "Pathfinder 2ª edição",
+    tagline: "Fantasia heroica, masmorras e escolhas que importam.",
+    text: "Monte seu herói por ancestralidade, antecedente e classe, com os boosts de atributo calculados pra você.",
+  },
 ];
