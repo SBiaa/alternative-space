@@ -676,7 +676,7 @@ export function FabricaDeAjudantes() {
       </div>
 
       {/* Chão da fábrica */}
-      <div className="relative w-full overflow-hidden rounded-2xl border-2 border-noite bg-creme shadow-duro" style={{ aspectRatio: `${W} / ${H}` }}>
+      <div className="relative w-full overflow-hidden rounded-lg border-[6px] border-creme bg-creme shadow-[0_10px_30px_rgb(0_0_0/0.35)]" style={{ aspectRatio: `${W} / ${H}` }}>
         <canvas
           ref={canvasRef}
           className="block h-full w-full cursor-pointer"

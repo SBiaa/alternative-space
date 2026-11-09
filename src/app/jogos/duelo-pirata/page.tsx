@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { DueloPirata } from "@/components/DueloPirata";
+import { JogoPagina } from "@/components/JogoPagina";
 
 export const metadata: Metadata = {
   title: "Duelo Pirata",
@@ -17,45 +17,42 @@ const comandos = [
 
 export default function Page() {
   return (
-    <section className="secao !pt-12">
-      <div className="miolo flex flex-col gap-6">
-        <div className="flex flex-col gap-2">
-          <Link href="/jogos" className="etiqueta text-azul no-underline hover:underline">← Jogos</Link>
-          <h1 className="font-titulo font-bold leading-[1] text-azul" style={{ fontSize: "clamp(2.2rem, 5vw, 3.6rem)" }}>
-            Duelo Pirata
-          </h1>
-          <p className="max-w-[640px] text-lg leading-relaxed text-tinta">
-            Escolha seu pirata e sai na porrada no convés. Golpes acertados enchem a barra azul; quando ela passa da marca, solta o especial. Melhor de 3 rounds.
-          </p>
-        </div>
-        <div className="mx-auto w-full max-w-[960px]">
-          <DueloPirata />
-        </div>
-        <div className="mx-auto w-full max-w-[960px] overflow-x-auto">
+    <JogoPagina
+      slug="duelo-pirata"
+      comoJogar={
+        <p className="m-0">
+          Escolha seu pirata e sai na porrada no convés. Golpes acertados enchem a barra azul; quando ela passa da marca, solta o especial.
+          Melhor de 3 rounds. No celular aparecem botões embaixo do jogo (ou dos lados, com o celular deitado). Esc pausa.
+        </p>
+      }
+      extra={
+        <div className="card overflow-x-auto px-4 py-3.5">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="etiqueta text-[12px] text-azul">
+              <tr className="etiqueta text-[10px] text-laranja-claro">
                 <th className="py-1 pr-4 font-normal">Comando</th>
                 <th className="py-1 pr-4 font-normal">1 jogador / Jogador 1 *</th>
                 <th className="py-1 font-normal">Jogador 2</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-areia">
               {comandos.map(([c, p1, p2]) => (
-                <tr key={c} className="border-t border-noite/15">
-                  <td className="py-1.5 pr-4 font-bold">{c}</td>
+                <tr key={c} className="border-t border-creme/15">
+                  <td className="py-1.5 pr-4 font-semibold text-creme">{c}</td>
                   <td className="py-1.5 pr-4">{p1}</td>
                   <td className="py-1.5">{p2}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <p className="mt-2 text-xs text-neutro">
-            * No modo 2 jogadores, o Jogador 1 usa WASD + F G H. Controle de videogame também funciona (X soco, A chute, B/Y especial). No celular aparecem botões embaixo do jogo (ou dos lados, com o celular deitado). Esc pausa.
+          <p className="mt-2 mb-0 text-xs text-poeira">
+            * No modo 2 jogadores, o Jogador 1 usa WASD + F G H. Controle de videogame também funciona (X soco, A chute, B/Y especial).
+            Jogo de fã, sem ligação oficial com One Piece.
           </p>
         </div>
-        <p className="etiqueta text-center text-[12px] text-neutro">jogo de fã, sem ligação oficial com One Piece</p>
-      </div>
-    </section>
+      }
+    >
+      <DueloPirata />
+    </JogoPagina>
   );
 }

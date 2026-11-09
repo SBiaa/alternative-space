@@ -11,14 +11,15 @@ export const site = {
     whatsapp: "",
     email: "",
   },
+  // Menu principal. "tambem" acende o link em outras seções (Jogar cobre quizzes e fliperama).
   nav: [
-    { label: "Quizzes", href: "/quiz" },
+    { label: "Jogar", href: "/jogos", tambem: ["/quiz"] },
     { label: "Fichas", href: "/fichas" },
-    { label: "Jogos", href: "/jogos" },
     { label: "Blog", href: "/blog" },
     { label: "Coleções", href: "/colecoes" },
-    { label: "Parceiros", href: "/parceiros" },
   ],
+  // Fora do menu principal: aparece na gaveta do celular e no rodapé.
+  navMais: [{ label: "Parceiros", href: "/parceiros" }],
 };
 
 // Destino dos botões de entrada enquanto não há comunidade aberta.

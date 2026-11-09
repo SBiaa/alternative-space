@@ -4,13 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-type Item = { label: string; href: string };
+import { ativo, type ItemMenu } from "@/lib/menu";
 
-const ativo = (path: string, href: string) => !href.includes("#") && (path === href || path.startsWith(`${href}/`));
-
-// Menu principal: links no meio do cabeçalho e, no celular, uma gaveta.
+// Menu principal: links no meio do cabeçalho e, no celular, uma gaveta com o que não cabe nas abas de baixo.
 // Logado, os links ficam numa barra com a página atual destacada.
-export function Navegacao({ links, logado, entrar, children }: { links: Item[]; logado: boolean; entrar: boolean; children: React.ReactNode }) {
+type Props = { links: ItemMenu[]; mais: ItemMenu[]; logado: boolean; entrar: boolean; children: React.ReactNode };
+
+export function Navegacao({ links, mais, logado, entrar, children }: Props) {
   const path = usePathname();
   const [aberto, setAberto] = useState(false);
   const fechar = () => setAberto(false);
@@ -26,7 +26,7 @@ export function Navegacao({ links, logado, entrar, children }: { links: Item[]; 
         }
       >
         {links.map((l) => {
-          const atual = ativo(path, l.href);
+          const atual = ativo(path, l);
           return (
             <Link
               key={l.href}
@@ -65,12 +65,12 @@ export function Navegacao({ links, logado, entrar, children }: { links: Item[]; 
       {aberto && (
         <nav id="menu-celular" aria-label="Menu" className="absolute inset-x-0 top-full z-20 border-b border-creme/20 bg-cabine px-5 pb-5 pt-2 lg:hidden">
           <div className="flex flex-col">
-            {links.map((l, i) => (
+            {[...links, ...mais].map((l, i) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={fechar}
-                aria-current={ativo(path, l.href) ? "page" : undefined}
+                aria-current={ativo(path, l) ? "page" : undefined}
                 className="flex items-center justify-between border-b border-creme/12 py-3.5 text-xl font-medium text-creme no-underline"
               >
                 {l.label}

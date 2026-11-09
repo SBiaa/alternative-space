@@ -19,7 +19,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}>
-      <body className="relative flex min-h-screen flex-col overflow-x-hidden">
+      {/* No celular sobra espaço no pé pra barra de abas fixa não cobrir o rodapé. */}
+      <body className="relative flex min-h-screen flex-col overflow-x-hidden pb-20 lg:pb-0">
         <Ceu />
         <a href="#conteudo" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:rounded-md focus:bg-creme-claro focus:p-3 focus:text-noite">
           Pular para o conteúdo

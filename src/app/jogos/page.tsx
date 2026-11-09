@@ -1,82 +1,52 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Star } from "@/components/Star";
+import { cacheLife } from "next/cache";
+import { Fliperama } from "@/components/Fliperama";
+import { JogarAbas } from "@/components/JogarAbas";
+import { JogoArte } from "@/components/JogoArte";
+import { hrefJogo, jogoDaSemana } from "@/lib/jogos";
 
 export const metadata: Metadata = {
-  title: "Jogos",
+  title: "Fliperama",
   description: "Joguinhos rápidos pra jogar no navegador, sem instalar nada.",
 };
 
-const jogos = [
-  {
-    href: "/jogos/defenda-o-navio",
-    tag: "Tower defense · 12 ondas",
-    nome: "Defenda o Navio",
-    texto: "A marinha invade pelo convés. Posicione a tripulação, cada um com seu jeito de lutar, e não deixe levarem o tesouro.",
-  },
-  {
-    href: "/jogos/log-pose-doido",
-    tag: "One Piece · controles malucos",
-    nome: "Log Pose Doido",
-    texto: "Guie o navio entre redemoinhos, tempestades e reis do mar. O Log Pose muda de ideia o tempo todo.",
-  },
-  {
-    href: "/jogos/monte-seu-pirata",
-    tag: "Vestir bonequinho · vira avatar",
-    nome: "Monte seu Pirata",
-    texto: "Chapéu, cicatriz, arma, roupa e bichinho. Monta do seu jeito e usa como avatar do perfil.",
-  },
-  {
-    href: "/jogos/picles-no-ralo",
-    tag: "Rick and Morty · um botão",
-    nome: "Picles no Ralo",
-    texto: "Segura pra subir, solta pra descer. Leve o Picles Rick pelo esgoto sem virar janta de rato.",
-  },
-  {
-    href: "/jogos/fabrica-de-ajudantes",
-    tag: "Clicker · pedidos absurdos",
-    nome: "Fábrica de Ajudantes",
-    texto: "Crie ajudantes azuis pra cumprir pedidos absurdos. Se demorar demais, eles entram em pane e a fábrica vira caos.",
-  },
-  {
-    href: "/jogos/fruta-misteriosa",
-    tag: "Plataforma · protótipo",
-    nome: "Fruta Misteriosa",
-    texto: "Atravesse as ilhas até o baú sem encostar na água. Em breve: uma fruta sorteada muda tudo.",
-  },
-  {
-    href: "/jogos/duelo-pirata",
-    tag: "One Piece · luta 1x1",
-    nome: "Duelo Pirata",
-    texto: "Luffy, Zoro, Sanji ou Nami no convés. Contra a CPU ou contra um amigo, melhor de 3.",
-  },
-];
-
 export default function Page() {
   return (
-    <section className="secao !pt-16">
-      <div className="miolo flex flex-col gap-10">
-        <div className="relative flex max-w-[760px] flex-col gap-4">
-          <span className="etiqueta text-azul">Jogos</span>
-          <h1 className="font-titulo font-bold leading-[1] text-azul" style={{ fontSize: "clamp(2.4rem, 6vw, 4.25rem)" }}>
-            Só mais uma partida.
-          </h1>
-          <p className="text-lg leading-relaxed text-tinta">Joguinhos rápidos, direto no navegador. Mais chegando.</p>
-          <Star className="absolute -top-4 right-0 hidden sm:block" />
+    <section className="px-4 pb-18 pt-5 sm:px-6 sm:pt-9">
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-5 sm:gap-7.5">
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-4">
+          <div className="flex flex-col gap-1 sm:gap-1.5">
+            <span className="etiqueta text-[11px] text-laranja-claro sm:text-xs">Jogar</span>
+            <h1 className="text-[28px] font-semibold leading-[1.05] tracking-[-0.02em] sm:text-[44px]">Fliperama</h1>
+            <p className="hidden text-base text-areia sm:block">Joguinhos rápidos pra uma pausa na base.</p>
+          </div>
+          <JogarAbas atual="fliperama" />
         </div>
-        <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-7 p-0">
-          {jogos.map((j) => (
-            <li key={j.href}>
-              <Link href={j.href} className="flex h-full flex-col gap-3 rounded-2xl border-2 border-noite bg-[#74b53c] p-7 text-noite no-underline shadow-duro-sm">
-                <span className="etiqueta text-[13px]">{j.tag}</span>
-                <h2 className="font-titulo text-[2rem] font-bold leading-[1.05]">{j.nome}</h2>
-                <p className="leading-normal">{j.texto}</p>
-                <span className="mt-auto pt-2 font-titulo text-xl font-bold">Jogar →</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <Destaque />
+        <Fliperama />
       </div>
     </section>
+  );
+}
+
+// Troca sozinho toda semana; o cache segura a página estática entre uma troca e outra.
+async function Destaque() {
+  "use cache";
+  cacheLife("hours");
+  const j = jogoDaSemana(new Date());
+  return (
+    <Link href={hrefJogo(j.slug)} className="painel flex overflow-hidden no-underline sm:flex-wrap">
+      <JogoArte jogo={j} className="w-[120px] shrink-0 sm:min-h-[260px] sm:w-auto sm:flex-[1_1_420px]" />
+      <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 p-3.5 sm:flex-[1_1_360px] sm:gap-2.5 sm:p-[clamp(22px,3vw,40px)]">
+        <span className="etiqueta text-[10px] text-azul sm:text-[11px]">Jogo da semana</span>
+        <span className="text-[19px] font-bold leading-[1.1] tracking-[-0.015em] text-azul sm:text-[clamp(26px,2.8vw,36px)]">{j.nome}</span>
+        <span className="text-[13px] leading-snug text-neutro sm:text-base sm:leading-relaxed sm:text-tinta">
+          <span className="sm:hidden">{j.resumo}</span>
+          <span className="hidden sm:inline">{j.texto}</span>
+        </span>
+        <span className="btn mt-1.5 self-start bg-laranja !px-3 !py-2 !text-sm text-noite sm:!px-5 sm:!py-3.25 sm:!text-base">Jogar agora</span>
+      </div>
+    </Link>
   );
 }

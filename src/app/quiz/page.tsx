@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JogarAbas } from "@/components/JogarAbas";
 import { Star } from "@/components/Star";
 import { quizzes } from "@/lib/quiz";
 
@@ -16,6 +17,7 @@ export default function Page() {
           <span className="etiqueta text-azul">Quizzes</span>
           <h1 className="font-titulo font-bold leading-[1] text-azul" style={{ fontSize: "clamp(2.4rem, 6vw, 4.25rem)" }}>Descobre quem mora aí dentro.</h1>
           <p className="text-lg leading-relaxed text-tinta">Poucos minutos, zero cadastro. No final, o resultado é seu pra mandar pra galera.</p>
+          <div className="mt-2 self-start"><JogarAbas atual="quiz" /></div>
           <Star className="absolute -top-4 right-0 hidden sm:block" />
         </div>
         <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-7 p-0">

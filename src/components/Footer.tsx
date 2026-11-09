@@ -4,6 +4,7 @@ import { Planeta } from "./Logo";
 export function Footer() {
   const { instagram, whatsapp, email } = site.links;
   const items = [
+    ...site.navMais,
     instagram && { label: "Instagram", href: instagram },
     whatsapp && { label: "WhatsApp", href: whatsapp },
     email && { label: "E-mail", href: `mailto:${email}` },

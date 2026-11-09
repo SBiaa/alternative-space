@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Logo } from "./Logo";
 import { Avatar } from "./Avatar";
 import { Navegacao } from "./Navegacao";
+import { BarraDeAbas } from "./BarraDeAbas";
 import { site } from "@/config/site";
 import { getUser } from "@/lib/auth/server";
 import { isAdminRole } from "@/lib/auth/admin";
@@ -24,7 +25,7 @@ function Publico() {
   return (
     <>
       <Logo />
-      <Navegacao links={site.nav} logado={false} entrar>
+      <Navegacao links={site.nav} mais={site.navMais} logado={false} entrar>
         <Link href="/entrar" className="hidden px-2.5 py-3 text-[15px] font-medium text-creme no-underline hover:text-laranja-claro sm:inline-block">
           Entrar
         </Link>
@@ -32,6 +33,7 @@ function Publico() {
           Criar conta
         </Link>
       </Navegacao>
+      <BarraDeAbas entrou={false} />
     </>
   );
 }
@@ -41,16 +43,17 @@ async function ComSessao() {
   if (!user) return <Publico />;
   // Só decide se o link aparece. Quem protege o painel é requireAdmin(), que confere no banco.
   const admin = isAdminRole((user as { role?: unknown }).role);
-  const links = [{ label: "Base", href: "/conta" }, ...site.nav, ...(admin ? [{ label: "Painel", href: "/admin" }] : [])];
+  const links = [{ label: "Base", href: "/conta", exato: true }, ...site.nav, ...(admin ? [{ label: "Painel", href: "/admin" }] : [])];
   return (
     <>
       <Logo href="/conta" />
-      <Navegacao links={links} logado entrar={false}>
-        <Link href="/conta" aria-label={`Sua base (${user.name})`} className="flex items-center gap-2.5 py-1 text-creme no-underline">
+      <Navegacao links={links} mais={site.navMais} logado entrar={false}>
+        <Link href="/conta/editar" aria-label={`Sua cabine (${user.name})`} className="flex items-center gap-2.5 py-1 text-creme no-underline">
           <span className="hidden max-w-[160px] truncate text-sm text-areia sm:inline">{user.name}</span>
           <Avatar name={user.name} image={user.image} size={40} />
         </Link>
       </Navegacao>
+      <BarraDeAbas entrou />
     </>
   );
 }

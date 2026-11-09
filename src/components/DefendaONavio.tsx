@@ -1092,7 +1092,7 @@ export function DefendaONavio() {
   return (
     <div className="flex flex-col gap-4">
       <div
-        className="relative w-full select-none overflow-hidden rounded-2xl border-2 border-noite bg-noite shadow-duro"
+        className="relative w-full select-none overflow-hidden rounded-lg border-[6px] border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)]"
         style={{ aspectRatio: `${W} / ${H}` }}
       >
         <canvas

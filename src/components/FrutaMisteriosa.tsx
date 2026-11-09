@@ -51,7 +51,7 @@ export function FrutaMisteriosa() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="relative aspect-video w-full overflow-hidden rounded-2xl border-2 border-noite bg-[#dfe4e8] shadow-duro">
+      <div className="relative aspect-video w-full overflow-hidden rounded-lg border-[6px] border-creme bg-[#dfe4e8] shadow-[0_10px_30px_rgb(0_0_0/0.35)]">
         <div ref={palco} className="absolute inset-0 [&_canvas]:!h-full [&_canvas]:!w-full" />
 
         {tela !== "jogando" && (

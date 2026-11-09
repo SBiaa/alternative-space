@@ -346,7 +346,7 @@ export function DueloPirata() {
       onContextMenu={(ev) => ev.preventDefault()}
     >
     <div
-      className={`relative w-full select-none overflow-hidden rounded-2xl border-2 border-noite bg-noite shadow-duro ${comControles ? "landscape:order-2 landscape:min-w-0 landscape:flex-1 landscape:max-w-[calc(88dvh*16/9)]" : ""}`}
+      className={`relative w-full select-none overflow-hidden rounded-lg border-[6px] border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)] ${comControles ? "landscape:order-2 landscape:min-w-0 landscape:flex-1 landscape:max-w-[calc(88dvh*16/9)]" : ""}`}
       style={{ aspectRatio: `${W} / ${H}`, WebkitTouchCallout: "none" }}
       onContextMenu={(ev) => ev.preventDefault()}
     >

@@ -164,6 +164,20 @@ body {
   border-color: rgb(236 227 190 / 0.25);
 }
 
+/* Tela cheia dos jogos: fundo do espaço e a tela 16:9 o maior possível. */
+.jogo-area:fullscreen {
+  background: var(--color-espaco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  overflow: auto;
+}
+.jogo-area:fullscreen > * {
+  width: min(100%, calc((100dvh - 24px) * 16 / 9));
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn { transition: none; }
