@@ -64,6 +64,14 @@ export const jogos: Jogo[] = [
     cor: "#7a2620",
   },
   {
+    slug: "duelo-ninja",
+    nome: "Duelo Ninja",
+    tipo: "Habilidade",
+    resumo: "Luta 1x1 de ninjas, com jutsus.",
+    texto: "Naruto, Sasuke, Sakura ou Kakashi no campo de treino. Rasengan, Chidori e bola de fogo, melhor de 3.",
+    cor: "#b4521a",
+  },
+  {
     slug: "fabrica-de-ajudantes",
     nome: "Fábrica de Ajudantes",
     tipo: "Rapidinho",
