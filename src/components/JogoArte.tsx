@@ -42,6 +42,14 @@ function Icone({ slug }: { slug: string }) {
           <path d="M74 64h12" stroke={LARANJA} />
         </g>
       );
+    case "fuga-da-akatsuki":
+      return (
+        <g {...traco}>
+          <path d="M18 74h26v10M56 66h28v18" />
+          <path d="M40 54q10-22 26-20" strokeDasharray="4 5" stroke={LARANJA} />
+          <path d="M74 30l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" />
+        </g>
+      );
     case "duelo-pirata":
       return (
         <g {...traco}>

@@ -56,6 +56,15 @@ export const jogos: Jogo[] = [
     recorde: { chave: "corrida-de-chakra:recorde", formato: (n) => `${n} pontos` },
   },
   {
+    slug: "fuga-da-akatsuki",
+    nome: "Fuga da Akatsuki",
+    tipo: "Um botão",
+    resumo: "Runner nos telhados, sem fim.",
+    texto: "Pule entre os telhados da vila, desvie das shurikens e junte pergaminhos. Quanto mais longe, mais rápido.",
+    cor: "#4a1830",
+    recorde: { chave: "fuga-da-akatsuki:recorde", formato: (n) => `${n} pontos` },
+  },
+  {
     slug: "duelo-pirata",
     nome: "Duelo Pirata",
     tipo: "Habilidade",
