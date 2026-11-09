@@ -1,0 +1,130 @@
+[
+  {
+    "id": "136a3dc5-d9c4-45ad-bc24-705f54692590",
+    "name": "Bear",
+    "namePt": "Urso",
+    "source": "SR5",
+    "page": 321,
+    "category": ""
+  },
+  {
+    "id": "f32b8b69-0f6b-417d-bd06-6a85e1076a36",
+    "name": "Cat",
+    "namePt": "Gato",
+    "source": "SR5",
+    "page": 321,
+    "category": ""
+  },
+  {
+    "id": "98785f59-5739-4998-b334-ec4501c75cf8",
+    "name": "Dog",
+    "namePt": "Cão",
+    "source": "SR5",
+    "page": 321,
+    "category": ""
+  },
+  {
+    "id": "dc7ce567-18c7-4101-b16c-0d4930f3af81",
+    "name": "Dragonslayer",
+    "namePt": "Matador de Dragões",
+    "source": "SR5",
+    "page": 321,
+    "category": ""
+  },
+  {
+    "id": "9e38a8c0-f11c-461d-a489-ba1432f4551f",
+    "name": "Eagle",
+    "namePt": "Águia",
+    "source": "SR5",
+    "page": 322,
+    "category": ""
+  },
+  {
+    "id": "bd0d6ff0-8af1-4689-8997-7bcfbbd642ff",
+    "name": "Fire-Bringer",
+    "namePt": "Portador da Chama",
+    "source": "SR5",
+    "page": 322,
+    "category": ""
+  },
+  {
+    "id": "a1faab23-0214-4c83-96ac-d5bb71d4aebb",
+    "name": "Mountain",
+    "namePt": "Montanha",
+    "source": "SR5",
+    "page": 322,
+    "category": ""
+  },
+  {
+    "id": "4a37e26d-e6f1-4e97-b305-e4aed048fcad",
+    "name": "Rat",
+    "namePt": "Rato",
+    "source": "SR5",
+    "page": 323,
+    "category": ""
+  },
+  {
+    "id": "168a0db8-0676-4a7d-86ce-99a43bf0f2bc",
+    "name": "Raven",
+    "namePt": "Corvo",
+    "source": "SR5",
+    "page": 323,
+    "category": ""
+  },
+  {
+    "id": "0242ba67-f93b-44e1-a1ad-b0d6f9051525",
+    "name": "Sea",
+    "namePt": "Mar",
+    "source": "SR5",
+    "page": 323,
+    "category": ""
+  },
+  {
+    "id": "fa343b9a-6e4d-49cd-8c5a-68002ddf244b",
+    "name": "Seducer",
+    "namePt": "Sedutor",
+    "source": "SR5",
+    "page": 323,
+    "category": ""
+  },
+  {
+    "id": "db8a0489-fe87-4223-bc02-3639911429a7",
+    "name": "Shark",
+    "namePt": "Tubarão",
+    "source": "SR5",
+    "page": 323,
+    "category": ""
+  },
+  {
+    "id": "17ee9f01-ebe2-43ba-a4fe-741053973444",
+    "name": "Snake",
+    "namePt": "Serpente",
+    "source": "SR5",
+    "page": 324,
+    "category": ""
+  },
+  {
+    "id": "a805cc41-3dc3-49cc-b290-887a3203158e",
+    "name": "Thunderbird",
+    "namePt": "Pássaro-Trovão",
+    "source": "SR5",
+    "page": 324,
+    "category": ""
+  },
+  {
+    "id": "5d27ec80-e4c0-4bb7-af9c-d7499cfa6c24",
+    "name": "Wise Warrior",
+    "namePt": "Guerreiro Sábio",
+    "source": "SR5",
+    "page": 324,
+    "category": ""
+  },
+  {
+    "id": "b5211e08-4be0-4e18-9186-7412f4e9e74f",
+    "name": "Wolf",
+    "namePt": "Lobo",
+    "source": "SR5",
+    "page": 324,
+    "category": ""
+  }
+]

@@ -1,0 +1,2744 @@
+[
+  {
+    "id": "3320c670-23ae-4cce-9c2c-e59d2554ddd7",
+    "name": "Krime Cannon",
+    "namePt": "Canhão Krime",
+    "source": "SR5",
+    "page": 431,
+    "category": "Assault Cannons",
+    "categoryPt": "Canhões de Assalto",
+    "cost": {
+      "raw": "21000",
+      "value": 21000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "damage": "16P",
+    "ap": "-6",
+    "mode": "SA",
+    "accuracy": "4",
+    "rc": "1",
+    "ammo": "6(m)"
+  },
+  {
+    "id": "8b7cce7a-6e85-4e37-b953-9f79a0ae77fe",
+    "name": "Panther XXL",
+    "namePt": "Panther XXL",
+    "source": "SR5",
+    "page": 431,
+    "category": "Assault Cannons",
+    "categoryPt": "Canhões de Assalto",
+    "cost": {
+      "raw": "43000",
+      "value": 43000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "damage": "17P",
+    "ap": "-6",
+    "mode": "SS",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "15(c)"
+  },
+  {
+    "id": "b625833a-88bc-4047-b3fc-bc432d96744b",
+    "name": "AK-97",
+    "namePt": "AK-97",
+    "source": "SR5",
+    "page": 428,
+    "category": "Assault Rifles",
+    "categoryPt": "Fuzis de Assalto",
+    "cost": {
+      "raw": "950",
+      "value": 950
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "10P",
+    "ap": "-2",
+    "mode": "SA/BF/FA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "38(c)"
+  },
+  {
+    "id": "3a7a90ce-fbb5-4599-a857-b9849eb9769c",
+    "name": "Ares Alpha",
+    "namePt": "Ares Alpha",
+    "source": "SR5",
+    "page": 428,
+    "category": "Assault Rifles",
+    "categoryPt": "Fuzis de Assalto",
+    "cost": {
+      "raw": "2650",
+      "value": 2650
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    },
+    "damage": "11P",
+    "ap": "-2",
+    "mode": "SA/BF/FA",
+    "accuracy": "5",
+    "rc": "2",
+    "ammo": "42(c)"
+  },
+  {
+    "id": "e27e14ac-01bb-46e0-8d63-62994052d92c",
+    "name": "Colt M23",
+    "namePt": "Colt M23",
+    "source": "SR5",
+    "page": 428,
+    "category": "Assault Rifles",
+    "categoryPt": "Fuzis de Assalto",
+    "cost": {
+      "raw": "550",
+      "value": 550
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "9P",
+    "ap": "-2",
+    "mode": "SA/BF/FA",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "40(c)"
+  },
+  {
+    "id": "e39c445a-9657-4e71-949e-a1ea093c3504",
+    "name": "FN HAR",
+    "namePt": "FN HAR",
+    "source": "SR5",
+    "page": 428,
+    "category": "Assault Rifles",
+    "categoryPt": "Fuzis de Assalto",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "damage": "10P",
+    "ap": "-2",
+    "mode": "SA/BF/FA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "35(c)"
+  },
+  {
+    "id": "01e0eee7-452b-4fd5-abe1-29145da4a5e6",
+    "name": "Yamaha Raiden",
+    "namePt": "Yamaha Raiden",
+    "source": "SR5",
+    "page": 428,
+    "category": "Assault Rifles",
+    "categoryPt": "Fuzis de Assalto",
+    "cost": {
+      "raw": "2600",
+      "value": 2600
+    },
+    "avail": {
+      "raw": "14F",
+      "value": 14,
+      "restriction": "F"
+    },
+    "damage": "11P",
+    "ap": "-2",
+    "mode": "BF/FA",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "60(c)"
+  },
+  {
+    "id": "7c59cf2f-87ea-4dca-95e7-ad17008386a0",
+    "name": "Combat Axe",
+    "namePt": "Machado de Combate",
+    "source": "SR5",
+    "page": 422,
+    "category": "Blades",
+    "categoryPt": "Lâminas",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "damage": "({STR}+5)P",
+    "ap": "-4",
+    "mode": "0",
+    "accuracy": "4",
+    "reach": 2,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "656906d8-b6a4-47a2-9554-de365097eba0",
+    "name": "Combat Knife",
+    "namePt": "Faca de Combate",
+    "source": "SR5",
+    "page": 422,
+    "category": "Blades",
+    "categoryPt": "Lâminas",
+    "cost": {
+      "raw": "300",
+      "value": 300
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "damage": "({STR}+2)P",
+    "ap": "-3",
+    "mode": "0",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "4ca64aa3-f172-4f0b-8c6d-954ddd1133b1",
+    "name": "Forearm Snap-Blades",
+    "namePt": "Lâminas Retráteis de Antebraço",
+    "source": "SR5",
+    "page": 422,
+    "category": "Blades",
+    "categoryPt": "Lâminas",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "7R",
+      "value": 7,
+      "restriction": "R"
+    },
+    "damage": "({STR}+2)P",
+    "ap": "-2",
+    "mode": "0",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "8f266b4c-4035-4ba3-aa89-3289d0f42ce1",
+    "name": "Katana",
+    "namePt": "Katana",
+    "source": "SR5",
+    "page": 422,
+    "category": "Blades",
+    "categoryPt": "Lâminas",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "9R",
+      "value": 9,
+      "restriction": "R"
+    },
+    "damage": "({STR}+3)P",
+    "ap": "-3",
+    "mode": "0",
+    "accuracy": "7",
+    "reach": 1,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "eb16de72-e646-4880-aa5b-21a5a0a2b342",
+    "name": "Knife",
+    "namePt": "Faca",
+    "source": "SR5",
+    "page": 422,
+    "category": "Blades",
+    "categoryPt": "Lâminas",
+    "cost": {
+      "raw": "10",
+      "value": 10
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "damage": "({STR}+1)P",
+    "ap": "-1",
+    "mode": "0",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "60f52b1f-6376-49fc-a746-b811c54197e7",
+    "name": "Pole Arm",
+    "namePt": "Arma de Haste",
+    "source": "SR5",
+    "page": 422,
+    "category": "Blades",
+    "categoryPt": "Lâminas",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "({STR}+3)P",
+    "ap": "-2",
+    "mode": "0",
+    "accuracy": "5",
+    "reach": 3,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "e5e5e025-8622-406c-a2bb-030ad5392d79",
+    "name": "Survival Knife",
+    "namePt": "Faca de Sobrevivência",
+    "source": "SR5",
+    "page": 422,
+    "category": "Blades",
+    "categoryPt": "Lâminas",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "damage": "({STR}+2)P",
+    "ap": "-1",
+    "mode": "0",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "95fd2fb9-f174-4f03-add9-80e1d947bd5b",
+    "name": "Sword",
+    "namePt": "Espada",
+    "source": "SR5",
+    "page": 422,
+    "category": "Blades",
+    "categoryPt": "Lâminas",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "5R",
+      "value": 5,
+      "restriction": "R"
+    },
+    "damage": "({STR}+3)P",
+    "ap": "-2",
+    "mode": "0",
+    "accuracy": "6",
+    "reach": 1,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "2d4e1dae-eedd-426c-84c2-2aba387d98d0",
+    "name": "Bow (Rating 1)",
+    "namePt": "Arco (Nível 1)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "1",
+      "value": 1,
+      "restriction": null
+    },
+    "damage": "3P",
+    "ap": "-1",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "01c3880f-d0a7-4cd5-8460-ba69fc36ae63",
+    "name": "Bow (Rating 10)",
+    "namePt": "Arco (Nível 10)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "damage": "12P",
+    "ap": "-3",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "ad373842-3031-4ecf-a985-d27f67f096d6",
+    "name": "Bow (Rating 2)",
+    "namePt": "Arco (Nível 2)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "damage": "4P",
+    "ap": "-1",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "9c17f382-b1c9-45e1-abe6-9644d477d258",
+    "name": "Bow (Rating 3)",
+    "namePt": "Arco (Nível 3)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "300",
+      "value": 300
+    },
+    "avail": {
+      "raw": "3",
+      "value": 3,
+      "restriction": null
+    },
+    "damage": "5P",
+    "ap": "-1",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "b6bf94d9-3513-409f-b5aa-29f415fe9fd7",
+    "name": "Bow (Rating 4)",
+    "namePt": "Arco (Nível 4)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "400",
+      "value": 400
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "damage": "6P",
+    "ap": "-1",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "47d48423-4042-416d-a9e8-f9b69b2dfa4f",
+    "name": "Bow (Rating 5)",
+    "namePt": "Arco (Nível 5)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "5",
+      "value": 5,
+      "restriction": null
+    },
+    "damage": "7P",
+    "ap": "-2",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "48e0644a-9cdb-4dc6-8cca-c5ef08433177",
+    "name": "Bow (Rating 6)",
+    "namePt": "Arco (Nível 6)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "600",
+      "value": 600
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "damage": "8P",
+    "ap": "-2",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "a2445838-ebba-46f7-95a6-ed7e02f8373f",
+    "name": "Bow (Rating 7)",
+    "namePt": "Arco (Nível 7)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "700",
+      "value": 700
+    },
+    "avail": {
+      "raw": "7",
+      "value": 7,
+      "restriction": null
+    },
+    "damage": "9P",
+    "ap": "-2",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "c28934c2-b82c-4a81-9964-999dc2a66ddd",
+    "name": "Bow (Rating 8)",
+    "namePt": "Arco (Nível 8)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "800",
+      "value": 800
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "damage": "10P",
+    "ap": "-2",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "82953b59-7e08-4abb-afe7-7b568d9a07d1",
+    "name": "Bow (Rating 9)",
+    "namePt": "Arco (Nível 9)",
+    "source": "SR5",
+    "page": 423,
+    "category": "Bows",
+    "categoryPt": "Arcos",
+    "cost": {
+      "raw": "900",
+      "value": 900
+    },
+    "avail": {
+      "raw": "9",
+      "value": 9,
+      "restriction": null
+    },
+    "damage": "11P",
+    "ap": "-3",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "1"
+  },
+  {
+    "id": "5af85697-7d67-4bf7-b539-dbd4e63a34d1",
+    "name": "Club",
+    "namePt": "Bastão",
+    "source": "SR5",
+    "page": 422,
+    "category": "Clubs",
+    "categoryPt": "Bastões",
+    "cost": {
+      "raw": "30",
+      "value": 30
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "damage": "({STR}+3)P",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "4",
+    "reach": 1,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "2eccd04e-e85c-402e-8c3a-80686e9ec217",
+    "name": "Extendable Baton",
+    "namePt": "Bastão Retrátil",
+    "source": "SR5",
+    "page": 422,
+    "category": "Clubs",
+    "categoryPt": "Bastões",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "damage": "({STR}+2)P",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "5",
+    "reach": 1,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "e6d9f23b-f4a4-4ba8-86ea-b3811f87fc82",
+    "name": "Sap",
+    "namePt": "Porrete",
+    "source": "SR5",
+    "page": 422,
+    "category": "Clubs",
+    "categoryPt": "Bastões",
+    "cost": {
+      "raw": "30",
+      "value": 30
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "damage": "({STR}+2)P",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "73c71350-fafe-4f9e-af22-198727241a4d",
+    "name": "Staff",
+    "namePt": "Cajado",
+    "source": "SR5",
+    "page": 422,
+    "category": "Clubs",
+    "categoryPt": "Bastões",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "3",
+      "value": 3,
+      "restriction": null
+    },
+    "damage": "({STR}+3)P",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "6",
+    "reach": 2,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "c0011883-a35b-4d32-94fd-dbb21e25882f",
+    "name": "Stun Baton",
+    "namePt": "Bastão de Choque",
+    "source": "SR5",
+    "page": 422,
+    "category": "Clubs",
+    "categoryPt": "Bastões",
+    "cost": {
+      "raw": "750",
+      "value": 750
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "9S(e)",
+    "ap": "-5",
+    "mode": "0",
+    "accuracy": "4",
+    "reach": 1,
+    "rc": "0",
+    "ammo": "10"
+  },
+  {
+    "id": "b4b3a872-1532-4477-9bf3-76db34dc7bbf",
+    "name": "Telescoping Staff",
+    "namePt": "Cajado Retrátil",
+    "source": "SR5",
+    "page": 422,
+    "category": "Clubs",
+    "categoryPt": "Bastões",
+    "cost": {
+      "raw": "350",
+      "value": 350
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "damage": "({STR}+2)P",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "4",
+    "reach": 2,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "db213a06-0430-4711-81a3-5790d5152ba3",
+    "name": "Heavy Crossbow",
+    "namePt": "Besta Pesada",
+    "source": "SR5",
+    "page": 424,
+    "category": "Crossbows",
+    "categoryPt": "Bestas",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "damage": "10P",
+    "ap": "-3",
+    "mode": "SS",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "4(m)"
+  },
+  {
+    "id": "bc9db3ec-6fa2-407d-ad76-e49daac3c06f",
+    "name": "Light Crossbow",
+    "namePt": "Besta Leve",
+    "source": "SR5",
+    "page": 424,
+    "category": "Crossbows",
+    "categoryPt": "Bestas",
+    "cost": {
+      "raw": "300",
+      "value": 300
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "damage": "5P",
+    "ap": "-1",
+    "mode": "SS",
+    "accuracy": "7",
+    "rc": "0",
+    "ammo": "4(m)"
+  },
+  {
+    "id": "0df17331-7631-4f78-b857-0f3929678db2",
+    "name": "Medium Crossbow",
+    "namePt": "Beste Média",
+    "source": "SR5",
+    "page": 424,
+    "category": "Crossbows",
+    "categoryPt": "Bestas",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-2",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "4(m)"
+  },
+  {
+    "id": "fb814f8e-7284-4ae8-b362-63958d6a1921",
+    "name": "Monofilament Chainsaw",
+    "namePt": "Motoserra de Monofilamento",
+    "source": "SR5",
+    "page": 448,
+    "category": "Exotic Melee Weapons",
+    "categoryPt": "Armas de Corpo a Corpo Exóticas",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "damage": "8P",
+    "ap": "-6",
+    "mode": "0",
+    "accuracy": "3",
+    "reach": 1,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "c3ea1ed4-b117-4ba7-99eb-7d7b4b130b55",
+    "name": "Monofilament Whip",
+    "namePt": "Chicote de Monofilamento",
+    "source": "SR5",
+    "page": 423,
+    "category": "Exotic Melee Weapons",
+    "categoryPt": "Armas de Corpo a Corpo Exóticas",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "damage": "12P",
+    "ap": "-8",
+    "mode": "0",
+    "accuracy": "5",
+    "reach": 2,
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "9629810f-8db3-44a4-afc4-97eb5b391fb5",
+    "name": "Grenade: Flash-Bang",
+    "namePt": "Granada: Atordoamento",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "10S (10m Radius)",
+    "ap": "-4",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "fdee91ef-c382-49c4-87f6-b9166b9bd9fa",
+    "name": "Grenade: Flash-Pak",
+    "namePt": "Granada: Ofuscante",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "125",
+      "value": 125
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "damage": "Special",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "c674a254-d47b-4215-a12d-e6dd3f0910af",
+    "name": "Grenade: Fragmentation",
+    "namePt": "Granada: Fragmentação",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    },
+    "damage": "18P(f) (-1/m)",
+    "ap": "+5",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "aecfccf7-d22e-4ead-abf9-e29f6dbf8550",
+    "name": "Grenade: Gas",
+    "namePt": "Granada: Gás",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "Chemical (10m Radius)",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "cbe5694e-9da3-4aad-a0a0-036087dbab55",
+    "name": "Grenade: High Explosive",
+    "namePt": "Granada: Altamente Explosiva",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    },
+    "damage": "16P (-2/m)",
+    "ap": "-2",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "aab70ade-8586-4539-a184-99cb63e7bfab",
+    "name": "Grenade: Smoke",
+    "namePt": "Granada: Fumaça",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "(10m Radius)",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "691ba610-d99a-4a86-a010-e21fa17e924c",
+    "name": "Grenade: Thermal Smoke",
+    "namePt": "Granada: Fumaça Térmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "60",
+      "value": 60
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "(10m Radius)",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "96810fa9-62c5-4638-b2b4-000e0910bd9a",
+    "name": "Grenade: Flash-Bang, Aerodynamic",
+    "namePt": "Granada: Atordoamento, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "10S (10m Radius)",
+    "ap": "-4",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "54a82bb7-aacb-4b74-83ea-bfb441a81d60",
+    "name": "Grenade: Flash-Pak, Aerodynamic",
+    "namePt": "Granada: Ofuscante, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "125",
+      "value": 125
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "damage": "Special",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "d05adb5b-68d2-4905-8609-35e8e23310c4",
+    "name": "Grenade: Fragmentation, Aerodynamic",
+    "namePt": "Granada: Fragmentação, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    },
+    "damage": "18P(f) (-1/m)",
+    "ap": "+5",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "a3fd9a2b-fc58-488b-be61-260bff2cfdca",
+    "name": "Grenade: Gas, Aerodynamic",
+    "namePt": "Granada: Gás, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "Chemical (10m Radius)",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "12d26925-582e-488e-b5ed-5202c9a78e33",
+    "name": "Grenade: High Explosive, Aerodynamic",
+    "namePt": "Granada: Altamente Explosiva, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    },
+    "damage": "16P (-2/m)",
+    "ap": "-2",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "d7a09743-bee3-4736-a8cd-913adb07eab5",
+    "name": "Grenade: Smoke, Aerodynamic",
+    "namePt": "Granada: Fumaça, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "(10m Radius)",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "9f39a37c-b53c-4b22-be27-c5ff35f1bb93",
+    "name": "Grenade: Thermal Smoke, Aerodynamic",
+    "namePt": "Granada: Fumaça Térmica, Aerodinâmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "60",
+      "value": 60
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "(10m Radius)",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "a12169ea-a345-407f-96a3-32bf32449bf3",
+    "name": "Minigrenade: Flash-Bang",
+    "namePt": "Minigranada: Atordoamento",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "10S (10m Radius)",
+    "ap": "-4",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "a4aa3021-b760-4531-96af-6dcc19b6018e",
+    "name": "Minigrenade: Flash-Pak",
+    "namePt": "Minigranada: Ofuscante",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "125",
+      "value": 125
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "damage": "Special",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "dca59877-c9c9-4f53-81d2-9376c2b363cf",
+    "name": "Minigrenade: Fragmentation",
+    "namePt": "Minigranada: Fragmentação",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    },
+    "damage": "18P(f) (-1/m)",
+    "ap": "+5",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "e5ce47b1-f829-4ecf-ab68-471ab782bf7c",
+    "name": "Minigrenade: Gas",
+    "namePt": "Minigranada: Gás",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "Chemical (10m Radius)",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "d7c9b470-018c-4d49-b954-6fbe39e0499b",
+    "name": "Minigrenade: High Explosive",
+    "namePt": "Minigranada: Altamente Explosiva",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    },
+    "damage": "16P (-2/m)",
+    "ap": "-2",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "38d67d7b-91b6-4b24-a936-d6ac49fdd6df",
+    "name": "Minigrenade: Smoke",
+    "namePt": "Minigranada: Fumaça",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "40",
+      "value": 40
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "(10m Radius)",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "6247a897-218b-4488-bcd7-01c990703a9c",
+    "name": "Minigrenade: Thermal Smoke",
+    "namePt": "Minigranada: Fumaça Térmica",
+    "source": "SR5",
+    "page": 435,
+    "category": "Gear",
+    "cost": {
+      "raw": "60",
+      "value": 60
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "(10m Radius)",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "5f04a3bf-666e-4efd-a037-9cd053e6b1eb",
+    "name": "Missile: Anti-Vehicle",
+    "namePt": "Míssil: Anti-Veículo",
+    "source": "SR5",
+    "page": 436,
+    "category": "Gear",
+    "cost": {
+      "raw": "2800",
+      "value": 2800
+    },
+    "avail": {
+      "raw": "22F",
+      "value": 22,
+      "restriction": "F"
+    },
+    "damage": "24P (-4/m)",
+    "ap": "-4//-10",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "046241b3-d009-4bed-b68b-89a3fcdbf99b",
+    "name": "Missile: Fragmentation",
+    "namePt": "Míssil: Fragmentação",
+    "source": "SR5",
+    "page": 436,
+    "category": "Gear",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    },
+    "damage": "23P(f) (-1/m)",
+    "ap": "+5",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "034a4b54-02d3-4891-84fa-931f0124e260",
+    "name": "Missile: High Explosive",
+    "namePt": "Míssil: Altamente Explosivo",
+    "source": "SR5",
+    "page": 436,
+    "category": "Gear",
+    "cost": {
+      "raw": "2100",
+      "value": 2100
+    },
+    "avail": {
+      "raw": "22F",
+      "value": 22,
+      "restriction": "F"
+    },
+    "damage": "21P (-2/m)",
+    "ap": "-2",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "469a2853-64ea-4701-8c63-dfa905f9c6fb",
+    "name": "Rocket: Anti-Vehicle",
+    "namePt": "Foguete: Anti-Veículo",
+    "source": "SR5",
+    "page": 436,
+    "category": "Gear",
+    "cost": {
+      "raw": "2800",
+      "value": 2800
+    },
+    "avail": {
+      "raw": "18F",
+      "value": 18,
+      "restriction": "F"
+    },
+    "damage": "24P (-4/m)",
+    "ap": "-4//-10",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "5f60fc01-7411-4e55-9227-968391430d1f",
+    "name": "Rocket: Fragmentation",
+    "namePt": "Foguete: Fragmentação",
+    "source": "SR5",
+    "page": 436,
+    "category": "Gear",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "damage": "23P(f) (-1/m)",
+    "ap": "+5",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "0477cd16-a295-4ffa-b7ac-1f2c9471c5ed",
+    "name": "Rocket: High Explosive",
+    "namePt": "Foguete: Altamente Explosivo",
+    "source": "SR5",
+    "page": 436,
+    "category": "Gear",
+    "cost": {
+      "raw": "2100",
+      "value": 2100
+    },
+    "avail": {
+      "raw": "18F",
+      "value": 18,
+      "restriction": "F"
+    },
+    "damage": "21P (-2/m)",
+    "ap": "-2",
+    "mode": "0",
+    "accuracy": "0",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "e3b33b2b-3cd4-408d-b579-3a9d73d387f7",
+    "name": "Shuriken",
+    "namePt": "Shuriken",
+    "source": "SR5",
+    "page": 424,
+    "category": "Gear",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "({STR}+1)P",
+    "ap": "-1",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "f096953c-1418-4dd3-887b-71c6a4436583",
+    "name": "Throwing Knife",
+    "namePt": "Faca de Arremesso",
+    "source": "SR5",
+    "page": 424,
+    "category": "Gear",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "({STR}+1)P",
+    "ap": "-1",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "504cba24-2141-4879-8062-782332e83386",
+    "name": "Ares Antioch-2",
+    "namePt": "Ares Antioch-2",
+    "source": "SR5",
+    "page": 430,
+    "category": "Grenade Launchers",
+    "categoryPt": "Lançadores de Granada",
+    "cost": {
+      "raw": "3200",
+      "value": 3200
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "damage": "Grenade",
+    "ap": "-",
+    "mode": "SS",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "8(m)"
+  },
+  {
+    "id": "5b98b55d-c87c-453a-ad87-9b34c8cbf04b",
+    "name": "ArmTech MGL-12",
+    "namePt": "ArmTech MGL-12",
+    "source": "SR5",
+    "page": 431,
+    "category": "Grenade Launchers",
+    "categoryPt": "Lançadores de Granada",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "10F",
+      "value": 10,
+      "restriction": "F"
+    },
+    "damage": "Grenade",
+    "ap": "-",
+    "mode": "SA",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "12(c)"
+  },
+  {
+    "id": "bcaa065e-3a38-4c14-9839-a24d3aef2cc3",
+    "name": "RPK HMG",
+    "namePt": "RPK HMG",
+    "source": "SR5",
+    "page": 430,
+    "category": "Heavy Machine Guns",
+    "categoryPt": "Metralhadoras Pesadas",
+    "cost": {
+      "raw": "16300",
+      "value": 16300
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    },
+    "damage": "12P",
+    "ap": "-4",
+    "mode": "FA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "50(c)"
+  },
+  {
+    "id": "971c711b-db32-4339-9203-865ef38f350e",
+    "name": "Ares Predator V",
+    "namePt": "Ares Predator V",
+    "source": "SR5",
+    "page": 426,
+    "category": "Heavy Pistols",
+    "categoryPt": "Pistolas Pesadas",
+    "cost": {
+      "raw": "725",
+      "value": 725
+    },
+    "avail": {
+      "raw": "5R",
+      "value": 5,
+      "restriction": "R"
+    },
+    "damage": "8P",
+    "ap": "-1",
+    "mode": "SA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "15(c)"
+  },
+  {
+    "id": "b6078372-786c-4aa0-9d16-38541b403730",
+    "name": "Ares Viper Slivergun",
+    "namePt": "Ares Viper Slivergun",
+    "source": "SR5",
+    "page": 426,
+    "category": "Heavy Pistols",
+    "categoryPt": "Pistolas Pesadas",
+    "cost": {
+      "raw": "380",
+      "value": 380
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "damage": "9P(f)",
+    "ap": "+4",
+    "mode": "SA/BF",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "30(c)"
+  },
+  {
+    "id": "6fb39402-3ae3-4a21-9ed1-50b2c2e1b2c8",
+    "name": "Browning Ultra-Power",
+    "namePt": "Browning Ultra-Power",
+    "source": "SR5",
+    "page": 426,
+    "category": "Heavy Pistols",
+    "categoryPt": "Pistolas Pesadas",
+    "cost": {
+      "raw": "640",
+      "value": 640
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "8P",
+    "ap": "-1",
+    "mode": "SA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "10(c)"
+  },
+  {
+    "id": "6366691e-c1e0-4d5e-b7a6-1c0371708714",
+    "name": "Colt Government 2066",
+    "namePt": "Colt Government 2066",
+    "source": "SR5",
+    "page": 426,
+    "category": "Heavy Pistols",
+    "categoryPt": "Pistolas Pesadas",
+    "cost": {
+      "raw": "425",
+      "value": 425
+    },
+    "avail": {
+      "raw": "7R",
+      "value": 7,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-1",
+    "mode": "SA",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "14(c)"
+  },
+  {
+    "id": "c6c02391-12b5-4361-bc24-e1b5afc1ec6e",
+    "name": "Remington Roomsweeper",
+    "namePt": "Remington Roomsweeper",
+    "source": "SR5",
+    "page": 426,
+    "category": "Heavy Pistols",
+    "categoryPt": "Pistolas Pesadas",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-1",
+    "mode": "SA",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "8(m)"
+  },
+  {
+    "id": "61c59a89-3c51-46b7-880a-933b29394315",
+    "name": "Ruger Super Warhawk",
+    "namePt": "Ruger Super Warhawk",
+    "source": "SR5",
+    "page": 427,
+    "category": "Heavy Pistols",
+    "categoryPt": "Pistolas Pesadas",
+    "cost": {
+      "raw": "400",
+      "value": 400
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "9P",
+    "ap": "-2",
+    "mode": "SS",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "6(cy)"
+  },
+  {
+    "id": "71655ecf-6cb5-4adb-ac96-583b57fa6e9a",
+    "name": "Fichetti Tiffani Needler",
+    "namePt": "Fichetti Tiffani Needler",
+    "source": "SR5",
+    "page": 425,
+    "category": "Holdouts",
+    "categoryPt": "Escamoteáveis",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "5R",
+      "value": 5,
+      "restriction": "R"
+    },
+    "damage": "8P(f)",
+    "ap": "+5",
+    "mode": "SA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "4(c)"
+  },
+  {
+    "id": "f5497ad2-f4aa-4b84-9d1d-a9d2dfe90bfc",
+    "name": "Streetline Special",
+    "namePt": "Streetline Special",
+    "source": "SR5",
+    "page": 425,
+    "category": "Holdouts",
+    "categoryPt": "Escamoteáveis",
+    "cost": {
+      "raw": "120",
+      "value": 120
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "6P",
+    "ap": "-",
+    "mode": "SA",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "6(c)"
+  },
+  {
+    "id": "0b4c00be-d7bb-4480-b9f4-6300abde27c4",
+    "name": "Walther Palm Pistol",
+    "namePt": "Walther Palm Pistol",
+    "source": "SR5",
+    "page": 425,
+    "category": "Holdouts",
+    "categoryPt": "Escamoteáveis",
+    "cost": {
+      "raw": "180",
+      "value": 180
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-",
+    "mode": "SS/BF",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "2(b)"
+  },
+  {
+    "id": "cb04b4c1-97ff-4984-9bc8-943e5f3ac557",
+    "name": "Ingram Valiant",
+    "namePt": "Ingram Valiant",
+    "source": "SR5",
+    "page": 430,
+    "category": "Light Machine Guns",
+    "categoryPt": "Metralhadoras Leves",
+    "cost": {
+      "raw": "5800",
+      "value": 5800
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "damage": "9P",
+    "ap": "-2",
+    "mode": "BF/FA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "50(c)"
+  },
+  {
+    "id": "67474de7-d29b-4b31-a6ae-1e2e981fa5d2",
+    "name": "Ares Light Fire 70",
+    "namePt": "Ares Light Fire 70",
+    "source": "SR5",
+    "page": 425,
+    "category": "Light Pistols",
+    "categoryPt": "Pistolas Leves",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "3R",
+      "value": 3,
+      "restriction": "R"
+    },
+    "damage": "6P",
+    "ap": "-",
+    "mode": "SA",
+    "accuracy": "7",
+    "rc": "0",
+    "ammo": "16(c)"
+  },
+  {
+    "id": "93722378-dcb6-4988-ba4e-54ce545644fe",
+    "name": "Ares Light Fire 75",
+    "namePt": "Ares Light Fire 75",
+    "source": "SR5",
+    "page": 425,
+    "category": "Light Pistols",
+    "categoryPt": "Pistolas Leves",
+    "cost": {
+      "raw": "1250",
+      "value": 1250
+    },
+    "avail": {
+      "raw": "6F",
+      "value": 6,
+      "restriction": "F"
+    },
+    "damage": "6P",
+    "ap": "-",
+    "mode": "SA",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "16(c)"
+  },
+  {
+    "id": "cbff618e-6a12-4bab-aaeb-2453706bf42e",
+    "name": "Beretta 201T",
+    "namePt": "Beretta 201T",
+    "source": "SR5",
+    "page": 425,
+    "category": "Light Pistols",
+    "categoryPt": "Pistolas Leves",
+    "cost": {
+      "raw": "210",
+      "value": 210
+    },
+    "avail": {
+      "raw": "7R",
+      "value": 7,
+      "restriction": "R"
+    },
+    "damage": "6P",
+    "ap": "-",
+    "mode": "SA/BF",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "21(c)"
+  },
+  {
+    "id": "676660a2-3320-4b4a-acaf-f645f2ba6cd7",
+    "name": "Colt America L36",
+    "namePt": "Colt America L36",
+    "source": "SR5",
+    "page": 425,
+    "category": "Light Pistols",
+    "categoryPt": "Pistolas Leves",
+    "cost": {
+      "raw": "320",
+      "value": 320
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-",
+    "mode": "SA",
+    "accuracy": "7",
+    "rc": "0",
+    "ammo": "11(c)"
+  },
+  {
+    "id": "7dff8ab0-c659-4901-ac3b-cb8b4f3839bf",
+    "name": "Fichetti Security 600",
+    "namePt": "Fichetti Security 600",
+    "source": "SR5",
+    "page": 426,
+    "category": "Light Pistols",
+    "categoryPt": "Pistolas Leves",
+    "cost": {
+      "raw": "350",
+      "value": 350
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-",
+    "mode": "SA",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "30(c)"
+  },
+  {
+    "id": "66955e6e-0b77-4ce0-9e24-6bb637a36541",
+    "name": "Taurus Omni-6",
+    "namePt": "Taurus Omni-6",
+    "source": "SR5",
+    "page": 426,
+    "category": "Light Pistols",
+    "categoryPt": "Pistolas Leves",
+    "cost": {
+      "raw": "300",
+      "value": 300
+    },
+    "avail": {
+      "raw": "3R",
+      "value": 3,
+      "restriction": "R"
+    },
+    "damage": "6P",
+    "ap": "-",
+    "mode": "SA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "6(cy)"
+  },
+  {
+    "id": "cb2afbcc-a1bf-465b-9fc2-c91e1ddfb100",
+    "name": "Ares Crusader II",
+    "namePt": "Ares Crusader II",
+    "source": "SR5",
+    "page": 427,
+    "category": "Machine Pistols",
+    "categoryPt": "Pistolas Automáticas",
+    "cost": {
+      "raw": "830",
+      "value": 830
+    },
+    "avail": {
+      "raw": "9R",
+      "value": 9,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-",
+    "mode": "SA/BF",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "40(c)"
+  },
+  {
+    "id": "0c8076a9-97e3-4583-8385-c32266c25190",
+    "name": "Ceska Black Scorpion",
+    "namePt": "Ceska Black Scorpion",
+    "source": "SR5",
+    "page": 427,
+    "category": "Machine Pistols",
+    "categoryPt": "Pistolas Automáticas",
+    "cost": {
+      "raw": "270",
+      "value": 270
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "6P",
+    "ap": "-",
+    "mode": "SA/BF",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "35(c)"
+  },
+  {
+    "id": "c8e3d921-45df-4850-8619-7fcca279d774",
+    "name": "Steyr TMP",
+    "namePt": "Steyr TMP",
+    "source": "SR5",
+    "page": 427,
+    "category": "Machine Pistols",
+    "categoryPt": "Pistolas Automáticas",
+    "cost": {
+      "raw": "350",
+      "value": 350
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-",
+    "mode": "SA/BF/FA",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "30(c)"
+  },
+  {
+    "id": "a95df82f-4c48-43b1-8cfe-58d9aedb0b07",
+    "name": "Stoner-Ares M202",
+    "namePt": "Stoner-Ares M202",
+    "source": "SR5",
+    "page": 430,
+    "category": "Medium Machine Guns",
+    "categoryPt": "Metralhadoras Médias",
+    "cost": {
+      "raw": "7000",
+      "value": 7000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "damage": "10P",
+    "ap": "-3",
+    "mode": "FA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "50(c)"
+  },
+  {
+    "id": "c6410d5f-def3-4dc6-b5d6-68fff704f7f2",
+    "name": "Aztechnology Striker",
+    "namePt": "Aztechnology Striker",
+    "source": "SR5",
+    "page": 431,
+    "category": "Missile Launchers",
+    "categoryPt": "Lançadores de Mísseis",
+    "cost": {
+      "raw": "1200",
+      "value": 1200
+    },
+    "avail": {
+      "raw": "10F",
+      "value": 10,
+      "restriction": "F"
+    },
+    "damage": "Missile",
+    "ap": "Missile",
+    "mode": "SS",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "1(ml)"
+  },
+  {
+    "id": "6753f5f1-72c5-41fb-beb6-6c1a37b82f5e",
+    "name": "Onotari Interceptor",
+    "namePt": "Onotari Interceptor",
+    "source": "SR5",
+    "page": 431,
+    "category": "Missile Launchers",
+    "categoryPt": "Lançadores de Mísseis",
+    "cost": {
+      "raw": "14000",
+      "value": 14000
+    },
+    "avail": {
+      "raw": "18F",
+      "value": 18,
+      "restriction": "F"
+    },
+    "damage": "Missile",
+    "ap": "Missile",
+    "mode": "SS",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "2(ml)"
+  },
+  {
+    "id": "c2c0e756-a099-4f9d-b6bb-18f412d670a3",
+    "name": "Defiance T-250",
+    "namePt": "Defiance T-250",
+    "source": "SR5",
+    "page": 429,
+    "category": "Shotguns",
+    "categoryPt": "Escopetas",
+    "cost": {
+      "raw": "450",
+      "value": 450
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "10P",
+    "ap": "-1",
+    "mode": "SS/SA",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "5(m)"
+  },
+  {
+    "id": "5011b79e-8594-4dbe-9768-0db4d11ead2b",
+    "name": "Defiance T-250, Short-Barrel",
+    "namePt": "Defiance T-250, Cano-Curto",
+    "source": "SR5",
+    "page": 429,
+    "category": "Shotguns",
+    "categoryPt": "Escopetas",
+    "cost": {
+      "raw": "450",
+      "value": 450
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "9P",
+    "ap": "-1",
+    "mode": "SS/SA",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "5(m)"
+  },
+  {
+    "id": "622bd915-0e0c-431b-9da5-e0c0c31e2122",
+    "name": "Enfield AS-7",
+    "namePt": "Enfield AS-7",
+    "source": "SR5",
+    "page": 429,
+    "category": "Shotguns",
+    "categoryPt": "Escopetas",
+    "cost": {
+      "raw": "1100",
+      "value": 1100
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "damage": "13P",
+    "ap": "-1",
+    "mode": "SA/BF",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "10(c)"
+  },
+  {
+    "id": "62221199-7958-4a76-a538-0c8e0a516608",
+    "name": "PJSS Model 55",
+    "namePt": "PJSS Modelo 55",
+    "source": "SR5",
+    "page": 429,
+    "category": "Shotguns",
+    "categoryPt": "Escopetas",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "9R",
+      "value": 9,
+      "restriction": "R"
+    },
+    "damage": "11P",
+    "ap": "-1",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "2(b)"
+  },
+  {
+    "id": "50cec60d-a421-4edd-9baa-d10bfbc08e70",
+    "name": "Ares Desert Strike",
+    "namePt": "Ares Desert Strike",
+    "source": "SR5",
+    "page": 428,
+    "category": "Sniper Rifles",
+    "categoryPt": "Rifles de Precisão",
+    "cost": {
+      "raw": "17500",
+      "value": 17500
+    },
+    "avail": {
+      "raw": "10F",
+      "value": 10,
+      "restriction": "F"
+    },
+    "damage": "13P",
+    "ap": "-4",
+    "mode": "SA",
+    "accuracy": "7",
+    "rc": "0",
+    "ammo": "14(c)"
+  },
+  {
+    "id": "8c22582e-56ff-4a44-9358-487d8a594833",
+    "name": "Cavalier Arms Crockett EBR",
+    "namePt": "Cavalier Arms Crockett EBR",
+    "source": "SR5",
+    "page": 428,
+    "category": "Sniper Rifles",
+    "categoryPt": "Rifles de Precisão",
+    "cost": {
+      "raw": "10300",
+      "value": 10300
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "damage": "12P",
+    "ap": "-3",
+    "mode": "SA/BF",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "20(c)"
+  },
+  {
+    "id": "e2649ef2-c9a8-43ac-9f6c-9279e7be2f67",
+    "name": "Ranger Arms SM-5",
+    "namePt": "Ranger Arms SM-5",
+    "source": "SR5",
+    "page": 429,
+    "category": "Sniper Rifles",
+    "categoryPt": "Rifles de Precisão",
+    "cost": {
+      "raw": "28000",
+      "value": 28000
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    },
+    "damage": "14P",
+    "ap": "-5",
+    "mode": "SA",
+    "accuracy": "8",
+    "rc": "0",
+    "ammo": "15(c)"
+  },
+  {
+    "id": "01d7b203-e57e-4cbd-9f68-a2134683e178",
+    "name": "Remington 950",
+    "namePt": "Remington 950",
+    "source": "SR5",
+    "page": 429,
+    "category": "Sniper Rifles",
+    "categoryPt": "Rifles de Precisão",
+    "cost": {
+      "raw": "2100",
+      "value": 2100
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "12P",
+    "ap": "-4",
+    "mode": "SS",
+    "accuracy": "7",
+    "rc": "0",
+    "ammo": "5(m)"
+  },
+  {
+    "id": "6098fea5-3069-42b8-9405-80d07578b660",
+    "name": "Ruger 101",
+    "namePt": "Ruger 101",
+    "source": "SR5",
+    "page": 429,
+    "category": "Sniper Rifles",
+    "categoryPt": "Rifles de Precisão",
+    "cost": {
+      "raw": "1300",
+      "value": 1300
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "11P",
+    "ap": "-3",
+    "mode": "SA",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "8(m)"
+  },
+  {
+    "id": "15ec7fbb-4c22-4cae-a7cd-d2c580a6b447",
+    "name": "Ares S-III Super Squirt",
+    "namePt": "Ares S-III Super Squirt",
+    "source": "SR5",
+    "page": 429,
+    "category": "Exotic Ranged Weapons",
+    "categoryPt": "Armas à Distância Exótica",
+    "cost": {
+      "raw": "950",
+      "value": 950
+    },
+    "avail": {
+      "raw": "7R",
+      "value": 7,
+      "restriction": "R"
+    },
+    "damage": "Chemical",
+    "ap": "-",
+    "mode": "SA",
+    "accuracy": "3",
+    "rc": "0",
+    "ammo": "20(c)"
+  },
+  {
+    "id": "c884cf55-9a96-459d-a764-f223e1853149",
+    "name": "Fichetti Pain Inducer",
+    "namePt": "Indutor de Dor Fichetti",
+    "source": "SR5",
+    "page": 430,
+    "category": "Exotic Ranged Weapons",
+    "categoryPt": "Armas à Distância Exótica",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "11R",
+      "value": 11,
+      "restriction": "R"
+    },
+    "damage": "Special",
+    "ap": "-",
+    "mode": "SS",
+    "accuracy": "3",
+    "rc": "0",
+    "ammo": "10"
+  },
+  {
+    "id": "9c3d9b2e-336e-4c37-b05d-07bea9ae9c3f",
+    "name": "Parashield Dart Pistol",
+    "namePt": "Pistola de Dardos Parashield",
+    "source": "SR5",
+    "page": 430,
+    "category": "Exotic Ranged Weapons",
+    "categoryPt": "Armas à Distância Exótica",
+    "cost": {
+      "raw": "600",
+      "value": 600
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "As Drug/Toxin",
+    "ap": "0",
+    "mode": "SA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "5(c)"
+  },
+  {
+    "id": "8432b006-0496-4930-b966-25ab56feb7e2",
+    "name": "Parashield Dart Rifle",
+    "namePt": "Rifle de Dardos Parashield",
+    "source": "SR5",
+    "page": 430,
+    "category": "Exotic Ranged Weapons",
+    "categoryPt": "Armas à Distância Exótica",
+    "cost": {
+      "raw": "1200",
+      "value": 1200
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "As Drug/Toxin",
+    "ap": "0",
+    "mode": "SA",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "6(m)"
+  },
+  {
+    "id": "b2eefb04-0e33-4faa-8e92-5c4bcbfc3f16",
+    "name": "Colt Cobra TZ-120",
+    "namePt": "Colt Cobra TZ-120",
+    "source": "SR5",
+    "page": 427,
+    "category": "Submachine Guns",
+    "categoryPt": "Submetralhadoras",
+    "cost": {
+      "raw": "660",
+      "value": 660
+    },
+    "avail": {
+      "raw": "5R",
+      "value": 5,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-",
+    "mode": "SA/BF/FA",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "32(c)"
+  },
+  {
+    "id": "de333a81-b997-4b17-ae0d-c221d22a28c7",
+    "name": "FN P93 Praetor",
+    "namePt": "FN P93 Praetor",
+    "source": "SR5",
+    "page": 427,
+    "category": "Submachine Guns",
+    "categoryPt": "Submetralhadoras",
+    "cost": {
+      "raw": "900",
+      "value": 900
+    },
+    "avail": {
+      "raw": "11F",
+      "value": 11,
+      "restriction": "F"
+    },
+    "damage": "8P",
+    "ap": "-",
+    "mode": "SA/BF/FA",
+    "accuracy": "6",
+    "rc": "1",
+    "ammo": "50(c)"
+  },
+  {
+    "id": "f9ff7bf6-3ed4-41bd-b934-34e751ecf266",
+    "name": "HK 227",
+    "namePt": "HK 227",
+    "source": "SR5",
+    "page": 427,
+    "category": "Submachine Guns",
+    "categoryPt": "Submetralhadoras",
+    "cost": {
+      "raw": "730",
+      "value": 730
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-",
+    "mode": "SA/BF/FA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "28(c)"
+  },
+  {
+    "id": "017d8327-3bce-420a-af24-a2bed3ab0e83",
+    "name": "Ingram Smartgun X",
+    "namePt": "Ingram Smartgun X",
+    "source": "SR5",
+    "page": 427,
+    "category": "Submachine Guns",
+    "categoryPt": "Submetralhadoras",
+    "cost": {
+      "raw": "800",
+      "value": 800
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "8P",
+    "ap": "-",
+    "mode": "BF/FA",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "32(c)"
+  },
+  {
+    "id": "be17251c-109c-4fbb-93e6-b59226592536",
+    "name": "SCK Model 100",
+    "namePt": "SCK Model 100",
+    "source": "SR5",
+    "page": 428,
+    "category": "Submachine Guns",
+    "categoryPt": "Submetralhadoras",
+    "cost": {
+      "raw": "875",
+      "value": 875
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "8P",
+    "ap": "-",
+    "mode": "SA/BF",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "30(c)"
+  },
+  {
+    "id": "e80cca4e-3210-4e38-b333-6c1cd42d6b54",
+    "name": "Uzi IV",
+    "namePt": "Uzi IV",
+    "source": "SR5",
+    "page": 428,
+    "category": "Submachine Guns",
+    "categoryPt": "Submetralhadoras",
+    "cost": {
+      "raw": "450",
+      "value": 450
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "damage": "7P",
+    "ap": "-",
+    "mode": "BF",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "24(c)"
+  },
+  {
+    "id": "7d5bcc0b-9ec2-4c87-aaa7-a4d531d7974e",
+    "name": "Defiance EX Shocker",
+    "namePt": "Defiance EX Shocker",
+    "source": "SR5",
+    "page": 424,
+    "category": "Tasers",
+    "categoryPt": "Tasers",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "damage": "9S(e)",
+    "ap": "-5",
+    "mode": "SS",
+    "accuracy": "4",
+    "rc": "0",
+    "ammo": "4(m)"
+  },
+  {
+    "id": "21628e04-95d0-4ba4-bc66-fcbed5a1bf8e",
+    "name": "Yamaha Pulsar",
+    "namePt": "Yamaha Pulsar",
+    "source": "SR5",
+    "page": 425,
+    "category": "Tasers",
+    "categoryPt": "Tasers",
+    "cost": {
+      "raw": "180",
+      "value": 180
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "damage": "7S(e)",
+    "ap": "-5",
+    "mode": "SA",
+    "accuracy": "5",
+    "rc": "0",
+    "ammo": "4(m)"
+  },
+  {
+    "id": "168c2aa5-c4d9-4fd7-a629-fc70c6720d03",
+    "name": "Knucks",
+    "namePt": "Soco-Inglês",
+    "source": "SR5",
+    "page": 422,
+    "category": "Unarmed",
+    "categoryPt": "Desarmado",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "2R",
+      "value": 2,
+      "restriction": "R"
+    },
+    "damage": "({STR}+1)P",
+    "ap": "-",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "0"
+  },
+  {
+    "id": "e789ce47-f1bf-4c08-88b8-3295dddd03b1",
+    "name": "Shock Gloves",
+    "namePt": "Luvas de Choque",
+    "source": "SR5",
+    "page": 423,
+    "category": "Unarmed",
+    "categoryPt": "Desarmado",
+    "cost": {
+      "raw": "550",
+      "value": 550
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "damage": "8S(e)",
+    "ap": "-5",
+    "mode": "0",
+    "accuracy": "Physical",
+    "rc": "0",
+    "ammo": "10"
+  },
+  {
+    "id": "5df8388e-9ca9-4455-9ac0-3d83ffd77d0d",
+    "name": "Underbarrel Grenade Launcher",
+    "namePt": "Lançador de Granadas sob o Cano",
+    "source": "SR5",
+    "page": 428,
+    "category": "Underbarrel Weapons",
+    "categoryPt": "Armas sob o Cano",
+    "cost": {
+      "raw": "3500",
+      "value": 3500
+    },
+    "avail": {
+      "raw": "10F",
+      "value": 10,
+      "restriction": "F"
+    },
+    "damage": "Grenade",
+    "ap": "Grenade",
+    "mode": "SS",
+    "accuracy": "6",
+    "rc": "0",
+    "ammo": "6(c)"
+  },
+  {
+    "id": "7d711605-e6a9-42f9-846b-95ef80e8c575",
+    "name": "Underbarrel Grapple Gun",
+    "namePt": "Underbarrel Grapple Gun",
+    "source": "SR5",
+    "page": 449,
+    "category": "Underbarrel Weapons",
+    "categoryPt": "Armas sob o Cano",
+    "cost": {
+      "raw": "600",
+      "value": 600
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "damage": "7S",
+    "ap": "-2",
+    "mode": "SS",
+    "accuracy": "3",
+    "rc": "0",
+    "ammo": "1(ml)"
+  }
+]

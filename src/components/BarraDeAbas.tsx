@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { ComCaminho } from "./ComCaminho";
 import { ativo, type ItemMenu } from "@/lib/menu";
 
 const logado: ItemMenu[] = [
@@ -20,7 +20,6 @@ const publico: ItemMenu[] = [
 
 // Abas fixas no pé da tela, só no celular. No computador o menu de cima já mostra tudo.
 export function BarraDeAbas({ entrou }: { entrou: boolean }) {
-  const path = usePathname();
   const itens = entrou ? logado : publico;
   return (
     <nav
@@ -29,7 +28,7 @@ export function BarraDeAbas({ entrou }: { entrou: boolean }) {
       style={{ marginBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="grid grid-cols-4 rounded-lg border border-creme/18 bg-creme/8 p-1 text-xs font-medium">
-        {itens.map((i) => {
+        <ComCaminho render={(path) => itens.map((i) => {
           const atual = ativo(path, i);
           return (
             <Link
@@ -41,7 +40,7 @@ export function BarraDeAbas({ entrou }: { entrou: boolean }) {
               {i.label}
             </Link>
           );
-        })}
+        })} />
       </div>
     </nav>
   );

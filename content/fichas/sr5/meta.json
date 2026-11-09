@@ -1,0 +1,27 @@
+{
+  "chummerCommit": "928e6a4d98b11da5a8e297845eb137989e9514da",
+  "books": [
+    "SR5"
+  ],
+  "counts": {
+    "books": 63,
+    "settings": 1,
+    "priorities": 1,
+    "metatypes": 5,
+    "qualities": 96,
+    "skills": 76,
+    "contacts": 75,
+    "traditions": 2,
+    "streams": 1,
+    "spells": 93,
+    "powers": 27,
+    "complexforms": 14,
+    "mentors": 16,
+    "lifestyles": 8,
+    "weapons": 115,
+    "armor": 12,
+    "gear": 362,
+    "cyberware": 87,
+    "bioware": 23
+  }
+}

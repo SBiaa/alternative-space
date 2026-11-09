@@ -1,0 +1,377 @@
+[
+  {
+    "id": "amerindian-tribesperson",
+    "name": "Amerindian Tribesperson",
+    "namePt": "Membro de Tribo Ameríndia"
+  },
+  {
+    "id": "antiquities-and-oddities-dealer",
+    "name": "Antiquities and Oddities Dealer",
+    "namePt": "Negociador de Antiguidades e Curiosidades"
+  },
+  {
+    "id": "armorer",
+    "name": "Armorer",
+    "namePt": "Armeiro"
+  },
+  {
+    "id": "bartender",
+    "name": "Bartender",
+    "namePt": "Barman"
+  },
+  {
+    "id": "beat-cop",
+    "name": "Beat Cop",
+    "namePt": "Tira de rua"
+  },
+  {
+    "id": "blogger",
+    "name": "Blogger",
+    "namePt": "Blogueiro"
+  },
+  {
+    "id": "bodyguard",
+    "name": "Bodyguard",
+    "namePt": "Guarda-Costas"
+  },
+  {
+    "id": "bookie",
+    "name": "Bookie",
+    "namePt": "Agenciador de Apostas"
+  },
+  {
+    "id": "cleaner",
+    "name": "Cleaner",
+    "namePt": "Faxineiro"
+  },
+  {
+    "id": "club-hopper",
+    "name": "Club Hopper",
+    "namePt": "Baladeiro"
+  },
+  {
+    "id": "club-owner",
+    "name": "Club Owner",
+    "namePt": "Dono de Boate"
+  },
+  {
+    "id": "company-man",
+    "name": "Company Man",
+    "namePt": "Engravatado"
+  },
+  {
+    "id": "corporate-headhunter",
+    "name": "Corporate Headhunter",
+    "namePt": "Recrutador Corporativo"
+  },
+  {
+    "id": "corporate-manager",
+    "name": "Corporate Manager",
+    "namePt": "Gerente Corporativo"
+  },
+  {
+    "id": "corporate-scientist",
+    "name": "Corporate Scientist",
+    "namePt": "Cientista Corporativo"
+  },
+  {
+    "id": "corporate-secretary",
+    "name": "Corporate Secretary",
+    "namePt": "Secretário Corporativo"
+  },
+  {
+    "id": "corporate-wage-slave",
+    "name": "Corporate Wage Slave",
+    "namePt": "Escravo de Aluguel Corporativo"
+  },
+  {
+    "id": "coyote",
+    "name": "Coyote",
+    "namePt": "Coiote"
+  },
+  {
+    "id": "cult-member",
+    "name": "Cult Member",
+    "namePt": "Cultista"
+  },
+  {
+    "id": "dockworker",
+    "name": "Dockworker",
+    "namePt": "Estivador"
+  },
+  {
+    "id": "fence",
+    "name": "Fence",
+    "namePt": "Receptador"
+  },
+  {
+    "id": "firefighter",
+    "name": "Firefighter",
+    "namePt": "Bombeiro"
+  },
+  {
+    "id": "fixer",
+    "name": "Fixer",
+    "namePt": "Atravessador"
+  },
+  {
+    "id": "freedom-fighter",
+    "name": "Freedom Fighter",
+    "namePt": "Lutador da Liberdade"
+  },
+  {
+    "id": "forensics-expert",
+    "name": "Forensics Expert",
+    "namePt": "Especialista Forense"
+  },
+  {
+    "id": "gambler",
+    "name": "Gambler",
+    "namePt": "Apostador"
+  },
+  {
+    "id": "gang-leader",
+    "name": "Gang Leader",
+    "namePt": "Líder de Gangue"
+  },
+  {
+    "id": "go-ganger",
+    "name": "Go-Ganger",
+    "namePt": "Membro de Go-Gangue"
+  },
+  {
+    "id": "grassroots-politician",
+    "name": "Grassroots Politician",
+    "namePt": "Político de Base"
+  },
+  {
+    "id": "hate-group-member",
+    "name": "Hate Group Member",
+    "namePt": "Membro de Grupo de Ódio"
+  },
+  {
+    "id": "hermetic-academic",
+    "name": "Hermetic Academic",
+    "namePt": "Acadêmico Hermético"
+  },
+  {
+    "id": "high-stakes-negotiator",
+    "name": "High Stakes Negotiator",
+    "namePt": "Negociador de Alto Risco"
+  },
+  {
+    "id": "id-manufacturer",
+    "name": "ID Manufacturer",
+    "namePt": "Fabricante de Identidades"
+  },
+  {
+    "id": "infobroker",
+    "name": "Infobroker",
+    "namePt": "Vendedor de Informações"
+  },
+  {
+    "id": "janitor",
+    "name": "Janitor",
+    "namePt": "Zelador"
+  },
+  {
+    "id": "mafia-consiglieri",
+    "name": "Mafia Consiglieri",
+    "namePt": "Consiglieri da Máfia"
+  },
+  {
+    "id": "mechanic",
+    "name": "Mechanic",
+    "namePt": "Mecânico"
+  },
+  {
+    "id": "mercenary-alchemist",
+    "name": "Mercenary Alchemist",
+    "namePt": "Alquimista Mercenário"
+  },
+  {
+    "id": "mr-johnson",
+    "name": "Mr. Johnson",
+    "namePt": "Sr. Johnson"
+  },
+  {
+    "id": "nomad",
+    "name": "Nomad",
+    "namePt": "Nômade"
+  },
+  {
+    "id": "ork-nation-organizer",
+    "name": "Ork Nation Organizer",
+    "namePt": "Organizador da Nação Ork"
+  },
+  {
+    "id": "parabotanist",
+    "name": "Parabotanist",
+    "namePt": "Parabotânico"
+  },
+  {
+    "id": "parabiologist",
+    "name": "Parabiologist",
+    "namePt": "Parabiólogo"
+  },
+  {
+    "id": "paramed",
+    "name": "Paramed",
+    "namePt": "Paramédico"
+  },
+  {
+    "id": "paramed-shaman",
+    "name": "Paramed Shaman",
+    "namePt": "Xamã Paramédico"
+  },
+  {
+    "id": "parasecurity-expert",
+    "name": "Parasecurity Expert",
+    "namePt": "Especialista em Parasegurança"
+  },
+  {
+    "id": "pawn-broker",
+    "name": "Pawn Broker",
+    "namePt": "Penhorista"
+  },
+  {
+    "id": "pimp",
+    "name": "Pimp",
+    "namePt": "Cafetão"
+  },
+  {
+    "id": "pirate",
+    "name": "Pirate",
+    "namePt": "Pirata"
+  },
+  {
+    "id": "police-chief",
+    "name": "Police Chief",
+    "namePt": "Chefe de Polícia"
+  },
+  {
+    "id": "political-intern",
+    "name": "Political Intern",
+    "namePt": "Estagiário Político"
+  },
+  {
+    "id": "radical",
+    "name": "Radical",
+    "namePt": "Extremista"
+  },
+  {
+    "id": "rent-a-cop",
+    "name": "Rent-a-Cop",
+    "namePt": "Guarda de Segurança"
+  },
+  {
+    "id": "shark-lawyer",
+    "name": "Shark Lawyer",
+    "namePt": "Advogado Sujo"
+  },
+  {
+    "id": "simsense-star",
+    "name": "Simsense Star",
+    "namePt": "Estrela de Sensorama"
+  },
+  {
+    "id": "slumlord",
+    "name": "Slumlord",
+    "namePt": "Senhorio de Favela"
+  },
+  {
+    "id": "smuggler",
+    "name": "Smuggler",
+    "namePt": "Contrabandista"
+  },
+  {
+    "id": "snitch",
+    "name": "Snitch",
+    "namePt": "Informante"
+  },
+  {
+    "id": "spider",
+    "name": "Spider",
+    "namePt": "Aranha"
+  },
+  {
+    "id": "squatter",
+    "name": "Squatter",
+    "namePt": "Morador de Muquifo"
+  },
+  {
+    "id": "street-doc",
+    "name": "Street Doc",
+    "namePt": "Médico de Rua"
+  },
+  {
+    "id": "street-vendor",
+    "name": "Street Vendor",
+    "namePt": "Vendedor de Rua"
+  },
+  {
+    "id": "stripper",
+    "name": "Stripper",
+    "namePt": "Stripper"
+  },
+  {
+    "id": "supply-sergeant",
+    "name": "Supply Sergeant",
+    "namePt": "Sargento de Logística"
+  },
+  {
+    "id": "talent-scout",
+    "name": "Talent Scout",
+    "namePt": "Caçador de Talentos"
+  },
+  {
+    "id": "talislegger",
+    "name": "Talislegger",
+    "namePt": "Talis-Muambeiro"
+  },
+  {
+    "id": "talismonger",
+    "name": "Talismonger",
+    "namePt": "Talismeiro"
+  },
+  {
+    "id": "tamanous-member",
+    "name": "Tamanous Member",
+    "namePt": "Membro da Tamanous"
+  },
+  {
+    "id": "taxi-driver",
+    "name": "Taxi Driver",
+    "namePt": "Motorista de Táxi"
+  },
+  {
+    "id": "terrafirst-activist",
+    "name": "TerraFirst! Activist",
+    "namePt": "Ativista da TerraPrimeiro!"
+  },
+  {
+    "id": "trid-pirate",
+    "name": "Trid Pirate",
+    "namePt": "Pirata de Trídeo"
+  },
+  {
+    "id": "troll-street-dealer",
+    "name": "Troll Street Dealer",
+    "namePt": "Traficante Troll"
+  },
+  {
+    "id": "urban-anthropologist",
+    "name": "Urban Anthropologist",
+    "namePt": "Antropologista Urbano"
+  },
+  {
+    "id": "vory-shestiorka",
+    "name": "Vory Shestiorka",
+    "namePt": "Vory Shestiorka"
+  },
+  {
+    "id": "wiz-kid-ganger",
+    "name": "Wiz Kid Ganger",
+    "namePt": "Gangueiro da Magi Pirralhos"
+  }
+]

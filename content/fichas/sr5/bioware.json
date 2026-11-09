@@ -1,0 +1,538 @@
+[
+  {
+    "id": "ae0bb365-e40c-4aa2-9c30-0be902d992ac",
+    "name": "Adrenaline Pump",
+    "namePt": "Bomba de Adrenalina",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 55000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 6)F",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "Rating * 0.75",
+      "value": null
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "b04871a1-6b7b-4a78-89fc-af8ec69bdd3d",
+    "name": "Bone Density Augmentation",
+    "namePt": "Ampliação de Densidade Óssea",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 5000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 4)",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4,
+    "essence": {
+      "raw": "Rating * 0.3",
+      "value": null
+    },
+    "maxRating": 4
+  },
+  {
+    "id": "f038260b-f2de-4a9a-9507-5602d0e64a22",
+    "name": "Cat's Eyes",
+    "namePt": "Olhos de Gato",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "81b40aa8-98d1-4a5d-89d6-9b6d438006da",
+    "name": "Cerebral Booster",
+    "namePt": "Amplicador Cerebral",
+    "source": "SR5",
+    "page": 460,
+    "category": "Cultured",
+    "categoryPt": "Cultivados",
+    "cost": {
+      "raw": "Rating * 31500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 6",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "Rating * 0.2",
+      "value": null
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "c46fbaba-d941-44b5-9bdc-643c5c6f4b24",
+    "name": "Damage Compensators",
+    "namePt": "Compensador de Dano",
+    "source": "SR5",
+    "page": 460,
+    "category": "Cultured",
+    "categoryPt": "Cultivados",
+    "cost": {
+      "raw": "Rating * 2000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)F",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 12,
+    "essence": {
+      "raw": "Rating * 0.1",
+      "value": null
+    },
+    "maxRating": 12
+  },
+  {
+    "id": "dfada66f-73f7-4648-aff4-6b6bce25f84c",
+    "name": "Enhanced Articulation",
+    "namePt": "Articulação Melhorada",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "24000",
+      "value": 24000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.3",
+      "value": 0.3
+    }
+  },
+  {
+    "id": "b2289ebe-4bb0-49d0-a151-38fc1261bba8",
+    "name": "Mnemonic Enhancer",
+    "namePt": "Melhoria Mnemônica",
+    "source": "SR5",
+    "page": 460,
+    "category": "Cultured",
+    "categoryPt": "Cultivados",
+    "cost": {
+      "raw": "Rating * 9000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 5",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "Rating * 0.1",
+      "value": null
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "841572d6-0785-4a8d-acd3-e106fb464781",
+    "name": "Muscle Augmentation",
+    "namePt": "Ampliação Muscular",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 31000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 5)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4,
+    "essence": {
+      "raw": "Rating * 0.2",
+      "value": null
+    },
+    "maxRating": 4
+  },
+  {
+    "id": "69ab0255-a76b-4190-a8be-0473fed231ef",
+    "name": "Muscle Toner",
+    "namePt": "Tonificante Muscular",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 32000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 5)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4,
+    "essence": {
+      "raw": "Rating * 0.2",
+      "value": null
+    },
+    "maxRating": 4
+  },
+  {
+    "id": "96e4809a-71e6-4b98-9740-c6c44bc33aa9",
+    "name": "Orthoskin",
+    "namePt": "Ortopele",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 6000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 4)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4,
+    "essence": {
+      "raw": "Rating * 0.25",
+      "value": null
+    },
+    "maxRating": 4
+  },
+  {
+    "id": "add913d1-6174-41d6-8021-b8bf35345e7a",
+    "name": "Pain Editor",
+    "namePt": "Editor de Dor",
+    "source": "SR5",
+    "page": 460,
+    "category": "Cultured",
+    "categoryPt": "Cultivados",
+    "cost": {
+      "raw": "48000",
+      "value": 48000
+    },
+    "avail": {
+      "raw": "18F",
+      "value": 18,
+      "restriction": "F"
+    },
+    "essence": {
+      "raw": "0.3",
+      "value": 0.3
+    }
+  },
+  {
+    "id": "5bd98093-6620-4b0a-8f2c-61727d5c38a6",
+    "name": "Pathogenic Defense",
+    "namePt": "Defesa Patogênica",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 4500",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 2)",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "Rating * 0.1",
+      "value": null
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "8c75648c-19d2-4734-b107-c04bb0e1904a",
+    "name": "Platelet Factories",
+    "namePt": "Fábricas de Plaquetas",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "17000",
+      "value": 17000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.2",
+      "value": 0.2
+    }
+  },
+  {
+    "id": "17a6ba49-c21c-461b-9830-3beae8a237fc",
+    "name": "Reflex Recorder",
+    "namePt": "Gravador de Reflexos",
+    "source": "SR5",
+    "page": 460,
+    "category": "Cultured",
+    "categoryPt": "Cultivados",
+    "cost": {
+      "raw": "14000",
+      "value": 14000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "3fd172b8-0ff5-46ee-a468-91edd4cdc448",
+    "name": "Skin Pocket",
+    "namePt": "Bolso de Pele",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "12000",
+      "value": 12000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "5ffb0e03-c281-4aee-bc13-639576d932ab",
+    "name": "Sleep Regulator",
+    "namePt": "Regulador de Sono",
+    "source": "SR5",
+    "page": 460,
+    "category": "Cultured",
+    "categoryPt": "Cultivados",
+    "cost": {
+      "raw": "12000",
+      "value": 12000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "d1a314d9-3b83-4d62-854d-90e3788eea83",
+    "name": "Suprathyroid Gland",
+    "namePt": "Glândula Supratireoide",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "140000",
+      "value": 140000
+    },
+    "avail": {
+      "raw": "20R",
+      "value": 20,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.7",
+      "value": 0.7
+    }
+  },
+  {
+    "id": "a08ce525-4788-42d8-b5d6-35a378f71776",
+    "name": "Symbiotes",
+    "namePt": "Simbiontes",
+    "source": "SR5",
+    "page": 459,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 3500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 5",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4,
+    "essence": {
+      "raw": "Rating * 0.2",
+      "value": null
+    },
+    "maxRating": 4
+  },
+  {
+    "id": "4a4e1079-5872-4f3f-a450-48c30a5504f3",
+    "name": "Synaptic Booster",
+    "namePt": "Amplificador de Sinapses",
+    "source": "SR5",
+    "page": 461,
+    "category": "Cultured",
+    "categoryPt": "Cultivados",
+    "cost": {
+      "raw": "Rating * 95000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 6)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "Rating * 0.5",
+      "value": null
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "109b0a32-320f-41c5-9acb-c49308525ce0",
+    "name": "Synthacardium",
+    "namePt": "Sintacárdio",
+    "source": "SR5",
+    "page": 460,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 30000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 4",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "Rating * 0.1",
+      "value": null
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "2faac78a-ab32-4541-ad9c-3ef6c1b2cd84",
+    "name": "Tailored Pheromones",
+    "namePt": "Feromônios Adaptados",
+    "source": "SR5",
+    "page": 460,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 31000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 4)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "Rating * 0.2",
+      "value": null
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "4acd62c6-fe89-44f3-a880-2751b1cf5512",
+    "name": "Toxin Extractor",
+    "namePt": "Extrator de Toxinas",
+    "source": "SR5",
+    "page": 460,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 4800",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "Rating * 0.2",
+      "value": null
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "988cf8a6-cfa0-4a62-8f64-b2065feffc02",
+    "name": "Tracheal Filter",
+    "namePt": "Filtro Traqueal",
+    "source": "SR5",
+    "page": 460,
+    "category": "Basic",
+    "categoryPt": "Básicos",
+    "cost": {
+      "raw": "Rating * 4500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "Rating * 0.1",
+      "value": null
+    },
+    "maxRating": 6
+  }
+]
