@@ -1,0 +1,82 @@
+[
+  {
+    "id": "559653df-a9af-44e2-9e04-3044c1d1b421",
+    "name": "Street",
+    "namePt": "Ruas",
+    "source": "SR5",
+    "page": 369,
+    "cost": 0,
+    "dice": 1,
+    "multiplier": 20
+  },
+  {
+    "id": "9367556e-f82f-4f9d-840e-24c8f824ca68",
+    "name": "Squatter",
+    "namePt": "Muquifo",
+    "source": "SR5",
+    "page": 369,
+    "cost": 500,
+    "dice": 2,
+    "multiplier": 40
+  },
+  {
+    "id": "451eef87-d18e-4bee-a972-1ee165b08522",
+    "name": "Low",
+    "namePt": "Baixo",
+    "source": "SR5",
+    "page": 369,
+    "cost": 2000,
+    "dice": 3,
+    "multiplier": 60
+  },
+  {
+    "id": "9cb0222c-14c1-4bea-bf83-055513a1f33e",
+    "name": "Medium",
+    "namePt": "Médio",
+    "source": "SR5",
+    "page": 369,
+    "cost": 5000,
+    "dice": 4,
+    "multiplier": 100
+  },
+  {
+    "id": "4a37d519-c9be-4ecc-97bb-e9d78708c374",
+    "name": "High",
+    "namePt": "Alto",
+    "source": "SR5",
+    "page": 369,
+    "cost": 10000,
+    "dice": 5,
+    "multiplier": 500
+  },
+  {
+    "id": "4b513ac9-9eb3-471b-931b-839a04873b84",
+    "name": "Luxury",
+    "namePt": "Luxuoso",
+    "source": "SR5",
+    "page": 369,
+    "cost": 100000,
+    "dice": 6,
+    "multiplier": 1000
+  },
+  {
+    "id": "4be85958-af8f-4404-812f-0d8a426f01d6",
+    "name": "Hospitalized, Basic",
+    "namePt": "Hospitalizado, Básico",
+    "source": "SR5",
+    "page": 369,
+    "cost": 500,
+    "dice": 0,
+    "multiplier": 0
+  },
+  {
+    "id": "2be1a0f7-6133-4966-be57-720ed9b927a9",
+    "name": "Hospitalized, Intensive",
+    "namePt": "Hospitalizado, Intensivo",
+    "source": "SR5",
+    "page": 369,
+    "cost": 1000,
+    "dice": 0,
+    "multiplier": 0
+  }
+]

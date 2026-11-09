@@ -1,0 +1,1645 @@
+[
+  {
+    "id": "c78d91cc-fa02-48c3-a243-28823a2038ef",
+    "name": "Acid Stream",
+    "namePt": "Jato de Ácido",
+    "source": "SR5",
+    "page": 283,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-3",
+    "descriptors": [
+      "Indirect",
+      "Elemental"
+    ]
+  },
+  {
+    "id": "87cb3685-22e8-46fa-890f-f3cfef10a71f",
+    "name": "Toxic Wave",
+    "namePt": "Onda Tóxica",
+    "source": "SR5",
+    "page": 283,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-1",
+    "descriptors": [
+      "Indirect",
+      "Elemental",
+      "Area"
+    ]
+  },
+  {
+    "id": "10dd2924-36c6-42a3-8715-694c29c1fd48",
+    "name": "Punch",
+    "namePt": "Soco",
+    "source": "SR5",
+    "page": 283,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "T",
+    "damage": "S",
+    "duration": "I",
+    "dv": "F-6",
+    "descriptors": [
+      "Indirect"
+    ]
+  },
+  {
+    "id": "241b9811-e7d8-41d5-b4cc-444e599599fc",
+    "name": "Clout",
+    "namePt": "Pancada",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS",
+    "damage": "S",
+    "duration": "I",
+    "dv": "F-3",
+    "descriptors": [
+      "Indirect"
+    ]
+  },
+  {
+    "id": "187b1ffe-470c-4672-ba9d-376ee1856a1c",
+    "name": "Blast",
+    "namePt": "Explosão",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "S",
+    "duration": "I",
+    "dv": "F",
+    "descriptors": [
+      "Indirect",
+      "Area"
+    ]
+  },
+  {
+    "id": "9baed162-5e84-4f19-9b94-d543a560c067",
+    "name": "Death Touch",
+    "namePt": "Toque da Morte",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "M",
+    "range": "T",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-6",
+    "descriptors": [
+      "Direct"
+    ]
+  },
+  {
+    "id": "85c12bae-3954-483c-a211-d8ee43a1c65e",
+    "name": "Manabolt",
+    "namePt": "Raio de Mana",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "M",
+    "range": "LOS",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-3",
+    "descriptors": [
+      "Direct"
+    ]
+  },
+  {
+    "id": "d866f612-7160-41d2-8ce9-b64262327559",
+    "name": "Manaball",
+    "namePt": "Bola de Mana",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F",
+    "descriptors": [
+      "Direct",
+      "Area"
+    ]
+  },
+  {
+    "id": "02de7f2a-3c8e-48a5-b7d1-0bf9854271aa",
+    "name": "Flamethrower",
+    "namePt": "Lança-Chamas",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-3",
+    "descriptors": [
+      "Indirect",
+      "Elemental"
+    ]
+  },
+  {
+    "id": "9ce1e699-3c30-4184-858b-d5539935ef96",
+    "name": "Fireball",
+    "namePt": "Bola de Fogo",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-1",
+    "descriptors": [
+      "Indirect",
+      "Elemental",
+      "Area"
+    ]
+  },
+  {
+    "id": "b39ec682-8409-4546-be00-7615583e6541",
+    "name": "Lightning Bolt",
+    "namePt": "Relâmpago",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-3",
+    "descriptors": [
+      "Indirect",
+      "Elemental"
+    ]
+  },
+  {
+    "id": "9b5c1538-d66b-4b71-9953-78817aaef6e4",
+    "name": "Ball Lightning",
+    "namePt": "Esfera de Relâmpago",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-1",
+    "descriptors": [
+      "Indirect",
+      "Elemental",
+      "Area"
+    ]
+  },
+  {
+    "id": "92467147-ce2c-480e-b4e0-f4a269c2ad86",
+    "name": "Shatter",
+    "namePt": "Estilhaçar",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "T",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-6",
+    "descriptors": [
+      "Direct"
+    ]
+  },
+  {
+    "id": "a7f17805-3e3e-4a12-8580-b9de0d7499ef",
+    "name": "Powerbolt",
+    "namePt": "Raio de Força",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F-3",
+    "descriptors": [
+      "Direct"
+    ]
+  },
+  {
+    "id": "1e25e684-9eec-4d1a-acac-488c8c00c24f",
+    "name": "Powerball",
+    "namePt": "Esfera de Força",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "P",
+    "duration": "I",
+    "dv": "F",
+    "descriptors": [
+      "Direct",
+      "Area"
+    ]
+  },
+  {
+    "id": "6cbe13c4-ef28-43b7-9715-bccb7c153999",
+    "name": "Knockout",
+    "namePt": "Nocaute",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "M",
+    "range": "T",
+    "damage": "S",
+    "duration": "I",
+    "dv": "F-6",
+    "descriptors": [
+      "Direct"
+    ]
+  },
+  {
+    "id": "47423962-6b73-4cc3-ad4e-e8d037cf9507",
+    "name": "Stunbolt",
+    "namePt": "Raio de Atordoamento",
+    "source": "SR5",
+    "page": 284,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "M",
+    "range": "LOS",
+    "damage": "S",
+    "duration": "I",
+    "dv": "F-3",
+    "descriptors": [
+      "Direct"
+    ]
+  },
+  {
+    "id": "e9f1e14b-1f59-46d6-9e9f-e808d7316d76",
+    "name": "Stunball",
+    "namePt": "Esfera de Atordoamento",
+    "source": "SR5",
+    "page": 285,
+    "category": "Combat",
+    "categoryPt": "Combate",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "S",
+    "duration": "I",
+    "dv": "F",
+    "descriptors": [
+      "Direct",
+      "Area"
+    ]
+  },
+  {
+    "id": "e81dda32-1c97-482b-a6a5-ddd12eded03a",
+    "name": "Analyze Device",
+    "namePt": "Analisar Dispositivo",
+    "source": "SR5",
+    "page": 285,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "P",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Active",
+      "Directional"
+    ]
+  },
+  {
+    "id": "4828522d-848c-4ebe-850e-fa3f3babf241",
+    "name": "Analyze Magic",
+    "namePt": "Analisar Magia",
+    "source": "SR5",
+    "page": 285,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "P",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Active",
+      "Directional"
+    ]
+  },
+  {
+    "id": "933a534c-ad50-4c87-be65-2230d56f5fcd",
+    "name": "Analyze Truth",
+    "namePt": "Analisar Verdade",
+    "source": "SR5",
+    "page": 286,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Active",
+      "Directional"
+    ]
+  },
+  {
+    "id": "fb44d690-17c0-4d22-819e-8b7b463b2599",
+    "name": "Clairaudience",
+    "namePt": "Clariaudiência",
+    "source": "SR5",
+    "page": 286,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Passive",
+      "Directional"
+    ]
+  },
+  {
+    "id": "d82c56f8-9231-48a9-9dea-dea6c513caad",
+    "name": "Clairvoyance",
+    "namePt": "Clarividência",
+    "source": "SR5",
+    "page": 286,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Passive",
+      "Directional"
+    ]
+  },
+  {
+    "id": "a6bd05ed-b72f-4886-bb8b-6aba947e8cf5",
+    "name": "Combat Sense",
+    "namePt": "Sentido de Combate",
+    "source": "SR5",
+    "page": 286,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F",
+    "descriptors": [
+      "Passive",
+      "Psychic"
+    ]
+  },
+  {
+    "id": "e343f716-a5b6-46a7-8bff-60b6c175db60",
+    "name": "Detect Enemies",
+    "namePt": "Detectar Inimigos",
+    "source": "SR5",
+    "page": 286,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Active",
+      "Area"
+    ]
+  },
+  {
+    "id": "fff36d4c-1462-4795-80ec-fe58132e027e",
+    "name": "Detect Enemies, Extended",
+    "namePt": "Detectar Inimigos, Estendido",
+    "source": "SR5",
+    "page": 286,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F",
+    "descriptors": [
+      "Active",
+      "Extended Area"
+    ]
+  },
+  {
+    "id": "410dd014-d849-42d7-834b-76912579ee72",
+    "name": "Detect Individual",
+    "namePt": "Detectar Indivíduo",
+    "source": "SR5",
+    "page": 286,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Active",
+      "Area"
+    ]
+  },
+  {
+    "id": "7231e696-8839-4ec8-b12e-213b79bb643d",
+    "name": "Detect Life",
+    "namePt": "Detectar Vida",
+    "source": "SR5",
+    "page": 286,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Active",
+      "Area"
+    ]
+  },
+  {
+    "id": "9bcd193f-b149-4c04-bb0e-8b2d66dae241",
+    "name": "Detect Life, Extended",
+    "namePt": "Detectar Vida, Estendido",
+    "source": "SR5",
+    "page": 286,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Active",
+      "Extended Area"
+    ]
+  },
+  {
+    "id": "f43c484c-a98a-4831-8ead-adb4216a7c30",
+    "name": "Detect [Life Form]",
+    "namePt": "Detectar [Forma de Vida]",
+    "source": "SR5",
+    "page": 287,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Active",
+      "Area"
+    ]
+  },
+  {
+    "id": "88c5059f-8f53-4910-9873-b5a5f87850e3",
+    "name": "Detect [Life Form], Extended",
+    "namePt": "Detectar [Forma de Vida], Estendido",
+    "source": "SR5",
+    "page": 287,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F",
+    "descriptors": [
+      "Active",
+      "Extended Area"
+    ]
+  },
+  {
+    "id": "9d2a045b-11b6-4385-a851-30b8ba9c2e7f",
+    "name": "Detect Magic",
+    "namePt": "Detectar Magia",
+    "source": "SR5",
+    "page": 287,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Active",
+      "Area"
+    ]
+  },
+  {
+    "id": "96fdf1da-d4e7-460c-a172-3f7a7b56ac67",
+    "name": "Detect Magic, Extended",
+    "namePt": "Detectar Magia, Estendido",
+    "source": "SR5",
+    "page": 287,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F",
+    "descriptors": [
+      "Active",
+      "Extended Area"
+    ]
+  },
+  {
+    "id": "5574e0a7-d089-4c6d-a033-a157fbe681c0",
+    "name": "Detect [Object]",
+    "namePt": "Detectar [Objeto]",
+    "source": "SR5",
+    "page": 287,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "P",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Active",
+      "Area"
+    ]
+  },
+  {
+    "id": "7c4a2ba3-3ee3-4f34-bb16-17645ef90932",
+    "name": "Mindlink",
+    "namePt": "Elo Mental",
+    "source": "SR5",
+    "page": 287,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Active",
+      "Psychic"
+    ]
+  },
+  {
+    "id": "fc5bf8bd-1c7e-4093-bd86-4d9943aafbd4",
+    "name": "Mind Probe",
+    "namePt": "Sonda Mental",
+    "source": "SR5",
+    "page": 287,
+    "category": "Detection",
+    "categoryPt": "Detecção",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F",
+    "descriptors": [
+      "Active",
+      "Directional"
+    ]
+  },
+  {
+    "id": "92fe97e1-2f16-4398-b12b-b29bfa23c75d",
+    "name": "Antidote",
+    "namePt": "Antídoto",
+    "source": "SR5",
+    "page": 288,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "P",
+    "dv": "F-3",
+    "descriptors": []
+  },
+  {
+    "id": "13999091-25c8-4b72-add4-bff3b97eb0a6",
+    "name": "Cure Disease",
+    "namePt": "Curar Doença",
+    "source": "SR5",
+    "page": 288,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "P",
+    "dv": "F-4",
+    "descriptors": [
+      "Essence"
+    ]
+  },
+  {
+    "id": "31e68920-f354-4d38-b008-87f843957bba",
+    "name": "Decrease [Attribute]",
+    "namePt": "Reduzir [Atributo]",
+    "source": "SR5",
+    "page": 288,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "P",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Essence"
+    ]
+  },
+  {
+    "id": "3d019dea-b5ae-4f9c-ab14-eb8a329ed9ba",
+    "name": "Detox",
+    "namePt": "Desintoxicação",
+    "source": "SR5",
+    "page": 288,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "P",
+    "dv": "F-6",
+    "descriptors": []
+  },
+  {
+    "id": "c09e8bb5-4bed-44f9-a41c-bed6a4deb871",
+    "name": "Heal",
+    "namePt": "Cura",
+    "source": "SR5",
+    "page": 288,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "P",
+    "dv": "F-4",
+    "descriptors": [
+      "Essence"
+    ]
+  },
+  {
+    "id": "c72c3fe1-61b1-4a5d-8c15-2bca2c6c904d",
+    "name": "Increase [Attribute]",
+    "namePt": "Aumentar [Atributo]",
+    "source": "SR5",
+    "page": 288,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "P",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Essence"
+    ]
+  },
+  {
+    "id": "37b3d6ac-624a-42d4-bd6e-a12142dc5725",
+    "name": "Increase Reflexes",
+    "namePt": "Aumentar Reflexos",
+    "source": "SR5",
+    "page": 288,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "P",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F",
+    "descriptors": [
+      "Essence"
+    ]
+  },
+  {
+    "id": "5ac26e0f-3c01-43a7-a6d4-46f9193851ea",
+    "name": "Oxygenate",
+    "namePt": "Oxigenar",
+    "source": "SR5",
+    "page": 288,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "P",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-5",
+    "descriptors": []
+  },
+  {
+    "id": "0d0e3e2d-5223-4258-b885-12848833eb08",
+    "name": "Prophylaxis",
+    "namePt": "Profilaxia",
+    "source": "SR5",
+    "page": 289,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-4",
+    "descriptors": []
+  },
+  {
+    "id": "0556d652-82ef-43be-a800-0d9335dbae4c",
+    "name": "Resist Pain",
+    "namePt": "Resistir à Dor",
+    "source": "SR5",
+    "page": 289,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "P",
+    "dv": "F-4",
+    "descriptors": []
+  },
+  {
+    "id": "6f9b1dd2-b0e7-4e3f-a140-72c987b77705",
+    "name": "Stabilize",
+    "namePt": "Estabilizar",
+    "source": "SR5",
+    "page": 289,
+    "category": "Health",
+    "categoryPt": "Saúde",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "P",
+    "dv": "F-4",
+    "descriptors": []
+  },
+  {
+    "id": "46b12a6a-9d9d-4176-bfd6-80e8e21cb0e4",
+    "name": "Agony",
+    "namePt": "Agonia",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-4",
+    "descriptors": [
+      "Realistic",
+      "Single-Sense"
+    ]
+  },
+  {
+    "id": "b11af57e-bacc-4f13-8d75-d1201ec6f4f5",
+    "name": "Mass Agony",
+    "namePt": "Agonia em Massa",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Realistic",
+      "Single-Sense"
+    ]
+  },
+  {
+    "id": "5ab4bf6b-9c90-4fbb-9005-b9545a51bec1",
+    "name": "Bugs",
+    "namePt": "Insetos",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense"
+    ]
+  },
+  {
+    "id": "d6725f7f-8084-4f36-8b46-e37e1c329af6",
+    "name": "Swarm",
+    "namePt": "Enxame",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense",
+      "Area"
+    ]
+  },
+  {
+    "id": "4268d83b-c208-4aa3-8924-5620516f8434",
+    "name": "Chaos",
+    "namePt": "Caos",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "P",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense"
+    ]
+  },
+  {
+    "id": "075f38b3-8d65-44c0-8492-4d4e992e6b80",
+    "name": "Chaotic World",
+    "namePt": "Mundo Caótico",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense",
+      "Area"
+    ]
+  },
+  {
+    "id": "5636bbee-fadd-4f5c-bf77-c15b05e8d265",
+    "name": "Confusion",
+    "namePt": "Confusão",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense"
+    ]
+  },
+  {
+    "id": "1041d1cb-bbc2-4718-ae56-3d8c4276b77b",
+    "name": "Mass Confusion",
+    "namePt": "Confusão em Massa",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense",
+      "Area"
+    ]
+  },
+  {
+    "id": "d4e9d465-160f-4148-a755-27b50616f240",
+    "name": "Entertainment",
+    "namePt": "Entretenimento",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Obvious",
+      "Multi-Sense",
+      "Area"
+    ]
+  },
+  {
+    "id": "56be1e57-eca7-4253-970a-b561e23b1e8d",
+    "name": "Trid Entertainment",
+    "namePt": "Entretenimento de Trídeo",
+    "source": "SR5",
+    "page": 290,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Obvious",
+      "Multi-Sense",
+      "Area"
+    ]
+  },
+  {
+    "id": "1d9430e9-3ae9-4c0a-ba60-ee92c245ee08",
+    "name": "Improved Invisibility",
+    "namePt": "Invisibilidade Melhorada",
+    "source": "SR5",
+    "page": 291,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "P",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Realistic",
+      "Single-Sense"
+    ]
+  },
+  {
+    "id": "4b929a2d-908e-40ab-babc-e262b7f69a28",
+    "name": "Invisibility",
+    "namePt": "Invisibilidade",
+    "source": "SR5",
+    "page": 291,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Realistic",
+      "Single-Sense"
+    ]
+  },
+  {
+    "id": "435ba03c-2b21-4bcb-858a-cc175f7b41d7",
+    "name": "Mask",
+    "namePt": "Máscara",
+    "source": "SR5",
+    "page": 291,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense"
+    ]
+  },
+  {
+    "id": "af339680-1d73-44b8-a2aa-7d9b7630a647",
+    "name": "Physical Mask",
+    "namePt": "Máscara Física",
+    "source": "SR5",
+    "page": 291,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "P",
+    "range": "T",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense"
+    ]
+  },
+  {
+    "id": "52acdeb6-3ec4-417c-a768-e6a445117f69",
+    "name": "Phantasm",
+    "namePt": "Fantasma",
+    "source": "SR5",
+    "page": 291,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense",
+      "Area"
+    ]
+  },
+  {
+    "id": "444adc27-26c7-4ff1-894f-a55fea22e24a",
+    "name": "Trid Phantasm",
+    "namePt": "Fantasma de Trídeo",
+    "source": "SR5",
+    "page": 291,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F",
+    "descriptors": [
+      "Realistic",
+      "Multi-Sense",
+      "Area"
+    ]
+  },
+  {
+    "id": "4ba6626f-4109-4451-ab0a-e659752ab15e",
+    "name": "Hush",
+    "namePt": "Abafar",
+    "source": "SR5",
+    "page": 291,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Realistic",
+      "Single-Sense",
+      "Area"
+    ]
+  },
+  {
+    "id": "c307d243-669b-47d0-9642-aee7f9207e63",
+    "name": "Silence",
+    "namePt": "Silenciar",
+    "source": "SR5",
+    "page": 291,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Realistic",
+      "Single-Sense",
+      "Area"
+    ]
+  },
+  {
+    "id": "370e0dfb-550e-4330-92eb-9ef3b8a044b5",
+    "name": "Stealth",
+    "namePt": "Furtividade",
+    "source": "SR5",
+    "page": 292,
+    "category": "Illusion",
+    "categoryPt": "Ilusão",
+    "type": "P",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Realistic",
+      "Single-Sense"
+    ]
+  },
+  {
+    "id": "b447e60d-88b6-48e4-a595-6dae86581867",
+    "name": "Animate",
+    "namePt": "Animar",
+    "source": "SR5",
+    "page": 292,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Physical"
+    ]
+  },
+  {
+    "id": "13577f45-cb22-4285-bbf4-06072286dfbb",
+    "name": "Mass Animate",
+    "namePt": "Animar em Massa",
+    "source": "SR5",
+    "page": 292,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F+1",
+    "descriptors": [
+      "Physical",
+      "Area"
+    ]
+  },
+  {
+    "id": "794f21eb-dc8d-45e8-b9b0-b85b810437f3",
+    "name": "Armor",
+    "namePt": "Armadura",
+    "source": "SR5",
+    "page": 292,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Physical"
+    ]
+  },
+  {
+    "id": "32a6a213-8c89-4efe-b56d-042814a13b9f",
+    "name": "Control Actions",
+    "namePt": "Controlar Ações",
+    "source": "SR5",
+    "page": 292,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "M",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Mental"
+    ]
+  },
+  {
+    "id": "0404dc24-1305-4891-899f-d45ddff2811c",
+    "name": "Mob Control",
+    "namePt": "Controle de Multidão",
+    "source": "SR5",
+    "page": 292,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F+1",
+    "descriptors": [
+      "Mental",
+      "Area"
+    ]
+  },
+  {
+    "id": "d97d3ece-e21b-42c7-bfeb-4ca3834587c0",
+    "name": "Control Thoughts",
+    "namePt": "Controlar Pensamentos",
+    "source": "SR5",
+    "page": 293,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "M",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Mental"
+    ]
+  },
+  {
+    "id": "64904294-a652-4361-8809-ce37a8d79f8f",
+    "name": "Mob Mind",
+    "namePt": "Mente da Multidão",
+    "source": "SR5",
+    "page": 293,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F+1",
+    "descriptors": [
+      "Mental",
+      "Area"
+    ]
+  },
+  {
+    "id": "52bd988c-88a5-4f07-8f02-f8a5f202ef8d",
+    "name": "Fling",
+    "namePt": "Arremessar",
+    "source": "SR5",
+    "page": 293,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "I",
+    "dv": "F-2",
+    "descriptors": [
+      "Physical",
+      "Damaging"
+    ]
+  },
+  {
+    "id": "ee7c25c2-77af-4c08-827c-9e0f39af9bd4",
+    "name": "Ice Sheet",
+    "namePt": "Camada de Gelo",
+    "source": "SR5",
+    "page": 293,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "I",
+    "dv": "F",
+    "descriptors": [
+      "Environmental",
+      "Area"
+    ]
+  },
+  {
+    "id": "459e6c2d-d0b7-4c0e-a85a-dc5d8e794930",
+    "name": "Ignite",
+    "namePt": "Inflamar",
+    "source": "SR5",
+    "page": 293,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "P",
+    "dv": "F-1",
+    "descriptors": [
+      "Physical"
+    ]
+  },
+  {
+    "id": "600a7cce-effd-4bd3-8d20-0f840cd1bf22",
+    "name": "Influence",
+    "namePt": "Influência",
+    "source": "SR5",
+    "page": 293,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "M",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "P",
+    "dv": "F-1",
+    "descriptors": [
+      "Mental"
+    ]
+  },
+  {
+    "id": "8be2c62c-b2c9-435e-8721-dfad01f5161a",
+    "name": "Levitate",
+    "namePt": "Levitação",
+    "source": "SR5",
+    "page": 293,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Physical"
+    ]
+  },
+  {
+    "id": "70db860e-f66f-411d-bab4-d1dccbc0ce9f",
+    "name": "Light",
+    "namePt": "Luz",
+    "source": "SR5",
+    "page": 293,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-4",
+    "descriptors": [
+      "Environmental",
+      "Area"
+    ]
+  },
+  {
+    "id": "036b3b19-caa7-4da1-b2de-f887ac3a6d20",
+    "name": "Magic Fingers",
+    "namePt": "Dedos Mágicos",
+    "source": "SR5",
+    "page": 294,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Physical"
+    ]
+  },
+  {
+    "id": "b1d545b6-2498-4682-8058-a3f7783c1c84",
+    "name": "Mana Barrier",
+    "namePt": "Barreira de Mana",
+    "source": "SR5",
+    "page": 294,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "M",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Environmental",
+      "Area"
+    ]
+  },
+  {
+    "id": "1e1e488d-d727-43f8-900d-5c171c320d1d",
+    "name": "Physical Barrier",
+    "namePt": "Barreira Física",
+    "source": "SR5",
+    "page": 294,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-1",
+    "descriptors": [
+      "Environmental",
+      "Area"
+    ]
+  },
+  {
+    "id": "d7d6bbf6-6855-47ce-9865-5a01db507d71",
+    "name": "Poltergeist",
+    "namePt": "Poltergeist",
+    "source": "SR5",
+    "page": 294,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-2",
+    "descriptors": [
+      "Environmental",
+      "Area"
+    ]
+  },
+  {
+    "id": "6aa76b6a-0096-4e09-a672-d8de84885017",
+    "name": "Shadow",
+    "namePt": "Sombra",
+    "source": "SR5",
+    "page": 294,
+    "category": "Manipulation",
+    "categoryPt": "Manipulação",
+    "type": "P",
+    "range": "LOS (A)",
+    "damage": "0",
+    "duration": "S",
+    "dv": "F-3",
+    "descriptors": [
+      "Environmental",
+      "Area"
+    ]
+  },
+  {
+    "id": "0d15391d-b247-439c-aac6-c671c4f60204",
+    "name": "Curse",
+    "namePt": "Maldição",
+    "source": "SR5",
+    "page": 297,
+    "category": "Rituals",
+    "categoryPt": "Rituais",
+    "type": "M",
+    "range": "Special",
+    "damage": "0",
+    "duration": "Special",
+    "dv": "Special",
+    "descriptors": [
+      "Material Link",
+      "Spell"
+    ]
+  },
+  {
+    "id": "716ce109-40df-46f2-b445-692f96e62537",
+    "name": "Prodigal Spell",
+    "namePt": "Feitiço Abundante",
+    "source": "SR5",
+    "page": 297,
+    "category": "Rituals",
+    "categoryPt": "Rituais",
+    "type": "M",
+    "range": "Special",
+    "damage": "0",
+    "duration": "Special",
+    "dv": "Special",
+    "descriptors": [
+      "Spell",
+      "Spotter"
+    ]
+  },
+  {
+    "id": "b561907f-9b1b-4153-b314-155acc8139d2",
+    "name": "Remote Sensing",
+    "namePt": "Sentido Remoto",
+    "source": "SR5",
+    "page": 297,
+    "category": "Rituals",
+    "categoryPt": "Rituais",
+    "type": "M",
+    "range": "Special",
+    "damage": "0",
+    "duration": "Special",
+    "dv": "Special",
+    "descriptors": [
+      "Spell",
+      "Spotter"
+    ]
+  },
+  {
+    "id": "3cea53a2-7628-4009-9bc4-af2f141fc28d",
+    "name": "Ward",
+    "namePt": "Proteção",
+    "source": "SR5",
+    "page": 297,
+    "category": "Rituals",
+    "categoryPt": "Rituais",
+    "type": "M",
+    "range": "Special",
+    "damage": "0",
+    "duration": "Special",
+    "dv": "Special",
+    "descriptors": [
+      "Anchored"
+    ]
+  },
+  {
+    "id": "6f1689d0-1902-4155-b6e8-4451c88348b2",
+    "name": "Circle of Protection",
+    "namePt": "Círculo de Proteção",
+    "source": "SR5",
+    "page": 298,
+    "category": "Rituals",
+    "categoryPt": "Rituais",
+    "type": "M",
+    "range": "Special",
+    "damage": "0",
+    "duration": "Special",
+    "dv": "Special",
+    "descriptors": [
+      "Anchored"
+    ]
+  },
+  {
+    "id": "b7e36c07-0ac9-4a13-97b2-932cacc050e9",
+    "name": "Circle of Healing",
+    "namePt": "Círculo de Cura",
+    "source": "SR5",
+    "page": 298,
+    "category": "Rituals",
+    "categoryPt": "Rituais",
+    "type": "M",
+    "range": "Special",
+    "damage": "0",
+    "duration": "Special",
+    "dv": "Special",
+    "descriptors": [
+      "Anchored",
+      "Spell"
+    ]
+  },
+  {
+    "id": "27747429-0230-4c46-a7ce-bbee8d7d8c83",
+    "name": "Renascence",
+    "namePt": "Renascença",
+    "source": "SR5",
+    "page": 298,
+    "category": "Rituals",
+    "categoryPt": "Rituais",
+    "type": "M",
+    "range": "Special",
+    "damage": "0",
+    "duration": "Special",
+    "dv": "Special",
+    "descriptors": [
+      "Anchored",
+      "Spell"
+    ]
+  },
+  {
+    "id": "1149e55c-e902-407c-9f40-9c0713447c50",
+    "name": "Watcher",
+    "namePt": "Vigia",
+    "source": "SR5",
+    "page": 298,
+    "category": "Rituals",
+    "categoryPt": "Rituais",
+    "type": "M",
+    "range": "Special",
+    "damage": "0",
+    "duration": "Special",
+    "dv": "Special",
+    "descriptors": [
+      "Minion"
+    ]
+  },
+  {
+    "id": "f99ab85f-2cc7-4c09-8ea4-581f75e40487",
+    "name": "Homunculus",
+    "namePt": "Homúnculo",
+    "source": "SR5",
+    "page": 298,
+    "category": "Rituals",
+    "categoryPt": "Rituais",
+    "type": "M",
+    "range": "Special",
+    "damage": "0",
+    "duration": "Special",
+    "dv": "Special",
+    "descriptors": [
+      "Minion"
+    ]
+  }
+]

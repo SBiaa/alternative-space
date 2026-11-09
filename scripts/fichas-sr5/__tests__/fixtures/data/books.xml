@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chummer>
+  <books>
+    <book><id>b-sr5</id><name>Shadowrun 5th Edition</name><code>SR5</code></book>
+    <book><id>b-rf</id><name>Run Faster</name><code>RF</code></book>
+  </books>
+</chummer>

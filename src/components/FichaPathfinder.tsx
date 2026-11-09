@@ -152,7 +152,7 @@ export function FichaPathfinder() {
         </ol>
       </nav>
 
-      <div className="painel flex flex-col gap-5 rounded-2xl border-2 border-noite p-5 shadow-duro sm:p-8">
+      <div className="painel print-sheet flex flex-col gap-5 rounded-2xl border-2 border-noite p-5 shadow-duro sm:p-8">
         {passo === "ancestralidade" && (
           <>
             <label className="flex flex-col gap-1">

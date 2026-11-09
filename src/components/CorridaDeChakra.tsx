@@ -17,7 +17,7 @@ import {
   type FaseId,
   type Status,
 } from "@/lib/chakra";
-import { AZUL, anel, aura, aviso, barra, cena, esfera, frente, hud, ninja, pose, reflexo, vinheta, type Modo, type Onda } from "@/lib/chakraDesenho";
+import { AZUL, CENA_W, anel, aura, aviso, barra, cena, esfera, frente, hud, ninja, pose, reflexo, vinheta, type Modo, type Onda } from "@/lib/chakraDesenho";
 
 type Ui = "menu" | Status;
 type Faisca = { x: number; y: number; vx: number; vy: number; vida: number; cor: string; r: number; g: number };
@@ -51,6 +51,9 @@ export function CorridaDeChakra() {
   const recorde = useRef(0);
   const [uiState, setUiState] = useState<Ui>("menu");
   const [faseUi, setFaseUi] = useState(0);
+  // Tela cheia "de mentira" no celular (iPhone não deixa usar a de verdade num pedaço da página).
+  const [imersivo, setImersivo] = useState(false);
+  const [deitado, setDeitado] = useState(false);
   const [fim, setFim] = useState<{ pontos: number; novo: boolean; recorde: number; acertos: number; perfeitos: number; venceu: boolean } | null>(null);
 
   const mudarUi = useCallback((u: Ui) => {
@@ -63,6 +66,8 @@ export function CorridaDeChakra() {
     estado.current = novoEstado();
     setFim(null);
     mudarUi("intro");
+    // No celular a partida abre ocupando a tela toda.
+    if (matchMedia("(pointer: coarse)").matches) setImersivo(true);
   }, [mudarUi]);
 
   // Dedo (ou tecla) pressionado agora. Quem aperta enquanto ainda aparece o "Boa!" não perde o toque:
@@ -88,7 +93,41 @@ export function CorridaDeChakra() {
   }, []);
 
   // Botão grande embaixo do jogo (só em tela de toque), pra o dedo não cobrir a cena.
+  // Com o celular em pé no modo tela cheia, ele vira o medidor de chakra (a barra sai da cena).
   const enchimento = useRef<HTMLSpanElement>(null);
+  const faixa = useRef<HTMLSpanElement>(null);
+  const miolo = useRef<HTMLSpanElement>(null);
+
+  const retrato = imersivo && !deitado;
+  const retratoRef = useRef(false);
+  useEffect(() => {
+    retratoRef.current = retrato;
+  }, [retrato]);
+
+  const sair = useCallback(() => {
+    largar();
+    setImersivo(false);
+  }, [largar]);
+
+  useEffect(() => {
+    if (!imersivo) return;
+    const mq = matchMedia("(orientation: landscape)");
+    const ver = () => setDeitado(mq.matches);
+    ver();
+    mq.addEventListener("change", ver);
+    const html = document.documentElement;
+    const antes = html.style.overflow;
+    html.style.overflow = "hidden";
+    const onEsc = (ev: KeyboardEvent) => {
+      if (ev.key === "Escape") sair();
+    };
+    window.addEventListener("keydown", onEsc);
+    return () => {
+      mq.removeEventListener("change", ver);
+      html.style.overflow = antes;
+      window.removeEventListener("keydown", onEsc);
+    };
+  }, [imersivo, sair]);
 
   const comecarFase = useCallback(() => {
     if (estado.current.status === "intro") apertarLogica(estado.current);
@@ -98,10 +137,9 @@ export function CorridaDeChakra() {
     recorde.current = lerRecorde();
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    canvas.width = W * dpr;
-    canvas.height = H * dpr;
-    const fonte = getComputedStyle(document.body).getPropertyValue("--font-fredoka").trim() || "system-ui";
+    const estilo = getComputedStyle(document.body);
+    const fonte = estilo.getPropertyValue("--font-fredoka").trim() || estilo.getPropertyValue("--font-titulo").trim() || "system-ui";
+    let foco = CENA_W / 2; // centro do recorte com o celular em pé, segue o ninja
 
     let raf = 0;
     let antes = performance.now();
@@ -209,7 +247,25 @@ export function CorridaDeChakra() {
       faiscas = faiscas.filter((f) => f.vida > 0);
       sacode = Math.max(0, sacode - dt);
 
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Tamanho real na tela. Deitado, a cena inteira (800×450). Em pé, o desenho tem a largura da cena (sem a barra)
+      // e a altura que couber; a cena é ampliada pra encher a altura e recortada em volta do ninja.
+      const dpr = Math.min(retratoRef.current ? 3 : 2, window.devicePixelRatio || 1);
+      const bw = Math.max(1, Math.round(canvas.clientWidth * dpr));
+      const bh = Math.max(1, Math.round(canvas.clientHeight * dpr));
+      if (canvas.width !== bw || canvas.height !== bh) {
+        canvas.width = bw;
+        canvas.height = bh;
+      }
+      const emPe = retratoRef.current && bh / bw > H / CENA_W;
+      const k = bw / (emPe ? CENA_W : W);
+      const alto = bh / k; // altura do desenho, nas medidas do jogo
+      const zoom = emPe ? alto / H : 1;
+      const largura = CENA_W / zoom;
+      const alvo = e.fase === 0 ? p.x - 20 : p.x + 70;
+      foco += (alvo - foco) * Math.min(1, dt * 4);
+      const corte = emPe ? Math.max(0, Math.min(CENA_W - largura, foco - largura / 2)) : 0;
+
+      ctx.setTransform(k * zoom, 0, 0, k * zoom, -corte * k * zoom, 0);
       ctx.save();
       if (sacode > 0) ctx.translate((Math.random() - 0.5) * 30 * sacode, (Math.random() - 0.5) * 30 * sacode);
       cena(ctx, e.fase, relogio, p.cam, e.passo, ondas);
@@ -241,25 +297,48 @@ export function CorridaDeChakra() {
       ctx.restore();
       anel(ctx, p.ax, p.ay, relogio - anelEm);
       frente(ctx, e.fase, relogio);
-      vinheta(ctx);
+      if (!emPe) vinheta(ctx);
       ctx.restore();
 
+      // Daqui pra baixo, medidas da tela (sem o zoom da cena).
+      ctx.setTransform(k, 0, 0, k, 0, 0);
+      if (emPe) {
+        const g = ctx.createRadialGradient(CENA_W / 2, alto / 2, alto * 0.3, CENA_W / 2, alto / 2, alto * 0.75);
+        g.addColorStop(0, "rgba(1,8,18,0)");
+        g.addColorStop(1, "rgba(1,8,18,0.55)");
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, CENA_W, alto);
+      }
       const idadeFlash = relogio - flash.em;
       if (idadeFlash < 0.3) {
         ctx.fillStyle = `rgba(${flash.cor},${0.2 * (1 - idadeFlash / 0.3)})`;
-        ctx.fillRect(0, 0, W, H);
+        ctx.fillRect(0, 0, emPe ? CENA_W : W, alto);
       }
 
-      barra(ctx, e, relogio, fonte);
+      if (!emPe) barra(ctx, e, relogio, fonte);
 
-      // O botão de segurar acompanha a carga.
+      // O botão de segurar acompanha a carga e, em pé, mostra a faixa certa.
       if (enchimento.current) {
         enchimento.current.style.transform = `scaleX(${carregando ? e.carga : 0})`;
         enchimento.current.style.background = passou ? "#ff7a50" : "#4fc3ff";
       }
+      if (faixa.current && miolo.current) {
+        const mostra = e.status === "pronto" || e.status === "carregando" || e.status === "resultado";
+        const meio = z.largura * 0.35;
+        faixa.current.style.left = `${(z.centro - z.largura / 2) * 100}%`;
+        faixa.current.style.width = `${z.largura * 100}%`;
+        miolo.current.style.left = `${(z.centro - meio / 2) * 100}%`;
+        miolo.current.style.width = `${meio * 100}%`;
+        faixa.current.style.opacity = miolo.current.style.opacity = mostra ? "1" : "0";
+      }
       if (emJogo) {
         hud(ctx, e, recorde.current, fonte);
-        aviso(ctx, e, fonte);
+        if (emPe) {
+          ctx.save();
+          ctx.translate(0, alto * 0.34 - 176);
+          aviso(ctx, e, fonte, false);
+          ctx.restore();
+        } else aviso(ctx, e, fonte);
       }
 
       raf = requestAnimationFrame(frame);
@@ -320,17 +399,51 @@ export function CorridaDeChakra() {
     onContextMenu: (ev: React.MouseEvent) => ev.preventDefault(),
   };
 
+  const fechar = (
+    <button
+      type="button"
+      onClick={sair}
+      aria-label="Sair da tela cheia"
+      className="flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-md border border-creme/35 bg-noite/70"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ece3be" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
+        <path d="M5 5l14 14M19 5L5 19" />
+      </svg>
+    </button>
+  );
+
   return (
-    <div className="flex flex-col gap-3">
     <div
-      className="relative w-full select-none overflow-hidden rounded-lg border-[3px] border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)] sm:border-[6px]"
-      style={{ touchAction: "none", WebkitTouchCallout: "none" }}
+      className={
+        !imersivo
+          ? "flex flex-col gap-3"
+          : `fixed inset-0 z-50 flex flex-col gap-3 bg-espaco px-3 ${deitado ? "items-center justify-center" : ""}`
+      }
+      style={imersivo ? { paddingTop: "max(12px, env(safe-area-inset-top))", paddingBottom: "max(12px, env(safe-area-inset-bottom))" } : undefined}
+    >
+    {retrato && (
+      <div className="flex shrink-0 items-center justify-between gap-3">
+        <span className="font-titulo text-lg font-semibold text-creme">Corrida de Chakra</span>
+        {fechar}
+      </div>
+    )}
+    {imersivo && deitado && <div className="fixed right-3 top-3 z-10">{fechar}</div>}
+    <div
+      className={`relative w-full select-none overflow-hidden rounded-lg border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)] ${
+        imersivo ? "border-2" : "border-[3px] sm:border-[6px]"
+      } ${retrato ? "min-h-0 flex-[3_1_0]" : ""}`}
+      style={{
+        touchAction: "none",
+        WebkitTouchCallout: "none",
+        ...(retrato ? { maxHeight: "calc((100vw - 24px) * 1.5)" } : {}),
+        ...(imersivo && deitado ? { width: "min(100%, calc((100dvh - 24px) * 16 / 9))" } : {}),
+      }}
       {...tocar}
     >
       <canvas
         ref={canvasRef}
-        className="block h-auto w-full"
-        style={{ aspectRatio: `${W} / ${H}` }}
+        className={retrato ? "block h-full w-full" : "block h-auto w-full"}
+        style={retrato ? undefined : { aspectRatio: `${W} / ${H}` }}
         aria-label="Corrida de Chakra: jogo de segurar e soltar na hora certa"
       />
 
@@ -417,17 +530,36 @@ export function CorridaDeChakra() {
       )}
     </div>
 
-    <button
-      type="button"
-      disabled={!botaoAtivo}
-      aria-label="Segurar pra concentrar chakra"
-      className="relative hidden h-28 w-full cursor-pointer select-none overflow-hidden rounded-xl border-2 border-[#4fc3ff]/60 bg-cabine text-creme disabled:border-creme/15 disabled:text-poeira pointer-coarse:flex pointer-coarse:items-center pointer-coarse:justify-center"
-      style={{ touchAction: "none", WebkitTouchCallout: "none", WebkitUserSelect: "none" }}
-      {...tocar}
-    >
-      <span ref={enchimento} aria-hidden="true" className="absolute inset-0 origin-left opacity-35" style={{ transform: "scaleX(0)" }} />
-      <span className="relative font-titulo text-xl font-semibold">{rotulo}</span>
-    </button>
+    {!(imersivo && deitado) && (
+      <button
+        type="button"
+        disabled={!botaoAtivo}
+        aria-label="Segurar pra concentrar chakra"
+        className={`relative w-full cursor-pointer select-none overflow-hidden rounded-xl border-2 border-[#4fc3ff]/60 bg-cabine text-creme disabled:border-creme/15 disabled:text-poeira ${
+          retrato ? "flex min-h-32 flex-[1_1_0] flex-col items-stretch justify-center gap-3 px-4" : "hidden h-28 pointer-coarse:flex pointer-coarse:items-center pointer-coarse:justify-center"
+        }`}
+        style={{ touchAction: "none", WebkitTouchCallout: "none", WebkitUserSelect: "none" }}
+        {...tocar}
+      >
+        {retrato ? (
+          <>
+            <span className="text-center font-titulo text-xl font-semibold">{rotulo}</span>
+            {/* Medidor de chakra deitado: enche da esquerda pra direita; a ponta vermelha estoura. */}
+            <span aria-hidden="true" className="relative block h-11 overflow-hidden rounded-lg border-2 border-creme bg-[#030b16]">
+              <span ref={enchimento} className="absolute inset-0 origin-left opacity-80" style={{ transform: "scaleX(0)" }} />
+              <span ref={faixa} className="absolute inset-y-0 border-x-2 border-[#78d26e] bg-[rgb(120_210_110/0.3)] transition-opacity" />
+              <span ref={miolo} className="absolute inset-y-0 bg-[rgb(200_250_150/0.7)] transition-opacity" />
+              <span className="absolute inset-y-0 right-0 w-[5%] bg-[#ab392f]" />
+            </span>
+          </>
+        ) : (
+          <>
+            <span ref={enchimento} aria-hidden="true" className="absolute inset-0 origin-left opacity-35" style={{ transform: "scaleX(0)" }} />
+            <span className="relative font-titulo text-xl font-semibold">{rotulo}</span>
+          </>
+        )}
+      </button>
+    )}
     </div>
   );
 }
