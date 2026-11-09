@@ -18,4 +18,4 @@ export function QuizProgress({ step, total, label = "PERGUNTA", onBack }: { step
 }
 
 export const optionClass =
-  "flex h-full w-full cursor-pointer items-start gap-3.5 rounded-xl border-2 border-noite bg-creme px-5 py-4 text-left text-[1.05rem] leading-snug shadow-duro-sm transition-[transform,box-shadow,background-color] duration-100 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-laranja-claro hover:shadow-none motion-reduce:transition-none disabled:cursor-default";
+  "flex h-full w-full cursor-pointer items-start gap-3.5 rounded-xl border-2 border-noite bg-creme text-noite px-5 py-4 text-left text-[1.05rem] leading-snug shadow-duro-sm transition-[transform,box-shadow,background-color] duration-100 hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-laranja-claro hover:shadow-none motion-reduce:transition-none disabled:cursor-default";
