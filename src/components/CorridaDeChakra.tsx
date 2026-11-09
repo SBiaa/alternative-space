@@ -65,15 +65,30 @@ export function CorridaDeChakra() {
     mudarUi("intro");
   }, [mudarUi]);
 
+  // Dedo (ou tecla) pressionado agora. Quem aperta enquanto ainda aparece o "Boa!" não perde o toque:
+  // a carga começa assim que a próxima rodada abre.
+  // Só vale o toque que começou durante o resultado; quem segurou até estourar precisa soltar e apertar de novo.
+  const segurando = useRef(false);
+
   const apertar = useCallback(() => {
+    segurando.current = estado.current.status === "resultado";
     const u = ui.current;
     if (u === "menu") comecar();
     else if (u !== "fim" && u !== "vitoria") apertarLogica(estado.current);
   }, [comecar]);
 
   const soltar = useCallback(() => {
+    segurando.current = false;
     soltarLogica(estado.current);
   }, []);
+
+  const largar = useCallback(() => {
+    segurando.current = false;
+    cancelar(estado.current);
+  }, []);
+
+  // Botão grande embaixo do jogo (só em tela de toque), pra o dedo não cobrir a cena.
+  const enchimento = useRef<HTMLSpanElement>(null);
 
   const comecarFase = useCallback(() => {
     if (estado.current.status === "intro") apertarLogica(estado.current);
@@ -117,7 +132,12 @@ export function CorridaDeChakra() {
       const emJogo = ui.current !== "menu";
 
       if (emJogo) {
+        const statusAntes = e.status;
         step(e, dt);
+        if (statusAntes === "resultado" && e.status === "pronto" && segurando.current) {
+          segurando.current = false;
+          apertarLogica(e);
+        }
         if (e.status !== ui.current) {
           if (e.status === "fim" || e.status === "vitoria") {
             const novo = e.pontos > recorde.current;
@@ -231,6 +251,12 @@ export function CorridaDeChakra() {
       }
 
       barra(ctx, e, relogio, fonte);
+
+      // O botão de segurar acompanha a carga.
+      if (enchimento.current) {
+        enchimento.current.style.transform = `scaleX(${carregando ? e.carga : 0})`;
+        enchimento.current.style.background = passou ? "#ff7a50" : "#4fc3ff";
+      }
       if (emJogo) {
         hud(ctx, e, recorde.current, fonte);
         aviso(ctx, e, fonte);
@@ -252,7 +278,7 @@ export function CorridaDeChakra() {
       if (teclas.includes(ev.code)) soltar();
     };
     // Trocou de aba segurando: joga fora a carga em vez de julgar.
-    const onSumiu = () => cancelar(estado.current);
+    const onSumiu = () => largar();
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
     window.addEventListener("blur", onSumiu);
@@ -264,25 +290,49 @@ export function CorridaDeChakra() {
       window.removeEventListener("blur", onSumiu);
       document.removeEventListener("visibilitychange", onSumiu);
     };
-  }, [apertar, soltar, mudarUi]);
+  }, [apertar, soltar, largar, mudarUi]);
 
   const fase = FASES[faseUi];
   const r = fim ? rank(fim.pontos, fim.venceu) : null;
+  const rotulo =
+    uiState === "carregando"
+      ? "Solta na faixa verde"
+      : uiState === "menu"
+        ? "Segura aqui pra jogar"
+        : uiState === "intro"
+          ? "Toque pra começar a fase"
+          : uiState === "fim" || uiState === "vitoria"
+            ? "Fim de jogo"
+            : "Segura aqui";
+  const botaoAtivo = uiState !== "fim" && uiState !== "vitoria";
+
+  // Mesmos controles na tela do jogo e no botão de segurar.
+  const tocar = {
+    onPointerDown: (ev: React.PointerEvent<HTMLElement>) => {
+      const alvo = (ev.target as HTMLElement).closest("button");
+      if (alvo && alvo !== ev.currentTarget) return;
+      ev.preventDefault();
+      ev.currentTarget.setPointerCapture(ev.pointerId);
+      apertar();
+    },
+    onPointerUp: soltar,
+    onPointerCancel: largar,
+    onContextMenu: (ev: React.MouseEvent) => ev.preventDefault(),
+  };
 
   return (
+    <div className="flex flex-col gap-3">
     <div
-      className="relative w-full select-none overflow-hidden rounded-lg border-[6px] border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)]"
-      style={{ aspectRatio: `${W} / ${H}`, touchAction: "none", WebkitTouchCallout: "none" }}
-      onPointerDown={(ev) => {
-        if ((ev.target as HTMLElement).closest("button")) return;
-        ev.currentTarget.setPointerCapture(ev.pointerId);
-        apertar();
-      }}
-      onPointerUp={soltar}
-      onPointerCancel={() => cancelar(estado.current)}
-      onContextMenu={(ev) => ev.preventDefault()}
+      className="relative w-full select-none overflow-hidden rounded-lg border-[3px] border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)] sm:border-[6px]"
+      style={{ touchAction: "none", WebkitTouchCallout: "none" }}
+      {...tocar}
     >
-      <canvas ref={canvasRef} className="block h-full w-full" aria-label="Corrida de Chakra: jogo de segurar e soltar na hora certa" />
+      <canvas
+        ref={canvasRef}
+        className="block h-auto w-full"
+        style={{ aspectRatio: `${W} / ${H}` }}
+        aria-label="Corrida de Chakra: jogo de segurar e soltar na hora certa"
+      />
 
       {uiState === "menu" && (
         <div className="absolute inset-0 flex flex-col items-center justify-end gap-2.5 bg-gradient-to-t from-noite/90 via-noite/30 to-transparent p-4 text-center sm:justify-center sm:gap-4 sm:bg-noite/50">
@@ -365,6 +415,19 @@ export function CorridaDeChakra() {
           </div>
         </div>
       )}
+    </div>
+
+    <button
+      type="button"
+      disabled={!botaoAtivo}
+      aria-label="Segurar pra concentrar chakra"
+      className="relative hidden h-28 w-full cursor-pointer select-none overflow-hidden rounded-xl border-2 border-[#4fc3ff]/60 bg-cabine text-creme disabled:border-creme/15 disabled:text-poeira pointer-coarse:flex pointer-coarse:items-center pointer-coarse:justify-center"
+      style={{ touchAction: "none", WebkitTouchCallout: "none", WebkitUserSelect: "none" }}
+      {...tocar}
+    >
+      <span ref={enchimento} aria-hidden="true" className="absolute inset-0 origin-left opacity-35" style={{ transform: "scaleX(0)" }} />
+      <span className="relative font-titulo text-xl font-semibold">{rotulo}</span>
+    </button>
     </div>
   );
 }
