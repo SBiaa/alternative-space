@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { FichaPathfinder } from "@/components/FichaPathfinder";
+import { getUser } from "@/lib/auth/server";
 
 export const metadata: Metadata = {
   title: "Ficha de Pathfinder 2e",
@@ -23,8 +25,16 @@ export default function Page() {
             Seis passos. A gente soma os boosts, calcula PV, CA, salvamentos e perícias, e avisa se faltar alguma coisa.
           </p>
         </div>
-        <FichaPathfinder />
+        <Suspense fallback={<FichaPathfinder />}>
+          <ComConta />
+        </Suspense>
       </div>
     </section>
   );
+}
+
+// Sem login a ficha fica no navegador; logado, aparece o botão de salvar na conta.
+async function ComConta() {
+  const user = await getUser();
+  return <FichaPathfinder logado={Boolean(user)} />;
 }

@@ -48,8 +48,9 @@ async function myCharacter(userId: string, characterId: unknown) {
   const [c] = await db()
     .select({ id: characters.id })
     .from(characters)
-    .where(and(eq(characters.id, characterId), eq(characters.ownerId, userId)));
-  if (!c) throw new InputError('Escolha uma das suas fichas.');
+    .where(and(eq(characters.id, characterId), eq(characters.ownerId, userId), eq(characters.system, 'sr5')));
+  // Times usam as regras do Shadowrun; ficha de outro sistema não entra.
+  if (!c) throw new InputError('Escolha uma das suas fichas de Shadowrun.');
   return c;
 }
 
@@ -166,7 +167,7 @@ export async function getTeam(teamId: string) {
     db()
       .select({ id: characters.id, name: characters.name })
       .from(characters)
-      .where(eq(characters.ownerId, userId))
+      .where(and(eq(characters.ownerId, userId), eq(characters.system, 'sr5')))
       .orderBy(asc(characters.name)),
   ]);
   const karma = new Map(karmaRows.map((k) => [k.characterId, k.total]));
@@ -257,7 +258,7 @@ export async function getInvite(code: string) {
     db()
       .select({ id: characters.id, name: characters.name, status: characters.status })
       .from(characters)
-      .where(eq(characters.ownerId, userId))
+      .where(and(eq(characters.ownerId, userId), eq(characters.system, 'sr5')))
       .orderBy(asc(characters.name)),
   ]);
   const inTeam = new Set(members.map((m) => m.id));

@@ -241,24 +241,37 @@ export const sinal = (n: number) => (n >= 0 ? `+${n}` : `${n}`);
 export function lerFicha(json: string | null): Ficha | null {
   if (!json) return null;
   try {
-    const o = JSON.parse(json);
-    if (typeof o !== "object" || !o) return null;
-    const attr = (x: unknown): Atributo | "" => (ATRIBUTOS.includes(x as Atributo) ? (x as Atributo) : "");
-    const lista = (x: unknown) => (Array.isArray(x) ? x.map(attr).filter((a): a is Atributo => !!a) : []);
-    const ids = new Set<string>(PERICIAS.map((p) => p.id));
-    return ajustar({
-      nome: typeof o.nome === "string" ? o.nome.slice(0, 60) : "",
-      ancestralidade: acharAncestralidade(o.ancestralidade) ? o.ancestralidade : "",
-      antecedente: acharAntecedente(o.antecedente) ? o.antecedente : "",
-      classe: acharClasse(o.classe) ? o.classe : "",
-      chave: attr(o.chave),
-      boostsAncestral: lista(o.boostsAncestral),
-      boostAntecedente: attr(o.boostAntecedente),
-      boostAntecedenteLivre: attr(o.boostAntecedenteLivre),
-      boostsLivres: lista(o.boostsLivres).slice(0, LIVRES_NIVEL_1),
-      pericias: Array.isArray(o.pericias) ? o.pericias.filter((p: unknown): p is Pericia => typeof p === "string" && ids.has(p)) : [],
-    });
+    return normalizarFicha(JSON.parse(json));
   } catch {
     return null;
   }
+}
+
+// Limpa uma ficha vinda de fora (navegador, banco). Campo inválido vira vazio.
+export function normalizarFicha(o: unknown): Ficha | null {
+  if (typeof o !== "object" || !o) return null;
+  return normalizarObjeto(o as Record<string, unknown>);
+}
+
+// Resumo de uma linha: "Anão · Clérigo".
+export function resumoFicha(f: Ficha): string {
+  return [acharAncestralidade(f.ancestralidade)?.nome, acharClasse(f.classe)?.nome].filter(Boolean).join(" · ");
+}
+
+function normalizarObjeto(o: Record<string, unknown>): Ficha {
+  const attr = (x: unknown): Atributo | "" => (ATRIBUTOS.includes(x as Atributo) ? (x as Atributo) : "");
+  const lista = (x: unknown) => (Array.isArray(x) ? x.map(attr).filter((a): a is Atributo => !!a) : []);
+  const ids = new Set<string>(PERICIAS.map((p) => p.id));
+  return ajustar({
+    nome: typeof o.nome === "string" ? o.nome.slice(0, 60) : "",
+    ancestralidade: typeof o.ancestralidade === "string" && acharAncestralidade(o.ancestralidade) ? o.ancestralidade : "",
+    antecedente: typeof o.antecedente === "string" && acharAntecedente(o.antecedente) ? o.antecedente : "",
+    classe: typeof o.classe === "string" && acharClasse(o.classe) ? o.classe : "",
+    chave: attr(o.chave),
+    boostsAncestral: lista(o.boostsAncestral),
+    boostAntecedente: attr(o.boostAntecedente),
+    boostAntecedenteLivre: attr(o.boostAntecedenteLivre),
+    boostsLivres: lista(o.boostsLivres).slice(0, LIVRES_NIVEL_1),
+    pericias: Array.isArray(o.pericias) ? o.pericias.filter((p: unknown): p is Pericia => typeof p === "string" && ids.has(p)) : [],
+  });
 }

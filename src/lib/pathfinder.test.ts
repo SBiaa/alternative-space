@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { FICHA_VAZIA, ajustar, atributos, calcular, lerFicha, pendencias, periciasParaEscolher, type Ficha } from "./pathfinder";
+import { FICHA_VAZIA, ajustar, atributos, calcular, lerFicha, normalizarFicha, pendencias, periciasParaEscolher, resumoFicha, type Ficha } from "./pathfinder";
 
 // Anã clériga acólita: exemplo bem comum de mesa.
 const ana: Ficha = {
@@ -58,5 +58,13 @@ describe("pathfinder 2e", () => {
     expect(lerFicha(JSON.stringify(ana))).toEqual(ana);
     expect(lerFicha("{quebrado")).toBeNull();
     expect(lerFicha(JSON.stringify({ classe: "nada", pericias: ["xyz"] }))).toEqual(FICHA_VAZIA);
+  });
+
+  it("normaliza o que vem do banco e resume em uma linha", () => {
+    expect(normalizarFicha(ana)).toEqual(ana);
+    expect(normalizarFicha(null)).toBeNull();
+    expect(normalizarFicha({ nome: 42, classe: ["mago"] })).toEqual(FICHA_VAZIA);
+    expect(resumoFicha(ana)).toBe("Anão · Clérigo");
+    expect(resumoFicha(FICHA_VAZIA)).toBe("");
   });
 });

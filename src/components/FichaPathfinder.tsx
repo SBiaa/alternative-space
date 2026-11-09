@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState, useTransition } from "react";
+import { importPf2eAction, savePf2eAction } from "@/app/fichas/actions";
 import {
   ANCESTRALIDADES,
   ANTECEDENTES,
@@ -99,26 +102,64 @@ function Chips({ titulo, opcoes, escolhidos, max, bloqueados = [], onChange }: {
   );
 }
 
-export function FichaPathfinder() {
-  const [ficha, setFicha] = useState<Ficha>(FICHA_VAZIA);
+type Props = {
+  // Ficha da conta: salva sozinha no banco. Sem isso, a ficha fica no navegador.
+  nuvem?: { id: string; inicial: Ficha };
+  logado?: boolean;
+};
+
+type Salvamento = { estado: "ok" | "salvando" | "erro"; msg?: string };
+
+export function FichaPathfinder({ nuvem, logado = false }: Props) {
+  const [ficha, setFicha] = useState<Ficha>(nuvem?.inicial ?? FICHA_VAZIA);
   const [passo, setPasso] = useState<Passo>("ancestralidade");
+  const [salvamento, setSalvamento] = useState<Salvamento>({ estado: "ok" });
+  const [importando, startImportar] = useTransition();
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const router = useRouter();
+
+  useEffect(() => () => clearTimeout(timer.current), []);
 
   useEffect(() => {
+    if (nuvem) return;
     let guardada: Ficha | null = null;
     try {
       guardada = lerFicha(localStorage.getItem(CHAVE));
     } catch {}
     // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage só existe no navegador
     if (guardada) setFicha(guardada);
-  }, []);
+  }, [nuvem]);
 
   const mudar = (parcial: Partial<Ficha>) => {
     const f = ajustar({ ...ficha, ...parcial });
     setFicha(f);
+    if (nuvem) {
+      // Espera a pessoa parar de digitar antes de mandar pro banco.
+      setSalvamento({ estado: "salvando" });
+      clearTimeout(timer.current);
+      timer.current = setTimeout(async () => {
+        const r = await savePf2eAction(nuvem.id, f).catch(() => ({ ok: false as const, error: "Sem conexão. Tentando de novo na próxima mudança." }));
+        setSalvamento(r.ok ? { estado: "ok" } : { estado: "erro", msg: r.error });
+      }, 800);
+      return;
+    }
     try {
       localStorage.setItem(CHAVE, JSON.stringify(f));
     } catch {}
   };
+
+  const salvarNaConta = () =>
+    startImportar(async () => {
+      try {
+        const id = await importPf2eAction(ficha);
+        try {
+          localStorage.removeItem(CHAVE);
+        } catch {}
+        router.push(`/fichas/${id}`);
+      } catch {
+        setSalvamento({ estado: "erro", msg: "Não deu pra salvar na conta agora. Tenta de novo." });
+      }
+    });
 
   const anc = acharAncestralidade(ficha.ancestralidade);
   const ant = acharAntecedente(ficha.antecedente);
@@ -318,7 +359,27 @@ export function FichaPathfinder() {
         >
           Começar do zero
         </button>
-        <p className="m-0 text-sm text-poeira">A ficha fica guardada aqui no navegador. Conteúdo de regras baseado no Pathfinder 2e (Remaster) da Paizo, uso de fã.</p>
+        {nuvem ? (
+          <p role="status" aria-live="polite" className={`m-0 text-sm ${salvamento.estado === "erro" ? "text-laranja-claro" : "text-poeira"}`}>
+            {salvamento.estado === "salvando" ? "Salvando na sua conta…" : salvamento.estado === "erro" ? salvamento.msg : "✓ Salva na sua conta."}
+          </p>
+        ) : logado ? (
+          <div className="flex flex-wrap items-center gap-3">
+            <button type="button" onClick={salvarNaConta} disabled={importando} className="btn bg-laranja text-noite disabled:opacity-60">
+              {importando ? "Salvando…" : "Salvar na minha conta"}
+            </button>
+            {salvamento.estado === "erro" && <span className="text-sm text-laranja-claro">{salvamento.msg}</span>}
+          </div>
+        ) : (
+          <p className="m-0 text-sm text-poeira">
+            A ficha fica guardada aqui no navegador.{" "}
+            <Link href="/entrar?next=/fichas/pathfinder" className="link-ficha">
+              Entre pra salvar na sua conta
+            </Link>
+            .
+          </p>
+        )}
+        <p className="m-0 text-sm text-poeira">Conteúdo de regras baseado no Pathfinder 2e (Remaster) da Paizo, uso de fã.</p>
       </div>
     </div>
   );
