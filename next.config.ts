@@ -33,6 +33,8 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
+  // Em dev, deixa abrir o site pelo celular na mesma rede Wi-Fi (http://<IP do computador>:porta).
+  allowedDevOrigins: ["192.168.*.*", "10.*.*.*"],
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

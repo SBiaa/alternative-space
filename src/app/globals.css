@@ -27,6 +27,7 @@
   --font-titulo: var(--font-space-grotesk), system-ui, sans-serif;
   --font-texto: var(--font-space-grotesk), system-ui, sans-serif;
   --font-ficha: var(--font-space-mono), ui-monospace, monospace;
+  --font-diario: var(--font-fredoka), system-ui, sans-serif;
 
   /* Nomes antigos mantidos; agora são sombras suaves. */
   --shadow-duro: 0 10px 30px rgb(0 0 0 / 0.25);
@@ -207,6 +208,69 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn { transition: none; }
+}
+
+/* Diário de Bordo: "ficha de missão" do planner impresso. */
+@layer components {
+  .diario {
+    background-color: #f6f0d6;
+    background-image: radial-gradient(rgb(1 18 30 / 0.16) 1px, transparent 1.2px);
+    background-size: 16px 16px;
+    color: #01121e;
+  }
+  .diario :focus-visible {
+    outline: 3px solid #093f7a;
+    outline-offset: 2px;
+  }
+  .diario-titulo {
+    font-family: var(--font-diario);
+    font-weight: 600;
+    line-height: 1.05;
+  }
+  .ficha-caixa {
+    background: #fff;
+    border: 2px solid #01121e;
+    border-radius: 10px;
+  }
+  .ficha-rotulo {
+    font-family: var(--font-ficha);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ficha-campo {
+    min-height: 44px;
+    border: 2px solid #01121e;
+    border-radius: 8px;
+    background: #fff;
+    padding: 0.5rem 0.75rem;
+    color: #01121e;
+  }
+  .ficha-botao {
+    min-height: 44px;
+    border: 2px solid #01121e;
+    border-radius: 8px;
+    background: #01121e;
+    color: #f6f0d6;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-diario);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .ficha-botao-claro {
+    background: #fff;
+    color: #01121e;
+  }
+  .ficha-botao:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+  .ficha-check {
+    width: 24px;
+    height: 24px;
+    accent-color: #01121e;
+    cursor: pointer;
+  }
 }
 
 /* Fichas: campos numéricos sem as setinhas do navegador (o seletor tem botões próprios). */

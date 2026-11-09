@@ -33,6 +33,12 @@ async function Editar() {
       <PerfilForm name={user.name} apelido={perfil.apelido} cor={perfil.cor} image={user.image ?? null} avatares={avataresDe(saved)} cores={CORES} />
       <p className="font-ficha text-sm text-neutro">E-mail da conta: {user.email}</p>
       <SenhaForm />
+      <div className="painel flex flex-col gap-2 p-6">
+        <h2 className="font-titulo text-xl font-bold">Seus dados</h2>
+        <p>Um arquivo com tudo o que guardamos de você: perfil, quizzes, recordes e o Diário de Bordo.</p>
+        {/* Link comum (não <Link>): é um download, não uma página. */}
+        <a href="/conta/dados" download className="btn btn-contorno self-start">Baixar meus dados</a>
+      </div>
       <ApagarContaForm />
     </>
   );

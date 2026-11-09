@@ -9,6 +9,7 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
+    "seed:diario": "node --env-file-if-exists=.env.local scripts/seed-diario.mjs",
     "fichas:sr5:data": "tsx scripts/fichas-sr5/index.ts"
   },
   "dependencies": {

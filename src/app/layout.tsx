@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Space_Mono } from "next/font/google";
+import { Fredoka, Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -8,6 +8,8 @@ import { site } from "@/config/site";
 
 const spaceGrotesk = Space_Grotesk({ variable: "--font-space-grotesk", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const spaceMono = Space_Mono({ variable: "--font-space-mono", subsets: ["latin"], weight: ["400", "700"] });
+// Títulos do Diário de Bordo.
+const fredoka = Fredoka({ variable: "--font-fredoka", subsets: ["latin"], weight: ["500", "600", "700"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}>
+    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${spaceMono.variable} ${fredoka.variable} antialiased`}>
       {/* No celular sobra espaço no pé pra barra de abas fixa não cobrir o rodapé. */}
       <body className="relative flex min-h-screen flex-col overflow-x-hidden pb-20 lg:pb-0">
         <Ceu />
