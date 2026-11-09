@@ -1188,7 +1188,8 @@ export function hud(ctx: Ctx, e: Estado, recorde: number, fonte: string) {
   }
 }
 
-export function aviso(ctx: Ctx, e: Estado, fonte: string) {
+// pilula: o lembrete "Segura pra concentrar chakra" no pé da cena (com o celular em pé, quem avisa é o botão).
+export function aviso(ctx: Ctx, e: Estado, fonte: string, pilula = true) {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.strokeStyle = NOITE;
@@ -1228,7 +1229,7 @@ export function aviso(ctx: Ctx, e: Estado, fonte: string) {
     }
     ctx.restore();
   }
-  if (e.status === "pronto") {
+  if (pilula && e.status === "pronto") {
     const txt = "Segura pra concentrar chakra";
     ctx.font = `700 17px ${fonte}`;
     const w = ctx.measureText(txt).width + 36;
