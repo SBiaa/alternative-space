@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chummer>
+  <lifestyles>
+    <lifestyle><id>ls-low</id><name>Low</name><cost>2000</cost><dice>3</dice><multiplier>40</multiplier><source>SR5</source><page>369</page></lifestyle>
+    <lifestyle><id>ls-street</id><name>Street</name><cost>0</cost><dice>1</dice><multiplier>20</multiplier><source>SR5</source><page>369</page></lifestyle>
+    <lifestyle><id>ls-hidden</id><name>Hidden</name><cost>10</cost><source>SR5</source><hide /></lifestyle>
+    <lifestyle><id>ls-rf</id><name>Bolt Hole</name><cost>1000</cost><source>RF</source><page>222</page></lifestyle>
+  </lifestyles>
+</chummer>

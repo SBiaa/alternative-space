@@ -1,0 +1,3629 @@
+[
+  {
+    "id": "68cfe94a-fa7e-4129-a9b9-b5d73e3ced99",
+    "name": "Ambidextrous",
+    "namePt": "Ambidestria",
+    "source": "SR5",
+    "page": 71,
+    "kind": "positive",
+    "karma": 4,
+    "maxRating": 1,
+    "limitExpr": "{arm} - 1",
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "5b19dbcd-fb69-4a02-a25a-7ac5342ca576",
+    "name": "Analytical Mind",
+    "namePt": "Mente Analítica",
+    "source": "SR5",
+    "page": 72,
+    "kind": "positive",
+    "karma": 5,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "skillattribute"
+      }
+    ]
+  },
+  {
+    "id": "58e3d62a-2073-4af5-b8e0-00c446b3a5ab",
+    "name": "Aptitude",
+    "namePt": "Aptidão",
+    "source": "SR5",
+    "page": 72,
+    "kind": "positive",
+    "karma": 14,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "chooseSkillMax",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "7d81f676-e523-4ec6-ae98-8d801f90b031",
+    "name": "Astral Chameleon",
+    "namePt": "Camaleão Astral",
+    "source": "SR5",
+    "page": 72,
+    "kind": "positive",
+    "karma": 10,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "94a09a8d-d582-44f0-9f2c-71f7ba94e767",
+          "name": "Astral Beacon"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "metatype",
+          "id": "8768ec05-4fbb-43ae-b3ba-94ba57610069",
+          "name": "Centaur"
+        },
+        {
+          "type": "metatype",
+          "id": "6d59c1ff-d79a-4f14-8578-3c4c790f2d52",
+          "name": "Naga"
+        },
+        {
+          "type": "metatype",
+          "id": "2f51fff5-131a-465d-b054-b64d54059f28",
+          "name": "Pixie"
+        },
+        {
+          "type": "metatype",
+          "id": "7a096dc7-b1cb-4df8-b17e-9f28bf8f6d99",
+          "name": "Sasquatch"
+        },
+        {
+          "type": "quality",
+          "id": "55247bdc-c313-4614-ae15-5012308096ff",
+          "name": "Adept"
+        },
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        },
+        {
+          "type": "quality",
+          "id": "818bfd22-7dec-4e50-8189-7fed09fbcfed",
+          "name": "Infected: Mutaqua"
+        },
+        {
+          "type": "quality",
+          "id": "39a8e176-ddbf-470e-84a0-ba25ccd92ca0",
+          "name": "Infected: Nosferatu"
+        },
+        {
+          "type": "quality",
+          "id": "652948f9-e629-4dea-bd13-776dd41ca6a1",
+          "name": "Infected: Wendigo"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "c734e46a-d391-45a6-b022-6f18db5019f1",
+    "name": "Bilingual",
+    "namePt": "Bilíngue",
+    "source": "SR5",
+    "page": 72,
+    "kind": "positive",
+    "karma": 5,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": true,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "nativelanguagelimit"
+      }
+    ]
+  },
+  {
+    "id": "9cffd452-8489-48d5-888c-ac35459d9174",
+    "name": "Blandness",
+    "namePt": "Cara Genérica",
+    "source": "SR5",
+    "page": 72,
+    "kind": "positive",
+    "karma": 8,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "a030d7e2-755b-4f71-b848-ad9772fba242",
+          "name": "Distinctive Style"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "id": "84305e09-f8d5-4a82-8257-0119b8c3f926",
+    "name": "Catlike",
+    "namePt": "Felino",
+    "source": "SR5",
+    "page": 72,
+    "kind": "positive",
+    "karma": 7,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "specificskill"
+      }
+    ]
+  },
+  {
+    "id": "41cc3e26-ae55-4e28-bd6a-b08866c21424",
+    "name": "Codeslinger",
+    "namePt": "Programador Rápido",
+    "source": "SR5",
+    "page": 72,
+    "kind": "positive",
+    "karma": 10,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "actiondicepool"
+      }
+    ]
+  },
+  {
+    "id": "db579224-99c7-48e0-84ab-77a987a84f4a",
+    "name": "Double-Jointed",
+    "namePt": "Ultraflexibilidade",
+    "source": "SR5",
+    "page": 72,
+    "kind": "positive",
+    "karma": 6,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "specificskill"
+      }
+    ]
+  },
+  {
+    "id": "2ac8a95a-a4d0-4bef-a2f2-dcde020258cf",
+    "name": "Exceptional Attribute",
+    "namePt": "Atributo Excepcional",
+    "source": "SR5",
+    "page": 72,
+    "kind": "positive",
+    "karma": 14,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "78f7456d-78b8-461e-a2b2-bd0d63c48712",
+          "name": "Lucky"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "chooseAttributeMax",
+        "delta": 1,
+        "exclude": [
+          "EDG"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "9f25cc0a-c47c-49dd-953c-8fe60628bae8",
+    "name": "First Impression",
+    "namePt": "Primeira Impressão",
+    "source": "SR5",
+    "page": 74,
+    "kind": "positive",
+    "karma": 11,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": -1
+      },
+      {
+        "type": "other",
+        "tag": "skillcategory"
+      }
+    ]
+  },
+  {
+    "id": "4d5c22b9-4908-493d-a6f7-4ccc3066888c",
+    "name": "Focused Concentration",
+    "namePt": "Concentração Focada",
+    "source": "SR5",
+    "page": 74,
+    "kind": "positive",
+    "karma": 4,
+    "maxRating": 6,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "power",
+          "name": "Adept Spell"
+        },
+        {
+          "type": "quality",
+          "id": "742caf46-a10b-4aa1-a6bc-a53feb99748c",
+          "name": "Barehanded Adept"
+        },
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        },
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c4b35412-bd91-45b4-b428-29da7edd5ff4",
+          "name": "Technomancer"
+        },
+        {
+          "type": "quality",
+          "id": "818bfd22-7dec-4e50-8189-7fed09fbcfed",
+          "name": "Infected: Mutaqua"
+        },
+        {
+          "type": "quality",
+          "id": "39a8e176-ddbf-470e-84a0-ba25ccd92ca0",
+          "name": "Infected: Nosferatu"
+        },
+        {
+          "type": "quality",
+          "id": "652948f9-e629-4dea-bd13-776dd41ca6a1",
+          "name": "Infected: Wendigo"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "5c18a150-8e38-4f6d-b4f5-b1b674a3581e",
+    "name": "Gearhead",
+    "namePt": "Piloto Nato",
+    "source": "SR5",
+    "page": 74,
+    "kind": "positive",
+    "karma": 11,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "0d0cb0fc-c79d-418e-9216-8a197369e52d",
+    "name": "Guts",
+    "namePt": "Coragem",
+    "source": "SR5",
+    "page": 74,
+    "kind": "positive",
+    "karma": 10,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "b7866fb4-3747-4caf-9240-69cbdd79ce78",
+    "name": "High Pain Tolerance",
+    "namePt": "Alto Limiar de Dor",
+    "source": "SR5",
+    "page": 74,
+    "kind": "positive",
+    "karma": 7,
+    "maxRating": 3,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "bioware",
+          "name": "Damage Compensators"
+        },
+        {
+          "type": "bioware",
+          "name": "Damage Compensators (2050)"
+        },
+        {
+          "type": "power",
+          "name": "Pain Resistance"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "conditionMonitor",
+        "field": "thresholdOffset",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "823eb204-c155-45a9-bb9a-98dcbe17a707",
+    "name": "Home Ground",
+    "namePt": "Terreno Familiar",
+    "source": "SR5",
+    "page": 74,
+    "kind": "positive",
+    "karma": 10,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "2844e64e-f271-4ca7-bd58-0860b2db56c9",
+    "name": "Human-Looking",
+    "namePt": "Aparência Humana",
+    "source": "SR5",
+    "page": 75,
+    "kind": "positive",
+    "karma": 6,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "metatype",
+          "id": "b3259991-b315-4dbe-ae3c-51f71a1116e2",
+          "name": "Elf"
+        },
+        {
+          "type": "metatype",
+          "id": "08f2c9cc-f9f8-4f1a-9efb-63555af71788",
+          "name": "Dwarf"
+        },
+        {
+          "type": "metatype",
+          "id": "8ed6892f-88e6-42d0-a704-b805778ec13e",
+          "name": "Ork"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "0f3a0971-1cc5-47d6-a32d-d098ecdfb4d9",
+    "name": "Indomitable (Mental)",
+    "namePt": "Indomável (Mental)",
+    "source": "SR5",
+    "page": 75,
+    "kind": "positive",
+    "karma": 8,
+    "maxRating": 3,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "limit",
+        "limit": "mental",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "58e6a651-cdd7-4144-a2cc-4cee24526e92",
+    "name": "Indomitable (Physical)",
+    "namePt": "Indomável (Físico)",
+    "source": "SR5",
+    "page": 75,
+    "kind": "positive",
+    "karma": 8,
+    "maxRating": 3,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "limit",
+        "limit": "physical",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "b9f1dbeb-1728-4250-a066-4773f758fe6a",
+    "name": "Indomitable (Social)",
+    "namePt": "Indomável (Social)",
+    "source": "SR5",
+    "page": 75,
+    "kind": "positive",
+    "karma": 8,
+    "maxRating": 3,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "limit",
+        "limit": "social",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "27c7ea84-bfe4-47e1-8382-38d9a5c8e680",
+    "name": "Juryrigger",
+    "namePt": "Gambiarra",
+    "source": "SR5",
+    "page": 75,
+    "kind": "positive",
+    "karma": 10,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "skillcategory"
+      }
+    ]
+  },
+  {
+    "id": "78f7456d-78b8-461e-a2b2-bd0d63c48712",
+    "name": "Lucky",
+    "namePt": "Sortudo",
+    "source": "SR5",
+    "page": 76,
+    "kind": "positive",
+    "karma": 12,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "2ac8a95a-a4d0-4bef-a2f2-dcde020258cf",
+          "name": "Exceptional Attribute"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": -1
+      },
+      {
+        "type": "attributeMax",
+        "attr": "EDG",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "f80ef6fc-e844-441c-81e3-b1264b34a4e7",
+    "name": "Magic Resistance",
+    "namePt": "Resistência Mágica",
+    "source": "SR5",
+    "page": 76,
+    "kind": "positive",
+    "karma": 6,
+    "maxRating": 4,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "metatype",
+          "id": "6d59c1ff-d79a-4f14-8578-3c4c790f2d52",
+          "name": "Naga"
+        },
+        {
+          "type": "metatype",
+          "id": "2f51fff5-131a-465d-b054-b64d54059f28",
+          "name": "Pixie"
+        },
+        {
+          "type": "metatype",
+          "id": "8768ec05-4fbb-43ae-b3ba-94ba57610069",
+          "name": "Centaur"
+        },
+        {
+          "type": "metatype",
+          "id": "7a096dc7-b1cb-4df8-b17e-9f28bf8f6d99",
+          "name": "Sasquatch"
+        },
+        {
+          "type": "metatypeCategory",
+          "name": "Shapeshifter"
+        },
+        {
+          "type": "quality",
+          "id": "55247bdc-c313-4614-ae15-5012308096ff",
+          "name": "Adept"
+        },
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        },
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        },
+        {
+          "type": "quality",
+          "id": "818bfd22-7dec-4e50-8189-7fed09fbcfed",
+          "name": "Infected: Mutaqua"
+        },
+        {
+          "type": "quality",
+          "id": "39a8e176-ddbf-470e-84a0-ba25ccd92ca0",
+          "name": "Infected: Nosferatu"
+        },
+        {
+          "type": "quality",
+          "id": "652948f9-e629-4dea-bd13-776dd41ca6a1",
+          "name": "Infected: Wendigo"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "spellresistance"
+      }
+    ]
+  },
+  {
+    "id": "ced3fecf-2277-4b20-b1e0-894162ca9ae2",
+    "name": "Mentor Spirit",
+    "namePt": "Espírito Mentor",
+    "source": "SR5",
+    "page": 76,
+    "kind": "positive",
+    "karma": 5,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "55247bdc-c313-4614-ae15-5012308096ff",
+          "name": "Adept"
+        },
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "225f0d31-8c03-4283-9a22-558ab01a6c47",
+    "name": "Natural Athlete",
+    "namePt": "Atleta Natural",
+    "source": "SR5",
+    "page": 76,
+    "kind": "positive",
+    "karma": 7,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "specificskill"
+      },
+      {
+        "type": "other",
+        "tag": "specificskill"
+      }
+    ]
+  },
+  {
+    "id": "52648a83-1d2a-4b04-b7fc-ee5a62bce4f7",
+    "name": "Natural Hardening",
+    "namePt": "Endurecimento Natural",
+    "source": "SR5",
+    "page": 76,
+    "kind": "positive",
+    "karma": 10,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "8d558134-210d-4c96-b487-021a44409075",
+    "name": "Natural Immunity (Natural)",
+    "namePt": "Imunidade Natural (Natural)",
+    "source": "SR5",
+    "page": 76,
+    "kind": "positive",
+    "karma": 4,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "0a7bcb95-dd9c-4e3e-ab0a-291a352ac1d4",
+          "name": "Weak Immune System"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "ce7634aa-0729-423d-bc38-d6f56416b904",
+    "name": "Natural Immunity (Synthetic)",
+    "namePt": "Imunidade Natural (Sintética)",
+    "source": "SR5",
+    "page": 76,
+    "kind": "positive",
+    "karma": 10,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "0a7bcb95-dd9c-4e3e-ab0a-291a352ac1d4",
+          "name": "Weak Immune System"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "9d3be1d9-1309-45e7-8bd9-1f5a3ede3522",
+    "name": "Photographic Memory",
+    "namePt": "Memória Fotográfica",
+    "source": "SR5",
+    "page": 76,
+    "kind": "positive",
+    "karma": 6,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "memory"
+      }
+    ]
+  },
+  {
+    "id": "291efdb6-a8b8-49ce-b2be-72f9d3f8a243",
+    "name": "Quick Healer",
+    "namePt": "Curandeiro Rápido",
+    "source": "SR5",
+    "page": 77,
+    "kind": "positive",
+    "karma": 3,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "0ebdfce5-c613-4fd9-9763-cae2d21c2153",
+          "name": "Uncanny Healer"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "physicalcmrecovery"
+      },
+      {
+        "type": "other",
+        "tag": "spelldicepool"
+      },
+      {
+        "type": "other",
+        "tag": "stuncmrecovery"
+      }
+    ]
+  },
+  {
+    "id": "e160111a-5fe3-4154-9d5a-82330c9b32fc",
+    "name": "Resistance to Pathogens",
+    "namePt": "Resistência a Patogênicos",
+    "source": "SR5",
+    "page": 77,
+    "kind": "positive",
+    "karma": 4,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "5c022754-f7cf-479f-80b2-de8454fd76e4",
+          "name": "Resistance to Pathogens and Toxins"
+        },
+        {
+          "type": "quality",
+          "id": "0a7bcb95-dd9c-4e3e-ab0a-291a352ac1d4",
+          "name": "Weak Immune System"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "pathogencontactresist"
+      },
+      {
+        "type": "other",
+        "tag": "pathogeningestionresist"
+      },
+      {
+        "type": "other",
+        "tag": "pathogeninhalationresist"
+      },
+      {
+        "type": "other",
+        "tag": "pathogeninjectionresist"
+      }
+    ]
+  },
+  {
+    "id": "c74c9ed8-a917-4809-9e8a-5717dd16619b",
+    "name": "Resistance to Toxins",
+    "namePt": "Resistência a Toxinas",
+    "source": "SR5",
+    "page": 77,
+    "kind": "positive",
+    "karma": 4,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "5c022754-f7cf-479f-80b2-de8454fd76e4",
+          "name": "Resistance to Pathogens and Toxins"
+        },
+        {
+          "type": "quality",
+          "id": "0a7bcb95-dd9c-4e3e-ab0a-291a352ac1d4",
+          "name": "Weak Immune System"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "toxincontactresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxiningestionresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxininhalationresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxininjectionresist"
+      }
+    ]
+  },
+  {
+    "id": "139ca69c-e9d3-4540-a4c6-b8c778e70185",
+    "name": "Resistance to Pathogens/Toxins",
+    "namePt": "Resistência a Patogênicos/Toxinas",
+    "source": "SR5",
+    "page": 66,
+    "kind": "positive",
+    "karma": 8,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": true,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "pathogencontactresist"
+      },
+      {
+        "type": "other",
+        "tag": "pathogeningestionresist"
+      },
+      {
+        "type": "other",
+        "tag": "pathogeninhalationresist"
+      },
+      {
+        "type": "other",
+        "tag": "pathogeninjectionresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxincontactresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxiningestionresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxininhalationresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxininjectionresist"
+      }
+    ]
+  },
+  {
+    "id": "5c022754-f7cf-479f-80b2-de8454fd76e4",
+    "name": "Resistance to Pathogens and Toxins",
+    "namePt": "Resistência a Patogênicos e Toxinas",
+    "source": "SR5",
+    "page": 77,
+    "kind": "positive",
+    "karma": 8,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "e160111a-5fe3-4154-9d5a-82330c9b32fc",
+          "name": "Resistance to Pathogens"
+        },
+        {
+          "type": "quality",
+          "id": "c74c9ed8-a917-4809-9e8a-5717dd16619b",
+          "name": "Resistance to Toxins"
+        },
+        {
+          "type": "quality",
+          "id": "0a7bcb95-dd9c-4e3e-ab0a-291a352ac1d4",
+          "name": "Weak Immune System"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "pathogencontactresist"
+      },
+      {
+        "type": "other",
+        "tag": "pathogeningestionresist"
+      },
+      {
+        "type": "other",
+        "tag": "pathogeninhalationresist"
+      },
+      {
+        "type": "other",
+        "tag": "pathogeninjectionresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxincontactresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxiningestionresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxininhalationresist"
+      },
+      {
+        "type": "other",
+        "tag": "toxininjectionresist"
+      }
+    ]
+  },
+  {
+    "id": "c067baa6-0dfa-4783-a0c8-0873564f0308",
+    "name": "Spirit Affinity",
+    "namePt": "Afinidade Espiritual",
+    "source": "SR5",
+    "page": 77,
+    "kind": "positive",
+    "karma": 7,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        },
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        },
+        {
+          "type": "quality",
+          "id": "818bfd22-7dec-4e50-8189-7fed09fbcfed",
+          "name": "Infected: Mutaqua"
+        },
+        {
+          "type": "quality",
+          "id": "39a8e176-ddbf-470e-84a0-ba25ccd92ca0",
+          "name": "Infected: Nosferatu"
+        },
+        {
+          "type": "quality",
+          "id": "652948f9-e629-4dea-bd13-776dd41ca6a1",
+          "name": "Infected: Wendigo"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "chooseText"
+      },
+      {
+        "type": "other",
+        "tag": "specificskill"
+      }
+    ]
+  },
+  {
+    "id": "00cc6499-db13-447e-8116-278d317a9e31",
+    "name": "Toughness",
+    "namePt": "Vitalidade",
+    "source": "SR5",
+    "page": 77,
+    "kind": "positive",
+    "karma": 9,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "damageresistance"
+      }
+    ]
+  },
+  {
+    "id": "18d2a522-6460-4654-916b-a96631f11323",
+    "name": "Will to Live",
+    "namePt": "Desejo de Viver",
+    "source": "SR5",
+    "page": 77,
+    "kind": "positive",
+    "karma": 3,
+    "maxRating": 3,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "conditionMonitor",
+        "field": "overflow",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "8ec5c9bb-aeb9-42f2-a436-a60f764adfe4",
+    "name": "Low-Light Vision",
+    "namePt": "Visão na Penumbra",
+    "source": "SR5",
+    "page": 66,
+    "kind": "positive",
+    "karma": 4,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": true,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "02e76a38-304e-4a0e-93a3-ad2938306afc",
+    "name": "Thermographic Vision",
+    "namePt": "Visão Termográfica",
+    "source": "SR5",
+    "page": 66,
+    "kind": "positive",
+    "karma": 3,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": true,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "0e741331-d776-4be8-abc5-4101228abdef",
+    "name": "Magician",
+    "namePt": "Mago",
+    "source": "SR5",
+    "page": 69,
+    "kind": "positive",
+    "karma": 30,
+    "maxRating": 1,
+    "countsTowardLimit": false,
+    "onlyFromPriority": true,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "55247bdc-c313-4614-ae15-5012308096ff",
+          "name": "Adept"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        },
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "enableAttribute",
+        "attr": "MAG"
+      },
+      {
+        "type": "other",
+        "tag": "enabletab"
+      },
+      {
+        "type": "other",
+        "tag": "unlockskills"
+      }
+    ]
+  },
+  {
+    "id": "55247bdc-c313-4614-ae15-5012308096ff",
+    "name": "Adept",
+    "namePt": "Adepto",
+    "source": "SR5",
+    "page": 69,
+    "kind": "positive",
+    "karma": 20,
+    "maxRating": 1,
+    "countsTowardLimit": false,
+    "onlyFromPriority": true,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        },
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "blockspelldescriptor"
+      },
+      {
+        "type": "enableAttribute",
+        "attr": "MAG"
+      },
+      {
+        "type": "other",
+        "tag": "enabletab"
+      },
+      {
+        "type": "other",
+        "tag": "limitspellcategory"
+      },
+      {
+        "type": "other",
+        "tag": "unlockskills"
+      }
+    ]
+  },
+  {
+    "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+    "name": "Mystic Adept",
+    "namePt": "Adepto Místico",
+    "source": "SR5",
+    "page": 69,
+    "kind": "positive",
+    "karma": 35,
+    "maxRating": 1,
+    "countsTowardLimit": false,
+    "onlyFromPriority": true,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "55247bdc-c313-4614-ae15-5012308096ff",
+          "name": "Adept"
+        },
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "enableAttribute",
+        "attr": "MAG"
+      },
+      {
+        "type": "other",
+        "tag": "enabletab"
+      },
+      {
+        "type": "other",
+        "tag": "unlockskills"
+      }
+    ]
+  },
+  {
+    "id": "c4b35412-bd91-45b4-b428-29da7edd5ff4",
+    "name": "Technomancer",
+    "namePt": "Tecnomante",
+    "source": "SR5",
+    "page": 69,
+    "kind": "positive",
+    "karma": 15,
+    "maxRating": 1,
+    "countsTowardLimit": false,
+    "onlyFromPriority": true,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "e132257f-14d8-4e5a-9f20-ae6af29649d5",
+          "name": "Latent Dracomorphosis"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "addgear"
+      },
+      {
+        "type": "enableAttribute",
+        "attr": "RES"
+      },
+      {
+        "type": "other",
+        "tag": "enabletab"
+      },
+      {
+        "type": "other",
+        "tag": "unlockskills"
+      },
+      {
+        "type": "other",
+        "tag": "specificskill"
+      }
+    ]
+  },
+  {
+    "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+    "name": "Aspected Magician",
+    "namePt": "Mago Aspectado",
+    "source": "SR5",
+    "page": 69,
+    "kind": "positive",
+    "karma": 15,
+    "maxRating": 1,
+    "countsTowardLimit": false,
+    "onlyFromPriority": true,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        },
+        {
+          "type": "quality",
+          "id": "55247bdc-c313-4614-ae15-5012308096ff",
+          "name": "Adept"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "enableAttribute",
+        "attr": "MAG"
+      },
+      {
+        "type": "other",
+        "tag": "enabletab"
+      },
+      {
+        "type": "other",
+        "tag": "unlockskills"
+      }
+    ]
+  },
+  {
+    "id": "ea7cced4-a201-44a2-9a1b-e10180b1df81",
+    "name": "Addiction (Mild)",
+    "namePt": "Vício (Leve)",
+    "source": "SR5",
+    "page": 77,
+    "kind": "negative",
+    "karma": 4,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "9a52a300-4d90-4b1f-a113-d0e40a410063",
+    "name": "Addiction (Moderate)",
+    "namePt": "Vício (Moderado)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 9,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "b5fa94e6-03fb-4d00-b368-86c318f79c09",
+    "name": "Addiction (Severe)",
+    "namePt": "Vício (Severo)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 20,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "0886bbb3-f5a9-4583-bcea-d6723889c80d",
+    "name": "Addiction (Burnout)",
+    "namePt": "Vício (Esgotamento)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 25,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      },
+      {
+        "type": "other",
+        "tag": "skillcategory"
+      }
+    ]
+  },
+  {
+    "id": "b7841930-0c7b-4be4-b1cf-86debc41aa95",
+    "name": "Allergy (Uncommon, Mild)",
+    "namePt": "Alergia (Incomum, Leve)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 5,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "f3ad08be-a7a4-4965-bb38-f8db9016c94e",
+    "name": "Allergy (Uncommon, Moderate)",
+    "namePt": "Alergia (Incomum, Moderada)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "84a43000-9ae4-4391-b156-d5fbc9a092de",
+    "name": "Allergy (Uncommon, Severe)",
+    "namePt": "Alergia (Incomum, Grave)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 15,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "cfdc255a-bb46-4d9c-8960-e4181455f4e3",
+    "name": "Allergy (Uncommon, Extreme)",
+    "namePt": "Alergia (Incomum, Extrema)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 20,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "e89db285-8db9-4a9c-80cb-94d87b86a80b",
+    "name": "Allergy (Common, Mild)",
+    "namePt": "Alergia (Comum, Leve)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "90188ca7-0ccb-4198-b199-dcf33e029d74",
+    "name": "Allergy (Common, Moderate)",
+    "namePt": "Alergia (Comum, Moderada)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 15,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "df14fb6e-456d-4d24-83e8-b1c97576dce2",
+    "name": "Allergy (Common, Severe)",
+    "namePt": "Alergia (Comum, Grave)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 20,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "8a40007a-9876-4998-a7c9-047248cfbc52",
+    "name": "Allergy (Common, Extreme)",
+    "namePt": "Alergia (Comum, Extrema)",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 25,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "94a09a8d-d582-44f0-9f2c-71f7ba94e767",
+    "name": "Astral Beacon",
+    "namePt": "Farol Astral",
+    "source": "SR5",
+    "page": 78,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "7d81f676-e523-4ec6-ae98-8d801f90b031",
+          "name": "Astral Chameleon"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "metatype",
+          "id": "8768ec05-4fbb-43ae-b3ba-94ba57610069",
+          "name": "Centaur"
+        },
+        {
+          "type": "metatype",
+          "id": "6d59c1ff-d79a-4f14-8578-3c4c790f2d52",
+          "name": "Naga"
+        },
+        {
+          "type": "metatype",
+          "id": "2f51fff5-131a-465d-b054-b64d54059f28",
+          "name": "Pixie"
+        },
+        {
+          "type": "metatype",
+          "id": "7a096dc7-b1cb-4df8-b17e-9f28bf8f6d99",
+          "name": "Sasquatch"
+        },
+        {
+          "type": "quality",
+          "id": "55247bdc-c313-4614-ae15-5012308096ff",
+          "name": "Adept"
+        },
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        },
+        {
+          "type": "quality",
+          "id": "818bfd22-7dec-4e50-8189-7fed09fbcfed",
+          "name": "Infected: Mutaqua"
+        },
+        {
+          "type": "quality",
+          "id": "39a8e176-ddbf-470e-84a0-ba25ccd92ca0",
+          "name": "Infected: Nosferatu"
+        },
+        {
+          "type": "quality",
+          "id": "652948f9-e629-4dea-bd13-776dd41ca6a1",
+          "name": "Infected: Wendigo"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "bc5f41ca-1549-4367-9c12-afa403182f8c",
+    "name": "Bad Luck",
+    "namePt": "Azar",
+    "source": "SR5",
+    "page": 79,
+    "kind": "negative",
+    "karma": 12,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "25356bae-efcc-46c6-9c4f-66909b9b7233",
+    "name": "Bad Rep",
+    "namePt": "Má Reputação",
+    "source": "SR5",
+    "page": 79,
+    "kind": "negative",
+    "karma": 7,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 3
+      }
+    ]
+  },
+  {
+    "id": "dda02333-10e3-4295-9392-691ff3a7bd4a",
+    "name": "Code of Honor",
+    "namePt": "Código de Honra",
+    "source": "SR5",
+    "page": 79,
+    "kind": "negative",
+    "karma": 15,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "86b259fd-17c8-4ae5-b246-49782e7c5047",
+    "name": "Codeblock",
+    "namePt": "Bloqueio de Código",
+    "source": "SR5",
+    "page": 80,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "62c7ed8f-b534-41e3-84ac-29534826d476",
+    "name": "Combat Paralysis",
+    "namePt": "Paralisia de Combate",
+    "source": "SR5",
+    "page": 80,
+    "kind": "negative",
+    "karma": 12,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      },
+      {
+        "type": "other",
+        "tag": "surprise"
+      }
+    ]
+  },
+  {
+    "id": "2b9a495d-b735-416b-a000-f648c3b4191a",
+    "name": "Dependent (Nuisance)",
+    "namePt": "Dependente (Irritação)",
+    "source": "SR5",
+    "page": 80,
+    "kind": "negative",
+    "karma": 3,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "cc857826-3bb2-466d-987b-7d56a337bc08",
+          "name": "Dependent (Inconvenience)"
+        },
+        {
+          "type": "quality",
+          "id": "066a2de9-1717-44ca-a8c6-90366890574a",
+          "name": "Dependent (Demanding)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "lifestyleCostPct",
+        "delta": 10
+      }
+    ]
+  },
+  {
+    "id": "cc857826-3bb2-466d-987b-7d56a337bc08",
+    "name": "Dependent (Inconvenience)",
+    "namePt": "Dependente (Inconveniência)",
+    "source": "SR5",
+    "page": 80,
+    "kind": "negative",
+    "karma": 6,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "2b9a495d-b735-416b-a000-f648c3b4191a",
+          "name": "Dependent (Nuisance)"
+        },
+        {
+          "type": "quality",
+          "id": "066a2de9-1717-44ca-a8c6-90366890574a",
+          "name": "Dependent (Demanding)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "lifestyleCostPct",
+        "delta": 20
+      }
+    ]
+  },
+  {
+    "id": "066a2de9-1717-44ca-a8c6-90366890574a",
+    "name": "Dependent (Demanding)",
+    "namePt": "Dependente (Imposição)",
+    "source": "SR5",
+    "page": 80,
+    "kind": "negative",
+    "karma": 9,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "2b9a495d-b735-416b-a000-f648c3b4191a",
+          "name": "Dependent (Nuisance)"
+        },
+        {
+          "type": "quality",
+          "id": "cc857826-3bb2-466d-987b-7d56a337bc08",
+          "name": "Dependent (Inconvenience)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "lifestyleCostPct",
+        "delta": 30
+      }
+    ]
+  },
+  {
+    "id": "a030d7e2-755b-4f71-b848-ad9772fba242",
+    "name": "Distinctive Style",
+    "namePt": "Estilo Distinto",
+    "source": "SR5",
+    "page": 80,
+    "kind": "negative",
+    "karma": 5,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "9cffd452-8489-48d5-888c-ac35459d9174",
+          "name": "Blandness"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "7036225b-d0f0-4c86-85b7-cc4d46943113",
+    "name": "Elf Poser",
+    "namePt": "Elfo Poser",
+    "source": "SR5",
+    "page": 81,
+    "kind": "negative",
+    "karma": 6,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": [
+        {
+          "type": "metatype",
+          "id": "a53d885d-a4a4-443d-b6a6-b0a55b0a96c7",
+          "name": "Human"
+        }
+      ]
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "de12b672-f60a-486d-85f6-b94a80a058da",
+    "name": "Gremlins",
+    "namePt": "Gremlins",
+    "source": "SR5",
+    "page": 81,
+    "kind": "negative",
+    "karma": 4,
+    "maxRating": 4,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "216290b9-053d-4f6d-81c9-d1fe8ae346be",
+    "name": "Incompetent",
+    "namePt": "Incompetente",
+    "source": "SR5",
+    "page": 81,
+    "kind": "negative",
+    "karma": 5,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "0cf25fda-725b-49fd-a8cf-de589e938065",
+    "name": "Insomnia (Basic)",
+    "namePt": "Insônia (Básica)",
+    "source": "SR5",
+    "page": 81,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "149e6bf7-a6b4-4893-b755-4d983372079c",
+          "name": "Insomnia (Full)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "149e6bf7-a6b4-4893-b755-4d983372079c",
+    "name": "Insomnia (Full)",
+    "namePt": "Insônia (Completa)",
+    "source": "SR5",
+    "page": 81,
+    "kind": "negative",
+    "karma": 15,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "0cf25fda-725b-49fd-a8cf-de589e938065",
+          "name": "Insomnia (Basic)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "c9cd05ad-cd3c-451e-8285-e0fb1d95ebc1",
+    "name": "Loss of Confidence",
+    "namePt": "Perda de Confiança",
+    "source": "SR5",
+    "page": 82,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "chooseSkillMax",
+        "delta": 0
+      }
+    ]
+  },
+  {
+    "id": "9ba327d2-38c5-4a25-ae44-25e98f0bbf03",
+    "name": "Low Pain Tolerance",
+    "namePt": "Baixo Limiar de Dor",
+    "source": "SR5",
+    "page": 82,
+    "kind": "negative",
+    "karma": 9,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "conditionMonitor",
+        "field": "threshold",
+        "delta": -1
+      }
+    ]
+  },
+  {
+    "id": "075447a2-5730-4750-a19f-1a5c6086903d",
+    "name": "Ork Poser",
+    "namePt": "Ork Poser",
+    "source": "SR5",
+    "page": 82,
+    "kind": "negative",
+    "karma": 6,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "metatype",
+          "id": "a53d885d-a4a4-443d-b6a6-b0a55b0a96c7",
+          "name": "Human"
+        },
+        {
+          "type": "metatype",
+          "id": "b3259991-b315-4dbe-ae3c-51f71a1116e2",
+          "name": "Elf"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "d6843e67-0837-4353-a5db-f4c320560ddb",
+    "name": "Prejudiced (Common, Biased)",
+    "namePt": "Preconceituoso (Comum, Inclinado)",
+    "source": "SR5",
+    "page": 82,
+    "kind": "negative",
+    "karma": 5,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "9a76f104-a472-4b6a-b5b7-a8f5248f65a9",
+    "name": "Prejudiced (Common, Outspoken)",
+    "namePt": "Preconceituoso (Comum, Aberto)",
+    "source": "SR5",
+    "page": 82,
+    "kind": "negative",
+    "karma": 7,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "1dc88694-8519-4fb0-b8c9-c5a823084730",
+    "name": "Prejudiced (Common, Radical)",
+    "namePt": "Preconceituoso (Comum, Radical)",
+    "source": "SR5",
+    "page": 82,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "b0640207-7965-4f1a-a28c-0dd5e24d2d8c",
+    "name": "Prejudiced (Specific, Biased)",
+    "namePt": "Preconceituoso (Específico, Inclinado)",
+    "source": "SR5",
+    "page": 82,
+    "kind": "negative",
+    "karma": 3,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "53ddd66b-ad89-43eb-9174-cbff6ed2a9c3",
+    "name": "Prejudiced (Specific, Outspoken)",
+    "namePt": "Preconceituoso (Específico, Aberto)",
+    "source": "SR5",
+    "page": 82,
+    "kind": "negative",
+    "karma": 5,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "100cf04a-51e5-477a-a57c-2dae699f7f04",
+    "name": "Prejudiced (Specific, Radical)",
+    "namePt": "Preconceituoso (Específico, Radical)",
+    "source": "SR5",
+    "page": 82,
+    "kind": "negative",
+    "karma": 8,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "69984296-4057-4a0f-964e-a0efb4bfc7ce",
+    "name": "Scorched",
+    "namePt": "Arrasado",
+    "source": "SR5",
+    "page": 83,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "13fd45c3-e031-4452-8bf8-31829d2401f9",
+    "name": "Sensitive System",
+    "namePt": "Sistema Sensível",
+    "source": "SR5",
+    "page": 83,
+    "kind": "negative",
+    "karma": 12,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "cyberwaretotalessmultiplier"
+      }
+    ]
+  },
+  {
+    "id": "b2210e9a-ab8a-45f9-b5db-13f6923c2d22",
+    "name": "Simsense Vertigo",
+    "namePt": "Vertigem de Sensorama",
+    "source": "SR5",
+    "page": 83,
+    "kind": "negative",
+    "karma": 5,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "e00623e1-54b0-4a91-b234-3c7e141deef4",
+    "name": "SINner (Corporate)",
+    "namePt": "SINado (Corporativo)",
+    "source": "SR5",
+    "page": 85,
+    "kind": "negative",
+    "karma": 25,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "d9479e5c-d44a-45b9-8fb4-d1e08a9487b2",
+          "name": "SINner (Criminal)"
+        },
+        {
+          "type": "quality",
+          "id": "9ac85feb-ae1e-4996-8514-3570d411e1d5",
+          "name": "SINner (National)"
+        },
+        {
+          "type": "quality",
+          "id": "318d2edd-833b-48c5-a3e1-343bf03848a5",
+          "name": "SINner (Corporate Limited)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "chooseText"
+      }
+    ]
+  },
+  {
+    "id": "9ac85feb-ae1e-4996-8514-3570d411e1d5",
+    "name": "SINner (National)",
+    "namePt": "SINado (Nacional)",
+    "source": "SR5",
+    "page": 84,
+    "kind": "negative",
+    "karma": 5,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "d9479e5c-d44a-45b9-8fb4-d1e08a9487b2",
+          "name": "SINner (Criminal)"
+        },
+        {
+          "type": "quality",
+          "id": "e00623e1-54b0-4a91-b234-3c7e141deef4",
+          "name": "SINner (Corporate)"
+        },
+        {
+          "type": "quality",
+          "id": "318d2edd-833b-48c5-a3e1-343bf03848a5",
+          "name": "SINner (Corporate Limited)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "318d2edd-833b-48c5-a3e1-343bf03848a5",
+    "name": "SINner (Corporate Limited)",
+    "namePt": "SINado (Corporativo Limitado)",
+    "source": "SR5",
+    "page": 84,
+    "kind": "negative",
+    "karma": 15,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "d9479e5c-d44a-45b9-8fb4-d1e08a9487b2",
+          "name": "SINner (Criminal)"
+        },
+        {
+          "type": "quality",
+          "id": "9ac85feb-ae1e-4996-8514-3570d411e1d5",
+          "name": "SINner (National)"
+        },
+        {
+          "type": "quality",
+          "id": "e00623e1-54b0-4a91-b234-3c7e141deef4",
+          "name": "SINner (Corporate)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "chooseText"
+      }
+    ]
+  },
+  {
+    "id": "d9479e5c-d44a-45b9-8fb4-d1e08a9487b2",
+    "name": "SINner (Criminal)",
+    "namePt": "SINado (Criminoso)",
+    "source": "SR5",
+    "page": 84,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "e00623e1-54b0-4a91-b234-3c7e141deef4",
+          "name": "SINner (Corporate)"
+        },
+        {
+          "type": "quality",
+          "id": "9ac85feb-ae1e-4996-8514-3570d411e1d5",
+          "name": "SINner (National)"
+        },
+        {
+          "type": "quality",
+          "id": "318d2edd-833b-48c5-a3e1-343bf03848a5",
+          "name": "SINner (Corporate Limited)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "8ba2830a-3f10-4877-9752-93be051b205b",
+    "name": "Social Stress",
+    "namePt": "Tensão Social",
+    "source": "SR5",
+    "page": 85,
+    "kind": "negative",
+    "karma": 8,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "40c06974-a85b-4f2b-9558-51c140c16d87",
+    "name": "Spirit Bane",
+    "namePt": "Ruína Espiritual",
+    "source": "SR5",
+    "page": 85,
+    "kind": "negative",
+    "karma": 7,
+    "maxRating": null,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "4adeb2d4-e42e-4b7a-9a5d-3df325ae59a5",
+          "name": "Aspected Magician"
+        },
+        {
+          "type": "quality",
+          "id": "a2484390-c4ea-4013-b007-4dc5d3a5c85b",
+          "name": "Enchanter"
+        },
+        {
+          "type": "quality",
+          "id": "2f20c108-d724-4684-a642-d40ffe7c51e1",
+          "name": "Explorer"
+        },
+        {
+          "type": "quality",
+          "id": "c1d4d7ec-9ebb-4e85-ae72-8155b0f27478",
+          "name": "Apprentice"
+        },
+        {
+          "type": "quality",
+          "id": "dea0e693-05c5-422d-bd1b-f1d1eac9cd30",
+          "name": "Aware"
+        },
+        {
+          "type": "quality",
+          "id": "55247bdc-c313-4614-ae15-5012308096ff",
+          "name": "Adept"
+        },
+        {
+          "type": "quality",
+          "id": "0e741331-d776-4be8-abc5-4101228abdef",
+          "name": "Magician"
+        },
+        {
+          "type": "quality",
+          "id": "9d53e1e4-3f31-40cb-bfbe-4b94f5ba757e",
+          "name": "Mystic Adept"
+        },
+        {
+          "type": "quality",
+          "id": "818bfd22-7dec-4e50-8189-7fed09fbcfed",
+          "name": "Infected: Mutaqua"
+        },
+        {
+          "type": "quality",
+          "id": "39a8e176-ddbf-470e-84a0-ba25ccd92ca0",
+          "name": "Infected: Nosferatu"
+        },
+        {
+          "type": "quality",
+          "id": "652948f9-e629-4dea-bd13-776dd41ca6a1",
+          "name": "Infected: Wendigo"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      },
+      {
+        "type": "chooseText"
+      }
+    ]
+  },
+  {
+    "id": "f0873c37-4f09-41cd-be81-88e8df5b42ae",
+    "name": "Uncouth",
+    "namePt": "Rude",
+    "source": "SR5",
+    "page": 85,
+    "kind": "negative",
+    "karma": 14,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      },
+      {
+        "type": "other",
+        "tag": "skillcategorykarmacostmultiplier"
+      },
+      {
+        "type": "other",
+        "tag": "skillcategorypointcostmultiplier"
+      },
+      {
+        "type": "other",
+        "tag": "skillgroupcategorydisable"
+      },
+      {
+        "type": "other",
+        "tag": "blockskillcategorydefaulting"
+      }
+    ]
+  },
+  {
+    "id": "d8362a78-54e9-4dbe-8388-6ba0a7b9df31",
+    "name": "Uneducated",
+    "namePt": "Inculto",
+    "source": "SR5",
+    "page": 87,
+    "kind": "negative",
+    "karma": 8,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      },
+      {
+        "type": "other",
+        "tag": "blockskillcategorydefaulting"
+      },
+      {
+        "type": "other",
+        "tag": "blockskillcategorydefaulting"
+      },
+      {
+        "type": "other",
+        "tag": "blockskillcategorydefaulting"
+      },
+      {
+        "type": "other",
+        "tag": "skillcategorykarmacostmultiplier"
+      },
+      {
+        "type": "other",
+        "tag": "skillcategorykarmacostmultiplier"
+      },
+      {
+        "type": "other",
+        "tag": "skillcategorykarmacostmultiplier"
+      },
+      {
+        "type": "other",
+        "tag": "skillcategoryspecializationkarmacostmultiplier"
+      },
+      {
+        "type": "other",
+        "tag": "skillcategoryspecializationkarmacostmultiplier"
+      },
+      {
+        "type": "other",
+        "tag": "skillcategoryspecializationkarmacostmultiplier"
+      },
+      {
+        "type": "other",
+        "tag": "skillgroupcategorykarmacostmultiplier"
+      }
+    ]
+  },
+  {
+    "id": "e96c7280-b9b0-4112-8b65-a3568c7ca13e",
+    "name": "Unsteady Hands",
+    "namePt": "Mãos Instáveis",
+    "source": "SR5",
+    "page": 87,
+    "kind": "negative",
+    "karma": 7,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": []
+  },
+  {
+    "id": "0a7bcb95-dd9c-4e3e-ab0a-291a352ac1d4",
+    "name": "Weak Immune System",
+    "namePt": "Sistema Imunológico Fraco",
+    "source": "SR5",
+    "page": 87,
+    "kind": "negative",
+    "karma": 10,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "e160111a-5fe3-4154-9d5a-82330c9b32fc",
+          "name": "Resistance to Pathogens"
+        },
+        {
+          "type": "quality",
+          "id": "c74c9ed8-a917-4809-9e8a-5717dd16619b",
+          "name": "Resistance to Toxins"
+        },
+        {
+          "type": "quality",
+          "id": "5c022754-f7cf-479f-80b2-de8454fd76e4",
+          "name": "Resistance to Pathogens and Toxins"
+        },
+        {
+          "type": "quality",
+          "id": "8d558134-210d-4c96-b487-021a44409075",
+          "name": "Natural Immunity (Natural)"
+        },
+        {
+          "type": "quality",
+          "id": "ce7634aa-0729-423d-bc38-d6f56416b904",
+          "name": "Natural Immunity (Synthetic)"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "notoriety",
+        "delta": 1
+      }
+    ]
+  },
+  {
+    "id": "9e50dbab-8a5d-430e-83b0-731cce142848",
+    "name": "Astral Perception",
+    "namePt": "Percepção Astral",
+    "source": "SR5",
+    "page": 309,
+    "kind": "positive",
+    "karma": 0,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": true,
+    "forbidden": {
+      "oneOf": [],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [],
+      "allOf": [
+        {
+          "type": "metatype",
+          "id": "2f51fff5-131a-465d-b054-b64d54059f28",
+          "name": "Pixie"
+        }
+      ]
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "unlockskills"
+      }
+    ]
+  },
+  {
+    "id": "59d9baa1-6705-49e8-940b-ea42ffc02692",
+    "name": "Infected Advanced Optional Power: Mimicry",
+    "source": "SR5",
+    "page": 398,
+    "kind": "positive",
+    "karma": 9,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "critterPower",
+          "name": "Mimicry"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "39a8e176-ddbf-470e-84a0-ba25ccd92ca0",
+          "name": "Infected: Nosferatu"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "critterpowers"
+      }
+    ]
+  },
+  {
+    "id": "8dbc6b92-18a7-4007-b37f-295d21f8ab82",
+    "name": "Infected Advanced Optional Power: Psychokinesis",
+    "source": "SR5",
+    "page": 400,
+    "kind": "positive",
+    "karma": 9,
+    "maxRating": 1,
+    "countsTowardLimit": true,
+    "onlyFromPriority": false,
+    "chargenOnly": false,
+    "hidden": false,
+    "forbidden": {
+      "oneOf": [
+        {
+          "type": "critterPower",
+          "name": "Psychokinesis"
+        }
+      ],
+      "allOf": []
+    },
+    "required": {
+      "oneOf": [
+        {
+          "type": "quality",
+          "id": "39a8e176-ddbf-470e-84a0-ba25ccd92ca0",
+          "name": "Infected: Nosferatu"
+        }
+      ],
+      "allOf": []
+    },
+    "effects": [
+      {
+        "type": "other",
+        "tag": "critterpowers"
+      }
+    ]
+  }
+]

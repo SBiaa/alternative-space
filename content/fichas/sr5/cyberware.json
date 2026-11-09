@@ -1,0 +1,1963 @@
+[
+  {
+    "id": "b57eadaa-7c3b-4b80-8d79-cbbd922c1196",
+    "name": "Essence Hole",
+    "namePt": "Buraco de Essência",
+    "source": "SR5",
+    "page": 0,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 600,
+    "essence": {
+      "raw": "Rating * 0.01",
+      "value": null
+    },
+    "maxRating": 600
+  },
+  {
+    "id": "961eac53-0c43-4b19-8741-2872177a3a4c",
+    "name": "Essence Antihole",
+    "namePt": "Antiburaco de Essência",
+    "source": "SR5",
+    "page": 0,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "rating": 600,
+    "essence": {
+      "raw": "Rating * -0.01",
+      "value": null
+    },
+    "maxRating": 600
+  },
+  {
+    "id": "6b219dfa-310a-45ab-98af-40a62e2431cf",
+    "name": "Commlink",
+    "namePt": "Com-link",
+    "source": "SR5",
+    "page": 451,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.2",
+      "value": 0.2
+    }
+  },
+  {
+    "id": "16b45886-2916-48eb-aea5-ecb74da835bd",
+    "name": "Control Rig",
+    "namePt": "Fuso de Controle",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "FixedValues(43000,97000,208000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 5)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "Rating * 1",
+      "value": null
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "56e37c9d-9191-4f19-a733-33580888a560",
+    "name": "Cranial Bomb - Kink Bomb",
+    "namePt": "Bomba de Córtex - Bombinha",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "ff8b165b-1b43-479e-b9d7-87d9a341ef71",
+    "name": "Cranial Bomb - Microbomb",
+    "namePt": "Bomba de Córtex - Microbomba",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "25000",
+      "value": 25000
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "7af78ea8-2b19-4dee-a07f-194393a4a65b",
+    "name": "Cranial Bomb - Area Bomb",
+    "namePt": "Bomba de Córtex - Bomba de Área",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "40000",
+      "value": 40000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "754a2083-9d89-4034-b43f-31bd5bb43595",
+    "name": "Cyberdeck",
+    "namePt": "Ciberdeck",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "5R",
+      "value": 5,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.4",
+      "value": 0.4
+    }
+  },
+  {
+    "id": "47c48542-48c3-417e-91f0-b5a456183f05",
+    "name": "Datajack",
+    "namePt": "Conector de Dados",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "eb9e691a-8002-4138-ac8d-d9714d398b1e",
+    "name": "Data Lock",
+    "namePt": "Trava de Dados",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 12,
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    },
+    "maxRating": 12
+  },
+  {
+    "id": "e9136c81-f8d5-4e7f-be2d-3be7ff6d1673",
+    "name": "Olfactory Booster",
+    "namePt": "Amplificador Olfativo",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "0.2",
+      "value": 0.2
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "ed88f785-7d61-43ec-b4ed-0ebb94736f5e",
+    "name": "Simrig",
+    "namePt": "Fuso-Simulador",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.2",
+      "value": 0.2
+    }
+  },
+  {
+    "id": "d31497dd-2be9-4b8a-808f-3ced36287c0c",
+    "name": "Skilljack",
+    "namePt": "Conector de Perícia",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "Rating * 20000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "Rating * 0.1",
+      "value": null
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "99128200-57f7-4ea1-ba48-7bae7215d6bb",
+    "name": "Taste Booster",
+    "namePt": "Amplificador de Paladar",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "Rating * 3000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "0.2",
+      "value": 0.2
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "7924a873-341c-43a7-be03-f92895e0dc34",
+    "name": "Tooth Compartment, Storage",
+    "namePt": "Compartimento Dentário, Armazenamento",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "800",
+      "value": 800
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "cd113e17-8412-4d93-80d0-91d6212646f0",
+    "name": "Tooth Compartment, Breakable",
+    "namePt": "Compartimento Dentário, Quebrável",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "800",
+      "value": 800
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "92e9d8e5-b9aa-4786-add3-a1d1f82b8ec0",
+    "name": "Ultrasound Sensor",
+    "namePt": "Sensor de Ultrasom",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "Rating * 12000",
+      "value": null
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "0.25",
+      "value": 0.25
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "ebc25387-655f-4a24-8ae7-81548c097dac",
+    "name": "Voice Modulator",
+    "namePt": "Modulador de Voz",
+    "source": "SR5",
+    "page": 452,
+    "category": "Headware",
+    "categoryPt": "Cefalotrônicos",
+    "cost": {
+      "raw": "Rating * 5000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3F",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "0.2",
+      "value": 0.2
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "8e414ade-2764-4dc7-bdc4-83bb4a086034",
+    "name": "Cybereyes Basic System",
+    "namePt": "Sistema Básico de Ciber-Olhos",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "4000 * Rating - 2000 * number(Rating > 1)",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4,
+    "essence": {
+      "raw": "(Rating * 0.1) + 0.1",
+      "value": null
+    },
+    "maxRating": 4
+  },
+  {
+    "id": "5921a6ac-1e20-483b-b210-dc84a14d3045",
+    "name": "Flare Compensation",
+    "namePt": "Compensação de Ofuscamento",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "e03d454f-4a15-43ce-9cd0-db80e8600eae",
+    "name": "Image Link",
+    "namePt": "Conexão de Imagens",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "97910ef7-dc30-4a87-8314-d1e0021dc39c",
+    "name": "Low-Light Vision",
+    "namePt": "Visão na Penumbra",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "fde2bfc3-c7a2-435e-a220-4896f49d8ca9",
+    "name": "Ocular Drone",
+    "namePt": "Drone Ocular",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "6000",
+      "value": 6000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "fb0419a3-6f0d-4fbb-8b37-39e853efa195",
+    "name": "Retinal Duplication",
+    "namePt": "Duplicação de Retina",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "Rating * 20000",
+      "value": null
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "35dba0e2-1d3d-4386-a657-17fedca4622d",
+    "name": "Smartlink",
+    "namePt": "Neuroconexão",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.2",
+      "value": 0.2
+    }
+  },
+  {
+    "id": "ba3204d8-3ec5-4da0-b980-44992a3a4a13",
+    "name": "Thermographic Vision",
+    "namePt": "Visão Termográfica",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "35c9c51e-5364-41b4-b3c9-4d1f080bd48c",
+    "name": "Vision Enhancement",
+    "namePt": "Melhoria de Visão",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "2c578376-1219-468d-b76b-4c0da44dfca2",
+    "name": "Vision Magnification",
+    "namePt": "Ampliação de Visão",
+    "source": "SR5",
+    "page": 453,
+    "category": "Eyeware",
+    "categoryPt": "Ciber-Olhos",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "2767fdaf-4f49-4403-a799-e91b9e6c8fa2",
+    "name": "Cyberears",
+    "namePt": "Ciber-Orelhas",
+    "source": "SR5",
+    "page": 453,
+    "category": "Earware",
+    "categoryPt": "Ciber-Ouvidos",
+    "cost": {
+      "raw": "3000 + 500 * ((Rating - 1) * (Rating + 1) + number(Rating > 2))",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4,
+    "essence": {
+      "raw": "(Rating * 0.1) + 0.1",
+      "value": null
+    },
+    "maxRating": 4
+  },
+  {
+    "id": "9cdee6a3-a04e-40a1-95ce-e509b26b192c",
+    "name": "Audio Enhancement",
+    "namePt": "Melhoria de Áudio",
+    "source": "SR5",
+    "page": 453,
+    "category": "Earware",
+    "categoryPt": "Ciber-Ouvidos",
+    "cost": {
+      "raw": "Rating * 4000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "31d82330-4650-4550-aa90-c314a189f897",
+    "name": "Balance Augmenter",
+    "namePt": "Amplificador de Equilíbrio",
+    "source": "SR5",
+    "page": 453,
+    "category": "Earware",
+    "categoryPt": "Ciber-Ouvidos",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "3785a2cf-c3df-476a-b7cd-6e224ea77ab0",
+    "name": "Damper",
+    "namePt": "Abafador",
+    "source": "SR5",
+    "page": 454,
+    "category": "Earware",
+    "categoryPt": "Ciber-Ouvidos",
+    "cost": {
+      "raw": "2250",
+      "value": 2250
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "ab2e5330-25c6-4460-bab7-35a9e6b9aeb1",
+    "name": "Select Sound Filter",
+    "namePt": "Filtro de Som Selecionável",
+    "source": "SR5",
+    "page": 454,
+    "category": "Earware",
+    "categoryPt": "Ciber-Ouvidos",
+    "cost": {
+      "raw": "Rating * 3500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "e0212e7e-e690-41d8-a461-4834a668d9c8",
+    "name": "Sound Link",
+    "namePt": "Conexão de Som",
+    "source": "SR5",
+    "page": 454,
+    "category": "Earware",
+    "categoryPt": "Ciber-Ouvidos",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "004b7eb4-190e-4903-8308-27fe9b2f626b",
+    "name": "Spatial Recognizer",
+    "namePt": "Reconhecedor Espacial",
+    "source": "SR5",
+    "page": 454,
+    "category": "Earware",
+    "categoryPt": "Ciber-Ouvidos",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "76523da7-271d-459a-9502-3f7c8d54be6a",
+    "name": "Bone Lacing (Aluminum)",
+    "namePt": "Revestimento Ósseo (Alumínio)",
+    "source": "SR5",
+    "page": 454,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "18000",
+      "value": 18000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "1",
+      "value": 1
+    }
+  },
+  {
+    "id": "4fd033ab-9a43-4ee0-9675-47414af3c8f4",
+    "name": "Bone Lacing (Plastic)",
+    "namePt": "Revestimento Ósseo (Plástico)",
+    "source": "SR5",
+    "page": 454,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.5",
+      "value": 0.5
+    }
+  },
+  {
+    "id": "2ecc8684-5a9f-4523-beb8-d3abc886a233",
+    "name": "Bone Lacing (Titanium)",
+    "namePt": "Revestimento Ósseo (Titânio)",
+    "source": "SR5",
+    "page": 454,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "30000",
+      "value": 30000
+    },
+    "avail": {
+      "raw": "16R",
+      "value": 16,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "1.5",
+      "value": 1.5
+    }
+  },
+  {
+    "id": "6ba5239b-651e-456a-bcc9-f58d975d2397",
+    "name": "Dermal Plating",
+    "namePt": "Couraça Dérmica",
+    "source": "SR5",
+    "page": 454,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "Rating * 3000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 4)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "Rating * 0.5",
+      "value": null
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "be1ed1c6-9a80-4299-9df3-335c59506027",
+    "name": "Fingertip Compartment",
+    "namePt": "Compartimento de Dedo",
+    "source": "SR5",
+    "page": 454,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "f145d15f-37e7-4961-98ba-38146dc849c9",
+    "name": "Grapple Gun",
+    "namePt": "Arma de Gancho",
+    "source": "SR5",
+    "page": 455,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.5",
+      "value": 0.5
+    }
+  },
+  {
+    "id": "02ae9eca-ad70-4c27-8c1d-dec355265b8f",
+    "name": "Internal Air Tank",
+    "namePt": "Tanque de Ar Interno",
+    "source": "SR5",
+    "page": 455,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "Rating * 4500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "0.25",
+      "value": 0.25
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "46f80a44-80ae-41d7-a7c8-a119c4cff70f",
+    "name": "Muscle Replacement",
+    "namePt": "Substituição Muscular",
+    "source": "SR5",
+    "page": 455,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "Rating * 25000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 5)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 4,
+    "essence": {
+      "raw": "Rating * 1",
+      "value": null
+    },
+    "maxRating": 4
+  },
+  {
+    "id": "4cef53aa-13ea-4f28-8fbf-e3b254248247",
+    "name": "Reaction Enhancers",
+    "namePt": "Melhorias de Reação",
+    "source": "SR5",
+    "page": 455,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "Rating * 13000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 5)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "Rating * 0.3",
+      "value": null
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "60485c4e-042f-44f6-ad89-324003223f73",
+    "name": "Skillwires",
+    "namePt": "Habilitrônicos",
+    "source": "SR5",
+    "page": 455,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "Rating * 20000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 4)",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "Rating * 0.1",
+      "value": null
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "21055f0b-4f4d-4286-8cfb-e251e5898c04",
+    "name": "Smuggling Compartment",
+    "namePt": "Compartimento de Contrabando",
+    "source": "SR5",
+    "page": 455,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "7500",
+      "value": 7500
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.2",
+      "value": 0.2
+    }
+  },
+  {
+    "id": "bea0ded3-821f-449c-9507-815088f68b86",
+    "name": "Wired Reflexes",
+    "namePt": "Reflexos Cabeados",
+    "source": "SR5",
+    "page": 455,
+    "category": "Bodyware",
+    "categoryPt": "Corpotrônicos",
+    "cost": {
+      "raw": "FixedValues(39000,149000,217000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(8R,12R,20R)",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "FixedValues(2,3,5)",
+      "value": null
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "df01eed6-a019-4198-b88d-4ba8f9aaefdf",
+    "name": "Obvious Full Arm",
+    "namePt": "Braço Completo Óbvio",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "15000",
+      "value": 15000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "1",
+      "value": 1
+    }
+  },
+  {
+    "id": "c7b88f7e-4e3c-4c29-9f86-a4e244ec5066",
+    "name": "Obvious Full Leg",
+    "namePt": "Perna Completa Óbvia",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "15000",
+      "value": 15000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "1",
+      "value": 1
+    }
+  },
+  {
+    "id": "eee044c5-3586-4f04-9577-5e290466c485",
+    "name": "Obvious Foot",
+    "namePt": "Pé Óbvio",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.25",
+      "value": 0.25
+    }
+  },
+  {
+    "id": "cc503281-ff05-4e22-9121-09116a4a8306",
+    "name": "Obvious Hand",
+    "namePt": "Mão Óbvia",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.25",
+      "value": 0.25
+    }
+  },
+  {
+    "id": "fdb0ef96-2234-46fa-9d51-55c7d1164b7a",
+    "name": "Obvious Lower Arm",
+    "namePt": "Antebraço Óbvio",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.45",
+      "value": 0.45
+    }
+  },
+  {
+    "id": "f769235c-c295-4c31-9843-e9d413d77adf",
+    "name": "Obvious Lower Leg",
+    "namePt": "Canela Óbvia",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.45",
+      "value": 0.45
+    }
+  },
+  {
+    "id": "48e490fb-fe6a-482c-a47d-40cb04985897",
+    "name": "Obvious Torso",
+    "namePt": "Tronco Óbvio",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "1.5",
+      "value": 1.5
+    }
+  },
+  {
+    "id": "ea676290-1859-4a56-86f8-a3fb90decc32",
+    "name": "Obvious Skull",
+    "namePt": "Crânio Óbvio",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "16",
+      "value": 16,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.75",
+      "value": 0.75
+    }
+  },
+  {
+    "id": "f4a48c40-29df-4435-8d09-b1f3153d61ee",
+    "name": "Synthetic Full Arm",
+    "namePt": "Braço Completo Sintético",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "1",
+      "value": 1
+    }
+  },
+  {
+    "id": "bf29ff5e-839a-4fd3-8063-371ce05065d6",
+    "name": "Synthetic Full Leg",
+    "namePt": "Perna Completa Sintética",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "1",
+      "value": 1
+    }
+  },
+  {
+    "id": "1e511ad7-4806-4862-8685-a04887b1bec9",
+    "name": "Synthetic Foot",
+    "namePt": "Pé Sintético",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "6000",
+      "value": 6000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.25",
+      "value": 0.25
+    }
+  },
+  {
+    "id": "a1591e59-d859-40fc-aaf8-30fde5cf6a42",
+    "name": "Synthetic Hand",
+    "namePt": "Mão Sintética",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "6000",
+      "value": 6000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.25",
+      "value": 0.25
+    }
+  },
+  {
+    "id": "4e8c4c99-b0bf-494f-b82c-1ab15ec26eb7",
+    "name": "Synthetic Lower Arm",
+    "namePt": "Antebraço Sintético",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "12000",
+      "value": 12000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.45",
+      "value": 0.45
+    }
+  },
+  {
+    "id": "d3a7e6f2-cb8c-42c0-9aef-c88b26648859",
+    "name": "Synthetic Lower Leg",
+    "namePt": "Canela Sintética",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "12000",
+      "value": 12000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.45",
+      "value": 0.45
+    }
+  },
+  {
+    "id": "40878e5d-cabc-4980-ad87-0dd5d5f5c037",
+    "name": "Synthetic Torso",
+    "namePt": "Tronco Sintético",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "25000",
+      "value": 25000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "1.5",
+      "value": 1.5
+    }
+  },
+  {
+    "id": "992fbf6b-8f9a-4c27-a527-8705ecc3341f",
+    "name": "Synthetic Skull",
+    "namePt": "Crânio Sintético",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb",
+    "categoryPt": "Cibermembros",
+    "cost": {
+      "raw": "15000",
+      "value": 15000
+    },
+    "avail": {
+      "raw": "16",
+      "value": 16,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.75",
+      "value": 0.75
+    }
+  },
+  {
+    "id": "8ea736c6-5a90-471c-9320-18432ec9aaf0",
+    "name": "Armor",
+    "namePt": "Armadura",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb Enhancement",
+    "categoryPt": "Melhorias de Cibermembros",
+    "cost": {
+      "raw": "Rating * 3000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 5",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "0",
+      "value": 0
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "7d61f860-0637-4214-914d-c68022361d24",
+    "name": "Customized Strength",
+    "namePt": "Força Personalizada",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb Enhancement",
+    "categoryPt": "Melhorias de Cibermembros",
+    "cost": {
+      "raw": "(Rating - MinRating + 1) * 5000",
+      "value": null
+    },
+    "avail": {
+      "raw": "+Rating - MinRating + 1",
+      "value": null,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "7afb23c7-435f-450c-9d1c-f7a0e7e631a6",
+    "name": "Customized Agility",
+    "namePt": "Agilidade Personalizada",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb Enhancement",
+    "categoryPt": "Melhorias de Cibermembros",
+    "cost": {
+      "raw": "(Rating - MinRating + 1) * 5000",
+      "value": null
+    },
+    "avail": {
+      "raw": "+Rating - MinRating + 1",
+      "value": null,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "a9f4efd4-b86c-4e90-b0f7-aefa32c3b9de",
+    "name": "Enhanced Strength",
+    "namePt": "Força Melhorada",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb Enhancement",
+    "categoryPt": "Melhorias de Cibermembros",
+    "cost": {
+      "raw": "Rating * 6500",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "0",
+      "value": 0
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "2c50d5c1-f2ff-4c7b-bf5e-46925e808648",
+    "name": "Enhanced Agility",
+    "namePt": "Agilidade Melhorada",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb Enhancement",
+    "categoryPt": "Melhorias de Cibermembros",
+    "cost": {
+      "raw": "Rating * 6500",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "rating": 3,
+    "essence": {
+      "raw": "0",
+      "value": 0
+    },
+    "maxRating": 3
+  },
+  {
+    "id": "eea42123-0449-4c20-8c0b-ae766025b72b",
+    "name": "Cyber Holster",
+    "namePt": "Ciber Coldre",
+    "source": "SR5",
+    "page": 457,
+    "category": "Cyberlimb Accessory",
+    "categoryPt": "Acessórios de Cibermembros",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "816fbe31-0bfb-455f-a939-fca85b968bd2",
+    "name": "Cyberarm Gyromount",
+    "namePt": "Suporte de Giroscópio de Ciberbraço",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb Accessory",
+    "categoryPt": "Acessórios de Cibermembros",
+    "cost": {
+      "raw": "6000",
+      "value": 6000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "17e0bf0e-db82-4db7-ad85-d88e9945f5a7",
+    "name": "Cyberarm Slide",
+    "namePt": "Deslizante de Ciberbraço",
+    "source": "SR5",
+    "page": 456,
+    "category": "Cyberlimb Accessory",
+    "categoryPt": "Acessórios de Cibermembros",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "c7a55431-c54c-41ba-8468-0d9c3028010a",
+    "name": "Hydraulic Jacks",
+    "namePt": "Macacos Hidráulicos",
+    "source": "SR5",
+    "page": 457,
+    "category": "Cyberlimb Accessory",
+    "categoryPt": "Acessórios de Cibermembros",
+    "cost": {
+      "raw": "Rating * 2500",
+      "value": null
+    },
+    "avail": {
+      "raw": "9",
+      "value": 9,
+      "restriction": null
+    },
+    "rating": 6,
+    "essence": {
+      "raw": "0",
+      "value": 0
+    },
+    "maxRating": 6
+  },
+  {
+    "id": "32096cc1-25c0-4b29-a53d-92528f352d2f",
+    "name": "Large Smuggling Compartment",
+    "namePt": "Compartimento de Contrabando Grande",
+    "source": "SR5",
+    "page": 457,
+    "category": "Cyberlimb Accessory",
+    "categoryPt": "Acessórios de Cibermembros",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "ec5ed166-d1dc-4afe-80a1-71bc315f7d75",
+    "name": "External Clip Port",
+    "namePt": "Acesso de Pente Externo",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon Accessory",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "c7ba7834-7337-452c-90e4-d1dd4abcbca5",
+    "name": "Grenade Launcher",
+    "namePt": "Lançador de Granada",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "30000",
+      "value": 30000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "essence": {
+      "raw": "1.5",
+      "value": 1.5
+    }
+  },
+  {
+    "id": "ba93ab8d-fd7f-4fc4-bfa3-5f987fd15d77",
+    "name": "Hand Blade",
+    "namePt": "Lâmina de Mão",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "2500",
+      "value": 2500
+    },
+    "avail": {
+      "raw": "10F",
+      "value": 10,
+      "restriction": "F"
+    },
+    "essence": {
+      "raw": "0.25",
+      "value": 0.25
+    }
+  },
+  {
+    "id": "923d1629-5267-4093-a978-34eb4543cb15",
+    "name": "Hand Razors",
+    "namePt": "Navalhas de Mão",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "1250",
+      "value": 1250
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "essence": {
+      "raw": "0.2",
+      "value": 0.2
+    }
+  },
+  {
+    "id": "e2997f83-e2a7-4f15-92a2-be9b5081ed59",
+    "name": "Heavy Pistol",
+    "namePt": "Pistola Pesada",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "4300",
+      "value": 4300
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.5",
+      "value": 0.5
+    }
+  },
+  {
+    "id": "abe607f4-ba21-4d7f-b6e1-327f03fab901",
+    "name": "Holdout Pistol",
+    "namePt": "Pistola Escamoteável",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.1",
+      "value": 0.1
+    }
+  },
+  {
+    "id": "c8df9efc-e88e-4dec-becf-0453f20cdb34",
+    "name": "Laser Sight",
+    "namePt": "Mira Laser",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon Accessory",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "45a32fd5-6db3-4e1d-aa34-76d1e299ae8b",
+    "name": "Light Pistol",
+    "namePt": "Pistola Leve",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "3900",
+      "value": 3900
+    },
+    "avail": {
+      "raw": "10R",
+      "value": 10,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.25",
+      "value": 0.25
+    }
+  },
+  {
+    "id": "b6e0d583-33e8-4711-8304-a1d8de86d391",
+    "name": "Machine Pistol",
+    "namePt": "Pistola Automática",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "3500",
+      "value": 3500
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.5",
+      "value": 0.5
+    }
+  },
+  {
+    "id": "1aa7fe36-10ab-4c3c-9a4f-f26e8460c0a8",
+    "name": "Shock Hand",
+    "namePt": "Mão Elétrica",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "0.25",
+      "value": 0.25
+    }
+  },
+  {
+    "id": "841cac06-6839-4041-a8dc-2050048df076",
+    "name": "Shotgun",
+    "namePt": "Escopeta",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "8500",
+      "value": 8500
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "1.25",
+      "value": 1.25
+    }
+  },
+  {
+    "id": "8b9541a9-e10a-488d-a076-4e5b1c469839",
+    "name": "Silencer/Suppressor",
+    "namePt": "Silenciador",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon Accessory",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "essence": {
+      "raw": "0",
+      "value": 0
+    }
+  },
+  {
+    "id": "c9e4a11f-ef4f-4cb6-9392-ce7378456d82",
+    "name": "Spurs",
+    "namePt": "Esporões",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "essence": {
+      "raw": "0.3",
+      "value": 0.3
+    }
+  },
+  {
+    "id": "13841067-a929-4e8d-b7e3-e8eb68a0dec1",
+    "name": "Submachine Gun",
+    "namePt": "Submetralhadora",
+    "source": "SR5",
+    "page": 458,
+    "category": "Cyber Implant Weapon",
+    "categoryPt": "Ciber-Implantes de Armas",
+    "cost": {
+      "raw": "4800",
+      "value": 4800
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "essence": {
+      "raw": "1",
+      "value": 1
+    }
+  }
+]

@@ -35,6 +35,32 @@
   --shadow-duro-lg: 0 20px 60px rgb(0 0 0 / 0.4);
 }
 
+/*
+  Fichas de personagem (src/components/fichas). Os componentes usam estes nomes por função
+  (fundo, superfície, tinta, destaque); os valores são a paleta do site sobre o fundo do espaço.
+*/
+@theme {
+  --color-bg: #0b2340;          /* espaco */
+  --color-surface: #182f48;     /* creme 6% sobre o espaço */
+  --color-surface-2: #22364d;   /* creme 10% */
+  --color-surface-3: #2a3e52;   /* creme 14% */
+  --color-line: #344657;        /* creme 18% */
+  --color-line-strong: #4f5d66; /* creme 30% */
+  --color-ink: #ece3be;         /* creme */
+  --color-muted: #d9d2b0;       /* areia */
+  --color-faint: #a7a68f;
+  --color-accent: #f2a66e;      /* laranja-claro */
+  --color-accent-ink: #01121e;  /* noite */
+  --color-accent-2: #dd5d05;    /* laranja */
+  --color-warn: #f2c14e;
+  --color-danger: #ff8f80;
+  --color-ok: #8fd6a4;
+
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-sans: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), ui-monospace, monospace;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -181,4 +207,48 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn { transition: none; }
+}
+
+/* Fichas: campos numéricos sem as setinhas do navegador (o seletor tem botões próprios). */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+dialog::backdrop {
+  background: rgb(1 18 30 / 0.65);
+  backdrop-filter: blur(2px);
+}
+
+/* Impressão / PDF da ficha: só a ficha, em fundo branco, sem o cabeçalho e o rodapé do site. */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    padding-bottom: 0 !important;
+  }
+  body > header,
+  body > footer,
+  body > svg,
+  body > a,
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-sheet,
+  .print-sheet * {
+    color: black !important;
+    background: transparent !important;
+    border-color: #999 !important;
+    box-shadow: none !important;
+  }
+}
+.print-only {
+  display: none;
 }

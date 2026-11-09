@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chummer>
+  <spells>
+    <spell>
+      <id>sp-bolt</id><name>Manabolt</name><category>Combat</category><type>M</type><range>LOS</range>
+      <damage>P</damage><duration>I</duration><dv>F-3</dv><descriptor>Direct, Indirect</descriptor>
+      <source>SR5</source><page>284</page>
+    </spell>
+  </spells>
+</chummer>
