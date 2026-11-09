@@ -1,4 +1,5 @@
 import { sql } from "@/lib/db";
+import { apagarDiario, exportarDiario } from "@/lib/diario/dados";
 import { getQuiz, getResult, quizzes, resultTheme } from "@/lib/quiz";
 import type { SavedResult } from "@/lib/tripulante";
 
@@ -77,5 +78,20 @@ export function anteriores(hist: SavedResult[]): Map<string, string[]> {
 
 export async function apagarDados(userId: string) {
   await sql`delete from quiz_results where user_id = ${userId}`;
+  await sql`delete from recordes where user_id = ${userId}`;
+  await sql`delete from dilema_votos where user_id = ${userId}`;
+  await apagarDiario(userId);
   await sql`delete from perfis where user_id = ${userId}`;
+}
+
+/** Tudo o que guardamos do usuário, para o "baixar meus dados" (LGPD). */
+export async function exportarDados(userId: string) {
+  const [perfil, quizzes, recordes, votos, diario] = await Promise.all([
+    sql`select apelido, cor, updated_at from perfis where user_id = ${userId}`,
+    sql`select quiz, result, created_at from quiz_results where user_id = ${userId} order by created_at`,
+    sql`select * from recordes where user_id = ${userId}`,
+    sql`select * from dilema_votos where user_id = ${userId}`,
+    exportarDiario(userId),
+  ]);
+  return { perfil: perfil[0] ?? null, quizzes, recordes, votos_em_dilemas: votos, diario_de_bordo: diario };
 }
