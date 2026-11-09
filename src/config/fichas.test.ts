@@ -17,6 +17,11 @@ describe("sistemas de ficha", () => {
   it("em dev cai no localhost; em produção sem variável, some", () => {
     expect(origemDoSistema(sr, { NODE_ENV: "development" } as NodeJS.ProcessEnv)).toBe("http://localhost:3001");
     expect(origemDoSistema(sr, { NODE_ENV: "production" } as NodeJS.ProcessEnv)).toBeNull();
-    expect(sistemasAtivos({ NODE_ENV: "production" } as NodeJS.ProcessEnv)).toEqual([]);
+    expect(sistemasAtivos({ NODE_ENV: "production" } as NodeJS.ProcessEnv).map((s) => s.slug)).toEqual(["pathfinder"]);
+  });
+
+  it("sistema interno sempre aparece e não vira rewrite", () => {
+    const pf = sistemasFicha.find((s) => s.slug === "pathfinder")!;
+    expect(origemDoSistema(pf, { NODE_ENV: "development" } as NodeJS.ProcessEnv)).toBeNull();
   });
 });

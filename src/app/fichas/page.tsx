@@ -28,7 +28,7 @@ export default function Page() {
               const theme = resultTheme[s.color] ?? resultTheme.azul;
               return (
                 <li key={s.slug}>
-                  {/* <a> e não <Link>: cada sistema é outro app, a navegação precisa recarregar a página. */}
+                  {/* <a> e não <Link>: sistema externo é outro app, a navegação precisa recarregar a página. */}
                   <a href={`/fichas/${s.slug}`} className={`flex h-full flex-col gap-3 rounded-2xl border-2 border-noite p-7 no-underline shadow-duro-sm ${theme.card}`}>
                     <span className={`etiqueta text-[13px] ${theme.label}`}>{s.tagline}</span>
                     <h2 className="font-titulo text-[2rem] font-bold leading-[1.05]">{s.name}</h2>
