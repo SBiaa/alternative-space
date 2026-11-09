@@ -3,6 +3,7 @@ import { FICHA_VAZIA, ajustar, atributos, calcular, lerFicha, normalizarFicha, p
 
 // Anã clériga acólita: exemplo bem comum de mesa.
 const ana: Ficha = {
+  ...FICHA_VAZIA,
   nome: "Brunhilda",
   ancestralidade: "anao",
   antecedente: "acolito",

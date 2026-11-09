@@ -24,6 +24,6 @@ export const sistemasFicha: SistemaFicha[] = [
     id: "pf2e",
     name: "Pathfinder 2ª edição",
     tagline: "Fantasia heroica, masmorras e escolhas que importam.",
-    text: "Monte seu herói por ancestralidade, antecedente e classe, com os boosts de atributo calculados pra você.",
+    text: "Do nível 1 ao 20, com talentos, equipamento e magias. As contas ficam por nossa conta.",
   },
 ];
