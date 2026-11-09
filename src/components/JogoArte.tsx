@@ -58,6 +58,14 @@ function Icone({ slug }: { slug: string }) {
           <path d="M34 42q4-6 8 0M50 40q4-6 8 0" strokeDasharray="3 4" />
         </g>
       );
+    case "shogi-do-shikamaru":
+      return (
+        <g {...traco}>
+          <path d="M18 18h64v64H18zM18 39h64M18 61h64M39 18v64M61 18v64" strokeWidth={2.5} />
+          <path d="M50 30l9 6 3 16H38l3-16z" fill={LARANJA} stroke={LARANJA} />
+          <path d="M28 70l3-8h8l3 8z" />
+        </g>
+      );
     case "duelo-pirata":
       return (
         <g {...traco}>

@@ -75,6 +75,14 @@ export const jogos: Jogo[] = [
     recorde: { chave: "ramen-do-ichiraku:recorde", formato: (n) => `${n} pontos` },
   },
   {
+    slug: "shogi-do-shikamaru",
+    nome: "Shogi do Shikamaru",
+    tipo: "Estratégia",
+    resumo: "Mini shogi 5x5 contra a CPU.",
+    texto: "O jogo de tabuleiro favorito do Shikamaru, num tabuleiro 5x5. Capture peças, devolva-as ao jogo e encurrale o rei.",
+    cor: "#2f4a2a",
+  },
+  {
     slug: "duelo-pirata",
     nome: "Duelo Pirata",
     tipo: "Habilidade",
