@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <section className="secao !pt-16">
       <div className="miolo flex max-w-[760px] flex-col gap-8">
-        <Link href="/conta" className="font-titulo text-lg font-bold text-azul">← Voltar pro diário</Link>
+        <Link href="/conta" className="font-titulo text-lg font-bold text-azul">← Voltar pra base</Link>
         <h1 className="font-titulo font-bold leading-[1] text-azul" style={{ fontSize: "clamp(2.2rem, 6vw, 3.4rem)" }}>Seu perfil</h1>
         <Suspense fallback={<p className="font-titulo text-2xl font-bold text-azul">Carregando…</p>}>
           <Editar />

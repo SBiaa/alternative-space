@@ -7,6 +7,7 @@ import { ativo, type ItemMenu } from "@/lib/menu";
 const logado: ItemMenu[] = [
   { label: "Base", href: "/conta", exato: true },
   { label: "Jogar", href: "/jogos", tambem: ["/quiz"] },
+  { label: "Diário", href: "/diario" },
   { label: "Fichas", href: "/fichas" },
   { label: "Cabine", href: "/conta/editar" },
 ];
@@ -27,7 +28,7 @@ export function BarraDeAbas({ entrou }: { entrou: boolean }) {
       className="fixed inset-x-4 bottom-3.5 z-30 rounded-lg bg-espaco shadow-[0_-16px_24px_var(--color-espaco)] lg:hidden print:hidden"
       style={{ marginBottom: "env(safe-area-inset-bottom)" }}
     >
-      <div className="grid grid-cols-4 rounded-lg border border-creme/18 bg-creme/8 p-1 text-xs font-medium">
+      <div className={`grid ${itens.length === 5 ? "grid-cols-5" : "grid-cols-4"} rounded-lg border border-creme/18 bg-creme/8 p-1 text-xs font-medium`}>
         <ComCaminho render={(path) => itens.map((i) => {
           const atual = ativo(path, i);
           return (

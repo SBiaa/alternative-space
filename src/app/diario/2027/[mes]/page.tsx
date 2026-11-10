@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Carregando } from "@/components/diario/Carregando";
-import { BarraXP, FichaCaixa, LinkFicha, Migalhas } from "@/components/diario/Ficha";
+import { Abas, Cabecalho, Constelacao, LinkVidro } from "@/components/diario/Ficha";
 import { QuestLista } from "@/components/diario/QuestLista";
 import { ANO, DIAS_SEMANA, MESES, diaCurto, diaDaSemana, diasDoMes, dois, hoje, mesPorSlug, semanaDaData, semanasDoMes } from "@/lib/diario/calendario";
 import { questsDoMes, xpDoMes } from "@/lib/diario/dados";
@@ -38,89 +38,102 @@ async function MesPagina({ params }: { params: Promise<{ mes: string }> }) {
   const dias = diasDoMes(mes);
   const vazios = diaDaSemana(dias[0]);
   const dia = hoje();
+  const semanas = semanasDoMes(mes);
 
   return (
-    <>
-      <Migalhas itens={[{ href: "/diario", label: "Diário" }, { label: info.nome }]} />
-      <h1 className="diario-titulo mb-5 text-4xl sm:text-5xl">
-        {info.nome} <span className="font-ficha text-2xl font-normal">{ANO}</span>
-      </h1>
+    <div className="flex flex-col gap-6">
+      <Cabecalho etiqueta={`Diário de Bordo ${ANO}`} titulo={info.nome} apoio={`${semanas.length} semanas${mes === 1 ? " e a Pré-missão" : ""}`}>
+        {mes > 1 && <LinkVidro href={`/diario/2027/${MESES[mes - 2].slug}`}>‹ {MESES[mes - 2].nome}</LinkVidro>}
+        {mes < 12 && <LinkVidro href={`/diario/2027/${MESES[mes].slug}`}>{MESES[mes].nome} ›</LinkVidro>}
+      </Cabecalho>
+      <Abas atual="mes" mes={mes} semana={dias.includes(dia) ? semanaDaData(dia)! : semanas[0].n} />
 
-      <div className="grid gap-4 lg:grid-cols-[1.1fr_1fr]">
-        <FichaCaixa titulo="Calendário" id="calendario">
-          <table className="w-full table-fixed border-collapse text-center">
-            <caption className="sr-only">Calendário de {info.nome}. Cada dia abre a semana dele.</caption>
-            <thead>
-              <tr>
-                {DIAS_SEMANA.map((d) => (
-                  <th key={d} scope="col" className="ficha-rotulo pb-2 !text-[11px] font-normal">
-                    <abbr title={d} className="no-underline">
-                      {d.slice(0, 3)}
-                    </abbr>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {Array.from({ length: Math.ceil((vazios + dias.length) / 7) }, (_, linha) => (
-                <tr key={linha}>
-                  {Array.from({ length: 7 }, (_, col) => {
-                    const d = dias[linha * 7 + col - vazios];
-                    return (
-                      <td key={col} className="p-0.5">
-                        {d && (
-                          <Link
-                            href={linkDoDia(d)}
-                            aria-label={`${diaCurto(d)}${d === dia ? ", hoje" : ""}`}
-                            className={`flex aspect-square items-center justify-center rounded-md border-2 font-ficha text-sm hover:bg-[#fffbe8] ${d === dia ? "border-noite bg-laranja-claro" : "border-noite/25"}`}
-                          >
-                            {Number(d.slice(8))}
-                          </Link>
-                        )}
-                      </td>
-                    );
-                  })}
+      <div className="flex flex-wrap items-start gap-6">
+        <div className="flex min-w-0 flex-[999_1_560px] flex-col gap-4">
+          <section aria-labelledby="calendario" className="surface-vidro p-4">
+            <h2 id="calendario" className="rotulo mb-3 text-laranja-claro">
+              Calendário
+            </h2>
+            <table className="w-full table-fixed border-collapse text-center">
+              <caption className="sr-only">Calendário de {info.nome}. Cada dia abre a semana dele.</caption>
+              <thead>
+                <tr>
+                  {DIAS_SEMANA.map((d) => (
+                    <th key={d} scope="col" className="pb-2 font-ficha text-[11px] font-normal text-areia">
+                      <abbr title={d} className="no-underline">
+                        {d.slice(0, 3)}
+                      </abbr>
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </FichaCaixa>
+              </thead>
+              <tbody>
+                {Array.from({ length: Math.ceil((vazios + dias.length) / 7) }, (_, linha) => (
+                  <tr key={linha}>
+                    {Array.from({ length: 7 }, (_, col) => {
+                      const d = dias[linha * 7 + col - vazios];
+                      return (
+                        <td key={col} className="p-0.5">
+                          {d && (
+                            <Link
+                              href={linkDoDia(d)}
+                              aria-label={`${diaCurto(d)}${d === dia ? ", hoje" : ""}`}
+                              aria-current={d === dia ? "date" : undefined}
+                              className={`flex min-h-11 items-center justify-center rounded-md font-ficha text-sm no-underline ${d === dia ? "bg-laranja-claro font-bold text-noite" : "text-creme hover:bg-creme/10"}`}
+                            >
+                              {Number(d.slice(8))}
+                            </Link>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
 
-        <div className="flex flex-col gap-4">
-          <FichaCaixa>
-            <BarraXP pontos={xp} />
-            <p className="mt-2 text-sm">Cada quest concluída no mês vale 1 bloco.</p>
-          </FichaCaixa>
-          <FichaCaixa titulo="Semanas" id="semanas">
-            <ul className="flex flex-wrap gap-2">
+          <section aria-labelledby="quests-mes" className="surface-creme flex flex-col gap-3 p-4">
+            <h2 id="quests-mes" className="rotulo text-azul">
+              Quests principais de {info.nome}
+            </h2>
+            <QuestLista quests={quests} alvo={{ scope: "month", year: ANO, month: mes }} rotulo={info.nome} tom="creme" />
+          </section>
+        </div>
+
+        <aside className="flex min-w-0 flex-[1_1_280px] flex-col gap-4">
+          <Constelacao pontos={xp} mes={mes} />
+          <nav aria-labelledby="semanas-mes" className="surface-vidro flex flex-col gap-3 p-[18px]">
+            <h2 id="semanas-mes" className="rotulo text-laranja-claro">
+              Semanas
+            </h2>
+            <ul className="flex flex-col">
               {mes === 1 && (
                 <li>
-                  <LinkFicha href="/diario/2027/pre-missao">Pré-missão</LinkFicha>
+                  <Link href="/diario/2027/pre-missao" className="flex min-h-11 items-center justify-between border-t border-creme/18 text-creme no-underline hover:text-laranja-claro">
+                    <span>Pré-missão</span>
+                    <span className="font-ficha text-xs text-poeira">01–03/jan</span>
+                  </Link>
                 </li>
               )}
-              {semanasDoMes(mes).map((s) => (
+              {semanas.map((s) => (
                 <li key={s.n}>
-                  <LinkFicha href={`/diario/2027/semana/${s.n}`}>
-                    S{dois(s.n)} · {diaCurto(s.inicio)}
-                  </LinkFicha>
+                  <Link href={`/diario/2027/semana/${s.n}`} className="flex min-h-11 items-center justify-between border-t border-creme/18 text-creme no-underline hover:text-laranja-claro">
+                    <span>Semana {dois(s.n)}</span>
+                    <span className="font-ficha text-xs text-poeira">
+                      {diaCurto(s.inicio)}–{diaCurto(s.fim)}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
-          </FichaCaixa>
-          <div className="grid grid-cols-2 gap-3">
-            <LinkFicha href={`/diario/2027/${slug}/habitos`} className="diario-titulo !font-ficha">
-              Hábitos →
-            </LinkFicha>
-            <LinkFicha href={`/diario/2027/${slug}/inventario`} className="diario-titulo !font-ficha">
-              Inventário →
-            </LinkFicha>
+          </nav>
+          <div className="grid grid-cols-2 gap-2">
+            <LinkVidro href={`/diario/2027/${slug}/habitos`}>Hábitos</LinkVidro>
+            <LinkVidro href={`/diario/2027/${slug}/inventario`}>Inventário</LinkVidro>
           </div>
-        </div>
+        </aside>
       </div>
-
-      <FichaCaixa titulo="Quests principais do mês" id="quests-mes" className="mt-4">
-        <QuestLista quests={quests} alvo={{ scope: "month", year: ANO, month: mes }} rotulo={info.nome} />
-      </FichaCaixa>
-    </>
+    </div>
   );
 }

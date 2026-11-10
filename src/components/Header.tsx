@@ -43,7 +43,7 @@ async function ComSessao() {
   if (!user) return <Publico />;
   // Só decide se o link aparece. Quem protege o painel é requireAdmin(), que confere no banco.
   const admin = isAdminRole((user as { role?: unknown }).role);
-  const links = [{ label: "Base", href: "/conta", exato: true }, ...site.nav, ...(admin ? [{ label: "Painel", href: "/admin" }] : [])];
+  const links = [{ label: "Base", href: "/conta", exato: true }, { label: "Diário de Bordo", href: "/diario" }, ...site.nav, ...(admin ? [{ label: "Painel", href: "/admin" }] : [])];
   return (
     <>
       <Logo href="/conta" />

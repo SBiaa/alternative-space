@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Carregando } from "@/components/diario/Carregando";
-import { Migalhas } from "@/components/diario/Ficha";
+import { Abas, Cabecalho } from "@/components/diario/Ficha";
 import { Inventario } from "@/components/diario/Inventario";
-import { MESES, mesPorSlug } from "@/lib/diario/calendario";
+import { ANO, MESES, diasDoMes, hoje, mesPorSlug, semanaDaData, semanasDoMes } from "@/lib/diario/calendario";
 import { inventarioDoMes } from "@/lib/diario/dados";
 import { exigeUsuario } from "@/lib/diario/sessao";
 
@@ -29,13 +29,13 @@ async function InventarioPagina({ params }: { params: Promise<{ mes: string }> }
   const userId = await exigeUsuario(`/diario/2027/${slug}/inventario`);
   const itens = await inventarioDoMes(userId, mes);
   const info = MESES[mes - 1];
+  const dia = hoje();
 
   return (
-    <>
-      <Migalhas itens={[{ href: "/diario", label: "Diário" }, { href: `/diario/2027/${slug}`, label: info.nome }, { label: "Inventário" }]} />
-      <h1 className="diario-titulo text-4xl sm:text-5xl">Inventário de {info.nome}</h1>
-      <p className="ficha-rotulo mb-5 mt-1">Séries, animes, jogos e livros do mês</p>
+    <div className="flex flex-col gap-6">
+      <Cabecalho etiqueta={`Diário de Bordo ${ANO} · ${info.nome}`} titulo="Inventário" apoio="Séries, animes, jogos e livros do mês." />
+      <Abas atual="inventario" mes={mes} semana={diasDoMes(mes).includes(dia) ? semanaDaData(dia)! : semanasDoMes(mes)[0].n} />
       <Inventario mes={mes} itens={itens} />
-    </>
+    </div>
   );
 }

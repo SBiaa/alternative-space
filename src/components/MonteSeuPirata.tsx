@@ -153,7 +153,7 @@ export function MonteSeuPirata({ logado, inicial }: Props) {
             <>
               ✓ {status.ok}{" "}
               <Link href="/conta" className="font-bold text-azul">
-                Ver no diário →
+                Ver no registro de bordo →
               </Link>
             </>
           )}
