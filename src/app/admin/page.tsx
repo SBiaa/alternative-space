@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { banir, desbanir } from "@/app/actions/admin";
+import { banir, desbanir, marcarFeedback } from "@/app/actions/admin";
 import { requireAdmin } from "@/lib/auth/admin";
-import { listTripulantes, overview, quizCounts } from "@/lib/admin";
+import { listFeedbacks, listTripulantes, notasPorJogo, overview, quizCounts } from "@/lib/admin";
+import { TIPOS_FEEDBACK, tipoValido } from "@/lib/feedback";
+import { jogos } from "@/lib/jogos";
 import { getResult, quizzes } from "@/lib/quiz";
 
 export const metadata: Metadata = { title: "Painel", robots: { index: false, follow: false } };
@@ -27,7 +29,11 @@ async function Painel({ searchParams }: { searchParams: PageProps<"/admin">["sea
   const admin = await requireAdmin();
   const sp = await searchParams;
   const busca = typeof sp.busca === "string" ? sp.busca.slice(0, 100) : "";
-  const [resumo, contagens, tripulantes] = await Promise.all([overview(), quizCounts(), listTripulantes(busca)]);
+  const todosFeedbacks = sp.feedbacks === "todos";
+  const [resumo, contagens, tripulantes, feedbacks, notas] = await Promise.all([
+    overview(), quizCounts(), listTripulantes(busca), listFeedbacks(!todosFeedbacks), notasPorJogo(),
+  ]);
+  const nomeJogo = (slug: string) => jogos.find((j) => j.slug === slug)?.nome ?? slug;
 
   const porQuiz = new Map<string, { result: string; total: number }[]>();
   for (const c of contagens) porQuiz.set(c.quiz, [...(porQuiz.get(c.quiz) ?? []), c]);
@@ -84,6 +90,49 @@ async function Painel({ searchParams }: { searchParams: PageProps<"/admin">["sea
             );
           })}
         </ul>
+      </div>
+
+      <div id="feedbacks" className="flex flex-col gap-5">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="font-titulo text-[1.75rem] font-bold text-azul">Feedbacks dos jogos</h2>
+          <Link href={todosFeedbacks ? "/admin#feedbacks" : "/admin?feedbacks=todos#feedbacks"} className="underline">
+            {todosFeedbacks ? "Ver só os não lidos" : "Ver todos (inclusive lidos)"}
+          </Link>
+        </div>
+        {notas.length > 0 && (
+          <ul className="flex list-none flex-wrap gap-2 p-0">
+            {notas.map((n) => (
+              <li key={n.jogo} className="card px-3 py-2 text-sm">
+                <b>{nomeJogo(n.jogo)}</b> · ★ {n.media.toFixed(1)} <span className="text-neutro">({n.total})</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {feedbacks.length === 0 ? (
+          <p className="text-neutro">{todosFeedbacks ? "Nenhum feedback ainda." : "Nada novo por aqui."}</p>
+        ) : (
+          <ul className="flex list-none flex-col gap-3 p-0">
+            {feedbacks.map((f) => (
+              <li key={f.id} className={`card flex flex-col gap-2 p-4 ${f.lido ? "opacity-60" : ""}`}>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                  <span className={`etiqueta text-[11px] ${f.tipo === "bug" ? "text-red-700" : "text-laranja"}`}>
+                    {tipoValido(f.tipo) ? TIPOS_FEEDBACK[f.tipo] : f.tipo}
+                  </span>
+                  <b>{nomeJogo(f.jogo)}</b>
+                  {f.nota && <span aria-label={`${f.nota} de 5`}>{"★".repeat(f.nota)}{"☆".repeat(5 - f.nota)}</span>}
+                  <span className="text-neutro">{data(f.createdAt)}{f.logado ? " · com conta" : ""}</span>
+                </div>
+                {f.mensagem && <p className="m-0 whitespace-pre-wrap">{f.mensagem}</p>}
+                {f.contato && <p className="m-0 text-sm">Contato: <span className="break-all">{f.contato}</span></p>}
+                <form action={marcarFeedback}>
+                  <input type="hidden" name="id" value={f.id} />
+                  <input type="hidden" name="lido" value={f.lido ? "0" : "1"} />
+                  <button type="submit" className="text-sm underline">{f.lido ? "Marcar como não lido" : "Marcar como lido"}</button>
+                </form>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div className="flex flex-col gap-5">

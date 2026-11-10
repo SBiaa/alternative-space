@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense, type ReactNode } from "react";
+import { FeedbackJogo } from "./FeedbackJogo";
 import { JogoArte } from "./JogoArte";
 import { JogoRecorde, JogoTela } from "./JogoTela";
 import { RankingJogo, RankingCarregando } from "./RankingJogo";
@@ -40,6 +41,8 @@ export function JogoPagina({ slug, children, comoJogar, extra, largo }: Props) {
         )}
 
         {extra}
+
+        <FeedbackJogo slug={slug} nome={jogo.nome} />
 
         <section aria-labelledby="outros-jogos" className="mt-2.5 flex flex-col gap-2.5">
           <h2 id="outros-jogos" className="text-lg font-semibold">Outros jogos</h2>
