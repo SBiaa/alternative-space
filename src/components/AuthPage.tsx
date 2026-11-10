@@ -21,7 +21,7 @@ const copy = {
   entrar: {
     eyebrow: "Tripulantes",
     title: "Bem-vinde de volta.",
-    text: "Entra pra ver seu diário de bordo e as coleções completas.",
+    text: "Entra pra ver seu registro de bordo, seu Diário de Bordo e as coleções completas.",
     switchText: "Ainda não tem conta?",
     switchLabel: "Criar cadastro",
     switchHref: "/cadastro",
@@ -64,7 +64,7 @@ async function Form({ mode, searchParams }: { mode: "cadastro" | "entrar"; searc
     <div className="flex flex-col gap-4">
       {pending && (
         <p className="rounded-xl border-2 border-noite bg-azul px-5 py-3.5 text-creme">
-          Seu resultado <strong>{pending.name}</strong> vai direto pro seu diário de bordo.
+          Seu resultado <strong>{pending.name}</strong> vai direto pro seu registro de bordo.
         </p>
       )}
       <AuthForm mode={mode} next={next} salvar={pending ? salvar : undefined} />

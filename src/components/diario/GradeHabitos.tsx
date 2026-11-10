@@ -2,6 +2,7 @@
 
 import { useOptimistic, useState, useTransition } from "react";
 import { apagarHabito, marcarHabito, marcarHumor, novoHabito, salvarLegenda } from "@/app/actions/diario";
+import { DIAS_SEMANA, diaCurto, diaDaSemana } from "@/lib/diario/calendario";
 import type { Habito, Legenda } from "@/lib/diario/dados";
 import { MAX_HABITOS } from "@/lib/diario/regras";
 
@@ -12,13 +13,25 @@ const LEGENDA_PADRAO: Legenda[] = [
   { slot: 4, color: "#e88a7a", label: "" },
 ];
 
-type Props = { mes: number; dias: string[]; habitos: Habito[]; feitos: string[]; legenda: Legenda[]; humor: Record<string, number> };
+type Props = { mes: number; dias: string[]; hoje: string; habitos: Habito[]; feitos: string[]; legenda: Legenda[]; humor: Record<string, number> };
 
-/** Grade de hábitos × dias do mês e a linha de humor, com legenda de 4 cores. */
-export function GradeHabitos({ mes, dias, habitos, feitos, legenda, humor }: Props) {
+/** Corta os dias do mês em semanas (segunda a domingo). */
+function semanasDoMes(dias: string[]) {
+  const out: string[][] = [];
+  for (const d of dias) {
+    if (out.length === 0 || diaDaSemana(d) === 0) out.push([]);
+    out.at(-1)!.push(d);
+  }
+  return out;
+}
+
+/** Hábitos × dias do mês e a linha de humor. No computador, o mês inteiro; no celular, uma semana por vez. */
+export function GradeHabitos({ mes, dias, hoje, habitos, feitos, legenda, humor }: Props) {
   const [, start] = useTransition();
   const [erro, setErro] = useState("");
   const [novo, setNovo] = useState("");
+  const blocos = semanasDoMes(dias);
+  const [bloco, setBloco] = useState(Math.max(0, blocos.findIndex((b) => b.includes(hoje))));
 
   const [marcados, marcar] = useOptimistic(new Set(feitos), (s: Set<string>, a: { chave: string; done: boolean }) => {
     const n = new Set(s);
@@ -35,9 +48,7 @@ export function GradeHabitos({ mes, dias, habitos, feitos, legenda, humor }: Pro
     else n[a.date] = a.slot;
     return n;
   });
-
-  const legendaAtual = legenda.length === 4 ? legenda : LEGENDA_PADRAO;
-  const [leg, setLeg] = useState(legendaAtual);
+  const [leg, setLeg] = useState(legenda.length === 4 ? legenda : LEGENDA_PADRAO);
 
   const roda = (fn: () => void, acao: () => Promise<{ error?: string } | undefined>) =>
     start(async () => {
@@ -47,95 +58,114 @@ export function GradeHabitos({ mes, dias, habitos, feitos, legenda, humor }: Pro
       if (r?.error) setErro(r.error);
     });
 
-  const dia = (d: string) => Number(d.slice(8, 10));
+  const n = (d: string) => Number(d.slice(8, 10));
   const nomeSlot = (s: number) => leg[s - 1]?.label || `Cor ${s}`;
 
-  return (
-    <div className="flex flex-col gap-6">
-      <div className="overflow-x-auto rounded-[10px] border-2 border-noite bg-white">
-        <table className="border-collapse text-sm">
-          <caption className="sr-only">Hábitos do mês: marque os dias em que cumpriu cada hábito</caption>
-          <thead>
-            <tr>
-              <th scope="col" className="sticky left-0 z-10 min-w-36 border-b-2 border-r-2 border-noite bg-white p-2 text-left">
-                <span className="ficha-rotulo">Hábito</span>
+  const tabela = (colunas: string[], celular: boolean) => (
+    <div className={`surface-creme overflow-x-auto ${celular ? "lg:hidden" : "hidden lg:block"}`}>
+      <table className="w-full border-collapse text-sm">
+        <caption className="sr-only">
+          Hábitos {celular ? `de ${diaCurto(colunas[0])} a ${diaCurto(colunas.at(-1)!)}` : "do mês"}: marque os dias em que cumpriu cada hábito
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col" className={`${celular ? "" : "sticky left-0 z-10 min-w-40"} bg-creme-claro p-2 text-left`}>
+              <span className="rotulo text-azul">Hábito</span>
+            </th>
+            {colunas.map((d) => (
+              <th key={d} scope="col" className={`px-0.5 py-2 text-center font-ficha text-[11px] font-normal ${d === hoje ? "text-estrela" : "text-[#4a4a4a]"}`}>
+                {celular && <span className="block">{DIAS_SEMANA[diaDaSemana(d)].slice(0, 3).toUpperCase()}</span>}
+                <span className={d === hoje ? "font-bold" : ""}>{String(n(d)).padStart(2, "0")}</span>
               </th>
-              {dias.map((d) => (
-                <th key={d} scope="col" className="border-b-2 border-noite px-1 py-2 font-ficha text-xs font-normal">
-                  {String(dia(d)).padStart(2, "0")}
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {lista.map((h) => {
+            const temp = h.id.startsWith("temp-");
+            return (
+              <tr key={h.id} className="border-t border-noite/12">
+                <th scope="row" className={`${celular ? "max-w-28" : "sticky left-0 z-10"} bg-creme-claro p-2 text-left font-medium text-tinta`}>
+                  <span className="break-words">{h.name}</span>
                 </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {lista.map((h) => (
-              <tr key={h.id} className="border-b border-noite/20">
-                <th scope="row" className="sticky left-0 z-10 border-r-2 border-noite bg-white p-2 text-left font-semibold">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="break-words">{h.name}</span>
-                    <button
-                      type="button"
-                      className="ficha-rotulo shrink-0 px-1 py-2 underline"
-                      aria-label={`Apagar hábito ${h.name}`}
-                      disabled={h.id.startsWith("temp-")}
-                      onClick={() => roda(() => mexeLista({ remove: h.id }), () => apagarHabito(h.id))}
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </th>
-                {dias.map((d) => {
+                {colunas.map((d) => {
                   const chave = `${h.id}|${d}`;
                   return (
-                    <td key={d} className="px-1 py-1 text-center">
-                      <input
-                        type="checkbox"
-                        className="ficha-check"
-                        checked={marcados.has(chave)}
-                        disabled={h.id.startsWith("temp-")}
-                        aria-label={`${h.name}, dia ${dia(d)}`}
-                        onChange={(e) => {
-                          const done = e.target.checked;
-                          roda(() => marcar({ chave, done }), () => marcarHabito(h.id, d, done));
-                        }}
-                      />
+                    <td key={d} className="p-0 text-center">
+                      <label className="inline-flex size-11 cursor-pointer items-center justify-center">
+                        <input
+                          type="checkbox"
+                          className="size-5 cursor-pointer accent-laranja"
+                          checked={marcados.has(chave)}
+                          disabled={temp}
+                          aria-label={`${h.name}, ${diaCurto(d)}`}
+                          onChange={(e) => {
+                            const done = e.target.checked;
+                            roda(() => marcar({ chave, done }), () => marcarHabito(h.id, d, done));
+                          }}
+                        />
+                      </label>
                     </td>
                   );
                 })}
               </tr>
-            ))}
-            <tr>
-              <th scope="row" className="sticky left-0 z-10 border-r-2 border-t-2 border-noite bg-[#fffbe8] p-2 text-left">
-                <span className="ficha-rotulo">Humor</span>
-              </th>
-              {dias.map((d) => {
-                const s = humores[d] ?? null;
-                const prox = s === null ? 1 : s === 4 ? null : s + 1;
-                return (
-                  <td key={d} className="border-t-2 border-noite bg-[#fffbe8] px-1 py-1 text-center">
-                    <button
-                      type="button"
-                      className="h-7 w-7 rounded-full border-2 border-noite"
-                      style={{ background: s ? leg[s - 1].color : "#fff" }}
-                      aria-label={`Humor do dia ${dia(d)}: ${s ? nomeSlot(s) : "vazio"}. Trocar para ${prox ? nomeSlot(prox) : "vazio"}`}
-                      onClick={() => roda(() => mudaHumor({ date: d, slot: prox }), () => marcarHumor(d, prox))}
-                    />
-                  </td>
-                );
-              })}
-            </tr>
-          </tbody>
-        </table>
+            );
+          })}
+          <tr className="border-t-2 border-noite/25">
+            <th scope="row" className={`${celular ? "" : "sticky left-0 z-10"} bg-creme-claro p-2 text-left`}>
+              <span className="rotulo text-azul">Humor</span>
+            </th>
+            {colunas.map((d) => {
+              const s = humores[d] ?? null;
+              const prox = s === null ? 1 : s === 4 ? null : s + 1;
+              return (
+                <td key={d} className="p-0 text-center">
+                  <button
+                    type="button"
+                    className="inline-flex size-11 items-center justify-center"
+                    aria-label={`Humor de ${diaCurto(d)}: ${s ? nomeSlot(s) : "vazio"}. Trocar para ${prox ? nomeSlot(prox) : "vazio"}`}
+                    onClick={() => roda(() => mudaHumor({ date: d, slot: prox }), () => marcarHumor(d, prox))}
+                  >
+                    <span aria-hidden className="block size-6 rounded-full border border-noite" style={{ background: s ? leg[s - 1].color : "transparent" }} />
+                  </button>
+                </td>
+              );
+            })}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+
+  const semana = blocos[bloco];
+
+  return (
+    <div className="flex flex-col gap-6">
+      {/* Celular: semana por semana */}
+      <div className="flex items-center justify-between gap-2 lg:hidden">
+        <button type="button" className="botao-vidro w-11 !px-0 text-xl" disabled={bloco === 0} aria-label="Semana anterior" onClick={() => setBloco((b) => b - 1)}>
+          ‹
+        </button>
+        <span className="font-ficha text-sm text-areia" aria-live="polite">
+          {diaCurto(semana[0])} a {diaCurto(semana.at(-1)!)}
+        </span>
+        <button type="button" className="botao-vidro w-11 !px-0 text-xl" disabled={bloco === blocos.length - 1} aria-label="Próxima semana" onClick={() => setBloco((b) => b + 1)}>
+          ›
+        </button>
       </div>
+      {tabela(semana, true)}
+      {tabela(dias, false)}
+
+      {lista.length === 0 && <p className="text-areia">Nenhum hábito ainda. Crie até 12 para acompanhar no mês.</p>}
 
       <form
         className="flex gap-2"
         onSubmit={(e) => {
           e.preventDefault();
-          const n = novo.trim();
-          if (!n) return;
+          const nome = novo.trim();
+          if (!nome) return;
           setNovo("");
-          roda(() => mexeLista({ add: { id: `temp-${Date.now()}`, name: n, position: lista.length } }), () => novoHabito(mes, n));
+          roda(() => mexeLista({ add: { id: `temp-${Date.now()}`, name: nome, position: lista.length } }), () => novoHabito(mes, nome));
         }}
       >
         <label htmlFor="novo-habito" className="sr-only">
@@ -143,20 +173,36 @@ export function GradeHabitos({ mes, dias, habitos, feitos, legenda, humor }: Pro
         </label>
         <input
           id="novo-habito"
-          className="ficha-campo min-w-0 flex-1"
+          className="campo-vidro min-w-0 flex-1 !py-0"
           maxLength={60}
-          placeholder={lista.length >= MAX_HABITOS ? "Limite de 12 hábitos" : "+ novo hábito"}
+          placeholder={lista.length >= MAX_HABITOS ? "Limite de 12 hábitos" : "Novo hábito…"}
           disabled={lista.length >= MAX_HABITOS}
           value={novo}
           onChange={(e) => setNovo(e.target.value)}
         />
-        <button type="submit" className="ficha-botao" disabled={!novo.trim() || lista.length >= MAX_HABITOS}>
+        <button type="submit" className="botao-laranja" disabled={!novo.trim() || lista.length >= MAX_HABITOS}>
           Adicionar
         </button>
       </form>
 
-      <fieldset className="ficha-caixa p-4">
-        <legend className="diario-titulo px-1 text-lg">Legenda do humor</legend>
+      {lista.length > 0 && (
+        <details className="surface-vidro p-4">
+          <summary className="flex min-h-11 cursor-pointer items-center font-medium">Apagar hábitos</summary>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {lista.map((h) => (
+              <li key={h.id}>
+                <button type="button" className="botao-vidro text-sm" disabled={h.id.startsWith("temp-")} onClick={() => roda(() => mexeLista({ remove: h.id }), () => apagarHabito(h.id))}>
+                  Apagar “{h.name}”
+                </button>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+
+      <fieldset className="surface-vidro flex flex-col gap-3 p-[18px]">
+        <legend className="rotulo float-left mb-1 text-laranja-claro">Legenda do humor</legend>
+        <p className="clear-both text-sm text-areia">Escolha 4 cores e dê um nome a cada uma. Toque na bolinha do dia pra trocar.</p>
         <div className="grid gap-3 sm:grid-cols-2">
           {leg.map((l, i) => (
             <div key={l.slot} className="flex items-center gap-2">
@@ -166,7 +212,7 @@ export function GradeHabitos({ mes, dias, habitos, feitos, legenda, humor }: Pro
               <input
                 id={`cor-${l.slot}`}
                 type="color"
-                className="h-11 w-11 shrink-0 cursor-pointer rounded-md border-2 border-noite bg-white p-0.5"
+                className="size-11 shrink-0 cursor-pointer rounded-md border border-creme/40 bg-transparent p-1"
                 value={l.color}
                 onChange={(e) => setLeg((x) => x.map((y, j) => (j === i ? { ...y, color: e.target.value } : y)))}
               />
@@ -175,7 +221,7 @@ export function GradeHabitos({ mes, dias, habitos, feitos, legenda, humor }: Pro
               </label>
               <input
                 id={`nome-${l.slot}`}
-                className="ficha-campo min-w-0 flex-1"
+                className="campo-vidro min-w-0 flex-1 !py-0"
                 maxLength={30}
                 placeholder={`Ex.: ${["animada", "tranquila", "cansada", "brava"][i]}`}
                 value={l.label}
@@ -184,12 +230,12 @@ export function GradeHabitos({ mes, dias, habitos, feitos, legenda, humor }: Pro
             </div>
           ))}
         </div>
-        <button type="button" className="ficha-botao mt-3" onClick={() => roda(() => {}, () => salvarLegenda(mes, leg))}>
+        <button type="button" className="botao-laranja self-start" onClick={() => roda(() => {}, () => salvarLegenda(mes, leg))}>
           Salvar legenda
         </button>
       </fieldset>
 
-      <p role="status" className="text-sm font-semibold text-estrela empty:hidden">
+      <p role="status" className="text-sm font-semibold text-[#ff8f80] empty:hidden">
         {erro}
       </p>
     </div>

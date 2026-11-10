@@ -182,7 +182,7 @@ async function Base() {
         </div>
 
         <div className="card flex flex-col gap-2.5 px-[18px] py-4">
-          <span className="font-ficha text-[10px] tracking-[0.14em] text-laranja-claro">DIÁRIO DE BORDO</span>
+          <span className="font-ficha text-[10px] tracking-[0.14em] text-laranja-claro">REGISTRO DE BORDO</span>
           <div className="flex justify-between gap-2.5 text-sm">
             <span className="text-areia">Último quiz</span>
             <span className="text-right font-semibold">{ultimoNome ?? "Nenhum ainda"}</span>

@@ -3,6 +3,7 @@
 import { refresh } from "next/cache";
 import { auth } from "@/lib/auth/server";
 import { assertAdmin } from "@/lib/auth/admin";
+import { sql } from "@/lib/db";
 
 // O SDK tem auth.admin em tempo de execução (rotas /admin/* do Neon Auth), mas a tipagem dele sai como unknown.
 // O Neon Auth também confere no servidor dele se quem chama é admin.
@@ -35,5 +36,14 @@ export async function desbanir(f: FormData) {
   await assertAdmin();
   const { error } = await adminApi.unbanUser({ userId: alvo(f) });
   if (error) throw new Error("Não deu pra desbanir agora");
+  refresh();
+}
+
+// Marca (ou desmarca) um feedback como lido.
+export async function marcarFeedback(f: FormData) {
+  await assertAdmin();
+  const id = String(f.get("id") ?? "");
+  if (!/^\d+$/.test(id)) throw new Error("Feedback inválido");
+  await sql`update feedbacks set lido = ${f.get("lido") === "1"} where id = ${id}`;
   refresh();
 }

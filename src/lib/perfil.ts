@@ -57,7 +57,7 @@ export async function salvarPerfil(userId: string, p: Perfil): Promise<boolean> 
   return true;
 }
 
-// Todos os resultados, do mais novo pro mais antigo (o diário mostra o atual e os anteriores).
+// Todos os resultados, do mais novo pro mais antigo (o registro de bordo mostra o atual e os anteriores).
 export async function historico(userId: string): Promise<SavedResult[]> {
   return (await sql`
     select quiz, result, created_at from quiz_results

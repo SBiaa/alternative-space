@@ -54,3 +54,36 @@ export async function listTripulantes(busca = "", limite = 50): Promise<Tripulan
     quizzes: Number(r.quizzes),
   }));
 }
+
+export type Feedback = {
+  id: string;
+  jogo: string;
+  tipo: string;
+  nota: number | null;
+  mensagem: string;
+  contato: string;
+  logado: boolean;
+  lido: boolean;
+  createdAt: string;
+};
+
+export async function listFeedbacks(soNaoLidos = false, limite = 100): Promise<Feedback[]> {
+  const rows = await sql`
+    select id::text, jogo, tipo, nota, mensagem, contato, user_id is not null as logado, lido, created_at
+    from feedbacks
+    where (not ${soNaoLidos} or not lido)
+    order by created_at desc limit ${limite}`;
+  return rows.map((r) => ({
+    id: r.id, jogo: r.jogo, tipo: r.tipo, nota: r.nota === null ? null : Number(r.nota),
+    mensagem: r.mensagem, contato: r.contato, logado: r.logado, lido: r.lido,
+    createdAt: new Date(r.created_at).toISOString(),
+  }));
+}
+
+// Média de estrelas e quantidade de avaliações por jogo.
+export async function notasPorJogo(): Promise<{ jogo: string; media: number; total: number }[]> {
+  const rows = await sql`
+    select jogo, round(avg(nota), 1)::float as media, count(*)::int as total
+    from feedbacks where nota is not null group by jogo order by media desc`;
+  return rows.map((r) => ({ jogo: r.jogo, media: Number(r.media), total: Number(r.total) }));
+}
