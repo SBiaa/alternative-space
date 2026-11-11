@@ -2,93 +2,76 @@
   "hero": {
     "eyebrow": "Quizzes · Fichas de RPG · Blog · Loja",
     "title": "Seu espaço pra ser alternativo.",
-    "text": "Uma base pra geeks, nerds e a galera alternativa. Monte sua cabine, descubra quem você é nos quizzes, guarde suas fichas de RPG e encontre peças com a sua cara."
+    "text": "Uma base pra geeks, nerds e a galera alternativa. Monte sua cabine, descubra quem você é nos quizzes, guarde suas fichas de RPG e encontre peças com a sua cara.",
+    "steps": ["Monte sua cabine", "Descubra quem você é", "Guarde suas fichas"],
+    "shelf": ["RPG", "Anime", "Rock", "Terror"]
   },
-  "howItWorks": [
-    {
-      "title": "Monte sua cabine",
-      "text": "Seu perfil com apelido, avatar e os resultados que você conquistou. Tudo que você faz por aqui fica guardado nela."
-    },
-    {
-      "title": "Descubra quem você é",
-      "text": "Quizzes dos universos que você ama. O resultado vai pra sua cabine e dá pra mostrar pros amigos."
-    },
-    {
-      "title": "Monte suas fichas",
-      "text": "Crie personagens de RPG passo a passo, sem sofrimento, prontos pra próxima sessão."
-    }
-  ],
   "diario": {
-    "eyebrow": "Diário de Bordo 2027",
+    "eyebrow": "Diário de Bordo 2027 · Novo",
     "title": "Seu ano vira uma missão.",
-    "text": "Um planner geek pra 2027: 12 meses, 52 semanas e uma Pré-missão de aquecimento. Anote suas quests, acompanhe hábitos e ganhe XP a cada tarefa concluída.",
-    "features": [
-      { "title": "Quests do dia e do mês", "text": "Concluiu? Ganha XP. Não deu? Passa pra frente que ela aparece na semana seguinte." },
-      { "title": "Grade de hábitos", "text": "Até 12 hábitos por mês, marcados dia a dia, pra ver sua sequência crescer." },
-      { "title": "Inventário", "text": "As séries, animes, jogos e livros que você quer ver, está vendo ou já terminou." },
-      { "title": "Estrelas do mês", "text": "Cada quest concluída acende uma estrela. Junte 10 e feche a constelação do mês." }
+    "text": "O planner da base, online e guardado na sua conta. Cada quest concluída acende uma estrela do mês.",
+    "features": ["Quests do dia e do mês", "Grade de hábitos", "Inventário", "Estrelas do mês"],
+    "example": [
+      { "text": "Terminar o episódio 3", "done": true },
+      { "text": "Montar a ficha do grupo" },
+      { "text": "Ler 20 páginas", "urgent": true }
     ]
   },
   "challenge": {
-    "month": "[MÊS]",
-    "theme": "[TEMA DO DESAFIO]",
-    "endsAt": "[DATA]",
+    "month": "",
+    "theme": "",
+    "endsAt": "",
     "artCount": null,
     "steps": [
-      "Posta a sua arte no Instagram",
-      "A comunidade vota na favorita",
-      "A vencedora vira produto e o artista é creditado"
+      "A gente solta um tema",
+      "Você posta sua arte e a comunidade vota",
+      "A vencedora vira produto, com crédito pra quem criou"
     ]
   },
   "vote": {
     "closesAt": "[DATA]",
     "options": [
-      {
-        "title": "[COLEÇÃO A]",
-        "image": null
-      },
-      {
-        "title": "[COLEÇÃO B]",
-        "image": null
-      },
-      {
-        "title": "[COLEÇÃO C]",
-        "image": null
-      }
+      { "title": "[COLEÇÃO A]", "image": null },
+      { "title": "[COLEÇÃO B]", "image": null },
+      { "title": "[COLEÇÃO C]", "image": null }
     ]
   },
   "quiz": {
     "slug": "personagem-alternativo",
     "title": "Qual personagem alternativo é você?",
-    "text": "Leva 2 minutos. No final, você descobre o resultado e compartilha com a galera."
+    "text": "Leva 2 minutos. No final, você descobre o resultado, guarda na sua cabine e compartilha com a galera."
   },
   "store": {
-    "eyebrow": "Loja · Rick and Rick",
+    "eyebrow": "Armazém da base",
     "title": "Item raro desbloqueado.",
-    "text": "Arte exclusiva, com o nome de quem criou. Dá pra personalizar a sua também.",
+    "text": "Almofadas, squeezes e canecas com arte da comunidade. Pedido pelo direct ou WhatsApp.",
+    "launch": {
+      "name": "Caneca Rick",
+      "text": "Caneca de cerâmica com a arte nova da coleção.",
+      "image": "/loja/caneca-rick-banner.jpg",
+      "alt": "Arte da Caneca Rick"
+    },
     "products": [
-      {
-        "name": "Caneca Rick and Rick 01",
-        "tag": "",
-        "artist": "@[ARTISTA]",
-        "price": "50",
-        "image": "/colecoes/rick-and-rick/caneca-01.png"
-      },
-      {
-        "name": "Caneca Rick and Rick 02",
-        "tag": "Crossover",
-        "artist": "@[ARTISTA]",
-        "price": "50",
-        "image": "/colecoes/rick-and-rick/caneca-02.png"
-      },
-      {
-        "name": "Almofada Rick and Rick",
-        "tag": "",
-        "artist": "@[ARTISTA]",
-        "price": "30",
-        "image": "/colecoes/rick-and-rick/almofada.webp"
-      }
+      { "name": "Almofada Rock Lee", "type": "Almofada", "fandom": "Anime", "price": "40", "image": "/loja/almofada-rock-lee.jpg", "alt": "Almofada branca com Rock Lee em rosa e azul" },
+      { "name": "Almofada Goku", "type": "Almofada", "fandom": "Anime", "price": "40", "image": "/loja/almofada-goku.jpg", "alt": "Almofada branca com Goku em estilo mangá azul" },
+      { "name": "Almofada Marca do Sacrifício", "type": "Almofada", "fandom": "Anime", "price": "40", "image": "/loja/almofada-marca-do-sacrificio.jpg", "alt": "Almofada preta com a marca do sacrifício e caveiras em vermelho" },
+      { "name": "Almofada Vodu é pra Jacu", "type": "Almofada", "fandom": "Paródias", "price": "40", "image": "/loja/almofada-vodu-e-pra-jacu.jpg", "alt": "Almofada preta com jacaré mago e a frase Vodu é pra jacu" },
+      { "name": "Almofada Gand-Alf", "type": "Almofada", "fandom": "Paródias", "price": "40", "image": "/loja/almofada-gand-alf.jpg", "alt": "Almofada marrom com a arte Gand-Alf" },
+      { "name": "Squeeze Pickle Rick", "type": "Squeeze", "fandom": "Rick and Morty", "price": "50", "image": "/loja/squeeze-pickle-rick.jpg", "alt": "Squeeze de alumínio com arte do Pickle Rick" },
+      { "name": "Squeeze Picles", "type": "Squeeze", "fandom": "Rick and Morty", "price": "50", "image": "/loja/squeeze-picles.jpg", "alt": "Squeeze preto com estampa de picles" },
+      { "name": "Squeeze Rick and Morty", "type": "Squeeze", "fandom": "Rick and Morty", "price": "50", "image": "/loja/squeeze-rick-and-morty.jpg", "alt": "Squeeze preto com Rick e Morty" },
+      { "name": "Squeeze Duff", "type": "Squeeze", "fandom": "Simpsons", "price": "50", "image": "/loja/squeeze-duff.jpg", "alt": "Squeeze vermelho com o rótulo Duff Beer" },
+      { "name": "Squeeze Medal of Homer", "type": "Squeeze", "fandom": "Simpsons", "price": "50", "image": "/loja/squeeze-medal-of-homer.jpg", "alt": "Squeeze com a arte Medal of Homer" },
+      { "name": "Squeeze Bart Mengão", "type": "Squeeze", "fandom": "Simpsons", "price": "50", "image": "/loja/squeeze-bart-mengao.jpg", "alt": "Squeeze com o Bart de skate e camisa do Flamengo" }
     ]
+  },
+  "custom": {
+    "pieces": [
+      { "name": "Almofada", "image": "/loja/branca-almofada.jpg" },
+      { "name": "Squeeze", "image": "/loja/branca-squeeze.jpg" },
+      { "name": "Caneca", "image": null }
+    ],
+    "steps": ["Escolhe a peça", "Conta a ideia ou manda a sua arte", "Aprova o mockup antes de produzir"]
   },
   "partners": [
     {

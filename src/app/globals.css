@@ -372,3 +372,23 @@ dialog::backdrop {
 .print-only {
   display: none;
 }
+
+/* Entrada ao rolar: blocos da home sobem e aparecem quando entram na tela.
+   Só CSS (animação ligada à rolagem); navegador sem suporte ou pedido de menos movimento mostra tudo parado. */
+@keyframes surgir {
+  from { opacity: 0; transform: translateY(32px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .surge {
+      animation: surgir linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+}
+/* O topo da home já nasce na tela: entra uma vez ao carregar. */
+@media (prefers-reduced-motion: no-preference) {
+  .entrar { animation: surgir 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+}
