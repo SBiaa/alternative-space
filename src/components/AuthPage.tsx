@@ -20,7 +20,7 @@ const copy = {
   },
   entrar: {
     eyebrow: "Tripulantes",
-    title: "Bem-vinde de volta.",
+    title: "Olá, tripulante.",
     text: "Entra pra ver seu registro de bordo, seu Diário de Bordo e as coleções completas.",
     switchText: "Ainda não tem conta?",
     switchLabel: "Criar cadastro",
