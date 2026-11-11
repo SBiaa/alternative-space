@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
 import { cadastrar, entrar, type AuthState } from "@/app/actions/tripulante";
 
@@ -26,7 +27,10 @@ export function AuthForm({ mode, next, salvar }: { mode: "cadastro" | "entrar"; 
         <input id="email" name="email" type="email" defaultValue={state?.email} required autoComplete="email" placeholder="voce@email.com" className={field} />
       </div>
       <div className="flex flex-col gap-2">
-        <label htmlFor="password" className={label}>SENHA{novo && " (MÍNIMO 8 CARACTERES)"}</label>
+        <div className="flex items-baseline justify-between gap-3">
+          <label htmlFor="password" className={label}>SENHA{novo && " (MÍNIMO 8 CARACTERES)"}</label>
+          {!novo && <Link href="/entrar/esqueci" className="text-sm font-bold text-azul">Esqueci a senha</Link>}
+        </div>
         <input id="password" name="password" type="password" required minLength={novo ? 8 : undefined} autoComplete={novo ? "new-password" : "current-password"} className={field} />
       </div>
 
