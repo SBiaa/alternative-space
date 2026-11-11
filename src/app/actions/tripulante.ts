@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { refresh } from "next/cache";
 import { auth, getUser } from "@/lib/auth/server";
-import { PENDENTE, lerPendente, safeNext, saveResult, type Pendente } from "@/lib/tripulante";
+import { PENDENTE, SENHA, lerPendente, safeNext, saveResult, type Pendente } from "@/lib/tripulante";
 
 export type AuthState = { error?: string; name?: string; email?: string } | null;
 export type VerifyState = { error?: string; ok?: string } | null;
@@ -13,7 +13,8 @@ type AuthError = { message?: string; code?: string; status?: number } | null | u
 
 // O SDK tem auth.emailOtp em tempo de execução (rotas /email-otp/* do Neon Auth), mas a tipagem dele sai como unknown.
 const otpApi = auth.emailOtp as {
-  sendVerificationOtp(body: { email: string; type: "email-verification" }): Promise<{ error?: AuthError }>;
+  sendVerificationOtp(body: { email: string; type: "email-verification" | "forget-password" }): Promise<{ error?: AuthError }>;
+  resetPassword(body: { email: string; otp: string; password: string }): Promise<{ data?: { success?: boolean } | null; error?: AuthError }>;
   verifyEmail(body: { email: string; otp: string }): Promise<{
     data?: { token: string | null; user: { id: string } } | null;
     error?: AuthError;
@@ -59,7 +60,10 @@ export async function cadastrar(_: AuthState, f: FormData): Promise<AuthState> {
   if (password.length < 8) return { ...keep, error: "A senha precisa de pelo menos 8 caracteres." };
 
   const { data, error } = await auth.signUp.email({ name, email, password });
-  if (error || !data?.user) return { ...keep, error: traduz(error?.message) };
+  if (error || !data?.user) {
+    console.error("[cadastro] Neon Auth recusou:", error ?? "sem usuário na resposta");
+    return { ...keep, error: traduz(error?.message) };
+  }
 
   const next = safeNext(f.get("next"));
   const salvar = String(f.get("salvar") ?? "");
@@ -113,6 +117,56 @@ export async function reenviarCodigo(): Promise<VerifyState> {
   const p = lerPendente((await cookies()).get(PENDENTE)?.value);
   if (!p) return { error: "Esse pedido expirou. Faz o cadastro ou entra de novo." };
   const { error } = await otpApi.sendVerificationOtp({ email: p.email, type: "email-verification" });
+  if (error) return { error: "Espera um minutinho antes de pedir outro código." };
+  return { ok: "Código novo enviado. Confere o e-mail (e o spam)." };
+}
+
+// ---- Esqueci a senha: código por e-mail + senha nova ----
+export type SenhaState = { error?: string; ok?: string; email?: string } | null;
+
+async function lerEmailSenha() {
+  const v = (await cookies()).get(SENHA)?.value ?? "";
+  return v.includes("@") ? v : null;
+}
+
+export async function pedirCodigoSenha(_: SenhaState, f: FormData): Promise<SenhaState> {
+  const email = String(f.get("email") ?? "").trim().toLowerCase();
+  if (!email.includes("@")) return { email, error: "Confere o e-mail." };
+  const { error } = await otpApi.sendVerificationOtp({ email, type: "forget-password" });
+  // Não conta se o e-mail tem conta ou não; só avisa se for limite de envio.
+  if (error && (error.status === 429 || `${error.code} ${error.message}`.toLowerCase().includes("too many")))
+    return { email, error: "Espera um minutinho antes de pedir outro código." };
+  if (error) console.error("[senha] Neon Auth recusou o envio:", error);
+  (await cookies()).set(SENHA, email, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: 60 * 30,
+  });
+  redirect("/entrar/nova-senha");
+}
+
+export async function redefinirSenha(_: SenhaState, f: FormData): Promise<SenhaState> {
+  const email = await lerEmailSenha();
+  if (!email) return { error: "Esse pedido expirou. Pede um código novo." };
+  const otp = String(f.get("codigo") ?? "").replace(/\D/g, "");
+  const password = String(f.get("password") ?? "");
+  if (otp.length !== 6) return { error: "O código tem 6 números." };
+  if (password.length < 8) return { error: "A senha precisa de pelo menos 8 caracteres." };
+
+  const { error } = await otpApi.resetPassword({ email, otp, password });
+  if (error) return { error: traduzCodigo(error) };
+  (await cookies()).delete(SENHA);
+  // Entra direto com a senha nova.
+  const { error: e2 } = await auth.signIn.email({ email, password });
+  redirect(e2 ? "/entrar" : "/conta");
+}
+
+export async function reenviarCodigoSenha(): Promise<SenhaState> {
+  const email = await lerEmailSenha();
+  if (!email) return { error: "Esse pedido expirou. Pede um código novo." };
+  const { error } = await otpApi.sendVerificationOtp({ email, type: "forget-password" });
   if (error) return { error: "Espera um minutinho antes de pedir outro código." };
   return { ok: "Código novo enviado. Confere o e-mail (e o spam)." };
 }

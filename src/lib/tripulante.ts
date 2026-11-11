@@ -40,6 +40,8 @@ export const safeNext = (v: FormDataEntryValue | string | null | undefined) =>
 
 // Cadastro esperando o código do e-mail (cookie httpOnly, 30 min).
 export const PENDENTE = "tripulante_pendente";
+// Cookie com o e-mail de quem pediu pra redefinir a senha.
+export const SENHA = "tripulante_senha";
 export type Pendente = { email: string; next: string; salvar: string };
 
 export function lerPendente(v: string | undefined): Pendente | null {

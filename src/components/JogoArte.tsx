@@ -123,8 +123,18 @@ function Icone({ slug }: { slug: string }) {
   }
 }
 
-// Arte do cartão: fundo na cor do jogo, umas estrelinhas e o ícone no meio.
+// Capa do cartão: print do jogo (public/jogos/capas/<slug>.png).
 export function JogoArte({ jogo, className = "" }: { jogo: Jogo; className?: string }) {
+  return (
+    <div className={`relative overflow-hidden ${className}`} style={{ background: jogo.cor }} aria-hidden="true">
+      {/* eslint-disable-next-line @next/next/no-img-element -- capa estática, sem precisar de otimização */}
+      <img src={`/jogos/capas/${jogo.slug}.png`} alt="" loading="lazy" className="absolute inset-0 size-full object-cover" />
+    </div>
+  );
+}
+
+// Versão antiga com ícone desenhado, mantida caso falte capa de algum jogo novo.
+export function JogoIcone({ jogo, className = "" }: { jogo: Jogo; className?: string }) {
   return (
     <div className={`relative flex items-center justify-center overflow-hidden ${className}`} style={{ background: jogo.cor }} aria-hidden="true">
       <svg viewBox="0 0 100 100" className="absolute inset-0 size-full" preserveAspectRatio="xMidYMid slice">
