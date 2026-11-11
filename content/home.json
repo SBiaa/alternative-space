@@ -18,6 +18,17 @@
       "text": "Crie personagens de RPG passo a passo, sem sofrimento, prontos pra próxima sessão."
     }
   ],
+  "diario": {
+    "eyebrow": "Diário de Bordo 2027",
+    "title": "Seu ano vira uma missão.",
+    "text": "Um planner geek pra 2027: 12 meses, 52 semanas e uma Pré-missão de aquecimento. Anote suas quests, acompanhe hábitos e ganhe XP a cada tarefa concluída.",
+    "features": [
+      { "title": "Quests do dia e do mês", "text": "Concluiu? Ganha XP. Não deu? Passa pra frente que ela aparece na semana seguinte." },
+      { "title": "Grade de hábitos", "text": "Até 12 hábitos por mês, marcados dia a dia, pra ver sua sequência crescer." },
+      { "title": "Inventário", "text": "As séries, animes, jogos e livros que você quer ver, está vendo ou já terminou." },
+      { "title": "Estrelas do mês", "text": "Cada quest concluída acende uma estrela. Junte 10 e feche a constelação do mês." }
+    ]
+  },
   "challenge": {
     "month": "[MÊS]",
     "theme": "[TEMA DO DESAFIO]",
