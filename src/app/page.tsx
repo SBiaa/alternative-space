@@ -30,7 +30,7 @@ function Cabecalho({ etiqueta, titulo, id, children }: { etiqueta: string; titul
 
 export default function Home() {
   const posts = getPosts().slice(0, 3);
-  const { hero, howItWorks, challenge, quiz, store, partners, newsletter } = home;
+  const { hero, howItWorks, diario, challenge, quiz, store, partners, newsletter } = home;
   const artes = artesDoQuiz(quiz.slug);
 
   return (
@@ -91,6 +91,25 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* Diário de Bordo */}
+      <section id="diario" aria-labelledby="diario-titulo" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
+        <div className="miolo flex flex-col gap-6">
+          <Cabecalho etiqueta={diario.eyebrow} titulo={diario.title} id="diario-titulo">
+            <Link href="/diario" className="btn bg-laranja text-noite">Abrir meu diário</Link>
+          </Cabecalho>
+          <p className="-mt-2 max-w-[640px] text-[15px] leading-[1.55] text-areia">{diario.text}</p>
+          <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4 p-0">
+            {diario.features.map((f, i) => (
+              <li key={f.title} className="card flex flex-col gap-2 p-5">
+                <span className="font-ficha text-[13px] text-laranja-claro">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="text-[18px] font-semibold">{f.title}</h3>
+                <p className="text-sm leading-normal text-areia">{f.text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
