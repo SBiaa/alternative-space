@@ -87,3 +87,26 @@ export async function notasPorJogo(): Promise<{ jogo: string; media: number; tot
     from feedbacks where nota is not null group by jogo order by media desc`;
   return rows.map((r) => ({ jogo: r.jogo, media: Number(r.media), total: Number(r.total) }));
 }
+
+export type SugestaoDrop = {
+  id: string;
+  tema: string;
+  peca: string;
+  detalhes: string;
+  contato: string;
+  logado: boolean;
+  lido: boolean;
+  createdAt: string;
+};
+
+export async function listSugestoesDrop(soNaoLidas = false, limite = 100): Promise<SugestaoDrop[]> {
+  const rows = await sql`
+    select id::text, tema, peca, detalhes, contato, user_id is not null as logado, lido, created_at
+    from sugestoes_drop
+    where (not ${soNaoLidas} or not lido)
+    order by created_at desc limit ${limite}`;
+  return rows.map((r) => ({
+    id: r.id, tema: r.tema, peca: r.peca, detalhes: r.detalhes, contato: r.contato,
+    logado: r.logado, lido: r.lido, createdAt: new Date(r.created_at).toISOString(),
+  }));
+}

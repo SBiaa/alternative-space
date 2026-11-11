@@ -6,6 +6,7 @@ import { getQuiz } from "@/lib/quiz";
 import { PostCard } from "@/components/PostCard";
 import { Ph } from "@/components/Ph";
 import { NewsletterForm } from "@/components/NewsletterForm";
+import { SugestaoDrop } from "@/components/SugestaoDrop";
 import { Planeta } from "@/components/Logo";
 
 // Até quatro artes de resultado do quiz em destaque, para o painel ao lado do convite.
@@ -29,7 +30,7 @@ function Cabecalho({ etiqueta, titulo, id, children }: { etiqueta: string; titul
 
 export default function Home() {
   const posts = getPosts().slice(0, 3);
-  const { hero, howItWorks, challenge, vote, quiz, store, partners, newsletter } = home;
+  const { hero, howItWorks, challenge, quiz, store, partners, newsletter } = home;
   const artes = artesDoQuiz(quiz.slug);
 
   return (
@@ -169,20 +170,8 @@ export default function Home() {
       {/* Votação */}
       <section id="voto" aria-labelledby="voto-titulo" className="relative px-6 pb-[clamp(64px,8vw,104px)]">
         <div className="miolo flex flex-col gap-6">
-          <Cabecalho etiqueta="Vote no próximo drop" titulo="Quem escolhe a próxima coleção é você." id="voto-titulo">
-            <span className="font-ficha text-xs text-areia">VOTAÇÃO ABERTA ATÉ {vote.closesAt}</span>
-          </Cabecalho>
-          <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 p-0">
-            {vote.options.map((o, i) => (
-              <li key={o.title} className="card flex flex-col overflow-hidden">
-                <Ph image={o.image} label={`[IMAGEM OPÇÃO ${String.fromCharCode(65 + i)}]`} />
-                <div className="flex items-center justify-between gap-3 p-4">
-                  <h3 className="text-[17px] font-semibold">{o.title}</h3>
-                  <Link href="/votar" className="btn bg-laranja !px-4 !py-2.5 !text-[15px] text-noite">Votar</Link>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <Cabecalho etiqueta="Próximo drop" titulo="Quem escolhe a próxima coleção é você." id="voto-titulo" />
+          <SugestaoDrop />
         </div>
       </section>
 

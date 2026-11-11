@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { banir, desbanir, marcarFeedback } from "@/app/actions/admin";
+import { banir, desbanir, marcarFeedback, marcarSugestaoDrop } from "@/app/actions/admin";
 import { requireAdmin } from "@/lib/auth/admin";
-import { listFeedbacks, listTripulantes, notasPorJogo, overview, quizCounts } from "@/lib/admin";
+import { listFeedbacks, listSugestoesDrop, listTripulantes, notasPorJogo, overview, quizCounts } from "@/lib/admin";
+import { PECAS, pecaValida } from "@/lib/sugestaoDrop";
 import { TIPOS_FEEDBACK, tipoValido } from "@/lib/feedback";
 import { jogos } from "@/lib/jogos";
 import { getResult, quizzes } from "@/lib/quiz";
@@ -30,8 +31,10 @@ async function Painel({ searchParams }: { searchParams: PageProps<"/admin">["sea
   const sp = await searchParams;
   const busca = typeof sp.busca === "string" ? sp.busca.slice(0, 100) : "";
   const todosFeedbacks = sp.feedbacks === "todos";
-  const [resumo, contagens, tripulantes, feedbacks, notas] = await Promise.all([
+  const todasSugestoes = sp.sugestoes === "todas";
+  const [resumo, contagens, tripulantes, feedbacks, notas, sugestoes] = await Promise.all([
     overview(), quizCounts(), listTripulantes(busca), listFeedbacks(!todosFeedbacks), notasPorJogo(),
+    listSugestoesDrop(!todasSugestoes),
   ]);
   const nomeJogo = (slug: string) => jogos.find((j) => j.slug === slug)?.nome ?? slug;
 
@@ -90,6 +93,37 @@ async function Painel({ searchParams }: { searchParams: PageProps<"/admin">["sea
             );
           })}
         </ul>
+      </div>
+
+      <div id="sugestoes-drop" className="flex flex-col gap-5">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="font-titulo text-[1.75rem] font-bold text-azul">Ideias pro próximo drop</h2>
+          <Link href={todasSugestoes ? "/admin#sugestoes-drop" : "/admin?sugestoes=todas#sugestoes-drop"} className="underline">
+            {todasSugestoes ? "Ver só as não lidas" : "Ver todas (inclusive lidas)"}
+          </Link>
+        </div>
+        {sugestoes.length === 0 ? (
+          <p className="text-neutro">{todasSugestoes ? "Nenhuma ideia ainda." : "Nada novo por aqui."}</p>
+        ) : (
+          <ul className="flex list-none flex-col gap-3 p-0">
+            {sugestoes.map((s) => (
+              <li key={s.id} className={`card flex flex-col gap-2 p-4 ${s.lido ? "opacity-60" : ""}`}>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                  <b className="text-base">{s.tema}</b>
+                  {pecaValida(s.peca) && <span className="etiqueta text-[11px] text-laranja">{PECAS[s.peca]}</span>}
+                  <span className="text-neutro">{data(s.createdAt)}{s.logado ? " · com conta" : ""}</span>
+                </div>
+                {s.detalhes && <p className="m-0 whitespace-pre-wrap">{s.detalhes}</p>}
+                {s.contato && <p className="m-0 text-sm">Contato: <span className="break-all">{s.contato}</span></p>}
+                <form action={marcarSugestaoDrop}>
+                  <input type="hidden" name="id" value={s.id} />
+                  <input type="hidden" name="lido" value={s.lido ? "0" : "1"} />
+                  <button type="submit" className="text-sm underline">{s.lido ? "Marcar como não lida" : "Marcar como lida"}</button>
+                </form>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div id="feedbacks" className="flex flex-col gap-5">

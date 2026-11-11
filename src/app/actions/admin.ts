@@ -47,3 +47,12 @@ export async function marcarFeedback(f: FormData) {
   await sql`update feedbacks set lido = ${f.get("lido") === "1"} where id = ${id}`;
   refresh();
 }
+
+// Marca (ou desmarca) uma sugestão de drop como lida.
+export async function marcarSugestaoDrop(f: FormData) {
+  await assertAdmin();
+  const id = String(f.get("id") ?? "");
+  if (!/^\d+$/.test(id)) throw new Error("Sugestão inválida");
+  await sql`update sugestoes_drop set lido = ${f.get("lido") === "1"} where id = ${id}`;
+  refresh();
+}

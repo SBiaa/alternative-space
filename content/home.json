@@ -60,22 +60,22 @@
         "name": "Caneca Rick and Rick 01",
         "tag": "",
         "artist": "@[ARTISTA]",
-        "price": "[PREÇO]",
-        "image": null
+        "price": "50",
+        "image": "/colecoes/rick-and-rick/caneca-01.png"
       },
       {
         "name": "Caneca Rick and Rick 02",
         "tag": "Crossover",
         "artist": "@[ARTISTA]",
-        "price": "[PREÇO]",
-        "image": null
+        "price": "50",
+        "image": "/colecoes/rick-and-rick/caneca-02.png"
       },
       {
         "name": "Almofada Rick and Rick",
         "tag": "",
         "artist": "@[ARTISTA]",
-        "price": "[PREÇO]",
-        "image": null
+        "price": "30",
+        "image": "/colecoes/rick-and-rick/almofada.webp"
       }
     ]
   },
