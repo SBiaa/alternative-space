@@ -5,6 +5,7 @@ import eraInternet from "../../content/quizzes/era-da-internet.json";
 import faRaiz from "../../content/quizzes/fa-raiz-one-piece.json";
 import partyRpg from "../../content/quizzes/party-rpg.json";
 import rickAndMorty from "../../content/quizzes/rick-and-morty.json";
+import casa from "../../content/quizzes/qual-sua-casa.json";
 
 export type QuizResult = {
   name: string;
@@ -14,6 +15,9 @@ export type QuizResult = {
   color: string;
   label?: string; // aparece ao lado de "Seu resultado"
   image?: string | null; // caminho em /public; null = "arte em breve"
+  dayToDay?: string; // "No dia a dia"
+  watchOut?: string; // "Ponto de atenção"
+  tags?: string[]; // vão pra tabela interests (origem "quiz") quando o resultado é salvo
 };
 
 export type PartyMember = { role: string; name: string; text: string; image?: string | null };
@@ -30,6 +34,11 @@ export type PersonalityQuiz = Base & {
   kind?: "personalidade";
   results: Record<string, QuizResult>;
   questions: { q: string; options: { text: string; result: string }[] }[];
+  shuffle?: boolean; // embaralha as opções de cada pergunta
+  mix?: boolean; // mostra a mistura em % no resultado; empate no topo vira escolha
+  progress?: "barra" | "constelacao";
+  tieTitle?: string;
+  tieText?: string;
 };
 
 // Perguntas com resposta certa. O resultado é a pontuação ("7" = 7 acertos); a faixa define o texto.
@@ -51,6 +60,7 @@ export type QuizData = PersonalityQuiz | KnowledgeQuiz | PartyQuiz;
 
 // Para adicionar um quiz: crie o JSON em content/quizzes e registre aqui. A ordem é a da página /quiz.
 export const quizzes: Record<string, QuizData> = {
+  "qual-sua-casa": casa as PersonalityQuiz,
   "rick-and-morty": rickAndMorty,
   "era-da-internet": eraInternet,
   "fa-raiz-one-piece": faRaiz as KnowledgeQuiz,
@@ -121,4 +131,37 @@ export function staticResultIds(quiz: QuizData): string[] {
 export function otherResults(quiz: QuizData, id: string): [string, QuizResult][] {
   if (quiz.kind === "party" || quiz.kind === "conhecimento") return [];
   return Object.entries(quiz.results).filter(([k]) => k !== id);
+}
+
+// ---- Mistura (quizzes com mix: true) ----
+
+// Pontos por resultado, na ordem das chaves de results.
+export function tally(quiz: PersonalityQuiz, answers: string[]): number[] {
+  return Object.keys(quiz.results).map((k) => answers.filter((a) => a === k).length);
+}
+
+// Resultados empatados no topo (um só = sem empate).
+export function topResults(quiz: PersonalityQuiz, scores: number[]): string[] {
+  const keys = Object.keys(quiz.results);
+  const max = Math.max(...scores);
+  return keys.filter((_, i) => scores[i] === max);
+}
+
+// Mistura vai na URL como "6.3.2.1". Só vale se somar o total de perguntas e o resultado estiver no topo.
+export function parseMix(quiz: QuizData, result: string, m: string | null | undefined): number[] | null {
+  if (quiz.kind || !quiz.mix || !m || !/^\d+(\.\d+)*$/.test(m)) return null;
+  const scores = m.split(".").map(Number);
+  if (scores.length !== Object.keys(quiz.results).length) return null;
+  if (scores.reduce((a, b) => a + b, 0) !== quiz.questions.length) return null;
+  return topResults(quiz, scores).includes(result) ? scores : null;
+}
+
+// Porcentagens que somam 100 (maior resto).
+export function percentages(scores: number[]): number[] {
+  const total = scores.reduce((a, b) => a + b, 0) || 1;
+  const raw = scores.map((s) => (s * 100) / total);
+  const out = raw.map(Math.floor);
+  const order = raw.map((r, i) => [r - Math.floor(r), i]).sort((a, b) => b[0] - a[0]);
+  for (let k = 0; k < 100 - out.reduce((a, b) => a + b, 0); k++) out[order[k][1]]++;
+  return out;
 }

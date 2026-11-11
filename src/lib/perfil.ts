@@ -78,6 +78,7 @@ export function anteriores(hist: SavedResult[]): Map<string, string[]> {
 
 export async function apagarDados(userId: string) {
   await sql`delete from quiz_results where user_id = ${userId}`;
+  await sql`delete from interests where user_id = ${userId}`;
   await sql`delete from recordes where user_id = ${userId}`;
   await sql`delete from dilema_votos where user_id = ${userId}`;
   await apagarDiario(userId);
@@ -86,12 +87,13 @@ export async function apagarDados(userId: string) {
 
 /** Tudo o que guardamos do usuário, para o "baixar meus dados" (LGPD). */
 export async function exportarDados(userId: string) {
-  const [perfil, quizzes, recordes, votos, diario] = await Promise.all([
+  const [perfil, quizzes, interesses, recordes, votos, diario] = await Promise.all([
     sql`select apelido, cor, updated_at from perfis where user_id = ${userId}`,
-    sql`select quiz, result, created_at from quiz_results where user_id = ${userId} order by created_at`,
+    sql`select quiz, result, scores, chosen_on_tie, created_at from quiz_results where user_id = ${userId} order by created_at`,
+    sql`select tag, origem, created_at from interests where user_id = ${userId} order by created_at`,
     sql`select * from recordes where user_id = ${userId}`,
     sql`select * from dilema_votos where user_id = ${userId}`,
     exportarDiario(userId),
   ]);
-  return { perfil: perfil[0] ?? null, quizzes, recordes, votos_em_dilemas: votos, diario_de_bordo: diario };
+  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario };
 }

@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   getResult,
   otherResults,
+  parseMix,
+  percentages,
+  tally,
+  topResults,
   scoreAnswers,
   staticResultIds,
   type KnowledgeQuiz,
@@ -130,5 +134,27 @@ describe("otherResults", () => {
   it("vazio para quizzes que não são de personalidade", () => {
     expect(otherResults(knowledge, "2")).toEqual([]);
     expect(otherResults(party, "000")).toEqual([]);
+  });
+});
+
+describe("mistura", () => {
+  const mixQuiz: PersonalityQuiz = { ...personality, mix: true, questions: [0, 1, 2, 3].map(() => personality.questions[0]) };
+
+  it("conta pontos e acha empates", () => {
+    const s = tally(mixQuiz, ["a", "b", "a", "b"]);
+    expect(s).toEqual([2, 2, 0]);
+    expect(topResults(mixQuiz, s)).toEqual(["a", "b"]);
+  });
+
+  it("valida a mistura da URL", () => {
+    expect(parseMix(mixQuiz, "a", "3.1.0")).toEqual([3, 1, 0]);
+    expect(parseMix(mixQuiz, "b", "3.1.0")).toBeNull();
+    expect(parseMix(mixQuiz, "a", "3.0.0")).toBeNull();
+    expect(parseMix(personality, "a", "1.0.0")).toBeNull();
+  });
+
+  it("porcentagens somam 100", () => {
+    expect(percentages([1, 1, 1])).toEqual([34, 33, 33]);
+    expect(percentages([6, 3, 2, 1])).toEqual([50, 25, 17, 8]);
   });
 });

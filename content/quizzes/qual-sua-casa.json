@@ -1,0 +1,350 @@
+{
+  "intro": {
+    "eyebrow": "Quiz · Casas · 12 perguntas",
+    "title": "Qual é a sua casa de Hogwarts?",
+    "text": "12 situações do dia a dia. Sem resposta certa: escolha o que você faria de verdade, não o que parece mais bonito."
+  },
+  "resultPrefix": "Minha casa:",
+  "note": "Quiz feito por fã, sem ligação oficial com a obra ou seus donos.",
+  "shuffle": true,
+  "mix": true,
+  "progress": "constelacao",
+  "tieTitle": "O Chapéu ficou na dúvida",
+  "tieText": "Você ficou dividido entre essas casas. Qual tem mais a sua cara?",
+  "results": {
+    "grifinoria": {
+      "name": "Grifinória",
+      "tagline": "Você vai antes de ter certeza.",
+      "text": "Seu jeito de viver é agir. Quando alguma coisa está errada, você não consegue ficar parado esperando alguém resolver, e topa o desconforto de falar, tentar e errar na frente dos outros. As pessoas confiam em você porque sabem que você aparece na hora difícil.",
+      "dayToDay": "Você é quem puxa o assunto chato, quem testa primeiro, quem defende a pessoa que levou a pior na conversa.",
+      "watchOut": "Nem toda briga é sua. Às vezes esperar um pouco é coragem também.",
+      "traits": [
+        "Aventura",
+        "Coragem",
+        "Ação"
+      ],
+      "tags": [
+        "grifinoria",
+        "aventura",
+        "coragem",
+        "acao"
+      ],
+      "color": "laranja",
+      "image": null
+    },
+    "sonserina": {
+      "name": "Sonserina",
+      "tagline": "Você sabe onde quer chegar.",
+      "text": "Você enxerga longe e não gosta de desperdiçar chance. Planeja, lê as pessoas e o ambiente, e sabe usar o que tem na mão. Quem está no seu círculo ganha uma aliada que faz acontecer e que não larga ninguém pra trás.",
+      "dayToDay": "Você tem plano B, sabe a hora certa de falar e transforma ideia solta em coisa concreta.",
+      "watchOut": "Nem tudo precisa ser estratégia. Deixa espaço pro que não tem retorno nenhum além de ser bom.",
+      "traits": [
+        "Estratégia",
+        "Ambição",
+        "Liderança"
+      ],
+      "tags": [
+        "sonserina",
+        "estrategia",
+        "ambicao",
+        "lideranca"
+      ],
+      "color": "noite",
+      "image": null
+    },
+    "corvinal": {
+      "name": "Corvinal",
+      "tagline": "Você precisa entender o porquê.",
+      "text": "Sua cabeça é um lugar movimentado. Você coleciona assuntos, faz perguntas que ninguém fez e prefere uma ideia original a uma resposta pronta. Seu jeito de ajudar é pensar junto e mostrar outro ângulo.",
+      "dayToDay": "Você abre 30 abas, tem projetos pela metade e é a pessoa que explica as coisas do jeito que finalmente faz sentido.",
+      "watchOut": "Nem tudo precisa estar entendido pra começar. Às vezes a resposta aparece no caminho.",
+      "traits": [
+        "Curiosidade",
+        "Criatividade",
+        "Conhecimento"
+      ],
+      "tags": [
+        "corvinal",
+        "curiosidade",
+        "criatividade",
+        "conhecimento"
+      ],
+      "color": "azul",
+      "image": null
+    },
+    "lufa-lufa": {
+      "name": "Lufa-Lufa",
+      "tagline": "Com você, ninguém fica de fora.",
+      "text": "Você é constância, cuidado e justiça no dia a dia. Cumpre o combinado, percebe quem está quieto no canto e faz os outros se sentirem em casa. Sua força não faz barulho, mas é ela que segura o grupo junto.",
+      "dayToDay": "Você lembra do aniversário, divide o lanche, ajuda na mudança e trata todo mundo do mesmo jeito.",
+      "watchOut": "Cuidar de si também conta. Você pode pedir ajuda do mesmo jeito que oferece.",
+      "traits": [
+        "Acolhimento",
+        "Lealdade",
+        "Comunidade"
+      ],
+      "tags": [
+        "lufa-lufa",
+        "acolhimento",
+        "lealdade",
+        "comunidade"
+      ],
+      "color": "creme",
+      "image": null
+    }
+  },
+  "questions": [
+    {
+      "q": "Sábado livre, nenhum compromisso. O que faz você dormir feliz no fim do dia?",
+      "options": [
+        {
+          "text": "Ter feito algo que eu nunca tinha feito, mesmo que tenha dado meio errado.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Ter adiantado alguma coisa que me deixa mais perto de um objetivo meu.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Ter me perdido num assunto novo e descoberto coisa que eu nem sabia que existia.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Ter passado tempo com gente que eu gosto, sem pressa nenhuma.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "Trabalho em grupo e alguém simplesmente não fez a parte dele. Você:",
+      "options": [
+        {
+          "text": "Fala direto com a pessoa. Se precisar, na frente de todo mundo.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Redistribui as tarefas pra entrega não sair prejudicada e guarda a informação pra próxima.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Repensa a divisão: talvez o problema seja o jeito que o trabalho foi organizado.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Chama a pessoa num canto pra saber se está tudo bem e oferece ajuda.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "Uma amiga pede sua opinião sincera sobre um projeto que você achou fraco.",
+      "options": [
+        {
+          "text": "Falo a verdade. Com carinho, mas falo.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Penso no que ela precisa ouvir pra chegar longe e falo isso.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Mostro exatamente o que não funciona e como dá pra melhorar.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Começo pelo que está bom e vou com calma no resto. Ela confiou em mim.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "O que mais tira você do sério?",
+      "options": [
+        {
+          "text": "Ver alguém presenciar uma injustiça e ficar quieto.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Gente com potencial que se contenta com pouco.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Gente que repete as coisas sem nunca ter parado pra pensar nelas.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Gente que fura, some e não cumpre o combinado.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "Caiu um dinheiro inesperado na sua conta.",
+      "options": [
+        {
+          "text": "Uso naquela viagem ou experiência que eu vivia adiando por falta de coragem.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Coloco em algo que vai render mais lá na frente.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Compro o material pro projeto que está na minha cabeça faz tempo.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Ajudo quem está precisando e guardo o resto.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "Você chega numa festa onde só conhece uma pessoa.",
+      "options": [
+        {
+          "text": "Me apresento pra uma roda qualquer e vejo no que dá.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Observo quem é quem antes de me aproximar de alguém interessante.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Termino a noite numa conversa longa e meio esquisita com uma pessoa só, no canto.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Vou ajudar com o gelo e a comida, e assim acabo conhecendo todo mundo.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "Você errou feio em alguma coisa importante.",
+      "options": [
+        {
+          "text": "Assumo na hora, mesmo sabendo que vai dar problema.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Resolvo antes que vire problema. Depois eu conto, se precisar.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Fico remoendo até entender exatamente onde meu raciocínio falhou.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Peço desculpas pra quem foi afetado e faço questão de consertar.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "Qual elogio fica na sua cabeça por dias?",
+      "options": [
+        {
+          "text": "\"Você teve coragem de fazer o que ninguém fez.\"",
+          "result": "grifinoria"
+        },
+        {
+          "text": "\"Olha onde você chegou.\"",
+          "result": "sonserina"
+        },
+        {
+          "text": "\"Nunca tinha pensado nisso desse jeito.\"",
+          "result": "corvinal"
+        },
+        {
+          "text": "\"Eu sei que posso contar com você.\"",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "O grupo não consegue decidir onde comer.",
+      "options": [
+        {
+          "text": "Escolho um lugar e já saio andando.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Proponho o lugar que eu queria desde o começo, com um argumento que ninguém rebate.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Sugiro aquele lugar diferente que eu estava morrendo de vontade de testar.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Topo qualquer um. Quero saber do que o pessoal está a fim.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "No meio do caminho, o plano dá muito errado.",
+      "options": [
+        {
+          "text": "Improviso na hora. Vamos ver no que dá.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Tudo bem, eu já tinha um plano B.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Paro, entendo o que mudou e desenho outro caminho.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Primeiro vejo se ninguém do grupo ficou na pior. Depois a gente resolve.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "Seu cantinho preferido da casa tem:",
+      "options": [
+        {
+          "text": "Lembranças de lugares por onde passei e muita história pra contar.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Tudo no lugar, do meu jeito, e algumas coisas bonitas que eu conquistei.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Pilhas de livros, cadernos, cabos e projetos pela metade.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Planta, coberta, comida por perto e espaço pra mais alguém sentar.",
+          "result": "lufa-lufa"
+        }
+      ]
+    },
+    {
+      "q": "Se você pudesse deixar uma marca só no mundo, seria:",
+      "options": [
+        {
+          "text": "Por ter enfrentado o que precisava ser enfrentado.",
+          "result": "grifinoria"
+        },
+        {
+          "text": "Por ter construído algo que dura.",
+          "result": "sonserina"
+        },
+        {
+          "text": "Por ter criado ou descoberto algo novo.",
+          "result": "corvinal"
+        },
+        {
+          "text": "Por ter deixado a vida de quem estava por perto melhor.",
+          "result": "lufa-lufa"
+        }
+      ]
+    }
+  ]
+}
