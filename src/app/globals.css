@@ -392,3 +392,25 @@ dialog::backdrop {
 @media (prefers-reduced-motion: no-preference) {
   .entrar { animation: surgir 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 }
+
+/* O Corre: tema "Fim de Tarde". Só vale dentro do mapa e do celular do jogo; o resto usa o design system. */
+.tema-fim-de-tarde {
+  --ft-manha: #f4e6c8;
+  --ft-tarde: #e98a4f;
+  --ft-tarde-fundo: #f6c58f;
+  --ft-noite: #1f2f52;
+  --ft-asfalto: #5b4e48;
+  --ft-quadra: #e9d3b3;
+  --ft-parque: #8fae7a;
+  --ft-rio: #6f9fb8;
+  --ft-app-fundo: #f6f0d6;
+  --ft-app-tinta: #1b2a2a;
+  --ft-app-acao: #1f6f6a;
+  --ft-app-alerta: #b23a2a;
+}
+@media (prefers-reduced-motion: reduce) {
+  .corre-chuva { display: none; }
+  .corre-marcador { transition: none !important; }
+}
+@keyframes corre-chuva { to { transform: translateY(40px); } }
+.corre-chuva { animation: corre-chuva 0.6s linear infinite; }

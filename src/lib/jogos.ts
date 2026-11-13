@@ -99,6 +99,14 @@ export const jogos: Jogo[] = [
     cor: "#b4521a",
   },
   {
+    slug: "o-corre",
+    nome: "O Corre",
+    tipo: "Estratégia",
+    resumo: "Uma semana de motoboy: pedidos, moto e contas.",
+    texto: "Escolha que pedidos aceitar, cuide da moto e do cansaço, e feche a semana com as contas pagas e um pouco guardado.",
+    cor: "#8a4a1c",
+  },
+  {
     slug: "conexoes-shinobi",
     nome: "Conexões Shinobi",
     tipo: "Rapidinho",

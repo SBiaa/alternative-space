@@ -10,7 +10,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "seed:diario": "node --env-file-if-exists=.env.local scripts/seed-diario.mjs",
-    "fichas:sr5:data": "tsx scripts/fichas-sr5/index.ts"
+    "fichas:sr5:data": "tsx scripts/fichas-sr5/index.ts",
+    "seed:entrega": "node --env-file-if-exists=.env.local --import tsx scripts/seed-entrega.ts",
+    "mapa:entrega": "tsx scripts/bairro-entrega.ts"
   },
   "dependencies": {
     "@neon/auth": "^0.8.2",

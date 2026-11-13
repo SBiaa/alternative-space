@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { Mistura } from "@/components/Mistura";
 import { QuizArt } from "@/components/QuizArt";
 import { SaveResult } from "@/components/SaveResult";
 import { ShareButton } from "@/components/ShareButton";
 import { Star } from "@/components/Star";
-import { getQuiz, getResult, otherResults, quizzes, resultTheme, staticResultIds } from "@/lib/quiz";
+import { getQuiz, getResult, otherResults, quizzes, resultTheme, staticResultIds, type PersonalityQuiz } from "@/lib/quiz";
 import { joinHref, site } from "@/config/site";
 
 type Params = PageProps<"/quiz/[quiz]/[resultado]">["params"];
+type Search = PageProps<"/quiz/[quiz]/[resultado]">["searchParams"];
 
 export function generateStaticParams() {
   return Object.entries(quizzes).flatMap(([quiz, q]) => staticResultIds(q).map((resultado) => ({ quiz, resultado })));
@@ -39,19 +41,19 @@ export async function generateMetadata({ params }: PageProps<"/quiz/[quiz]/[resu
   };
 }
 
-export default function ResultPage({ params }: PageProps<"/quiz/[quiz]/[resultado]">) {
+export default function ResultPage({ params, searchParams }: PageProps<"/quiz/[quiz]/[resultado]">) {
   return (
     <section className="secao !pt-16">
       <div className="mx-auto flex max-w-[860px] flex-col gap-12">
         <Suspense fallback={<p className="font-titulo text-2xl font-bold text-azul">Carregando resultado…</p>}>
-          <Result params={params} />
+          <Result params={params} searchParams={searchParams} />
         </Suspense>
       </div>
     </section>
   );
 }
 
-async function Result({ params }: { params: Params }) {
+async function Result({ params, searchParams }: { params: Params; searchParams: Search }) {
   const data = await load(params);
   if (!data) notFound();
   const { slug, resultado, quiz, result: r } = data;
@@ -77,6 +79,29 @@ async function Result({ params }: { params: Params }) {
         <QuizArt image={r.image} alt={r.name} sizes="(min-width: 768px) 280px, 90vw" className="w-full max-w-[320px] shrink-0 self-center md:w-[280px]" />
       </div>
 
+      {(r.dayToDay || r.watchOut) && (
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {r.dayToDay && (
+            <div className="card flex flex-col gap-2 p-6">
+              <span className="etiqueta text-azul">No dia a dia</span>
+              <p className="text-lg leading-relaxed text-tinta">{r.dayToDay}</p>
+            </div>
+          )}
+          {r.watchOut && (
+            <div className="card flex flex-col gap-2 p-6">
+              <span className="etiqueta text-laranja">Ponto de atenção</span>
+              <p className="text-lg leading-relaxed text-tinta">{r.watchOut}</p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {!quiz.kind && quiz.mix && (
+        <Suspense fallback={null}>
+          <MisturaDaUrl quiz={quiz} result={resultado} searchParams={searchParams} />
+        </Suspense>
+      )}
+
       {r.members && (
         <ol className="grid list-none grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5 p-0">
           {r.members.map((m) => (
@@ -93,7 +118,7 @@ async function Result({ params }: { params: Params }) {
       )}
 
       <Suspense fallback={<div className="h-[76px] rounded-xl border-2 border-noite bg-creme-claro" />}>
-        <SaveResult quiz={slug} result={resultado} />
+        <SaveResult quiz={slug} result={resultado} searchParams={searchParams} />
       </Suspense>
 
       <div className="flex flex-wrap items-start gap-4">
@@ -130,4 +155,9 @@ async function Result({ params }: { params: Params }) {
       {quiz.note && <p className="font-ficha text-xs text-neutro">{quiz.note}</p>}
     </>
   );
+}
+
+async function MisturaDaUrl({ quiz, result, searchParams }: { quiz: PersonalityQuiz; result: string; searchParams: Search }) {
+  const m = (await searchParams).m;
+  return <Mistura quiz={quiz} result={result} m={typeof m === "string" ? m : null} />;
 }

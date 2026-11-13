@@ -30,6 +30,8 @@ import {
   type Faixa,
   type Particula,
 } from "@/lib/lutaDesenho";
+import { assinarSom, destravarSom, ligarSom, somLigado, tocar } from "@/lib/som";
+import { antesDoPasso, sonsDoQuadro } from "@/lib/lutaSom";
 
 type Tela = "menu" | "escolha" | "luta" | "pausa" | "fim";
 type Modo = "cpu" | "2p";
@@ -107,6 +109,30 @@ function Retrato({ id }: { id: string }) {
   return <canvas ref={ref} className="h-[120px] w-[95px] sm:h-[190px] sm:w-[150px]" aria-hidden />;
 }
 
+// ---------- sons ----------
+
+function BotaoSom() {
+  const ligado = useSyncExternalStore(assinarSom, somLigado, () => true);
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        destravarSom();
+        ligarSom(!ligado);
+      }}
+      aria-label={ligado ? "Desligar som" : "Ligar som"}
+      aria-pressed={!ligado}
+      title={ligado ? "Desligar som" : "Ligar som"}
+      className="absolute bottom-1.5 left-1/2 z-10 flex size-8 -translate-x-1/2 items-center justify-center rounded-full border-2 border-noite bg-creme-claro text-noite opacity-80 hover:opacity-100 sm:bottom-3 sm:size-9"
+    >
+      <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" />
+        {ligado ? <path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" /> : <path d="M17 9l5 6M22 9l-5 6" />}
+      </svg>
+    </button>
+  );
+}
+
 // ---------- botão de toque ----------
 
 const TOQUE = "(pointer: coarse)";
@@ -175,6 +201,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
   const faixas = useRef<Faixa[]>([]);
   const rastro = useRef<[number, number]>([1000, 1050]);
   const tremor = useRef(0);
+  const roundTocado = useRef<{ l: Luta | null; round: number }>({ l: null, round: 0 });
 
   const mudarTela = useCallback((t: Tela) => {
     tela.current = t;
@@ -254,7 +281,17 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
           }
         }
         const caidosAntes = [l.a.estado === "caido" && l.a.y < CHAO, l.b.estado === "caido" && l.b.y < CHAO];
+        const antes = antesDoPasso(l);
         passo(l, dt, ea, eb);
+        // A demonstração atrás do menu fica muda.
+        if (!demo.current) {
+          const rt = roundTocado.current;
+          if (l.fase === "intro" && (rt.l !== l || rt.round !== l.round)) {
+            roundTocado.current = { l, round: l.round };
+            tocar("round");
+          }
+          sonsDoQuadro(l, antes);
+        }
 
         for (const ev of l.eventos) {
           if (ev.tipo === "hit") {
@@ -285,6 +322,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
         if (!demo.current && t === "luta" && l.fase === "fim" && l.t > 1.4) {
           const v = vencedorDaLuta(l) ?? 0;
           setVencedor({ nome: (v === 0 ? l.a : l.b).p.nome, lado: v });
+          tocar("vitoria");
           mudarTela("fim");
         }
       }
@@ -306,7 +344,10 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
     raf = requestAnimationFrame(frame);
 
     const emJogo = () => tela.current === "luta" || tela.current === "pausa";
+    // O navegador só libera o som depois de um clique ou tecla.
+    const onGesto = () => destravarSom();
     const onKeyDown = (ev: KeyboardEvent) => {
+      destravarSom();
       const alvo = ev.target as HTMLElement | null;
       if (alvo && ["INPUT", "TEXTAREA", "SELECT"].includes(alvo.tagName)) return;
       if (!emJogo()) return;
@@ -331,12 +372,14 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
     const onVis = () => {
       if (document.hidden) onBlur();
     };
+    window.addEventListener("pointerdown", onGesto);
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
     window.addEventListener("blur", onBlur);
     document.addEventListener("visibilitychange", onVis);
     return () => {
       cancelAnimationFrame(raf);
+      window.removeEventListener("pointerdown", onGesto);
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
@@ -506,6 +549,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
         </div>
       )}
 
+      <BotaoSom />
     </div>
 
       {comControles && (

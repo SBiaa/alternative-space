@@ -92,7 +92,7 @@ describe("cadastrar", () => {
       "REDIRECT:/quiz/tripulacao/palha",
     );
     expect(m.signUp).toHaveBeenCalledWith({ name: "Fulana", email: "fulana@b.co", password: "12345678" });
-    expect(m.saveResult).toHaveBeenCalledWith("user-1", "tripulacao", "palha");
+    expect(m.saveResult).toHaveBeenCalledWith("user-1", "tripulacao", "palha", {});
   });
 
   it("não redireciona pra fora do site", async () => {
@@ -162,7 +162,7 @@ describe("verificar", () => {
     await expect(verificar(null, form({ codigo: "123 456" }))).rejects.toThrow("REDIRECT:/quiz/tripulacao/palha");
     expect(m.verifyEmail).toHaveBeenCalledWith({ email: "fulana@b.co", otp: "123456" });
     expect(m.jar.has(PENDENTE)).toBe(false);
-    expect(m.saveResult).toHaveBeenCalledWith("user-1", "tripulacao", "palha");
+    expect(m.saveResult).toHaveBeenCalledWith("user-1", "tripulacao", "palha", {});
   });
 
   it("se o Neon não entrar sozinho depois de confirmar, manda pro login", async () => {
@@ -204,7 +204,7 @@ describe("salvarResultado", () => {
     m.getUser.mockResolvedValue(user);
     m.saveResult.mockResolvedValue(true);
     expect(await salvarResultado("tripulacao", "palha")).toBe(true);
-    expect(m.saveResult).toHaveBeenCalledWith("user-1", "tripulacao", "palha");
+    expect(m.saveResult).toHaveBeenCalledWith("user-1", "tripulacao", "palha", {});
   });
 });
 
@@ -219,7 +219,7 @@ describe("salvarDaPagina", () => {
   it("com login salva e atualiza a página", async () => {
     m.getUser.mockResolvedValue(user);
     await salvarDaPagina(form({ salvar: "tripulacao/palha" }));
-    expect(m.saveResult).toHaveBeenCalledWith("user-1", "tripulacao", "palha");
+    expect(m.saveResult).toHaveBeenCalledWith("user-1", "tripulacao", "palha", {});
     expect(m.refresh).toHaveBeenCalled();
   });
 });

@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { refresh } from "next/cache";
 import { auth, getUser } from "@/lib/auth/server";
-import { PENDENTE, SENHA, lerPendente, safeNext, saveResult, type Pendente } from "@/lib/tripulante";
+import { PENDENTE, SENHA, lerPendente, lerSalvar, safeNext, saveResult, type Extra, type Pendente } from "@/lib/tripulante";
 
 export type AuthState = { error?: string; name?: string; email?: string } | null;
 export type VerifyState = { error?: string; ok?: string } | null;
@@ -23,8 +23,8 @@ const otpApi = auth.emailOtp as {
 
 // "salvar" chega como "quiz/resultado" quando a pessoa se cadastra a partir de uma página de resultado.
 async function saveFrom(userId: string, salvar: unknown) {
-  const [quiz, result] = String(salvar ?? "").split("/");
-  if (quiz && result) await saveResult(userId, quiz, result);
+  const s = lerSalvar(salvar);
+  if (s) await saveResult(userId, s.quiz, s.result, s.extra);
 }
 
 const traduz = (msg?: string) => {
@@ -177,17 +177,18 @@ export async function sair() {
 }
 
 // Chamado pelo quiz ao terminar. Sem login, não faz nada.
-export async function salvarResultado(quiz: string, result: string) {
+export async function salvarResultado(quiz: string, result: string, extra: Extra = {}) {
   const user = await getUser();
   if (!user) return false;
-  return saveResult(user.id, quiz, result);
+  return saveResult(user.id, quiz, result, extra);
 }
 
 // Botão "salvar" na página de resultado.
 export async function salvarDaPagina(f: FormData) {
   const user = await getUser();
-  const [quiz, result] = String(f.get("salvar") ?? "").split("/");
-  if (!user) redirect(`/cadastro?salvar=${quiz}/${result}&next=/quiz/${quiz}/${result}`);
-  await saveResult(user.id, quiz, result);
+  const s = lerSalvar(f.get("salvar"));
+  if (!s) return;
+  if (!user) redirect(`/cadastro?salvar=${String(f.get("salvar"))}&next=/quiz/${s.quiz}/${s.result}`);
+  await saveResult(user.id, s.quiz, s.result, s.extra);
   refresh();
 }

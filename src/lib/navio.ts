@@ -246,6 +246,9 @@ export type Efeito = {
   y2?: number;
 };
 
+// O que aconteceu neste passo e merece som. O componente toca e esvazia a lista.
+export type SomNavio = "corte" | "tiro" | "arremesso" | "panelada" | "trovao" | "canhao" | "explosao" | "moeda" | "roubo" | "ondaVencida";
+
 export type Estado = {
   moedas: number;
   vidas: number;
@@ -261,6 +264,7 @@ export type Estado = {
   abatidos: number;
   ultimoBonus: number;
   fim: null | "vitoria" | "derrota";
+  sons: SomNavio[];
 };
 
 export const MOEDAS_INICIAIS = 150;
@@ -282,6 +286,7 @@ export function novoEstado(): Estado {
     abatidos: 0,
     ultimoBonus: 0,
     fim: null,
+    sons: [],
   };
 }
 
@@ -355,6 +360,12 @@ export function iniciarOnda(e: Estado): boolean {
 
 // ---------- simulação ----------
 
+// Teto pra lista não crescer sem fim quando ninguém está ouvindo (testes, aba escondida).
+function soar(e: Estado, som: SomNavio) {
+  if (e.sons.length >= 32) e.sons.shift(); // fica com os mais recentes
+  e.sons.push(som);
+}
+
 export function stats(t: Trip) {
   return TRIPULANTES[t.tipo].niveis[t.nivel];
 }
@@ -394,12 +405,14 @@ function atacar(e: Estado, t: Trip) {
 
   switch (t.tipo) {
     case "espadachim":
+      soar(e, "corte");
       for (const i of alvos.slice(0, n.alvos ?? 1)) {
         ferir(i, n.dano, false);
         e.efeitos.push({ tipo: "corte", x: i.x, y: i.y, t: 0, dur: 0.25, ang: Math.atan2(i.y - t.y, i.x - t.x) });
       }
       break;
     case "navegadora":
+      soar(e, "trovao");
       for (const i of alvos) {
         ferir(i, n.dano, false);
         // Lentidão não acumula: vale a mais forte que estiver ativa.
@@ -410,6 +423,7 @@ function atacar(e: Estado, t: Trip) {
       e.efeitos.push({ tipo: "tempestade", x: t.x, y: t.y, t: 0, dur: 0.5, raio: n.alcance });
       break;
     case "atiradora": {
+      soar(e, "tiro");
       const dur = Math.hypot(a.x - t.x, a.y - t.y) / 700;
       const p = onde(a, dur);
       e.projeteis.push({ id: e.proxId++, tipo: "bala", ox: t.x, oy: t.y, tx: p.x, ty: p.y, t: 0, dur, alvoId: a.id, dano: n.dano, area: 0, perfura: true });
@@ -417,6 +431,7 @@ function atacar(e: Estado, t: Trip) {
     }
     case "cozinheiro":
     case "canhoneiro": {
+      soar(e, t.tipo === "cozinheiro" ? "arremesso" : "canhao");
       const vel = t.tipo === "cozinheiro" ? 260 : 330;
       const dur = Math.max(0.25, Math.hypot(a.x - t.x, a.y - t.y) / vel);
       const p = onde(a, dur);
@@ -484,6 +499,7 @@ export function step(e: Estado, dt: number) {
   }
   const chegaram = e.inimigos.filter((i) => i.d >= COMPRIMENTO && i.vida > 0);
   for (const i of chegaram) e.vidas -= i.dano;
+  if (chegaram.length) soar(e, "roubo");
   if (chegaram.length) e.inimigos = e.inimigos.filter((i) => !chegaram.includes(i));
   if (e.vidas <= 0) {
     e.vidas = 0;
@@ -511,6 +527,7 @@ export function step(e: Estado, dt: number) {
         if (i.vida > 0 && Math.hypot(i.x - p.tx, i.y - p.ty) <= p.area) ferir(i, p.dano, p.perfura);
       }
       e.efeitos.push({ tipo: "explosao", x: p.tx, y: p.ty, t: 0, dur: 0.4, raio: p.area });
+      soar(e, p.tipo === "panela" ? "panelada" : "explosao");
     }
   }
   e.projeteis = e.projeteis.filter((p) => p.t < p.dur);
@@ -520,6 +537,7 @@ export function step(e: Estado, dt: number) {
     if (i.vida > 0) continue;
     e.moedas += i.recompensa;
     e.abatidos += 1;
+    soar(e, "moeda");
     e.efeitos.push({ tipo: "moeda", x: i.x, y: i.y - 10, t: 0, dur: 0.9, valor: i.recompensa });
   }
   e.inimigos = e.inimigos.filter((i) => i.vida > 0);
@@ -535,6 +553,7 @@ export function step(e: Estado, dt: number) {
     } else {
       e.ultimoBonus = bonusOnda(e.onda);
       e.moedas += e.ultimoBonus;
+      soar(e, "ondaVencida");
     }
   }
 }

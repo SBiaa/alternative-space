@@ -51,7 +51,7 @@ async function QuizBody({ params }: { params: PageProps<"/quiz/[quiz]">["params"
       ) : quiz.kind === "party" ? (
         <PartyQuiz key={slug} slug={slug} slots={quiz.slots} />
       ) : (
-        <Quiz key={slug} slug={slug} questions={quiz.questions} />
+        <Quiz key={slug} slug={slug} quiz={quiz} />
       )}
       {quiz.note && <p className="font-ficha text-xs text-neutro">{quiz.note}</p>}
     </>

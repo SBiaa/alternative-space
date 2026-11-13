@@ -34,6 +34,7 @@ import {
   type Proj,
   type TipoTrip,
 } from "@/lib/navio";
+import { destravarSom, estaMudo, mudar, tocar } from "@/lib/sons-navio";
 
 type Fase = "menu" | "jogando";
 type Casa = { col: number; row: number };
@@ -807,6 +808,7 @@ export function DefendaONavio() {
   const [vel, setVel] = useState(1);
   const [pausado, setPausado] = useState(false);
   const [recordeUi, setRecordeUi] = useState(0);
+  const [semSom, setSemSom] = useState(false);
 
   const sincronizar = useCallback(() => {
     const e = estado.current;
@@ -846,12 +848,14 @@ export function DefendaONavio() {
     setPausado(false);
     bonusAte.current = 0;
     escolher("espadachim");
+    destravarSom();
     sincronizar();
   }, [escolher, sincronizar]);
 
   const proximaOnda = useCallback(() => {
     if (fase.current !== "jogando") return;
     if (iniciarOnda(estado.current)) {
+      tocar("sino");
       pausaRef.current = false;
       setPausado(false);
       sincronizar();
@@ -886,9 +890,16 @@ export function DefendaONavio() {
       const tipo = escolhaRef.current;
       if (tipo && livre(e, casa.col, casa.row)) {
         if (colocar(e, tipo, casa.col, casa.row)) {
+          tocar("contratar");
           if (e.moedas < TRIPULANTES[tipo].custo) escolher(null);
           sincronizar();
+        } else {
+          tocar("negado"); // sem moedas
         }
+        return;
+      }
+      if (tipo) {
+        tocar("negado"); // caminho ou mastro
         return;
       }
       selecionar(null);
@@ -899,6 +910,7 @@ export function DefendaONavio() {
   useEffect(() => {
     recorde.current = lerRecorde();
     setRecordeUi(recorde.current);
+    setSemSom(estaMudo());
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -928,6 +940,9 @@ export function DefendaONavio() {
           resto -= passo;
         }
         visual += dt;
+        // Um de cada som por quadro já basta; o módulo segura as repetições.
+        for (const som of new Set(e.sons)) tocar(som);
+        e.sons.length = 0;
       } else if (!pausaRef.current) {
         visual += dt;
       }
@@ -941,6 +956,7 @@ export function DefendaONavio() {
         agoraUi.fim !== ultima.fim
       ) {
         if (agoraUi.fim && !ultima.fim) {
+          tocar(agoraUi.fim);
           const marca = agoraUi.fim === "vitoria" ? ONDAS.length + 1 : agoraUi.onda;
           if (marca > recorde.current) {
             recorde.current = marca;
@@ -1200,6 +1216,22 @@ export function DefendaONavio() {
             <button type="button" onClick={alternarPausa} className="btn bg-creme-claro text-noite !px-4 !py-2 !text-base" disabled={!!fim}>
               {pausado ? "Continuar" : "Pausar"}
             </button>
+            <button
+              type="button"
+              onClick={() => {
+                mudar(!semSom);
+                setSemSom(!semSom);
+                if (semSom) {
+                  destravarSom();
+                  tocar("contratar");
+                }
+              }}
+              className="btn bg-creme-claro text-noite !px-4 !py-2 !text-base"
+              aria-pressed={semSom}
+              aria-label={semSom ? "Ligar som" : "Desligar som"}
+            >
+              {semSom ? "🔇 Sem som" : "🔊 Som"}
+            </button>
             {!ui.emOnda && !fim && (
               <p className="text-sm text-tinta">
                 <span className="etiqueta text-[11px] text-azul">próxima:</span> {descreverOnda(ui.onda + 1)}
@@ -1250,7 +1282,7 @@ export function DefendaONavio() {
                   <button
                     type="button"
                     onClick={() => {
-                      melhorar(estado.current, escolhido.id);
+                      if (melhorar(estado.current, escolhido.id)) tocar("melhorar");
                       sincronizar();
                     }}
                     disabled={escolhido.melhoria === null || ui.moedas < escolhido.melhoria || !!fim}
@@ -1261,7 +1293,7 @@ export function DefendaONavio() {
                   <button
                     type="button"
                     onClick={() => {
-                      vender(estado.current, escolhido.id);
+                      if (vender(estado.current, escolhido.id)) tocar("dispensar");
                       sincronizar();
                     }}
                     disabled={!!fim}

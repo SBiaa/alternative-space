@@ -93,6 +93,15 @@ describe("combate", () => {
     expect(e.emOnda).toBe(false);
   });
 
+  it("avisa o que merece som, sem a lista crescer sem fim", () => {
+    const e = novoEstado();
+    colocar(e, "espadachim", 2, 2);
+    colocar(e, "atiradora", 4, 2);
+    rodarOnda(e);
+    expect(e.sons).toEqual(expect.arrayContaining(["corte", "tiro", "moeda", "ondaVencida"]));
+    expect(e.sons.length).toBeLessThanOrEqual(32);
+  });
+
   it("derrubar marinheiro dá moeda e fechar a onda dá bônus", () => {
     const e = novoEstado();
     colocar(e, "espadachim", 2, 2);
