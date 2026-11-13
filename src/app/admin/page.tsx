@@ -49,6 +49,7 @@ async function Painel({ searchParams }: { searchParams: PageProps<"/admin">["sea
           Ponte de comando.
         </h1>
         <p className="text-lg text-tinta">Logada como {admin.email}. Só quem tem papel de admin vê esta página.</p>
+        <Link href="/admin/role-noturno" className="text-azul underline">Moderação do Rolê Noturno</Link>
       </div>
 
       <ul className="grid list-none grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4 p-0">
