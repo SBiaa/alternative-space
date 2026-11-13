@@ -6,6 +6,7 @@ import { apagarRole, exportarRole } from "@/lib/role/dados";
 import { apagarCorre, exportarCorre } from "@/lib/corre/dados";
 import { apagarTaverna, exportarTaverna } from "@/lib/taverna/dados";
 import { apagarLan, exportarLan } from "@/lib/lan/dados";
+import { apagarMural, exportarMural } from "@/lib/muro/dados";
 import { getQuiz, getResult, quizzes, resultTheme } from "@/lib/quiz";
 import type { SavedResult } from "@/lib/tripulante";
 
@@ -94,12 +95,13 @@ export async function apagarDados(userId: string) {
   await apagarEntrega(userId);
   await apagarTaverna(userId);
   await apagarLan(userId);
+  await apagarMural(userId);
   await sql`delete from perfis where user_id = ${userId}`;
 }
 
 /** Tudo o que guardamos do usuário, para o "baixar meus dados" (LGPD). */
 export async function exportarDados(userId: string) {
-  const [perfil, quizzes, interesses, recordes, votos, diario, riff, entrega, corre, taverna, role, lan] = await Promise.all([
+  const [perfil, quizzes, interesses, recordes, votos, diario, riff, entrega, corre, taverna, role, lan, muro] = await Promise.all([
     sql`select apelido, cor, updated_at from perfis where user_id = ${userId}`,
     sql`select quiz, result, scores, chosen_on_tie, created_at from quiz_results where user_id = ${userId} order by created_at`,
     sql`select tag, origem, created_at from interests where user_id = ${userId} order by created_at`,
@@ -112,6 +114,7 @@ export async function exportarDados(userId: string) {
     exportarTaverna(userId),
     exportarRole(userId),
     exportarLan(userId),
+    exportarMural(userId),
   ]);
-  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan };
+  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan, muro_livre: muro };
 }
