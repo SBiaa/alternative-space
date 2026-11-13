@@ -10,8 +10,11 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "seed:diario": "node --env-file-if-exists=.env.local scripts/seed-diario.mjs",
+    "seed:riff": "node --env-file-if-exists=.env.local --import tsx scripts/seed-riff.ts",
     "fichas:sr5:data": "tsx scripts/fichas-sr5/index.ts",
     "seed:entrega": "node --env-file-if-exists=.env.local --import tsx scripts/seed-entrega.ts",
+    "seed:taverna": "node --env-file-if-exists=.env.local --import tsx scripts/seed-taverna.ts",
+    "seed:lan": "node --env-file-if-exists=.env.local --import tsx scripts/seed-lan.ts",
     "mapa:entrega": "tsx scripts/bairro-entrega.ts",
     "seed:role": "node --env-file-if-exists=.env.local --import tsx scripts/seed-role.ts"
   },

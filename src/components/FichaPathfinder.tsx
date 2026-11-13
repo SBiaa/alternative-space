@@ -24,6 +24,7 @@ import {
   acharClasse,
   acharHeranca,
   ajustar,
+  ataque,
   atributosDetalhe,
   calcular,
   grausPericia,
@@ -36,9 +37,11 @@ import {
   vagasTalento,
   type Atributo,
   type Ficha,
+  type ItemFicha,
   type Pericia,
   type Prof,
 } from "@/lib/pathfinder";
+import { ARMADURAS, ARMAS, COMBATE_CLASSE, ESCUDOS, ITENS_COMUNS, NOME_CAT_ARMA, NOME_CAT_ARMADURA, NOME_DANO, formatarPreco, formatarVolume } from "@/lib/pathfinder-equip";
 import { sugestoesTalento } from "@/lib/pathfinder-talentos";
 
 const CHAVE = "ficha-pathfinder:atual";
@@ -50,6 +53,7 @@ const PASSOS = [
   { id: "atributos", nome: "Atributos" },
   { id: "pericias", nome: "Perícias" },
   { id: "talentos", nome: "Talentos" },
+  { id: "equipamento", nome: "Equipamento" },
   { id: "ficha", nome: "Ficha" },
 ] as const;
 type Passo = (typeof PASSOS)[number]["id"];
@@ -390,6 +394,7 @@ export function FichaPathfinder({ nuvem, logado = false }: Props) {
         )}
 
         {passo === "talentos" && <PassoTalentos ficha={ficha} onChange={(v) => mudar({ talentos: v })} />}
+        {passo === "equipamento" && <PassoEquipamento ficha={ficha} onChange={mudar} />}
 
         {passo === "ficha" && (
           <>
@@ -607,6 +612,227 @@ function PassoTalentos({ ficha, onChange }: { ficha: Ficha; onChange: (v: Ficha[
   );
 }
 
+const campo = "rounded-lg border-2 border-noite bg-creme px-2 py-1 text-sm text-noite";
+const RUNAS = ["Nenhuma", "+1", "+2", "+3"];
+const GOLPE = ["Nenhuma", "Golpe", "Golpe maior", "Golpe superior"];
+const RESILIENTE = ["Nenhuma", "Resiliente", "Resiliente maior", "Resiliente superior"];
+const NOME_MOEDA = { pp: "Platina (pp)", po: "Ouro (po)", pa: "Prata (pa)", pc: "Cobre (pc)" } as const;
+
+function SelectNum({ rotulo, valor, opcoes, onChange }: { rotulo: string; valor: number; opcoes: string[]; onChange: (n: number) => void }) {
+  return (
+    <label className="flex flex-col gap-1">
+      <span className="font-ficha text-[12px] text-azul">{rotulo}</span>
+      <select value={valor} onChange={(e) => onChange(+e.target.value)} className={campo}>
+        {opcoes.map((o, i) => (
+          <option key={o} value={i}>
+            {o}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function PassoEquipamento({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<Ficha>) => void }) {
+  const c = calcular(ficha);
+  const combate = COMBATE_CLASSE[ficha.classe];
+  const [novaArma, setNovaArma] = useState("");
+  const [novoItem, setNovoItem] = useState("");
+  const caixa = "flex flex-col gap-3 rounded-xl border-2 border-noite bg-creme-claro p-4";
+  const titulo = "m-0 font-titulo text-lg font-bold text-noite";
+
+  const addItem = () => {
+    const nome = novoItem.trim();
+    if (!nome) return;
+    const comum = ITENS_COMUNS.find(([n]) => n.toLowerCase() === nome.toLowerCase());
+    onChange({ itens: [...ficha.itens, { nome: comum?.[0] ?? nome, qtd: 1, volume: comum?.[1] ?? 0 }] });
+    setNovoItem("");
+  };
+
+  return (
+    <>
+      <p className="m-0 text-tinta">
+        Escolha armadura, escudo e armas: a ficha calcula CA, ataques e dano sozinha.{" "}
+        {combate
+          ? `Sua classe é treinada em armas ${combate.marciais ? "simples e marciais" : "simples"} e em armadura ${combate.armaduras.length ? combate.armaduras.map((x) => NOME_CAT_ARMADURA[x].toLowerCase()).join(", ") : "nenhuma (só sem armadura)"}.`
+          : "Escolha a classe pra ver em que ela é treinada."}
+      </p>
+
+      <section className={caixa}>
+        <h3 className={titulo}>Armadura e escudo</h3>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <label className="flex flex-col gap-1">
+            <span className="font-ficha text-[12px] text-azul">Armadura</span>
+            <select value={ficha.armadura} onChange={(e) => onChange({ armadura: e.target.value })} className={campo}>
+              <option value="">Sem armadura</option>
+              {(["leve", "media", "pesada"] as const).map((cat) => (
+                <optgroup key={cat} label={NOME_CAT_ARMADURA[cat]}>
+                  {ARMADURAS.filter((x) => x.cat === cat).map((x) => (
+                    <option key={x.id} value={x.id}>
+                      {x.nome} (CA +{x.ca}, Des máx +{x.desMax})
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-1">
+            <span className="font-ficha text-[12px] text-azul">Escudo</span>
+            <select value={ficha.escudo} onChange={(e) => onChange({ escudo: e.target.value })} className={campo}>
+              <option value="">Sem escudo</option>
+              {ESCUDOS.map((x) => (
+                <option key={x.id} value={x.id}>
+                  {x.nome} (+{x.ca} erguido, dureza {x.dureza}, {x.pv} PV)
+                </option>
+              ))}
+            </select>
+          </label>
+          {ficha.armadura && (
+            <>
+              <SelectNum rotulo="Runa de potência" valor={ficha.runasArmadura.potencia} opcoes={RUNAS} onChange={(n) => onChange({ runasArmadura: { ...ficha.runasArmadura, potencia: n } })} />
+              <SelectNum rotulo="Runa de resiliência" valor={ficha.runasArmadura.resiliente} opcoes={RESILIENTE} onChange={(n) => onChange({ runasArmadura: { ...ficha.runasArmadura, resiliente: n } })} />
+            </>
+          )}
+        </div>
+        <p className="m-0 font-ficha text-sm text-noite">
+          CA {c.ca}
+          {c.caEscudo !== null && ` (${c.caEscudo} com escudo erguido)`}
+          {c.penalidade !== 0 && ` · Penalidade ${c.penalidade} em Acrobatismo, Atletismo, Furtividade e Ladroagem`}
+          {c.armadura && c.armadura.velocidade !== 0 && ` · Deslocamento ${c.deslocamento} pés`}
+        </p>
+        {!c.treinadoArmadura && <p className="m-0 rounded-lg bg-laranja-claro px-3 py-2 text-sm text-noite">Sua classe não é treinada nessa armadura: ela entra sem bônus de proficiência.</p>}
+      </section>
+
+      <section className={caixa}>
+        <h3 className={titulo}>Armas</h3>
+        {ficha.armas.length > 0 && (
+          <ul className="m-0 flex list-none flex-col gap-2 p-0">
+            {ficha.armas.map((x, i) => {
+              const at = ataque(ficha, x);
+              if (!at) return null;
+              return (
+                <li key={i} className="flex flex-col gap-2 rounded-lg border-2 border-noite/20 bg-creme p-3">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <span className="font-bold text-noite">{at.nome}</span>
+                    <span className="font-ficha text-sm text-noite">
+                      {at.map.map(sinal).join(" / ")} · {at.dano} · {NOME_PROF_LONGO[at.prof]}
+                    </span>
+                  </div>
+                  <p className="m-0 font-ficha text-[12px] text-neutro">
+                    {NOME_CAT_ARMA[at.arma.cat]} · {at.arma.distancia ? `distância ${at.arma.alcance} pés` : "corpo a corpo"} · {at.arma.maos} mão{at.arma.maos > 1 ? "s" : ""}
+                    {at.arma.tracos.length > 0 && ` · ${at.arma.tracos.join(", ")}`}
+                  </p>
+                  <div className="flex flex-wrap items-end gap-2">
+                    <SelectNum rotulo="Potência" valor={x.potencia} opcoes={RUNAS} onChange={(n) => onChange({ armas: ficha.armas.map((y, j) => (j === i ? { ...y, potencia: n } : y)) })} />
+                    <SelectNum rotulo="Golpe" valor={x.golpe} opcoes={GOLPE} onChange={(n) => onChange({ armas: ficha.armas.map((y, j) => (j === i ? { ...y, golpe: n } : y)) })} />
+                    <button type="button" onClick={() => onChange({ armas: ficha.armas.filter((_, j) => j !== i) })} className="rounded-lg border-2 border-noite px-3 py-1 text-sm text-noite hover:bg-laranja-claro">
+                      Tirar
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <div className="flex flex-wrap gap-2">
+          <select value={novaArma} onChange={(e) => setNovaArma(e.target.value)} aria-label="Arma pra adicionar" className={`${campo} min-w-0 flex-1`}>
+            <option value="">Escolha uma arma…</option>
+            {(["simples", "marciais", "avancadas"] as const).map((cat) => (
+              <optgroup key={cat} label={NOME_CAT_ARMA[cat]}>
+                {ARMAS.filter((x) => x.cat === cat).map((x) => (
+                  <option key={x.id} value={x.id}>
+                    {x.nome} (d{x.dado} {NOME_DANO[x.dano]}, {formatarPreco(x.preco)})
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+          <button
+            type="button"
+            disabled={!novaArma || ficha.armas.length >= 20}
+            onClick={() => {
+              onChange({ armas: [...ficha.armas, { id: novaArma, potencia: 0, golpe: 0 }] });
+              setNovaArma("");
+            }}
+            className="rounded-lg border-2 border-noite bg-laranja px-3 py-1 text-sm font-bold text-noite disabled:opacity-50"
+          >
+            Adicionar
+          </button>
+        </div>
+      </section>
+
+      <section className={caixa}>
+        <h3 className={titulo}>Itens</h3>
+        {ficha.itens.length > 0 && (
+          <ul className="m-0 flex list-none flex-col gap-2 p-0">
+            {ficha.itens.map((it, i) => {
+              const mudarItem = (p: Partial<ItemFicha>) => onChange({ itens: ficha.itens.map((y, j) => (j === i ? { ...y, ...p } : y)) });
+              return (
+                <li key={i} className="flex flex-wrap items-center gap-2">
+                  <input value={it.nome} maxLength={80} onChange={(e) => mudarItem({ nome: e.target.value })} aria-label="Nome do item" className={`${campo} min-w-0 flex-1`} />
+                  <label className="flex items-center gap-1 text-sm">
+                    Qtd
+                    <input type="number" min={0} value={it.qtd} onChange={(e) => mudarItem({ qtd: Math.max(0, Math.round(+e.target.value) || 0) })} className={`${campo} w-16`} />
+                  </label>
+                  <label className="flex items-center gap-1 text-sm">
+                    Volume
+                    <select value={it.volume} onChange={(e) => mudarItem({ volume: +e.target.value })} className={campo}>
+                      <option value={0}>—</option>
+                      <option value={1}>L</option>
+                      {[1, 2, 3, 4, 5].map((v) => (
+                        <option key={v} value={v * 10}>
+                          {v}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <button type="button" aria-label={`Tirar ${it.nome}`} onClick={() => onChange({ itens: ficha.itens.filter((_, j) => j !== i) })} className="rounded-lg border-2 border-noite px-2 py-1 text-sm hover:bg-laranja-claro">
+                    ✕
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <form
+          className="flex flex-wrap gap-2"
+          onSubmit={(e) => {
+            e.preventDefault();
+            addItem();
+          }}
+        >
+          <input list="itens-comuns" value={novoItem} maxLength={80} onChange={(e) => setNovoItem(e.target.value)} placeholder="Kit de aventureiro, corda, tocha…" aria-label="Item pra adicionar" className={`${campo} min-w-0 flex-1`} />
+          <datalist id="itens-comuns">
+            {ITENS_COMUNS.map(([n]) => (
+              <option key={n} value={n} />
+            ))}
+          </datalist>
+          <button type="submit" disabled={!novoItem.trim() || ficha.itens.length >= 100} className="rounded-lg border-2 border-noite bg-laranja px-3 py-1 text-sm font-bold text-noite disabled:opacity-50">
+            Adicionar
+          </button>
+        </form>
+      </section>
+
+      <section className={caixa}>
+        <h3 className={titulo}>Dinheiro e Volume</h3>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {(["pp", "po", "pa", "pc"] as const).map((m) => (
+            <label key={m} className="flex flex-col gap-1">
+              <span className="font-ficha text-[12px] text-azul">{NOME_MOEDA[m]}</span>
+              <input type="number" min={0} value={ficha.dinheiro[m]} onChange={(e) => onChange({ dinheiro: { ...ficha.dinheiro, [m]: Math.max(0, Math.round(+e.target.value) || 0) } })} className={campo} />
+            </label>
+          ))}
+        </div>
+        <p className="m-0 text-sm text-neutro">No nível 1 todo mundo começa com 15 po pra gastar.</p>
+        <p className={`m-0 font-ficha text-sm ${c.volume.total > c.volume.maximo ? "text-laranja" : "text-noite"}`}>
+          Volume {formatarVolume(c.volume.total)} de {c.volume.sobrecarregado / 10} (sobrecarregado acima disso, máximo {c.volume.maximo / 10})
+          {c.sobrecarregado && " · Sobrecarregado: −10 pés de deslocamento e desajeitado 1"}
+        </p>
+      </section>
+    </>
+  );
+}
+
 function Caixa({ rotulo, valor, prof }: { rotulo: string; valor: string | number; prof?: Prof }) {
   return (
     <div className="flex flex-col items-center rounded-xl border-2 border-noite bg-creme p-3 text-center">
@@ -639,7 +865,7 @@ function FolhaFinal({ ficha }: { ficha: Ficha }) {
       </div>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         <Caixa rotulo="Pontos de vida" valor={c.pv} />
-        <Caixa rotulo="CA (sem armadura)" valor={c.ca} prof={c.graus.defesa} />
+        <Caixa rotulo={c.caEscudo !== null ? `CA (${c.caEscudo} c/ escudo)` : "CA"} valor={c.ca} prof={c.graus.defesa} />
         <Caixa rotulo="Percepção" valor={sinal(c.percepcao)} prof={c.graus.percepcao} />
         <Caixa rotulo="CD de classe" valor={c.cdClasse ?? "—"} prof={c.graus.cd} />
         <Caixa rotulo="Fortitude" valor={sinal(c.fortitude)} prof={c.graus.fortitude} />
@@ -652,6 +878,23 @@ function FolhaFinal({ ficha }: { ficha: Ficha }) {
         {c.sentidos && ` · ${c.sentidos}`}
         {c.idiomas && ` · Idiomas: ${c.idiomas}`}
       </p>
+      {c.ataques.length > 0 && (
+        <section>
+          <h3 className="mb-2 font-titulo text-xl font-bold text-noite">Ataques</h3>
+          <ul className="m-0 list-none p-0">
+            {c.ataques.map((at, i) => (
+              <li key={i} className="flex flex-wrap items-baseline justify-between gap-2 border-b border-noite/15 py-1">
+                <span className="font-bold">
+                  {at.nome} <span className="font-ficha text-[11px] font-normal text-neutro">({NOME_PROF[at.prof]}{at.arma.tracos.length > 0 && ` · ${at.arma.tracos.join(", ")}`})</span>
+                </span>
+                <span className="font-ficha text-sm">
+                  <b className="font-titulo text-lg">{at.map.map(sinal).join(" / ")}</b> · {at.dano}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <section>
         <h3 className="mb-2 font-titulo text-xl font-bold text-noite">Perícias</h3>
         <ul className="grid list-none grid-cols-1 gap-x-6 gap-y-1 p-0 sm:grid-cols-2">
@@ -713,6 +956,18 @@ function FolhaFinal({ ficha }: { ficha: Ficha }) {
           )}
         </section>
       </div>
+      <section>
+        <h3 className="mb-2 font-titulo text-xl font-bold text-noite">Equipamento</h3>
+        <p className="m-0 text-sm text-tinta">
+          {[c.armadura && `${ficha.runasArmadura.potencia ? `+${ficha.runasArmadura.potencia} ` : ""}${c.armadura.nome}`, c.escudo?.nome, ...ficha.itens.filter((it) => it.nome.trim()).map((it) => (it.qtd > 1 ? `${it.nome} ×${it.qtd}` : it.nome))]
+            .filter(Boolean)
+            .join(" · ") || "Nada além das armas."}
+        </p>
+        <p className="m-0 font-ficha text-sm text-noite">
+          {(["pp", "po", "pa", "pc"] as const).filter((m) => ficha.dinheiro[m]).map((m) => `${ficha.dinheiro[m]} ${m}`).join(" · ") || "Sem dinheiro"} · Volume {formatarVolume(c.volume.total)} / {c.volume.sobrecarregado / 10}
+          {c.sobrecarregado && " (sobrecarregado)"}
+        </p>
+      </section>
       {ficha.notas.trim() && (
         <section className="print-only">
           <h3 className="mb-2 font-titulo text-xl font-bold text-noite">Notas</h3>
@@ -720,7 +975,7 @@ function FolhaFinal({ ficha }: { ficha: Ficha }) {
         </section>
       )}
       <p className="m-0 text-sm text-neutro">
-        D = destreinado, T = treinado, E = especialista, M = mestre, L = lendário. Equipamento, armas e magias entram nas próximas fases.
+        D = destreinado, T = treinado, E = especialista, M = mestre, L = lendário. Magias entram na próxima fase.
       </p>
     </div>
   );

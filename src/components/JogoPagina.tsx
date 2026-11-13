@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Suspense, type ReactNode } from "react";
 import { FeedbackJogo } from "./FeedbackJogo";
 import { JogoArte } from "./JogoArte";
-import { JogoRecorde, JogoTela } from "./JogoTela";
+import { JogoCapa } from "./JogoCapa";
 import { RankingJogo, RankingCarregando } from "./RankingJogo";
 import { acharJogo, hrefJogo, outrosJogos } from "@/lib/jogos";
 
@@ -24,23 +24,26 @@ export function JogoPagina({ slug, children, comoJogar, extra, largo }: Props) {
   return (
     <section className="px-4 pb-18 pt-2.5 sm:px-6 sm:pt-8">
       <div className={`mx-auto flex flex-col gap-3.5 sm:gap-5 ${largo ? "max-w-[1200px]" : "max-w-[960px]"}`}>
-        <JogoTela nome={jogo.nome}>{children}</JogoTela>
-
-        <div className={`mt-1 grid gap-3 ${jogo.recorde ? "sm:grid-cols-[minmax(0,1fr)_280px]" : ""}`}>
-          <div className="card flex flex-col gap-1.5 px-4 py-3.5">
-            <span className="etiqueta text-[10px] text-laranja-claro">Como jogar</span>
-            <div className="text-sm leading-normal text-areia sm:text-[15px]">{comoJogar}</div>
-          </div>
-          <JogoRecorde slug={slug} />
-        </div>
+        <JogoCapa
+          slug={slug}
+          arte={<JogoArte jogo={jogo} className="aspect-video" />}
+          teclado={
+            <>
+              <div>{comoJogar}</div>
+              {extra}
+            </>
+          }
+        >
+          {children}
+        </JogoCapa>
 
         {jogo.recorde && (
+          <div id="ranking" className="scroll-mt-20">
           <Suspense fallback={<RankingCarregando />}>
             <RankingJogo slug={slug} />
           </Suspense>
+          </div>
         )}
-
-        {extra}
 
         <FeedbackJogo slug={slug} nome={jogo.nome} />
 

@@ -1053,7 +1053,8 @@ export function DefendaONavio() {
       for (const p of e.projeteis) desenharProj(ctx, p, visual);
       for (const f of e.efeitos) desenharEfeito(ctx, f, fonte);
 
-      if (jogando) {
+      // Em tela pequena o HUD do canvas fica ilegível; ele vai pro HTML acima.
+      if (jogando && canvas.clientWidth >= 640) {
         hud(ctx, e, fonte);
         if (bonusAte.current > visual) {
           aviso(ctx, `Onda vencida! +${e.ultimoBonus} de bônus`, fonte, Math.min(1, bonusAte.current - visual));
@@ -1108,9 +1109,18 @@ export function DefendaONavio() {
   const infoEscolhida = escolhido ? TRIPULANTES[escolhido.tipo] : escolha ? TRIPULANTES[escolha] : null;
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3 sm:gap-4">
+      {faseUi === "jogando" && (
+        <div className="flex items-center justify-between gap-2 rounded-xl border-2 border-noite bg-creme-claro px-3 py-1.5 text-sm font-bold text-noite sm:hidden">
+          <span>
+            Onda {ui.onda}/{ONDAS.length}
+          </span>
+          <span aria-label={`${ui.vidas} baús`}>🧰 {ui.vidas}</span>
+          <span aria-label={`${ui.moedas} moedas`}>🪙 {ui.moedas}</span>
+        </div>
+      )}
       <div
-        className="relative w-full select-none overflow-hidden rounded-lg border-[6px] border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)]"
+        className="relative w-full select-none overflow-hidden rounded-lg border-[3px] sm:border-[6px] border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)]"
         style={{ aspectRatio: `${W} / ${H}` }}
       >
         <canvas
@@ -1137,11 +1147,11 @@ export function DefendaONavio() {
         />
 
         {faseUi === "menu" && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-noite/60 p-5 text-center">
-            <h2 className="font-titulo text-4xl font-bold leading-none text-creme sm:text-6xl" style={{ textShadow: "3px 3px 0 #01121e" }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-noite/60 p-3 text-center sm:gap-3 sm:p-5">
+            <h2 className="font-titulo text-3xl font-bold leading-none text-creme sm:text-6xl" style={{ textShadow: "3px 3px 0 #01121e" }}>
               Defenda o Navio
             </h2>
-            <p className="max-w-md text-sm text-creme sm:text-base">
+            <p className="hidden max-w-md text-sm text-creme sm:block sm:text-base">
               A marinha sobe pela prancha e marcha até a cabine. <strong>Coloque tripulantes no convés</strong>, cada um luta de um
               jeito. Se chegarem no baú, levam o tesouro.
             </p>
@@ -1162,14 +1172,14 @@ export function DefendaONavio() {
             onClick={alternarPausa}
             className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-noite/60 text-center"
           >
-            <span className="font-titulo text-4xl font-bold text-creme">Pausado</span>
-            <span className="text-creme">Toca aqui ou aperta P pra continuar.</span>
+            <span className="font-titulo text-3xl font-bold text-creme sm:text-4xl">Pausado</span>
+            <span className="text-sm text-creme sm:text-base">Toca aqui ou aperta P pra continuar.</span>
           </button>
         )}
 
         {fim && (
-          <div className="absolute inset-0 flex items-center justify-center bg-noite/60 p-3">
-            <div className="card flex w-full max-w-sm flex-col items-center gap-2 !p-5 text-center sm:!p-6">
+          <div className="absolute inset-0 flex items-center justify-center bg-noite/60 p-2 sm:p-3">
+            <div className="card flex w-full max-w-sm flex-col items-center gap-1 !p-3 text-center sm:gap-2 sm:!p-6 [&_p.text-sm]:hidden sm:[&_p.text-sm]:block">
               {fim === "vitoria" ? (
                 <>
                   <span className="etiqueta text-[11px] text-estrela">Navio salvo</span>
@@ -1201,19 +1211,20 @@ export function DefendaONavio() {
 
       {faseUi === "jogando" && (
         <div className="flex flex-col gap-3">
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="grid grid-cols-3 items-center gap-2 sm:flex sm:flex-wrap">
             <button
               type="button"
               onClick={proximaOnda}
               disabled={ui.emOnda || !!fim}
-              className="btn bg-laranja text-noite !px-5 !py-2 !text-base disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:transform-none"
+              className="btn col-span-3 bg-laranja text-noite !px-5 !py-2 !text-base disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:transform-none"
             >
               {ui.emOnda ? `Onda ${ui.onda} em andamento` : `Chamar onda ${ui.onda + 1}`}
             </button>
-            <button type="button" onClick={alternarVel} className="btn bg-creme-claro text-noite !px-4 !py-2 !text-base" aria-pressed={vel === 2}>
-              Velocidade {vel}x
+            <button type="button" onClick={alternarVel} className="btn bg-creme-claro text-noite !px-2 !py-2 !text-sm sm:!px-4 sm:!text-base" aria-pressed={vel === 2}>
+              <span className="hidden sm:inline">Velocidade </span>
+              {vel}x
             </button>
-            <button type="button" onClick={alternarPausa} className="btn bg-creme-claro text-noite !px-4 !py-2 !text-base" disabled={!!fim}>
+            <button type="button" onClick={alternarPausa} className="btn bg-creme-claro text-noite !px-2 !py-2 !text-sm sm:!px-4 sm:!text-base" disabled={!!fim}>
               {pausado ? "Continuar" : "Pausar"}
             </button>
             <button
@@ -1226,20 +1237,20 @@ export function DefendaONavio() {
                   tocar("contratar");
                 }
               }}
-              className="btn bg-creme-claro text-noite !px-4 !py-2 !text-base"
+              className="btn bg-creme-claro text-noite !px-2 !py-2 !text-sm sm:!px-4 sm:!text-base"
               aria-pressed={semSom}
               aria-label={semSom ? "Ligar som" : "Desligar som"}
             >
               {semSom ? "🔇 Sem som" : "🔊 Som"}
             </button>
             {!ui.emOnda && !fim && (
-              <p className="text-sm text-tinta">
+              <p className="col-span-3 text-sm text-tinta">
                 <span className="etiqueta text-[11px] text-azul">próxima:</span> {descreverOnda(ui.onda + 1)}
               </p>
             )}
           </div>
 
-          <ul className="grid list-none grid-cols-2 gap-2 p-0 sm:grid-cols-3 lg:grid-cols-5">
+          <ul className="grid list-none grid-cols-5 gap-1.5 p-0 sm:grid-cols-3 sm:gap-2 lg:grid-cols-5">
             {TIPOS_TRIP.map((tipo, idx) => {
               const info = TRIPULANTES[tipo];
               const pode = ui.moedas >= info.custo;
@@ -1250,15 +1261,18 @@ export function DefendaONavio() {
                     type="button"
                     onClick={() => escolher(ativo ? null : tipo)}
                     aria-pressed={ativo}
-                    className={`flex w-full items-center gap-2 rounded-xl border-2 border-noite p-2 text-left transition-colors ${
+                    aria-label={`${info.nome}, ${info.custo} moedas`}
+                    className={`flex w-full flex-col items-center gap-0 rounded-xl border-2 border-noite p-1 text-center transition-colors sm:flex-row sm:gap-2 sm:p-2 sm:text-left ${
                       ativo ? "bg-laranja-claro shadow-duro-sm" : "bg-creme-claro hover:bg-creme-escuro"
                     } ${pode ? "" : "opacity-55"}`}
                   >
                     <IconeTrip tipo={tipo} />
                     <span className="flex min-w-0 flex-col">
-                      <span className="font-titulo text-base font-bold leading-tight">{info.nome}</span>
-                      <span className="text-sm text-tinta">
-                        {info.custo} moedas <span className="hidden text-neutro lg:inline">· tecla {idx + 1}</span>
+                      <span className="hidden font-titulo text-base font-bold leading-tight sm:inline">{info.nome}</span>
+                      <span className="text-xs font-bold text-tinta sm:text-sm sm:font-normal">
+                        🪙{info.custo}
+                        <span className="hidden sm:inline"> moedas</span>
+                        <span className="hidden text-neutro lg:inline"> · tecla {idx + 1}</span>
                       </span>
                     </span>
                   </button>
@@ -1268,7 +1282,7 @@ export function DefendaONavio() {
           </ul>
 
           {infoEscolhida && (
-            <div className="card flex flex-col gap-2 !p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="card flex flex-col gap-2 !p-3 sm:!p-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex flex-col gap-0.5">
                 <p className="font-titulo text-lg font-bold leading-tight">
                   {infoEscolhida.nome}
@@ -1278,7 +1292,7 @@ export function DefendaONavio() {
                 {!escolhido && <p className="text-sm text-neutro">Toque numa casa livre do convés pra posicionar.</p>}
               </div>
               {escolhido && (
-                <div className="flex shrink-0 flex-wrap gap-2">
+                <div className="grid shrink-0 grid-cols-2 gap-2 sm:flex sm:flex-wrap">
                   <button
                     type="button"
                     onClick={() => {

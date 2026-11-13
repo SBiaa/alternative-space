@@ -3,6 +3,8 @@
 // Dentro de um mesmo grupo de boosts (ancestralidade, antecedente, livres, aumento de nível) não dá pra repetir atributo.
 // Nos aumentos dos níveis 5/10/15/20, um atributo que já está em +4 ou mais só sobe +1 a cada dois aumentos.
 
+import { acharArma, acharArmadura, acharEscudo, COMBATE_CLASSE, type Arma } from "./pathfinder-equip";
+
 export const ATRIBUTOS = ["for", "des", "con", "int", "sab", "car"] as const;
 export type Atributo = (typeof ATRIBUTOS)[number];
 
@@ -331,7 +333,19 @@ export type Ficha = {
   // Chave = Vaga.chave ("classe-2"); valor = nome do talento (texto livre).
   talentos: Record<string, string>;
   notas: string;
+  // Equipamento. Runas: potência +0..+3; golpe/resiliente 0..3.
+  armadura: string;
+  runasArmadura: { potencia: number; resiliente: number };
+  escudo: string;
+  armas: ArmaFicha[];
+  itens: ItemFicha[];
+  // Moedas: platina, ouro, prata, cobre.
+  dinheiro: { pp: number; po: number; pa: number; pc: number };
 };
+
+export type ArmaFicha = { id: string; potencia: number; golpe: number };
+// volume em décimos (1 = L, 10 = 1).
+export type ItemFicha = { nome: string; qtd: number; volume: number };
 
 export const FICHA_VAZIA: Ficha = {
   nome: "",
@@ -351,6 +365,12 @@ export const FICHA_VAZIA: Ficha = {
   aumentosPericia: {},
   talentos: {},
   notas: "",
+  armadura: "",
+  runasArmadura: { potencia: 0, resiliente: 0 },
+  escudo: "",
+  armas: [],
+  itens: [],
+  dinheiro: { pp: 0, po: 15, pa: 0, pc: 0 },
 };
 
 export const LIVRES_NIVEL_1 = 4;
@@ -444,6 +464,57 @@ export function grausDefesa(f: Ficha): Record<Defesa, Prof> {
   return g;
 }
 
+// Grau com armas simples/marciais no nível da ficha (avançadas: destreinado).
+export function grauArma(f: Pick<Ficha, "classe" | "nivel">, arma: Pick<Arma, "cat">): Prof {
+  const c = COMBATE_CLASSE[f.classe];
+  if (!c || arma.cat === "avancadas" || (arma.cat === "marciais" && !c.marciais)) return "destreinado";
+  let g: Prof = "destreinado";
+  for (const [n, p] of c.armas) if (n <= f.nivel) g = maior(g, p);
+  return g;
+}
+
+const ESPECIALIZACAO: Record<Prof, number> = { destreinado: 0, treinado: 0, especialista: 2, mestre: 3, lendario: 4 };
+const PERICIAS_PENALIDADE = new Set<string>(["acrobatismo", "atletismo", "furtividade", "ladroagem"]);
+
+// Um ataque da ficha: bônus, MAP e dano já somados.
+export function ataque(f: Ficha, arma: ArmaFicha, attr = atributos(f)) {
+  const base = acharArma(arma.id);
+  if (!base) return null;
+  const prof = grauArma(f, base);
+  const acuidade = base.tracos.includes("acuidade");
+  const mod = base.distancia ? attr.des : acuidade ? Math.max(attr.for, attr.des) : attr.for;
+  const agil = base.tracos.includes("ágil");
+  const arremesso = base.tracos.some((t) => t.startsWith("arremesso"));
+  const propulsiva = base.tracos.includes("propulsiva");
+  let danoMod = 0;
+  if (!base.distancia || arremesso) danoMod = attr.for;
+  else if (propulsiva) danoMod = attr.for > 0 ? Math.floor(attr.for / 2) : attr.for;
+  const espec = (COMBATE_CLASSE[f.classe]?.especializacao ?? 99) <= f.nivel ? ESPECIALIZACAO[prof] : 0;
+  const total = bonus(prof, mod, f.nivel) + arma.potencia;
+  const dados = 1 + arma.golpe;
+  const fixo = danoMod + espec;
+  return {
+    nome: `${arma.potencia ? `+${arma.potencia} ` : ""}${base.nome}${arma.golpe ? ` ${["", "de golpe", "de golpe maior", "de golpe superior"][arma.golpe]}` : ""}`,
+    arma: base,
+    prof,
+    bonus: total,
+    map: agil ? [total, total - 4, total - 8] : [total, total - 5, total - 10],
+    dano: `${dados}d${base.dado}${fixo ? (fixo > 0 ? `+${fixo}` : `${fixo}`) : ""} ${base.dano}`,
+  };
+}
+
+// Volume carregado (em décimos) e limites.
+export function volume(f: Ficha, attr = atributos(f)) {
+  let d = 0;
+  d += acharArmadura(f.armadura)?.volume ?? 0;
+  d += acharEscudo(f.escudo)?.volume ?? 0;
+  for (const x of f.armas) d += acharArma(x.id)?.volume ?? 0;
+  for (const i of f.itens) d += i.volume * i.qtd;
+  const moedas = f.dinheiro.pp + f.dinheiro.po + f.dinheiro.pa + f.dinheiro.pc;
+  d += Math.floor(moedas / 1000) * 10;
+  return { total: d, sobrecarregado: (5 + attr.for) * 10, maximo: (10 + attr.for) * 10 };
+}
+
 export function calcular(f: Ficha) {
   const attr = atributos(f);
   const anc = acharAncestralidade(f.ancestralidade);
@@ -454,24 +525,43 @@ export function calcular(f: Ficha) {
   const gd = grausDefesa(f);
   const { graus } = grausPericia(f);
   const pvAnc = her?.pv ?? anc?.pv ?? 0;
+  const armadura = acharArmadura(f.armadura);
+  const escudo = acharEscudo(f.escudo);
+  const treinadoArmadura = !armadura || (COMBATE_CLASSE[f.classe]?.armaduras ?? []).includes(armadura.cat);
+  const grauArmadura: Prof = treinadoArmadura ? gd.defesa : "destreinado";
+  const forteBastante = !!armadura && attr.for >= armadura.forca;
+  const penalidade = armadura && !forteBastante ? armadura.penalidade : 0;
+  const lentidao = armadura ? Math.min(0, armadura.velocidade + (forteBastante ? 5 : 0)) : 0;
+  const res = armadura ? f.runasArmadura.resiliente : 0;
+  const ca = 10 + Math.min(attr.des, armadura?.desMax ?? 99) + bonus(grauArmadura, 0, n) + (armadura ? armadura.ca + f.runasArmadura.potencia : 0);
+  const vol = volume(f, attr);
+  const sobrecarregado = vol.total > vol.sobrecarregado;
   return {
     attr,
-    graus: gd,
+    graus: { ...gd, defesa: grauArmadura },
     pv: pvAnc + ((cls?.pv ?? 0) + attr.con) * n,
-    ca: 10 + attr.des + bonus(gd.defesa, 0, n),
+    ca,
+    caEscudo: escudo ? ca + escudo.ca : null,
+    escudo,
+    armadura,
+    treinadoArmadura,
+    penalidade,
     percepcao: bonus(gd.percepcao, attr.sab, n),
-    fortitude: bonus(gd.fortitude, attr.con, n),
-    reflexos: bonus(gd.reflexos, attr.des, n),
-    vontade: bonus(gd.vontade, attr.sab, n),
+    fortitude: bonus(gd.fortitude, attr.con, n) + res,
+    reflexos: bonus(gd.reflexos, attr.des, n) + res,
+    vontade: bonus(gd.vontade, attr.sab, n) + res,
     cdClasse: f.chave ? 10 + bonus(gd.cd, attr[f.chave], n) : null,
-    deslocamento: anc?.deslocamento ?? 25,
+    deslocamento: (anc?.deslocamento ?? 25) + lentidao - (sobrecarregado ? 10 : 0),
     tamanho: anc?.tamanho ?? "Médio",
     sentidos: f.heranca === "elfo-caverna" || f.heranca === "gnomo-umbral" || f.heranca === "leshy-fungo" ? "Visão no escuro" : anc?.sentidos ?? null,
     idiomas: anc?.idiomas ?? null,
     saber: ant?.saber ?? null,
     saberBonus: bonus("treinado", attr.int, n),
     recursos: (cls?.recursos ?? []).filter(([r]) => r <= n).sort((a, b) => a[0] - b[0]),
-    pericias: PERICIAS.map((p) => ({ ...p, prof: graus[p.id], bonus: bonus(graus[p.id], attr[p.attr], n) })),
+    pericias: PERICIAS.map((p) => ({ ...p, prof: graus[p.id], bonus: bonus(graus[p.id], attr[p.attr], n) + (PERICIAS_PENALIDADE.has(p.id) ? penalidade : 0) })),
+    ataques: f.armas.map((x) => ataque(f, x, attr)).filter((x): x is NonNullable<typeof x> => !!x),
+    volume: vol,
+    sobrecarregado,
   };
 }
 
@@ -558,6 +648,32 @@ export function resumoFicha(f: Ficha): string {
   return [acharAncestralidade(f.ancestralidade)?.nome, cls && `${cls.nome} ${f.nivel}`].filter(Boolean).join(" · ");
 }
 
+const inteiro = (x: unknown, min: number, max: number, padrao = min) => (typeof x === "number" && Number.isFinite(x) ? Math.min(max, Math.max(min, Math.round(x))) : padrao);
+
+function normalizarEquip(o: Record<string, unknown>): Pick<Ficha, "armadura" | "runasArmadura" | "escudo" | "armas" | "itens" | "dinheiro"> {
+  const obj = (x: unknown) => (typeof x === "object" && x && !Array.isArray(x) ? (x as Record<string, unknown>) : {});
+  const ra = obj(o.runasArmadura);
+  const din = typeof o.dinheiro === "object" && o.dinheiro ? obj(o.dinheiro) : null;
+  return {
+    armadura: typeof o.armadura === "string" && acharArmadura(o.armadura) ? o.armadura : "",
+    runasArmadura: { potencia: inteiro(ra.potencia, 0, 3), resiliente: inteiro(ra.resiliente, 0, 3) },
+    escudo: typeof o.escudo === "string" && acharEscudo(o.escudo) ? o.escudo : "",
+    armas: (Array.isArray(o.armas) ? o.armas : [])
+      .map(obj)
+      .filter((x) => typeof x.id === "string" && acharArma(x.id))
+      .slice(0, 20)
+      .map((x) => ({ id: x.id as string, potencia: inteiro(x.potencia, 0, 3), golpe: inteiro(x.golpe, 0, 3) })),
+    itens: (Array.isArray(o.itens) ? o.itens : [])
+      .map(obj)
+      .filter((x) => typeof x.nome === "string")
+      .slice(0, 100)
+      .map((x) => ({ nome: (x.nome as string).slice(0, 80), qtd: inteiro(x.qtd, 0, 9999, 1), volume: inteiro(x.volume, 0, 1000) })),
+    dinheiro: din
+      ? { pp: inteiro(din.pp, 0, 1e7), po: inteiro(din.po, 0, 1e7), pa: inteiro(din.pa, 0, 1e7), pc: inteiro(din.pc, 0, 1e7) }
+      : { ...FICHA_VAZIA.dinheiro },
+  };
+}
+
 function normalizarObjeto(o: Record<string, unknown>): Ficha {
   const attr = (x: unknown): Atributo | "" => (ATRIBUTOS.includes(x as Atributo) ? (x as Atributo) : "");
   const lista = (x: unknown) => (Array.isArray(x) ? x.map(attr).filter((a): a is Atributo => !!a) : []);
@@ -594,5 +710,6 @@ function normalizarObjeto(o: Record<string, unknown>): Ficha {
     aumentosPericia,
     talentos,
     notas: typeof o.notas === "string" ? o.notas.slice(0, 4000) : "",
+    ...normalizarEquip(o),
   });
 }

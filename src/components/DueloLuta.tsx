@@ -1,5 +1,6 @@
 "use client";
 
+import { EVENTO_PAUSAR, NaGaveta, useNoShell } from "./GameShell";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type PointerEvent as PE } from "react";
 import {
   CHAO,
@@ -106,7 +107,7 @@ function Retrato({ id }: { id: string }) {
     raf = requestAnimationFrame(desenhar);
     return () => cancelAnimationFrame(raf);
   }, [id]);
-  return <canvas ref={ref} className="h-[120px] w-[95px] sm:h-[190px] sm:w-[150px]" aria-hidden />;
+  return <canvas ref={ref} className="h-[84px] w-[66px] sm:h-[190px] sm:w-[150px]" aria-hidden />;
 }
 
 // ---------- sons ----------
@@ -147,7 +148,7 @@ function BotaoToque({ rotulo, tecla, onMuda, className = "" }: { rotulo: string;
   return (
     <button
       type="button"
-      className={`flex select-none items-center justify-center rounded-full border-2 border-noite bg-noite font-titulo font-bold text-creme shadow-duro active:translate-y-0.5 active:bg-laranja active:text-noite ${className}`}
+      className={`bt-toque flex select-none items-center justify-center rounded-full border-2 border-noite bg-noite font-titulo font-bold text-creme shadow-duro active:translate-y-0.5 active:bg-laranja active:text-noite ${className}`}
       style={{ touchAction: "none" }}
       onPointerDown={(ev: PE) => {
         ev.preventDefault();
@@ -376,6 +377,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
     window.addEventListener("blur", onBlur);
+    window.addEventListener(EVENTO_PAUSAR, onBlur);
     document.addEventListener("visibilitychange", onVis);
     return () => {
       cancelAnimationFrame(raf);
@@ -383,6 +385,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("keyup", onKeyUp);
       window.removeEventListener("blur", onBlur);
+      window.removeEventListener(EVENTO_PAUSAR, onBlur);
       document.removeEventListener("visibilitychange", onVis);
     };
   }, [mudarTela, sortear, cenario, energia]);
@@ -390,6 +393,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
   const tituloEscolha = !escolha[0] ? `Jogador 1, escolha seu ${palavra}` : modo === "cpu" ? "Agora escolha quem a CPU controla" : `Jogador 2, escolha seu ${palavra}`;
 
   // No celular os botões ficam fora da tela do jogo: embaixo com o aparelho em pé, dos lados deitado.
+  const noShell = useNoShell();
   const comControles = toqueAtivo && (telaUi === "luta" || telaUi === "pausa");
 
   return (
@@ -399,15 +403,15 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
       onContextMenu={(ev) => ev.preventDefault()}
     >
     <div
-      className={`relative w-full select-none overflow-hidden rounded-lg border-[6px] border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)] ${comControles ? "landscape:order-2 landscape:min-w-0 landscape:flex-1 landscape:max-w-[calc(88dvh*16/9)]" : ""}`}
+      className={`relative w-full select-none overflow-hidden rounded-lg border-[6px] border-creme bg-noite shadow-[0_10px_30px_rgb(0_0_0/0.35)] ${telaUi === "menu" || telaUi === "escolha" || telaUi === "fim" ? "max-sm:aspect-auto! max-sm:min-h-[360px]" : ""} ${comControles ? "landscape:order-2 landscape:min-w-0 landscape:flex-1 landscape:max-w-[calc(88dvh*16/9)]" : ""}`}
       style={{ aspectRatio: `${W} / ${H}`, WebkitTouchCallout: "none" }}
       onContextMenu={(ev) => ev.preventDefault()}
     >
-      <canvas ref={canvasRef} className="block h-full w-full" aria-label={`${nome}: jogo de luta`} />
+      <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full object-cover" aria-label={`${nome}: jogo de luta`} />
 
       {telaUi === "menu" && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-noite/55 p-4 text-center">
-          <h2 className="font-titulo text-4xl font-bold leading-none text-creme sm:text-7xl" style={{ textShadow: "4px 4px 0 #01121e" }}>
+          <h2 className="font-titulo text-5xl font-bold leading-none text-creme sm:text-7xl" style={{ textShadow: "4px 4px 0 #01121e" }}>
             {nome}
           </h2>
           <p className="max-w-md text-sm text-creme sm:text-base">{chamada}</p>
@@ -430,7 +434,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
             ))}
           </div>
           {modo === "cpu" ? (
-            <div className="flex items-center gap-2 text-sm text-creme">
+            <div className="flex flex-wrap items-center justify-center gap-2 text-sm text-creme">
               <span className="etiqueta text-[11px]">CPU</span>
               {(
                 [
@@ -444,7 +448,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
                   type="button"
                   onClick={() => setDif(d)}
                   aria-pressed={dif === d}
-                  className={`rounded-full border-2 border-creme/70 px-3 py-0.5 font-titulo font-bold ${dif === d ? "bg-creme text-noite" : "text-creme"}`}
+                  className={`rounded-full border-2 border-creme/70 px-3 py-1 font-titulo font-bold ${dif === d ? "bg-creme text-noite" : "text-creme"}`}
                 >
                   {rotulo}
                 </button>
@@ -469,7 +473,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
       {telaUi === "escolha" && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-y-auto bg-noite/75 p-3 text-center sm:gap-4">
           <h2 className="font-titulo text-xl font-bold text-creme sm:text-3xl">{tituloEscolha}</h2>
-          <div className="grid grid-cols-4 gap-2 sm:gap-4">
+          <div className="grid grid-cols-4 gap-1.5 sm:gap-4">
             {elenco.map((p) => {
               const marcado = escolha[0] === p.id;
               return (
@@ -482,7 +486,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
                   style={{ background: `linear-gradient(180deg, ${p.cor}cc, #f6f0d6 70%)` }}
                 >
                   <Retrato id={p.id} />
-                  <span className="font-titulo text-base font-bold leading-none text-noite sm:text-2xl">{p.nome}</span>
+                  <span className="font-titulo text-sm font-bold leading-none text-noite sm:text-2xl">{p.nome}</span>
                   <span className="etiqueta hidden text-[10px] text-noite/80 sm:block">{p.titulo}</span>
                 </button>
               );
@@ -552,7 +556,7 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
       <BotaoSom />
     </div>
 
-      {comControles && (
+      {comControles && !noShell && (
         <div
           className={`flex items-end justify-between gap-3 px-1 landscape:contents ${telaUi === "pausa" ? "pointer-events-none opacity-50" : ""}`}
         >
@@ -584,6 +588,29 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
             </div>
           </div>
         </div>
+      )}
+      {comControles && noShell && (
+        <NaGaveta>
+          <div className={`gs-controles flex items-end justify-between gap-3 ${telaUi === "pausa" ? "pointer-events-none opacity-50" : ""}`}>
+            <div className="grid shrink-0 grid-cols-3 grid-rows-3 gap-1">
+              <span />
+              <BotaoToque rotulo="▲" tecla="cima" onMuda={mudarToque} className="h-14 w-14 text-xl" />
+              <span />
+              <BotaoToque rotulo="◀" tecla="esq" onMuda={mudarToque} className="h-14 w-14 text-xl" />
+              <span />
+              <BotaoToque rotulo="▶" tecla="dir" onMuda={mudarToque} className="h-14 w-14 text-xl" />
+              <span />
+              <BotaoToque rotulo="▼" tecla="baixo" onMuda={mudarToque} className="h-14 w-14 text-xl" />
+              <span />
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <span />
+              <BotaoToque rotulo="Esp." tecla="especial" onMuda={mudarToque} className="h-16 w-16 !bg-laranja text-sm !text-noite" />
+              <BotaoToque rotulo="Soco" tecla="soco" onMuda={mudarToque} className="h-16 w-16 text-sm" />
+              <BotaoToque rotulo="Chute" tecla="chute" onMuda={mudarToque} className="h-16 w-16 text-sm" />
+            </div>
+          </div>
+        </NaGaveta>
       )}
     </div>
   );

@@ -1,10 +1,13 @@
 "use client";
 
 import { mandarProRanking } from "@/lib/enviarRecorde";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { estaMudo, mudar, tocar } from "@/lib/sons";
 import { H, NINJA_A, NINJA_L, NINJA_X, VIDAS, W, apertar as apertarLogica, novoEstado, pontos, rank, soltar as soltarLogica, step, type Estado } from "@/lib/akatsuki";
 
 type Ui = "menu" | "jogando" | "fim";
+
+const semAssinatura = () => () => {};
 
 const CHAVE_RECORDE = "fuga-da-akatsuki:recorde";
 const NOITE = "#01121e";
@@ -215,8 +218,23 @@ export function FugaDaAkatsuki() {
 
   const apertar = useCallback(() => {
     if (ui.current === "menu") comecar();
-    if (ui.current === "jogando") apertarLogica(estado.current);
+    if (ui.current !== "jogando") return;
+    const e = estado.current;
+    const noChao = e.noChao;
+    const duplo = e.pulosNoAr;
+    apertarLogica(e);
+    if (noChao && !e.noChao) tocar("pulo");
+    else if (e.pulosNoAr < duplo) tocar("puloDuplo");
   }, [comecar]);
+
+  // Preferência salva no navegador; no servidor começa com som.
+  const salvo = useSyncExternalStore(semAssinatura, estaMudo, () => false);
+  const [trocado, setTrocado] = useState<boolean | null>(null);
+  const semSom = trocado ?? salvo;
+  const alternarSom = () => {
+    mudar(!semSom);
+    setTrocado(!semSom);
+  };
 
   const soltar = useCallback(() => soltarLogica(estado.current), []);
 
@@ -234,6 +252,7 @@ export function FugaDaAkatsuki() {
     let relogio = 0;
     let sacode = 0;
     let golpeVisto = -99;
+    let pergaminhosVistos = 0;
 
     const frame = (agora: number) => {
       const dt = Math.min(1 / 30, (agora - antes) / 1000);
@@ -245,11 +264,18 @@ export function FugaDaAkatsuki() {
         step(e, dt);
         if (e.acertado !== golpeVisto) {
           golpeVisto = e.acertado;
-          sacode = 0.3;
+          if (e.acertado >= 0) {
+            sacode = 0.3;
+            tocar("golpe");
+          }
         }
+        if (e.pergaminhos > pergaminhosVistos) tocar("pergaminho");
+        pergaminhosVistos = e.pergaminhos;
         if (e.status === "fim") {
           const p = pontos(e);
-          const novo = p > recorde.current;
+          const novo = p > recorde.current && p > 0;
+          if (e.y > H) tocar("queda");
+          setTimeout(() => tocar(novo ? "recorde" : "fim"), e.y > H ? 550 : 250);
           if (novo) {
             recorde.current = p;
             salvarRecorde(p);
@@ -315,6 +341,16 @@ export function FugaDaAkatsuki() {
       onContextMenu={(ev) => ev.preventDefault()}
     >
       <canvas ref={canvasRef} className="block h-full w-full" aria-label="Fuga da Akatsuki: corra pelos telhados, pule e desvie das shurikens" />
+
+      <button
+        type="button"
+        onClick={alternarSom}
+        aria-label={semSom ? "Ligar som" : "Desligar som"}
+        aria-pressed={!semSom}
+        className="absolute bottom-2 right-2 z-10 grid size-9 place-items-center rounded-full bg-noite/60 text-lg text-creme hover:bg-noite/80"
+      >
+        {semSom ? "🔇" : "🔊"}
+      </button>
 
       {uiState === "menu" && (
         <div className="absolute inset-0 flex flex-col items-center justify-end gap-3 bg-gradient-to-t from-noite/85 via-noite/20 to-transparent p-5 text-center sm:justify-center sm:bg-noite/45">
