@@ -146,6 +146,14 @@ export const jogos: Jogo[] = [
     texto: "Chapéu, cicatriz, arma, roupa e bichinho. Monta do seu jeito e usa como avatar do perfil.",
     cor: "#8a4a12",
   },
+  {
+    slug: "role-noturno",
+    nome: "Rolê Noturno",
+    tipo: "Criativo",
+    resumo: "Skate 2D: monte seu pico e desafie a tripulação.",
+    texto: "Monte a pista com rampas, corrimãos e caixotes, termine pra provar que dá, publique e veja quem bate seu recorde.",
+    cor: "#0b2340",
+  },
 ];
 
 export const hrefJogo = (slug: string) => `/jogos/${slug}`;

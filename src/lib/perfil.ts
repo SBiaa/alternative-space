@@ -1,5 +1,6 @@
 import { sql } from "@/lib/db";
 import { apagarCorre, exportarCorre } from "@/lib/corre/dados";
+import { apagarRole, exportarRole } from "@/lib/role/dados";
 import { apagarDiario, exportarDiario } from "@/lib/diario/dados";
 import { apagarEntrega, exportarEntrega } from "@/lib/entrega/dados";
 import { getQuiz, getResult, quizzes, resultTheme } from "@/lib/quiz";
@@ -85,13 +86,14 @@ export async function apagarDados(userId: string) {
   await sql`delete from dilema_votos where user_id = ${userId}`;
   await apagarDiario(userId);
   await apagarCorre(userId);
+  await apagarRole(userId);
   await apagarEntrega(userId);
   await sql`delete from perfis where user_id = ${userId}`;
 }
 
 /** Tudo o que guardamos do usuário, para o "baixar meus dados" (LGPD). */
 export async function exportarDados(userId: string) {
-  const [perfil, quizzes, interesses, recordes, votos, diario, corre, entrega] = await Promise.all([
+  const [perfil, quizzes, interesses, recordes, votos, diario, corre, entrega, role] = await Promise.all([
     sql`select apelido, cor, updated_at from perfis where user_id = ${userId}`,
     sql`select quiz, result, scores, chosen_on_tie, created_at from quiz_results where user_id = ${userId} order by created_at`,
     sql`select tag, origem, created_at from interests where user_id = ${userId} order by created_at`,
@@ -100,6 +102,7 @@ export async function exportarDados(userId: string) {
     exportarDiario(userId),
     exportarCorre(userId),
     exportarEntrega(userId),
+    exportarRole(userId),
   ]);
-  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, o_corre: corre, entrega_na_chuva: entrega };
+  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, o_corre: corre, entrega_na_chuva: entrega, role_noturno: role };
 }

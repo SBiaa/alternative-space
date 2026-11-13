@@ -3,6 +3,7 @@
 @theme {
   /* Fundo e superfícies escuras */
   --color-espaco: #0b2340;
+  --color-ceu: #0b2340; /* céu da cabine (telas Cozy) */
   --color-cabine: #072f5c;
   --color-noite: #01121e;
   --color-azul: #093f7a;
@@ -414,3 +415,15 @@ dialog::backdrop {
 }
 @keyframes corre-chuva { to { transform: translateY(40px); } }
 .corre-chuva { animation: corre-chuva 0.6s linear infinite; }
+
+/* Rolê Noturno: aviso de manobra sobe e some. Sem animação no movimento reduzido. */
+@media (prefers-reduced-motion: no-preference) {
+  .role-aviso {
+    animation: role-aviso 900ms ease-out both;
+  }
+  @keyframes role-aviso {
+    from { opacity: 0; transform: translateY(6px); }
+    20% { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+  }
+}
