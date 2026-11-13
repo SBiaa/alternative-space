@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { bairroPorId, CORRE, eventoPorId, lugarPorId, reais, relogio, restaurantePorId, totalContas, type TipoLugar } from "@/lib/corre/config";
 import { diaDaSemana, type Acao, type Estado } from "@/lib/corre/motor";
+import { Minigame } from "./Minigame";
 
 type Aba = "ofertas" | "carteira" | "mapa" | "mensagens";
 const ABAS: { id: Aba; nome: string }[] = [
@@ -56,7 +57,8 @@ export function Celular({ e, agir }: { e: Estado; agir: (a: Acao) => void }) {
       </div>
 
       <div role="tabpanel" className="flex-1 overflow-y-auto p-4">
-        {aba === "ofertas" && (
+        {e.fase === "minigame" && e.minigame && <Minigame m={e.minigame} agir={agir} />}
+        {e.fase !== "minigame" && aba === "ofertas" && (
           <div className="flex flex-col gap-3">
             {evento && (
               <section aria-labelledby="ev" className="flex flex-col gap-2 rounded-md border-2 p-3" style={{ borderColor: "var(--ft-app-alerta)" }}>
@@ -101,7 +103,7 @@ export function Celular({ e, agir }: { e: Estado; agir: (a: Acao) => void }) {
           </div>
         )}
 
-        {aba === "carteira" && (
+        {e.fase !== "minigame" && aba === "carteira" && (
           <div className="flex flex-col gap-3">
             <p className="m-0 text-sm">Saldo</p>
             <p className="m-0 font-ficha text-3xl font-bold">{reais(e.dinheiro)}</p>
@@ -144,7 +146,7 @@ export function Celular({ e, agir }: { e: Estado; agir: (a: Acao) => void }) {
           </div>
         )}
 
-        {aba === "mapa" && (
+        {e.fase !== "minigame" && aba === "mapa" && (
           <ul className="m-0 flex list-none flex-col gap-2 p-0">
             {CORRE.lugares.map((l) => {
               const s = CORRE.servicos[l.tipo];
@@ -163,7 +165,7 @@ export function Celular({ e, agir }: { e: Estado; agir: (a: Acao) => void }) {
           </ul>
         )}
 
-        {aba === "mensagens" && (
+        {e.fase !== "minigame" && aba === "mensagens" && (
           <ul className="m-0 flex list-none flex-col gap-2 p-0">
             {e.mensagens.map((m) => (
               <li key={m.id} className="rounded-md border border-black/15 p-2.5 text-sm" style={m.tipo === "alerta" ? { borderColor: "var(--ft-app-alerta)" } : undefined}>

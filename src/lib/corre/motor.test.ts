@@ -15,6 +15,8 @@ import {
   type Acao,
   type Estado,
 } from "./motor";
+import { candidatas, gerarColeta, gerarEntrega } from "./minigames";
+import { mulberry32 } from "./rng";
 import { escolherSave, migrar, problemaAoGravar } from "./save";
 
 const nova = { pneu: 100, freio: 100, oleo: 100 };
@@ -71,7 +73,7 @@ describe("taxa de aceitação", () => {
 });
 
 // Joga um dia com uma estratégia simples. "descansa" para quando o cansaço passa de 50.
-function jogarDia(e: Estado, opts: { aceitaTudo: boolean; descansa: boolean; voltaAs: number }): Estado {
+function jogarDia(e: Estado, opts: { aceitaTudo: boolean; descansa: boolean; voltaAs: number; minigame?: "pular" | "acertar" }): Estado {
   e = reduzir(e, { tipo: "sair" });
   let guarda = 0;
   while (e.fase !== "resumoDia" && guarda++ < 5000) {
@@ -79,6 +81,8 @@ function jogarDia(e: Estado, opts: { aceitaTudo: boolean; descansa: boolean; vol
     if (e.fase === "evento" && e.evento) {
       const ev = CORRE.eventos.lista.find((x) => x.id === e.evento!.id)!;
       a = { tipo: "escolher", opcao: ev.opcoes[0].id };
+    } else if (e.fase === "minigame" && e.minigame) {
+      a = { tipo: "minigame", resposta: opts.minigame === "pular" ? "pular" : e.minigame.tipo === "coleta" ? e.minigame.erro : e.minigame.correta };
     } else if (e.fase === "rodando") {
       if (e.minuto >= opts.voltaAs) a = { tipo: "voltarPraCasa" };
       else if (e.combustivel < 25) a = { tipo: "irPara", lugar: "posto-avenida" };
@@ -197,5 +201,107 @@ describe("save", () => {
     expect(escolherSave({ ...local, dia: 2 }, remoto).origem).toBe("remoto");
     expect(escolherSave(local, null).origem).toBe("local");
     expect(escolherSave(null, null).origem).toBe("nenhum");
+  });
+});
+
+describe("minigames", () => {
+  // Põe o motoboy numa viagem de entrega já no ponto desejado.
+  const emViagem = (seed: string) => {
+    let e = reduzir(criarEstado(seed), { tipo: "sair" });
+    e = { ...e, combustivel: 100, oferta: { id: "o", restaurante: "cantina-zita", destino: "bela-cruz", km: 4, valor: 1000, bonusChuva: 0, bonusPico: 0, prazo: 60, expira: e.minuto + 30, premium: false } };
+    return reduzir(e, { tipo: "aceitar" });
+  };
+  const ate = (e: Estado, fase: Estado["fase"]) => {
+    for (let i = 0; i < 400 && e.fase !== fase; i++) {
+      if (e.fase === "evento") e = reduzir(e, { tipo: "escolher", opcao: CORRE.eventos.lista.find((x) => x.id === e.evento!.id)!.opcoes[0].id });
+      else e = reduzir(e, { tipo: "tick", minutos: 1 });
+    }
+    return e;
+  };
+
+  it("a coleta abre sozinha no restaurante e a entrega ao chegar", () => {
+    let e = ate(emViagem("mg-1"), "minigame");
+    expect(e.minigame?.tipo).toBe("coleta");
+    e = reduzir(e, { tipo: "minigame", resposta: "pular" });
+    expect(e.fase).toBe("viagem");
+    e = ate(e, "minigame");
+    expect(e.minigame?.tipo).toBe("entrega");
+  });
+
+  it("pular não muda nada: mesmo ganho e mesma duração de um jogo sem minigame", () => {
+    let e = ate(emViagem("mg-2"), "minigame");
+    const dur = e.viagem!.duracao;
+    e = reduzir(e, { tipo: "minigame", resposta: "pular" });
+    expect(e.viagem!.duracao).toBe(dur);
+    expect(e.viagem!.incompleto).toBeUndefined();
+    expect(e.viagem!.gorjetaExtra).toBeUndefined();
+  });
+
+  it("coleta: acertar encurta e dá gorjeta; errar custa minutos e, se tinha item errado, o pedido sai incompleto", () => {
+    const base = ate(emViagem("mg-3"), "minigame");
+    const m = base.minigame!;
+    if (m.tipo !== "coleta") throw new Error("esperava coleta");
+    const dur = base.viagem!.duracao;
+    const certo = reduzir(base, { tipo: "minigame", resposta: m.erro });
+    expect(certo.viagem!.duracao).toBe(dur + CORRE.minigames.coleta.efeitos.perfeito.minutos);
+    expect(certo.viagem!.gorjetaExtra).toBe(CORRE.minigames.coleta.efeitos.perfeito.gorjeta);
+    const errado = reduzir(base, { tipo: "minigame", resposta: m.erro === -1 ? 0 : -1 });
+    expect(errado.viagem!.duracao).toBe(dur + CORRE.minigames.coleta.efeitos.erro.minutos);
+    expect(errado.viagem!.incompleto).toBe(m.erro >= 0 ? true : undefined);
+  });
+
+  it("entrega: duas tentativas; a segunda certa vale 'ok', duas erradas custam tempo", () => {
+    const coleta = ate(emViagem("mg-4"), "minigame");
+    const base = ate(reduzir(coleta, { tipo: "minigame", resposta: "pular" }), "minigame");
+    const m = base.minigame!;
+    if (m.tipo !== "entrega") throw new Error("esperava entrega");
+    const errada = m.portas.map((_, i) => i).filter((i) => i !== m.correta);
+    const primeira = reduzir(base, { tipo: "minigame", resposta: errada[0] });
+    expect(primeira.fase).toBe("minigame"); // segunda chance
+    expect(reduzir(primeira, { tipo: "minigame", resposta: errada[0] }).fase).toBe("minigame"); // repetir a mesma não conta
+    const dupla = reduzir(primeira, { tipo: "minigame", resposta: errada[1] });
+    expect(dupla.fase).not.toBe("minigame");
+    expect(dupla.minuto).toBeGreaterThanOrEqual(base.minuto + CORRE.minigames.entrega.efeitos.erro.minutos);
+    const certaDepois = reduzir(primeira, { tipo: "minigame", resposta: m.correta });
+    expect(certaDepois.fase).not.toBe("minigame");
+    const direta = reduzir(base, { tipo: "minigame", resposta: m.correta });
+    expect(direta.fase).not.toBe("minigame");
+  });
+
+  it("respostas fora do puzzle são ignoradas", () => {
+    const base = ate(emViagem("mg-5"), "minigame");
+    expect(reduzir(base, { tipo: "minigame", resposta: 99 })).toEqual(base);
+    expect(reduzir(base, { tipo: "minigame", resposta: -5 })).toEqual(base);
+  });
+
+  it("jogar bem rende mais que pular, e o puzzle é reproduzível pela seed", () => {
+    const dia = (mg: "pular" | "acertar") => jogarDia(criarEstado("mg-6"), { aceitaTudo: true, descansa: true, voltaAs: 20 * 60, minigame: mg });
+    const a = dia("acertar");
+    const p = dia("pular");
+    expect(a.resumoDia!.ganhos).toBeGreaterThanOrEqual(p.resumoDia!.ganhos);
+    expect(conferirDia(a)).toBe(true);
+    expect(dia("acertar")).toEqual(a);
+  });
+
+  it("os geradores sempre dão uma única porta certa e crescem com o cansaço", () => {
+    for (let i = 0; i < 200; i++) {
+      const r = mulberry32(i);
+      const p = gerarEntrega(r, i % 2 ? 90 : 10);
+      expect(candidatas(p)).toEqual([p.correta]);
+      expect(p.portas.length).toBe(CORRE.minigames.entrega.portas[i % 2]);
+      const c = gerarColeta(r, i % 2 ? 90 : 10);
+      expect(c.nota.length).toBe(CORRE.minigames.coleta.quantidade[i % 2]);
+      if (c.erro >= 0) expect(c.sacola[c.erro]).not.toBe(c.nota[c.erro]);
+      else expect(c.sacola).toEqual(c.nota);
+    }
+  });
+
+  it("migra um save v1 (sem minigame) pra v2", () => {
+    const { minigame, ...resto } = criarEstado("v1") as Estado & { minigame?: unknown };
+    void minigame;
+    const antigo = { ...resto, versao: 1 };
+    const novo = migrar(JSON.parse(JSON.stringify(antigo)));
+    expect(novo?.versao).toBe(CORRE.versaoSave);
+    expect(novo?.minigame).toBeNull();
   });
 });

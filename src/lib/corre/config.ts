@@ -27,7 +27,7 @@ export type EventoViagem = {
 };
 
 export const CORRE = {
-  versaoSave: 1,
+  versaoSave: 2,
   nomeApp: "Corre Já",
 
   tempo: {
@@ -207,6 +207,43 @@ export const CORRE = {
     ] satisfies EventoViagem[],
   },
 
+  // Minigames curtos na coleta e na entrega. Sempre dá pra pular (tempo padrão, sem bônus e sem punição).
+  minigames: {
+    coletaEm: 0.35, // fração da viagem em que o motoboy chega no restaurante
+    nivelCansaco: 55, // acima disso os puzzles ficam mais cheios (mais itens e mais portas)
+    coleta: {
+      itens: [
+        { nome: "Marmita grande", troca: "Marmita pequena" },
+        { nome: "Refri de guaraná", troca: "Refri de laranja" },
+        { nome: "Pastel de carne", troca: "Pastel de queijo" },
+        { nome: "Açaí 500 ml", troca: "Açaí 300 ml" },
+        { nome: "Suco de acerola", troca: "Suco de caju" },
+        { nome: "Espetinho de frango", troca: "Espetinho de coração" },
+        { nome: "Pão de queijo", troca: "Pão de sal" },
+        { nome: "Temaki de salmão", troca: "Temaki de atum" },
+        { nome: "Brigadeiro", troca: "Beijinho" },
+        { nome: "Água sem gás", troca: "Água com gás" },
+      ],
+      quantidade: [3, 5] as [number, number], // [normal, cansado]
+      chanceErro: 0.7,
+      efeitos: {
+        perfeito: { minutos: -2, gorjeta: 300 },
+        erro: { minutos: 3 },
+      },
+    },
+    entrega: {
+      portas: [4, 6] as [number, number], // [normal, cansado]
+      casas: ["verde", "azul", "amarela", "branca", "rosa", "cinza"],
+      portoes: ["preto", "branco", "marrom", "azul"],
+      efeitos: {
+        perfeito: { minutos: -4, chanceGorjeta: 0.3 },
+        ok: { minutos: 0, chanceGorjeta: 0 },
+        erro: { minutos: 8, chanceGorjeta: 0 },
+      },
+    },
+    penalidadeIncompleto: 0.2, // avaliação perdida quando o pedido sai incompleto
+  },
+
   contas: [
     { id: "parcela-moto", nome: "Parcela da moto", valor: 38000 },
     { id: "plano-celular", nome: "Plano do celular", valor: 6000 },
@@ -236,6 +273,25 @@ export const CORRE = {
   },
 
   textos: {
+    minigames: {
+      pular: "Pular (tempo padrão, sem bônus)",
+      coletaTitulo: "Conferir o pedido",
+      coletaDica: "Compare a nota com a sacola. Marque o item errado ou diga que está tudo certo.",
+      notaRotulo: "Nota do restaurante",
+      sacolaRotulo: "Sacola",
+      tudoCerto: "Tudo certo, pode sair",
+      marcarErrado: "Esse está errado",
+      faltando: "(faltando)",
+      coletaPerfeito: "Conferiu direito: pedido inteiro e saída mais rápida.",
+      coletaErro: "Conferência errada. Perdeu uns minutos.",
+      coletaIncompleto: "O pedido saiu com um item errado. O cliente pode reclamar.",
+      entregaTitulo: "Achar a porta",
+      entregaDica: "Use a pista do cliente. Você tem duas tentativas.",
+      entregaErrou: "Não é essa. Tenta de novo.",
+      entregaPerfeito: "Achou de primeira: tempo ganho e chance de gorjeta.",
+      entregaOk: "Achou na segunda tentativa.",
+      entregaErro: "Perdeu um tempo procurando a porta.",
+    },
     titulo: "O Corre",
     chamada: "Sua semana sobre duas rodas. Aceite pedidos, cuide da moto, do dinheiro e de você, e feche a semana com as contas pagas.",
     novoJogo: "Novo jogo",

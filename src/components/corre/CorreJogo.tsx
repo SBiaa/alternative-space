@@ -90,6 +90,7 @@ function Jogo({ novo }: { novo: boolean }) {
       const fechou = (prox.fase === "resumoDia" || prox.fase === "resumoSemana") && prox.fase !== atual.fase;
       if (fechou || a.tipo === "continuar" || a.tipo === "ritmo") void persistir(prox);
       if (a.tipo === "escolher" || a.tipo === "sair") setPausado(false);
+      if (prox.fase === "minigame" || prox.fase === "evento") setGaveta(true); // no celular, abre a gaveta
       if (prox.fase === "evento" || prox.fase === "resumoDia" || prox.fase === "resumoSemana") setPausado(true);
     },
     [persistir],
@@ -115,9 +116,9 @@ function Jogo({ novo }: { novo: boolean }) {
     setPausado((p) => !p);
   };
 
-  const emCurso = e.fase === "rodando" || e.fase === "viagem" || e.fase === "evento";
+  const emCurso = e.fase === "rodando" || e.fase === "viagem" || e.fase === "evento" || e.fase === "minigame";
   const chovendo = e.clima[Math.floor(e.minuto / 60) % 24];
-  const pendente = Boolean(e.oferta) || e.fase === "evento";
+  const pendente = Boolean(e.oferta) || e.fase === "evento" || e.fase === "minigame";
 
   return (
     <div className="mx-auto flex w-full max-w-[1100px] flex-col gap-3">

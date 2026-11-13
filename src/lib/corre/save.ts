@@ -21,6 +21,17 @@ const oferta = z.object({
   premium: z.boolean(),
 });
 
+const puzzle = z.discriminatedUnion("tipo", [
+  z.object({ tipo: z.literal("coleta"), nota: z.array(z.string()).max(10), sacola: z.array(z.string().nullable()).max(10), erro: inteiro.min(-1).max(9) }),
+  z.object({
+    tipo: z.literal("entrega"),
+    portas: z.array(z.object({ casa: z.string(), portao: z.string(), numero: inteiro.min(1).max(999) })).min(2).max(10),
+    pista: z.object({ casa: z.string(), portao: z.string(), paridade: z.enum(["par", "ímpar"]) }),
+    correta: inteiro.min(0).max(9),
+    erradas: z.array(inteiro.min(0).max(9)).max(2),
+  }),
+]);
+
 const resumoDia = z.object({
   dia: inteiro.min(1),
   ganhos: inteiro.min(0),
@@ -58,7 +69,7 @@ export const schemaEstado = z.object({
   dia: inteiro.min(1).max(10_000),
   semana: inteiro.min(1),
   minuto: z.number().min(0).max(CORRE.tempo.fimDia + 120),
-  fase: z.enum(["casa", "rodando", "viagem", "evento", "resumoDia", "resumoSemana"]),
+  fase: z.enum(["casa", "rodando", "viagem", "evento", "minigame", "resumoDia", "resumoSemana"]),
   passo: inteiro.min(0),
   posicao: z.string(),
   dinheiro: inteiro,
@@ -83,9 +94,14 @@ export const schemaEstado = z.object({
       lugar: z.string().optional(),
       evento: z.object({ id: z.string(), em: z.number(), resolvido: z.boolean() }).optional(),
       cancelada: z.boolean().optional(),
+      mini: z.object({ coletaEm: z.number(), coletaFeita: z.boolean(), entregaFeita: z.boolean() }).optional(),
+      gorjetaExtra: inteiro.min(0).optional(),
+      chanceGorjeta: z.number().min(0).max(1).optional(),
+      incompleto: z.boolean().optional(),
     })
     .nullable(),
   evento: z.object({ id: z.string() }).nullable(),
+  minigame: puzzle.nullable(),
   mensagens: z.array(z.object({ id: z.string(), minuto: z.number(), texto: z.string().max(300), tipo: z.enum(["info", "alerta"]) })).max(40),
   avisos: z.array(z.string()).max(20),
   diaAtual: z.object({
@@ -112,7 +128,10 @@ export type ResumoSemanaValidado = z.infer<typeof resumoSemana>;
 
 // Uma função por salto de versão. Quando o formato mudar: suba CORRE.versaoSave e acrescente aqui.
 // Ex.: 1: (s) => ({ ...s, versao: 2, novoCampo: padrão })
-const MIGRACOES: Record<number, (s: Record<string, unknown>) => Record<string, unknown>> = {};
+const MIGRACOES: Record<number, (s: Record<string, unknown>) => Record<string, unknown>> = {
+  // v1 → v2: minigames na coleta e na entrega.
+  1: (s) => ({ ...s, versao: 2, minigame: null }),
+};
 
 /** Leva qualquer save antigo até a versão atual. Devolve null se não der. */
 export function migrar(bruto: unknown): Estado | null {

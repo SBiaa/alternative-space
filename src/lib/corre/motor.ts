@@ -13,6 +13,7 @@ import {
   type EventoViagem,
   type Peca,
 } from "./config";
+import { gerarColeta, gerarEntrega, type Puzzle, type ResultadoMinigame } from "./minigames";
 import { sortear } from "./rng";
 
 export type Moto = Record<Peca, number>;
@@ -38,9 +39,14 @@ export type Viagem = {
   lugar?: string;
   evento?: { id: string; em: number; resolvido: boolean };
   cancelada?: boolean;
+  // Minigames: onde a coleta acontece e o que já foi feito. Entrega só tem isso (tipo "entrega").
+  mini?: { coletaEm: number; coletaFeita: boolean; entregaFeita: boolean };
+  gorjetaExtra?: number; // centavos, da coleta perfeita
+  chanceGorjeta?: number; // soma na chance de gorjeta, da entrega perfeita
+  incompleto?: boolean; // pedido saiu errado
 };
 export type Mensagem = { id: string; minuto: number; texto: string; tipo: "info" | "alerta" };
-export type Fase = "casa" | "rodando" | "viagem" | "evento" | "resumoDia" | "resumoSemana";
+export type Fase = "casa" | "rodando" | "viagem" | "evento" | "minigame" | "resumoDia" | "resumoSemana";
 
 export type ContagemDia = {
   dinheiroInicio: number;
@@ -106,6 +112,7 @@ export type Estado = {
   oferta: Oferta | null;
   viagem: Viagem | null;
   evento: { id: string } | null;
+  minigame: Puzzle | null;
   mensagens: Mensagem[];
   avisos: string[];
   diaAtual: ContagemDia;
@@ -122,6 +129,7 @@ export type Acao =
   | { tipo: "aceitar" }
   | { tipo: "recusar" }
   | { tipo: "escolher"; opcao: string }
+  | { tipo: "minigame"; resposta: number | "pular" }
   | { tipo: "irPara"; lugar: string }
   | { tipo: "voltarPraCasa" }
   | { tipo: "guardar"; valor: number }
@@ -234,6 +242,7 @@ export function criarEstado(seed: string): Estado {
     oferta: null,
     viagem: null,
     evento: null,
+    minigame: null,
     mensagens: [],
     avisos: [],
     diaAtual: contagemZerada(CORRE.dinheiroInicial),
@@ -269,6 +278,7 @@ function novoDia(e: Estado, dia: number) {
   e.oferta = null;
   e.viagem = null;
   e.evento = null;
+  e.minigame = null;
   e.mensagens = [];
   e.avisos = [];
   e.diaAtual = contagemZerada(e.dinheiro);
@@ -363,6 +373,12 @@ function iniciarViagem(e: Estado, v: Omit<Viagem, "duracao" | "decorrido">, extr
 
 function chegar(e: Estado) {
   const v = e.viagem!;
+  if (v.tipo === "entrega" && v.mini && !v.mini.entregaFeita && !v.cancelada) {
+    v.mini.entregaFeita = true;
+    e.minigame = gerarEntrega(() => rand(e), e.cansaco);
+    e.fase = "minigame";
+    return;
+  }
   e.posicao = v.pontos[v.pontos.length - 1];
   e.viagem = null;
   e.fase = "rodando";
@@ -377,13 +393,20 @@ function chegar(e: Estado) {
   }
   const noPrazo = v.decorrido <= o.prazo;
   let ganho = o.valor + o.bonusChuva + o.bonusPico;
+  if (v.incompleto) {
+    e.avaliacao = clamp(e.avaliacao - CORRE.minigames.penalidadeIncompleto, 1, 5);
+    avisar(e, CORRE.textos.minigames.coletaIncompleto, "alerta");
+  }
   if (noPrazo) {
     e.diaAtual.noPrazo++;
-    e.avaliacao = clamp(e.avaliacao + (5 - e.avaliacao) * CORRE.avaliacao.ganhoNoPrazo, 1, 5);
-    const chance = CORRE.ofertas.gorjetaChance * (e.avaliacao >= 4.5 ? 1.5 : 1);
-    if (rand(e) < chance) {
-      const [a, b] = CORRE.ofertas.gorjetaValor;
-      ganho += Math.round((a + rand(e) * (b - a)) / 50) * 50;
+    if (!v.incompleto) e.avaliacao = clamp(e.avaliacao + (5 - e.avaliacao) * CORRE.avaliacao.ganhoNoPrazo, 1, 5);
+    const chance = CORRE.ofertas.gorjetaChance * (e.avaliacao >= 4.5 ? 1.5 : 1) + (v.chanceGorjeta ?? 0);
+    if (!v.incompleto) {
+      ganho += v.gorjetaExtra ?? 0;
+      if (rand(e) < chance) {
+        const [a, b] = CORRE.ofertas.gorjetaValor;
+        ganho += Math.round((a + rand(e) * (b - a)) / 50) * 50;
+      }
     }
   } else {
     e.diaAtual.atrasadas++;
@@ -444,6 +467,7 @@ function encerrarDia(e: Estado, motivo: ResumoDia["motivo"]) {
   }
   e.viagem = null;
   e.evento = null;
+  e.minigame = null;
   e.posicao = CORRE.casa.bairro;
   const d = e.diaAtual;
   e.resumoDia = {
@@ -513,6 +537,12 @@ function tick(e: Estado, minutos: number) {
         e.fase = "evento";
         return;
       }
+      if (v.mini && !v.mini.coletaFeita && v.decorrido >= v.mini.coletaEm && v.decorrido < v.duracao) {
+        v.mini.coletaFeita = true;
+        e.minigame = gerarColeta(() => rand(e), e.cansaco);
+        e.fase = "minigame";
+        return;
+      }
       if (v.decorrido >= v.duracao) chegar(e);
     } else if (e.fase === "rodando") {
       if (e.oferta && e.minuto >= e.oferta.expira) {
@@ -542,6 +572,59 @@ function sortearEvento(e: Estado, chuva: boolean): EventoViagem | null {
     if (r < 0) return ev;
   }
   return lista[lista.length - 1] ?? null;
+}
+
+// ——— Minigames ———
+
+/** Aplica a resposta ao puzzle. Pular nunca pune. Erro na primeira tentativa da entrega dá uma segunda chance. */
+function resolverMinigame(e: Estado, resposta: number | "pular") {
+  const m = e.minigame;
+  const v = e.viagem;
+  if (e.fase !== "minigame" || !m || !v) return;
+  const T = CORRE.textos.minigames;
+  let resultado: ResultadoMinigame;
+  if (resposta === "pular") resultado = "pulou";
+  else if (m.tipo === "coleta") {
+    if (!Number.isInteger(resposta) || resposta < -1 || resposta >= m.sacola.length) return;
+    resultado = resposta === m.erro ? "perfeito" : "erro";
+  } else {
+    if (!Number.isInteger(resposta) || resposta < 0 || resposta >= m.portas.length || m.erradas.includes(resposta)) return;
+    if (resposta === m.correta) resultado = m.erradas.length === 0 ? "perfeito" : "ok";
+    else {
+      m.erradas.push(resposta);
+      if (m.erradas.length < 2) {
+        avisar(e, T.entregaErrou);
+        return; // segunda chance: continua no minigame
+      }
+      resultado = "erro";
+    }
+  }
+
+  if (m.tipo === "coleta") {
+    const ef = CORRE.minigames.coleta.efeitos;
+    if (resultado === "perfeito") {
+      v.duracao = Math.max(1, v.duracao + ef.perfeito.minutos);
+      v.gorjetaExtra = ef.perfeito.gorjeta;
+      avisar(e, T.coletaPerfeito);
+    } else if (resultado === "erro") {
+      v.duracao += ef.erro.minutos;
+      if (m.erro >= 0) v.incompleto = true; // não achou o item errado: o pedido sai assim
+      avisar(e, T.coletaErro, "alerta");
+    }
+  } else {
+    const ef = CORRE.minigames.entrega.efeitos;
+    if (resultado !== "pulou") {
+      const x = ef[resultado];
+      v.decorrido = Math.max(0, v.decorrido + x.minutos);
+      if (x.minutos > 0) e.minuto += x.minutos;
+      v.chanceGorjeta = x.chanceGorjeta;
+      avisar(e, resultado === "perfeito" ? T.entregaPerfeito : resultado === "ok" ? T.entregaOk : T.entregaErro, resultado === "erro" ? "alerta" : "info");
+    }
+  }
+
+  e.minigame = null;
+  e.fase = "viagem";
+  if (v.decorrido >= v.duracao) chegar(e);
 }
 
 // ——— Redutor ———
@@ -579,6 +662,7 @@ export function reduzir(estado: Estado, acao: Acao): Estado {
       const chuva = e.clima[horaDe(e.minuto)];
       const ev = sortearEvento(e, chuva);
       iniciarViagem(e, { tipo: "entrega", pontos: [e.posicao, rest.bairro, o.destino], km: o.km, oferta: o }, CORRE.viagem.minutosColeta + CORRE.viagem.minutosEntregaPorta);
+      if (e.viagem) e.viagem.mini = { coletaEm: Math.max(1, Math.floor(e.viagem.duracao * CORRE.minigames.coletaEm)), coletaFeita: false, entregaFeita: false };
       if (ev && e.viagem) e.viagem.evento = { id: ev.id, em: Math.max(1, Math.floor(e.viagem.duracao * 0.5)), resolvido: false };
       break;
     }
@@ -599,6 +683,9 @@ export function reduzir(estado: Estado, acao: Acao): Estado {
       if (e.viagem.decorrido >= e.viagem.duracao) chegar(e);
       break;
     }
+    case "minigame":
+      resolverMinigame(e, acao.resposta);
+      break;
     case "irPara": {
       const l = lugarPorId(acao.lugar);
       if (e.fase !== "rodando" || !l) break;
