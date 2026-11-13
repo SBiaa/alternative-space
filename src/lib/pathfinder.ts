@@ -3,6 +3,8 @@
 // Dentro de um mesmo grupo de boosts (ancestralidade, antecedente, livres, aumento de nível) não dá pra repetir atributo.
 // Nos aumentos dos níveis 5/10/15/20, um atributo que já está em +4 ou mais só sobe +1 a cada dois aumentos.
 
+import { JOGO_VAZIO, normalizarJogo, type Jogo } from "./pathfinder-condicoes";
+import { CONJURACAO, MAX_FOCO, TRADICOES, circuloMaximo, vagasMagia, type Tradicao } from "./pathfinder-magia";
 import { acharArma, acharArmadura, acharEscudo, COMBATE_CLASSE, type Arma } from "./pathfinder-equip";
 
 export const ATRIBUTOS = ["for", "des", "con", "int", "sab", "car"] as const;
@@ -341,6 +343,16 @@ export type Ficha = {
   itens: ItemFicha[];
   // Moedas: platina, ouro, prata, cobre.
   dinheiro: { pp: number; po: number; pa: number; pc: number };
+  // Magia. Tradição só vale pra classes em que ela depende da linhagem/patrono.
+  tradicao: Tradicao | "";
+  // Chave = VagaMagia.chave ("truque-1", "r2-3"); valor = nome da magia.
+  magias: Record<string, string>;
+  // Magias de foco (texto livre). Cada uma dá 1 ponto de foco, até 3.
+  foco: string[];
+  // Idiomas além dos da ancestralidade (texto livre).
+  idiomasExtras: string[];
+  // Estado durante o jogo (PV atuais, condições, recursos gastos).
+  jogo: Jogo;
 };
 
 export type ArmaFicha = { id: string; potencia: number; golpe: number };
@@ -371,6 +383,11 @@ export const FICHA_VAZIA: Ficha = {
   armas: [],
   itens: [],
   dinheiro: { pp: 0, po: 15, pa: 0, pc: 0 },
+  tradicao: "",
+  magias: {},
+  foco: [],
+  idiomasExtras: [],
+  jogo: JOGO_VAZIO,
 };
 
 export const LIVRES_NIVEL_1 = 4;
@@ -496,6 +513,7 @@ export function ataque(f: Ficha, arma: ArmaFicha, attr = atributos(f)) {
   return {
     nome: `${arma.potencia ? `+${arma.potencia} ` : ""}${base.nome}${arma.golpe ? ` ${["", "de golpe", "de golpe maior", "de golpe superior"][arma.golpe]}` : ""}`,
     arma: base,
+    attr: (base.distancia ? "des" : acuidade && attr.des > attr.for ? "des" : "for") as Atributo,
     prof,
     bonus: total,
     map: agil ? [total, total - 4, total - 8] : [total, total - 5, total - 10],
@@ -513,6 +531,22 @@ export function volume(f: Ficha, attr = atributos(f)) {
   const moedas = f.dinheiro.pp + f.dinheiro.po + f.dinheiro.pa + f.dinheiro.pc;
   d += Math.floor(moedas / 1000) * 10;
   return { total: d, sobrecarregado: (5 + attr.for) * 10, maximo: (10 + attr.for) * 10 };
+}
+
+// Ataque e CD de magia, tradição e espaços. null se a classe não conjura.
+export function dadosMagia(f: Ficha, attr = atributos(f)) {
+  const c = CONJURACAO[f.classe];
+  if (!c) return null;
+  const tradicao = c.tradicao === "escolha" ? f.tradicao : c.tradicao;
+  const prof: Prof = f.nivel >= 19 ? "lendario" : f.nivel >= 15 ? "mestre" : f.nivel >= 7 ? "especialista" : "treinado";
+  const mod = f.chave ? attr[f.chave] : 0;
+  const ataque = bonus(prof, mod, f.nivel);
+  return { tradicao, tipo: c.tipo, prof, ataque, cd: 10 + ataque, circuloMaximo: circuloMaximo(f.nivel), vagas: vagasMagia(f) };
+}
+
+// Pontos de foco: um por magia de foco, até 3.
+export function pontosFoco(f: Pick<Ficha, "foco">) {
+  return Math.min(MAX_FOCO, f.foco.filter((x) => x.trim()).length);
 }
 
 export function calcular(f: Ficha) {
@@ -555,6 +589,7 @@ export function calcular(f: Ficha) {
     tamanho: anc?.tamanho ?? "Médio",
     sentidos: f.heranca === "elfo-caverna" || f.heranca === "gnomo-umbral" || f.heranca === "leshy-fungo" ? "Visão no escuro" : anc?.sentidos ?? null,
     idiomas: anc?.idiomas ?? null,
+    idiomasLivres: Math.max(0, attr.int),
     saber: ant?.saber ?? null,
     saberBonus: bonus("treinado", attr.int, n),
     recursos: (cls?.recursos ?? []).filter(([r]) => r <= n).sort((a, b) => a[0] - b[0]),
@@ -562,6 +597,8 @@ export function calcular(f: Ficha) {
     ataques: f.armas.map((x) => ataque(f, x, attr)).filter((x): x is NonNullable<typeof x> => !!x),
     volume: vol,
     sobrecarregado,
+    magia: dadosMagia(f, attr),
+    pontosFoco: pontosFoco(f),
   };
 }
 
@@ -603,6 +640,10 @@ export function pendencias(f: Ficha): string[] {
     if (invalidos.length) out.push(`Aumento de perícia acima do limite no nível ${invalidos.join(", ")} (mestre só a partir do 7, lendário a partir do 15).`);
     const semTalento = vagasTalento(f).filter((v) => !f.talentos[v.chave]?.trim()).length;
     if (semTalento) out.push(`${semTalento} talento${semTalento > 1 ? "s" : ""} em branco.`);
+    const conj = CONJURACAO[f.classe];
+    if (conj?.tradicao === "escolha" && !f.tradicao) out.push("Escolha a tradição de magia.");
+    const semMagia = vagasMagia(f).filter((v) => !f.magias[v.chave]?.trim()).length;
+    if (semMagia) out.push(`${semMagia} magia${semMagia > 1 ? "s" : ""} em branco.`);
   }
   return out;
 }
@@ -711,5 +752,14 @@ function normalizarObjeto(o: Record<string, unknown>): Ficha {
     talentos,
     notas: typeof o.notas === "string" ? o.notas.slice(0, 4000) : "",
     ...normalizarEquip(o),
+    tradicao: TRADICOES.includes(o.tradicao as Tradicao) ? (o.tradicao as Tradicao) : "",
+    magias: Object.fromEntries(
+      Object.entries(typeof o.magias === "object" && o.magias && !Array.isArray(o.magias) ? o.magias : {})
+        .filter(([k, v]) => /^(truque|r\d{1,2})-\d{1,2}$/.test(k) && typeof v === "string" && v.trim())
+        .map(([k, v]) => [k, (v as string).slice(0, 80)]),
+    ),
+    idiomasExtras: (Array.isArray(o.idiomasExtras) ? o.idiomasExtras : []).filter((x): x is string => typeof x === "string" && !!x.trim()).slice(0, 20).map((x) => x.slice(0, 40)),
+    jogo: normalizarJogo(o.jogo),
+    foco: (Array.isArray(o.foco) ? o.foco : []).filter((x): x is string => typeof x === "string").slice(0, 10).map((x) => x.slice(0, 80)),
   });
 }

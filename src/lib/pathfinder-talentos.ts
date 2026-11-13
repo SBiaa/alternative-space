@@ -48,8 +48,16 @@ const CLASSE: Record<string, Sugestao[]> = {
   bruxo: [[1, "Feitiço Ampliado"], [1, "Lição do Patrono"], [2, "Caldeirão"], [4, "Familiar Melhorado"], [6, "Lição Maior"]],
 };
 
+// Arquétipos: o talento de dedicação entra numa vaga de classe a partir do nível 2.
+// Os multiclasse (de outra classe) seguem o mesmo esquema.
+const ARQUETIPOS: Sugestao[] = [
+  "Acrobata", "Arqueiro", "Assassino", "Bastião", "Cavaleiro", "Duelista", "Lutador Marcial", "Médico", "Sentinela", "Treinador de Bestas",
+  "Alquimista", "Bárbaro", "Bardo", "Campeão", "Clérigo", "Druida", "Espadachim", "Feiticeiro", "Guerreiro", "Investigador",
+  "Ladino", "Mago", "Monge", "Oráculo", "Patrulheiro", "Bruxo",
+].map((n): Sugestao => [2, `Dedicação de ${n}`]);
+
 // Nomes sugeridos pra uma vaga, só os que já dá pra pegar naquele nível.
 export function sugestoesTalento(tipo: TipoTalento, nivel: number, ancestralidade: string, classe: string): string[] {
-  const fonte = tipo === "geral" ? [...GERAIS, ...PERICIA] : tipo === "pericia" ? PERICIA : tipo === "ancestralidade" ? ANCESTRAIS[ancestralidade] ?? [] : CLASSE[classe] ?? [];
+  const fonte = tipo === "geral" ? [...GERAIS, ...PERICIA] : tipo === "pericia" ? PERICIA : tipo === "ancestralidade" ? ANCESTRAIS[ancestralidade] ?? [] : [...(CLASSE[classe] ?? []), ...ARQUETIPOS];
   return fonte.filter(([n]) => n <= nivel).map(([, nome]) => nome);
 }

@@ -25,6 +25,8 @@ import {
   acharHeranca,
   ajustar,
   ataque,
+  dadosMagia,
+  pontosFoco,
   atributosDetalhe,
   calcular,
   grausPericia,
@@ -42,6 +44,9 @@ import {
   type Prof,
 } from "@/lib/pathfinder";
 import { ARMADURAS, ARMAS, COMBATE_CLASSE, ESCUDOS, ITENS_COMUNS, NOME_CAT_ARMA, NOME_CAT_ARMADURA, NOME_DANO, formatarPreco, formatarVolume } from "@/lib/pathfinder-equip";
+import { CONJURACAO, NOME_TRADICAO, TRADICOES, sugestoesMagia, type VagaMagia } from "@/lib/pathfinder-magia";
+import { CONDICOES, MAX_HEROI, type Condicao } from "@/lib/pathfinder-condicoes";
+import { descansar, emJogo } from "@/lib/pathfinder-jogo";
 import { sugestoesTalento } from "@/lib/pathfinder-talentos";
 
 const CHAVE = "ficha-pathfinder:atual";
@@ -54,6 +59,8 @@ const PASSOS = [
   { id: "pericias", nome: "Perícias" },
   { id: "talentos", nome: "Talentos" },
   { id: "equipamento", nome: "Equipamento" },
+  { id: "magias", nome: "Magias" },
+  { id: "jogo", nome: "Em jogo" },
   { id: "ficha", nome: "Ficha" },
 ] as const;
 type Passo = (typeof PASSOS)[number]["id"];
@@ -395,10 +402,13 @@ export function FichaPathfinder({ nuvem, logado = false }: Props) {
 
         {passo === "talentos" && <PassoTalentos ficha={ficha} onChange={(v) => mudar({ talentos: v })} />}
         {passo === "equipamento" && <PassoEquipamento ficha={ficha} onChange={mudar} />}
+        {passo === "magias" && <PassoMagias ficha={ficha} onChange={mudar} />}
+        {passo === "jogo" && <PassoJogo ficha={ficha} onChange={mudar} />}
 
         {passo === "ficha" && (
           <>
             <FolhaFinal ficha={ficha} />
+            <IdiomasExtras ficha={ficha} onChange={(v) => mudar({ idiomasExtras: v })} />
             <label className="no-print flex flex-col gap-1">
               <span className="font-titulo text-lg font-bold">Notas</span>
               <textarea
@@ -576,7 +586,7 @@ function PassoTalentos({ ficha, onChange }: { ficha: Ficha; onChange: (v: Ficha[
   return (
     <>
       <p className="m-0 text-tinta">
-        Escreva o nome de cada talento. A lista sugere os mais comuns do Player Core, mas dá pra digitar qualquer um. Talentos de ancestralidade nos níveis 1, 5, 9…; de classe no 1 e nos pares; de perícia nos pares; gerais no 3, 7, 11…
+        Escreva o nome de cada talento. A lista sugere os mais comuns do Player Core, mas dá pra digitar qualquer um. Talentos de ancestralidade nos níveis 1, 5, 9…; de classe no 1 e nos pares; de perícia nos pares; gerais no 3, 7, 11… A partir do 2, uma vaga de classe pode virar a dedicação de um arquétipo.
       </p>
       {[...porNivel].map(([n, vs]) => (
         <section key={n} className="flex flex-col gap-2 rounded-xl border-2 border-noite bg-creme-claro p-4">
@@ -833,6 +843,305 @@ function PassoEquipamento({ ficha, onChange }: { ficha: Ficha; onChange: (p: Par
   );
 }
 
+const nomeCirculo = (r: number) => (r === 0 ? "Truques" : `${r}º círculo`);
+
+function PassoMagias({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<Ficha>) => void }) {
+  const m = dadosMagia(ficha);
+  const conj = CONJURACAO[ficha.classe];
+  const caixa = "flex flex-col gap-3 rounded-xl border-2 border-noite bg-creme-claro p-4";
+  const titulo = "m-0 font-titulo text-lg font-bold text-noite";
+  const porCirculo = new Map<number, VagaMagia[]>();
+  for (const v of m?.vagas ?? []) porCirculo.set(v.circulo, [...(porCirculo.get(v.circulo) ?? []), v]);
+  const foco = [...ficha.foco, ""].slice(0, 10);
+
+  return (
+    <>
+      {!m ? (
+        <p className="m-0 text-tinta">{acharClasse(ficha.classe) ? "Sua classe não conjura magias por espaço. Se você ganhou magias de foco por talento, anote abaixo." : "Escolha a classe primeiro."}</p>
+      ) : (
+        <>
+          <p className="m-0 text-tinta">
+            {m.tipo === "preparada"
+              ? "Você prepara as magias todo dia: escreva o que vai em cada espaço."
+              : "Você conjura de forma espontânea: escreva as magias do seu repertório, uma por espaço."}{" "}
+            Truques sobem sozinhos pro {m.circuloMaximo}º círculo.
+          </p>
+          {conj?.tradicao === "escolha" && (
+            <label className="flex max-w-xs flex-col gap-1">
+              <span className="font-ficha text-[12px] text-azul">Tradição ({ficha.classe === "feiticeiro" ? "vem da linhagem" : "vem do patrono"})</span>
+              <select value={ficha.tradicao} onChange={(e) => onChange({ tradicao: e.target.value as Ficha["tradicao"] })} className={campo}>
+                <option value="">Escolha…</option>
+                {TRADICOES.map((t) => (
+                  <option key={t} value={t}>
+                    {NOME_TRADICAO[t]}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <div className="grid grid-cols-3 gap-2 sm:max-w-md">
+            <Caixa rotulo="Ataque de magia" valor={sinal(m.ataque)} prof={m.prof} />
+            <Caixa rotulo="CD de magia" valor={m.cd} prof={m.prof} />
+            <Caixa rotulo="Tradição" valor={m.tradicao ? NOME_TRADICAO[m.tradicao] : "—"} />
+          </div>
+          {[...porCirculo].map(([r, vs]) => {
+            const lista = `magias-${r}`;
+            return (
+              <section key={r} className={caixa}>
+                <h3 className={titulo}>
+                  {nomeCirculo(r)} <span className="font-ficha text-sm font-normal text-neutro">({vs.length} {r === 0 ? "por dia, à vontade" : "espaços"})</span>
+                </h3>
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {vs.map((v) => (
+                    <input
+                      key={v.chave}
+                      list={lista}
+                      value={ficha.magias[v.chave] ?? ""}
+                      maxLength={80}
+                      aria-label={`${nomeCirculo(r)}, espaço ${v.chave.split("-")[1]}`}
+                      onChange={(e) => onChange({ magias: { ...ficha.magias, [v.chave]: e.target.value } })}
+                      className="rounded-lg border-2 border-noite bg-creme px-3 py-2 text-base text-noite"
+                    />
+                  ))}
+                </div>
+                <datalist id={lista}>
+                  {sugestoesMagia(m.tradicao, r).map((s) => (
+                    <option key={s} value={s} />
+                  ))}
+                </datalist>
+              </section>
+            );
+          })}
+        </>
+      )}
+      <section className={caixa}>
+        <h3 className={titulo}>
+          Magias de foco <span className="font-ficha text-sm font-normal text-neutro">({pontosFoco(ficha)} ponto{pontosFoco(ficha) === 1 ? "" : "s"} de foco)</span>
+        </h3>
+        <p className="m-0 text-sm text-tinta">Vêm da classe (linhagem, ordem, mistério, escola…) ou de talentos. Cada uma dá 1 ponto de foco, até 3.</p>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {foco.map((x, i) => (
+            <input
+              key={i}
+              value={x}
+              maxLength={80}
+              placeholder={i === ficha.foco.length ? "Nova magia de foco…" : undefined}
+              aria-label={`Magia de foco ${i + 1}`}
+              onChange={(e) => {
+                const novo = [...ficha.foco];
+                novo[i] = e.target.value;
+                onChange({ foco: novo.filter((y, j) => y.trim() || j === i) });
+              }}
+              className="rounded-lg border-2 border-noite bg-creme px-3 py-2 text-base text-noite"
+            />
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Contador({ rotulo, valor, min = 0, max, onChange }: { rotulo: string; valor: number; min?: number; max?: number; onChange: (n: number) => void }) {
+  const botao = "h-9 w-9 rounded-lg border-2 border-noite bg-creme text-lg font-bold text-noite disabled:opacity-40";
+  return (
+    <div className="flex flex-col items-center gap-1 rounded-xl border-2 border-noite bg-creme p-3">
+      <span className="font-ficha text-[11px] uppercase text-neutro">{rotulo}</span>
+      <div className="flex items-center gap-2">
+        <button type="button" aria-label={`Menos ${rotulo}`} disabled={valor <= min} onClick={() => onChange(valor - 1)} className={botao}>
+          −
+        </button>
+        <span className="min-w-8 text-center font-titulo text-2xl font-bold text-noite">
+          {valor}
+          {max !== undefined && <span className="text-base text-neutro">/{max}</span>}
+        </span>
+        <button type="button" aria-label={`Mais ${rotulo}`} disabled={max !== undefined && valor >= max} onClick={() => onChange(valor + 1)} className={botao}>
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function PassoJogo({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<Ficha>) => void }) {
+  const j = ficha.jogo;
+  const e = emJogo(ficha);
+  const [qtd, setQtd] = useState("");
+  const mudarJogo = (p: Partial<Ficha["jogo"]>) => onChange({ jogo: { ...j, ...p } });
+  const caixa = "flex flex-col gap-3 rounded-xl border-2 border-noite bg-creme-claro p-4";
+  const titulo = "m-0 font-titulo text-lg font-bold text-noite";
+  const n = Math.max(0, Math.round(+qtd) || 0);
+
+  const dano = () => {
+    if (!n) return;
+    const temp = Math.min(j.pvTemp, n);
+    mudarJogo({ pvTemp: j.pvTemp - temp, pvAtual: Math.max(0, e.pv - (n - temp)) });
+    setQtd("");
+  };
+  const cura = () => {
+    if (!n) return;
+    const pv = Math.min(e.pvMax, e.pv + n);
+    mudarJogo({ pvAtual: pv >= e.pvMax ? null : pv });
+    setQtd("");
+  };
+  const setCondicao = (id: Condicao, v: number) => {
+    const condicoes = { ...j.condicoes };
+    if (v > 0) condicoes[id] = v;
+    else delete condicoes[id];
+    mudarJogo({ condicoes });
+  };
+  const vagas = e.magia?.vagas.filter((v) => v.circulo > 0) ?? [];
+
+  return (
+    <>
+      <p className="m-0 text-tinta">Use durante a sessão. Os números abaixo já descontam as condições marcadas; a ficha impressa continua com os valores normais.</p>
+
+      <section className={caixa}>
+        <h3 className={titulo}>Pontos de vida</h3>
+        <p className={`m-0 font-titulo text-4xl font-bold ${e.pv === 0 ? "text-laranja" : "text-noite"}`}>
+          {e.pv} <span className="text-xl text-neutro">/ {e.pvMax}</span>
+          {e.pvTemp > 0 && <span className="ml-2 text-xl text-azul">+{e.pvTemp} temp.</span>}
+        </p>
+        <div className="flex flex-wrap items-center gap-2">
+          <input type="number" min={0} value={qtd} onChange={(ev) => setQtd(ev.target.value)} aria-label="Quantidade de PV" placeholder="Qtd" className={`${campo} w-20`} />
+          <button type="button" onClick={dano} disabled={!n} className="rounded-lg border-2 border-noite bg-laranja px-3 py-1 text-sm font-bold text-noite disabled:opacity-50">
+            Dano
+          </button>
+          <button type="button" onClick={cura} disabled={!n} className="rounded-lg border-2 border-noite bg-creme px-3 py-1 text-sm font-bold text-noite disabled:opacity-50">
+            Cura
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (!n) return;
+              mudarJogo({ pvTemp: Math.max(j.pvTemp, n) });
+              setQtd("");
+            }}
+            disabled={!n}
+            className="rounded-lg border-2 border-noite bg-creme px-3 py-1 text-sm text-noite disabled:opacity-50"
+          >
+            PV temporários
+          </button>
+        </div>
+        {e.pv === 0 && <p className="m-0 rounded-lg bg-laranja-claro px-3 py-2 text-sm text-noite">Com 0 PV você fica moribundo 1 + ferido. Morre no moribundo {e.morreEm}.</p>}
+      </section>
+
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <Contador rotulo="Pontos de herói" valor={j.heroi} max={MAX_HEROI} onChange={(heroi) => mudarJogo({ heroi })} />
+        {e.pontosFoco > 0 && <Contador rotulo="Foco disponível" valor={e.pontosFoco - j.focoGasto} min={0} max={e.pontosFoco} onChange={(v) => mudarJogo({ focoGasto: e.pontosFoco - v })} />}
+        <Caixa rotulo="CA" valor={e.ca} />
+        <Caixa rotulo="Percepção" valor={sinal(e.percepcao)} />
+        <Caixa rotulo="Fortitude" valor={sinal(e.fortitude)} />
+        <Caixa rotulo="Reflexos" valor={sinal(e.reflexos)} />
+        <Caixa rotulo="Vontade" valor={sinal(e.vontade)} />
+        {e.magia && <Caixa rotulo="CD de magia" valor={e.magia.cd} />}
+      </div>
+
+      <section className={caixa}>
+        <h3 className={titulo}>Condições</h3>
+        <ul className="m-0 grid list-none gap-2 p-0 sm:grid-cols-2">
+          {CONDICOES.map((cd) => {
+            const v = j.condicoes[cd.id] ?? 0;
+            return (
+              <li key={cd.id} className={`flex items-start gap-2 rounded-lg border-2 p-2 ${v ? "border-laranja bg-laranja-claro" : "border-noite/20 bg-creme"}`}>
+                {cd.valor ? (
+                  <select value={v} onChange={(ev) => setCondicao(cd.id, +ev.target.value)} aria-label={cd.nome} className={campo}>
+                    {[0, 1, 2, 3, 4].map((x) => (
+                      <option key={x} value={x}>
+                        {x || "—"}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input type="checkbox" checked={!!v} onChange={(ev) => setCondicao(cd.id, ev.target.checked ? 1 : 0)} aria-label={cd.nome} className="mt-1 h-5 w-5" />
+                )}
+                <span className="text-sm text-noite">
+                  <b>{cd.nome}</b> <span className="text-tinta">{cd.texto}</span>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      {e.ataques.length > 0 && (
+        <section className={caixa}>
+          <h3 className={titulo}>Ataques</h3>
+          <ul className="m-0 list-none p-0">
+            {e.ataques.map((at, i) => (
+              <li key={i} className="flex flex-wrap justify-between gap-2 border-b border-noite/15 py-1">
+                <span className="font-bold">{at.nome}</span>
+                <span className="font-ficha text-sm">
+                  {at.map.map(sinal).join(" / ")} · {at.dano}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {vagas.length > 0 && (
+        <section className={caixa}>
+          <h3 className={titulo}>Espaços de magia de hoje</h3>
+          <ul className="m-0 flex list-none flex-col gap-1 p-0">
+            {[...new Set(vagas.map((v) => v.circulo))].map((r) => (
+              <li key={r} className="flex flex-wrap items-center gap-2">
+                <span className="w-20 shrink-0 font-ficha text-sm text-neutro">{nomeCirculo(r)}</span>
+                {vagas
+                  .filter((v) => v.circulo === r)
+                  .map((v) => {
+                    const gasto = j.espacosGastos.includes(v.chave);
+                    return (
+                      <label key={v.chave} className={`flex items-center gap-1 rounded-lg border-2 px-2 py-1 text-sm ${gasto ? "border-noite/20 text-neutro line-through" : "border-noite bg-creme text-noite"}`}>
+                        <input
+                          type="checkbox"
+                          checked={gasto}
+                          onChange={(ev) => mudarJogo({ espacosGastos: ev.target.checked ? [...j.espacosGastos, v.chave] : j.espacosGastos.filter((k) => k !== v.chave) })}
+                        />
+                        {ficha.magias[v.chave]?.trim() || "Espaço vazio"}
+                      </label>
+                    );
+                  })}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <div className="flex flex-wrap gap-2">
+        <button type="button" onClick={() => onChange({ jogo: descansar(j) })} className="btn bg-laranja text-noite">
+          Descansar 8 horas
+        </button>
+        <button type="button" onClick={() => mudarJogo({ heroi: 1 })} className="btn btn-contorno">
+          Nova sessão (1 ponto de herói)
+        </button>
+      </div>
+    </>
+  );
+}
+
+function IdiomasExtras({ ficha, onChange }: { ficha: Ficha; onChange: (v: string[]) => void }) {
+  const livres = calcular(ficha).idiomasLivres;
+  const [texto, setTexto] = useState(ficha.idiomasExtras.join(", "));
+  return (
+    <label className="no-print flex flex-col gap-1">
+      <span className="font-titulo text-lg font-bold">Idiomas extras</span>
+      <span className="text-sm text-neutro">
+        Você pode aprender {livres} idioma{livres === 1 ? "" : "s"} a mais pela Inteligência (talentos como Multilíngue dão outros). Separe por vírgula.
+      </span>
+      <input
+        value={texto}
+        maxLength={400}
+        onChange={(e) => {
+          setTexto(e.target.value);
+          onChange(e.target.value.split(",").map((x) => x.trim()).filter(Boolean));
+        }}
+        placeholder="Élfico, Dracônico…"
+        className="rounded-lg border-2 border-noite bg-creme px-3 py-2 text-base text-noite"
+      />
+    </label>
+  );
+}
+
 function Caixa({ rotulo, valor, prof }: { rotulo: string; valor: string | number; prof?: Prof }) {
   return (
     <div className="flex flex-col items-center rounded-xl border-2 border-noite bg-creme p-3 text-center">
@@ -876,7 +1185,7 @@ function FolhaFinal({ ficha }: { ficha: Ficha }) {
       <p className="m-0 text-sm text-tinta">
         Tamanho {c.tamanho}
         {c.sentidos && ` · ${c.sentidos}`}
-        {c.idiomas && ` · Idiomas: ${c.idiomas}`}
+        {(c.idiomas || ficha.idiomasExtras.length > 0) && ` · Idiomas: ${[c.idiomas, ...ficha.idiomasExtras].filter(Boolean).join(", ")}`}
       </p>
       {c.ataques.length > 0 && (
         <section>
@@ -956,6 +1265,33 @@ function FolhaFinal({ ficha }: { ficha: Ficha }) {
           )}
         </section>
       </div>
+      {(c.magia || c.pontosFoco > 0) && (
+        <section>
+          <h3 className="mb-2 font-titulo text-xl font-bold text-noite">Magias</h3>
+          {c.magia && (
+            <p className="m-0 font-ficha text-sm text-noite">
+              {c.magia.tradicao ? NOME_TRADICAO[c.magia.tradicao] : "Tradição a escolher"} · {c.magia.tipo === "preparada" ? "preparada" : "espontânea"} · Ataque {sinal(c.magia.ataque)} · CD {c.magia.cd} ({NOME_PROF_LONGO[c.magia.prof]})
+            </p>
+          )}
+          <ul className="m-0 list-none p-0">
+            {[...new Set(c.magia?.vagas.map((v) => v.circulo) ?? [])].map((r) => {
+              const nomes = c.magia!.vagas.filter((v) => v.circulo === r).map((v) => ficha.magias[v.chave]?.trim()).filter(Boolean);
+              return (
+                <li key={r} className="flex gap-2 border-b border-noite/15 py-1">
+                  <span className="w-20 shrink-0 font-ficha text-sm text-neutro">{nomeCirculo(r)}</span>
+                  <span>{nomes.join(", ") || "—"}</span>
+                </li>
+              );
+            })}
+            {c.pontosFoco > 0 && (
+              <li className="flex gap-2 border-b border-noite/15 py-1">
+                <span className="w-20 shrink-0 font-ficha text-sm text-neutro">Foco ({c.pontosFoco})</span>
+                <span>{ficha.foco.filter((x) => x.trim()).join(", ")}</span>
+              </li>
+            )}
+          </ul>
+        </section>
+      )}
       <section>
         <h3 className="mb-2 font-titulo text-xl font-bold text-noite">Equipamento</h3>
         <p className="m-0 text-sm text-tinta">
@@ -975,7 +1311,7 @@ function FolhaFinal({ ficha }: { ficha: Ficha }) {
         </section>
       )}
       <p className="m-0 text-sm text-neutro">
-        D = destreinado, T = treinado, E = especialista, M = mestre, L = lendário. Magias entram na próxima fase.
+        D = destreinado, T = treinado, E = especialista, M = mestre, L = lendário.
       </p>
     </div>
   );

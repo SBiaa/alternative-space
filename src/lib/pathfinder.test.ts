@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { FICHA_VAZIA, ajustar, ataque, atributos, calcular, grausPericia, lerFicha, normalizarFicha, pendencias, periciasParaEscolher, resumoFicha, vagasTalento, type Ficha } from "./pathfinder";
+import { vagasMagia } from "./pathfinder-magia";
+import { FICHA_VAZIA, ajustar, ataque, dadosMagia, pontosFoco, atributos, calcular, grausPericia, lerFicha, normalizarFicha, pendencias, periciasParaEscolher, resumoFicha, vagasTalento, type Ficha } from "./pathfinder";
 
 // Anã clériga acólita: exemplo bem comum de mesa.
 const ana: Ficha = {
@@ -16,6 +17,7 @@ const ana: Ficha = {
   boostsLivres: ["for", "con", "sab", "int"],
   pericias: ["medicina", "diplomacia", "natureza"],
   talentos: { "ancestralidade-1": "Treinamento com Armas Anãs", "classe-1": "Cura Ampliada" },
+  magias: { "truque-1": "Luz", "truque-2": "Lança Divina", "truque-3": "Estabilizar", "truque-4": "Escudo", "truque-5": "Mensagem", "r1-1": "Cura", "r1-2": "Bênção" },
 };
 
 describe("pathfinder 2e", () => {
@@ -165,5 +167,38 @@ describe("pathfinder 2e", () => {
     expect(sujo.armadura).toBe("");
     expect(sujo.armas).toEqual([{ id: "maca", potencia: 3, golpe: 0 }]);
     expect(sujo.itens).toEqual([{ nome: "Corda", qtd: 1, volume: 1 }]);
+  });
+
+  it("calcula ataque e CD de magia do conjurador", () => {
+    const m = dadosMagia(ana)!;
+    expect(m.tradicao).toBe("divina");
+    expect(m.ataque).toBe(7);
+    expect(m.cd).toBe(17);
+    expect(dadosMagia({ ...ana, nivel: 7 })!.prof).toBe("especialista");
+    expect(dadosMagia({ ...ana, classe: "guerreiro", chave: "for" })).toBeNull();
+  });
+
+  it("conta os espaços de magia por nível", () => {
+    const conta = (classe: string, nivel: number, r: number) => vagasMagia({ classe, nivel }).filter((v) => v.circulo === r).length;
+    expect(conta("clerigo", 1, 0)).toBe(5);
+    expect(conta("clerigo", 1, 1)).toBe(2);
+    expect(conta("clerigo", 3, 1)).toBe(3);
+    expect(conta("clerigo", 3, 2)).toBe(2);
+    expect(conta("feiticeiro", 2, 1)).toBe(4);
+    expect(vagasMagia({ classe: "clerigo", nivel: 20 })).toHaveLength(5 + 9 * 3 + 1);
+    expect(vagasMagia({ classe: "ladino", nivel: 20 })).toEqual([]);
+  });
+
+  it("pede tradição pro feiticeiro e conta pontos de foco", () => {
+    const f: Ficha = { ...ana, classe: "feiticeiro", chave: "car" };
+    expect(pendencias(f)).toContain("Escolha a tradição de magia.");
+    expect(pontosFoco({ foco: ["a", " ", "b", "c", "d"] })).toBe(3);
+  });
+
+  it("limpa magias inválidas ao carregar", () => {
+    const f = normalizarFicha({ ...ana, tradicao: "x", magias: { "truque-1": "Luz", lixo: "y", "r1-1": 3 }, foco: ["Cura de Toque", 5] })!;
+    expect(f.tradicao).toBe("");
+    expect(f.magias).toEqual({ "truque-1": "Luz" });
+    expect(f.foco).toEqual(["Cura de Toque"]);
   });
 });
