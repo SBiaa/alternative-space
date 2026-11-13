@@ -1,7 +1,7 @@
 "use client";
 
 import { mandarProRanking } from "@/lib/enviarRecorde";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   AVISO_LOGPOSE,
   H,
@@ -21,6 +21,9 @@ import {
   type Estado,
   type Rei,
 } from "@/lib/logpose";
+import { Chip, EVENTO_PAUSAR, NaGaveta, NoHud, useNoShell } from "./GameShell";
+import { textosLogPose as tl } from "@/config/modo-jogo";
+import { assinarMudo, destravarSom, estaMudo, mudar, ondas, tocar } from "@/lib/sons-logpose";
 
 type Fase = "menu" | "jogando" | "pausado" | "morto";
 type Gota = { x: number; y: number; vx: number; vy: number; vida: number; cor: string };
@@ -545,12 +548,21 @@ export function LogPoseDoido() {
   const [faseUi, setFaseUi] = useState<Fase>("menu");
   const [fim, setFim] = useState<{ pts: number; mi: number; moedas: number; nivel: number; frase: string; novo: boolean; recorde: number } | null>(null);
 
+  const noShell = useNoShell();
+  // Placar e bússola de fora do canvas (modo jogo).
+  const [painel, setPainel] = useState({ vidas: VIDAS, moedas: 0, nivel: 1, giro: 1, recorde: 0 });
+
+  const semSom = useSyncExternalStore(assinarMudo, estaMudo, () => false);
+
   const mudarFase = useCallback((f: Fase) => {
     fase.current = f;
     setFaseUi(f);
+    ondas(f === "jogando");
   }, []);
 
   const comecar = useCallback(() => {
+    destravarSom();
+    tocar("zarpar");
     estado.current = novoEstado();
     gotas.current = [];
     setFim(null);
@@ -563,6 +575,15 @@ export function LogPoseDoido() {
     else if (f === "menu") comecar();
     else if (f === "morto" && performance.now() - morteEm.current > 700) comecar();
   }, [comecar, mudarFase]);
+
+  const alternarSom = useCallback(() => {
+    const novo = !estaMudo();
+    mudar(novo);
+    if (!novo) {
+      destravarSom();
+      ondas(fase.current === "jogando");
+    }
+  }, []);
 
   useEffect(() => {
     recorde.current = lerRecorde();
@@ -577,6 +598,48 @@ export function LogPoseDoido() {
     let antes = performance.now();
     let sacode = 0;
     let vidasAntes = VIDAS;
+    let partida: Estado | null = null;
+    let moedasAntes = 0;
+    let nivelAntes = 1;
+    let giroAntes = -99;
+    let proxTique = 0;
+    const raiosOuvidos = new WeakSet<object>();
+    const reisAvisados = new WeakSet<object>();
+    const reisAtacando = new WeakSet<object>();
+
+    // Compara o estado com o frame anterior e toca o som de cada coisa que aconteceu.
+    const sons = (e: Estado) => {
+      if (e.moedas > moedasAntes) tocar("moeda");
+      if (e.vidas > vidasAntes) tocar("reparo");
+      else if (e.vidas < vidasAntes && !e.morto) tocar("dano");
+      if (e.nivel > nivelAntes) tocar("nivel");
+      if (e.logPose.giradaEm !== giroAntes) tocar("giro");
+      moedasAntes = e.moedas;
+      nivelAntes = e.nivel;
+      giroAntes = e.logPose.giradaEm;
+      // Tique-taque que acelera até o giro.
+      if (avisandoGiro(e) && e.tempo >= proxTique) {
+        tocar("tique");
+        const falta = Math.max(0, e.logPose.trocaEm - e.tempo) / AVISO_LOGPOSE;
+        proxTique = e.tempo + 0.08 + 0.3 * falta;
+      }
+      for (const r of e.raios) {
+        if (r.t <= 0 && !raiosOuvidos.has(r)) {
+          raiosOuvidos.add(r);
+          tocar("raio");
+        }
+      }
+      for (const rei of e.reis) {
+        if (!reisAvisados.has(rei)) {
+          reisAvisados.add(rei);
+          tocar("reiAviso");
+        }
+        if (rei.aviso <= 0 && !reisAtacando.has(rei)) {
+          reisAtacando.add(rei);
+          tocar("rei");
+        }
+      }
+    };
 
     const entrada = () => {
       const e = estado.current;
@@ -608,7 +671,17 @@ export function LogPoseDoido() {
       const f = fase.current;
 
       if (f === "jogando") {
+        if (e !== partida) {
+          // Partida nova: zera o que serve pra perceber eventos.
+          partida = e;
+          vidasAntes = e.vidas;
+          moedasAntes = e.moedas;
+          nivelAntes = e.nivel;
+          giroAntes = e.logPose.giradaEm;
+          proxTique = 0;
+        }
         step(e, dt, entrada());
+        sons(e);
         if (e.vidas < vidasAntes) {
           sacode = 0.3;
           for (let i = 0; i < 16; i++) {
@@ -636,6 +709,8 @@ export function LogPoseDoido() {
             novo,
             recorde: recorde.current,
           });
+          tocar("naufragio");
+          if (novo) tocar("recorde");
           morteEm.current = performance.now();
           mudarFase("morto");
         }
@@ -707,6 +782,8 @@ export function LogPoseDoido() {
       } else if (ev.code === "Space" || ev.code === "Enter") {
         ev.preventDefault();
         if (!ev.repeat) apertar();
+      } else if (ev.code === "KeyM") {
+        alternarSom();
       } else if (ev.code === "KeyP" || ev.code === "Escape") {
         if (fase.current === "jogando") mudarFase("pausado");
       }
@@ -733,7 +810,33 @@ export function LogPoseDoido() {
       window.removeEventListener("blur", onVis);
       document.removeEventListener("visibilitychange", onVisChange);
     };
-  }, [apertar, mudarFase]);
+  }, [apertar, mudarFase, alternarSom]);
+
+  // No modo jogo: o shell pede pausa por evento, a partida já começa e o placar sai do canvas.
+  useEffect(() => {
+    if (!noShell) return;
+    const onPausa = () => {
+      teclas.current.clear();
+      toque.current = null;
+      if (fase.current === "jogando") mudarFase("pausado");
+    };
+    window.addEventListener(EVENTO_PAUSAR, onPausa);
+    const id = window.setInterval(() => {
+      const e = estado.current;
+      const lp = e.logPose;
+      const giro = Math.max(0, Math.min(1, (lp.trocaEm - e.tempo) / Math.max(0.001, lp.trocaEm - lp.giradaEm)));
+      setPainel((p) =>
+        p.vidas === e.vidas && p.moedas === e.moedas && p.nivel === e.nivel && Math.abs(p.giro - giro) < 0.02 && p.recorde === recorde.current
+          ? p
+          : { vidas: e.vidas, moedas: e.moedas, nivel: e.nivel, giro, recorde: recorde.current },
+      );
+    }, 120);
+    if (fase.current === "menu") comecar();
+    return () => {
+      window.removeEventListener(EVENTO_PAUSAR, onPausa);
+      window.clearInterval(id);
+    };
+  }, [noShell, mudarFase, comecar]);
 
   // Converte a posição do ponteiro pra coordenadas do jogo.
   const ponto = (ev: React.PointerEvent) => {
@@ -750,6 +853,7 @@ export function LogPoseDoido() {
       style={{ aspectRatio: `${W} / ${H}`, touchAction: "none", WebkitTouchCallout: "none" }}
       onPointerDown={(ev) => {
         if ((ev.target as HTMLElement).closest("button")) return;
+        if (!ev.currentTarget.contains(ev.target as Node)) return; // veio da gaveta (portal)
         ev.currentTarget.setPointerCapture(ev.pointerId);
         if (fase.current === "jogando") toque.current = ponto(ev);
         else apertar();
@@ -761,7 +865,36 @@ export function LogPoseDoido() {
       onPointerCancel={() => (toque.current = null)}
       onContextMenu={(ev) => ev.preventDefault()}
     >
+      {noShell && (
+        <>
+          <NoHud>
+            <Chip>{tl.vidas(painel.vidas)}</Chip>
+            <Chip>{tl.moedas(painel.moedas)}</Chip>
+            <Chip>{tl.nivel(painel.nivel)}</Chip>
+          </NoHud>
+          <NaGaveta>
+            <div className="flex items-center gap-3 text-[13px]">
+              <span className="shrink-0 font-ficha">{tl.bussolaGira}</span>
+              <div className="h-2 flex-1 overflow-hidden rounded-[4px] bg-creme/15" role="progressbar" aria-label={tl.bussolaGira} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(painel.giro * 100)}>
+                <div className="h-full bg-laranja-claro" style={{ width: `${painel.giro * 100}%` }} />
+              </div>
+              <span className="shrink-0 font-ficha text-areia">{tl.recorde(painel.recorde)}</span>
+            </div>
+          </NaGaveta>
+        </>
+      )}
       <canvas ref={canvasRef} className="block h-full w-full" aria-label="Log Pose Doido: jogo de navegar desviando de redemoinhos, raios e reis do mar" />
+
+      <button
+        type="button"
+        onClick={alternarSom}
+        aria-label={semSom ? "Ligar som" : "Desligar som"}
+        aria-pressed={!semSom}
+        title={`${semSom ? "Ligar" : "Desligar"} som (M)`}
+        className="absolute bottom-2 right-2 z-10 flex h-9 w-9 items-center justify-center rounded-full border-2 border-noite bg-creme/90 text-lg leading-none text-noite"
+      >
+        <span aria-hidden>{semSom ? "🔇" : "🔊"}</span>
+      </button>
 
       {faseUi === "menu" && (
         <div className="absolute inset-0 flex flex-col items-center justify-end gap-3 bg-gradient-to-t from-noite/85 via-noite/20 to-transparent p-5 text-center sm:justify-center sm:bg-noite/40">

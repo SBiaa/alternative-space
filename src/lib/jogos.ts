@@ -107,6 +107,22 @@ export const jogos: Jogo[] = [
     cor: "#8a4a1c",
   },
   {
+    slug: "taverna",
+    nome: "Taverna do Dragão Cansado",
+    tipo: "Estratégia",
+    resumo: "Gestão de taverna de fantasia, com um dragão dormindo.",
+    texto: "Receba grupos de aventureiros, anote, sirva e cobre antes que a paciência acabe. Com o ouro, melhore a mobília, o cardápio e a equipe.",
+    cor: "#6b3a24",
+  },
+  {
+    slug: "lan-house",
+    nome: "Lan House 2005",
+    tipo: "Estratégia",
+    resumo: "Gestão de lan house: discada, PC travando e campeonato no sábado.",
+    texto: "Venda tempo de máquina, conserte PC travando, imprima trabalho e venda refri. Com o lucro, saia da discada e monte o setor gamer.",
+    cor: "#1f3a2e",
+  },
+  {
     slug: "conexoes-shinobi",
     nome: "Conexões Shinobi",
     tipo: "Rapidinho",
@@ -145,6 +161,14 @@ export const jogos: Jogo[] = [
     resumo: "Vestir bonequinho que vira avatar.",
     texto: "Chapéu, cicatriz, arma, roupa e bichinho. Monta do seu jeito e usa como avatar do perfil.",
     cor: "#8a4a12",
+  },
+  {
+    slug: "role-noturno",
+    nome: "Rolê Noturno",
+    tipo: "Criativo",
+    resumo: "Skate 2D: monte seu pico e desafie a tripulação.",
+    texto: "Monte a pista com rampas, corrimãos e caixotes, termine pra provar que dá, publique e veja quem bate seu recorde.",
+    cor: "#0b2340",
   },
 ];
 

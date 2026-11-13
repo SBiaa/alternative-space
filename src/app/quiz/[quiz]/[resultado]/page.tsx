@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: PageProps<"/quiz/[quiz]/[resu
       title: `${title} · ${quiz.intro.title}`,
       description: result.tagline,
       url: `${site.url}/quiz/${slug}/${resultado}`,
-      ...(result.image && { images: [{ url: result.image, width: 640, height: 640 }] }),
     },
   };
 }

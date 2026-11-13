@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { mandarProRanking } from "@/lib/enviarRecorde";
 import { acharJogo, lerRecorde } from "@/lib/jogos";
+import { textosShell } from "@/config/modo-jogo";
 
 // Topo da página do jogo (voltar, nome, tela cheia) e a área onde o jogo roda.
 // Ficam juntos porque o botão de tela cheia precisa alcançar a área do jogo.
@@ -74,5 +75,27 @@ export function JogoRecorde({ slug }: { slug: string }) {
         {valor ? "Fica salvo neste navegador e, com conta, vai pro ranking." : "Ainda não jogou aqui. A primeira partida já vira recorde."}
       </span>
     </div>
+  );
+}
+
+// Recorde e atalho pro ranking, numa linha só (capa do jogo).
+export function JogoRecordeLinha({ slug }: { slug: string }) {
+  const jogo = acharJogo(slug);
+  const [valor, setValor] = useState<number | null>(null);
+  useEffect(() => {
+    const v = lerRecorde(jogo);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage só existe no navegador
+    setValor(v);
+    if (v > 0) mandarProRanking(jogo.slug, v);
+  }, [jogo]);
+  if (!jogo.recorde) return null;
+  return (
+    <p className="m-0 flex items-center justify-between gap-3 text-sm text-areia">
+      <span>
+        <span className="etiqueta mr-2 text-[10px] text-laranja-claro">{textosShell.seuRecorde}</span>
+        <strong className="text-creme">{valor ? jogo.recorde.formato(valor) : textosShell.semRecorde}</strong>
+      </span>
+      <a href="#ranking" className="inline-flex min-h-11 items-center text-areia underline hover:text-creme">{textosShell.verRanking}</a>
+    </p>
   );
 }

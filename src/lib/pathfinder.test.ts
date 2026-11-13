@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { FICHA_VAZIA, ajustar, atributos, calcular, grausPericia, lerFicha, normalizarFicha, pendencias, periciasParaEscolher, resumoFicha, vagasTalento, type Ficha } from "./pathfinder";
+import { FICHA_VAZIA, ajustar, ataque, atributos, calcular, grausPericia, lerFicha, normalizarFicha, pendencias, periciasParaEscolher, resumoFicha, vagasTalento, type Ficha } from "./pathfinder";
 
 // Anã clériga acólita: exemplo bem comum de mesa.
 const ana: Ficha = {
@@ -113,5 +113,57 @@ describe("pathfinder 2e", () => {
     expect(f.nivel).toBe(1);
     expect(f.heranca).toBe("");
     expect(pendencias(f).join()).toMatch(/herança/);
+  });
+
+  it("calcula CA e penalidade com armadura em que a classe não é treinada", () => {
+    expect(calcular(ana).ca).toBe(13);
+    const c = calcular({ ...ana, armadura: "cota-malha" });
+    expect(c.treinadoArmadura).toBe(false);
+    expect(c.ca).toBe(14);
+    expect(c.penalidade).toBe(-2);
+    expect(c.deslocamento).toBe(15);
+    expect(c.pericias.find((p) => p.id === "atletismo")?.bonus).toBe(0);
+  });
+
+  it("soma runas de armadura na CA e nos salvamentos", () => {
+    const base = calcular({ ...ana, classe: "guerreiro", chave: "for", armadura: "couraca" });
+    const runas = calcular({ ...ana, classe: "guerreiro", chave: "for", armadura: "couraca", runasArmadura: { potencia: 1, resiliente: 1 } });
+    expect(runas.ca).toBe(base.ca + 1);
+    expect(runas.vontade).toBe(base.vontade + 1);
+  });
+
+  it("calcula ataque e dano de armas", () => {
+    const maca = ataque(ana, { id: "maca", potencia: 0, golpe: 0 })!;
+    expect(maca.map).toEqual([5, 0, -5]);
+    expect(maca.dano).toBe("1d6+2 E");
+    const magica = ataque(ana, { id: "maca", potencia: 1, golpe: 1 })!;
+    expect(magica.bonus).toBe(6);
+    expect(magica.dano).toBe("2d6+2 E");
+    const rapieira = ataque(ana, { id: "rapieira", potencia: 0, golpe: 0 })!;
+    expect(rapieira.prof).toBe("destreinado");
+    expect(rapieira.bonus).toBe(2);
+    const adaga = ataque({ ...ana, classe: "guerreiro", chave: "for" }, { id: "adaga", potencia: 0, golpe: 0 })!;
+    expect(adaga.prof).toBe("especialista");
+    expect(adaga.map[1]).toBe(adaga.map[0] - 4);
+    expect(ataque(ana, { id: "arco-longo-composto", potencia: 0, golpe: 0 })!.dano).toBe("1d8+1 P");
+  });
+
+  it("soma o Volume e marca sobrecarga", () => {
+    const f: Ficha = { ...ana, armadura: "cota-malha", armas: [{ id: "maca", potencia: 0, golpe: 0 }], itens: [{ nome: "Kit de aventureiro", qtd: 1, volume: 10 }, { nome: "Tocha", qtd: 5, volume: 1 }] };
+    const c = calcular(f);
+    expect(c.volume.total).toBe(45);
+    expect(c.volume.sobrecarregado).toBe(70);
+    expect(c.sobrecarregado).toBe(false);
+    expect(calcular({ ...f, itens: [{ nome: "Pedra", qtd: 5, volume: 10 }] }).sobrecarregado).toBe(true);
+  });
+
+  it("carrega save antigo sem equipamento e limpa equipamento inválido", () => {
+    const velho = normalizarFicha({ nome: "X" })!;
+    expect(velho.armas).toEqual([]);
+    expect(velho.dinheiro.po).toBe(15);
+    const sujo = normalizarFicha({ ...ana, armadura: "nada", armas: [{ id: "maca", potencia: 9, golpe: -1 }, { id: "laser" }], itens: [{ nome: "Corda", qtd: "x", volume: 1 }] })!;
+    expect(sujo.armadura).toBe("");
+    expect(sujo.armas).toEqual([{ id: "maca", potencia: 3, golpe: 0 }]);
+    expect(sujo.itens).toEqual([{ nome: "Corda", qtd: 1, volume: 1 }]);
   });
 });

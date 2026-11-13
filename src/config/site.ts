@@ -20,6 +20,9 @@ export const site = {
   ],
   // Fora do menu principal: aparece na gaveta do celular e no rodapé.
   navMais: [{ label: "Parceiros", href: "/parceiros" }],
+  // Coluna "Legal" do rodapé. Some enquanto estiver vazia; preencha quando as páginas existirem.
+  legal: [] as { label: string; href: string }[],
+  // ex.: { label: "Privacidade", href: "/privacidade" }, { label: "Termos de uso", href: "/termos" }
 };
 
 // Destino dos botões de entrada enquanto não há comunidade aberta.
