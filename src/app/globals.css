@@ -555,3 +555,164 @@ body.em-modo-jogo > :not(#conteudo) { display: none !important; }
   }
   .gs-gaveta:has(.gs-controles) .bt-toque { pointer-events: auto; }
 }
+
+/*
+  Muro Livre: tema de jogo "Papel Quadriculado" (caderno de grafiteiro) e o muro "Reboco".
+  Tokens base novos; os componentes só usam os aliases --mural-*, então outro tema é trocar esta tabela.
+*/
+@theme {
+  --color-papel: #efe6cb;
+  --color-papel-claro: #fbf7e8;
+  --color-tijolo: #ab392f;
+  --color-reboco: #d8c6a0;
+  --color-reboco-sombra: #bfaa82;
+  --color-concreto: #8e8a80;
+  --color-asfalto: #3a3f4b;
+  --color-madeira-andaime: #6b5b3e;
+  --font-marcador: var(--font-permanent-marker), "Marker Felt", cursive;
+  --font-caneta: var(--font-caveat), "Segoe Print", cursive;
+}
+
+.muro-tema {
+  --mural-papel: var(--color-papel);
+  --mural-papel-claro: var(--color-papel-claro);
+  --mural-ink: var(--color-noite);
+  --mural-azul: var(--color-azul);
+  --mural-laranja: var(--color-laranja);
+  --mural-laranja-claro: var(--color-laranja-claro);
+  --mural-tijolo: var(--color-tijolo);
+  --mural-reboco: var(--color-reboco);
+  --mural-reboco-sombra: var(--color-reboco-sombra);
+  --mural-concreto: var(--color-concreto);
+  --mural-asfalto: var(--color-asfalto);
+  --mural-andaime: var(--color-madeira-andaime);
+  --mural-creme: var(--color-creme);
+  --mural-quadriculado: rgba(9, 63, 122, 0.1);
+  --mural-inclinacao: 1;
+  color: var(--mural-ink);
+  font-family: var(--font-texto);
+  background-color: var(--mural-papel);
+  background-image:
+    linear-gradient(var(--mural-quadriculado) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mural-quadriculado) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.muro-tema.sem-inclinacao { --mural-inclinacao: 0; }
+.muro-tema :focus-visible { outline: 2px solid var(--mural-azul); outline-offset: 2px; }
+.muro-tema .muro-barra :focus-visible { outline-color: var(--mural-laranja-claro); }
+
+@layer components {
+  .muro-titulo { font-family: var(--font-marcador); letter-spacing: 0.01em; line-height: 1.05; }
+  .muro-nota { font-family: var(--font-caneta); color: var(--mural-tijolo); font-size: 1.15rem; line-height: 1.15; }
+  .muro-medida { font-family: var(--font-ficha); font-variant-numeric: tabular-nums; }
+
+  /* Página de encomenda: papel-claro, borda fina, sombra deslocada, inclinação estática e fita no topo. */
+  .muro-pagina {
+    position: relative;
+    background: var(--mural-papel-claro);
+    border: 1px solid rgb(1 18 30 / 0.35);
+    border-radius: 4px;
+    box-shadow: 3px 4px 0 rgb(1 18 30 / 0.16);
+    padding: 22px 16px 16px;
+    transform: rotate(calc(var(--inclina, 0deg) * var(--mural-inclinacao)));
+  }
+  .muro-pagina::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    width: 72px;
+    height: 18px;
+    transform: translateX(-50%) rotate(-2deg);
+    background: color-mix(in srgb, var(--mural-laranja-claro) 78%, transparent);
+    border: 1px solid rgb(1 18 30 / 0.15);
+  }
+  .muro-pagina[data-fita="azul"]::before { background: color-mix(in srgb, var(--mural-azul) 28%, transparent); }
+  .muro-folha { background: var(--mural-papel-claro); border: 1px solid rgb(1 18 30 / 0.35); border-radius: 6px; padding: 12px; }
+
+  .muro-btn, .muro-btn-sec {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-family: var(--font-texto);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--mural-ink);
+  }
+  .muro-btn { background: var(--mural-laranja); border: 2px solid var(--mural-ink); }
+  .muro-btn-sec { background: transparent; border: 2px solid var(--mural-ink); }
+  .muro-btn:hover:not(:disabled) { background: color-mix(in srgb, var(--mural-laranja) 88%, white); }
+  .muro-btn-sec:hover:not(:disabled) { background: rgb(1 18 30 / 0.06); }
+  .muro-btn:disabled, .muro-btn-sec:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Adesivos de status: sempre ícone + texto. */
+  .muro-adesivo {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    border: 2px solid var(--mural-ink);
+    border-radius: 4px;
+    font-family: var(--font-ficha);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: var(--mural-laranja-claro);
+    color: var(--mural-ink);
+    transform: rotate(calc(-1.2deg * var(--mural-inclinacao)));
+  }
+  .muro-adesivo[data-tipo="falta"] { background: var(--mural-papel-claro); border-style: dashed; }
+  .muro-adesivo[data-tipo="chuva"] { background: var(--mural-azul); color: var(--mural-papel-claro); border-color: var(--mural-azul); }
+  .muro-adesivo[data-tipo="recusado"] { background: var(--mural-tijolo); color: var(--mural-papel-claro); }
+
+  .muro-barra {
+    background: var(--mural-ink);
+    color: var(--mural-papel);
+    display: flex;
+    justify-content: space-around;
+    border-radius: 8px 8px 0 0;
+    padding: 4px;
+  }
+  .muro-aba {
+    min-height: 48px;
+    min-width: 64px;
+    flex: 1;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--mural-papel);
+    border-radius: 6px;
+  }
+  .muro-aba[aria-current="page"] { color: var(--mural-laranja-claro); background: rgb(242 166 110 / 0.14); }
+
+  .muro-balao {
+    background: var(--mural-papel-claro);
+    border: 1px solid rgb(1 18 30 / 0.4);
+    border-radius: 4px 12px 12px 12px;
+    padding: 10px 14px;
+    box-shadow: 2px 3px 0 rgb(1 18 30 / 0.14);
+    max-width: 88%;
+  }
+  .muro-balao[data-lado="voce"] { align-self: flex-end; border-radius: 12px 4px 12px 12px; background: var(--mural-laranja-claro); }
+
+  .muro-barra-prog { height: 10px; border-radius: 3px; border: 1px solid var(--mural-ink); background: var(--mural-papel-claro); overflow: hidden; }
+  .muro-barra-prog > i { display: block; height: 100%; background: var(--mural-azul); }
+  .muro-barra-prog[data-tom="laranja"] > i { background: var(--mural-laranja); }
+  .muro-barra-prog[data-tom="tijolo"] > i { background: var(--mural-tijolo); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .muro-tema { --mural-inclinacao: 0; }
+  .muro-tema * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

@@ -123,6 +123,14 @@ export const jogos: Jogo[] = [
     cor: "#1f3a2e",
   },
   {
+    slug: "muro-livre",
+    nome: "Muro Livre",
+    tipo: "Estratégia",
+    resumo: "Gestão de crew de grafite autorizado: prazo, tinta e chuva.",
+    texto: "Pegue encomendas de mural, negocie autorização, cuide de tinta, clima e crew, e pinte o bairro em camadas com a sua tag de assinatura.",
+    cor: "#dd5d05",
+  },
+  {
     slug: "conexoes-shinobi",
     nome: "Conexões Shinobi",
     tipo: "Rapidinho",
