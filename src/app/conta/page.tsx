@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { sair } from "@/app/actions/tripulante";
 import { Avatar } from "@/components/Avatar";
 import { SeloCasa } from "@/components/SeloCasa";
+import { SeloEntrega } from "@/components/entrega/SeloEntrega";
 import { SeloCorre } from "@/components/corre/SeloCorre";
 import { sistemasFicha } from "@/config/fichas";
 import { getUser } from "@/lib/auth/server";
@@ -94,6 +95,7 @@ async function Base() {
         </div>
 
         <SeloCasa userId={user.id} />
+        <SeloEntrega userId={user.id} />
         <SeloCorre userId={user.id} />
 
         <section aria-labelledby="resultados" className="flex flex-col gap-3.5">
