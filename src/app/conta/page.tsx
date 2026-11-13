@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { sair } from "@/app/actions/tripulante";
 import { Avatar } from "@/components/Avatar";
 import { SeloCasa } from "@/components/SeloCasa";
+import { SeloCorre } from "@/components/corre/SeloCorre";
 import { sistemasFicha } from "@/config/fichas";
 import { getUser } from "@/lib/auth/server";
 import { anteriores, getPerfil, historico, totalQuizzes } from "@/lib/perfil";
@@ -93,6 +94,7 @@ async function Base() {
         </div>
 
         <SeloCasa userId={user.id} />
+        <SeloCorre userId={user.id} />
 
         <section aria-labelledby="resultados" className="flex flex-col gap-3.5">
           <Titulo id="resultados" link={{ href: "/quiz", label: "Ver quizzes" }}>Seus resultados</Titulo>
