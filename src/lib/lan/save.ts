@@ -22,7 +22,8 @@ export const schemaProgresso = z.object({
     divisoria: z.number().int().min(1).max(20).nullable(),
   }),
   maquinas: z.array(z.object({ id: z.string().min(1).max(8), tipo: z.enum(["basica", "media", "gamer"]), saude: z.number().min(0).max(100), sujeira: z.number().min(0).max(100) })).max(40),
-  estoque: z.record(z.enum(["refri", "salgadinho", "bala", "misto"]), inteiro(1000)),
+  // partialRecord: no zod 4, record com chave enum exige todas as chaves; aqui o estoque pode ter só algumas.
+  estoque: z.partialRecord(z.enum(["refri", "salgadinho", "bala", "misto"]), inteiro(1000)),
   frequentes: z.record(z.string().max(40), inteiro(99)),
   melhorias: z.record(z.string().max(40), z.number().int().min(1).max(20)),
   equipe: z.array(z.object({ papel: z.enum(["caixa", "tecnico", "monitor"]), nivel: z.number().int().min(1).max(3), contratadoDia: inteiro(100_000) })).max(3),
