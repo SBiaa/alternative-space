@@ -9,6 +9,7 @@ import { SeloEntrega } from "@/components/entrega/SeloEntrega";
 import { SeloCorre } from "@/components/corre/SeloCorre";
 import { SeloTaverna } from "@/components/taverna/SeloTaverna";
 import { SeloLan } from "@/components/lan/SeloLan";
+import { SeloMuro } from "@/components/muro/SeloMuro";
 import { sistemasFicha } from "@/config/fichas";
 import { getUser } from "@/lib/auth/server";
 import { anteriores, getPerfil, historico, totalQuizzes } from "@/lib/perfil";
@@ -101,6 +102,7 @@ async function Base() {
         <SeloCorre userId={user.id} />
         <SeloTaverna userId={user.id} />
         <SeloLan userId={user.id} />
+        <SeloMuro userId={user.id} />
 
         <section aria-labelledby="resultados" className="flex flex-col gap-3.5">
           <Titulo id="resultados" link={{ href: "/quiz", label: "Ver quizzes" }}>Seus resultados</Titulo>
