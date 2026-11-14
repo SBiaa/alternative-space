@@ -377,39 +377,7 @@ export const GRADE_HELP: Record<string, Help> = {
   used: { text: 'De segunda mão: mais barato e fácil de achar, mas gasta 25% mais Essência.' },
 };
 
-/** Glossário acessível em qualquer tela. */
-export const GLOSSARY: { term: string; text: string }[] = [
-  { term: 'Prioridades', text: 'Sistema de criação: você ordena de A (mais importante) a E (menos) cinco áreas: metatipo, magia, atributos, perícias e recursos. Cada letra só pode ser usada uma vez.' },
-  { term: 'Metatipo', text: 'A “raça” do personagem: humano, elfo, anão, ork ou troll.' },
-  { term: 'Atributo', text: 'Capacidade básica do personagem (força, agilidade, lógica…). Normalmente de 1 a 6.' },
-  { term: 'Máximo natural', text: 'O valor mais alto que um atributo pode ter para o seu metatipo. Na criação, só um atributo físico ou mental pode chegar lá.' },
-  { term: 'Pontos especiais', text: 'Pontos da prioridade de Metatipo usados só em Trunfo, Magia e Ressonância.' },
-  { term: 'Trunfo (Edge)', text: 'Sorte e ousadia. Você gasta para rolar dados de novo ou escapar de situações impossíveis.' },
-  { term: 'Perícia', text: 'Algo que o personagem aprendeu a fazer. Nível 1 é iniciante; 6 é profissional de elite.' },
-  { term: 'Grupo de perícias', text: 'Um pacote de perícias relacionadas compradas juntas, mais barato. Para subir uma só, você usa karma.' },
-  { term: 'Especialização', text: 'Um foco dentro de uma perícia (ex.: Pistolas → Revólveres) que dá +2 dados quando se aplica.' },
-  { term: 'Conhecimento', text: 'Perícias de saber: gangues, história, idiomas. Os pontos são de graça: (Intuição + Lógica) × 2.' },
-  { term: 'Karma', text: 'Moeda de evolução do personagem. Na criação você tem 25 para comprar qualidades e extras. Até 7 sobram para o jogo.' },
-  { term: 'Nuyen (¥)', text: 'O dinheiro do mundo de Shadowrun. Na criação, até 5.000¥ sobram para o jogo.' },
-  { term: 'Qualidade', text: 'Vantagem (positiva, custa karma) ou desvantagem (negativa, dá karma). No máximo 25 de karma em cada tipo.' },
-  { term: 'Essência', text: 'Começa em 6. Implantes gastam Essência. Se chegar a 0, o personagem morre; para quem tem magia, cada ponto perdido também reduz Magia.' },
-  { term: 'Ciberware / Bioware', text: 'Implantes de máquina ou biológicos que melhoram o corpo, ao custo de Essência.' },
-  { term: 'Disponibilidade', text: 'O quão difícil é conseguir um item. Na criação, o limite é 12. R = restrito (precisa de licença); F = proibido.' },
-  { term: 'Limite', text: 'Teto de sucessos que você pode usar num teste. Há limites Físico, Mental e Social, calculados dos atributos.' },
-  { term: 'Iniciativa', text: 'Define quem age primeiro no combate: Reação + Intuição + dados.' },
-  { term: 'Monitor de condição', text: 'Caixas de dano. O Físico mede ferimentos; o de Atordoamento mede cansaço e pancada. Cada 3 caixas marcadas dão −1 nos testes.' },
-  { term: 'Plano astral', text: 'Uma dimensão mágica paralela que magos e alguns adeptos enxergam.' },
-  { term: 'Tradição', text: 'A forma como o mago entende a magia (hermética, xamânica). Define que atributos resistem ao dreno e que espíritos ele invoca.' },
-  { term: 'Dreno', text: 'O cansaço que a magia causa em quem lança. Resistido por Vontade + outro atributo da tradição.' },
-  { term: 'Pontos de poder', text: 'O “orçamento” de poderes do adepto. O adepto recebe igual à Magia; o adepto místico compra com karma.' },
-  { term: 'Forma complexa', text: 'O equivalente às magias para tecnomantes: efeitos que eles criam na Matriz com a mente.' },
-  { term: 'Sprite', text: 'Entidade digital criada por um tecnomante para ajudá-lo na Matriz.' },
-  { term: 'Matriz', text: 'A rede mundial de computadores do mundo de Shadowrun, vista em realidade virtual ou aumentada.' },
-  { term: 'Contato', text: 'Alguém que o personagem conhece. Conexão = quanto poder/alcance a pessoa tem; Lealdade = quanto ela gosta de você.' },
-  { term: 'Estilo de vida', text: 'Onde e como o personagem vive. É pago por mês.' },
-  { term: 'SIN', text: 'Número de identidade oficial. Quem não tem é “sem-SIN”: invisível para o sistema, mas sem direitos.' },
-  { term: 'Shadowrunner', text: 'Profissional do crime contratado para trabalhos sujos entre corporações.' },
-];
+export { GLOSSARY, GLOSSARY_CATEGORIES, type GlossaryCategory, type GlossaryEntry } from './glossary';
 
 export const COMPLEX_FORM_HELP: Record<string, Help> = {
   Cleaner: { text: 'Apaga marcas e rastros que o tecnomante deixou, baixando a atenção que ele atraiu.' },
