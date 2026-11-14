@@ -137,6 +137,8 @@ function BotaoSom() {
 // ---------- botão de toque ----------
 
 const TOQUE = "(pointer: coarse)";
+// No modo jogo os botões também aparecem em tela estreita ou baixa (celular, janela pequena), mesmo sem se declarar de toque.
+const TELA_PEQUENA = "(max-width: 820px), (max-height: 500px)";
 const assinarToque = (cb: () => void) => {
   const mq = window.matchMedia(TOQUE);
   mq.addEventListener("change", cb);
@@ -394,7 +396,16 @@ export function DueloLuta({ nome, chamada, elenco, palavra, cenario, energia }: 
 
   // No celular os botões ficam fora da tela do jogo: embaixo com o aparelho em pé, dos lados deitado.
   const noShell = useNoShell();
-  const comControles = toqueAtivo && (telaUi === "luta" || telaUi === "pausa");
+  const telaPequena = useSyncExternalStore(
+    (cb) => {
+      const mq = window.matchMedia(TELA_PEQUENA);
+      mq.addEventListener("change", cb);
+      return () => mq.removeEventListener("change", cb);
+    },
+    () => window.matchMedia(TELA_PEQUENA).matches,
+    () => false,
+  );
+  const comControles = (toqueAtivo || (noShell && telaPequena)) && (telaUi === "luta" || telaUi === "pausa");
 
   return (
     <div
