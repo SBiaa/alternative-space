@@ -26,6 +26,15 @@ const ANCESTRAIS: Record<string, Sugestao[]> = {
   gnomo: [[1, "Treinamento com Armas Gnomas"], [1, "Obsessão Gnoma"], [1, "Magia Primeiro Mundo"], [5, "Faro Feérico"], [9, "Fascínio do Primeiro Mundo"]],
   goblin: [[1, "Treinamento com Armas Goblins"], [1, "Canção Goblin"], [1, "Rato de Lixo"], [5, "Pulo Rápido"], [9, "Coragem Goblin"]],
   halfling: [[1, "Treinamento com Armas Halflings"], [1, "Sorte Halfling"], [1, "Discreto"], [5, "Sorte Compartilhada"], [9, "Pequeno e Ágil"]],
+  catfolk: [[1, "Pés de Gato"], [1, "Curiosidade Felina"], [1, "Garras Afiadas"], [1, "Sorte do Gato"], [5, "Pouso Seguro"], [9, "Nove Vidas"], [13, "Agilidade Felina"]],
+  orc: [[1, "Ferocidade Orc"], [1, "Treinamento com Armas Orcs"], [1, "Visão Ameaçadora"], [5, "Ferocidade Incansável"], [9, "Pele de Pedra"], [13, "Fúria Orc"]],
+  kobold: [[1, "Sopro de Dragão"], [1, "Armadilheiro"], [1, "Escamas Fortes"], [5, "Armadilha Rápida"], [9, "Asas de Dragão"]],
+  tengu: [[1, "Bico Afiado"], [1, "Treinamento com Armas Tengu"], [1, "Ouvido Fino"], [5, "Pena Mágica"], [9, "Asas Tengu"]],
+  ysoki: [[1, "Bolsas nas Bochechas"], [1, "Esquiva de Rato"], [1, "Faro de Rato"], [5, "Enxame de Ratos"], [9, "Mordida Infectada"]],
+  kitsune: [[1, "Forma de Raposa"], [1, "Fogo de Raposa"], [1, "Truque de Kitsune"], [5, "Ilusão de Kitsune"], [9, "Cauda Extra"]],
+  hobgoblin: [[1, "Treinamento com Armas Hobgoblins"], [1, "Disciplina Militar"], [1, "Alquimia Hobgoblin"], [5, "Formação"], [9, "Comandante Nato"]],
+  iruxi: [[1, "Cauda Iruxi"], [1, "Mordida Iruxi"], [1, "Sangue Frio"], [5, "Pele Escamosa"], [9, "Regeneração"]],
+  kholo: [[1, "Mordida Kholo"], [1, "Risada Kholo"], [1, "Tática de Bando"], [5, "Caçada do Clã"], [9, "Mordida Esmagadora"]],
   leshy: [[1, "Raízes Profundas"], [1, "Sementes Mágicas"], [1, "Folhagem"], [5, "Floração"], [9, "Abraço da Floresta"]],
 };
 
@@ -45,6 +54,17 @@ const CLASSE: Record<string, Sugestao[]> = {
   monge: [[1, "Postura do Dragão"], [1, "Postura do Tigre"], [1, "Ki Mágico"], [2, "Golpe Atordoante"], [4, "Rajada Ágil"], [6, "Postura da Garça"]],
   oraculo: [[1, "Revelação do Mistério"], [1, "Visão Sobrenatural"], [2, "Bênção Divina"], [4, "Revelação Avançada"], [6, "Maldição Domada"]],
   patrulheiro: [[1, "Tiro Duplo"], [1, "Companheiro Animal"], [1, "Rastreio de Caçador"], [2, "Ataque Gêmeo"], [4, "Tiro Rápido"], [6, "Armadilha Rápida"]],
+  animista: [[1, "Canalizar Aparição"], [1, "Visão Espiritual"], [1, "Cantos Espirituais"], [2, "Aparição Inspiradora"], [4, "Vínculo Profundo"], [6, "Dança dos Espíritos"]],
+  kineticista: [[1, "Explosão Extra"], [1, "Base Cinética"], [1, "Escudo Elemental"], [2, "Explosão Canalizada"], [4, "Muralha Elemental"], [6, "Forma Elemental"]],
+  inventor: [[1, "Variável Experimental"], [1, "Ajuste Rápido"], [1, "Peça Reserva"], [2, "Explosão Controlada"], [4, "Sobrecarga Melhorada"], [6, "Nova Variável"]],
+  pistoleiro: [[1, "Tiro Atordoante"], [1, "Recarga Acrobática"], [1, "Tiro Duplo"], [2, "Tiro Preciso"], [4, "Tiro no Escuro"], [6, "Tiro em Ricochete"]],
+  magus: [[1, "Golpe Arcano"], [1, "Escudo Mágico"], [1, "Investida Arcana"], [2, "Feitiço Canalizado"], [4, "Magia Combativa"], [6, "Conflux Ampliado"]],
+  invocador: [[1, "Ataque em Dupla"], [1, "Truque Extra"], [1, "Eidolon Ágil"], [2, "Evolução Expandida"], [4, "Proteção do Eidolon"], [6, "Forma Ampliada"]],
+  psiquico: [[1, "Truque Ampliado"], [1, "Mente Afiada"], [1, "Telepatia Básica"], [2, "Mente Blindada"], [4, "Pulso Psíquico"], [6, "Mente Dividida"]],
+  taumaturgo: [[1, "Implemento Extra"], [1, "Ritual Esotérico"], [1, "Sinal Protetor"], [2, "Conhecimento Esotérico"], [4, "Exploit Melhorado"], [6, "Amuleto Duplo"]],
+  comandante: [[1, "Ordem Rápida"], [1, "Grito de Guerra"], [1, "Plano de Batalha"], [2, "Tática Ofensiva"], [4, "Formação Defensiva"], [6, "Contra-ataque Coordenado"]],
+  guardiao: [[1, "Golpe Protetor"], [1, "Provocação Intimidadora"], [1, "Escudo Humano"], [2, "Bloqueio Firme"], [4, "Muralha Viva"], [6, "Reação Dupla"]],
+  exemplar: [[1, "Centelha Ampliada"], [1, "Ícone Extra"], [1, "Salto Heroico"], [2, "Epíteto Novo"], [4, "Golpe Divino"], [6, "Aura de Glória"]],
   bruxo: [[1, "Feitiço Ampliado"], [1, "Lição do Patrono"], [2, "Caldeirão"], [4, "Familiar Melhorado"], [6, "Lição Maior"]],
 };
 
@@ -54,6 +74,7 @@ const ARQUETIPOS: Sugestao[] = [
   "Acrobata", "Arqueiro", "Assassino", "Bastião", "Cavaleiro", "Duelista", "Lutador Marcial", "Médico", "Sentinela", "Treinador de Bestas",
   "Alquimista", "Bárbaro", "Bardo", "Campeão", "Clérigo", "Druida", "Espadachim", "Feiticeiro", "Guerreiro", "Investigador",
   "Ladino", "Mago", "Monge", "Oráculo", "Patrulheiro", "Bruxo",
+  "Animista", "Kineticista", "Inventor", "Pistoleiro", "Magus", "Invocador", "Psíquico", "Taumaturgo", "Comandante", "Guardião", "Exemplar",
 ].map((n): Sugestao => [2, `Dedicação de ${n}`]);
 
 // Nomes sugeridos pra uma vaga, só os que já dá pra pegar naquele nível.

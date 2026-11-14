@@ -120,6 +120,17 @@ export const COMBATE_CLASSE: Record<string, Combate> = {
   oraculo: CONJ(["leve"]),
   patrulheiro: MARCIAL(["leve", "media"]),
   bruxo: CONJ(),
+  animista: CONJ(["leve", "media"]),
+  kineticista: { armas: [[1, "treinado"], [11, "especialista"]], marciais: false, armaduras: ["leve"], especializacao: 13 },
+  inventor: MARCIAL(["leve", "media"]),
+  pistoleiro: MARCIAL(["leve", "media"]),
+  magus: MARCIAL(["leve", "media"]),
+  invocador: CONJ(["leve"]),
+  psiquico: CONJ(),
+  taumaturgo: MARCIAL(["leve", "media"]),
+  comandante: MARCIAL(["leve", "media", "pesada"]),
+  guardiao: MARCIAL(["leve", "media", "pesada"]),
+  exemplar: MARCIAL([]),
 };
 
 export const acharArma = (id: string) => ARMAS.find((x) => x.id === id);
