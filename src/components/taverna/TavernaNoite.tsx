@@ -9,6 +9,7 @@ import { criarCtx } from "@/lib/taverna/contexto";
 import { agir, criarNoite, passo, proximaAcao, resumoDaNoite, type Acao, type Grupo, type NoiteEstado } from "@/lib/taverna/motor";
 import type { RespostaNoite } from "@/app/actions/taverna";
 import type { Leitura } from "./salao";
+import { Recibo } from "./Recibo";
 import { useTaverna, type Inicial } from "./useTaverna";
 
 const SalaoPhaser = dynamic(() => import("./SalaoPhaser"), { ssr: false, loading: () => <p className="p-4 text-areia">Acendendo a lareira…</p> });
@@ -224,15 +225,10 @@ export function TavernaNoite({ inicial }: { inicial: Inicial }) {
           <h2 className="m-0 text-2xl font-semibold text-azul">{r.saldo >= 0 ? "A casa fechou no azul" : "A casa fechou no vermelho"}</h2>
           {r.tranquila && <p className="m-0 mt-1 text-sm">Noite tranquila ligada: paciência com queda mais lenta.</p>}
         </div>
+        <Recibo r={r} />
         <dl className="m-0 grid grid-cols-2 gap-3 sm:grid-cols-3">
           <DadoClaro rotulo="Atendidos" valor={String(r.servidos)} />
           <DadoClaro rotulo="Foram embora" valor={String(r.foram)} />
-          <DadoClaro rotulo="Ouro das vendas" valor={String(r.ganhos)} />
-          <DadoClaro rotulo="Gorjetas" valor={String(r.gorjetas)} />
-          <DadoClaro rotulo="Ingredientes" valor={`− ${r.gastos.ingredientes}`} />
-          <DadoClaro rotulo="Salários" valor={`− ${r.gastos.salarios}`} />
-          <DadoClaro rotulo="Reparos" valor={`− ${r.gastos.reparos}`} />
-          <DadoClaro rotulo="Saldo da noite" valor={`${r.saldo >= 0 ? "+" : "−"} ${Math.abs(r.saldo)}`} />
           <DadoClaro rotulo="Reputação" valor={`${repAntes.toFixed(2)} → ${r.reputacaoFim.toFixed(2)}`} />
         </dl>
         <p className="m-0">Mais satisfeito: {melhor ? `${melhor.icone} ${melhor.name}` : "ninguém foi atendido"}.</p>

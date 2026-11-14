@@ -33,6 +33,9 @@ export async function criarSalao(pai: HTMLElement, ler: () => Leitura | null, to
     noite: cor("--color-noite", "#01121e"),
   };
 
+  // cada arquétipo ganha um tom de capa, em rodízio, tirado da paleta Lareira
+  const TONS = [C.creme, 0xe8b98a, 0xc9d9a5, 0xd9b8e0, 0xa9c8e0, 0xe0a8a0, 0xe0d49a, 0xb8e0d0];
+
   class Cena extends P.Scene {
     gfx!: Phaser.GameObjects.Graphics;
     textos = new Map<string, Phaser.GameObjects.Text>();
@@ -60,9 +63,9 @@ export async function criarSalao(pai: HTMLElement, ler: () => Leitura | null, to
       this.usados.add(chave);
     }
 
-    corpo(c: Cliente, x: number, y: number, r: number) {
+    corpo(c: Cliente, x: number, y: number, r: number, tom: number) {
       const g = this.gfx;
-      g.fillStyle(C.creme, 1).lineStyle(2, C.noite, 1);
+      g.fillStyle(tom, 1).lineStyle(2, C.noite, 1);
       switch (c.arq) {
         case "guerreiro": g.fillRect(x - r, y - r, r * 2, r * 2); break;
         case "barbaro": g.fillCircle(x, y, r * 1.25); break;
@@ -77,10 +80,13 @@ export async function criarSalao(pai: HTMLElement, ler: () => Leitura | null, to
 
     cliente(l: Leitura, c: Cliente, x: number, y: number, r: number, chave: string) {
       const arq = l.ctx.arquetipos.find((a) => a.slug === c.arq);
-      this.corpo(c, x, y, r);
+      const idx = Math.max(0, l.ctx.arquetipos.findIndex((a) => a.slug === c.arq));
+      this.corpo(c, x, y, r, TONS[idx % TONS.length]);
       this.txt(`i${chave}`, x, y, arq?.icone ?? "?", Math.round(r * 1.3));
       const w = r * 2.4;
       const f = Math.max(0, Math.min(1, c.pac / c.pacMax));
+      // a paciência aparece acima da cabeça, pra ler o salão sem olhar as barras
+      if (f <= 0.5) this.txt(`h${chave}`, x + r, y - r * 1.5, f <= 0.25 ? "💢" : "…", Math.round(r * 1.2));
       this.gfx.fillStyle(C.noite, 1).fillRect(x - w / 2, y + r * 1.4, w, 5);
       this.gfx.fillStyle(f > 0.5 ? C.musgo : f > 0.25 ? C.vela : C.brasa, 1).fillRect(x - w / 2, y + r * 1.4, w * f, 5);
       this.txt(`p${chave}`, x, y + r * 1.4 + 11, `${Math.ceil(c.pac)}s`, 10);
@@ -109,7 +115,7 @@ export async function criarSalao(pai: HTMLElement, ler: () => Leitura | null, to
       // lareira e luz quente
       const lx = W * 0.1;
       const ly = H * 0.2;
-      g.fillStyle(C.brasa, 0.1 + 0.02 * pisca).fillCircle(lx, ly, H * 0.55);
+      for (let i = 0; i < 6; i++) g.fillStyle(C.brasa, 0.025 + 0.004 * pisca).fillCircle(lx, ly, H * (0.12 + i * 0.1));
       g.fillStyle(C.noite, 1).fillRect(lx - 34, ly - 52, 68, 52);
       g.fillStyle(C.brasa, 1).fillTriangle(lx - 20, ly, lx, ly - 36 - 4 * pisca, lx + 20, ly);
       g.fillStyle(C.vela, 1).fillTriangle(lx - 9, ly, lx, ly - 20 - 3 * pisca, lx + 9, ly);
@@ -181,6 +187,16 @@ export async function criarSalao(pai: HTMLElement, ler: () => Leitura | null, to
         const y = (mesa ? oy + (mesa.y + 0.5) * cel : py) - cel * 0.5 - (e.t - a.t) * 14;
         const s = a.tipo === "pago" ? `+${a.valor} ouro` : a.tipo === "quebrou" ? "cadeira quebrada!" : a.tipo === "fugiu" ? "fugiu sem pagar" : a.tipo === "recusou" ? "recusou o pedido" : "foi embora";
         this.txt(`a${a.n}`, x, y, s, 11, true, a.tipo === "pago" ? "#8fd6a4" : "#f2a66e");
+        if (a.tipo === "pago" && !l.reduzido) {
+          const k = (e.t - a.t) / 1.6;
+          for (let i = 0; i < 3; i++) g.fillStyle(C.vela, 1 - k).fillCircle(x - 14 + i * 14, y + 16 - k * 22 - i * 3, 3.5);
+        }
+      }
+
+      // penumbra nas bordas: o salão só fica claro perto da lareira
+      for (let i = 0; i < 5; i++) {
+        const m = 14 + i * 22;
+        g.lineStyle(22, C.noite, 0.07).strokeRect(m / 2 - 11, m / 2 - 11, W - m + 22, H - m + 22);
       }
 
       for (const [k, t] of this.textos) if (!this.usados.has(k)) t.setVisible(false);

@@ -1,5 +1,7 @@
 "use client";
 
+import { Chip, EVENTO_PAUSAR, NaGaveta, NoHud, NosDetalhes, useNoShell } from "./GameShell";
+import { textosNavio as tn } from "@/config/modo-jogo";
 import { mandarProRanking } from "@/lib/enviarRecorde";
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
 import {
@@ -868,6 +870,19 @@ export function DefendaONavio() {
     setPausado(pausaRef.current);
   }, []);
 
+  const noShell = useNoShell();
+  // O shell (modo jogo) pede pausa por evento: só pausa, nunca despausa.
+  useEffect(() => {
+    const onPausa = () => {
+      if (fase.current === "jogando" && !estado.current.fim && !pausaRef.current) {
+        pausaRef.current = true;
+        setPausado(true);
+      }
+    };
+    window.addEventListener(EVENTO_PAUSAR, onPausa);
+    return () => window.removeEventListener(EVENTO_PAUSAR, onPausa);
+  }, []);
+
   const alternarVel = useCallback(() => {
     velRef.current = velRef.current === 1 ? 2 : 1;
     setVel(velRef.current);
@@ -1108,9 +1123,48 @@ export function DefendaONavio() {
   const nEstrelas = ui.estrelas;
   const infoEscolhida = escolhido ? TRIPULANTES[escolhido.tipo] : escolha ? TRIPULANTES[escolha] : null;
 
+  const cartaoEscolhido = infoEscolhida && (
+            <div className="card flex flex-col gap-2 !p-3 sm:!p-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-0.5">
+                <p className="font-titulo text-lg font-bold leading-tight">
+                  {infoEscolhida.nome}
+                  {escolhido && <span className="etiqueta ml-2 text-[11px] text-azul">nível {escolhido.nivel + 1}</span>}
+                </p>
+                <p className="text-sm text-tinta">{infoEscolhida.jeito}</p>
+                {!escolhido && <p className="text-sm text-neutro">Toque numa casa livre do convés pra posicionar.</p>}
+              </div>
+              {escolhido && (
+                <div className="grid shrink-0 grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (melhorar(estado.current, escolhido.id)) tocar("melhorar");
+                      sincronizar();
+                    }}
+                    disabled={escolhido.melhoria === null || ui.moedas < escolhido.melhoria || !!fim}
+                    className="btn bg-laranja text-noite !px-4 !py-1.5 !text-base disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {escolhido.melhoria === null ? "Nível máximo" : `Melhorar (${escolhido.melhoria})`}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (vender(estado.current, escolhido.id)) tocar("dispensar");
+                      sincronizar();
+                    }}
+                    disabled={!!fim}
+                    className="btn bg-creme-claro text-noite !px-4 !py-1.5 !text-base disabled:opacity-50"
+                  >
+                    Dispensar (+{escolhido.venda})
+                  </button>
+                </div>
+              )}
+            </div>
+          );
+
   return (
     <div className="flex flex-col gap-3 sm:gap-4">
-      {faseUi === "jogando" && (
+      {faseUi === "jogando" && !noShell && (
         <div className="flex items-center justify-between gap-2 rounded-xl border-2 border-noite bg-creme-claro px-3 py-1.5 text-sm font-bold text-noite sm:hidden">
           <span>
             Onda {ui.onda}/{ONDAS.length}
@@ -1209,7 +1263,74 @@ export function DefendaONavio() {
         )}
       </div>
 
-      {faseUi === "jogando" && (
+      {faseUi === "jogando" && noShell && (
+        <>
+          <NoHud>
+            <Chip>{tn.vidas(ui.vidas)}</Chip>
+            <Chip>{tn.moedas(ui.moedas)}</Chip>
+            <Chip>{tn.onda(ui.onda, ONDAS.length)}</Chip>
+          </NoHud>
+          <NaGaveta>
+            <div className="flex items-center gap-2">
+              <ul className="m-0 flex min-w-0 flex-1 list-none gap-1.5 overflow-x-auto p-0">
+                {TIPOS_TRIP.map((tipo) => {
+                  const info = TRIPULANTES[tipo];
+                  const falta = info.custo - ui.moedas;
+                  const ativo = escolha === tipo;
+                  return (
+                    <li key={tipo} className="shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => escolher(ativo ? null : tipo)}
+                        aria-pressed={ativo}
+                        aria-label={`${info.nome}, ${info.custo}${falta > 0 ? `, ${tn.faltam(falta)}` : ""}`}
+                        className={`relative flex size-14 items-center justify-center overflow-hidden rounded-md border ${ativo ? "border-laranja-claro bg-laranja-claro/30" : "border-creme/40 bg-noite/45"}`}
+                      >
+                        <span className={falta > 0 ? "opacity-40" : ""}>
+                          <IconeTrip tipo={tipo} />
+                        </span>
+                        {falta > 0 && (
+                          <span className="absolute inset-x-0 bottom-0 bg-noite/70 font-ficha text-[10px] leading-4 text-creme-claro" aria-hidden="true">
+                            🔒 {tn.faltam(falta)}
+                          </span>
+                        )}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+              <button type="button" onClick={proximaOnda} disabled={ui.emOnda || !!fim} className="gs-botao gs-botao-cta shrink-0 px-3 text-sm disabled:opacity-50">
+                {ui.emOnda ? tn.emOnda : tn.chamarOnda}
+              </button>
+            </div>
+          </NaGaveta>
+          <NosDetalhes>
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-2">
+                <button type="button" onClick={alternarVel} className="gs-botao flex-1" aria-pressed={vel === 2}>
+                  {vel}x
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    mudar(!semSom);
+                    setSemSom(!semSom);
+                    if (semSom) destravarSom();
+                  }}
+                  className="gs-botao flex-1"
+                  aria-pressed={semSom}
+                  aria-label={semSom ? "Ligar som" : "Desligar som"}
+                >
+                  {semSom ? "🔇" : "🔊"}
+                </button>
+              </div>
+              {!ui.emOnda && !fim && <p className="m-0 text-sm text-areia">{descreverOnda(ui.onda + 1)}</p>}
+              {cartaoEscolhido}
+            </div>
+          </NosDetalhes>
+        </>
+      )}
+      {faseUi === "jogando" && !noShell && (
         <div className="flex flex-col gap-3">
           <div className="grid grid-cols-3 items-center gap-2 sm:flex sm:flex-wrap">
             <button
@@ -1281,44 +1402,7 @@ export function DefendaONavio() {
             })}
           </ul>
 
-          {infoEscolhida && (
-            <div className="card flex flex-col gap-2 !p-3 sm:!p-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex flex-col gap-0.5">
-                <p className="font-titulo text-lg font-bold leading-tight">
-                  {infoEscolhida.nome}
-                  {escolhido && <span className="etiqueta ml-2 text-[11px] text-azul">nível {escolhido.nivel + 1}</span>}
-                </p>
-                <p className="text-sm text-tinta">{infoEscolhida.jeito}</p>
-                {!escolhido && <p className="text-sm text-neutro">Toque numa casa livre do convés pra posicionar.</p>}
-              </div>
-              {escolhido && (
-                <div className="grid shrink-0 grid-cols-2 gap-2 sm:flex sm:flex-wrap">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (melhorar(estado.current, escolhido.id)) tocar("melhorar");
-                      sincronizar();
-                    }}
-                    disabled={escolhido.melhoria === null || ui.moedas < escolhido.melhoria || !!fim}
-                    className="btn bg-laranja text-noite !px-4 !py-1.5 !text-base disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {escolhido.melhoria === null ? "Nível máximo" : `Melhorar (${escolhido.melhoria})`}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (vender(estado.current, escolhido.id)) tocar("dispensar");
-                      sincronizar();
-                    }}
-                    disabled={!!fim}
-                    className="btn bg-creme-claro text-noite !px-4 !py-1.5 !text-base disabled:opacity-50"
-                  >
-                    Dispensar (+{escolhido.venda})
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
+          {cartaoEscolhido}
         </div>
       )}
     </div>
