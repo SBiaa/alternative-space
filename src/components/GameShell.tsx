@@ -84,7 +84,14 @@ export function GameShell({ title, hud, drawer, drawerDetails, dica, onExit, onP
     const encaixar = () => {
       const alvo = p.querySelector<HTMLElement>('[style*="aspect-ratio"]');
       if (!alvo) return;
-      const [a, b] = getComputedStyle(alvo).aspectRatio.split("/").map((n) => parseFloat(n));
+      // Telas de menu/escolha dos jogos (marcadas com aspect-auto) usam o palco inteiro, sem proporção.
+      if (alvo.className.includes("aspect-auto")) {
+        const r = p.getBoundingClientRect();
+        alvo.style.width = `${Math.floor(r.width)}px`;
+        alvo.style.height = `${Math.floor(r.height)}px`;
+        return;
+      }
+      const [a, b] = (alvo.style.aspectRatio || "").split("/").map((n) => parseFloat(n));
       const ar = a && b ? a / b : a;
       if (!ar) return;
       const { width: w, height: h } = p.getBoundingClientRect();
@@ -121,9 +128,10 @@ export function GameShell({ title, hud, drawer, drawerDetails, dica, onExit, onP
     else void raiz.current?.requestFullscreen().catch(() => {});
   };
 
-  const slotRef = (k: keyof Slots) => (el: HTMLElement | null) => {
-    setSlots((s) => (s[k] === el ? s : { ...s, [k]: el }));
-  };
+  // Refs estáveis: se mudassem a cada render o React zeraria e refaria o slot sem parar.
+  const refHud = useCallback((el: HTMLElement | null) => setSlots((s) => (s.hud === el ? s : { ...s, hud: el })), []);
+  const refGaveta = useCallback((el: HTMLElement | null) => setSlots((s) => (s.gaveta === el ? s : { ...s, gaveta: el })), []);
+  const refDetalhes = useCallback((el: HTMLElement | null) => setSlots((s) => (s.detalhes === el ? s : { ...s, detalhes: el })), []);
 
   // Puxar a alça pra cima abre, pra baixo fecha.
   const arrasto = useRef<number | null>(null);
@@ -149,7 +157,7 @@ export function GameShell({ title, hud, drawer, drawerDetails, dica, onExit, onP
           </button>
           <div className="gs-chips">
             {hud}
-            <span ref={slotRef("hud")} className="contents" />
+            <span ref={refHud} className="contents" />
           </div>
           {podeTelaCheia && (
             <button type="button" className="gs-redondo max-sm:hidden" aria-label={t.telaCheia} onClick={telaCheia}>
@@ -194,11 +202,11 @@ export function GameShell({ title, hud, drawer, drawerDetails, dica, onExit, onP
           )}
           <div className="gs-gaveta-essencial">
             {drawer}
-            <div ref={slotRef("gaveta")} className="contents" />
+            <div ref={refGaveta} className="contents" />
           </div>
           <div className="gs-gaveta-detalhes" hidden={!aberta}>
             {drawerDetails}
-            <div ref={slotRef("detalhes")} className="contents" />
+            <div ref={refDetalhes} className="contents" />
           </div>
         </div>
       </div>

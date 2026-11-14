@@ -88,6 +88,17 @@ export const TAVERNA = {
 
   filial: { reputacao: 4.5, nivel: 5 },
 
+  recibo: {
+    contagemMs: 900,
+    /** Uma frase de cena por noite, em rodízio. */
+    cenas: [
+      "Um bardo cantou até tarde e ninguém quis ir embora.",
+      "O dragão roncou sobre o salão e as canecas tremeram.",
+      "Uma caravana chegou com fome e sede de estrada.",
+      "Alguém jurou ter visto um mago pagando a conta sem reclamar.",
+      "A chuva bateu nas telhas e a lareira fez o resto.",
+    ],
+  },
   textos: {
     titulo: "Taverna do Dragão Cansado",
     chamada: "Cuide de uma taverna de fantasia, sirva aventureiros e melhore o salão com o ouro das noites.",
