@@ -8,7 +8,7 @@ import { campanhaGanchos, campanhaJogadores, campanhaPresencas, campanhas, campa
 import { acesso, acessoDeMestre, CampanhaNaoEncontrada, InputError, usuarioDaMesa } from './acesso';
 import { garantirRotinasDoUsuario } from './agenda';
 
-async function sessaoDaCampanha(campanhaId: string, sessaoId: string) {
+export async function sessaoDaCampanha(campanhaId: string, sessaoId: string) {
   if (!UUID.test(sessaoId)) throw new CampanhaNaoEncontrada();
   const [s] = await db()
     .select()
@@ -36,14 +36,13 @@ export async function getSessao(campanhaId: string, sessaoId: string) {
       : Promise.resolve([]),
   ]);
   return {
-    campanha: { id: campanha.id, nome: campanha.nome, cor: campanha.cor },
+    campanha: { id: campanha.id, nome: campanha.nome, cor: campanha.cor, sistema: campanha.sistema },
     papel,
     sessao: sessaoVisivel(s, papel),
-    presencas: jogadores.map((j) => ({
-      userId: j.userId,
-      nome: j.nome,
-      resposta: respostas.find((r) => r.userId === j.userId)?.resposta ?? null,
-    })),
+    presencas: jogadores.map((j) => {
+      const linha = respostas.find((r) => r.userId === j.userId);
+      return { userId: j.userId, nome: j.nome, resposta: linha?.resposta ?? null, compareceu: linha?.compareceu ?? null };
+    }),
     minhaResposta: respostas.find((r) => r.userId === userId)?.resposta ?? null,
     ganchos: ganchos.map((g) => ({ id: g.id, texto: g.texto, daSessao: g.sessaoId === sessaoId, resolvido: !!g.resolvidoEm })),
   };
@@ -121,6 +120,24 @@ export async function salvarDiario(campanhaId: string, sessaoId: string, raw: Re
   await sessaoDaCampanha(campanhaId, sessaoId);
   const dados = lerDiario(raw);
   await db().update(campanhaSessoes).set({ ...dados, updatedAt: new Date() }).where(eq(campanhaSessoes.id, sessaoId));
+  // Quem veio só se marca em sessão realizada.
+  if (dados.status === 'realizada' && Array.isArray(raw.compareceram)) {
+    await registrarComparecimento(campanhaId, sessaoId, raw.compareceram.filter((x): x is string => typeof x === 'string'));
+  }
+}
+
+/** O mestre marca quem veio: cada jogador da campanha fica com `compareceu` verdadeiro ou falso. */
+async function registrarComparecimento(campanhaId: string, sessaoId: string, vieram: string[]): Promise<void> {
+  const jogadores = await db().select({ userId: campanhaJogadores.userId }).from(campanhaJogadores).where(eq(campanhaJogadores.campanhaId, campanhaId));
+  if (!jogadores.length) return;
+  const presentes = new Set(vieram);
+  await db()
+    .insert(campanhaPresencas)
+    .values(jogadores.map((j) => ({ sessaoId, userId: j.userId, compareceu: presentes.has(j.userId) })))
+    .onConflictDoUpdate({
+      target: [campanhaPresencas.sessaoId, campanhaPresencas.userId],
+      set: { compareceu: sql`excluded.compareceu`, updatedAt: new Date() },
+    });
 }
 
 export async function criarGancho(campanhaId: string, texto: unknown, sessaoId?: unknown): Promise<void> {
