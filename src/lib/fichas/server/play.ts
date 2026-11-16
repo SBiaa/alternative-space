@@ -1,11 +1,21 @@
 /**
- * Ficha em jogo: finalizar a criação, nuyen/karma, dano, anotações, missões e metas.
+ * Ficha em jogo: finalizar a criação, nuyen/karma, dano, anotações, inventário, missões e metas.
  * Toda função confere que a ficha é do usuário logado.
  */
 import 'server-only';
 import { and, asc, desc, eq, max } from 'drizzle-orm';
 import { db } from '@/lib/fichas/db';
-import { characters, goals, ledger, missions } from '@/lib/fichas/db/schema';
+import { characters, goals, inventory, inventorySeeded, ledger, missions } from '@/lib/fichas/db/schema';
+import type { CharacterDraft } from '@/lib/fichas/sr5/character';
+import {
+  inventoryFromDraft,
+  ledgerReason,
+  parseItemNotes,
+  parseNewItem,
+  parsePrice,
+  parseQty,
+  type NewItemInput,
+} from '@/lib/fichas/sr5/inventory';
 import { goalCost, parseGoalTarget, parseGoalTitle } from '@/lib/fichas/sr5/goals';
 import { evaluate, isComplete } from '@/lib/fichas/sr5/rules';
 import {
@@ -31,12 +41,14 @@ async function getActive(id: string) {
 
 export async function getPlayData(id: string) {
   const character = await getActive(id);
-  const [entries, missionList, goalList] = await Promise.all([
+  await seedInventory(id, character.draft);
+  const [entries, missionList, goalList, items] = await Promise.all([
     db().select().from(ledger).where(eq(ledger.characterId, id)).orderBy(desc(ledger.createdAt)),
     db().select().from(missions).where(eq(missions.characterId, id)).orderBy(desc(missions.createdAt)),
     db().select().from(goals).where(eq(goals.characterId, id)).orderBy(asc(goals.position), asc(goals.createdAt)),
+    db().select().from(inventory).where(eq(inventory.characterId, id)).orderBy(asc(inventory.createdAt)),
   ]);
-  return { character, entries, missions: missionList, goals: goalList };
+  return { character, entries, missions: missionList, goals: goalList, inventory: items };
 }
 
 /**
@@ -272,4 +284,111 @@ export async function deleteGoal(id: string, goalId: string): Promise<void> {
   await getGoalOf(id, goalId);
   // Gastos já lançados ficam no histórico.
   await db().delete(goals).where(eq(goals.id, goalId));
+}
+
+// ---------------------------------------------------------------------------
+// Inventário
+
+/**
+ * Copia o equipamento da criação para o inventário, uma vez por ficha.
+ * Vale também para fichas que já estavam em jogo antes de existir o inventário.
+ * A marca e os itens entram juntos (batch = transação): se outra chamada
+ * chegou antes, a marca repetida derruba o batch inteiro e nada é duplicado.
+ */
+async function seedInventory(id: string, draft: CharacterDraft): Promise<void> {
+  const [done] = await db()
+    .select({ id: inventorySeeded.characterId })
+    .from(inventorySeeded)
+    .where(eq(inventorySeeded.characterId, id));
+  if (done) return;
+  const rows = inventoryFromDraft(draft).map((i) => ({ characterId: id, ...i }));
+  try {
+    const mark = db().insert(inventorySeeded).values({ characterId: id });
+    if (rows.length) await db().batch([mark, db().insert(inventory).values(rows)]);
+    else await mark;
+  } catch (e) {
+    if (!isUniqueViolation(e)) throw e;
+  }
+}
+
+function isUniqueViolation(e: unknown): boolean {
+  for (let cur: unknown = e; cur && typeof cur === 'object'; cur = (cur as { cause?: unknown }).cause) {
+    if ((cur as { code?: unknown }).code === '23505') return true;
+  }
+  return false;
+}
+
+async function getItemOf(characterId: string, itemId: string) {
+  if (!UUID.test(itemId)) throw new NotFoundError();
+  const [it] = await db()
+    .select()
+    .from(inventory)
+    .where(and(eq(inventory.id, itemId), eq(inventory.characterId, characterId)));
+  if (!it) throw new NotFoundError();
+  return it;
+}
+
+/** Guarda um item novo. Com preço, desconta do nuyen como "Compra: <item>". */
+export async function addInventoryItem(id: string, input: NewItemInput): Promise<void> {
+  await getActive(id);
+  const { price, ...item } = parseNewItem(input);
+  const insertItem = db().insert(inventory).values({ characterId: id, ...item });
+  if (price > 0) {
+    const charge = db()
+      .insert(ledger)
+      .values({ characterId: id, kind: 'nuyen', amount: -price, reason: ledgerReason('Compra', item.name, item.qty) });
+    await db().batch([insertItem, charge]);
+  } else {
+    await insertItem;
+  }
+}
+
+export async function updateInventoryItem(
+  id: string,
+  itemId: string,
+  input: { qty?: unknown; equipped?: unknown; notes?: unknown },
+): Promise<void> {
+  await getActive(id);
+  const it = await getItemOf(id, itemId);
+  const set: Partial<typeof inventory.$inferInsert> = {};
+  if (input.qty !== undefined) set.qty = parseQty(input.qty);
+  if (input.notes !== undefined) set.notes = parseItemNotes(input.notes);
+  if (input.equipped !== undefined) {
+    if (it.kind !== 'weapon' && it.kind !== 'armor') throw new InputError('Só armas e armaduras ficam "em uso".');
+    set.equipped = input.equipped === true;
+  }
+  if (Object.keys(set).length) await db().update(inventory).set(set).where(eq(inventory.id, itemId));
+}
+
+/**
+ * Tira o item do inventário (usou, perdeu, vendeu). Com `qty`, tira só essa
+ * quantidade; com preço de venda, lança a entrada de nuyen como "Venda: <item>".
+ * A troca só vale se a quantidade não mudou no meio do caminho.
+ */
+export async function removeInventoryItem(
+  id: string,
+  itemId: string,
+  input: { qty?: unknown; salePrice?: unknown } = {},
+): Promise<void> {
+  await getActive(id);
+  const it = await getItemOf(id, itemId);
+  const qty = input.qty === undefined ? it.qty : parseQty(input.qty);
+  if (qty > it.qty) throw new InputError(`Você só tem ${it.qty}.`);
+  const salePrice = parsePrice(input.salePrice);
+
+  const same = and(eq(inventory.id, itemId), eq(inventory.qty, it.qty));
+  const change =
+    qty === it.qty
+      ? db().delete(inventory).where(same).returning({ id: inventory.id })
+      : db().update(inventory).set({ qty: it.qty - qty }).where(same).returning({ id: inventory.id });
+  if (salePrice > 0) {
+    const sale = db()
+      .insert(ledger)
+      .values({ characterId: id, kind: 'nuyen', amount: salePrice, reason: ledgerReason('Venda', it.name, qty) });
+    const [changed] = await db().batch([change, sale]);
+    if (!changed.length) throw new InputError('O item mudou enquanto isso. Confira e tente de novo.');
+  } else {
+    const changed = await change;
+    if (!changed.length) throw new InputError('O item mudou enquanto isso. Confira e tente de novo.');
+  }
 }

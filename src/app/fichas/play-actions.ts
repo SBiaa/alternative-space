@@ -2,8 +2,10 @@
 
 import { refresh } from 'next/cache';
 import { InputError } from '@/lib/fichas/sr5/play';
+import type { NewItemInput } from '@/lib/fichas/sr5/inventory';
 import { NotFoundError } from '@/lib/fichas/server/characters';
 import {
+  addInventoryItem,
   addLedgerEntry,
   completeGoal,
   createGoal,
@@ -13,9 +15,11 @@ import {
   deleteMission,
   finalizeCharacter,
   moveGoal,
+  removeInventoryItem,
   setDamage,
   setPlayNotes,
   updateGoal,
+  updateInventoryItem,
   updateMission,
 } from '@/lib/fichas/server/play';
 
@@ -55,6 +59,26 @@ export async function setDamageAction(id: string, physical: unknown, stun: unkno
 
 export async function setPlayNotesAction(id: string, notes: unknown) {
   return run(() => setPlayNotes(id, notes));
+}
+
+export async function addInventoryItemAction(id: string, input: NewItemInput) {
+  return run(() => addInventoryItem(id, input));
+}
+
+export async function updateInventoryItemAction(
+  id: string,
+  itemId: string,
+  input: { qty?: unknown; equipped?: unknown; notes?: unknown },
+) {
+  return run(() => updateInventoryItem(id, itemId, input));
+}
+
+export async function removeInventoryItemAction(
+  id: string,
+  itemId: string,
+  input: { qty?: unknown; salePrice?: unknown } = {},
+) {
+  return run(() => removeInventoryItem(id, itemId, input));
 }
 
 export async function createMissionAction(id: string, input: { title: unknown; playedOn?: unknown }) {
