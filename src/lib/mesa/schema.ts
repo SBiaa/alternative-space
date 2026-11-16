@@ -2,7 +2,7 @@
  * Tabelas da Mesa do Mestre (Neon Postgres, via Drizzle só para as consultas).
  * O SQL que cria as tabelas fica em db/mesa.sql: mudou algo aqui, mude lá também.
  */
-import { index, integer, pgTable, primaryKey, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { boolean, index, integer, pgTable, primaryKey, smallint, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { characters } from '@/lib/fichas/db/schema';
 import type { CorCampanha, RespostaPresenca, SistemaCampanha, StatusCampanha, StatusSessao } from './regras';
 
@@ -18,6 +18,16 @@ export const campanhas = pgTable(
     /** Texto livre: "sábados 19h, quinzenal". */
     rotina: text('rotina').notNull().default(''),
     cor: text('cor').$type<CorCampanha>().notNull().default('laranja'),
+    /** Rotina das sessões (db/mesa-agenda.sql). recDia: 0 = segunda ... 6 = domingo; nulo = sem rotina. */
+    recDia: smallint('rec_dia'),
+    /** HH:MM no horário de Brasília. */
+    recHora: text('rec_hora'),
+    /** 1 = toda semana, 2 = de quinze em quinze dias. */
+    recIntervalo: smallint('rec_intervalo').$type<1 | 2>().notNull().default(1),
+    recDuracaoMin: integer('rec_duracao_min').notNull().default(240),
+    recLocal: text('rec_local').notNull().default(''),
+    /** Início da última sessão que a rotina criou. A rotina só cria datas depois dela. */
+    recGeradaAte: timestamp('rec_gerada_ate', { withTimezone: true }),
     /** Código do link de convite. Trocar o código invalida o link antigo. */
     inviteCode: text('invite_code').notNull().unique(),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
@@ -65,6 +75,8 @@ export const campanhaSessoes = pgTable(
     local: text('local').notNull().default(''),
     pauta: text('pauta').notNull().default(''),
     status: text('status').$type<StatusSessao>().notNull().default('marcada'),
+    /** Criada pela rotina da campanha (e não marcada à mão). */
+    daRotina: boolean('da_rotina').notNull().default(false),
     /** Para todos da mesa. */
     resumo: text('resumo').notNull().default(''),
     recompensas: text('recompensas').notNull().default(''),
@@ -107,3 +119,10 @@ export const campanhaGanchos = pgTable(
   },
   (t) => [index('campanha_ganchos_campanha_idx').on(t.campanhaId, t.createdAt)],
 );
+
+/** Link assinável do calendário de cada pessoa. Token novo invalida o antigo. */
+export const mesaAgendaTokens = pgTable('mesa_agenda_tokens', {
+  userId: text('user_id').primaryKey(),
+  token: text('token').notNull().unique(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});

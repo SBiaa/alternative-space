@@ -2,10 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { connection } from 'next/server';
 import { Suspense } from 'react';
+import { AssinarAgenda } from '@/components/mesa/AgendaForms';
 import { Bolinha, Carregando, Pagina } from '@/components/mesa/MesaUI';
+import { Card } from '@/components/fichas/ui';
 import { cx } from '@/lib/fichas/cx';
 import { DIAS_SEMANA, hoje, MESES } from '@/lib/diario/calendario';
 import { chaveMes, CORES, dataLocal, gradeDoMes, horaLocal, lerMes, mesVizinho, quando } from '@/lib/mesa/regras';
+import { tokenDaAgenda } from '@/lib/mesa/server/agenda';
 import { sessoesDoMes, type SessaoNoCalendario } from '@/lib/mesa/server/sessoes';
 
 export const metadata: Metadata = { title: 'Calendário de sessões' };
@@ -25,7 +28,7 @@ async function Calendario({ searchParams }: { searchParams: PageProps<'/mesa/cal
   await connection();
   const hojeIso = hoje();
   const { ano, mes } = lerMes(sp.mes, hojeIso);
-  const sessoes = await sessoesDoMes(ano, mes);
+  const [sessoes, token] = await Promise.all([sessoesDoMes(ano, mes), tokenDaAgenda()]);
   const grade = gradeDoMes(ano, mes);
   const porDia = new Map<string, SessaoNoCalendario[]>();
   for (const s of sessoes) {
@@ -130,6 +133,10 @@ async function Calendario({ searchParams }: { searchParams: PageProps<'/mesa/cal
           </ul>
         )}
       </section>
+
+      <Card title="Levar para a sua agenda">
+        <AssinarAgenda token={token} />
+      </Card>
     </div>
   );
 }

@@ -25,7 +25,7 @@ import {
 const noop = () => () => {};
 const textareaClass = cx(inputClass, 'min-h-24 resize-y leading-relaxed');
 
-function useMesa() {
+export function useMesa() {
   const [pending, start] = useTransition();
   const [erro, setErro] = useState<string>();
   const [mensagem, setMensagem] = useState<string>();
@@ -48,7 +48,7 @@ function useMesa() {
   return { pending, erro, mensagem, run };
 }
 
-function Aviso({ erro, mensagem }: { erro?: string; mensagem?: string }) {
+export function Aviso({ erro, mensagem }: { erro?: string; mensagem?: string }) {
   if (erro) return <p className="text-sm text-danger">{erro}</p>;
   if (mensagem) return <p className="text-sm text-accent">{mensagem}</p>;
   return null;
@@ -66,7 +66,16 @@ export interface CampanhaInicial {
   cor: CorCampanha;
 }
 
-export function CampanhaForm({ campanhaId, inicial }: { campanhaId?: string; inicial?: CampanhaInicial }) {
+export function CampanhaForm({
+  campanhaId,
+  inicial,
+  rotinaGerada,
+}: {
+  campanhaId?: string;
+  inicial?: CampanhaInicial;
+  /** A rotina das sessões está ligada: o texto "quando vocês jogam" vem dela. */
+  rotinaGerada?: boolean;
+}) {
   const [c, setC] = useState<CampanhaInicial>(
     inicial ?? { nome: '', sistema: 'sr5', sinopse: '', status: 'planejando', rotina: '', cor: 'laranja' },
   );
@@ -112,12 +121,16 @@ export function CampanhaForm({ campanhaId, inicial }: { campanhaId?: string; ini
             ))}
           </select>
         </Field>
-        <Field label="Quando vocês jogam" hint="Texto livre, aparece no card da campanha.">
+        <Field
+          label="Quando vocês jogam"
+          hint={rotinaGerada ? 'Vem da rotina das sessões, logo abaixo.' : 'Texto livre, aparece no card da campanha.'}
+        >
           <input
             className={inputClass}
             maxLength={LIMITES.rotina}
             placeholder="Sábados 19h, a cada 15 dias"
             value={c.rotina}
+            disabled={rotinaGerada}
             onChange={(e) => set('rotina', e.target.value)}
           />
         </Field>

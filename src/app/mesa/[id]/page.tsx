@@ -15,6 +15,8 @@ import {
   SairDaCampanha,
   SessaoForm,
 } from '@/components/mesa/MesaForms';
+import { RotinaForm } from '@/components/mesa/AgendaForms';
+import { Lembretes } from '@/components/mesa/Lembretes';
 import { Bolinha, Carregando, Indicadores, Pagina, RespostaChip, StatusCampanhaChip, Texto, Vazio } from '@/components/mesa/MesaUI';
 import { Card } from '@/components/fichas/ui';
 import { cx } from '@/lib/fichas/cx';
@@ -57,6 +59,7 @@ async function CampanhaView({
   const ehMestre = c.papel === 'mestre';
   const abas = (Object.keys(ABAS) as Aba[]).filter((a) => a !== 'ajustes' || ehMestre);
   const aba: Aba = abas.includes(sp.aba as Aba) ? (sp.aba as Aba) : 'jogadores';
+  const agora = new Date(); // depois de getCampanha, que já leu a sessão do usuário
 
   return (
     <div className="flex flex-col gap-6">
@@ -95,6 +98,23 @@ async function CampanhaView({
           </Link>
         ))}
       </nav>
+
+      <Lembretes
+        agora={agora}
+        itens={c.proximas
+          .filter((s) => s.iniciaEm.getTime() - agora.getTime() <= 36 * 3_600_000)
+          .map((s) => ({
+            id: s.id,
+            campanhaId: c.id,
+            campanha: c.nome,
+            cor: c.cor,
+            titulo: s.titulo,
+            iniciaEm: s.iniciaEm,
+            local: s.local,
+            souMestre: ehMestre,
+            minhaResposta: s.minhaResposta,
+          }))}
+      />
 
       {aba === 'jogadores' && <AbaJogadores c={c} />}
       {aba === 'sessoes' && <AbaSessoes c={c} />}
@@ -330,8 +350,12 @@ function AbaAjustes({ c }: { c: Campanha }) {
       <Card title="Campanha">
         <CampanhaForm
           campanhaId={c.id}
+          rotinaGerada={!!c.rotinaConfig}
           inicial={{ nome: c.nome, sistema: c.sistema, sinopse: c.sinopse, status: c.status, rotina: c.rotina, cor: c.cor }}
         />
+      </Card>
+      <Card title="Rotina das sessões">
+        <RotinaForm campanhaId={c.id} inicial={c.rotinaConfig} />
       </Card>
       <Card title="Apagar">
         <ApagarCampanha campanhaId={c.id} nome={c.nome} />

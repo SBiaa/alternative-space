@@ -1,38 +1,10 @@
 'use server';
 
-import { refresh } from 'next/cache';
-import { redirect } from 'next/navigation';
-import { CampanhaNaoEncontrada, InputError } from '@/lib/mesa/server/acesso';
 import * as campanhas from '@/lib/mesa/server/campanhas';
 import * as sessoes from '@/lib/mesa/server/sessoes';
+import { eIr, run } from './rodar';
 
-export type MesaResultado = { ok: true; mensagem?: string } | { ok: false; erro: string };
-
-const esperado = (e: unknown) => e instanceof InputError || e instanceof CampanhaNaoEncontrada;
-
-async function run(fn: () => Promise<unknown>, mensagem?: (r: unknown) => string): Promise<MesaResultado> {
-  try {
-    const r = await fn();
-    refresh();
-    return { ok: true, mensagem: mensagem?.(r) };
-  } catch (e) {
-    if (esperado(e)) return { ok: false, erro: (e as Error).message };
-    console.error('Falha na Mesa do Mestre', e);
-    return { ok: false, erro: 'Não deu para salvar agora. Tente de novo.' };
-  }
-}
-
-/** Roda e, se der certo, vai para `destino(resultado)`. Erros de validação voltam como mensagem. */
-async function eIr<T>(fn: () => Promise<T>, destino: (r: T) => string): Promise<MesaResultado> {
-  let r: T;
-  try {
-    r = await fn();
-  } catch (e) {
-    if (esperado(e)) return { ok: false, erro: (e as Error).message };
-    throw e;
-  }
-  redirect(destino(r));
-}
+export type { MesaResultado } from './rodar';
 
 // Campanha
 export const criarCampanhaAction = async (dados: Record<string, unknown>) =>

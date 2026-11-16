@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import { CopiarLembrete } from '@/components/mesa/AgendaForms';
 import { ApagarSessao, DiarioForm, EditarSessao, Ganchos, Presenca } from '@/components/mesa/MesaForms';
 import { Bolinha, Carregando, Pagina, RespostaChip, Texto } from '@/components/mesa/MesaUI';
 import { Card } from '@/components/fichas/ui';
@@ -121,6 +122,32 @@ async function SessaoView({ params }: { params: Params }) {
                 ))}
               </ul>
             )}
+          </Card>
+          <Card title="Agenda">
+            <div className="flex flex-col gap-3">
+              <a
+                href={`/mesa/${campanha.id}/sessoes/${s.id}/agenda.ics`}
+                download
+                className="inline-flex items-center self-start rounded-md border border-line-strong px-3 py-1.5 text-sm text-muted no-underline transition hover:border-accent/60 hover:text-ink"
+              >
+                Adicionar à minha agenda (.ics)
+              </a>
+              {ehMestre && futura && (
+                <div>
+                  <p className="mb-2 text-xs text-faint">Para avisar o grupo:</p>
+                  <CopiarLembrete
+                    campanhaId={campanha.id}
+                    sessaoId={s.id}
+                    campanha={campanha.nome}
+                    titulo={s.titulo}
+                    iniciaEm={s.iniciaEm.toISOString()}
+                    local={s.local}
+                    pauta={s.pauta}
+                    presencas={d.presencas.map(({ nome, resposta }) => ({ nome, resposta }))}
+                  />
+                </div>
+              )}
+            </div>
           </Card>
           {ehMestre && (
             <Card title="Ganchos em aberto">

@@ -7,6 +7,7 @@ import { acharPorApelido } from '@/lib/role/dados';
 import { CODIGO, lerApelido, lerCampanha, podeVerFicha, sessaoVisivel, UUID, type Papel } from '../regras';
 import { campanhaConvites, campanhaGanchos, campanhaJogadores, campanhaPresencas, campanhas, campanhaSessoes } from '../schema';
 import { acesso, acessoDeMestre, CampanhaNaoEncontrada, InputError, novoCodigo, usuarioDaMesa } from './acesso';
+import { garantirRotinasDoUsuario, garantirSessoesDaRotina, rotinaDaCampanha } from './agenda';
 import { fichaCompleta, fichasParaCampanha, fichaValida, resumirFichas, type FichaResumo } from './fichas';
 
 // ---------------------------------------------------------------------------
@@ -28,6 +29,7 @@ export interface CampanhaResumo {
 /** Tudo o que aparece em /mesa: campanhas como mestre, como jogador e convites pendentes. */
 export async function listarMesa() {
   const userId = await usuarioDaMesa();
+  await garantirRotinasDoUsuario(userId); // a "próxima sessão" já considera as que a rotina cria
   const [rows, convites] = await Promise.all([
     db()
       .select({
@@ -87,6 +89,7 @@ export interface JogadorView {
 export async function getCampanha(campanhaId: string) {
   const { userId, campanha, papel } = await acesso(campanhaId);
   const ehMestre = papel === 'mestre';
+  await garantirSessoesDaRotina(campanha);
   const agora = new Date();
 
   const [jogadoresRows, convites, sessoes, ganchos, mestre] = await Promise.all([
@@ -150,6 +153,8 @@ export async function getCampanha(campanhaId: string) {
     sinopse: campanha.sinopse,
     status: campanha.status,
     rotina: campanha.rotina,
+    /** A rotina estruturada ("toda sexta às 20h"); null se a campanha não tem. */
+    rotinaConfig: rotinaDaCampanha(campanha),
     cor: campanha.cor,
     papel,
     mestre: mestre[0]?.nome ?? 'Tripulante',
@@ -233,7 +238,11 @@ export async function editarCampanha(campanhaId: string, raw: Record<string, unk
         ),
       );
   }
-  await db().update(campanhas).set(dados).where(eq(campanhas.id, campanhaId));
+  // Com rotina ligada, o texto "sextas, 20h" é gerado por ela e não se edita aqui.
+  await db()
+    .update(campanhas)
+    .set(campanha.recDia !== null ? { ...dados, rotina: campanha.rotina } : dados)
+    .where(eq(campanhas.id, campanhaId));
 }
 
 export async function apagarCampanha(campanhaId: string): Promise<void> {

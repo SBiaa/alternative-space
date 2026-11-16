@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
+import { Lembretes } from '@/components/mesa/Lembretes';
 import { EscolherFicha } from '@/components/mesa/MesaForms';
 import { Bolinha, Carregando, Pagina, StatusCampanhaChip, Vazio } from '@/components/mesa/MesaUI';
 import { Card } from '@/components/fichas/ui';
@@ -8,6 +9,7 @@ import { NOME_SISTEMA, quando } from '@/lib/mesa/regras';
 import { listarMesa, type CampanhaResumo } from '@/lib/mesa/server/campanhas';
 import { fichasParaCampanha } from '@/lib/mesa/server/fichas';
 import { usuarioDaMesa } from '@/lib/mesa/server/acesso';
+import { lembretesDeSessao } from '@/lib/mesa/server/agenda';
 
 export const metadata: Metadata = { title: 'Mesa do Mestre' };
 
@@ -27,11 +29,16 @@ export default function MesaPage() {
 }
 
 async function Mesa() {
-  const [{ comoMestre, comoJogador, convites }, userId] = await Promise.all([listarMesa(), usuarioDaMesa()]);
+  // A rotina das campanhas é posta em dia dentro de listarMesa, então os lembretes vêm depois.
+  const { comoMestre, comoJogador, convites } = await listarMesa();
+  const [userId, lembretes] = await Promise.all([usuarioDaMesa(), lembretesDeSessao()]);
+  const agora = new Date();
   const fichasDosConvites = await Promise.all(convites.map((c) => fichasParaCampanha(userId, c.sistema)));
 
   return (
     <div className="flex flex-col gap-8">
+      <Lembretes itens={lembretes} agora={agora} />
+
       {convites.length > 0 && (
         <section aria-label="Convites" className="flex flex-col gap-3">
           <h2 className="font-display text-xl font-semibold">Convites para você</h2>
