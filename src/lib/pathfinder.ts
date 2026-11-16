@@ -3,6 +3,7 @@
 // Dentro de um mesmo grupo de boosts (ancestralidade, antecedente, livres, aumento de nível) não dá pra repetir atributo.
 // Nos aumentos dos níveis 5/10/15/20, um atributo que já está em +4 ou mais só sobe +1 a cada dois aumentos.
 
+import { acharAparicao, aparicoesPorDia } from "./pathfinder-aparicoes";
 import { JOGO_VAZIO, normalizarJogo, type Jogo } from "./pathfinder-condicoes";
 import { CONJURACAO, MAX_FOCO, TRADICOES, circuloMaximo, vagasMagia, type Tradicao } from "./pathfinder-magia";
 import { acharArma, acharArmadura, acharEscudo, COMBATE_CLASSE, type Arma } from "./pathfinder-equip";
@@ -495,6 +496,9 @@ export type Ficha = {
   magias: Record<string, string>;
   // Magias de foco (texto livre). Cada uma dá 1 ponto de foco, até 3.
   foco: string[];
+  // Animista: ids das aparições sintonizadas e qual é a primária.
+  aparicoes: string[];
+  aparicaoPrimaria: string;
   // Idiomas além dos da ancestralidade (texto livre).
   idiomasExtras: string[];
   // Estado durante o jogo (PV atuais, condições, recursos gastos).
@@ -532,6 +536,8 @@ export const FICHA_VAZIA: Ficha = {
   tradicao: "",
   magias: {},
   foco: [],
+  aparicoes: [],
+  aparicaoPrimaria: "",
   idiomasExtras: [],
   jogo: JOGO_VAZIO,
 };
@@ -789,6 +795,11 @@ export function pendencias(f: Ficha): string[] {
     const conj = CONJURACAO[f.classe];
     if (conj?.tradicao === "escolha" && !f.tradicao) out.push("Escolha a tradição de magia.");
     const semMagia = vagasMagia(f).filter((v) => !f.magias[v.chave]?.trim()).length;
+    if (f.classe === "animista") {
+      const qtd = aparicoesPorDia(f.nivel);
+      if (f.aparicoes.length !== qtd) out.push(`Escolha ${qtd} aparições.`);
+      else if (!f.aparicoes.includes(f.aparicaoPrimaria)) out.push("Escolha a aparição primária.");
+    }
     if (semMagia) out.push(`${semMagia} magia${semMagia > 1 ? "s" : ""} em branco.`);
   }
   return out;
@@ -906,6 +917,8 @@ function normalizarObjeto(o: Record<string, unknown>): Ficha {
     ),
     idiomasExtras: (Array.isArray(o.idiomasExtras) ? o.idiomasExtras : []).filter((x): x is string => typeof x === "string" && !!x.trim()).slice(0, 20).map((x) => x.slice(0, 40)),
     jogo: normalizarJogo(o.jogo),
+    aparicoes: [...new Set((Array.isArray(o.aparicoes) ? o.aparicoes : []).filter((x): x is string => typeof x === "string" && !!acharAparicao(x)))].slice(0, 4),
+    aparicaoPrimaria: typeof o.aparicaoPrimaria === "string" && acharAparicao(o.aparicaoPrimaria) ? o.aparicaoPrimaria : "",
     foco: (Array.isArray(o.foco) ? o.foco : []).filter((x): x is string => typeof x === "string").slice(0, 10).map((x) => x.slice(0, 80)),
   });
 }
