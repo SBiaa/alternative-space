@@ -47,6 +47,7 @@ import { ARMADURAS, ARMAS, COMBATE_CLASSE, ESCUDOS, ITENS_COMUNS, NOME_CAT_ARMA,
 import { CONJURACAO, NOME_TRADICAO, TRADICOES, sugestoesMagia, type VagaMagia } from "@/lib/pathfinder-magia";
 import { CONDICOES, MAX_HEROI, type Condicao } from "@/lib/pathfinder-condicoes";
 import { descansar, emJogo } from "@/lib/pathfinder-jogo";
+import { APARICOES, acharAparicao, aparicoesPorDia } from "@/lib/pathfinder-aparicoes";
 import { sugestoesTalento } from "@/lib/pathfinder-talentos";
 
 const CHAVE = "ficha-pathfinder:atual";
@@ -845,6 +846,60 @@ function PassoEquipamento({ ficha, onChange }: { ficha: Ficha; onChange: (p: Par
 
 const nomeCirculo = (r: number) => (r === 0 ? "Truques" : `${r}º círculo`);
 
+function EscolhaAparicoes({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<Ficha>) => void }) {
+  const qtd = aparicoesPorDia(ficha.nivel);
+  const cheio = ficha.aparicoes.length >= qtd;
+  const alternar = (id: string, marcar: boolean) => {
+    const aparicoes = marcar ? [...ficha.aparicoes, id] : ficha.aparicoes.filter((x) => x !== id);
+    onChange({ aparicoes, aparicaoPrimaria: aparicoes.includes(ficha.aparicaoPrimaria) ? ficha.aparicaoPrimaria : aparicoes[0] ?? "" });
+  };
+  return (
+    <section className="flex flex-col gap-3 rounded-xl border-2 border-noite bg-creme-claro p-4">
+      <h3 className="m-0 font-titulo text-lg font-bold text-noite">
+        Aparições{" "}
+        <span className="font-ficha text-sm font-normal text-neutro">
+          ({ficha.aparicoes.length} de {qtd})
+        </span>
+      </h3>
+      <p className="m-0 text-sm text-tinta">
+        Escolha {qtd} aparições pra se sintonizar (3 a partir do nível 7, 4 a partir do 15). A primária dá a magia de receptáculo: anote ela em Magias de foco. Dá pra trocar a primária todo dia, no passo Em jogo.
+      </p>
+      <ul className="m-0 grid list-none gap-2 p-0 sm:grid-cols-2">
+        {APARICOES.map((a) => {
+          const marcada = ficha.aparicoes.includes(a.id);
+          return (
+            <li key={a.id}>
+              <label className={`flex items-start gap-2 rounded-lg border-2 p-2 ${marcada ? "border-laranja bg-laranja-claro" : "border-noite/20 bg-creme"} ${!marcada && cheio ? "opacity-50" : ""}`}>
+                <input type="checkbox" checked={marcada} disabled={!marcada && cheio} onChange={(e) => alternar(a.id, e.target.checked)} className="mt-1 h-5 w-5" />
+                <span className="text-sm text-noite">
+                  <b>{a.nome}</b> <span className="text-tinta">{a.texto}</span>
+                </span>
+              </label>
+            </li>
+          );
+        })}
+      </ul>
+      {ficha.aparicoes.length > 0 && <AparicaoPrimaria ficha={ficha} onChange={onChange} />}
+    </section>
+  );
+}
+
+function AparicaoPrimaria({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<Ficha>) => void }) {
+  return (
+    <label className="flex max-w-sm flex-col gap-1">
+      <span className="font-ficha text-[12px] text-azul">Aparição primária</span>
+      <select value={ficha.aparicaoPrimaria} onChange={(e) => onChange({ aparicaoPrimaria: e.target.value })} className={campo}>
+        <option value="">Escolha…</option>
+        {ficha.aparicoes.map((id) => (
+          <option key={id} value={id}>
+            {acharAparicao(id)?.nome}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
 function PassoMagias({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<Ficha>) => void }) {
   const m = dadosMagia(ficha);
   const conj = CONJURACAO[ficha.classe];
@@ -914,6 +969,7 @@ function PassoMagias({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<
           })}
         </>
       )}
+      {ficha.classe === "animista" && <EscolhaAparicoes ficha={ficha} onChange={onChange} />}
       <section className={caixa}>
         <h3 className={titulo}>
           Magias de foco <span className="font-ficha text-sm font-normal text-neutro">({pontosFoco(ficha)} ponto{pontosFoco(ficha) === 1 ? "" : "s"} de foco)</span>
@@ -1035,6 +1091,14 @@ function PassoJogo({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<Fi
         <Caixa rotulo="Vontade" valor={sinal(e.vontade)} />
         {e.magia && <Caixa rotulo="CD de magia" valor={e.magia.cd} />}
       </div>
+
+      {ficha.classe === "animista" && ficha.aparicoes.length > 0 && (
+        <section className={caixa}>
+          <h3 className={titulo}>Aparições de hoje</h3>
+          <p className="m-0 text-sm text-tinta">{ficha.aparicoes.map((id) => acharAparicao(id)?.nome).join(" · ")}</p>
+          <AparicaoPrimaria ficha={ficha} onChange={onChange} />
+        </section>
+      )}
 
       <section className={caixa}>
         <h3 className={titulo}>Condições</h3>
@@ -1283,6 +1347,16 @@ function FolhaFinal({ ficha }: { ficha: Ficha }) {
                 </li>
               );
             })}
+            {ficha.classe === "animista" && ficha.aparicoes.length > 0 && (
+              <li className="flex gap-2 border-b border-noite/15 py-1">
+                <span className="w-20 shrink-0 font-ficha text-sm text-neutro">Aparições</span>
+                <span>
+                  {ficha.aparicoes
+                    .map((id) => `${acharAparicao(id)?.nome}${id === ficha.aparicaoPrimaria ? " (primária)" : ""}`)
+                    .join(", ")}
+                </span>
+              </li>
+            )}
             {c.pontosFoco > 0 && (
               <li className="flex gap-2 border-b border-noite/15 py-1">
                 <span className="w-20 shrink-0 font-ficha text-sm text-neutro">Foco ({c.pontosFoco})</span>
