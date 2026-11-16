@@ -1,0 +1,73 @@
+{
+  "slug": "areal-de-sal",
+  "nome": "Areal de Sal",
+  "mar": "corrente",
+  "lado": "manso",
+  "tipo": "historia",
+  "lat": -3,
+  "lng": 55,
+  "bioma": "Deserto de sal e oásis secos",
+  "clima": "Seco e escaldante de dia, gelado à noite",
+  "regraEstranha": "A água aqui vale mais que ouro, e a moeda do reino é um frasco selado de água do mar dessalgada.",
+  "resumo": "Um reino no deserto que está ficando sem água. O povo e o palácio querem a mesma coisa, mas não do mesmo jeito.",
+  "servicos": { "mercado": true, "estaleiro": false },
+  "recompensaMax": { "ouro": 300, "recompensa": 5000 },
+  "historia": {
+    "inicio": "chegada",
+    "cenas": {
+      "chegada": {
+        "titulo": "O reino seco",
+        "texto": "O porto de Areal tem cais de sal e filas de gente com baldes vazios. No alto, o palácio de pedra branca ainda tem jardim. Uma criança puxa a sua manga: \"A rainha guarda a água do poço grande. A gente só tem o que chove.\"",
+        "opcoes": [
+          { "id": "povo", "rotulo": "Ir falar com o povo na fila", "efeitos": { "recompensa": 200 }, "proxima": "povo" },
+          { "id": "palacio", "rotulo": "Pedir audiência com a rainha", "proxima": "palacio" }
+        ]
+      },
+      "povo": {
+        "titulo": "A fila dos baldes",
+        "texto": "Os moradores contam que o poço grande está secando de verdade, e que o palácio fecha as comportas pra salvar o jardim, onde fica a única nascente que ainda sobe.",
+        "opcoes": [
+          { "id": "organizar", "rotulo": "Ajudar a organizar uma partilha justa", "efeitos": { "recompensa": 300 }, "proxima": "palacio" },
+          { "id": "invadir", "rotulo": "Propor invadir o palácio à noite", "efeitos": { "recompensa": 200 }, "proxima": "invasao" }
+        ]
+      },
+      "palacio": {
+        "titulo": "O jardim da rainha",
+        "texto": "A rainha Safira te recebe sob uma sombra de palmeiras mirradas. Ela admite, sem teatro: a nascente do jardim é a última. Se ela abrir as comportas, o jardim morre, e com ele a memória de toda a família. Mas ela ouve.",
+        "opcoes": [
+          { "id": "pedir", "rotulo": "Pedir que abra as comportas e proponha uma cota para todos", "efeitos": { "recompensa": 500 }, "proxima": "decisao" },
+          { "id": "dessalgar", "rotulo": "Oferecer um jeito de dessalgar a água do mar pro jardim", "efeitos": { "mantimentos": -10, "recompensa": 400 }, "proxima": "decisao" }
+        ]
+      },
+      "invasao": {
+        "titulo": "Noite sem lua",
+        "texto": "O plano é simples demais: os guardas conhecem cada beco. Antes de qualquer um entrar, a rainha acende uma tocha e fica esperando no portão. \"Se querem água, abram a boca e peçam.\"",
+        "opcoes": [
+          { "id": "recuar", "rotulo": "Recuar e pedir desculpas, mediando a conversa", "efeitos": { "recompensa": 250 }, "proxima": "palacio" }
+        ]
+      },
+      "decisao": {
+        "titulo": "As comportas",
+        "texto": "A rainha respira fundo. O povo e a guarda esperam em volta, em silêncio. Cabe a você dizer em voz alta o que vai mudar no reino hoje.",
+        "opcoes": [
+          { "id": "povo-primeiro", "rotulo": "Água primeiro pro povo, jardim com o que sobrar", "efeitos": { "recompensa": 600, "ouro": 100 }, "proxima": "fim-povo" },
+          { "id": "dividir", "rotulo": "Dividir meio a meio entre povo e jardim", "efeitos": { "recompensa": 500, "ouro": 150 }, "proxima": "fim-palacio" }
+        ]
+      },
+      "fim-povo": {
+        "titulo": "Chuva de balde cheio",
+        "texto": "As comportas se abrem e uma água fria corre pelas ruas. O povo canta. A rainha, de olhos molhados, te entrega o frasco de água mais velho do reino. \"Só abra no dia em que você achar que não há mais saída.\"",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 100, "recompensa": 1500, "item": "frasco-do-reino", "aliado": "guia-do-deserto", "agulha": true }
+      },
+      "fim-palacio": {
+        "titulo": "Meio a meio",
+        "texto": "O jardim fica menor, o povo bebe, e ninguém sai satisfeito de todo, mas ninguém sai com sede. A rainha te paga em frascos e promete mandar uma guia pro seu barco.",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 100, "recompensa": 1300, "item": "frasco-do-reino", "agulha": true }
+      }
+    }
+  }
+}

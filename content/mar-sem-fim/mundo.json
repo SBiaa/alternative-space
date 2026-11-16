@@ -1,0 +1,165 @@
+{
+  "nome": "Mar Sem Fim",
+  "planeta": {
+    "corOceano": "#0b2340",
+    "corFundo": "#01121e",
+    "corAtmosfera": "#4f7fa8",
+    "corIlha": "#f6f0d6",
+    "corIlhaPonto": "#f2a66e",
+    "texturaLargura": 1024,
+    "texturaAltura": 512
+  },
+  "espinha": {
+    "nome": "A Espinha",
+    "descricao": "Um continente estreito e muito alto, de rocha avermelhada, que dá a volta no planeta passando pelos dois polos.",
+    "meridianos": [0, 180],
+    "larguraGraus": 4,
+    "cor": "#ab392f",
+    "corRelevo": "#d06a52"
+  },
+  "corrente": {
+    "nome": "A Corrente Anelar",
+    "descricao": "Uma rota larga que dá a volta no planeta pela linha do equador e cruza a Espinha em ângulo reto.",
+    "latMax": 8,
+    "cor": "#2f78a8",
+    "corBrilho": "#8fc4e0"
+  },
+  "parados": {
+    "nome": "Os Mares Parados",
+    "descricao": "Duas faixas sem vento e sem corrente, uma de cada lado da Corrente Anelar, cheias de criaturas gigantes.",
+    "latMax": 20,
+    "cor": "#12395a"
+  },
+  "mares": [
+    {
+      "id": "boreal",
+      "nome": "Mar Boreal",
+      "icone": "floco",
+      "cor": "#5aa0c8",
+      "hemisferio": "norte",
+      "lado": "oeste",
+      "ilhaOrigem": "pedra-salgada",
+      "bocaDoCanal": "boca-boreal",
+      "descricao": "Frio, pesqueiro, de vilas de pedra e neblina.",
+      "bonus": { "texto": "Despensa econômica: os mantimentos duram mais.", "consumo": 0.9 }
+    },
+    {
+      "id": "austral",
+      "nome": "Mar Austral",
+      "icone": "coral",
+      "cor": "#e0a15a",
+      "hemisferio": "sul",
+      "lado": "leste",
+      "ilhaOrigem": "recife-das-lanternas",
+      "bocaDoCanal": "boca-austral",
+      "descricao": "Quente, de ilhas de coral, mercados e festas.",
+      "bonus": { "texto": "Bolso cheio de feira: começa com mais ouro.", "ouroInicial": 50 }
+    },
+    {
+      "id": "nascente",
+      "nome": "Mar do Nascente",
+      "icone": "farol",
+      "cor": "#8cc9a0",
+      "hemisferio": "norte",
+      "lado": "leste",
+      "ilhaOrigem": "farol-velho",
+      "bocaDoCanal": "boca-nascente",
+      "descricao": "Arquipélagos pequenos, faróis e gente de estaleiro.",
+      "bonus": { "texto": "Mão de estaleiro: viagens um pouco mais rápidas.", "tempo": 0.95 }
+    },
+    {
+      "id": "poente",
+      "nome": "Mar do Poente",
+      "icone": "vento",
+      "cor": "#d99a8c",
+      "hemisferio": "sul",
+      "lado": "oeste",
+      "ilhaOrigem": "ponta-do-vento",
+      "bocaDoCanal": "boca-poente",
+      "descricao": "Ventos fortes, ilhas de rocha e piratas veteranos.",
+      "bonus": { "texto": "Casco curtido: os acontecimentos machucam menos o barco.", "dano": 0.85 }
+    }
+  ],
+  "monte": "monte-das-quatro-aguas",
+  "nos": [
+    { "id": "boca-boreal", "nome": "Boca do Canal Boreal", "lat": 28, "lng": -6 },
+    { "id": "boca-austral", "nome": "Boca do Canal Austral", "lat": -28, "lng": 6 },
+    { "id": "boca-nascente", "nome": "Boca do Canal do Nascente", "lat": 28, "lng": 6 },
+    { "id": "boca-poente", "nome": "Boca do Canal do Poente", "lat": -28, "lng": -6 }
+  ],
+  "arestas": [
+    { "de": "pedra-salgada", "para": "boca-boreal", "tipo": "mar", "mar": "boreal" },
+    { "de": "recife-das-lanternas", "para": "boca-austral", "tipo": "mar", "mar": "austral" },
+    { "de": "farol-velho", "para": "boca-nascente", "tipo": "mar", "mar": "nascente" },
+    { "de": "ponta-do-vento", "para": "boca-poente", "tipo": "mar", "mar": "poente" },
+    { "de": "boca-boreal", "para": "monte-das-quatro-aguas", "tipo": "canal" },
+    { "de": "boca-austral", "para": "monte-das-quatro-aguas", "tipo": "canal" },
+    { "de": "boca-nascente", "para": "monte-das-quatro-aguas", "tipo": "canal" },
+    { "de": "boca-poente", "para": "monte-das-quatro-aguas", "tipo": "canal" },
+    { "de": "monte-das-quatro-aguas", "para": "ilha-do-relogio-quebrado", "tipo": "corrente" },
+    { "de": "ilha-do-relogio-quebrado", "para": "areal-de-sal", "tipo": "corrente" },
+    { "de": "areal-de-sal", "para": "ilha-do-inverno-parado", "tipo": "corrente" },
+    { "de": "ilha-do-inverno-parado", "para": "vela-alta", "tipo": "corrente" },
+    { "de": "vela-alta", "para": "arquipelago-nuvem", "tipo": "corrente" }
+  ],
+  "agulha": {
+    "nome": "Agulha de Maré",
+    "descricao": "Na Corrente Anelar a bússola comum não funciona. A Agulha gruda na ilha onde o barco está e só aponta a próxima depois de carregar.",
+    "ordem": [
+      "monte-das-quatro-aguas",
+      "ilha-do-relogio-quebrado",
+      "areal-de-sal",
+      "ilha-do-inverno-parado",
+      "vela-alta",
+      "arquipelago-nuvem"
+    ],
+    "cargaSegundos": 1800
+  },
+  "emBreve": [
+    {
+      "id": "fenda",
+      "nome": "Passagem da Fenda",
+      "lat": 0,
+      "lng": 180,
+      "resumo": "Uma fenda funda por baixo da Espinha, ligação entre o Lado Manso e o Lado Bravo.",
+      "requisito": "Exige o casco de bolha, que ainda não existe."
+    },
+    {
+      "id": "lado-bravo",
+      "nome": "Lado Bravo",
+      "lat": 0,
+      "lng": -90,
+      "resumo": "A segunda metade da Corrente Anelar, onde as regras do mar ficam extremas.",
+      "requisito": "Só se chega pela Passagem da Fenda."
+    }
+  ],
+  "navegacao": {
+    "leguasPorGrau": 12,
+    "minutosPorLegua": 0.12,
+    "ventoMin": 0.9,
+    "ventoMax": 1.15,
+    "consumoPorMinuto": 0.35,
+    "fatorSemMantimentos": 1.5,
+    "penalidadeFome": 1.5,
+    "minutosPorEvento": 40,
+    "eventosMax": 3,
+    "raioIsentoMonteGraus": 7,
+    "lentidaoCascoMax": 0.25
+  },
+  "barco": {
+    "cascoBase": 100,
+    "mantimentosBase": 100,
+    "ouroInicial": 100,
+    "cascoInicialFracao": 1,
+    "mantimentosInicialFracao": 0.7,
+    "custoReparoPorPonto": 2,
+    "custoMantimentoPorPonto": 1,
+    "velocidadeBase": 1
+  },
+  "limiteAcoes": { "max": 40, "janelaSeg": 60 },
+  "economia": {
+    "ouroMax": 100000000,
+    "recompensaMax": 10000000000,
+    "eventoRecompensaMax": 250
+  }
+}

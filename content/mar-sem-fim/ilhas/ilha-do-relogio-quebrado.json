@@ -1,0 +1,58 @@
+{
+  "slug": "ilha-do-relogio-quebrado",
+  "nome": "Ilha do Relógio Quebrado",
+  "mar": "corrente",
+  "lado": "manso",
+  "tipo": "historia",
+  "lat": 2,
+  "lng": 28,
+  "bioma": "Planície de capim e torres de relógio",
+  "clima": "Parado, com sol que não muda de lugar",
+  "regraEstranha": "O tempo na ilha anda mais devagar que no mar. Quem fica demais perde dias lá fora.",
+  "resumo": "Torres de relógio paradas e um povo que nunca tem pressa. Cada hora aqui custa uma tarde no mar.",
+  "servicos": { "mercado": false, "estaleiro": false },
+  "recompensaMax": { "ouro": 150, "recompensa": 2500 },
+  "historia": {
+    "inicio": "chegada",
+    "cenas": {
+      "chegada": {
+        "titulo": "A praça das torres",
+        "texto": "Todas as torres marcam horas diferentes, e todos os moradores parecem felizes com isso. Uma relojoeira de olhos cansados te alcança. \"Seu mantimento já está acabando lá fora enquanto você pisa aqui. Mas eu preciso de ajuda com o relógio grande.\"",
+        "opcoes": [
+          { "id": "ajudar", "rotulo": "Ajudar com o relógio grande", "efeitos": { "recompensa": 150 }, "proxima": "relogio" },
+          { "id": "bem-vindos", "rotulo": "Aceitar o convite dela pra um chá antes", "efeitos": { "mantimentos": -8 }, "proxima": "cha" }
+        ]
+      },
+      "cha": {
+        "titulo": "Um chá que dura uma tarde",
+        "texto": "Entre xícaras sem fundo, a relojoeira conta que o relógio grande parou no dia em que o filho dela partiu pro mar. Desde então a ilha anda devagar de saudade.",
+        "opcoes": [
+          { "id": "ouvir", "rotulo": "Ficar mais um pouco e ouvir tudo", "efeitos": { "mantimentos": -8, "recompensa": 200 }, "proxima": "relogio" },
+          { "id": "agir", "rotulo": "Dizer que vai consertar o relógio agora", "proxima": "relogio" }
+        ]
+      },
+      "relogio": {
+        "titulo": "O relógio grande",
+        "texto": "O mecanismo está emperrado por uma engrenagem torta, mas há uma segunda, de ouro, escondida atrás da caixa. Trocar resolve rápido. Endireitar leva horas, ou dias, pelas contas daqui.",
+        "opcoes": [
+          { "id": "trocar", "rotulo": "Trocar pela engrenagem de ouro", "efeitos": { "ouro": 60, "recompensa": 250 }, "proxima": "fim-rapido" },
+          { "id": "endireitar", "rotulo": "Endireitar a velha, peça por peça", "efeitos": { "mantimentos": -12, "recompensa": 700 }, "proxima": "fim-lento" }
+        ]
+      },
+      "fim-rapido": {
+        "titulo": "Hora marcada",
+        "texto": "O relógio grande bate uma hora de verdade pela primeira vez em anos. A ilha inteira suspira. A relojoeira te entrega um relógio de bolso sem ponteiros. \"Ele só marca a hora em que você precisa partir.\"",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 50, "recompensa": 400, "item": "relogio-sem-ponteiros", "agulha": true }
+      },
+      "fim-lento": {
+        "titulo": "Hora certa",
+        "texto": "Quando termina, é de manhã de novo, ou de tarde, ou de ontem. O relógio grande bate. Lá do porto, uma voz de marinheiro responde: o filho da relojoeira, que chegou justo agora. Ela te dá o relógio de bolso sem ponteiros e também um pedaço do bolo.",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 40, "recompensa": 700, "item": "relogio-sem-ponteiros", "aliado": "relojoeira", "agulha": true }
+      }
+    }
+  }
+}

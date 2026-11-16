@@ -1,0 +1,58 @@
+{
+  "slug": "pedra-salgada",
+  "nome": "Pedra Salgada",
+  "mar": "boreal",
+  "lado": "origem",
+  "tipo": "historia",
+  "lat": 52,
+  "lng": -72,
+  "bioma": "Costa de pedra e neblina",
+  "clima": "Frio, com neblina que só levanta ao meio-dia",
+  "regraEstranha": "O sino do porto toca sozinho antes de toda tempestade.",
+  "resumo": "Vila de pescadores sob neblina. Todo mundo aqui sabe ler o céu, mas ninguém explica o sino.",
+  "servicos": { "mercado": true, "estaleiro": false },
+  "recompensaMax": { "ouro": 80, "recompensa": 600 },
+  "historia": {
+    "inicio": "chegada",
+    "cenas": {
+      "chegada": {
+        "titulo": "O sino que toca sozinho",
+        "texto": "O sino do porto começa a badalar sem ninguém na corda. Dona Ingra, a sineira, aparece na porta da torre com o xale enrolado nas mãos. \"Vem tempestade. Preciso de alguém que suba lá e de outro que corra o cais.\"",
+        "opcoes": [
+          { "id": "subir", "rotulo": "Subir na torre", "proxima": "torre" },
+          { "id": "cais", "rotulo": "Correr o cais avisando os barcos", "efeitos": { "recompensa": 200 }, "proxima": "cais" }
+        ]
+      },
+      "torre": {
+        "titulo": "Lá em cima",
+        "texto": "O badalo está preso por um ninho de gaivota. Cada badalada sacode a torre inteira, e o vento já assobia nas frestas.",
+        "opcoes": [
+          { "id": "soltar", "rotulo": "Soltar o badalo com cuidado, sem mexer no ninho", "efeitos": { "ouro": 30 }, "proxima": "fim-sino" },
+          { "id": "mudar", "rotulo": "Levar o ninho pra um canto seguro da torre", "efeitos": { "ouro": 10, "recompensa": 50 }, "proxima": "fim-sino" }
+        ]
+      },
+      "cais": {
+        "titulo": "Barco teimoso",
+        "texto": "Um barquinho de pesca se recusa a voltar. O dono acha que dá tempo de recolher mais uma rede.",
+        "opcoes": [
+          { "id": "rebocar", "rotulo": "Rebocar o barquinho com o seu", "efeitos": { "recompensa": 250, "mantimentos": -5 }, "proxima": "fim-cais" },
+          { "id": "gritar", "rotulo": "Gritar até ele ouvir", "efeitos": { "recompensa": 50 }, "proxima": "fim-cais" }
+        ]
+      },
+      "fim-sino": {
+        "titulo": "Sino calado",
+        "texto": "A tempestade passa por cima da vila sem derrubar nada. Dona Ingra te entrega um pedaço do badalo velho, liso como seixo. \"Quem leva isso sempre sabe quando o tempo vai virar.\"",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "recompensa": 150, "item": "sino-de-pedra" }
+      },
+      "fim-cais": {
+        "titulo": "Todos em casa",
+        "texto": "Os barcos entram um a um, e a vila inteira divide caldo quente no cais. Chamam o seu nome pela primeira vez. Alguém já está desenhando um cartaz.",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 50, "recompensa": 100 }
+      }
+    }
+  }
+}
