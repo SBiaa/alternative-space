@@ -6,6 +6,7 @@ import { nomeDoTripulante } from '@/lib/fichas/server/nomes';
 import { intervaloDaGrade, lerDiario, lerGancho, lerResposta, lerSessao, sessaoVisivel, UUID } from '../regras';
 import { campanhaGanchos, campanhaJogadores, campanhaPresencas, campanhas, campanhaSessoes } from '../schema';
 import { acesso, acessoDeMestre, CampanhaNaoEncontrada, InputError, usuarioDaMesa } from './acesso';
+import { garantirRotinasDoUsuario } from './agenda';
 
 async function sessaoDaCampanha(campanhaId: string, sessaoId: string) {
   if (!UUID.test(sessaoId)) throw new CampanhaNaoEncontrada();
@@ -62,6 +63,7 @@ export interface SessaoNoCalendario {
 /** Sessões de todas as campanhas do usuário (mestre ou jogador) que caem na grade do mês. */
 export async function sessoesDoMes(ano: number, mes: number): Promise<SessaoNoCalendario[]> {
   const userId = await usuarioDaMesa('/mesa/calendario');
+  await garantirRotinasDoUsuario(userId);
   const { de, ate } = intervaloDaGrade(ano, mes);
   const rows = await db()
     .select({
