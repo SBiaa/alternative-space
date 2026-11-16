@@ -868,7 +868,7 @@ function PassoMagias({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<
           </p>
           {conj?.tradicao === "escolha" && (
             <label className="flex max-w-xs flex-col gap-1">
-              <span className="font-ficha text-[12px] text-azul">Tradição ({ficha.classe === "feiticeiro" ? "vem da linhagem" : "vem do patrono"})</span>
+              <span className="font-ficha text-[12px] text-azul">Tradição ({{ feiticeiro: "vem da linhagem", invocador: "vem do eidolon" }[ficha.classe as "feiticeiro" | "invocador"] ?? "vem do patrono"})</span>
               <select value={ficha.tradicao} onChange={(e) => onChange({ tradicao: e.target.value as Ficha["tradicao"] })} className={campo}>
                 <option value="">Escolha…</option>
                 {TRADICOES.map((t) => (

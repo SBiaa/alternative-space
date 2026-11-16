@@ -59,7 +59,7 @@ export const PERICIAS = [
 ] as const satisfies readonly { id: string; nome: string; attr: Atributo }[];
 export type Pericia = (typeof PERICIAS)[number]["id"];
 
-export type Heranca = { id: string; nome: string; texto: string; pv?: number };
+export type Heranca = { id: string; nome: string; texto: string; pv?: number; sentidos?: string };
 
 export type Ancestralidade = {
   id: string;
@@ -147,6 +147,97 @@ export const ANCESTRALIDADES: Ancestralidade[] = [
       h("leshy-fruta", "Leshy Fruta", "Brota uma fruta que cura quem come."),
       h("leshy-fungo", "Leshy Fungo", "Visão no escuro, mas sofre na luz do sol."),
       h("leshy-videira", "Leshy Videira", "Escala com facilidade usando as próprias vinhas."),
+    ],
+  },
+  {
+    id: "catfolk", nome: "Catfolk (Amurrun)", texto: "Gente-gato curiosa e ágil, que sempre cai de pé.", pv: 8, tamanho: "Médio", deslocamento: 25, boosts: ["des", "car"], livres: 1, falha: "sab",
+    sentidos: "Visão na penumbra", idiomas: "Comum, Amurrun",
+    herancas: [
+      h("catfolk-garras", "Catfolk Garras-Afiadas", "Ataque desarmado de garras (1d6 cortante, ágil, acuidade)."),
+      h("catfolk-cacador", "Catfolk Caçador", "Faro impreciso de 30 pés e bônus pra Rastrear."),
+      h("catfolk-selva", "Catfolk da Selva", "Ignora terreno difícil de vegetação."),
+      h("catfolk-nove-vidas", "Catfolk Nove Vidas", "Uma vez por dia, um golpe crítico que te derrubaria vira golpe normal."),
+      h("catfolk-inverno", "Catfolk do Inverno", "Resistência a frio igual à metade do nível (mínimo 1)."),
+    ],
+  },
+  {
+    id: "orc", nome: "Orc", texto: "Fortes, resistentes e orgulhosos das cicatrizes.", pv: 10, tamanho: "Médio", deslocamento: 25, boosts: [], livres: 2,
+    sentidos: "Visão no escuro", idiomas: "Comum, Orc",
+    herancas: [
+      h("orc-marcado", "Orc Marcado", "PV da ancestralidade sobe pra 12.", 12),
+      h("orc-terras-aridas", "Orc das Terras Áridas", "Anda mais rápido em viagem e aguenta calor extremo."),
+      h("orc-profundo", "Orc Profundo", "Bônus pra lutar e se virar em túneis."),
+      h("orc-chuva", "Orc da Chuva", "Bônus contra doenças e se cura melhor."),
+    ],
+  },
+  {
+    id: "kobold", nome: "Kobold", texto: "Pequenos parentes dos dragões, engenhosos com armadilhas.", pv: 6, tamanho: "Pequeno", deslocamento: 25, boosts: ["des", "car"], livres: 1, falha: "con",
+    sentidos: "Visão no escuro", idiomas: "Comum, Dracônico",
+    herancas: [
+      h("kobold-draconico", "Kobold Dracônico", "Escamas de um tipo de dragão e resistência ao dano dele."),
+      h("kobold-mandibula", "Kobold Mandíbula-Forte", "Ataque desarmado de mordida (1d6 perfurante)."),
+      h("kobold-cauda-veneno", "Kobold Cauda-Venenosa", "Cauda com veneno que soma dano num golpe."),
+      h("kobold-escavador", "Kobold Escavador", "Velocidade de escavação de 5 pés."),
+    ],
+  },
+  {
+    id: "tengu", nome: "Tengu", texto: "Gente-corvo esperta, colecionadora e boa de lâmina.", pv: 6, tamanho: "Médio", deslocamento: 25, boosts: ["des"], livres: 1,
+    sentidos: "Visão na penumbra", idiomas: "Comum, Tengu",
+    herancas: [
+      h("tengu-montanha", "Tengu da Montanha", "Truque divino inato e treinado em Religião."),
+      h("tengu-tempestade", "Tengu da Tempestade", "Resistência a eletricidade."),
+      h("tengu-taiga", "Tengu da Taiga", "Ignora terreno difícil de neve e floresta."),
+      h("tengu-salto", "Tengu Planador", "Cai devagar e plana com as asas."),
+    ],
+  },
+  {
+    id: "ysoki", nome: "Ratfolk (Ysoki)", texto: "Gente-rato sociável, que guarda tudo nas bochechas.", pv: 6, tamanho: "Pequeno", deslocamento: 25, boosts: ["des", "int"], livres: 1, falha: "for",
+    sentidos: "Visão no escuro", idiomas: "Comum, Ysoki",
+    herancas: [
+      h("ysoki-deserto", "Ysoki do Deserto", "Aguenta calor e pode andar de quatro mais rápido."),
+      h("ysoki-cauda", "Ysoki Cauda-Longa", "Usa a cauda pra se equilibrar e Agarrar."),
+      h("ysoki-esgoto", "Ysoki do Esgoto", "Imune a doenças comuns e bônus contra elas."),
+      h("ysoki-sombra", "Ysoki Sombrio", "Bônus pra se esconder no escuro."),
+    ],
+  },
+  {
+    id: "kitsune", nome: "Kitsune", texto: "Raposas mágicas que podem assumir forma humana.", pv: 8, tamanho: "Médio", deslocamento: 25, boosts: ["car"], livres: 1,
+    sentidos: "Visão na penumbra", idiomas: "Comum, Sakvroth",
+    herancas: [
+      h("kitsune-celestial", "Kitsune Celestial", "Magia divina inata e resistência a dano espiritual."),
+      h("kitsune-sombra", "Kitsune Raposa-Sombria", "Truque ocultista inato e bônus pra enganar."),
+      h("kitsune-vento-gelado", "Kitsune do Vento Gelado", "Resistência a frio."),
+      h("kitsune-ceu-vazio", "Kitsune do Céu Vazio", "Truque ocultista inato ligado aos espíritos."),
+    ],
+  },
+  {
+    id: "hobgoblin", nome: "Hobgoblin", texto: "Disciplinados, engenhosos e bons de estratégia.", pv: 8, tamanho: "Médio", deslocamento: 25, boosts: ["con", "int"], livres: 1, falha: "sab",
+    sentidos: "Visão no escuro", idiomas: "Comum, Goblin",
+    herancas: [
+      h("hobgoblin-elfo-sangue", "Hobgoblin Sangue-de-Elfo", "Bônus pra Percepção e iniciativa."),
+      h("hobgoblin-forjado", "Hobgoblin Forjado", "Resistência a fogo."),
+      h("hobgoblin-tirano", "Hobgoblin Pele-de-Couro", "Bônus contra veneno e doença."),
+      h("hobgoblin-runico", "Hobgoblin Rúnico", "Bônus pra identificar magia."),
+    ],
+  },
+  {
+    id: "iruxi", nome: "Homem-Lagarto (Iruxi)", texto: "Povo réptil antigo, paciente e sábio.", pv: 8, tamanho: "Médio", deslocamento: 25, boosts: ["for", "sab"], livres: 1, falha: "int",
+    idiomas: "Comum, Iruxi",
+    herancas: [
+      h("iruxi-pantano", "Iruxi do Pântano", "Nada bem e segura o fôlego por mais tempo."),
+      h("iruxi-areia", "Iruxi da Areia", "Aguenta calor e se camufla em areia."),
+      h("iruxi-nuvem", "Iruxi Céu-de-Nuvem", "Plana ao cair."),
+      { id: "iruxi-caverna", nome: "Iruxi das Cavernas", texto: "Visão no escuro.", sentidos: "Visão no escuro" },
+    ],
+  },
+  {
+    id: "kholo", nome: "Kholo", texto: "Gente-hiena unida pelo clã e pela caça.", pv: 8, tamanho: "Médio", deslocamento: 25, boosts: ["for", "int"], livres: 1, falha: "sab",
+    sentidos: "Visão na penumbra", idiomas: "Comum, Kholo",
+    herancas: [
+      h("kholo-listrado", "Kholo Listrado", "Bônus pra se esconder em terreno aberto."),
+      h("kholo-malhado", "Kholo Malhado", "Mordida mais forte (1d8 perfurante)."),
+      h("kholo-marrom", "Kholo Marrom", "Faro e bônus pra Rastrear."),
+      h("kholo-doce", "Kholo Fala-Doce", "Bônus pra imitar vozes e enganar."),
     ],
   },
 ];
@@ -275,6 +366,61 @@ export const CLASSES: Classe[] = [
     id: "bruxo", nome: "Bruxo", texto: "Magia emprestada de um patrono misterioso, via familiar.", chave: ["int"], pv: 6, percepcao: "treinado", fortitude: "treinado", reflexos: "treinado", vontade: "especialista", pericias: [], extras: 3,
     marcos: CONJURADOR,
     recursos: [...conjuracao("do patrono"), [1, "Patrono"], [1, "Familiar"], [1, "Feitiços"]],
+  },
+  {
+    id: "animista", nome: "Animista", texto: "Faz pacto com espíritos (aparições) que emprestam magia divina e poderes.", chave: ["sab"], pv: 8, percepcao: "treinado", fortitude: "treinado", reflexos: "treinado", vontade: "especialista", pericias: ["religiao"], extras: 2,
+    marcos: CONJURADOR,
+    recursos: [...conjuracao("divina"), [1, "Aparições (2 por dia)"], [1, "Magias de aparição"], [1, "Vínculo espiritual"], [7, "Terceira aparição"], [15, "Quarta aparição"]],
+  },
+  {
+    id: "kineticista", nome: "Kineticista", texto: "Canaliza um elemento (ar, terra, fogo, metal, água, madeira) direto do corpo.", chave: ["con"], pv: 8, percepcao: "treinado", fortitude: "especialista", reflexos: "especialista", vontade: "treinado", pericias: ["natureza"], extras: 3,
+    marcos: [[3, "vontade", "especialista"], [7, "cd", "especialista"], [9, "percepcao", "especialista"], [11, "fortitude", "mestre"], [13, "defesa", "especialista"], [15, "cd", "mestre"], [17, "reflexos", "mestre"], [19, "cd", "lendario"], [19, "defesa", "mestre"]],
+    recursos: [[1, "Portão cinético"], [1, "Aura cinética"], [1, "Impulsos"], [1, "Explosão elemental"], [5, "Bifurcação do portão"], [9, "Limiar do portão"], [13, "Bifurcação maior"], [17, "Limiar maior"]],
+  },
+  {
+    id: "inventor", nome: "Inventor", texto: "Gênio que leva pra luta uma invenção: armadura, arma ou construto.", chave: ["int"], pv: 8, percepcao: "treinado", fortitude: "especialista", reflexos: "treinado", vontade: "especialista", pericias: ["manufatura"], extras: 3,
+    marcos: [[7, "percepcao", "especialista"], [9, "cd", "especialista"], [11, "fortitude", "mestre"], [13, "defesa", "especialista"], [15, "vontade", "mestre"], [17, "cd", "mestre"], [19, "defesa", "mestre"]],
+    recursos: [[1, "Inovação"], [1, "Superar"], [1, "Explodir"], [3, "Engenhosidade"], [7, "Inovação avançada"], [15, "Inovação revolucionária"]],
+  },
+  {
+    id: "pistoleiro", nome: "Pistoleiro", texto: "Atirador de armas de fogo e bestas com estilo próprio.", chave: ["des"], pv: 8, percepcao: "especialista", fortitude: "especialista", reflexos: "especialista", vontade: "treinado", pericias: [], extras: 3,
+    marcos: [[3, "vontade", "especialista"], [9, "cd", "especialista"], [11, "percepcao", "mestre"], [13, "defesa", "especialista"], [15, "reflexos", "mestre"], [17, "cd", "mestre"], [19, "defesa", "mestre"]],
+    recursos: [[1, "Caminho"], [1, "Mira certeira"], [1, "Recarga rápida"], [5, "Ataque do pistoleiro"], [9, "Ataque do caminho"], [13, "Lenda das armas"]],
+  },
+  {
+    id: "magus", nome: "Magus", texto: "Mistura espada e magia arcana num golpe só.", chave: ["for", "des"], pv: 8, percepcao: "treinado", fortitude: "especialista", reflexos: "treinado", vontade: "especialista", pericias: ["arcanismo"], extras: 2,
+    marcos: [[5, "percepcao", "especialista"], [9, "reflexos", "especialista"], [11, "fortitude", "mestre"], [13, "defesa", "especialista"], [17, "vontade", "mestre"], [19, "defesa", "mestre"]],
+    recursos: [[1, "Conjuração arcana limitada"], [1, "Arquétipo híbrido"], [1, "Golpe de magia"], [1, "Conflux"], [7, "Conjurador especialista"], [15, "Conjurador mestre"]],
+  },
+  {
+    id: "invocador", nome: "Invocador", texto: "Ligado a um eidolon, um espírito que luta ao seu lado.", chave: ["car"], pv: 10, percepcao: "treinado", fortitude: "especialista", reflexos: "treinado", vontade: "especialista", pericias: [], extras: 3,
+    marcos: [[5, "percepcao", "especialista"], [9, "reflexos", "especialista"], [11, "fortitude", "mestre"], [13, "defesa", "especialista"], [17, "vontade", "mestre"], [19, "defesa", "mestre"]],
+    recursos: [[1, "Eidolon"], [1, "Ligação"], [1, "Conjuração limitada"], [7, "Conjurador especialista"], [15, "Conjurador mestre"]],
+  },
+  {
+    id: "psiquico", nome: "Psíquico", texto: "Magia ocultista que nasce da própria mente.", chave: ["int", "car"], pv: 6, percepcao: "treinado", fortitude: "treinado", reflexos: "treinado", vontade: "especialista", pericias: ["ocultismo"], extras: 3,
+    marcos: CONJURADOR,
+    recursos: [...conjuracao("ocultista"), [1, "Mente subconsciente"], [1, "Mente consciente"], [1, "Desatar a mente"], [1, "Truques ampliados"]],
+  },
+  {
+    id: "taumaturgo", nome: "Taumaturgo", texto: "Usa amuletos, sinos e superstições pra achar a fraqueza de tudo.", chave: ["car"], pv: 8, percepcao: "especialista", fortitude: "especialista", reflexos: "treinado", vontade: "especialista", pericias: ["arcanismo", "natureza", "ocultismo", "religiao"], extras: 3,
+    marcos: [[7, "percepcao", "especialista"], [9, "cd", "especialista"], [11, "fortitude", "mestre"], [13, "defesa", "especialista"], [15, "vontade", "mestre"], [17, "cd", "mestre"], [19, "defesa", "mestre"]],
+    recursos: [[1, "Explorar vulnerabilidade"], [1, "Implemento"], [1, "Esotérica"], [5, "Segundo implemento"], [7, "Adepto do implemento"], [15, "Terceiro implemento"]],
+  },
+  {
+    id: "comandante", nome: "Comandante", texto: "Líder tático que dá ordens e coordena o grupo.", chave: ["int"], pv: 8, percepcao: "especialista", fortitude: "treinado", reflexos: "especialista", vontade: "especialista", pericias: ["sociedade"], extras: 2,
+    marcos: [[7, "percepcao", "especialista"], [9, "cd", "especialista"], [11, "fortitude", "mestre"], [13, "defesa", "especialista"], [15, "vontade", "mestre"], [17, "cd", "mestre"], [19, "defesa", "mestre"]],
+    recursos: [[1, "Estandarte"], [1, "Táticas"], [1, "Prontidão"], [3, "Liderança"], [7, "Táticas especialistas"], [15, "Táticas lendárias"]],
+  },
+  {
+    id: "guardiao", nome: "Guardião", texto: "Protetor de armadura pesada que atrai e aguenta os golpes.", chave: ["for"], pv: 12, percepcao: "treinado", fortitude: "especialista", reflexos: "treinado", vontade: "especialista", pericias: ["atletismo", "intimidacao"], extras: 3,
+    marcos: [[3, "defesa", "especialista"], [7, "percepcao", "especialista"], [9, "cd", "especialista"], [11, "fortitude", "mestre"], [13, "defesa", "mestre"], [17, "cd", "mestre"], [17, "defesa", "lendario"]],
+    recursos: [[1, "Interpor-se"], [1, "Provocação"], [1, "Armadura do guardião"], [5, "Reação extra"], [11, "Fortaleza"]],
+  },
+  {
+    id: "exemplar", nome: "Exemplar", texto: "Herói meio divino que canaliza centelhas de poder em seus ícones.", chave: ["for", "des"], pv: 10, percepcao: "especialista", fortitude: "especialista", reflexos: "especialista", vontade: "especialista", pericias: ["religiao"], extras: 3,
+    marcos: [[7, "percepcao", "especialista"], [9, "cd", "especialista"], [11, "fortitude", "mestre"], [13, "defesa", "especialista"], [15, "vontade", "mestre"], [17, "cd", "mestre"], [19, "defesa", "mestre"]],
+    recursos: [[1, "Centelha divina"], [1, "Ícones"], [1, "Epítetos"], [3, "Domínio"], [7, "Epíteto dominante"], [15, "Divindade"]],
   },
 ];
 
@@ -587,7 +733,7 @@ export function calcular(f: Ficha) {
     cdClasse: f.chave ? 10 + bonus(gd.cd, attr[f.chave], n) : null,
     deslocamento: (anc?.deslocamento ?? 25) + lentidao - (sobrecarregado ? 10 : 0),
     tamanho: anc?.tamanho ?? "Médio",
-    sentidos: f.heranca === "elfo-caverna" || f.heranca === "gnomo-umbral" || f.heranca === "leshy-fungo" ? "Visão no escuro" : anc?.sentidos ?? null,
+    sentidos: her?.sentidos ?? (f.heranca === "elfo-caverna" || f.heranca === "gnomo-umbral" || f.heranca === "leshy-fungo" ? "Visão no escuro" : anc?.sentidos ?? null),
     idiomas: anc?.idiomas ?? null,
     idiomasLivres: Math.max(0, attr.int),
     saber: ant?.saber ?? null,
