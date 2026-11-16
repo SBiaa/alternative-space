@@ -17,6 +17,7 @@ import { conditionLimits, InputError, MAX_TITLE_LENGTH } from '@/lib/fichas/sr5/
 import { evaluate } from '@/lib/fichas/sr5/rules';
 import { memberProfile, teamComposition, type MemberProfile, type RoleKey } from '@/lib/fichas/sr5/team';
 import { NotFoundError, requireUserId } from './characters';
+import { nomeDoTripulante } from './nomes';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const CODE = /^[A-Za-z0-9_-]{8,32}$/;
@@ -32,15 +33,8 @@ function parseTeamName(raw: unknown): string {
   return t;
 }
 
-/**
- * Nome do jogador para os colegas: o @apelido do perfil, senão o nome da conta. Nunca o e-mail.
- * Os usuários ficam no schema do Neon Auth; o apelido, em perfis (db/perfis.sql).
- */
-const playerName = sql<string>`coalesce(
-  (select '@' || p.apelido from perfis p where p.user_id = ${characters.ownerId} and p.apelido is not null),
-  (select nullif(trim(u.name), '') from neon_auth."user" u where u.id::text = ${characters.ownerId}),
-  'Tripulante'
-)`;
+/** Nome do jogador para os colegas: o @apelido, senão o nome da conta. Nunca o e-mail. */
+const playerName = nomeDoTripulante(characters.ownerId);
 
 /** Ficha do usuário logado (qualquer status). */
 async function myCharacter(userId: string, characterId: unknown) {

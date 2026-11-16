@@ -12,13 +12,16 @@ export function FichasNav({ children }: { children?: ReactNode }) {
   return (
     <div className="no-print border-b border-line">
       <nav aria-label="Fichas" className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 sm:px-6">
-        <div className="flex items-center gap-1">
+        <div className="flex flex-wrap items-center gap-1">
           <span className="etiqueta mr-2 text-[11px] text-accent">Fichas</span>
           <Link href="/fichas" className={link}>
             Minhas fichas
           </Link>
           <Link href="/fichas/times" className={link}>
             Times
+          </Link>
+          <Link href="/mesa" className={link}>
+            Mesa do Mestre
           </Link>
         </div>
         {children && <div className="flex items-center gap-1">{children}</div>}
