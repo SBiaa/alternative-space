@@ -2,7 +2,7 @@
  * Tabelas da Mesa do Mestre (Neon Postgres, via Drizzle sÃ³ para as consultas).
  * O SQL que cria as tabelas fica em db/mesa.sql: mudou algo aqui, mude lÃ¡ tambÃ©m.
  */
-import { boolean, index, integer, pgTable, primaryKey, smallint, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { boolean, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { characters } from '@/lib/fichas/db/schema';
 import type { CorCampanha, RespostaPresenca, SistemaCampanha, StatusCampanha, StatusSessao } from './regras';
 import type { StatusRecompensa, TipoRecompensa } from './regras-recompensas';
@@ -169,4 +169,34 @@ export const mesaAgendaTokens = pgTable('mesa_agenda_tokens', {
   userId: text('user_id').primaryKey(),
   token: text('token').notNull().unique(),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+/** NPCs e inimigos. Só o mestre vê (db/mesa-ao-vivo.sql). */
+export const campanhaNpcs = pgTable(
+  'campanha_npcs',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    campanhaId: uuid('campanha_id')
+      .notNull()
+      .references(() => campanhas.id, { onDelete: 'cascade' }),
+    nome: text('nome').notNull(),
+    tipo: text('tipo').$type<'npc' | 'inimigo'>().notNull().default('npc'),
+    dados: jsonb('dados').$type<Record<string, unknown>>().notNull().default({}),
+    notas: text('notas').notNull().default(''),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('campanha_npcs_campanha_idx').on(t.campanhaId, t.createdAt)],
+);
+
+/** O combate em andamento, um por campanha. */
+export const campanhaCombate = pgTable('campanha_combate', {
+  campanhaId: uuid('campanha_id')
+    .primaryKey()
+    .references(() => campanhas.id, { onDelete: 'cascade' }),
+  ativo: boolean('ativo').notNull().default(false),
+  rodada: integer('rodada').notNull().default(1),
+  passe: integer('passe').notNull().default(1),
+  turnoId: text('turno_id'),
+  participantes: jsonb('participantes').$type<unknown[]>().notNull().default([]),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });
