@@ -1,0 +1,73 @@
+{
+  "slug": "ilha-do-inverno-parado",
+  "nome": "Ilha do Inverno Parado",
+  "mar": "corrente",
+  "lado": "manso",
+  "tipo": "historia",
+  "lat": 4,
+  "lng": 82,
+  "bioma": "Tundra de gelo e pinheiros",
+  "clima": "Inverno que nunca termina, com neve fina o dia todo",
+  "regraEstranha": "Nada apodrece e nada cresce. A neve cai e nunca se acumula.",
+  "resumo": "Um inverno que nunca termina e uma médica que não aceita pagamento em ouro.",
+  "servicos": { "mercado": true, "estaleiro": false },
+  "recompensaMax": { "ouro": 200, "recompensa": 5000 },
+  "historia": {
+    "inicio": "chegada",
+    "cenas": {
+      "chegada": {
+        "titulo": "Casa de lenha",
+        "texto": "A única luz da ilha vem de uma casa baixa com fumaça fina. A doutora Lúcia abre antes de você bater. \"Se veio por tratamento, entre. Se veio pagar em ouro, volte. Aqui ouro só serve pra fazer peso.\"",
+        "opcoes": [
+          { "id": "entrar", "rotulo": "Entrar e perguntar o que ela aceita", "proxima": "conversa" },
+          { "id": "oferecer", "rotulo": "Deixar um pouco de ouro na mesa mesmo assim", "efeitos": { "ouro": -20 }, "proxima": "conversa" }
+        ]
+      },
+      "conversa": {
+        "titulo": "O que a doutora quer",
+        "texto": "Ela te serve um chá de agulha de pinheiro. \"Aceito lenha, remédio de outro mar e histórias com final. O inverno daqui anda pesado, e faz anos que ninguém traz um final.\"",
+        "opcoes": [
+          { "id": "lenha", "rotulo": "Sair com o machado pra cortar lenha", "efeitos": { "recompensa": 200 }, "proxima": "floresta" },
+          { "id": "historia", "rotulo": "Contar uma história da sua viagem até aqui", "efeitos": { "recompensa": 300 }, "proxima": "historia" }
+        ]
+      },
+      "floresta": {
+        "titulo": "Pinheiros de gelo",
+        "texto": "Os troncos estão duros como pedra. No meio da mata, você acha uma criança perdida, com os lábios roxos, abraçada a um cachorro quase congelado.",
+        "opcoes": [
+          { "id": "carregar", "rotulo": "Carregar os dois de volta até a casa", "efeitos": { "recompensa": 500, "mantimentos": -5 }, "proxima": "cura" },
+          { "id": "chamar", "rotulo": "Acender uma fogueira ali e chamar a doutora", "efeitos": { "recompensa": 300 }, "proxima": "cura" }
+        ]
+      },
+      "historia": {
+        "titulo": "Final de história",
+        "texto": "Você conta de um sino que toca sozinho e de uma lanterna que nunca apaga. A doutora ouve em silêncio e, ao fim, ri baixinho. Não é riso de quem se diverte: é de quem lembrou de algo.",
+        "opcoes": [
+          { "id": "perguntar", "rotulo": "Perguntar o que ela lembrou", "efeitos": { "recompensa": 200 }, "proxima": "cura" }
+        ]
+      },
+      "cura": {
+        "titulo": "A porta aberta",
+        "texto": "A doutora olha pra neve lá fora, que agora, pela primeira vez, vai acumulando na soleira. \"Faz anos que o inverno só espera alguém ficar. Obrigada por ter chegado.\"",
+        "opcoes": [
+          { "id": "ficar", "rotulo": "Ficar mais uma noite junto da lareira", "efeitos": { "mantimentos": -6, "recompensa": 500 }, "proxima": "fim-noite" },
+          { "id": "seguir", "rotulo": "Partir ainda hoje, deixando a lenha cortada", "efeitos": { "recompensa": 300 }, "proxima": "fim-rapido" }
+        ]
+      },
+      "fim-noite": {
+        "titulo": "Primavera de uma noite",
+        "texto": "Ao amanhecer, um botão de flor aparece na janela. A doutora abre uma gaveta e te dá um frasco de xarope e a promessa de embarcar quando o inverno voltar a andar de verdade.",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 80, "recompensa": 1000, "item": "xarope-de-pinheiro", "aliado": "doutora-lucia", "agulha": true }
+      },
+      "fim-rapido": {
+        "titulo": "Fumaça atrás do barco",
+        "texto": "A fumaça fina da casa acompanha seu barco até onde dá pra ver. A doutora acena. Na mesa deixou um frasco de xarope, bem embrulhado.",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 60, "recompensa": 800, "item": "xarope-de-pinheiro", "agulha": true }
+      }
+    }
+  }
+}

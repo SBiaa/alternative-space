@@ -1,0 +1,50 @@
+{
+  "slug": "recife-das-lanternas",
+  "nome": "Recife das Lanternas",
+  "mar": "austral",
+  "lado": "origem",
+  "tipo": "historia",
+  "lat": -45,
+  "lng": 70,
+  "bioma": "Ilha de coral",
+  "clima": "Quente e úmido, com chuva curta à tarde",
+  "regraEstranha": "Cada barco que parte deixa uma lanterna acesa no recife, e ela só apaga quando o barco volta.",
+  "resumo": "Ilha de coral onde todo mundo pendura uma lanterna por cada barco que partiu.",
+  "servicos": { "mercado": true, "estaleiro": false },
+  "recompensaMax": { "ouro": 90, "recompensa": 600 },
+  "historia": {
+    "inicio": "chegada",
+    "cenas": {
+      "chegada": {
+        "titulo": "Lanternas demais",
+        "texto": "O recife brilha como um céu de cabeça pra baixo. Na feira, uma menina chamada Tuíra segura uma lanterna sem dono. \"Essa era do meu avô. Ele saiu faz anos e ela nunca apagou. Será que ele ainda volta?\"",
+        "opcoes": [
+          { "id": "prometer", "rotulo": "Prometer procurar notícias dele pelo mar", "efeitos": { "recompensa": 100 }, "proxima": "feira" },
+          { "id": "ouvir", "rotulo": "Sentar e ouvir as histórias do avô", "proxima": "feira" }
+        ]
+      },
+      "feira": {
+        "titulo": "Feira das Lanternas",
+        "texto": "Um mercador de coral oferece pagar bem por uma das lanternas antigas. A feira inteira fica em silêncio esperando a resposta de Tuíra.",
+        "opcoes": [
+          { "id": "recusar", "rotulo": "Dizer ao mercador que ela não está à venda", "efeitos": { "recompensa": 150 }, "proxima": "fim-lanterna" },
+          { "id": "negociar", "rotulo": "Propor trocar a lanterna por um barco de brinquedo bem feito", "efeitos": { "ouro": 40 }, "proxima": "fim-troca" }
+        ]
+      },
+      "fim-lanterna": {
+        "titulo": "A lanterna fica",
+        "texto": "O mercador guarda a bolsa, meio sem graça. Tuíra te dá a lanterna do avô emprestada. \"Devolve quando achar ele.\"",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 30, "recompensa": 150, "item": "lanterna-do-recife" }
+      },
+      "fim-troca": {
+        "titulo": "Troca justa",
+        "texto": "O mercador ri, aceita o barquinho e sai assobiando. Tuíra ganha um brinquedo novo e você, uma fama de quem resolve conversa difícil.",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 50, "recompensa": 100 }
+      }
+    }
+  }
+}

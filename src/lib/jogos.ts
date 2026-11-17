@@ -178,6 +178,14 @@ export const jogos: Jogo[] = [
     texto: "Monte a pista com rampas, corrimãos e caixotes, termine pra provar que dá, publique e veja quem bate seu recorde.",
     cor: "#0b2340",
   },
+  {
+    slug: "mar-sem-fim",
+    nome: "Mar Sem Fim",
+    tipo: "Estratégia",
+    resumo: "Um globo de mar: crie seu pirata e navegue em tempo real.",
+    texto: "Crie o seu pirata, escolha o mar de origem e navegue de ilha em ilha num globo que gira. As viagens levam tempo de verdade, e as escolhas rendem ouro, aliados e a recompensa pela sua cabeça.",
+    cor: "#0b2340",
+  },
 ];
 
 export const hrefJogo = (slug: string) => `/jogos/${slug}`;
