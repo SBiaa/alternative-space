@@ -18,6 +18,7 @@ import {
 import { RotinaForm } from '@/components/mesa/AgendaForms';
 import { RecompensasParaAceitar } from '@/components/mesa/DiarioForms';
 import { Lembretes } from '@/components/mesa/Lembretes';
+import { HandoutForm, HandoutsLista, PaginaForm, PaginasLista } from '@/components/mesa/Mundo';
 import { NpcForm, NpcLista } from '@/components/mesa/NpcsForms';
 import { Bolinha, Carregando, Indicadores, Pagina, RespostaChip, StatusCampanhaChip, Texto, Vazio } from '@/components/mesa/MesaUI';
 import { Card } from '@/components/fichas/ui';
@@ -28,11 +29,12 @@ import { CampanhaNaoEncontrada } from '@/lib/mesa/server/acesso';
 import { listarNpcs } from '@/lib/mesa/server/ao-vivo';
 import { getCampanha } from '@/lib/mesa/server/campanhas';
 import { getResumo } from '@/lib/mesa/server/diarios';
+import { listarHandouts, listarPaginas } from '@/lib/mesa/server/mundo';
 import { listarRecompensas } from '@/lib/mesa/server/recompensas';
 
 export const metadata: Metadata = { title: 'Campanha' };
 
-const ABAS = { jogadores: 'Jogadores', sessoes: 'Sessões', diario: 'Diário', npcs: 'NPCs', resumo: 'Resumo', ajustes: 'Ajustes' } as const;
+const ABAS = { jogadores: 'Jogadores', sessoes: 'Sessões', diario: 'Diário', mundo: 'Mundo', npcs: 'NPCs', resumo: 'Resumo', ajustes: 'Ajustes' } as const;
 const SO_MESTRE: Aba[] = ['npcs', 'ajustes'];
 type Aba = keyof typeof ABAS;
 type Campanha = Awaited<ReturnType<typeof getCampanha>>;
@@ -153,6 +155,7 @@ async function CampanhaView({
       {aba === 'jogadores' && <AbaJogadores c={c} />}
       {aba === 'sessoes' && <AbaSessoes c={c} />}
       {aba === 'diario' && <AbaDiario c={c} />}
+      {aba === 'mundo' && <AbaMundo c={c} />}
       {aba === 'npcs' && ehMestre && <AbaNpcs c={c} />}
       {aba === 'resumo' && <AbaResumo c={c} />}
       {aba === 'ajustes' && ehMestre && <AbaAjustes c={c} />}
@@ -446,6 +449,47 @@ async function AbaResumo({ c }: { c: Campanha }) {
           </p>
         )}
       </Card>
+    </div>
+  );
+}
+
+async function AbaMundo({ c }: { c: Campanha }) {
+  const ehMestre = c.papel === 'mestre';
+  const [paginas, handouts] = await Promise.all([listarPaginas(c.id), listarHandouts(c.id)]);
+  const sessoes = [...c.proximas, ...c.passadas].map((s) => ({ id: s.id, nome: s.titulo || quando(s.iniciaEm) }));
+  const nomeDaSessao = new Map(sessoes.map((s) => [s.id, s.nome]));
+  return (
+    <div className="flex flex-col gap-8">
+      <section aria-label="Handouts" className="flex flex-col gap-3">
+        <h2 className="font-display text-xl font-semibold">Handouts</h2>
+        <div className={ehMestre ? 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]' : undefined}>
+          <HandoutsLista
+            campanhaId={c.id}
+            ehMestre={ehMestre}
+            handouts={handouts.map((h) => ({ id: h.id, titulo: h.titulo, tipo: h.tipo, texto: h.texto, revelado: h.revelado, sessao: h.sessaoId ? (nomeDaSessao.get(h.sessaoId) ?? null) : null }))}
+          />
+          {ehMestre && (
+            <aside>
+              <Card title="Novo handout">
+                <HandoutForm campanhaId={c.id} sessoes={sessoes} />
+              </Card>
+            </aside>
+          )}
+        </div>
+      </section>
+      <section aria-label="Páginas do Mundo" className="flex flex-col gap-3">
+        <h2 className="font-display text-xl font-semibold">Páginas do Mundo</h2>
+        <div className={ehMestre ? 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]' : undefined}>
+          <PaginasLista campanhaId={c.id} ehMestre={ehMestre} paginas={paginas} />
+          {ehMestre && (
+            <aside>
+              <Card title="Nova página">
+                <PaginaForm campanhaId={c.id} />
+              </Card>
+            </aside>
+          )}
+        </div>
+      </section>
     </div>
   );
 }

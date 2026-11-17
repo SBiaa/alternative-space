@@ -6,6 +6,7 @@ import { boolean, index, integer, jsonb, pgTable, primaryKey, smallint, text, ti
 import { characters } from '@/lib/fichas/db/schema';
 import type { CorCampanha, RespostaPresenca, SistemaCampanha, StatusCampanha, StatusSessao } from './regras';
 import type { StatusRecompensa, TipoRecompensa } from './regras-recompensas';
+import type { CategoriaPagina, TipoHandout } from './regras-mundo';
 
 export const campanhas = pgTable(
   'campanhas',
@@ -186,6 +187,45 @@ export const campanhaNpcs = pgTable(
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('campanha_npcs_campanha_idx').on(t.campanhaId, t.createdAt)],
+);
+
+/** Páginas do Mundo. O jogador só vê as liberadas (db/mesa-mundo.sql). */
+export const campanhaPaginas = pgTable(
+  'campanha_paginas',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    campanhaId: uuid('campanha_id')
+      .notNull()
+      .references(() => campanhas.id, { onDelete: 'cascade' }),
+    titulo: text('titulo').notNull(),
+    categoria: text('categoria').$type<CategoriaPagina>().notNull().default('outro'),
+    corpo: text('corpo').notNull().default(''),
+    liberada: boolean('liberada').notNull().default(false),
+    liberadaEm: timestamp('liberada_em', { withTimezone: true }),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('campanha_paginas_campanha_idx').on(t.campanhaId, t.categoria, t.titulo)],
+);
+
+/** Handouts: arquivo num Blob privado ou texto. O jogador só vê depois de revelado. */
+export const campanhaHandouts = pgTable(
+  'campanha_handouts',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    campanhaId: uuid('campanha_id')
+      .notNull()
+      .references(() => campanhas.id, { onDelete: 'cascade' }),
+    sessaoId: uuid('sessao_id').references(() => campanhaSessoes.id, { onDelete: 'set null' }),
+    titulo: text('titulo').notNull(),
+    tipo: text('tipo').$type<TipoHandout>().notNull(),
+    blobUrl: text('blob_url'),
+    blobPathname: text('blob_pathname'),
+    texto: text('texto').notNull().default(''),
+    reveladoEm: timestamp('revelado_em', { withTimezone: true }),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('campanha_handouts_campanha_idx').on(t.campanhaId, t.createdAt)],
 );
 
 /** O combate em andamento, um por campanha. */
