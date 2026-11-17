@@ -5,6 +5,7 @@
 import { boolean, index, integer, pgTable, primaryKey, smallint, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { characters } from '@/lib/fichas/db/schema';
 import type { CorCampanha, RespostaPresenca, SistemaCampanha, StatusCampanha, StatusSessao } from './regras';
+import type { StatusRecompensa, TipoRecompensa } from './regras-recompensas';
 
 export const campanhas = pgTable(
   'campanhas',
@@ -98,7 +99,50 @@ export const campanhaPresencas = pgTable(
       .notNull()
       .references(() => campanhaSessoes.id, { onDelete: 'cascade' }),
     userId: text('user_id').notNull(),
-    resposta: text('resposta').$type<RespostaPresenca>().notNull(),
+    /** O que o jogador respondeu antes da sessão. Nulo se ele não respondeu mas o mestre marcou a presença. */
+    resposta: text('resposta').$type<RespostaPresenca>(),
+    /** Se veio de fato, marcado pelo mestre depois da sessão. Nulo = não marcado. */
+    compareceu: boolean('compareceu'),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.sessaoId, t.userId] })],
+);
+
+/** Recompensas do mestre. Pendente até o jogador aceitar; aceitar lança na ficha vinculada. */
+export const campanhaRecompensas = pgTable(
+  'campanha_recompensas',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    campanhaId: uuid('campanha_id')
+      .notNull()
+      .references(() => campanhas.id, { onDelete: 'cascade' }),
+    sessaoId: uuid('sessao_id').references(() => campanhaSessoes.id, { onDelete: 'set null' }),
+    userId: text('user_id').notNull(),
+    /** A ficha em que foi lançada, quando a recompensa vai para uma ficha. */
+    characterId: uuid('character_id').references(() => characters.id, { onDelete: 'set null' }),
+    tipo: text('tipo').$type<TipoRecompensa>().notNull(),
+    quantidade: integer('quantidade').notNull(),
+    descricao: text('descricao').notNull().default(''),
+    status: text('status').$type<StatusRecompensa>().notNull().default('pendente'),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+    resolvidaEm: timestamp('resolvida_em', { withTimezone: true }),
+  },
+  (t) => [
+    index('campanha_recompensas_campanha_idx').on(t.campanhaId, t.createdAt),
+    index('campanha_recompensas_user_idx').on(t.userId, t.status),
+  ],
+);
+
+/** O diário de cada jogador por sessão. O mestre lê todos; os colegas, só os compartilhados. */
+export const campanhaDiarioJogador = pgTable(
+  'campanha_diario_jogador',
+  {
+    sessaoId: uuid('sessao_id')
+      .notNull()
+      .references(() => campanhaSessoes.id, { onDelete: 'cascade' }),
+    userId: text('user_id').notNull(),
+    texto: text('texto').notNull().default(''),
+    compartilhado: boolean('compartilhado').notNull().default(false),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [primaryKey({ columns: [t.sessaoId, t.userId] })],

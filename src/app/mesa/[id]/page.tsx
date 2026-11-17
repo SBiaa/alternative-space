@@ -16,6 +16,7 @@ import {
   SessaoForm,
 } from '@/components/mesa/MesaForms';
 import { RotinaForm } from '@/components/mesa/AgendaForms';
+import { RecompensasParaAceitar } from '@/components/mesa/DiarioForms';
 import { Lembretes } from '@/components/mesa/Lembretes';
 import { Bolinha, Carregando, Indicadores, Pagina, RespostaChip, StatusCampanhaChip, Texto, Vazio } from '@/components/mesa/MesaUI';
 import { Card } from '@/components/fichas/ui';
@@ -24,10 +25,12 @@ import { hoje, somaDias } from '@/lib/diario/calendario';
 import { NOME_SISTEMA, NOME_STATUS_SESSAO, quando } from '@/lib/mesa/regras';
 import { CampanhaNaoEncontrada } from '@/lib/mesa/server/acesso';
 import { getCampanha } from '@/lib/mesa/server/campanhas';
+import { getResumo } from '@/lib/mesa/server/diarios';
+import { listarRecompensas } from '@/lib/mesa/server/recompensas';
 
 export const metadata: Metadata = { title: 'Campanha' };
 
-const ABAS = { jogadores: 'Jogadores', sessoes: 'Sessões', diario: 'Diário', ajustes: 'Ajustes' } as const;
+const ABAS = { jogadores: 'Jogadores', sessoes: 'Sessões', diario: 'Diário', resumo: 'Resumo', ajustes: 'Ajustes' } as const;
 type Aba = keyof typeof ABAS;
 type Campanha = Awaited<ReturnType<typeof getCampanha>>;
 
@@ -60,6 +63,8 @@ async function CampanhaView({
   const abas = (Object.keys(ABAS) as Aba[]).filter((a) => a !== 'ajustes' || ehMestre);
   const aba: Aba = abas.includes(sp.aba as Aba) ? (sp.aba as Aba) : 'jogadores';
   const agora = new Date(); // depois de getCampanha, que já leu a sessão do usuário
+  // O que o mestre deu e eu ainda não aceitei, de todas as sessões.
+  const paraAceitar = ehMestre ? [] : (await listarRecompensas(c.id)).filter((r) => r.status === 'pendente');
 
   return (
     <div className="flex flex-col gap-6">
@@ -116,9 +121,30 @@ async function CampanhaView({
           }))}
       />
 
+      {paraAceitar.length > 0 && (
+        <Card title="Recompensas para aceitar" className="border-accent/50">
+          <RecompensasParaAceitar
+            campanhaId={c.id}
+            sistema={c.sistema}
+            mostrarSessao
+            itens={paraAceitar.map((r) => ({
+              id: r.id,
+              nome: r.nome,
+              tipo: r.tipo,
+              quantidade: r.quantidade,
+              descricao: r.descricao,
+              status: r.status,
+              naFicha: r.naFicha,
+              sessao: r.sessaoTitulo || (r.sessaoEm ? quando(r.sessaoEm) : null),
+            }))}
+          />
+        </Card>
+      )}
+
       {aba === 'jogadores' && <AbaJogadores c={c} />}
       {aba === 'sessoes' && <AbaSessoes c={c} />}
       {aba === 'diario' && <AbaDiario c={c} />}
+      {aba === 'resumo' && <AbaResumo c={c} />}
       {aba === 'ajustes' && ehMestre && <AbaAjustes c={c} />}
     </div>
   );
@@ -340,6 +366,76 @@ function AbaDiario({ c }: { c: Campanha }) {
           </Card>
         </aside>
       )}
+    </div>
+  );
+}
+
+async function AbaResumo({ c }: { c: Campanha }) {
+  const r = await getResumo(c.id);
+  const temXp = r.jogadores.some((j) => j.xp > 0);
+  const numeros = [
+    { rotulo: 'Sessões realizadas', valor: r.realizadas },
+    { rotulo: 'Horas jogadas', valor: String(r.horasJogadas).replace('.', ',') },
+    { rotulo: 'Próximas sessões', valor: r.proximas },
+    { rotulo: 'Canceladas', valor: r.canceladas },
+  ];
+  return (
+    <div className="flex max-w-4xl flex-col gap-6">
+      <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {numeros.map((n) => (
+          <div key={n.rotulo} className="rounded-xl border border-line bg-surface p-4">
+            <dd className="font-display text-3xl font-semibold">{n.valor}</dd>
+            <dt className="text-xs text-muted">{n.rotulo}</dt>
+          </div>
+        ))}
+      </dl>
+      <p className="-mt-3 text-xs text-faint">As horas somam a duração marcada de cada sessão realizada.</p>
+
+      <Card title="Presença">
+        {r.jogadores.length === 0 ? (
+          <p className="text-sm text-muted">Ainda não há jogadores na campanha.</p>
+        ) : r.comPresenca === 0 ? (
+          <p className="text-sm text-muted">
+            Ainda não há presença marcada. Ao marcar uma sessão como realizada, o mestre diz quem veio e as contas aparecem aqui.
+          </p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-96 text-sm">
+              <thead>
+                <tr className="text-left text-xs text-faint">
+                  <th className="pb-2 font-normal">Jogador</th>
+                  <th className="pb-2 font-normal">Veio</th>
+                  <th className="pb-2 font-normal">Seguidas</th>
+                  {temXp && <th className="pb-2 text-right font-normal">XP</th>}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-line">
+                {r.jogadores.map((j) => (
+                  <tr key={j.userId}>
+                    <td className="py-2 pr-3">{j.nome}</td>
+                    <td className="py-2 pr-3">
+                      {j.percentual === null ? (
+                        <span className="text-faint">—</span>
+                      ) : (
+                        <>
+                          {j.compareceu} de {j.de} <span className="text-muted">({j.percentual}%)</span>
+                        </>
+                      )}
+                    </td>
+                    <td className="py-2 pr-3">{j.sequencia}</td>
+                    {temXp && <td className="py-2 text-right">{j.xp.toLocaleString('pt-BR')}</td>}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        {r.comPresenca > 0 && r.comPresenca < r.realizadas && (
+          <p className="mt-3 text-xs text-faint">
+            {r.realizadas - r.comPresenca} sessão(ões) realizada(s) ainda sem presença marcada: não entram na conta.
+          </p>
+        )}
+      </Card>
     </div>
   );
 }
