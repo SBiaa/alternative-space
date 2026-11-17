@@ -171,7 +171,7 @@ export const mesaAgendaTokens = pgTable('mesa_agenda_tokens', {
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 });
 
-/** NPCs e inimigos. Só o mestre vê (db/mesa-ao-vivo.sql). */
+/** NPCs e inimigos. SÃ³ o mestre vÃª (db/mesa-ao-vivo.sql). */
 export const campanhaNpcs = pgTable(
   'campanha_npcs',
   {
