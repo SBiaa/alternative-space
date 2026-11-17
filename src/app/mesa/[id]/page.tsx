@@ -18,19 +18,22 @@ import {
 import { RotinaForm } from '@/components/mesa/AgendaForms';
 import { RecompensasParaAceitar } from '@/components/mesa/DiarioForms';
 import { Lembretes } from '@/components/mesa/Lembretes';
+import { NpcForm, NpcLista } from '@/components/mesa/NpcsForms';
 import { Bolinha, Carregando, Indicadores, Pagina, RespostaChip, StatusCampanhaChip, Texto, Vazio } from '@/components/mesa/MesaUI';
 import { Card } from '@/components/fichas/ui';
 import { cx } from '@/lib/fichas/cx';
 import { hoje, somaDias } from '@/lib/diario/calendario';
 import { NOME_SISTEMA, NOME_STATUS_SESSAO, quando } from '@/lib/mesa/regras';
 import { CampanhaNaoEncontrada } from '@/lib/mesa/server/acesso';
+import { listarNpcs } from '@/lib/mesa/server/ao-vivo';
 import { getCampanha } from '@/lib/mesa/server/campanhas';
 import { getResumo } from '@/lib/mesa/server/diarios';
 import { listarRecompensas } from '@/lib/mesa/server/recompensas';
 
 export const metadata: Metadata = { title: 'Campanha' };
 
-const ABAS = { jogadores: 'Jogadores', sessoes: 'Sessões', diario: 'Diário', resumo: 'Resumo', ajustes: 'Ajustes' } as const;
+const ABAS = { jogadores: 'Jogadores', sessoes: 'Sessões', diario: 'Diário', npcs: 'NPCs', resumo: 'Resumo', ajustes: 'Ajustes' } as const;
+const SO_MESTRE: Aba[] = ['npcs', 'ajustes'];
 type Aba = keyof typeof ABAS;
 type Campanha = Awaited<ReturnType<typeof getCampanha>>;
 
@@ -60,7 +63,7 @@ async function CampanhaView({
     throw e;
   }
   const ehMestre = c.papel === 'mestre';
-  const abas = (Object.keys(ABAS) as Aba[]).filter((a) => a !== 'ajustes' || ehMestre);
+  const abas = (Object.keys(ABAS) as Aba[]).filter((a) => !SO_MESTRE.includes(a) || ehMestre);
   const aba: Aba = abas.includes(sp.aba as Aba) ? (sp.aba as Aba) : 'jogadores';
   const agora = new Date(); // depois de getCampanha, que já leu a sessão do usuário
   // O que o mestre deu e eu ainda não aceitei, de todas as sessões.
@@ -78,6 +81,12 @@ async function CampanhaView({
             {c.nome}
           </h1>
           <StatusCampanhaChip status={c.status} />
+          <Link
+            href={`/mesa/${c.id}/ao-vivo`}
+            className="inline-flex items-center rounded-md border border-accent/50 px-3 py-1.5 text-sm text-accent no-underline transition hover:bg-accent/10"
+          >
+            Mesa ao vivo
+          </Link>
         </div>
         <p className="text-sm text-muted">
           {NOME_SISTEMA[c.sistema]}
@@ -144,6 +153,7 @@ async function CampanhaView({
       {aba === 'jogadores' && <AbaJogadores c={c} />}
       {aba === 'sessoes' && <AbaSessoes c={c} />}
       {aba === 'diario' && <AbaDiario c={c} />}
+      {aba === 'npcs' && ehMestre && <AbaNpcs c={c} />}
       {aba === 'resumo' && <AbaResumo c={c} />}
       {aba === 'ajustes' && ehMestre && <AbaAjustes c={c} />}
     </div>
@@ -436,6 +446,22 @@ async function AbaResumo({ c }: { c: Campanha }) {
           </p>
         )}
       </Card>
+    </div>
+  );
+}
+
+async function AbaNpcs({ c }: { c: Campanha }) {
+  const npcs = await listarNpcs(c.id);
+  return (
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
+      <section aria-label="NPCs e inimigos" className="flex flex-col gap-3">
+        <NpcLista campanhaId={c.id} sistema={c.sistema} npcs={npcs} />
+      </section>
+      <aside>
+        <Card title="Novo NPC">
+          <NpcForm campanhaId={c.id} sistema={c.sistema} />
+        </Card>
+      </aside>
     </div>
   );
 }
