@@ -1,4 +1,4 @@
-import type { goals, ledger, missions } from '@/lib/fichas/db/schema';
+import type { goals, inventory, ledger, missions } from '@/lib/fichas/db/schema';
 
 export type PlayEntry = typeof ledger.$inferSelect;
 export type PlayMission = typeof missions.$inferSelect;
@@ -10,3 +10,5 @@ export const MISSION_STATUS_LABEL: Record<PlayMission['status'], string> = {
 };
 
 export type PlayGoal = typeof goals.$inferSelect;
+
+export type PlayItem = typeof inventory.$inferSelect;
