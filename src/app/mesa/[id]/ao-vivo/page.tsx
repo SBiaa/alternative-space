@@ -4,10 +4,12 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { AutoAtualizar, CombateMestre } from '@/components/mesa/AoVivo';
 import { CombateLeitura } from '@/components/mesa/CombateLeitura';
+import { HandoutsLista } from '@/components/mesa/Mundo';
 import { Bolinha, Carregando, Indicadores, Pagina } from '@/components/mesa/MesaUI';
 import { Card } from '@/components/fichas/ui';
 import { CampanhaNaoEncontrada } from '@/lib/mesa/server/acesso';
 import { getAoVivo } from '@/lib/mesa/server/ao-vivo';
+import { listarHandouts } from '@/lib/mesa/server/mundo';
 
 export const metadata: Metadata = { title: 'Mesa ao vivo' };
 
@@ -30,6 +32,7 @@ async function AoVivoView({ params }: { params: Params }) {
     throw e;
   });
   const { campanha, papel, jogadores, combate, npcs } = d;
+  const handouts = await listarHandouts(campanha.id);
   const ehMestre = papel === 'mestre';
   const eu = jogadores.find((j) => j.eu)?.userId ?? '';
 
@@ -82,6 +85,16 @@ async function AoVivoView({ params }: { params: Params }) {
           )}
         </section>
       </div>
+
+      {(handouts.length > 0 || ehMestre) && (
+        <Card title={ehMestre ? 'Handouts' : 'Handouts revelados'}>
+          <HandoutsLista
+            campanhaId={campanha.id}
+            ehMestre={ehMestre}
+            handouts={handouts.map((h) => ({ id: h.id, titulo: h.titulo, tipo: h.tipo, texto: h.texto, revelado: h.revelado, sessao: null }))}
+          />
+        </Card>
+      )}
     </div>
   );
 }
