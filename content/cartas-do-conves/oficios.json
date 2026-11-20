@@ -1,0 +1,52 @@
+{
+  "oficios": [
+    {
+      "id": "navegador",
+      "nome": "Navegador",
+      "icone": "bussola",
+      "descricao": "Lê o vento e o mapa. Sempre sabe o que vem pela frente.",
+      "passiva": { "texto": "No começo de cada combate, compra 1 carta a mais.", "gatilho": "inicio_combate", "efeitos": [{ "tipo": "comprar", "valor": 1 }] },
+      "baralho": ["golpe-de-remo", "golpe-de-remo", "escudo-de-tampa", "escudo-de-tampa", "amarra-firme", "tiro-de-pistola", "olhar-no-horizonte", "pausa-pro-cafe", "rumo-certo", "mare-baixa"]
+    },
+    {
+      "id": "cozinheira",
+      "nome": "Cozinheira",
+      "icone": "panela",
+      "descricao": "Faz render qualquer despensa e não deixa a tripulação cair.",
+      "passiva": { "texto": "No fim de cada combate, recupera 4 de Fôlego.", "gatilho": "fim_combate", "efeitos": [{ "tipo": "curar", "valor": 4 }] },
+      "baralho": ["golpe-de-remo", "golpe-de-remo", "escudo-de-tampa", "escudo-de-tampa", "remendo-no-casco", "balde-no-conves", "respiro-fundo", "panela-quente", "panela-quente", "barril-de-bordo"]
+    },
+    {
+      "id": "medico",
+      "nome": "Médico",
+      "icone": "cruz",
+      "descricao": "Cuida de quem aparece machucado e quase nunca perde a calma.",
+      "passiva": { "texto": "No começo de cada turno, ganha 2 de bloqueio.", "gatilho": "inicio_turno", "efeitos": [{ "tipo": "bloqueio", "valor": 2 }] },
+      "baralho": ["golpe-de-remo", "golpe-de-remo", "escudo-de-tampa", "escudo-de-tampa", "remendo-no-casco", "ponto-de-sutura", "ponto-de-sutura", "respiro-fundo", "no-de-marinheiro", "corte-de-sabre"]
+    },
+    {
+      "id": "carpinteira",
+      "nome": "Carpinteira",
+      "icone": "martelo",
+      "descricao": "Conserta o barco no meio da briga e bate firme.",
+      "passiva": { "texto": "No começo de cada combate, ganha 6 de bloqueio.", "gatilho": "inicio_combate", "efeitos": [{ "tipo": "bloqueio", "valor": 6 }] },
+      "baralho": ["golpe-de-remo", "golpe-de-remo", "escudo-de-tampa", "casco-reforcado", "amarra-firme", "martelada", "martelada", "barril-de-bordo", "estocada-rapida", "balde-no-conves"]
+    },
+    {
+      "id": "musico",
+      "nome": "Músico",
+      "icone": "nota",
+      "descricao": "Dá o ritmo da tripulação e faz o convés dançar.",
+      "passiva": { "texto": "No começo de cada turno, ganha Firme 1.", "gatilho": "inicio_turno", "efeitos": [{ "tipo": "status", "status": "firme", "valor": 1, "em": "si" }] },
+      "baralho": ["golpe-de-remo", "golpe-de-remo", "escudo-de-tampa", "escudo-de-tampa", "acorde-de-guerra", "acorde-de-guerra", "olhar-no-horizonte", "pausa-pro-cafe", "tiro-de-pistola", "no-de-marinheiro"]
+    },
+    {
+      "id": "atirador",
+      "nome": "Atirador",
+      "icone": "mira",
+      "descricao": "Mira de longe e raramente erra o primeiro tiro.",
+      "passiva": { "texto": "No começo de cada combate, ganha 1 de energia extra no primeiro turno.", "gatilho": "inicio_combate", "efeitos": [{ "tipo": "energia", "valor": 1 }] },
+      "baralho": ["golpe-de-remo", "escudo-de-tampa", "escudo-de-tampa", "casco-reforcado", "tiro-de-pistola", "tiro-de-pistola", "tiro-certeiro", "tiro-certeiro", "estocada-rapida", "olhar-no-horizonte"]
+    }
+  ]
+}

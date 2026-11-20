@@ -131,6 +131,14 @@ export const jogos: Jogo[] = [
     cor: "#dd5d05",
   },
   {
+    slug: "cartas-do-conves",
+    nome: "Cartas do Convés",
+    tipo: "Estratégia",
+    resumo: "Cartas roguelite: uma travessia entre ilhas, até o chefe.",
+    texto: "Comece com um baralho fraco, enfrente encontros por turnos e melhore o baralho no caminho até o Polvo-Mor. Cartas novas se liberam jogando.",
+    cor: "#0b2340",
+  },
+  {
     slug: "conexoes-shinobi",
     nome: "Conexões Shinobi",
     tipo: "Rapidinho",
