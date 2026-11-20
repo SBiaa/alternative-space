@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { sair } from "@/app/actions/tripulante";
 import { Avatar } from "@/components/Avatar";
+import { BichinhoDaBase } from "@/components/bichinho/BichinhoDaBase";
 import { SeloCasa } from "@/components/SeloCasa";
 import { SeloEntrega } from "@/components/entrega/SeloEntrega";
 import { SeloCorre } from "@/components/corre/SeloCorre";
@@ -96,6 +97,10 @@ async function Base() {
             {proximo ? "Fazer agora" : "Ver os quizzes"}
           </Link>
         </div>
+
+        <Suspense fallback={null}>
+          <BichinhoDaBase userId={user.id} />
+        </Suspense>
 
         <SeloCasa userId={user.id} />
         <SeloEntrega userId={user.id} />
