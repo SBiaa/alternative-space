@@ -115,6 +115,14 @@ export const jogos: Jogo[] = [
     cor: "#6b3a24",
   },
   {
+    slug: "laje-verde",
+    nome: "Laje Verde",
+    tipo: "Criativo",
+    resumo: "Horta calma na laje, em tempo real.",
+    texto: "Cuide de uma horta na laje de casa. As plantas crescem sozinhas, a chuva rega, o pombo atrapalha e o vizinho troca muda. Uma visita por dia basta.",
+    cor: "#3b3d73",
+  },
+  {
     slug: "lan-house",
     nome: "Lan House 2005",
     tipo: "Estratégia",
