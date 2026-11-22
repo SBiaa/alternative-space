@@ -178,6 +178,14 @@ export const jogos: Jogo[] = [
     texto: "Monte a pista com rampas, corrimãos e caixotes, termine pra provar que dá, publique e veja quem bate seu recorde.",
     cor: "#0b2340",
   },
+  {
+    slug: "mesa-de-bolso",
+    nome: "Mesa de Bolso",
+    tipo: "Estratégia",
+    resumo: "RPG solo: aventuras curtas com dados e escolhas.",
+    texto: "Crie uma personagem, escolha o que ela faz, role os dados e siga a história, mesmo quando dá errado. Cada aventura rende uma página no diário dela.",
+    cor: "#3d2619",
+  },
 ];
 
 export const hrefJogo = (slug: string) => `/jogos/${slug}`;

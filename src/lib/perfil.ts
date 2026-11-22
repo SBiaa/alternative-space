@@ -7,6 +7,7 @@ import { apagarCorre, exportarCorre } from "@/lib/corre/dados";
 import { apagarTaverna, exportarTaverna } from "@/lib/taverna/dados";
 import { apagarLan, exportarLan } from "@/lib/lan/dados";
 import { apagarMural, exportarMural } from "@/lib/muro/dados";
+import { apagarBolso, exportarBolso } from "@/lib/bolso/dados";
 import { getQuiz, getResult, quizzes, resultTheme } from "@/lib/quiz";
 import type { SavedResult } from "@/lib/tripulante";
 
@@ -96,6 +97,7 @@ export async function apagarDados(userId: string) {
   await apagarTaverna(userId);
   await apagarLan(userId);
   await apagarMural(userId);
+  await apagarBolso(userId);
   await sql`delete from perfis where user_id = ${userId}`;
 }
 
@@ -116,5 +118,6 @@ export async function exportarDados(userId: string) {
     exportarLan(userId),
     exportarMural(userId),
   ]);
-  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan, muro_livre: muro };
+  const mesaDeBolso = await exportarBolso(userId);
+  return { mesa_de_bolso: mesaDeBolso, perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan, muro_livre: muro };
 }
