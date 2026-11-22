@@ -21,6 +21,15 @@ const csp = [
   ...(isDev ? [] : ["upgrade-insecure-requests"]),
 ].join("; ");
 
+// Skate Universe: o mapa carrega os tiles do OpenStreetMap e pede a localização de quem está usando.
+// A exceção vale só pras páginas de /skate; o resto do site continua só com o próprio domínio.
+const OSM_TILES = "https://tile.openstreetmap.org";
+const cspSkate = csp.replace("img-src 'self' blob: data:", `img-src 'self' blob: data: ${OSM_TILES}`);
+const skateHeaders = [
+  { key: "Content-Security-Policy", value: cspSkate },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(self), payment=()" },
+];
+
 const securityHeaders = [
   { key: "Content-Security-Policy", value: csp },
   { key: "X-Frame-Options", value: "DENY" },
@@ -36,7 +45,12 @@ const nextConfig: NextConfig = {
   // Em dev, deixa abrir o site pelo celular na mesma rede Wi-Fi (http://<IP do computador>:porta).
   allowedDevOrigins: ["192.168.*.*", "10.*.*.*"],
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    // A última regra que casa com o caminho vence: /skate sobrescreve só CSP e Permissions-Policy.
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      { source: "/skate/:path*", headers: skateHeaders },
+      { source: "/skate", headers: skateHeaders },
+    ];
   },
   partialPrefetching: true,
   // Resultados do primeiro quiz antes de existir mais de um quiz.
