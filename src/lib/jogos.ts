@@ -12,6 +12,8 @@ export type Jogo = {
   texto: string;
   // Fundo e desenho da arte do cartão.
   cor: string;
+  // Caminho da capa, quando não é o padrão /jogos/capas/<slug>.png.
+  capa?: string;
   // Onde o jogo guarda o recorde no navegador, e como mostrar.
   // max: maior valor possível, pro ranking recusar número inventado.
   recorde?: { chave: string; formato: (n: number) => string; max?: number };
@@ -185,6 +187,15 @@ export const jogos: Jogo[] = [
     resumo: "Skate 2D: monte seu pico e desafie a tripulação.",
     texto: "Monte a pista com rampas, corrimãos e caixotes, termine pra provar que dá, publique e veja quem bate seu recorde.",
     cor: "#0b2340",
+  },
+  {
+    slug: "assombracoes",
+    nome: "Assombrações da Vila",
+    tipo: "Estratégia",
+    resumo: "Investigação de terror leve com o folclore brasileiro.",
+    texto: "Converse com os moradores, junte sinais e descubra a criatura por trás de cada caso estranho. No fim, a história é entendida, não vencida.",
+    cor: "#0b2340",
+    capa: "/jogos/capas/assombracoes.svg",
   },
 ];
 

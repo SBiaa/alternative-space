@@ -128,7 +128,7 @@ export function JogoArte({ jogo, className = "" }: { jogo: Jogo; className?: str
   return (
     <div className={`relative overflow-hidden ${className}`} style={{ background: jogo.cor }} aria-hidden="true">
       {/* eslint-disable-next-line @next/next/no-img-element -- capa estática, sem precisar de otimização */}
-      <img src={`/jogos/capas/${jogo.slug}.png`} alt="" loading="lazy" className="absolute inset-0 size-full object-cover" />
+      <img src={jogo.capa ?? `/jogos/capas/${jogo.slug}.png`} alt="" loading="lazy" className="absolute inset-0 size-full object-cover" />
     </div>
   );
 }
