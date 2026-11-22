@@ -9,6 +9,7 @@ import { apagarBanca, exportarBanca } from "@/lib/banca/dados";
 import { apagarLan, exportarLan } from "@/lib/lan/dados";
 import { apagarFanzine, exportarFanzine } from "@/lib/fanzine/dados";
 import { apagarMural, exportarMural } from "@/lib/muro/dados";
+import { apagarBolso, exportarBolso } from "@/lib/bolso/dados";
 import { apagarBanda, exportarBanda } from "@/lib/banda/dados";
 import { apagarAssombracoes, exportarAssombracoes } from "@/lib/assombracoes/dados";
 import { getQuiz, getResult, quizzes, resultTheme } from "@/lib/quiz";
@@ -101,6 +102,7 @@ export async function apagarDados(userId: string) {
   await apagarLan(userId);
   await apagarBanca(userId);
   await apagarMural(userId);
+  await apagarBolso(userId);
   await apagarBanda(userId);
   await apagarAssombracoes(userId);
   await apagarFanzine(userId);
@@ -128,5 +130,7 @@ export async function exportarDados(userId: string) {
     exportarFanzine(userId),
     exportarBanda(userId),
   ]);
+  const mesaDeBolso = await exportarBolso(userId);
+  return { mesa_de_bolso: mesaDeBolso, perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan, muro_livre: muro };
   return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan, muro_livre: muro, banca_na_feira: banca, assombracoes_da_vila: vila, fanzine_perdida: fanzine, banda_de_garagem: banda };
 }

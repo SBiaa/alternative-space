@@ -213,6 +213,14 @@ export const jogos: Jogo[] = [
     cor: "#0b2340",
     capa: "/jogos/capas/assombracoes.svg",
   },
+  {
+    slug: "mesa-de-bolso",
+    nome: "Mesa de Bolso",
+    tipo: "Estratégia",
+    resumo: "RPG solo: aventuras curtas com dados e escolhas.",
+    texto: "Crie uma personagem, escolha o que ela faz, role os dados e siga a história, mesmo quando dá errado. Cada aventura rende uma página no diário dela.",
+    cor: "#3d2619",
+  },
 ];
 
 export const hrefJogo = (slug: string) => `/jogos/${slug}`;
