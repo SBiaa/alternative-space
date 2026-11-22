@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getUser } from "@/lib/auth/server";
+import { SeloBanca } from "@/components/banca/SeloBanca";
 import { SeloAssombracoes } from "@/components/assombracoes/SeloAssombracoes";
 import { SeloFanzine } from "@/components/fanzine/SeloFanzine";
 import { SeloMuro } from "@/components/muro/SeloMuro";
@@ -51,6 +52,7 @@ async function Cabine({ params }: Params) {
         {t.nome && <p className="m-0 text-areia">{t.nome}</p>}
       </div>
       <SeloMuro userId={t.userId} link={dono} />
+      <SeloBanca userId={t.userId} link={dono} />
       <SeloBanda userId={t.userId} link={dono} />
       <SeloAssombracoes userId={t.userId} link={dono} />
       <SeloFanzine userId={t.userId} link={dono} />

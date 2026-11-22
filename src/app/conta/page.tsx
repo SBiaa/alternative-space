@@ -8,6 +8,7 @@ import { SeloCasa } from "@/components/SeloCasa";
 import { SeloEntrega } from "@/components/entrega/SeloEntrega";
 import { SeloCorre } from "@/components/corre/SeloCorre";
 import { SeloTaverna } from "@/components/taverna/SeloTaverna";
+import { SeloBanca } from "@/components/banca/SeloBanca";
 import { SeloLan } from "@/components/lan/SeloLan";
 import { SeloMuro } from "@/components/muro/SeloMuro";
 import { SeloBanda } from "@/components/banda/SeloBanda";
@@ -104,6 +105,7 @@ async function Base() {
         <SeloTaverna userId={user.id} />
         <SeloLan userId={user.id} />
         <SeloMuro userId={user.id} />
+        <SeloBanca userId={user.id} />
         <SeloBanda userId={user.id} />
 
         <section aria-labelledby="resultados" className="flex flex-col gap-3.5">
