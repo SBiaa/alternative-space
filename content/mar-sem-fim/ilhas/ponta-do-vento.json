@@ -1,0 +1,51 @@
+{
+  "slug": "ponta-do-vento",
+  "nome": "Ponta do Vento",
+  "mar": "poente",
+  "lado": "origem",
+  "tipo": "historia",
+  "lat": -38,
+  "lng": -85,
+  "bioma": "Rocha nua e falésias",
+  "clima": "Ventania o ano todo",
+  "regraEstranha": "Nada fica no chão: a taverna prende as mesas por correntes e os chapéus têm cadarço.",
+  "resumo": "Rocha nua, ventania o ano todo e uma taverna de piratas aposentados.",
+  "servicos": { "mercado": true, "estaleiro": false },
+  "recompensaMax": { "ouro": 90, "recompensa": 600 },
+  "historia": {
+    "inicio": "chegada",
+    "cenas": {
+      "chegada": {
+        "titulo": "Taverna dos Cadarços",
+        "texto": "Os piratas aposentados jogam cartas com as cartas presas por barbante. O capitão Berro, de uma perna só, bate na mesa. \"Jovem! Meu chapéu voou pra cima da falésia faz dez anos. Quem trouxer ele de volta bebe de graça pra sempre.\"",
+        "opcoes": [
+          { "id": "escalar", "rotulo": "Escalar a falésia atrás do chapéu", "proxima": "falesia" },
+          { "id": "sorteio", "rotulo": "Propor que a taverna faça uma corrida de pipas pra pegá-lo", "efeitos": { "recompensa": 100 }, "proxima": "pipas" }
+        ]
+      },
+      "falesia": {
+        "titulo": "Na parede de vento",
+        "texto": "O vento tenta te arrancar da pedra. Lá em cima, o chapéu está preso num galho, e dentro dele um filhote de gaivota dorme enroscado.",
+        "opcoes": [
+          { "id": "dividir", "rotulo": "Levar chapéu e filhote juntos, sem acordar ninguém", "efeitos": { "recompensa": 250 }, "proxima": "fim-chapeu" },
+          { "id": "so-chapeu", "rotulo": "Pegar só o chapéu e descer depressa", "efeitos": { "ouro": 30 }, "proxima": "fim-chapeu" }
+        ]
+      },
+      "pipas": {
+        "titulo": "Corrida de pipas",
+        "texto": "Meia vila vira pipa de lençol. A pipa mais ousada pega o chapéu, mas se enrosca na vela de um barco que estava saindo.",
+        "opcoes": [
+          { "id": "avisar", "rotulo": "Gritar pro barco esperar", "efeitos": { "recompensa": 150 }, "proxima": "fim-chapeu" },
+          { "id": "cortar", "rotulo": "Cortar a linha da pipa e deixar o chapéu ir de novo", "efeitos": { "ouro": 10 }, "proxima": "fim-chapeu" }
+        ]
+      },
+      "fim-chapeu": {
+        "titulo": "Chapéu em casa",
+        "texto": "O capitão Berro aperta o cadarço com mãos trêmulas. A taverna aplaude. Ele tira um velho apito de osso do bolso. \"Pra chamar o vento quando ele se esconder.\"",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 60, "recompensa": 200, "item": "apito-de-osso" }
+      }
+    }
+  }
+}

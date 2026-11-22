@@ -12,6 +12,7 @@ import { apagarLan, exportarLan } from "@/lib/lan/dados";
 import { apagarLaje, exportarLaje } from "@/lib/laje/dados";
 import { apagarFanzine, exportarFanzine } from "@/lib/fanzine/dados";
 import { apagarMural, exportarMural } from "@/lib/muro/dados";
+import { apagarMarSemFim, exportarMarSemFim } from "@/lib/mar-sem-fim/dados";
 import { apagarDeck, exportarDeck } from "@/lib/cartas-do-conves/dados";
 import { apagarBolso, exportarBolso } from "@/lib/bolso/dados";
 import { apagarBanda, exportarBanda } from "@/lib/banda/dados";
@@ -107,6 +108,7 @@ export async function apagarDados(userId: string) {
   await apagarLaje(userId);
   await apagarBanca(userId);
   await apagarMural(userId);
+  await apagarMarSemFim(userId);
   await apagarBichinho(userId);
   await apagarDeck(userId);
   await apagarConstelacao(userId);
@@ -119,7 +121,7 @@ export async function apagarDados(userId: string) {
 
 /** Tudo o que guardamos do usuário, para o "baixar meus dados" (LGPD). */
 export async function exportarDados(userId: string) {
-  const [perfil, quizzes, interesses, recordes, votos, diario, riff, entrega, corre, taverna, role, lan, muro, bichinho, laje, cartas, constelacao, banca, vila, fanzine, banda] = await Promise.all([
+  const [perfil, quizzes, interesses, recordes, votos, diario, riff, entrega, corre, taverna, role, lan, muro, marSemFim, bichinho, laje, cartas, constelacao, banca, vila, fanzine, banda] = await Promise.all([
     sql`select apelido, cor, updated_at from perfis where user_id = ${userId}`,
     sql`select quiz, result, scores, chosen_on_tie, created_at from quiz_results where user_id = ${userId} order by created_at`,
     sql`select tag, origem, created_at from interests where user_id = ${userId} order by created_at`,
@@ -133,6 +135,7 @@ export async function exportarDados(userId: string) {
     exportarRole(userId),
     exportarLan(userId),
     exportarMural(userId),
+    exportarMarSemFim(userId),
     exportarBichinho(userId),
     exportarLaje(userId),
     exportarDeck(userId),
@@ -142,5 +145,5 @@ export async function exportarDados(userId: string) {
     exportarFanzine(userId),
     exportarBanda(userId),
   ]);
-  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan, muro_livre: muro, bichinho_da_cabine: bichinho, laje_verde: laje, cartas_do_conves: cartas, constelacao_do_dia: constelacao, banca_na_feira: banca, assombracoes_da_vila: vila, fanzine_perdida: fanzine, banda_de_garagem: banda };
+  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan, muro_livre: muro, mar_sem_fim: marSemFim, bichinho_da_cabine: bichinho, laje_verde: laje, cartas_do_conves: cartas, constelacao_do_dia: constelacao, banca_na_feira: banca, assombracoes_da_vila: vila, fanzine_perdida: fanzine, banda_de_garagem: banda };
 }

@@ -15,6 +15,8 @@ import { SeloBanda } from "@/components/banda/SeloBanda";
 import { TEXTOS } from "@/lib/role/config";
 import { acharPorApelido, picosDaCabine } from "@/lib/role/dados";
 import { miniaturaDataUri } from "@/lib/role/miniatura";
+import { BlocoCartaz } from "@/components/mar/Cartaz";
+import { lerCartaz } from "@/lib/mar-sem-fim/dados";
 
 type Params = { params: Promise<{ usuario: string }> };
 
@@ -48,7 +50,7 @@ async function Cabine({ params }: Params) {
   if (!t) notFound();
   const user = await getUser();
   const dono = user?.id === t.userId;
-  const picos = await picosDaCabine(t.userId, dono);
+  const [picos, cartaz] = await Promise.all([picosDaCabine(t.userId, dono), lerCartaz(t.userId).catch(() => null)]);
   return (
     <>
       <div className="flex flex-col gap-1">
@@ -57,6 +59,7 @@ async function Cabine({ params }: Params) {
       </div>
       <BichinhoDaCabine userId={t.userId} apelido={t.apelido} />
       <SeloMuro userId={t.userId} link={dono} />
+      <BlocoCartaz c={cartaz} apelido={t.apelido} dono={dono} />
       <SeloLaje userId={t.userId} link={dono} />
       <SeloConves userId={t.userId} link={dono} />
       <SeloConstelacao userId={t.userId} />

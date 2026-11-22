@@ -1,0 +1,46 @@
+{
+  "melhorias": [
+    {
+      "id": "casco-reforcado",
+      "nome": "Casco reforçado",
+      "descricao": "Tábuas duplas nas costuras. Aguenta mais tempestade.",
+      "custo": 250,
+      "efeito": { "cascoMax": 50 },
+      "emBreve": false
+    },
+    {
+      "id": "velas-melhores",
+      "nome": "Velas melhores",
+      "descricao": "Lona nova, costurada em Vela-Alta. As viagens ficam mais curtas.",
+      "custo": 300,
+      "efeito": { "tempo": 0.85 },
+      "emBreve": false
+    },
+    {
+      "id": "despensa",
+      "nome": "Despensa maior",
+      "descricao": "Prateleiras extras no porão. Cabe mais mantimento.",
+      "custo": 200,
+      "efeito": { "mantimentosMax": 50 },
+      "emBreve": false
+    },
+    {
+      "id": "casco-travessia",
+      "nome": "Casco de travessia",
+      "descricao": "Para atravessar os Mares Parados sem depender de rota conhecida.",
+      "custo": 0,
+      "efeito": {},
+      "emBreve": true,
+      "requisito": "Ainda em obras no estaleiro."
+    },
+    {
+      "id": "casco-bolha",
+      "nome": "Casco de bolha",
+      "descricao": "Para cruzar a Passagem da Fenda, por baixo da Espinha.",
+      "custo": 0,
+      "efeito": {},
+      "emBreve": true,
+      "requisito": "Ainda em obras no estaleiro."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "slug": "arquipelago-nuvem",
+  "nome": "Arquipélago Nuvem",
+  "mar": "corrente",
+  "lado": "manso",
+  "tipo": "historia",
+  "lat": 3,
+  "lng": 138,
+  "bioma": "Ilhas flutuantes presas por correntes de ar",
+  "clima": "Fresco e brilhante, com vento ascendente",
+  "regraEstranha": "As ilhas flutuam presas por correntes de ar. Só sobe quem pega a corrente certa.",
+  "resumo": "Ilhas que flutuam presas por correntes de ar. O fim do Lado Manso: depois daqui só a Fenda.",
+  "servicos": { "mercado": false, "estaleiro": false },
+  "recompensaMax": { "ouro": 300, "recompensa": 6000 },
+  "historia": {
+    "inicio": "chegada",
+    "cenas": {
+      "chegada": {
+        "titulo": "Quatro correntes",
+        "texto": "Quatro colunas de vento sobem do mar, cada uma levando a uma ilha diferente. Um menino pendurado numa pipa grita lá de cima: \"A da esquerda é rápida! A do meio é calma! Só uma leva ao Farol dos Ventos!\"",
+        "opcoes": [
+          { "id": "rapida", "rotulo": "Pegar a corrente rápida, da esquerda", "efeitos": { "casco": -15 }, "proxima": "ilha-pipas" },
+          { "id": "calma", "rotulo": "Pegar a corrente calma, do meio", "efeitos": { "mantimentos": -6 }, "proxima": "ilha-pipas" }
+        ]
+      },
+      "ilha-pipas": {
+        "titulo": "Ilha das pipas",
+        "texto": "O menino se chama Quiri. Ele mora num ninho de cordas e mapeia as correntes com fitas coloridas. \"Eu levo você ao farol. Só preciso de uma coisa: alguém pra segurar a minha fita-mestra enquanto eu desamarro a pipa grande.\"",
+        "opcoes": [
+          { "id": "segurar", "rotulo": "Segurar a fita-mestra com as duas mãos", "efeitos": { "recompensa": 500 }, "proxima": "farol" },
+          { "id": "ensinar", "rotulo": "Ensinar Quiri um nó seguro de marinheiro", "efeitos": { "recompensa": 700 }, "proxima": "farol" }
+        ]
+      },
+      "farol": {
+        "titulo": "Farol dos Ventos",
+        "texto": "O farol é uma torre inclinada que gira devagar com o vento. No alto, uma bússola de verdade, não a Agulha, espera quieta. Do outro lado, dá pra ver a Espinha subindo vermelha até o céu, e uma fenda escura embaixo dela.",
+        "opcoes": [
+          { "id": "olhar", "rotulo": "Olhar a fenda por um longo tempo", "efeitos": { "recompensa": 500 }, "proxima": "fim" },
+          { "id": "anotar", "rotulo": "Desenhar a fenda no seu mapa e seguir", "efeitos": { "ouro": 100, "recompensa": 400 }, "proxima": "fim" }
+        ]
+      },
+      "fim": {
+        "titulo": "O fim do Lado Manso",
+        "texto": "A Agulha de Maré gira sem parar e não aponta mais pra nenhuma ilha. Ela só tremula na direção da fenda, lá embaixo da Espinha. O Lado Bravo existe, e ainda não é pra você. Quiri te dá uma fita colorida, e o vento te leva de volta ao convés.",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 100, "recompensa": 1500, "item": "fita-dos-ventos", "aliado": "quiri", "agulha": true }
+      }
+    }
+  }
+}

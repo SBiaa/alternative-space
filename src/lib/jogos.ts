@@ -245,6 +245,14 @@ export const jogos: Jogo[] = [
     texto: "Cuide de uma horta na laje de casa. As plantas crescem sozinhas, a chuva rega, o pombo atrapalha e o vizinho troca muda. Uma visita por dia basta.",
     cor: "#3b3d73",
   },
+  {
+    slug: "mar-sem-fim",
+    nome: "Mar Sem Fim",
+    tipo: "Estratégia",
+    resumo: "Um globo de mar: crie seu pirata e navegue em tempo real.",
+    texto: "Crie o seu pirata, escolha o mar de origem e navegue de ilha em ilha num globo que gira. As viagens levam tempo de verdade, e as escolhas rendem ouro, aliados e a recompensa pela sua cabeça.",
+    cor: "#0b2340",
+  },
 ];
 
 export const hrefJogo = (slug: string) => `/jogos/${slug}`;

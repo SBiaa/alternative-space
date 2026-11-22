@@ -1,0 +1,46 @@
+{
+  "oficios": [
+    {
+      "id": "navegador",
+      "nome": "Navegador",
+      "icone": "bussola",
+      "descricao": "Lê o vento e o mapa. As viagens do seu barco são mais curtas.",
+      "vantagem": { "texto": "Viagens 10% mais rápidas. Nas tempestades, perde menos casco.", "tempo": 0.9, "evento": { "tipo": "tempestade", "efeitos": { "casco": 6 } } }
+    },
+    {
+      "id": "cozinheira",
+      "nome": "Cozinheira",
+      "icone": "panela",
+      "descricao": "Faz render qualquer despensa. Os mantimentos duram mais.",
+      "vantagem": { "texto": "Gasta 15% menos mantimentos. Nos barcos mercantes, negocia melhor.", "consumo": 0.85, "evento": { "tipo": "mercante", "efeitos": { "mantimentos": 5 } } }
+    },
+    {
+      "id": "medico",
+      "nome": "Médico",
+      "icone": "cruz",
+      "descricao": "Cuida de quem aparece machucado, e quem é cuidado lembra.",
+      "vantagem": { "texto": "Quando encontra um náufrago, ganha mais fama e gratidão.", "evento": { "tipo": "naufrago", "efeitos": { "recompensa": 80, "ouro": 10 } } }
+    },
+    {
+      "id": "carpinteira",
+      "nome": "Carpinteira",
+      "icone": "martelo",
+      "descricao": "Conserta o barco no meio da viagem e paga menos no estaleiro.",
+      "vantagem": { "texto": "Reparos 20% mais baratos. Nas tempestades, recupera um pouco do casco.", "reparo": 0.8, "evento": { "tipo": "tempestade", "efeitos": { "casco": 5 } } }
+    },
+    {
+      "id": "musico",
+      "nome": "Músico",
+      "icone": "nota",
+      "descricao": "Acalma bichos e anima mercadores. O mar escuta.",
+      "vantagem": { "texto": "Criaturas do Mar Parado se acalmam, e a fama sobe.", "evento": { "tipo": "criatura", "efeitos": { "recompensa": 100, "casco": 4 } } }
+    },
+    {
+      "id": "atirador",
+      "nome": "Atirador",
+      "icone": "alvo",
+      "descricao": "Pontaria firme, e sabe quando não atirar.",
+      "vantagem": { "texto": "Mantém a calma diante de criaturas, e acha troféus.", "evento": { "tipo": "criatura", "efeitos": { "ouro": 20 } } }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "slug": "vela-alta",
+  "nome": "Vela-Alta",
+  "mar": "corrente",
+  "lado": "manso",
+  "tipo": "historia",
+  "lat": -2,
+  "lng": 110,
+  "bioma": "Cidade de canais e docas",
+  "clima": "Úmido, com brisa de maré e cheiro de verniz",
+  "regraEstranha": "As ruas são canais, e as casas têm mastro em vez de chaminé.",
+  "resumo": "Cidade-estaleiro construída sobre canais, onde dá pra melhorar o barco.",
+  "servicos": { "mercado": true, "estaleiro": true },
+  "recompensaMax": { "ouro": 300, "recompensa": 5000 },
+  "historia": {
+    "inicio": "chegada",
+    "cenas": {
+      "chegada": {
+        "titulo": "A doca maior",
+        "texto": "Mil mastros e um único barulho: o martelo dos estaleiros. A mestra de obras Zélia, de macacão de couro, olha seu casco com ar de quem viu um doente. \"Esse barco aguenta mais. Mas antes me ajuda com uma encomenda que atrasou.\"",
+        "opcoes": [
+          { "id": "ajudar", "rotulo": "Ajudar com a encomenda", "efeitos": { "recompensa": 200 }, "proxima": "encomenda" },
+          { "id": "olhar", "rotulo": "Dar uma volta pelos canais primeiro", "proxima": "canais" }
+        ]
+      },
+      "canais": {
+        "titulo": "As ruas de água",
+        "texto": "Em um canal estreito, dois barcos entalaram de proa com proa. Os capitães discutem há horas, e ninguém quer dar ré primeiro.",
+        "opcoes": [
+          { "id": "mediar", "rotulo": "Propor um sorteio de quem recua e rebocar o perdedor", "efeitos": { "recompensa": 300, "mantimentos": -3 }, "proxima": "encomenda" },
+          { "id": "ir-embora", "rotulo": "Contornar pelo outro lado e seguir", "proxima": "encomenda" }
+        ]
+      },
+      "encomenda": {
+        "titulo": "Encomenda atrasada",
+        "texto": "É uma vela gigante, costurada em quarenta pedaços, que precisa ser içada antes da maré virar. Falta gente na corda, e o vento está mudando.",
+        "opcoes": [
+          { "id": "corda", "rotulo": "Pegar na corda ao lado dos estaleiros", "efeitos": { "recompensa": 500, "casco": -5 }, "proxima": "fim-vela" },
+          { "id": "organizar", "rotulo": "Organizar o ritmo do içamento, cantando a cadência", "efeitos": { "recompensa": 600 }, "proxima": "fim-vela" }
+        ]
+      },
+      "fim-vela": {
+        "titulo": "Vela no mastro",
+        "texto": "A vela gigante abre e a cidade inteira para pra olhar. Zélia te entrega o ouro da encomenda e abre o livro de obras do estaleiro. \"Aqui o seu barco pode ser melhorado. Pelo preço de tabela, e com meu desconto de amiga.\"",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 200, "recompensa": 1500, "item": "caderno-de-obras", "aliado": "mestra-zelia", "agulha": true }
+      }
+    }
+  }
+}
