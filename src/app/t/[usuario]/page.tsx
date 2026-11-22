@@ -6,6 +6,7 @@ import { getUser } from "@/lib/auth/server";
 import { SeloAssombracoes } from "@/components/assombracoes/SeloAssombracoes";
 import { SeloFanzine } from "@/components/fanzine/SeloFanzine";
 import { SeloMuro } from "@/components/muro/SeloMuro";
+import { SeloBanda } from "@/components/banda/SeloBanda";
 import { TEXTOS } from "@/lib/role/config";
 import { acharPorApelido, picosDaCabine } from "@/lib/role/dados";
 import { miniaturaDataUri } from "@/lib/role/miniatura";
@@ -50,6 +51,7 @@ async function Cabine({ params }: Params) {
         {t.nome && <p className="m-0 text-areia">{t.nome}</p>}
       </div>
       <SeloMuro userId={t.userId} link={dono} />
+      <SeloBanda userId={t.userId} link={dono} />
       <SeloAssombracoes userId={t.userId} link={dono} />
       <SeloFanzine userId={t.userId} link={dono} />
       {picos.length > 0 && (
