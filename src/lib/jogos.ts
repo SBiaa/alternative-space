@@ -123,6 +123,14 @@ export const jogos: Jogo[] = [
     cor: "#1f3a2e",
   },
   {
+    slug: "banca-na-feira",
+    nome: "Banca na Feira",
+    tipo: "Estratégia",
+    resumo: "Gestão de banca de artista em evento geek.",
+    texto: "Produza prints, adesivos e chaveiros no ateliê, arrume a mesa, atenda a fila, dê o troco e feche no azul. Com a reputação, libere feiras maiores.",
+    cor: "#c9743a",
+  },
+  {
     slug: "muro-livre",
     nome: "Muro Livre",
     tipo: "Estratégia",
