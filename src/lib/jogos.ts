@@ -149,6 +149,14 @@ export const jogos: Jogo[] = [
     cor: "#dd5d05",
   },
   {
+    slug: "banda-de-garagem",
+    nome: "Banda de Garagem",
+    tipo: "Estratégia",
+    resumo: "Gestão de banda de bairro: ensaio, música nova e show no sábado.",
+    texto: "Monte a banda, ensaie, componha, divulgue, toque nos palcos do bairro e grave uma demo, sem deixar o equipamento quebrar nem o humor despencar.",
+    cor: "#6b3a24",
+  },
+  {
     slug: "conexoes-shinobi",
     nome: "Conexões Shinobi",
     tipo: "Rapidinho",

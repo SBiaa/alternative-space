@@ -7,6 +7,7 @@ import { SeloBanca } from "@/components/banca/SeloBanca";
 import { SeloAssombracoes } from "@/components/assombracoes/SeloAssombracoes";
 import { SeloFanzine } from "@/components/fanzine/SeloFanzine";
 import { SeloMuro } from "@/components/muro/SeloMuro";
+import { SeloBanda } from "@/components/banda/SeloBanda";
 import { TEXTOS } from "@/lib/role/config";
 import { acharPorApelido, picosDaCabine } from "@/lib/role/dados";
 import { miniaturaDataUri } from "@/lib/role/miniatura";
@@ -52,6 +53,7 @@ async function Cabine({ params }: Params) {
       </div>
       <SeloMuro userId={t.userId} link={dono} />
       <SeloBanca userId={t.userId} link={dono} />
+      <SeloBanda userId={t.userId} link={dono} />
       <SeloAssombracoes userId={t.userId} link={dono} />
       <SeloFanzine userId={t.userId} link={dono} />
       {picos.length > 0 && (
