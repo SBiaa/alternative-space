@@ -237,6 +237,14 @@ export const jogos: Jogo[] = [
     texto: "Comece com um baralho fraco, enfrente encontros por turnos e melhore o baralho no caminho até o Polvo-Mor. Cartas novas se liberam jogando.",
     cor: "#0b2340",
   },
+  {
+    slug: "laje-verde",
+    nome: "Laje Verde",
+    tipo: "Criativo",
+    resumo: "Horta calma na laje, em tempo real.",
+    texto: "Cuide de uma horta na laje de casa. As plantas crescem sozinhas, a chuva rega, o pombo atrapalha e o vizinho troca muda. Uma visita por dia basta.",
+    cor: "#3b3d73",
+  },
 ];
 
 export const hrefJogo = (slug: string) => `/jogos/${slug}`;
