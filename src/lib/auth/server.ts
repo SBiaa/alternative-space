@@ -10,6 +10,12 @@ export const auth = createNeonAuth({
 // Sessão depende do pedido: connection() tira a chamada do pré-render (o SDK usa Date internamente).
 export async function getUser() {
   await connection();
-  const { data } = await auth.getSession();
-  return data?.user ?? null;
+  try {
+    const { data } = await auth.getSession();
+    return data?.user ?? null;
+  } catch {
+    // Sessão expirada pede pra regravar o cookie, e Server Component não pode (só Server Action/Route Handler).
+    // Sem isso o Header (que roda em toda página) derruba o site inteiro; melhor tratar como deslogado.
+    return null;
+  }
 }
