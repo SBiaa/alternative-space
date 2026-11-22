@@ -1,0 +1,206 @@
+{
+  "status": "rascunho",
+  "publico": {
+    "slug": "sumico-na-venda",
+    "titulo": "O sumiço na venda",
+    "resumo": "Seu Tonico perde objetos todo fim de tarde, com a venda trancada. E um redemoinho miúdo anda pela estrada do sítio.",
+    "lugarPrincipal": "venda",
+    "abertura": "Seu Tonico te chama pro balcão e fala baixinho: a peneira sumiu, depois o isqueiro, depois a tampa do bule. Sempre de tardinha, com a porta trancada por dentro. Ele não quer confusão, só quer entender.",
+    "minSinais": 4,
+    "moradores": [
+      {
+        "id": "seu-tonico",
+        "nome": "Seu Tonico",
+        "papel": "Dono da venda",
+        "lugar": "venda",
+        "falas": [
+          {
+            "id": "tonico-sumicos",
+            "pergunta": "O que andou sumindo?",
+            "resposta": "A peneira grande, o isqueiro e a tampa do bule. Sempre de tardinha, e eu fecho a venda por dentro. Não quebra nada, não bagunça nada. Some, e pronto.",
+            "requer": [],
+            "sinais": ["peneira-sumida"],
+            "depoimento": "Seu Tonico: as coisas somem de tardinha, com a venda trancada por dentro. Nada é quebrado."
+          },
+          {
+            "id": "tonico-avo",
+            "pergunta": "Mudou alguma coisa na venda ultimamente?",
+            "resposta": "Mudou pouca coisa... Meu avô, quando tinha a venda, deixava uma tigelinha de canjica no batente no fim da tarde. Dizia que era costume da casa. Eu achei bobagem e parei quando herdei o balcão. Foi mais ou menos nessa época que começou.",
+            "requer": ["redemoinho-estrada"],
+            "sinais": [],
+            "depoimento": "Seu Tonico: o avô deixava uma tigela de canjica no batente no fim da tarde. Ele parou com o costume quando herdou a venda."
+          }
+        ]
+      },
+      {
+        "id": "dona-cidinha",
+        "nome": "Dona Cidinha",
+        "papel": "Moradora do sítio",
+        "lugar": "sitio",
+        "falas": [
+          {
+            "id": "cidinha-vento",
+            "pergunta": "Viu algo estranho por aqui?",
+            "resposta": "O vento anda esquisito. Um redemoinho pequenininho sobe a estrada e anda sozinho, contra o vento. Quando eu chego perto, para.",
+            "requer": [],
+            "sinais": ["redemoinho-estrada"],
+            "depoimento": "Dona Cidinha: um redemoinho pequeno anda sozinho pela estrada e para quando alguém chega perto."
+          },
+          {
+            "id": "cidinha-cavalo",
+            "pergunta": "E o cavalo, tá bem?",
+            "resposta": "Tá ótimo, só amanhece com a crina cheia de trancinhas e nozinhos. Ninguém do sítio faz isso. Tenho até pena de desfazer.",
+            "depoisDe": "cidinha-vento",
+            "requer": [],
+            "sinais": ["pegada-um-pe"],
+            "depoimento": "Dona Cidinha: o cavalo amanhece com a crina cheia de tranças e nozinhos. Ninguém do sítio faz isso."
+          }
+        ]
+      },
+      {
+        "id": "nando",
+        "nome": "Nando",
+        "papel": "Menino que vende doce na praça",
+        "lugar": "praca",
+        "falas": [
+          {
+            "id": "nando-assobio",
+            "pergunta": "Você passa muito pela estrada do sítio?",
+            "resposta": "Passo. Outro dia ouvi um assobio fininho vindo do bambuzal. Olhei, olhei e não tinha ninguém. Aí o assobio veio do outro lado!",
+            "requer": [],
+            "sinais": ["assobio-bambuzal"],
+            "depoimento": "Nando: um assobio fino vem do bambuzal e muda de lado quando ele procura."
+          },
+          {
+            "id": "nando-mata",
+            "pergunta": "E na beira da mata, viu alguma coisa?",
+            "resposta": "Uns galhos quebrados na entrada da trilha, mas acho que foi lenhador. Lá o povo corta de vez em quando.",
+            "requer": [],
+            "sinais": ["galhos-mata"],
+            "depoimento": "Nando: tem galhos quebrados na entrada da trilha da mata. Ele acha que foi lenhador."
+          }
+        ]
+      }
+    ],
+    "sinais": [
+      {
+        "id": "peneira-sumida",
+        "tipo": "objeto",
+        "nome": "Peneira que sumiu",
+        "texto": "O prego onde ficava a peneira grande está vazio. A porta da venda estava trancada por dentro, e não tem sinal de arrombamento.",
+        "lugar": "venda",
+        "requer": []
+      },
+      {
+        "id": "redemoinho-estrada",
+        "tipo": "redemoinho",
+        "nome": "Redemoinho que anda sozinho",
+        "texto": "Um redemoinho de poeira, do tamanho de uma criança, sobe a estrada do sítio contra o vento e se desmancha quando você chega perto.",
+        "lugar": "sitio",
+        "requer": []
+      },
+      {
+        "id": "assobio-bambuzal",
+        "tipo": "som",
+        "nome": "Assobio no bambuzal",
+        "texto": "Um assobio fino, de moleque, que vem do bambuzal. Quando você vira, vem do lado oposto.",
+        "lugar": "sitio",
+        "requer": []
+      },
+      {
+        "id": "pegada-um-pe",
+        "tipo": "pegada",
+        "nome": "Pegadas de um pé só",
+        "texto": "No chão batido do quintal, marcas redondas de um pé só, em saltinhos, indo do bambuzal até a estrada.",
+        "lugar": "sitio",
+        "requer": ["redemoinho-estrada"]
+      },
+      {
+        "id": "isqueiro-no-bambu",
+        "tipo": "objeto",
+        "nome": "Isqueiro no alto do bambu",
+        "texto": "O isqueiro do Seu Tonico, pendurado na ponta de um bambu, onde nem escada alcança. Ao lado, um pedacinho de pano vermelho.",
+        "lugar": "sitio",
+        "requer": ["assobio-bambuzal"]
+      },
+      {
+        "id": "galhos-mata",
+        "tipo": "pegada",
+        "nome": "Galhos quebrados",
+        "texto": "Na entrada da trilha, galhos quebrados e folhas amassadas. Parece trabalho de lenhador, mas não tem pegada de bota.",
+        "lugar": "mata",
+        "requer": []
+      }
+    ],
+    "criaturas": [
+      { "slug": "saci", "nome": "Saci" },
+      { "slug": "curupira", "nome": "Curupira" },
+      { "slug": "iara", "nome": "Iara" },
+      { "slug": "boitata", "nome": "Boitatá" }
+    ],
+    "motivos": [
+      { "id": "agrado", "texto": "Sente falta de um agrado que recebia, e faz travessura pra ser lembrado" },
+      { "id": "protege-mata", "texto": "Está protegendo a mata contra o corte de lenha" },
+      { "id": "espantar", "texto": "Quer espantar todo mundo da venda" },
+      { "id": "devolver-rio", "texto": "Quer de volta algo que lhe tiraram da beira do rio" }
+    ],
+    "encontro": {
+      "cena": "No fim da tarde, você e Seu Tonico esperam na porta da venda. O vento para. No batente, uma sombra pequena de um pé só, equilibrada, espia a gente. Parece mais curiosa do que brava.",
+      "opcoes": [
+        { "id": "presente", "texto": "Deixar uma tigela de canjica no batente, como o avô do Seu Tonico fazia" },
+        { "id": "devolver", "texto": "Procurar o que alguém tirou do lugar e devolver" },
+        { "id": "respeitar", "texto": "Prometer nunca mais cortar lenha por aqui" },
+        { "id": "trancar", "texto": "Trancar tudo e ficar de guarda a noite inteira" }
+      ]
+    }
+  },
+  "gabarito": {
+    "criatura": "saci",
+    "motivo": "agrado",
+    "escolha": "presente",
+    "pesos": {
+      "redemoinho-estrada": { "saci": 3 },
+      "pegada-um-pe": { "saci": 3 },
+      "assobio-bambuzal": { "saci": 2 },
+      "isqueiro-no-bambu": { "saci": 1 },
+      "peneira-sumida": { "saci": 1 },
+      "galhos-mata": { "curupira": 1 }
+    },
+    "motivoPistas": ["tonico-avo"],
+    "dicas": {
+      "criatura": [
+        "Pense nos tipos de pista: o que anda sozinho no vento e o que deixa marca de um pé só?",
+        "Um redemoinho que para quando você chega e pegadas de um pé só. Quem é conhecido por isso?"
+      ],
+      "motivo": [
+        "Releia o que Seu Tonico contou sobre o tempo do avô dele.",
+        "O que o avô fazia no fim da tarde, e que deixou de ser feito quando as coisas começaram a sumir?"
+      ],
+      "escolha": [
+        "Pense em como se trata um vizinho que foi esquecido: com pressa ou com um gesto de carinho?",
+        "Uma tigela no batente, no fim da tarde, como antigamente."
+      ]
+    },
+    "desfecho": [
+      "Seu Tonico põe a tigela de canjica no batente e senta ao lado, em silêncio. A sombra de um pé só chega perto, espia, e some num redemoinho miúdo que sobe a estrada rindo.",
+      "Na manhã seguinte a tigela está limpa, e a peneira está de volta no prego, com um pedacinho de pano vermelho dobrado em cima. Ninguém mais perdeu nada. E a crina do cavalo, dizem, segue trançada, de enfeite."
+    ],
+    "bestiario": {
+      "resumo": "Moleque de uma perna só que viaja em redemoinho. Gosta de brincadeira, esconde objetos e fica contente quando é lembrado."
+    },
+    "origem": {
+      "titulo": "Saci",
+      "texto": [
+        "O Saci é uma figura do folclore brasileiro. A história tem raízes em narrativas indígenas, em especial de povos de língua tupi-guarani do Sul e do Centro do país, e foi ganhando traços de tradições afro-brasileiras e europeias ao longo do tempo.",
+        "A imagem que ficou mais conhecida (um menino de uma perna só, gorro vermelho, cachimbo, que aparece em redemoinhos) se firmou entre o fim do século XIX e o começo do XX. Muito dela vem de um inquérito de 1917, em que Monteiro Lobato juntou relatos enviados por leitores de jornal.",
+        "Nas histórias, o Saci faz travessuras: esconde objetos, azeda o leite, trança a crina de cavalos. Em muitas versões a gente pode se livrar dele com uma peneira.",
+        "Cada região conta de um jeito, e não existe uma versão única. Neste jogo, o Saci e a vila são invenção nossa, feita a partir dessas histórias."
+      ],
+      "fontes": [
+        { "titulo": "Dicionário do Folclore Brasileiro", "autor": "Luís da Câmara Cascudo", "nota": "Verbete Saci. Edição a confirmar pelo revisor." },
+        { "titulo": "O Sacy-Pererê: resultado de um inquérito", "autor": "Monteiro Lobato (org.)", "ano": 1918, "nota": "Data e detalhes do inquérito a confirmar pelo revisor." }
+      ],
+      "revisao": null
+    }
+  }
+}

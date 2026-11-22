@@ -1,0 +1,78 @@
+{
+  "slug": "cruz-mansa",
+  "ordem": 1,
+  "titulo": "Cabeça de Fósforo nº 7",
+  "resumo": "Cinco páginas soltas, achadas dentro de um livro de sebo. Quem fazia essa fanzine, onde a turma se encontrava e por que o número 7 foi o último?",
+  "publicadoEm": "2026-11-01",
+  "selo": { "nome": "Achou a turma do fundão", "descricao": "Resolveu o capítulo 1 da Fanzine Perdida." },
+  "paginas": [
+    { "id": "pagina-1", "titulo": "Capa", "imagem": "/jogos/fanzine/cruz-mansa/pagina-1.svg", "alt": "Capa da fanzine Cabeça de Fósforo, número 7, em papel fotocopiado, com letras recortadas, um fósforo aceso desenhado, um carimbo redondo, a data e uma assinatura rabiscada.", "mdx": "pagina-1.mdx", "largura": 600, "altura": 800 },
+    { "id": "pagina-2", "titulo": "Editorial", "imagem": "/jogos/fanzine/cruz-mansa/pagina-2.svg", "alt": "Editorial escrito à mão, com estrelinhas no lugar dos pingos dos i, e um texto datilografado sobre por que fazer fanzine.", "mdx": "pagina-2.mdx", "largura": 600, "altura": 800 },
+    { "id": "pagina-3", "titulo": "Ao vivo", "imagem": "/jogos/fanzine/cruz-mansa/pagina-3.svg", "alt": "Resenha de um show com um quadro tracejado de serviço e a assinatura Beto F. no fim.", "mdx": "pagina-3.mdx", "largura": 600, "altura": 800 },
+    { "id": "pagina-4", "titulo": "Cartas e classificados", "imagem": "/jogos/fanzine/cruz-mansa/pagina-4.svg", "alt": "Cartas de leitores, uma caixa com o endereço de correspondência, classificados e um rostinho desenhado com a letra T.", "mdx": "pagina-4.mdx", "largura": 600, "altura": 800 },
+    { "id": "pagina-5", "titulo": "Aviso", "imagem": "/jogos/fanzine/cruz-mansa/pagina-5.svg", "alt": "Último aviso: um bilhete colado com fita, escrito à mão, e uma despedida.", "mdx": "pagina-5.mdx", "largura": 600, "altura": 800 }
+  ],
+  "pistas": [
+    { "id": "carimbo", "pagina": "pagina-1", "area": { "x": 0.653, "y": 0.7, "w": 0.26, "h": 0.195 }, "rotulo": "Carimbo redondo", "descricao": "Carimbo redondo de tinta preta no canto de baixo da capa, com o nome de um lugar escrito em volta.", "texto": "O carimbo diz: Copiado na Papelaria Sol Nascente, Cruz Mansa. A fanzine saía de uma máquina de xerox de bairro." },
+    { "id": "data", "pagina": "pagina-1", "area": { "x": 0.083, "y": 0.87, "w": 0.383, "h": 0.055 }, "rotulo": "Data da edição", "descricao": "Texto marcado de laranja no canto de baixo da capa: março de 1998, número 7.", "texto": "Esta edição é de março de 1998, o número 7." },
+    { "id": "assinatura-lm", "pagina": "pagina-1", "area": { "x": 0.727, "y": 0.94, "w": 0.133, "h": 0.052 }, "rotulo": "Assinatura L.M.", "descricao": "Assinatura rabiscada com as letras L e M, na borda de baixo da capa.", "texto": "Alguém assinou a capa só com as iniciais L.M., em letra redonda e inclinada." },
+    { "id": "letra-estrela", "pagina": "pagina-2", "area": { "x": 0.087, "y": 0.198, "w": 0.833, "h": 0.185 }, "rotulo": "Letra com estrelinhas", "descricao": "Três linhas do editorial escritas à mão, em letra redonda, com estrelinhas no lugar dos pingos dos i.", "texto": "O editorial é escrito à mão numa letra redonda e inclinada, e os pingos dos i viram estrelinhas." },
+    { "id": "show-garagem", "pagina": "pagina-3", "area": { "x": 0.087, "y": 0.237, "w": 0.827, "h": 0.14 }, "rotulo": "Serviço do show", "descricao": "Quadro tracejado com o dia e o lugar do show: sábado, 14 de fevereiro, Garagem do Seu Aurélio.", "texto": "O show foi num sábado, 14 de fevereiro, na Garagem do Seu Aurélio. A resenha chama a garagem de \"nosso QG de sempre\"." },
+    { "id": "assinatura-bf", "pagina": "pagina-3", "area": { "x": 0.62, "y": 0.912, "w": 0.25, "h": 0.055 }, "rotulo": "Assinatura Beto F.", "descricao": "Assinatura escrita à mão no fim da resenha: traço, Beto F.", "texto": "A resenha do show é assinada por Beto F." },
+    { "id": "caixa-postal", "pagina": "pagina-4", "area": { "x": 0.087, "y": 0.375, "w": 0.827, "h": 0.138 }, "rotulo": "Endereço pra cartas", "descricao": "Caixa de moldura grossa com o endereço de correspondência da fanzine.", "texto": "Pra escrever pra turma: Caixa Postal 112, Cruz Mansa." },
+    { "id": "assinatura-t", "pagina": "pagina-4", "area": { "x": 0.683, "y": 0.745, "w": 0.167, "h": 0.138 }, "rotulo": "Rostinho do T.", "descricao": "Desenho de um rostinho com duas antenas e a letra T. embaixo, no canto da página de cartas.", "texto": "Um rostinho de antenas, assinado só com um T. Uma carta de leitor pergunta pela tirinha do Tuca." },
+    { "id": "aviso-papelaria", "pagina": "pagina-5", "area": { "x": 0.1, "y": 0.285, "w": 0.8, "h": 0.245 }, "rotulo": "Bilhete colado", "descricao": "Bilhete escrito à mão, preso com fita, no meio da última página.", "texto": "O bilhete avisa: a Papelaria Sol Nascente vai fechar em abril. Era lá que a turma xerocava tudo, e sem a máquina não tem fanzine." }
+  ],
+  "ligacoes": [
+    { "id": "cruz-mansa", "pistas": ["carimbo", "caixa-postal"], "texto": "O carimbo da papelaria e a caixa postal são da mesma cidade, Cruz Mansa. A fanzine era feita e recebia cartas ali, então a turma morava ali.", "faltou": "Falta ligar o carimbo da capa ao endereço de correspondência." },
+    { "id": "lia-editora", "pistas": ["letra-estrela", "assinatura-lm"], "texto": "A letra redonda do editorial é a mesma da assinatura L.M. da capa. Quem montou o número 7 foi a Lia, a editora da turma.", "faltou": "Falta ligar a letra com estrelinhas do editorial à assinatura da capa." },
+    { "id": "garagem-qg", "pistas": ["show-garagem", "data"], "texto": "O show da Garagem do Seu Aurélio foi em fevereiro de 1998, um mês antes desta edição. A resenha chama a garagem de QG: era onde a turma se reunia.", "faltou": "Falta ligar o serviço do show à data da edição." },
+    { "id": "fim-papelaria", "pistas": ["aviso-papelaria", "data"], "texto": "A papelaria ia fechar em abril de 1998, um mês depois desta edição. Sem a máquina de xerox barata, a fanzine parou no número 7.", "faltou": "Falta ligar o bilhete da última página à data da edição." },
+    { "id": "beto-resenha", "pistas": ["assinatura-bf", "show-garagem"], "texto": "Beto F. escreveu a resenha do show na garagem. Ele fazia a parte das bandas e dos shows.", "faltou": "Falta ligar a assinatura Beto F. ao show." },
+    { "id": "tres-maos", "pistas": ["assinatura-t", "assinatura-bf"], "texto": "A turma tinha pelo menos três pessoas: Lia na edição, Beto nas resenhas e Tuca nos desenhos.", "faltou": "Falta ligar o rostinho do T. à assinatura do Beto." }
+  ],
+  "pergunta": {
+    "enunciado": "O que aconteceu com a fanzine Cabeça de Fósforo?",
+    "partes": [
+      {
+        "id": "quem",
+        "rotulo": "Quem montou o número 7?",
+        "opcoes": [
+          { "id": "lia", "texto": "Lia, a editora da turma" },
+          { "id": "beto", "texto": "Beto, que escrevia sobre as bandas" },
+          { "id": "tuca", "texto": "Tuca, que fazia os desenhos" },
+          { "id": "aurelio", "texto": "Seu Aurélio, dono da garagem" }
+        ],
+        "certa": "lia",
+        "exige": ["lia-editora"]
+      },
+      {
+        "id": "onde",
+        "rotulo": "Onde a turma se reunia?",
+        "opcoes": [
+          { "id": "garagem", "texto": "Na Garagem do Seu Aurélio" },
+          { "id": "papelaria", "texto": "Na Papelaria Sol Nascente" },
+          { "id": "escola", "texto": "No pátio da escola" }
+        ],
+        "certa": "garagem",
+        "exige": ["garagem-qg", "cruz-mansa"]
+      },
+      {
+        "id": "porque",
+        "rotulo": "Por que o número 7 foi o último?",
+        "opcoes": [
+          { "id": "papelaria-fechou", "texto": "A papelaria que fazia as cópias fechou" },
+          { "id": "acabou-tinta", "texto": "Acabou a tinta e ninguém quis comprar mais" },
+          { "id": "cansaco", "texto": "A turma cansou de fazer fanzine" }
+        ],
+        "certa": "papelaria-fechou",
+        "exige": ["fim-papelaria"]
+      }
+    ]
+  },
+  "dicas": [
+    "Passe a lupa nos quatro cantos de cada página: carimbo, data, assinatura e endereço contam tanto quanto o texto.",
+    "Duas pistas que falam da mesma coisa (um lugar, uma data, uma letra) costumam combinar. A data da capa combina com mais de uma pista.",
+    "Pra descobrir quem montou a edição, compare a assinatura da capa com a letra do editorial. Pra saber por que parou, compare o bilhete da última página com a data da capa."
+  ]
+}

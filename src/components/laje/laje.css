@@ -1,0 +1,77 @@
+/* Tema "Laje": só vale dentro de .tema-laje. Fora do desenho, o jogo usa os tokens do site (botão laranja, texto noite). */
+.tema-laje {
+  --laje-ceu-topo: #3b3d73;
+  --laje-ceu-meio: #b95f6b;
+  --laje-ceu-horizonte: #f2a66e;
+  --laje-cidade: #251f36;
+  --laje-concreto: #cdbfae;
+  --laje-concreto-escuro: #a89a8a;
+  --laje-mureta: #b6a796;
+  --laje-caixa: #3b7fb8;
+  --laje-caixa-escura: #2a5d8a;
+  --laje-telha: #b5532f;
+  --laje-barro: #b8643c;
+  --laje-barro-escuro: #8f4a29;
+  --laje-lata: #c3c8cd;
+  --laje-lata-escura: #8d949b;
+  --laje-lata-pintada: #2f8f83;
+  --laje-folha: #4f9a3f;
+  --laje-agua: #3b7fb8;
+  --laje-sol: #f6c445;
+  --laje-vaso-fundo: #f1e8d2;
+  --laje-linha: #5a4d40;
+}
+
+.tema-laje .laje-ceu {
+  background: linear-gradient(to bottom, var(--laje-ceu-topo), var(--laje-ceu-meio) 62%, var(--laje-ceu-horizonte));
+}
+
+.tema-laje .laje-chao {
+  background: var(--laje-concreto);
+  border-top: 6px solid var(--laje-mureta);
+}
+
+.tema-laje .laje-vaso {
+  background: var(--laje-vaso-fundo);
+  color: var(--color-noite);
+  border: 2px solid var(--laje-linha);
+  border-radius: 8px;
+}
+
+.tema-laje .laje-vaso[aria-pressed="true"] {
+  border-width: 4px;
+  border-color: var(--color-noite);
+}
+
+.tema-laje .laje-vaso:hover {
+  background: #fff6de;
+}
+
+.tema-laje .laje-numeros {
+  font-family: var(--font-ficha);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tema-laje .laje-pombo {
+    animation: laje-bicar 1.6s ease-in-out infinite;
+  }
+  .tema-laje .laje-chuva line {
+    animation: laje-chover 0.9s linear infinite;
+  }
+  .tema-laje .laje-pronta {
+    animation: laje-brilhar 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes laje-bicar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+@keyframes laje-chover {
+  from { transform: translateY(-8px); opacity: 0.2; }
+  to { transform: translateY(8px); opacity: 1; }
+}
+@keyframes laje-brilhar {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}

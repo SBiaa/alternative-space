@@ -1,0 +1,189 @@
+{
+  "status": "rascunho",
+  "publico": {
+    "slug": "o-canto-do-fim-da-tarde",
+    "titulo": "O canto do fim da tarde",
+    "resumo": "No fim da tarde, uma voz canta no meio do rio. Seu Raimundo volta pra casa com o coração apertado, e a rede dele amanhece enfeitada de flores.",
+    "lugarPrincipal": "rio",
+    "abertura": "Seu Raimundo guarda o remo e senta na beira do cais. Ele não tem medo, só uma tristeza esquisita desde que a voz do rio começou a cantar no fim da tarde. Quer saber por que ela canta assim.",
+    "minSinais": 4,
+    "moradores": [
+      {
+        "id": "seu-raimundo",
+        "nome": "Seu Raimundo",
+        "papel": "Pescador",
+        "lugar": "rio",
+        "falas": [
+          {
+            "id": "raimundo-canto",
+            "pergunta": "O senhor ouve o canto todo dia?",
+            "resposta": "Todo fim de tarde. Voz de mulher, vindo do meio do rio. Nunca me fez mal, nunca puxou ninguém. Mas desde umas semanas pra cá o canto ficou triste, e eu volto pra casa de coração apertado.",
+            "requer": [],
+            "sinais": ["canto-entardecer"],
+            "depoimento": "Seu Raimundo: uma voz de mulher canta no rio no fim da tarde. Nunca fez mal, mas ficou triste há algumas semanas."
+          },
+          {
+            "id": "raimundo-rede",
+            "pergunta": "A rede do senhor tem algo de diferente?",
+            "resposta": "Outro dia a rede amanheceu toda enfeitada de flor do rio, sem um furo, sem um nó rasgado. Quem faz isso tem mão de artista, e não quer mal.",
+            "depoisDe": "raimundo-canto",
+            "requer": ["pegadas-molhadas"],
+            "sinais": ["rede-de-flores"],
+            "depoimento": "Seu Raimundo: a rede amanheceu enfeitada de flor do rio, sem nenhum furo."
+          }
+        ]
+      },
+      {
+        "id": "beto",
+        "nome": "Beto",
+        "papel": "Menino que brinca na beira do rio",
+        "lugar": "praca",
+        "falas": [
+          {
+            "id": "beto-pente",
+            "pergunta": "Você anda brincando perto do rio?",
+            "resposta": "Ando... Achei um pente bonito, de osso de peixe, numa pedra lisa da margem. Trouxe pra casa e tá na gaveta. Mas depois disso o canto ficou triste, e eu fiquei com vergonha de contar.",
+            "requer": ["canto-entardecer"],
+            "sinais": [],
+            "depoimento": "Beto: levou pra casa um pente de osso de peixe que estava numa pedra lisa da margem. Depois disso o canto ficou triste."
+          }
+        ]
+      },
+      {
+        "id": "dona-nena",
+        "nome": "Dona Nena",
+        "papel": "Zeladora da igreja velha",
+        "lugar": "igreja",
+        "falas": [
+          {
+            "id": "nena-sino",
+            "pergunta": "A senhora já ouviu o canto do rio?",
+            "resposta": "Escuto daqui, quando o vento ajuda. Aliás, o sino rachado vive tilintando sozinho nessa hora, mas é só a madeira esfriando. Minha avó contava que a dona das águas guarda suas coisas nas margens, e que mexer nelas deixa ela tão triste que o rio fica pesado.",
+            "requer": [],
+            "sinais": ["sino-esfriando"],
+            "depoimento": "Dona Nena: a avó dela dizia que a dona das águas guarda coisas na margem, e que mexer nelas deixa o rio pesado de tristeza."
+          }
+        ]
+      }
+    ],
+    "sinais": [
+      {
+        "id": "canto-entardecer",
+        "tipo": "som",
+        "nome": "Canto no meio do rio",
+        "texto": "Uma voz de mulher cantando sem palavras, bem no meio do rio. A melodia é bonita e um pouco triste. A água parece parar pra ouvir.",
+        "lugar": "rio",
+        "requer": []
+      },
+      {
+        "id": "pegadas-molhadas",
+        "tipo": "pegada",
+        "nome": "Pegadas molhadas",
+        "texto": "Pegadas de pés descalços, molhadas, que descem da margem pra dentro da água. Voltando, não tem nenhuma.",
+        "lugar": "rio",
+        "requer": []
+      },
+      {
+        "id": "redemoinho-agua",
+        "tipo": "redemoinho",
+        "nome": "Redemoinho sem vento",
+        "texto": "Na água calma, um redemoinho pequeno gira devagar, sem vento nem correnteza. Aos poucos, vai ficando manso.",
+        "lugar": "rio",
+        "requer": []
+      },
+      {
+        "id": "rede-de-flores",
+        "tipo": "objeto",
+        "nome": "Rede enfeitada",
+        "texto": "A rede do Seu Raimundo, trançada com flores do rio. Nenhum fio está rasgado: parece presente, e não malvadeza.",
+        "lugar": "rio",
+        "requer": ["pegadas-molhadas"]
+      },
+      {
+        "id": "pedra-vazia",
+        "tipo": "objeto",
+        "nome": "Pedra lisa vazia",
+        "texto": "Numa pedra lisa da margem, uma marca clarinha no formato de alguma coisa comprida e dentada que ficou ali por muito tempo. Agora não tem nada.",
+        "lugar": "rio",
+        "requer": ["canto-entardecer"]
+      },
+      {
+        "id": "sino-esfriando",
+        "tipo": "som",
+        "nome": "Sino que tilinta",
+        "texto": "O sino rachado da igreja velha tilinta baixinho, sozinho, quando o sol baixa. É o metal esfriando.",
+        "lugar": "igreja",
+        "requer": []
+      }
+    ],
+    "criaturas": [
+      { "slug": "iara", "nome": "Iara" },
+      { "slug": "saci", "nome": "Saci" },
+      { "slug": "curupira", "nome": "Curupira" },
+      { "slug": "boitata", "nome": "Boitatá" }
+    ],
+    "motivos": [
+      { "id": "quer-de-volta", "texto": "Quer de volta algo que lhe tiraram da margem" },
+      { "id": "agrado", "texto": "Sente falta de um agrado que o povo deixava" },
+      { "id": "protege-mata", "texto": "Está protegendo a mata contra o corte" },
+      { "id": "espantar", "texto": "Só quer espantar os pescadores do rio" }
+    ],
+    "encontro": {
+      "cena": "Ao fim da tarde, você e o Beto vão até a pedra lisa da margem. O rio está parado como um espelho. Uma figura de cabelos longos e molhados aparece até a cintura, olhando pra pedra vazia. Não canta. Espera.",
+      "opcoes": [
+        { "id": "devolver", "texto": "Colocar o pente de volta na pedra, pedir desculpa e ir embora devagar" },
+        { "id": "presente", "texto": "Jogar flores na água e sair correndo" },
+        { "id": "respeitar", "texto": "Prometer nunca mais chegar perto da margem" },
+        { "id": "chamar", "texto": "Chamar os vizinhos pra esperar na margem com lanternas" }
+      ]
+    }
+  },
+  "gabarito": {
+    "criatura": "iara",
+    "motivo": "quer-de-volta",
+    "escolha": "devolver",
+    "pesos": {
+      "canto-entardecer": { "iara": 3 },
+      "pegadas-molhadas": { "iara": 2 },
+      "redemoinho-agua": { "iara": 2, "saci": 1 },
+      "rede-de-flores": { "iara": 1 },
+      "pedra-vazia": { "iara": 2 },
+      "sino-esfriando": {}
+    },
+    "motivoPistas": ["beto-pente", "pedra-vazia", "nena-sino"],
+    "dicas": {
+      "criatura": [
+        "Pense em quem canta no meio do rio e deixa pegadas que entram na água.",
+        "Um canto no rio, pegadas que descem e não voltam, uma rede enfeitada de flores. Quem é a senhora das águas?"
+      ],
+      "motivo": [
+        "O canto ficou triste de um dia pra outro. O que mudou na margem?",
+        "A pedra lisa está com uma marca vazia. O que o Beto levou de lá?"
+      ],
+      "escolha": [
+        "Se alguém levou algo que não era dele, qual é o jeito mais simples de consertar?",
+        "Levar o que foi tirado de volta ao lugar, e pedir desculpa."
+      ]
+    },
+    "desfecho": [
+      "O Beto põe o pente na pedra lisa com as duas mãos, diz baixinho que sente muito e se afasta de costas. A figura de cabelos molhados olha o pente por um tempo, depois olha pra ele, e inclina a cabeça de leve, como quem agradece.",
+      "No fim da tarde seguinte o canto volta ao que era: bonito e leve. A rede do Seu Raimundo amanhece com mais uma flor. E o Beto passou a avisar os amigos: o que está na margem não é pra levar."
+    ],
+    "bestiario": {
+      "resumo": "Senhora das águas, de canto lindo e cabelos longos. Guarda suas coisas na margem e fica triste quando alguém leva embora."
+    },
+    "origem": {
+      "titulo": "Iara",
+      "texto": [
+        "A Iara, também chamada de Uiara, é uma figura das águas conhecida em várias regiões do Brasil, com raízes em narrativas indígenas, principalmente da Amazônia. O nome vem do tupi e é muitas vezes traduzido como senhora das águas.",
+        "A imagem mais popular de uma mulher bonita que canta nos rios foi ganhando forma nos relatos do século XIX, como na obra de Couto de Magalhães, e se misturou com outras tradições de seres das águas. Em muitas versões, o canto atrai quem passa pela margem.",
+        "Para muitas comunidades ribeirinhas e indígenas, essa é uma história viva, contada com respeito e com variações. Por isso, neste jogo, a Iara não faz mal a ninguém: ela é entendida. A Iara e a vila são invenção nossa, feita a partir dessas histórias."
+      ],
+      "fontes": [
+        { "titulo": "Dicionário do Folclore Brasileiro", "autor": "Luís da Câmara Cascudo", "nota": "Verbetes Iara e Mãe-d'água. Edição a confirmar pelo revisor." },
+        { "titulo": "O Selvagem", "autor": "Couto de Magalhães", "ano": 1876, "nota": "Obra e trecho a confirmar pelo revisor." }
+      ],
+      "revisao": null
+    }
+  }
+}

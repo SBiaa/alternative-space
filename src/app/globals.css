@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Tema de jogo "Carta Celeste" (Constelação do Dia): só dentro das telas do jogo. Casas usam .surface-vidro. */
+@theme {
+  --color-carta-fundo: #0b2340;   /* espaco */
+  --color-carta-estrela: #f2a66e; /* laranja-claro: estrela acesa */
+  --color-carta-linha: #d9d2b0;   /* areia: linhas de constelação */
+}
+
 @theme {
   /* Fundo e superfícies escuras */
   --color-espaco: #0b2340;
