@@ -178,6 +178,14 @@ export const jogos: Jogo[] = [
     texto: "Monte a pista com rampas, corrimãos e caixotes, termine pra provar que dá, publique e veja quem bate seu recorde.",
     cor: "#0b2340",
   },
+  {
+    slug: "constelacao",
+    nome: "Constelação do Dia",
+    tipo: "Rapidinho",
+    resumo: "Uma palavra geek por dia, igual pra todo mundo.",
+    texto: "Adivinhe a palavra do dia em até 6 tentativas. Cada letra certa acende uma estrela, e a sequência vai pra sua cabine.",
+    cor: "#0b2340",
+  },
 ];
 
 export const hrefJogo = (slug: string) => `/jogos/${slug}`;
