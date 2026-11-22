@@ -1,0 +1,198 @@
+{
+  "status": "rascunho",
+  "publico": {
+    "slug": "a-trilha-que-volta",
+    "titulo": "A trilha que volta",
+    "resumo": "Na mata, quem entra pela trilha de sempre acaba onde começou. E o facão do Tião apareceu pendurado no alto de uma árvore.",
+    "lugarPrincipal": "mata",
+    "abertura": "Dona Dalva sai da mata com o cesto vazio e uma cara de quem andou em círculo. Diz que a trilha que ela conhece há quarenta anos agora devolve a gente pro mesmo tronco. Pede ajuda pra entender.",
+    "minSinais": 4,
+    "moradores": [
+      {
+        "id": "dona-dalva",
+        "nome": "Dona Dalva",
+        "papel": "Apanhadora de frutos",
+        "lugar": "mata",
+        "falas": [
+          {
+            "id": "dalva-trilha",
+            "pergunta": "O que a senhora anda notando na mata?",
+            "resposta": "A trilha me engana. Passei no mesmo tronco três vezes. E tem um assobio comprido que não sei de onde vem: quando acho que é da esquerda, vem da direita.",
+            "requer": [],
+            "sinais": ["assobio-longo"],
+            "depoimento": "Dona Dalva: a trilha leva a pessoa pro mesmo tronco, e um assobio comprido muda de lado."
+          },
+          {
+            "id": "dalva-pegadas",
+            "pergunta": "A senhora já viu essas pegadas de calcanhar pra frente?",
+            "resposta": "Já vi, sim. Meu pai dizia que quem deixa pegada assim cuida das árvores e dos bichos. Não é ruim. Só pede que a gente não tire da mata mais do que precisa.",
+            "depoisDe": "dalva-trilha",
+            "requer": ["pegada-invertida"],
+            "sinais": [],
+            "depoimento": "Dona Dalva: o pai dela dizia que quem deixa essa pegada cuida das árvores e dos bichos, e só pede que não se tire da mata mais do que se precisa."
+          }
+        ]
+      },
+      {
+        "id": "tiao",
+        "nome": "Tião",
+        "papel": "Rapaz que corta lenha pra cerca",
+        "lugar": "sitio",
+        "falas": [
+          {
+            "id": "tiao-lenha",
+            "pergunta": "Anda cortando muita lenha?",
+            "resposta": "Cortei bem mais do que ia usar. Tinha encomenda de cerca, aproveitei pra adiantar. Aí o facão sumiu da bainha, e depois vi lá no alto de uma árvore, limpinho.",
+            "requer": [],
+            "sinais": ["facao-no-alto"],
+            "depoimento": "Tião: cortou bem mais lenha do que precisava, e o facão sumiu e apareceu no alto de uma árvore."
+          },
+          {
+            "id": "tiao-clareira",
+            "pergunta": "Voltou à clareira onde cortou?",
+            "resposta": "Voltei... Tinha uns ninhos no chão, caídos. E bichinho pequeno sozinho, sem mãe por perto. Fiquei com um nó na garganta, confesso.",
+            "depoisDe": "tiao-lenha",
+            "requer": ["tocos-clareira"],
+            "sinais": ["filhotes-sozinhos"],
+            "depoimento": "Tião: na clareira onde cortou havia ninhos caídos e filhotes sozinhos. Ele ficou com remorso."
+          }
+        ]
+      },
+      {
+        "id": "professora-lucia",
+        "nome": "Professora Lúcia",
+        "papel": "Professora da escolinha",
+        "lugar": "praca",
+        "falas": [
+          {
+            "id": "lucia-vento",
+            "pergunta": "A senhora já viu algo estranho na trilha?",
+            "resposta": "Ontem passei pela entrada e vi um redemoinho de folhas secas, rapidinho. Os alunos juram que é coisa de saci, mas vento é vento, né.",
+            "requer": [],
+            "sinais": ["redemoinho-folhas"],
+            "depoimento": "Professora Lúcia: viu um redemoinho de folhas secas na entrada da trilha. Os alunos dizem que é coisa de saci."
+          }
+        ]
+      }
+    ],
+    "sinais": [
+      {
+        "id": "pegada-invertida",
+        "tipo": "pegada",
+        "nome": "Pegadas com o calcanhar pra frente",
+        "texto": "Pegadas fundas no barro, de pés humanos, mas com os calcanhares virados pra frente. Quem passou por aqui parece ter ido pra onde você veio.",
+        "lugar": "mata",
+        "requer": []
+      },
+      {
+        "id": "assobio-longo",
+        "tipo": "som",
+        "nome": "Assobio comprido",
+        "texto": "Um assobio longo, calmo, que vem de uma árvore e logo vem de outra. Não é ameaça: parece um aviso.",
+        "lugar": "mata",
+        "requer": []
+      },
+      {
+        "id": "facao-no-alto",
+        "tipo": "objeto",
+        "nome": "Facão fora do lugar",
+        "texto": "O facão do Tião, que estava na bainha, apareceu preso num galho bem alto, limpinho, sem nenhuma marca de quem subiu.",
+        "lugar": "mata",
+        "requer": []
+      },
+      {
+        "id": "tocos-clareira",
+        "tipo": "objeto",
+        "nome": "Tocos demais na clareira",
+        "texto": "Uma clareira cheia de tocos recém-cortados, bem mais árvores do que uma cerca precisa. Tem ninhos caídos no chão.",
+        "lugar": "mata",
+        "requer": ["pegada-invertida"]
+      },
+      {
+        "id": "filhotes-sozinhos",
+        "tipo": "pegada",
+        "nome": "Rastros de filhotes sozinhos",
+        "texto": "Pegadinhas miúdas de filhotes de bicho, andando em volta, sem a mãe por perto. A clareira ficou sem abrigo.",
+        "lugar": "mata",
+        "requer": ["tocos-clareira"]
+      },
+      {
+        "id": "redemoinho-folhas",
+        "tipo": "redemoinho",
+        "nome": "Redemoinho de folhas",
+        "texto": "Um redemoinho de folhas secas passa correndo pela entrada da trilha e se desfaz sem deixar rastro.",
+        "lugar": "mata",
+        "requer": []
+      }
+    ],
+    "criaturas": [
+      { "slug": "curupira", "nome": "Curupira" },
+      { "slug": "saci", "nome": "Saci" },
+      { "slug": "iara", "nome": "Iara" },
+      { "slug": "boitata", "nome": "Boitatá" }
+    ],
+    "motivos": [
+      { "id": "protege-mata", "texto": "Está protegendo a mata e os bichos de um corte sem medida" },
+      { "id": "agrado", "texto": "Sente falta de um agrado que o povo deixava" },
+      { "id": "perdida", "texto": "Está perdida e quer voltar pra casa" },
+      { "id": "espantar", "texto": "Só quer assustar quem passa" }
+    ],
+    "encontro": {
+      "cena": "Você e Tião voltam à clareira ao entardecer. A trilha, desta vez, não enrola: leva direto até os tocos. Entre as árvores, uma sombra de cabelos acesos como brasa observa, com os pés virados pro lado contrário. Não se mexe. Espera o que a gente vai dizer.",
+      "opcoes": [
+        { "id": "respeitar", "texto": "Prometer cortar só o que precisa, deixar a clareira descansar e plantar de volta" },
+        { "id": "presente", "texto": "Deixar uma oferenda na entrada da trilha e ir embora" },
+        { "id": "devolver", "texto": "Devolver o facão ao galho de onde ele veio" },
+        { "id": "enfrentar", "texto": "Entrar na mata fazendo barulho, até achar o dono do assobio" }
+      ]
+    }
+  },
+  "gabarito": {
+    "criatura": "curupira",
+    "motivo": "protege-mata",
+    "escolha": "respeitar",
+    "pesos": {
+      "pegada-invertida": { "curupira": 3 },
+      "assobio-longo": { "curupira": 2 },
+      "facao-no-alto": { "curupira": 1 },
+      "tocos-clareira": { "curupira": 1 },
+      "filhotes-sozinhos": { "curupira": 1 },
+      "redemoinho-folhas": { "saci": 2 }
+    },
+    "motivoPistas": ["dalva-pegadas", "filhotes-sozinhos"],
+    "dicas": {
+      "criatura": [
+        "Olhe de novo a pegada. O que tem de diferente na direção dela?",
+        "Calcanhar pra frente, assobio que muda de lado, trilha que enrola. Pense em quem cuida da mata."
+      ],
+      "motivo": [
+        "O que Dona Dalva e Tião contaram sobre o que aconteceu na clareira?",
+        "Quem leva ninhos e filhotes na conta de uma cerca está tirando mais do que precisa."
+      ],
+      "escolha": [
+        "A mata não pede presente nem briga. Pede um jeito de convivência.",
+        "Uma promessa com ação: cortar só o que precisa e deixar a clareira se recuperar."
+      ]
+    },
+    "desfecho": [
+      "Tião tira o chapéu e diz, de um jeito que ele nunca disse nada pra ninguém, que vai cortar só o necessário e plantar uma muda pra cada tronco levado. A sombra de cabelos de brasa escuta até o fim.",
+      "Quando você olha de novo, o assobio vem de uma direção só, a trilha leva pra casa e, no tronco mais antigo, tem uma folha nova brotando. Dona Dalva jura que era brasa por um segundo, e depois ficou verde."
+    ],
+    "bestiario": {
+      "resumo": "Guardião da mata, de cabelos cor de brasa e pés virados pra trás. Confunde quem passa e pede só que não se tire mais do que se precisa."
+    },
+    "origem": {
+      "titulo": "Curupira",
+      "texto": [
+        "O Curupira é uma figura de origem indígena, ligada a povos de língua tupi, que protege as matas e os animais. O nome é bem antigo: um dos primeiros registros escritos vem das cartas do padre José de Anchieta, no século XVI.",
+        "Os traços mais conhecidos são os pés virados pra trás, que confundem quem tenta seguir seus rastros, e o cabelo vermelho. Nas histórias, ele faz caçadores e lenhadores se perderem quando tiram da mata mais do que precisam.",
+        "As versões mudam de lugar pra lugar, e em muitas comunidades essa história é tratada com seriedade e respeito, como parte de um modo de cuidar da floresta. Neste jogo, o Curupira e a vila são invenção nossa, feita a partir dessas histórias."
+      ],
+      "fontes": [
+        { "titulo": "Dicionário do Folclore Brasileiro", "autor": "Luís da Câmara Cascudo", "nota": "Verbete Curupira. Edição a confirmar pelo revisor." },
+        { "titulo": "Cartas jesuíticas", "autor": "José de Anchieta", "ano": 1560, "nota": "Carta e trecho exatos a confirmar pelo revisor." }
+      ],
+      "revisao": null
+    }
+  }
+}

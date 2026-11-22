@@ -15,17 +15,27 @@ import {
   SairDaCampanha,
   SessaoForm,
 } from '@/components/mesa/MesaForms';
+import { RotinaForm } from '@/components/mesa/AgendaForms';
+import { RecompensasParaAceitar } from '@/components/mesa/DiarioForms';
+import { Lembretes } from '@/components/mesa/Lembretes';
+import { HandoutForm, HandoutsLista, PaginaForm, PaginasLista } from '@/components/mesa/Mundo';
+import { NpcForm, NpcLista } from '@/components/mesa/NpcsForms';
 import { Bolinha, Carregando, Indicadores, Pagina, RespostaChip, StatusCampanhaChip, Texto, Vazio } from '@/components/mesa/MesaUI';
 import { Card } from '@/components/fichas/ui';
 import { cx } from '@/lib/fichas/cx';
 import { hoje, somaDias } from '@/lib/diario/calendario';
 import { NOME_SISTEMA, NOME_STATUS_SESSAO, quando } from '@/lib/mesa/regras';
 import { CampanhaNaoEncontrada } from '@/lib/mesa/server/acesso';
+import { listarNpcs } from '@/lib/mesa/server/ao-vivo';
 import { getCampanha } from '@/lib/mesa/server/campanhas';
+import { getResumo } from '@/lib/mesa/server/diarios';
+import { listarHandouts, listarPaginas } from '@/lib/mesa/server/mundo';
+import { listarRecompensas } from '@/lib/mesa/server/recompensas';
 
 export const metadata: Metadata = { title: 'Campanha' };
 
-const ABAS = { jogadores: 'Jogadores', sessoes: 'Sessões', diario: 'Diário', ajustes: 'Ajustes' } as const;
+const ABAS = { jogadores: 'Jogadores', sessoes: 'Sessões', diario: 'Diário', mundo: 'Mundo', npcs: 'NPCs', resumo: 'Resumo', ajustes: 'Ajustes' } as const;
+const SO_MESTRE: Aba[] = ['npcs', 'ajustes'];
 type Aba = keyof typeof ABAS;
 type Campanha = Awaited<ReturnType<typeof getCampanha>>;
 
@@ -55,8 +65,11 @@ async function CampanhaView({
     throw e;
   }
   const ehMestre = c.papel === 'mestre';
-  const abas = (Object.keys(ABAS) as Aba[]).filter((a) => a !== 'ajustes' || ehMestre);
+  const abas = (Object.keys(ABAS) as Aba[]).filter((a) => !SO_MESTRE.includes(a) || ehMestre);
   const aba: Aba = abas.includes(sp.aba as Aba) ? (sp.aba as Aba) : 'jogadores';
+  const agora = new Date(); // depois de getCampanha, que já leu a sessão do usuário
+  // O que o mestre deu e eu ainda não aceitei, de todas as sessões.
+  const paraAceitar = ehMestre ? [] : (await listarRecompensas(c.id)).filter((r) => r.status === 'pendente');
 
   return (
     <div className="flex flex-col gap-6">
@@ -70,6 +83,12 @@ async function CampanhaView({
             {c.nome}
           </h1>
           <StatusCampanhaChip status={c.status} />
+          <Link
+            href={`/mesa/${c.id}/ao-vivo`}
+            className="inline-flex items-center rounded-md border border-accent/50 px-3 py-1.5 text-sm text-accent no-underline transition hover:bg-accent/10"
+          >
+            Mesa ao vivo
+          </Link>
         </div>
         <p className="text-sm text-muted">
           {NOME_SISTEMA[c.sistema]}
@@ -96,9 +115,49 @@ async function CampanhaView({
         ))}
       </nav>
 
+      <Lembretes
+        agora={agora}
+        itens={c.proximas
+          .filter((s) => s.iniciaEm.getTime() - agora.getTime() <= 36 * 3_600_000)
+          .map((s) => ({
+            id: s.id,
+            campanhaId: c.id,
+            campanha: c.nome,
+            cor: c.cor,
+            titulo: s.titulo,
+            iniciaEm: s.iniciaEm,
+            local: s.local,
+            souMestre: ehMestre,
+            minhaResposta: s.minhaResposta,
+          }))}
+      />
+
+      {paraAceitar.length > 0 && (
+        <Card title="Recompensas para aceitar" className="border-accent/50">
+          <RecompensasParaAceitar
+            campanhaId={c.id}
+            sistema={c.sistema}
+            mostrarSessao
+            itens={paraAceitar.map((r) => ({
+              id: r.id,
+              nome: r.nome,
+              tipo: r.tipo,
+              quantidade: r.quantidade,
+              descricao: r.descricao,
+              status: r.status,
+              naFicha: r.naFicha,
+              sessao: r.sessaoTitulo || (r.sessaoEm ? quando(r.sessaoEm) : null),
+            }))}
+          />
+        </Card>
+      )}
+
       {aba === 'jogadores' && <AbaJogadores c={c} />}
       {aba === 'sessoes' && <AbaSessoes c={c} />}
       {aba === 'diario' && <AbaDiario c={c} />}
+      {aba === 'mundo' && <AbaMundo c={c} />}
+      {aba === 'npcs' && ehMestre && <AbaNpcs c={c} />}
+      {aba === 'resumo' && <AbaResumo c={c} />}
       {aba === 'ajustes' && ehMestre && <AbaAjustes c={c} />}
     </div>
   );
@@ -324,14 +383,145 @@ function AbaDiario({ c }: { c: Campanha }) {
   );
 }
 
+async function AbaResumo({ c }: { c: Campanha }) {
+  const r = await getResumo(c.id);
+  const temXp = r.jogadores.some((j) => j.xp > 0);
+  const numeros = [
+    { rotulo: 'Sessões realizadas', valor: r.realizadas },
+    { rotulo: 'Horas jogadas', valor: String(r.horasJogadas).replace('.', ',') },
+    { rotulo: 'Próximas sessões', valor: r.proximas },
+    { rotulo: 'Canceladas', valor: r.canceladas },
+  ];
+  return (
+    <div className="flex max-w-4xl flex-col gap-6">
+      <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {numeros.map((n) => (
+          <div key={n.rotulo} className="rounded-xl border border-line bg-surface p-4">
+            <dd className="font-display text-3xl font-semibold">{n.valor}</dd>
+            <dt className="text-xs text-muted">{n.rotulo}</dt>
+          </div>
+        ))}
+      </dl>
+      <p className="-mt-3 text-xs text-faint">As horas somam a duração marcada de cada sessão realizada.</p>
+
+      <Card title="Presença">
+        {r.jogadores.length === 0 ? (
+          <p className="text-sm text-muted">Ainda não há jogadores na campanha.</p>
+        ) : r.comPresenca === 0 ? (
+          <p className="text-sm text-muted">
+            Ainda não há presença marcada. Ao marcar uma sessão como realizada, o mestre diz quem veio e as contas aparecem aqui.
+          </p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-96 text-sm">
+              <thead>
+                <tr className="text-left text-xs text-faint">
+                  <th className="pb-2 font-normal">Jogador</th>
+                  <th className="pb-2 font-normal">Veio</th>
+                  <th className="pb-2 font-normal">Seguidas</th>
+                  {temXp && <th className="pb-2 text-right font-normal">XP</th>}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-line">
+                {r.jogadores.map((j) => (
+                  <tr key={j.userId}>
+                    <td className="py-2 pr-3">{j.nome}</td>
+                    <td className="py-2 pr-3">
+                      {j.percentual === null ? (
+                        <span className="text-faint">—</span>
+                      ) : (
+                        <>
+                          {j.compareceu} de {j.de} <span className="text-muted">({j.percentual}%)</span>
+                        </>
+                      )}
+                    </td>
+                    <td className="py-2 pr-3">{j.sequencia}</td>
+                    {temXp && <td className="py-2 text-right">{j.xp.toLocaleString('pt-BR')}</td>}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        {r.comPresenca > 0 && r.comPresenca < r.realizadas && (
+          <p className="mt-3 text-xs text-faint">
+            {r.realizadas - r.comPresenca} sessão(ões) realizada(s) ainda sem presença marcada: não entram na conta.
+          </p>
+        )}
+      </Card>
+    </div>
+  );
+}
+
+async function AbaMundo({ c }: { c: Campanha }) {
+  const ehMestre = c.papel === 'mestre';
+  const [paginas, handouts] = await Promise.all([listarPaginas(c.id), listarHandouts(c.id)]);
+  const sessoes = [...c.proximas, ...c.passadas].map((s) => ({ id: s.id, nome: s.titulo || quando(s.iniciaEm) }));
+  const nomeDaSessao = new Map(sessoes.map((s) => [s.id, s.nome]));
+  return (
+    <div className="flex flex-col gap-8">
+      <section aria-label="Handouts" className="flex flex-col gap-3">
+        <h2 className="font-display text-xl font-semibold">Handouts</h2>
+        <div className={ehMestre ? 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]' : undefined}>
+          <HandoutsLista
+            campanhaId={c.id}
+            ehMestre={ehMestre}
+            handouts={handouts.map((h) => ({ id: h.id, titulo: h.titulo, tipo: h.tipo, texto: h.texto, revelado: h.revelado, sessao: h.sessaoId ? (nomeDaSessao.get(h.sessaoId) ?? null) : null }))}
+          />
+          {ehMestre && (
+            <aside>
+              <Card title="Novo handout">
+                <HandoutForm campanhaId={c.id} sessoes={sessoes} />
+              </Card>
+            </aside>
+          )}
+        </div>
+      </section>
+      <section aria-label="Páginas do Mundo" className="flex flex-col gap-3">
+        <h2 className="font-display text-xl font-semibold">Páginas do Mundo</h2>
+        <div className={ehMestre ? 'grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]' : undefined}>
+          <PaginasLista campanhaId={c.id} ehMestre={ehMestre} paginas={paginas} />
+          {ehMestre && (
+            <aside>
+              <Card title="Nova página">
+                <PaginaForm campanhaId={c.id} />
+              </Card>
+            </aside>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+async function AbaNpcs({ c }: { c: Campanha }) {
+  const npcs = await listarNpcs(c.id);
+  return (
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]">
+      <section aria-label="NPCs e inimigos" className="flex flex-col gap-3">
+        <NpcLista campanhaId={c.id} sistema={c.sistema} npcs={npcs} />
+      </section>
+      <aside>
+        <Card title="Novo NPC">
+          <NpcForm campanhaId={c.id} sistema={c.sistema} />
+        </Card>
+      </aside>
+    </div>
+  );
+}
+
 function AbaAjustes({ c }: { c: Campanha }) {
   return (
     <div className="flex max-w-3xl flex-col gap-6">
       <Card title="Campanha">
         <CampanhaForm
           campanhaId={c.id}
+          rotinaGerada={!!c.rotinaConfig}
           inicial={{ nome: c.nome, sistema: c.sistema, sinopse: c.sinopse, status: c.status, rotina: c.rotina, cor: c.cor }}
         />
+      </Card>
+      <Card title="Rotina das sessões">
+        <RotinaForm campanhaId={c.id} inicial={c.rotinaConfig} />
       </Card>
       <Card title="Apagar">
         <ApagarCampanha campanhaId={c.id} nome={c.nome} />

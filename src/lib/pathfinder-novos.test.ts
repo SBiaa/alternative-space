@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ANCESTRALIDADES, CLASSES, FICHA_VAZIA, calcular, pendencias, type Ficha } from "./pathfinder";
+import { ANCESTRALIDADES, CLASSES, FICHA_VAZIA, calcular, normalizarFicha, pendencias, type Ficha } from "./pathfinder";
 import { COMBATE_CLASSE } from "./pathfinder-equip";
 import { vagasMagia } from "./pathfinder-magia";
 import { sugestoesTalento } from "./pathfinder-talentos";
@@ -46,5 +46,22 @@ describe("classes e ancestralidades extras", () => {
     expect(circulos(2)).toEqual([1, 1]);
     expect(circulos(5)).toEqual([2, 2, 3]);
     expect(circulos(6)).toEqual([2, 2, 3, 3]);
+  });
+
+  it("pede as aparições do animista conforme o nível", () => {
+    expect(pendencias(gata)).toContain("Escolha 2 aparições.");
+    const duas = { ...gata, aparicoes: ["eco-momentos", "vanguarda-aguas"] };
+    expect(pendencias(duas)).toContain("Escolha a aparição primária.");
+    const pronta = { ...duas, aparicaoPrimaria: "vanguarda-aguas" };
+    expect(pendencias(pronta).some((p) => p.includes("apariç"))).toBe(false);
+    expect(pendencias({ ...pronta, nivel: 7 })).toContain("Escolha 3 aparições.");
+    expect(pendencias({ ...pronta, classe: "clerigo", chave: "sab" }).some((p) => p.includes("apariç"))).toBe(false);
+  });
+
+  it("limpa aparições inválidas ao carregar", () => {
+    const f = normalizarFicha({ ...gata, aparicoes: ["eco-momentos", "eco-momentos", "fantasma"], aparicaoPrimaria: "fantasma" })!;
+    expect(f.aparicoes).toEqual(["eco-momentos"]);
+    expect(f.aparicaoPrimaria).toBe("");
+    expect(normalizarFicha({ nome: "X" })!.aparicoes).toEqual([]);
   });
 });

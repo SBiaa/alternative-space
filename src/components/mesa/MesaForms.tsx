@@ -25,7 +25,7 @@ import {
 const noop = () => () => {};
 const textareaClass = cx(inputClass, 'min-h-24 resize-y leading-relaxed');
 
-function useMesa() {
+export function useMesa() {
   const [pending, start] = useTransition();
   const [erro, setErro] = useState<string>();
   const [mensagem, setMensagem] = useState<string>();
@@ -48,7 +48,7 @@ function useMesa() {
   return { pending, erro, mensagem, run };
 }
 
-function Aviso({ erro, mensagem }: { erro?: string; mensagem?: string }) {
+export function Aviso({ erro, mensagem }: { erro?: string; mensagem?: string }) {
   if (erro) return <p className="text-sm text-danger">{erro}</p>;
   if (mensagem) return <p className="text-sm text-accent">{mensagem}</p>;
   return null;
@@ -66,7 +66,16 @@ export interface CampanhaInicial {
   cor: CorCampanha;
 }
 
-export function CampanhaForm({ campanhaId, inicial }: { campanhaId?: string; inicial?: CampanhaInicial }) {
+export function CampanhaForm({
+  campanhaId,
+  inicial,
+  rotinaGerada,
+}: {
+  campanhaId?: string;
+  inicial?: CampanhaInicial;
+  /** A rotina das sessões está ligada: o texto "quando vocês jogam" vem dela. */
+  rotinaGerada?: boolean;
+}) {
   const [c, setC] = useState<CampanhaInicial>(
     inicial ?? { nome: '', sistema: 'sr5', sinopse: '', status: 'planejando', rotina: '', cor: 'laranja' },
   );
@@ -112,12 +121,16 @@ export function CampanhaForm({ campanhaId, inicial }: { campanhaId?: string; ini
             ))}
           </select>
         </Field>
-        <Field label="Quando vocês jogam" hint="Texto livre, aparece no card da campanha.">
+        <Field
+          label="Quando vocês jogam"
+          hint={rotinaGerada ? 'Vem da rotina das sessões, logo abaixo.' : 'Texto livre, aparece no card da campanha.'}
+        >
           <input
             className={inputClass}
             maxLength={LIMITES.rotina}
             placeholder="Sábados 19h, a cada 15 dias"
             value={c.rotina}
+            disabled={rotinaGerada}
             onChange={(e) => set('rotina', e.target.value)}
           />
         </Field>
@@ -251,7 +264,7 @@ export function ConvidarPorApelido({ campanhaId }: { campanhaId: string }) {
 }
 
 /** Botão pequeno de texto com confirmação. */
-function BotaoTexto({
+export function BotaoTexto({
   children,
   confirmar,
   acao,
@@ -516,17 +529,33 @@ export function Presenca({
 // ---------------------------------------------------------------------------
 // Diário
 
+export interface JogadorDaSessao {
+  userId: string;
+  nome: string;
+  resposta: RespostaPresenca | null;
+  /** O que o mestre já marcou depois da sessão; nulo = ainda não marcou. */
+  compareceu: boolean | null;
+}
+
 export function DiarioForm({
   campanhaId,
   sessaoId,
   inicial,
+  jogadores,
 }: {
   campanhaId: string;
   sessaoId: string;
   inicial: { status: StatusSessao; resumo: string; recompensas: string; notasMestre: string };
+  jogadores: JogadorDaSessao[];
 }) {
   const [d, setD] = useState(inicial);
   const set = <K extends keyof typeof inicial>(k: K, v: (typeof inicial)[K]) => setD((x) => ({ ...x, [k]: v }));
+  // Quem veio: o que o mestre já marcou ou, na primeira vez, quem tinha respondido "vou".
+  const [veio, setVeio] = useState<string[]>(() =>
+    jogadores.some((j) => j.compareceu !== null)
+      ? jogadores.filter((j) => j.compareceu).map((j) => j.userId)
+      : jogadores.filter((j) => j.resposta === 'vou').map((j) => j.userId),
+  );
   const { pending, erro, mensagem, run } = useMesa();
   return (
     <form
@@ -534,7 +563,7 @@ export function DiarioForm({
       aria-label="Diário da sessão"
       onSubmit={(e) => {
         e.preventDefault();
-        run(() => acoes.salvarDiarioAction(campanhaId, sessaoId, { ...d }));
+        run(() => acoes.salvarDiarioAction(campanhaId, sessaoId, { ...d, ...(d.status === 'realizada' ? { compareceram: veio } : {}) }));
       }}
     >
       <Field label="Status da sessão">
@@ -546,10 +575,30 @@ export function DiarioForm({
           ))}
         </select>
       </Field>
+      {d.status === 'realizada' && jogadores.length > 0 && (
+        <fieldset className="flex flex-col gap-1.5 text-sm">
+          <legend className="mb-1.5 text-muted">Quem veio</legend>
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
+            {jogadores.map((j) => (
+              <label key={j.userId} className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  className="h-4 w-4 accent-[var(--color-accent)]"
+                  checked={veio.includes(j.userId)}
+                  onChange={(e) => setVeio((v) => (e.target.checked ? [...v, j.userId] : v.filter((id) => id !== j.userId)))}
+                />
+                {j.nome}
+                {j.resposta && <span className="text-xs text-faint">({NOME_RESPOSTA[j.resposta].toLowerCase()})</span>}
+              </label>
+            ))}
+          </div>
+          <p className="text-xs text-faint">Alimenta a presença na aba Resumo da campanha.</p>
+        </fieldset>
+      )}
       <Field label="Resumo (os jogadores leem)" hint="O que aconteceu, quem apareceu, onde o grupo parou.">
         <textarea className={cx(textareaClass, 'min-h-40')} maxLength={LIMITES.texto} value={d.resumo} onChange={(e) => set('resumo', e.target.value)} />
       </Field>
-      <Field label="Recompensas (os jogadores leem)" hint="XP, karma, dinheiro, itens. Cada jogador lança na própria ficha.">
+      <Field label="Recompensas (texto para todos)" hint="Anotação livre. Para lançar karma, nuyen, ouro ou item direto na ficha, use o cartão “Recompensas para a ficha”.">
         <textarea className={textareaClass} maxLength={LIMITES.texto} value={d.recompensas} onChange={(e) => set('recompensas', e.target.value)} />
       </Field>
       <Field label="Notas secretas do mestre" hint="Só você vê. Segredos, o que os NPCs planejam, o que preparar para a próxima.">
