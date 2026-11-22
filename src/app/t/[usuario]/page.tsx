@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getUser } from "@/lib/auth/server";
+import { BichinhoDaCabine } from "@/components/bichinho/BichinhoDaCabine";
 import { SeloLaje } from "@/components/laje/SeloLaje";
 import { SeloConstelacao } from "@/components/constelacao/SeloConstelacao";
 import { SeloBanca } from "@/components/banca/SeloBanca";
@@ -54,6 +55,7 @@ async function Cabine({ params }: Params) {
         <h1 className="m-0 text-[28px] font-semibold leading-[1.05] tracking-[-0.02em] sm:text-[44px]">{TEXTOS.cabine.titulo(`@${t.apelido}`)}</h1>
         {t.nome && <p className="m-0 text-areia">{t.nome}</p>}
       </div>
+      <BichinhoDaCabine userId={t.userId} apelido={t.apelido} />
       <SeloMuro userId={t.userId} link={dono} />
       <SeloLaje userId={t.userId} link={dono} />
       <SeloConves userId={t.userId} link={dono} />
