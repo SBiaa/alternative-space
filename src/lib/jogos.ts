@@ -229,6 +229,14 @@ export const jogos: Jogo[] = [
     texto: "Adivinhe a palavra do dia em até 6 tentativas. Cada letra certa acende uma estrela, e a sequência vai pra sua cabine.",
     cor: "#0b2340",
   },
+  {
+    slug: "cartas-do-conves",
+    nome: "Cartas do Convés",
+    tipo: "Estratégia",
+    resumo: "Cartas roguelite: uma travessia entre ilhas, até o chefe.",
+    texto: "Comece com um baralho fraco, enfrente encontros por turnos e melhore o baralho no caminho até o Polvo-Mor. Cartas novas se liberam jogando.",
+    cor: "#0b2340",
+  },
 ];
 
 export const hrefJogo = (slug: string) => `/jogos/${slug}`;

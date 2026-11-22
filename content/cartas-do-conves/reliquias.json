@@ -1,0 +1,10 @@
+{
+  "reliquias": [
+    { "slug": "astrolabio-rachado", "nome": "Astrolábio Rachado", "icone": "astrolabio", "texto": "No começo de cada combate, compra 2 cartas.", "gatilho": "inicio_combate", "efeitos": [{ "tipo": "comprar", "valor": 2 }] },
+    { "slug": "barril-de-agua-doce", "nome": "Barril de Água Doce", "icone": "barril", "texto": "No fim de cada combate, recupera 6 de Fôlego.", "gatilho": "fim_combate", "efeitos": [{ "tipo": "curar", "valor": 6 }] },
+    { "slug": "sino-de-bronze", "nome": "Sino de Bronze", "icone": "sino", "texto": "No começo de cada combate, ganha 8 de bloqueio.", "gatilho": "inicio_combate", "efeitos": [{ "tipo": "bloqueio", "valor": 8 }] },
+    { "slug": "biscoito-duro", "nome": "Biscoito Duro", "icone": "biscoito", "texto": "Ao pegar, o Fôlego máximo sobe 12 e você recupera 12.", "gatilho": "ao_pegar", "efeitos": [{ "tipo": "folego_max", "valor": 12 }] },
+    { "slug": "corda-enrolada", "nome": "Corda Enrolada", "icone": "corda", "texto": "No começo de cada turno, ganha Firme 1.", "gatilho": "inicio_turno", "efeitos": [{ "tipo": "status", "status": "firme", "valor": 1, "em": "si" }] },
+    { "slug": "lanterna-de-latao", "nome": "Lanterna de Latão", "icone": "lanterna", "texto": "No primeiro turno de cada combate, ganha 1 de energia.", "gatilho": "inicio_combate", "efeitos": [{ "tipo": "energia", "valor": 1 }] }
+  ]
+}

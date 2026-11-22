@@ -1,0 +1,59 @@
+{
+  "eventos": [
+    {
+      "slug": "barco-a-deriva",
+      "nome": "Barco à Deriva",
+      "texto": "Um barco sem vela balança na água, sem ninguém a bordo. Tem caixas empilhadas no convés.",
+      "escolhas": [
+        { "texto": "Revistar as caixas", "efeitos": [{ "tipo": "ouro", "valor": 25 }, { "tipo": "folego", "valor": -6 }] },
+        { "texto": "Pegar só o que está à vista", "efeitos": [{ "tipo": "ouro", "valor": 10 }] },
+        { "texto": "Seguir viagem", "efeitos": [] }
+      ]
+    },
+    {
+      "slug": "nevoeiro-cantante",
+      "nome": "Nevoeiro Cantante",
+      "texto": "Uma névoa baixa cobre o mar e, dentro dela, alguém canta uma melodia que você quase conhece.",
+      "escolhas": [
+        { "texto": "Seguir a canção", "efeitos": [{ "tipo": "carta_aleatoria" }, { "tipo": "folego", "valor": -8 }] },
+        { "texto": "Tapar os ouvidos e remar", "efeitos": [{ "tipo": "folego", "valor": 6 }] }
+      ]
+    },
+    {
+      "slug": "cozinha-de-emergencia",
+      "nome": "Cozinha de Emergência",
+      "texto": "O fogão ainda está quente e a despensa guarda o resto de um bom ensopado.",
+      "escolhas": [
+        { "texto": "Comer com calma", "efeitos": [{ "tipo": "folego", "valor": 14 }] },
+        { "texto": "Vender os ingredientes", "efeitos": [{ "tipo": "ouro", "valor": 30 }] }
+      ]
+    },
+    {
+      "slug": "ilhota-sem-nome",
+      "nome": "Ilhota Sem Nome",
+      "texto": "Uma pedra mal coberta de grama, com um baú meio enterrado e uma pegada fresca ao lado.",
+      "escolhas": [
+        { "texto": "Cavar o baú", "efeitos": [{ "tipo": "reliquia_aleatoria" }, { "tipo": "folego", "valor": -10 }] },
+        { "texto": "Deixar pra lá", "efeitos": [] }
+      ]
+    },
+    {
+      "slug": "comerciante-de-botoes",
+      "nome": "Comerciante de Botões",
+      "texto": "Um barquinho encosta no seu. O comerciante jura que cada botão que vende vira sorte.",
+      "escolhas": [
+        { "texto": "Comprar uma carta (30 de ouro)", "exige": { "ouro": 30 }, "efeitos": [{ "tipo": "ouro", "valor": -30 }, { "tipo": "carta_aleatoria" }] },
+        { "texto": "Negar e seguir", "efeitos": [] }
+      ]
+    },
+    {
+      "slug": "ressaca-de-meia-noite",
+      "nome": "Ressaca de Meia-Noite",
+      "texto": "O mar levanta de repente e as ondas passam por cima do convés.",
+      "escolhas": [
+        { "texto": "Segurar o leme", "efeitos": [{ "tipo": "folego", "valor": -9 }, { "tipo": "ouro", "valor": 20 }] },
+        { "texto": "Abaixar tudo e esperar", "efeitos": [{ "tipo": "folego", "valor": -3 }] }
+      ]
+    }
+  ]
+}

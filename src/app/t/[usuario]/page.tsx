@@ -8,6 +8,7 @@ import { SeloBanca } from "@/components/banca/SeloBanca";
 import { SeloAssombracoes } from "@/components/assombracoes/SeloAssombracoes";
 import { SeloFanzine } from "@/components/fanzine/SeloFanzine";
 import { SeloMuro } from "@/components/muro/SeloMuro";
+import { SeloConves } from "@/components/cartas-do-conves/SeloConves";
 import { SeloBanda } from "@/components/banda/SeloBanda";
 import { TEXTOS } from "@/lib/role/config";
 import { acharPorApelido, picosDaCabine } from "@/lib/role/dados";
@@ -53,6 +54,7 @@ async function Cabine({ params }: Params) {
         {t.nome && <p className="m-0 text-areia">{t.nome}</p>}
       </div>
       <SeloMuro userId={t.userId} link={dono} />
+      <SeloConves userId={t.userId} link={dono} />
       <SeloConstelacao userId={t.userId} />
       <SeloBanca userId={t.userId} link={dono} />
       <SeloBanda userId={t.userId} link={dono} />
