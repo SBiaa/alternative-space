@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getUser } from "@/lib/auth/server";
+import { SeloAssombracoes } from "@/components/assombracoes/SeloAssombracoes";
 import { SeloMuro } from "@/components/muro/SeloMuro";
 import { TEXTOS } from "@/lib/role/config";
 import { acharPorApelido, picosDaCabine } from "@/lib/role/dados";
@@ -48,6 +49,7 @@ async function Cabine({ params }: Params) {
         {t.nome && <p className="m-0 text-areia">{t.nome}</p>}
       </div>
       <SeloMuro userId={t.userId} link={dono} />
+      <SeloAssombracoes userId={t.userId} link={dono} />
       {picos.length > 0 && (
         <section className="flex flex-col gap-3" aria-labelledby="picos">
           <h2 id="picos" className="m-0 text-2xl font-semibold">
