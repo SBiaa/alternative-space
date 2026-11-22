@@ -7,7 +7,9 @@ import { apagarCorre, exportarCorre } from "@/lib/corre/dados";
 import { apagarTaverna, exportarTaverna } from "@/lib/taverna/dados";
 import { apagarBanca, exportarBanca } from "@/lib/banca/dados";
 import { apagarLan, exportarLan } from "@/lib/lan/dados";
+import { apagarFanzine, exportarFanzine } from "@/lib/fanzine/dados";
 import { apagarMural, exportarMural } from "@/lib/muro/dados";
+import { apagarAssombracoes, exportarAssombracoes } from "@/lib/assombracoes/dados";
 import { getQuiz, getResult, quizzes, resultTheme } from "@/lib/quiz";
 import type { SavedResult } from "@/lib/tripulante";
 
@@ -98,12 +100,14 @@ export async function apagarDados(userId: string) {
   await apagarLan(userId);
   await apagarBanca(userId);
   await apagarMural(userId);
+  await apagarAssombracoes(userId);
+  await apagarFanzine(userId);
   await sql`delete from perfis where user_id = ${userId}`;
 }
 
 /** Tudo o que guardamos do usuário, para o "baixar meus dados" (LGPD). */
 export async function exportarDados(userId: string) {
-  const [perfil, quizzes, interesses, recordes, votos, diario, riff, entrega, corre, taverna, role, lan, muro, banca] = await Promise.all([
+  const [perfil, quizzes, interesses, recordes, votos, diario, riff, entrega, corre, taverna, role, lan, muro, banca, vila, fanzine] = await Promise.all([
     sql`select apelido, cor, updated_at from perfis where user_id = ${userId}`,
     sql`select quiz, result, scores, chosen_on_tie, created_at from quiz_results where user_id = ${userId} order by created_at`,
     sql`select tag, origem, created_at from interests where user_id = ${userId} order by created_at`,
@@ -118,6 +122,8 @@ export async function exportarDados(userId: string) {
     exportarLan(userId),
     exportarMural(userId),
     exportarBanca(userId),
+    exportarAssombracoes(userId),
+    exportarFanzine(userId),
   ]);
-  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan, muro_livre: muro, banca_na_feira: banca };
+  return { perfil: perfil[0] ?? null, quizzes, interesses, recordes, votos_em_dilemas: votos, diario_de_bordo: diario, riff_estelar: riff, entrega_na_chuva: entrega, o_corre: corre, taverna_do_dragao_cansado: taverna, role_noturno: role, lan_house_2005: lan, muro_livre: muro, banca_na_feira: banca, assombracoes_da_vila: vila, fanzine_perdida: fanzine };
 }

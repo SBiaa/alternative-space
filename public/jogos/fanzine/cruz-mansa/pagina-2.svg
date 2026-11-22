@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Página 2: editorial escrito à mão, com estrelinhas no lugar dos pingos">
+<defs>
+<filter id="gr" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.6 1.15"/></filter>
+<linearGradient id="sombra" x1="0" x2="1"><stop offset="0" stop-color="#8d8b84" stop-opacity=".55"/><stop offset="1" stop-color="#8d8b84" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="600" height="800" fill="#ebe9e2"/>
+<rect x="54" y="62" width="36.96" height="62.720000000000006" fill="#141414" stroke="#1c1c1a" stroke-width="1"/><text x="58.4352" y="111.28" font-family="Impact, 'Arial Black', sans-serif" font-size="48.16" fill="#f4f2ec">O</text><rect x="93.96000000000001" y="64" width="36.96" height="62.720000000000006" fill="#f4f2ec" stroke="#1c1c1a" stroke-width="1"/><text x="98.3952" y="113.28" font-family="Impact, 'Arial Black', sans-serif" font-size="48.16" fill="#141414">I</text><rect x="133.92000000000002" y="66" width="36.96" height="62.720000000000006" fill="#8b8a84" stroke="#1c1c1a" stroke-width="1"/><text x="138.35520000000002" y="115.28" font-family="Impact, 'Arial Black', sans-serif" font-size="48.16" fill="#141414">,</text><rect x="199.08" y="65" width="36.96" height="62.720000000000006" fill="#dad8d0" stroke="#1c1c1a" stroke-width="1"/><text x="203.51520000000002" y="114.28" font-family="Impact, 'Arial Black', sans-serif" font-size="48.16" fill="#141414">G</text><rect x="239.04000000000002" y="62" width="36.96" height="62.720000000000006" fill="#141414" stroke="#1c1c1a" stroke-width="1"/><text x="243.47520000000003" y="111.28" font-family="Impact, 'Arial Black', sans-serif" font-size="48.16" fill="#f4f2ec">E</text><rect x="279" y="64" width="36.96" height="62.720000000000006" fill="#f4f2ec" stroke="#1c1c1a" stroke-width="1"/><text x="283.4352" y="113.28" font-family="Impact, 'Arial Black', sans-serif" font-size="48.16" fill="#141414">N</text><rect x="318.96" y="66" width="36.96" height="62.720000000000006" fill="#8b8a84" stroke="#1c1c1a" stroke-width="1"/><text x="323.3952" y="115.28" font-family="Impact, 'Arial Black', sans-serif" font-size="48.16" fill="#141414">T</text><rect x="358.91999999999996" y="63" width="36.96" height="62.720000000000006" fill="#141414" stroke="#1c1c1a" stroke-width="1"/><text x="363.35519999999997" y="112.28" font-family="Impact, 'Arial Black', sans-serif" font-size="48.16" fill="#dad8d0">E</text>
+<text x="60" y="190" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="24" fill="#1c1c1a">Oı, gente!  Mais um número saiu do forno ★</text>
+<text x="60" y="226" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="20" fill="#1c1c1a">Este aqui ficou grandão: sete folhas, três bandas</text>
+<text x="60" y="258" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="20" fill="#1c1c1a">e uma resenha que quase virou capítulo de livro ★</text>
+<text x="60" y="290" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="20" fill="#1c1c1a">Vı a turma toda colando letrınha até tarde ★</text>
+<g fill="#dd5d05" fill-opacity=".9" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="16"><text x="86" y="170">★</text><text x="216" y="170">★</text></g>
+<rect x="30" y="110" width="90" height="26" fill="#e8dc9a" fill-opacity=".6" stroke="#b8ac6a" stroke-opacity=".5" transform="rotate(-10 75 123)"/>
+<text x="60" y="370" font-family="'Courier New', Courier, monospace" font-size="16" fill="#1c1c1a" font-weight="700">POR QUE FAZER FANZINE?</text>
+<text x="60" y="400" font-family="'Courier New', Courier, monospace" font-size="15" fill="#1c1c1a">Porque rádio não toca a gente e jornal</text>
+<text x="60" y="421" font-family="'Courier New', Courier, monospace" font-size="15" fill="#1c1c1a">não sabe que a gente existe. Então a</text>
+<text x="60" y="442" font-family="'Courier New', Courier, monospace" font-size="15" fill="#1c1c1a">gente imprime a gente mesmo, dobra,</text>
+<text x="60" y="463" font-family="'Courier New', Courier, monospace" font-size="15" fill="#1c1c1a">grampeia e entrega na saída da escola.</text>
+<text x="60" y="484" font-family="'Courier New', Courier, monospace" font-size="15" fill="#1c1c1a"></text>
+<text x="60" y="505" font-family="'Courier New', Courier, monospace" font-size="15" fill="#1c1c1a">Quem ler e gostar: passa pra frente.</text>
+<text x="60" y="526" font-family="'Courier New', Courier, monospace" font-size="15" fill="#1c1c1a">Quem ler e não gostar: faz a sua!</text>
+<rect x="58" y="566" width="332" height="22" fill="#dd5d05" fill-opacity=".5" rx="3"/>
+<text x="60" y="584" font-family="'Courier New', Courier, monospace" font-size="15" fill="#1c1c1a">Quem ler e gostar: passa pra frente.</text>
+<text x="60" y="700" font-family="'Segoe Print', 'Bradley Hand', 'Comic Sans MS', cursive" font-size="20" fill="#1c1c1a">— até o próximo número,</text>
+<g stroke="#5c5c58" stroke-width="3" stroke-linecap="round"><line x1="30" y1="780" x2="64" y2="780"/><line x1="30" y1="780" x2="30" y2="786"/><line x1="64" y1="780" x2="64" y2="786"/></g>
+<rect width="600" height="800" filter="url(#gr)" opacity=".22"/>
+<rect width="26" height="800" fill="url(#sombra)"/>
+<rect x="1.5" y="1.5" width="597" height="797" fill="none" stroke="#2a2a28" stroke-opacity=".35" stroke-width="3"/>
+</svg>
