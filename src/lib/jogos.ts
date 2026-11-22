@@ -12,6 +12,8 @@ export type Jogo = {
   texto: string;
   // Fundo e desenho da arte do cartão.
   cor: string;
+  // Caminho da capa, quando não é o padrão /jogos/capas/<slug>.png.
+  capa?: string;
   // Onde o jogo guarda o recorde no navegador, e como mostrar.
   // max: maior valor possível, pro ranking recusar número inventado.
   recorde?: { chave: string; formato: (n: number) => string; max?: number };
@@ -115,6 +117,14 @@ export const jogos: Jogo[] = [
     cor: "#6b3a24",
   },
   {
+    slug: "fanzine",
+    nome: "Fanzine Perdida",
+    tipo: "Estratégia",
+    resumo: "Mistério em capítulos: páginas soltas de uma fanzine dos anos 90.",
+    texto: "Folheie as páginas de uma fanzine esquecida, marque as pistas com a lupa, ligue no quadro de cortiça e descubra o que aconteceu com a turma que a fazia.",
+    cor: "#2a2a28",
+  },
+  {
     slug: "lan-house",
     nome: "Lan House 2005",
     tipo: "Estratégia",
@@ -123,12 +133,28 @@ export const jogos: Jogo[] = [
     cor: "#1f3a2e",
   },
   {
+    slug: "banca-na-feira",
+    nome: "Banca na Feira",
+    tipo: "Estratégia",
+    resumo: "Gestão de banca de artista em evento geek.",
+    texto: "Produza prints, adesivos e chaveiros no ateliê, arrume a mesa, atenda a fila, dê o troco e feche no azul. Com a reputação, libere feiras maiores.",
+    cor: "#c9743a",
+  },
+  {
     slug: "muro-livre",
     nome: "Muro Livre",
     tipo: "Estratégia",
     resumo: "Gestão de crew de grafite autorizado: prazo, tinta e chuva.",
     texto: "Pegue encomendas de mural, negocie autorização, cuide de tinta, clima e crew, e pinte o bairro em camadas com a sua tag de assinatura.",
     cor: "#dd5d05",
+  },
+  {
+    slug: "banda-de-garagem",
+    nome: "Banda de Garagem",
+    tipo: "Estratégia",
+    resumo: "Gestão de banda de bairro: ensaio, música nova e show no sábado.",
+    texto: "Monte a banda, ensaie, componha, divulgue, toque nos palcos do bairro e grave uma demo, sem deixar o equipamento quebrar nem o humor despencar.",
+    cor: "#6b3a24",
   },
   {
     slug: "conexoes-shinobi",
@@ -176,6 +202,31 @@ export const jogos: Jogo[] = [
     tipo: "Criativo",
     resumo: "Skate 2D: monte seu pico e desafie a tripulação.",
     texto: "Monte a pista com rampas, corrimãos e caixotes, termine pra provar que dá, publique e veja quem bate seu recorde.",
+    cor: "#0b2340",
+  },
+  {
+    slug: "assombracoes",
+    nome: "Assombrações da Vila",
+    tipo: "Estratégia",
+    resumo: "Investigação de terror leve com o folclore brasileiro.",
+    texto: "Converse com os moradores, junte sinais e descubra a criatura por trás de cada caso estranho. No fim, a história é entendida, não vencida.",
+    cor: "#0b2340",
+    capa: "/jogos/capas/assombracoes.svg",
+  },
+  {
+    slug: "mesa-de-bolso",
+    nome: "Mesa de Bolso",
+    tipo: "Estratégia",
+    resumo: "RPG solo: aventuras curtas com dados e escolhas.",
+    texto: "Crie uma personagem, escolha o que ela faz, role os dados e siga a história, mesmo quando dá errado. Cada aventura rende uma página no diário dela.",
+    cor: "#3d2619",
+  },
+  {
+    slug: "constelacao",
+    nome: "Constelação do Dia",
+    tipo: "Rapidinho",
+    resumo: "Uma palavra geek por dia, igual pra todo mundo.",
+    texto: "Adivinhe a palavra do dia em até 6 tentativas. Cada letra certa acende uma estrela, e a sequência vai pra sua cabine.",
     cor: "#0b2340",
   },
 ];

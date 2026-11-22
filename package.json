@@ -17,7 +17,10 @@
     "seed:lan": "node --env-file-if-exists=.env.local --import tsx scripts/seed-lan.ts",
     "mapa:entrega": "tsx scripts/bairro-entrega.ts",
     "seed:role": "node --env-file-if-exists=.env.local --import tsx scripts/seed-role.ts",
-    "seed:muro": "node --env-file-if-exists=.env.local --import tsx scripts/seed-muro.ts"
+    "seed:muro": "node --env-file-if-exists=.env.local --import tsx scripts/seed-muro.ts",
+    "seed:constelacao": "node --env-file-if-exists=.env.local --import tsx scripts/seed-constelacao.ts",
+    "validar:bolso": "tsx scripts/validar-bolso.ts",
+    "prebuild": "tsx scripts/validar-bolso.ts"
   },
   "dependencies": {
     "@neon/auth": "^0.8.2",
