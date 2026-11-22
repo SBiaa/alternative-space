@@ -117,6 +117,14 @@ export const jogos: Jogo[] = [
     cor: "#6b3a24",
   },
   {
+    slug: "fanzine",
+    nome: "Fanzine Perdida",
+    tipo: "Estratégia",
+    resumo: "Mistério em capítulos: páginas soltas de uma fanzine dos anos 90.",
+    texto: "Folheie as páginas de uma fanzine esquecida, marque as pistas com a lupa, ligue no quadro de cortiça e descubra o que aconteceu com a turma que a fazia.",
+    cor: "#2a2a28",
+  },
+  {
     slug: "lan-house",
     nome: "Lan House 2005",
     tipo: "Estratégia",
