@@ -4,8 +4,11 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getCidades, getMaterias } from "@/lib/skate/jornal";
 
+// Com Cache Components, generateStaticParams não pode voltar vazio (erro de build). Enquanto não há
+// matéria publicada, devolve um parâmetro de enchimento; a página responde 404 pra ele.
 export function generateStaticParams() {
-  return getCidades().map((c) => ({ cidade: c.slug }));
+  const params = getCidades().map((c) => ({ cidade: c.slug }));
+  return params.length ? params : [{ cidade: "_" }];
 }
 
 export async function generateMetadata({ params }: PageProps<"/skate/jornal/[cidade]">): Promise<Metadata> {

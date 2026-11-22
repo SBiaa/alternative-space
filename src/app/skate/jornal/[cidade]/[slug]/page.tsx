@@ -7,8 +7,11 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { componentesMdx } from "@/components/skate/mdx";
 import { getCidades, getMateria, getMaterias } from "@/lib/skate/jornal";
 
+// Com Cache Components, generateStaticParams não pode voltar vazio (erro de build). Enquanto não há
+// matéria publicada, devolve um parâmetro de enchimento; a página responde 404 pra ele.
 export function generateStaticParams() {
-  return getCidades().flatMap((c) => getMaterias(c.slug).map((m) => ({ cidade: c.slug, slug: m.slug })));
+  const params = getCidades().flatMap((c) => getMaterias(c.slug).map((m) => ({ cidade: c.slug, slug: m.slug })));
+  return params.length ? params : [{ cidade: "_", slug: "_" }];
 }
 
 export async function generateMetadata({ params }: PageProps<"/skate/jornal/[cidade]/[slug]">): Promise<Metadata> {
