@@ -221,6 +221,14 @@ export const jogos: Jogo[] = [
     texto: "Crie uma personagem, escolha o que ela faz, role os dados e siga a história, mesmo quando dá errado. Cada aventura rende uma página no diário dela.",
     cor: "#3d2619",
   },
+  {
+    slug: "constelacao",
+    nome: "Constelação do Dia",
+    tipo: "Rapidinho",
+    resumo: "Uma palavra geek por dia, igual pra todo mundo.",
+    texto: "Adivinhe a palavra do dia em até 6 tentativas. Cada letra certa acende uma estrela, e a sequência vai pra sua cabine.",
+    cor: "#0b2340",
+  },
 ];
 
 export const hrefJogo = (slug: string) => `/jogos/${slug}`;
