@@ -1,0 +1,48 @@
+{
+  "cartas": [
+    { "slug": "golpe-de-remo", "nome": "Golpe de Remo", "tipo": "ataque", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "dano", "valor": 6 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "estocada-rapida", "nome": "Estocada Rápida", "tipo": "ataque", "custo": 0, "raridade": "comum", "efeitos": [{ "tipo": "dano", "valor": 3 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "corte-de-sabre", "nome": "Corte de Sabre", "tipo": "ataque", "custo": 2, "raridade": "comum", "efeitos": [{ "tipo": "dano", "valor": 11 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "tiro-de-pistola", "nome": "Tiro de Pistola", "tipo": "ataque", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "dano", "valor": 7 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "balde-no-conves", "nome": "Balde no Convés", "tipo": "ataque", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "dano", "valor": 4 }, { "tipo": "status", "status": "encharcado", "valor": 2 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "escudo-de-tampa", "nome": "Escudo de Tampa", "tipo": "defesa", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "bloqueio", "valor": 5 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "casco-reforcado", "nome": "Casco Reforçado", "tipo": "defesa", "custo": 2, "raridade": "comum", "efeitos": [{ "tipo": "bloqueio", "valor": 12 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "amarra-firme", "nome": "Amarra Firme", "tipo": "defesa", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "bloqueio", "valor": 4 }, { "tipo": "status", "status": "firme", "valor": 1, "em": "si" }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "barril-de-bordo", "nome": "Barril de Bordo", "tipo": "defesa", "custo": 0, "raridade": "comum", "efeitos": [{ "tipo": "bloqueio", "valor": 3 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "remendo-no-casco", "nome": "Remendo no Casco", "tipo": "defesa", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "bloqueio", "valor": 5 }, { "tipo": "curar", "valor": 2 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "olhar-no-horizonte", "nome": "Olhar no Horizonte", "tipo": "manobra", "custo": 0, "raridade": "comum", "efeitos": [{ "tipo": "comprar", "valor": 1 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "pausa-pro-cafe", "nome": "Pausa pro Café", "tipo": "manobra", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "comprar", "valor": 2 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "respiro-fundo", "nome": "Respiro Fundo", "tipo": "manobra", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "curar", "valor": 4 }, { "tipo": "comprar", "valor": 1 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "no-de-marinheiro", "nome": "Nó de Marinheiro", "tipo": "manobra", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "status", "status": "enjoado", "valor": 2 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "mare-baixa", "nome": "Maré Baixa", "tipo": "manobra", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "status", "status": "encharcado", "valor": 3 }], "liberacao": { "tipo": "inicio" } },
+
+    { "slug": "rumo-certo", "nome": "Rumo Certo", "tipo": "manobra", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "comprar", "valor": 2 }, { "tipo": "bloqueio", "valor": 3 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "panela-quente", "nome": "Panela Quente", "tipo": "ataque", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "dano", "valor": 5 }, { "tipo": "curar", "valor": 2 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "ponto-de-sutura", "nome": "Ponto de Sutura", "tipo": "defesa", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "bloqueio", "valor": 6 }, { "tipo": "curar", "valor": 3 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "martelada", "nome": "Martelada", "tipo": "ataque", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "dano", "valor": 6 }, { "tipo": "bloqueio", "valor": 3 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "acorde-de-guerra", "nome": "Acorde de Guerra", "tipo": "manobra", "custo": 1, "raridade": "comum", "efeitos": [{ "tipo": "status", "status": "firme", "valor": 2, "em": "si" }, { "tipo": "comprar", "valor": 1 }], "liberacao": { "tipo": "inicio" } },
+    { "slug": "tiro-certeiro", "nome": "Tiro Certeiro", "tipo": "ataque", "custo": 2, "raridade": "comum", "efeitos": [{ "tipo": "dano", "valor": 13 }], "liberacao": { "tipo": "inicio" } },
+
+    { "slug": "mergulho-de-gaivota", "nome": "Mergulho de Gaivota", "tipo": "ataque", "custo": 0, "raridade": "incomum", "exaurir": true, "efeitos": [{ "tipo": "dano", "valor": 5 }], "liberacao": { "tipo": "derrotar", "inimigo": "gaivota-ladra" } },
+    { "slug": "rajada-de-canhao", "nome": "Rajada de Canhão", "tipo": "ataque", "custo": 2, "raridade": "incomum", "efeitos": [{ "tipo": "dano_todos", "valor": 8 }], "liberacao": { "tipo": "derrotar", "inimigo": "caranguejo-de-casco" } },
+    { "slug": "chicotada-de-corda", "nome": "Chicotada de Corda", "tipo": "ataque", "custo": 1, "raridade": "incomum", "efeitos": [{ "tipo": "dano", "valor": 5 }, { "tipo": "status", "status": "enjoado", "valor": 1 }], "liberacao": { "tipo": "derrotar", "inimigo": "contrabandista-molhado" } },
+    { "slug": "mare-contida", "nome": "Maré Contida", "tipo": "defesa", "custo": 1, "raridade": "incomum", "efeitos": [{ "tipo": "bloqueio", "valor": 8 }], "liberacao": { "tipo": "derrotar", "inimigo": "agua-viva-errante" } },
+    { "slug": "muralha-de-popa", "nome": "Muralha de Popa", "tipo": "defesa", "custo": 2, "raridade": "incomum", "efeitos": [{ "tipo": "bloqueio", "valor": 10 }, { "tipo": "status", "status": "firme", "valor": 2, "em": "si" }], "liberacao": { "tipo": "derrotar", "inimigo": "sereia-de-sal" } },
+    { "slug": "golpe-de-ancora", "nome": "Golpe de Âncora", "tipo": "ataque", "custo": 2, "raridade": "incomum", "efeitos": [{ "tipo": "dano", "valor": 14 }], "liberacao": { "tipo": "derrotar", "inimigo": "marujo-fantasma" } },
+    { "slug": "arpoada", "nome": "Arpoada", "tipo": "ataque", "custo": 2, "raridade": "incomum", "efeitos": [{ "tipo": "dano", "valor": 9 }, { "tipo": "status", "status": "encharcado", "valor": 2 }], "liberacao": { "tipo": "derrotar", "inimigo": "moreia-da-mare-baixa" } },
+    { "slug": "trovao-de-proa", "nome": "Trovão de Proa", "tipo": "ataque", "custo": 3, "raridade": "rara", "efeitos": [{ "tipo": "dano_todos", "valor": 14 }], "liberacao": { "tipo": "derrotar", "inimigo": "lampreia-trovao" } },
+    { "slug": "tinta-do-polvo", "nome": "Tinta do Polvo", "tipo": "manobra", "custo": 1, "raridade": "rara", "exaurir": true, "efeitos": [{ "tipo": "status", "status": "enjoado", "valor": 2, "em": "todos" }, { "tipo": "status", "status": "encharcado", "valor": 2, "em": "todos" }], "liberacao": { "tipo": "derrotar", "inimigo": "polvo-mor" } },
+
+    { "slug": "vela-recolhida", "nome": "Vela Recolhida", "tipo": "defesa", "custo": 1, "raridade": "incomum", "efeitos": [{ "tipo": "bloqueio", "valor": 6 }, { "tipo": "comprar", "valor": 1 }], "liberacao": { "tipo": "trecho", "trecho": 2 } },
+    { "slug": "mare-vingativa", "nome": "Maré Vingativa", "tipo": "ataque", "custo": 2, "raridade": "incomum", "efeitos": [{ "tipo": "dano_todos", "valor": 6 }, { "tipo": "status", "status": "encharcado", "valor": 2, "em": "todos" }], "liberacao": { "tipo": "trecho", "trecho": 2 } },
+    { "slug": "ritmo-de-ressaca", "nome": "Ritmo de Ressaca", "tipo": "manobra", "custo": 0, "raridade": "rara", "exaurir": true, "efeitos": [{ "tipo": "energia", "valor": 1 }, { "tipo": "comprar", "valor": 1 }], "liberacao": { "tipo": "trecho", "trecho": 3 } },
+    { "slug": "bandeira-negra", "nome": "Bandeira Negra", "tipo": "defesa", "custo": 2, "raridade": "rara", "efeitos": [{ "tipo": "bloqueio", "valor": 14 }], "liberacao": { "tipo": "trecho", "trecho": 3 } },
+
+    { "slug": "bussola-firme", "nome": "Bússola Firme", "tipo": "defesa", "custo": 1, "raridade": "incomum", "efeitos": [{ "tipo": "bloqueio", "valor": 6 }, { "tipo": "status", "status": "firme", "valor": 1, "em": "si" }, { "tipo": "comprar", "valor": 1 }], "liberacao": { "tipo": "vitoria_com", "oficio": "navegador" } },
+    { "slug": "racao-dobrada", "nome": "Ração Dobrada", "tipo": "manobra", "custo": 1, "raridade": "incomum", "exaurir": true, "efeitos": [{ "tipo": "curar", "valor": 6 }, { "tipo": "bloqueio", "valor": 4 }], "liberacao": { "tipo": "vitoria_com", "oficio": "cozinheira" } },
+    { "slug": "maca-improvisada", "nome": "Maca Improvisada", "tipo": "defesa", "custo": 2, "raridade": "incomum", "efeitos": [{ "tipo": "bloqueio", "valor": 8 }, { "tipo": "curar", "valor": 6 }], "liberacao": { "tipo": "vitoria_com", "oficio": "medico" } },
+    { "slug": "pavilhao-erguido", "nome": "Pavilhão Erguido", "tipo": "defesa", "custo": 2, "raridade": "incomum", "efeitos": [{ "tipo": "bloqueio", "valor": 9 }, { "tipo": "dano", "valor": 3 }], "liberacao": { "tipo": "vitoria_com", "oficio": "carpinteira" } },
+    { "slug": "refrao-de-bordo", "nome": "Refrão de Bordo", "tipo": "manobra", "custo": 1, "raridade": "incomum", "efeitos": [{ "tipo": "energia", "valor": 1 }, { "tipo": "comprar", "valor": 1 }], "liberacao": { "tipo": "vitoria_com", "oficio": "musico" } },
+    { "slug": "salva-de-tiros", "nome": "Salva de Tiros", "tipo": "ataque", "custo": 1, "raridade": "incomum", "efeitos": [{ "tipo": "dano", "valor": 3, "vezes": 3 }], "liberacao": { "tipo": "vitoria_com", "oficio": "atirador" } }
+  ]
+}
