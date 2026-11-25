@@ -40,6 +40,15 @@ describe('Consulta', () => {
     vi.restoreAllMocks();
   });
 
+  it('mostra defesa, resistência a dano e conhecimentos', () => {
+    const d = { ...draft, knowledge: [{ key: 'k1', name: 'Seattle Gangs', category: 'Street' as const, points: 3, karma: 0 }] };
+    render(<Consulta draft={d} result={evaluate(d)} inventory={[]} physical={0} stun={0} />);
+    const a = result.attributes;
+    expect(screen.getByText('Defesa').nextSibling).toHaveTextContent(String(a.REA.value + a.INT.value));
+    expect(screen.getByText('Resist. dano')).toBeInTheDocument();
+    expect(screen.getByText('Seattle Gangs')).toBeInTheDocument();
+  });
+
   it('a busca filtra e esconde seções vazias', async () => {
     const user = userEvent.setup();
     render(<Consulta draft={draft} result={result} inventory={[]} physical={0} stun={0} />);

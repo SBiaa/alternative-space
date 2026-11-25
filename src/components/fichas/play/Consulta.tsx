@@ -3,6 +3,7 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import type { CharacterDraft } from '@/lib/fichas/sr5/character';
 import { label, sr5Data } from '@/lib/fichas/sr5/data';
+import { spiritAttr } from '@/lib/fichas/sr5/career';
 import { rollPool, type PoolRoll } from '@/lib/fichas/sr5/dice';
 import { itemStats, wornArmor, type InventoryItemLike } from '@/lib/fichas/sr5/inventory';
 import { conditionLimits, woundModifier } from '@/lib/fichas/sr5/play';
@@ -138,6 +139,46 @@ export function Consulta({
     const x = sr5Data.martialArts.find((y) => y.id === m.id);
     return x && show(label(x), ...m.techniques) ? [{ m, x }] : [];
   });
+  const career = draft.career;
+  const knowledge = draft.knowledge.filter((k) => show(k.name, k.category, k.specialization?.name));
+  const companions = (career?.companions ?? []).flatMap((c) => {
+    const x = sr5Data.spirits.find((y) => y.id === c.spiritId);
+    return x && show(c.name, label(x)) ? [{ c, x }] : [];
+  });
+  const lifestyles = draft.lifestyles.flatMap((l) => {
+    const x = sr5Data.lifestyles.find((y) => y.id === l.id);
+    return x && show(label(x)) ? [{ l, x }] : [];
+  });
+  const enemies = (draft.enemies ?? []).filter((e) => show(e.name, e.notes));
+  const metamagics = (career?.metamagicIds ?? []).flatMap((id) => {
+    const x = sr5Data.metamagics.find((y) => y.id === id);
+    return x && show(label(x)) ? [x] : [];
+  });
+  const echoes = (career?.echoIds ?? []).flatMap((id) => {
+    const x = sr5Data.echoes.find((y) => y.id === id);
+    return x && show(label(x)) ? [x] : [];
+  });
+  const tradition = [...sr5Data.traditions, ...sr5Data.streams].find((t) => t.id === draft.magic.traditionId)
+    ?? [...sr5Data.traditions, ...sr5Data.streams].find((t) => t.id === draft.magic.streamId);
+  const mentor = sr5Data.mentors.find((m) => m.id === draft.magic.mentorId);
+  /** Acessórios e modificações instaladas numa arma ou armadura comprada na criação. */
+  const modsOf = (itemId: string | null) => {
+    const g = draft.gear.find((x) => x.itemId === itemId && x.mods?.length);
+    return (g?.mods ?? []).map((m) => {
+      const list = m.kind === 'accessory' ? sr5Data.weaponAccessories : m.kind === 'armorMod' ? sr5Data.armorMods : sr5Data.vehicleMods;
+      const it = list.find((x) => x.id === m.itemId);
+      return it ? `${label(it)}${m.rating ? ` ${m.rating}` : ''}` : null;
+    }).filter(Boolean).join(', ');
+  };
+  const weaponStats = (w: InventoryItemLike) => {
+    const base = itemStats('weapon', w.itemId) ?? w.notes;
+    const cat = sr5Data.weapons.find((x) => x.id === w.itemId);
+    const reach = cat?.reach ? `Alcance ${cat.reach}` : null;
+    const mods = modsOf(w.itemId);
+    return [base, reach, mods && `Acessórios: ${mods}`].filter(Boolean).join(' · ');
+  };
+  const defense = a.REA.value + a.INT.value;
+  const soak = a.BOD.value + (armor ?? 0);
 
   return (
     <div className="flex flex-col gap-3">
@@ -149,6 +190,8 @@ export function Consulta({
           <Stat name="Atordo." value={`${stun}/${limits.stun}`} tone={stun >= limits.stun ? 'danger' : undefined} />
           <Stat name="Ferimentos" value={wound === 0 ? '0' : wound} tone={wound < 0 ? 'warn' : undefined} />
           <Stat name="Edge" value={a.EDG.value} />
+          <Stat name="Defesa" value={defense} />
+          <Stat name="Resist. dano" value={soak} />
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <div className="min-w-48 flex-1"><SearchInput value={q} onChange={setQ} placeholder="Buscar perícia, arma, magia, contato…" /></div>
@@ -170,6 +213,14 @@ export function Consulta({
           {d.astralInitiative && ` · Astral ${d.astralInitiative.base}+${d.astralInitiative.dice}d6`}
           {d.drainResist !== undefined && ` · Resistir a dreno ${d.drainResist}`}
           {' '}· Compostura {d.composure} · Julgar intenções {d.judgeIntentions} · Memória {d.memory} · Levantar/carregar {d.liftCarry}
+        </p>
+        <p className="py-1 text-xs text-muted">
+          Monitor: {d.monitors.physical} físico · {d.monitors.stun} atordoamento · {d.monitors.overflow} excedente · −1 a cada {d.monitors.woundThreshold} caixas
+          {d.matrixInitiative && ` · Matrix RA ${d.matrixInitiative.ar.base}+${d.matrixInitiative.ar.dice}d6 · RV fria ${d.matrixInitiative.coldSim.base}+${d.matrixInitiative.coldSim.dice}d6 · RV quente ${d.matrixInitiative.hotSim.base}+${d.matrixInitiative.hotSim.dice}d6`}
+          {d.essenceMagicLoss > 0 && ` · Essência custou ${d.essenceMagicLoss} de Magia/Ressonância`}
+          {tradition && ` · Tradição ${label(tradition)}`}{mentor && ` · Mentor ${label(mentor)}`}
+          {career && career.initiationGrade > 0 && ` · Iniciação ${career.initiationGrade}`}
+          {career && career.submersionGrade > 0 && ` · Submersão ${career.submersionGrade}`}
         </p>
       </Section>
 
@@ -198,7 +249,7 @@ export function Consulta({
         <ul className="divide-y divide-line">
           {weapons.map((w) => (
             <Line key={w.itemId ?? w.name + w.qty} title={<>{w.name}{w.equipped && <span className="ml-2 rounded bg-accent/15 px-1.5 py-0.5 text-[10px] text-accent">em mãos</span>}</>}
-              sub={itemStats('weapon', w.itemId) ?? w.notes} right={w.qty > 1 ? `×${w.qty}` : undefined} />
+              sub={weaponStats(w)} right={w.qty > 1 ? `×${w.qty}` : undefined} />
           ))}
         </ul>
       </Section>
@@ -207,7 +258,7 @@ export function Consulta({
         <ul className="divide-y divide-line">
           {armors.map((w) => (
             <Line key={w.itemId ?? w.name} title={<>{w.name}{w.equipped && <span className="ml-2 rounded bg-accent/15 px-1.5 py-0.5 text-[10px] text-accent">vestindo</span>}</>}
-              sub={itemStats('armor', w.itemId) ?? undefined} />
+              sub={[itemStats('armor', w.itemId), modsOf(w.itemId) && `Modificações: ${modsOf(w.itemId)}`].filter(Boolean).join(' · ') || undefined} />
           ))}
         </ul>
       </Section>
@@ -268,10 +319,55 @@ export function Consulta({
         </ul>
       </Section>
 
+      <Section title="Metamagias e ecos" count={metamagics.length + echoes.length}>
+        <ul className="divide-y divide-line">
+          {metamagics.map((m) => <Line key={m.id} title={label(m)} />)}
+          {echoes.map((m) => <Line key={m.id} title={label(m)} />)}
+        </ul>
+      </Section>
+
+      <Section title="Espíritos e sprites" count={companions.length}>
+        <ul className="divide-y divide-line">
+          {companions.map(({ c, x }) => {
+            const stats = (['BOD', 'AGI', 'REA', 'STR', 'CHA', 'INT', 'LOG', 'WIL', 'EDG', 'MAG', 'RES'] as const)
+              .map((k) => [k, spiritAttr(x.attributes[k], c.force)] as const)
+              .filter(([, v]) => v !== null && v > 0)
+              .map(([k, v]) => `${ATTR_LABEL[k]} ${v}`).join(' · ');
+            return (
+              <Line key={c.key} title={<>{c.name || label(x)}{c.name && <span className="text-xs text-muted"> ({label(x)})</span>}</>}
+                sub={<>{stats}{x.powers.length > 0 && <span className="block">Poderes: {x.powers.join(', ')}</span>}</>}
+                right={<span className="font-mono text-xs">{c.force} · {c.services} serv.{c.bound ? ' · vinculado' : ''}</span>} />
+            );
+          })}
+        </ul>
+      </Section>
+
+      <Section title="Conhecimentos e idiomas" count={knowledge.length}>
+        <ul className="divide-y divide-line">
+          {knowledge.map((k) => (
+            <Line key={k.key} title={<>{k.name}{k.specialization && <span className="text-xs text-muted"> ({k.specialization.name})</span>}</>}
+              sub={k.category === 'Language' ? 'Idioma' : k.category}
+              right={<span className="font-mono text-xs">{k.native ? 'nativo' : k.points + k.karma}</span>} />
+          ))}
+        </ul>
+      </Section>
+
+      <Section title="Estilo de vida" count={lifestyles.length}>
+        <ul className="divide-y divide-line">
+          {lifestyles.map(({ l, x }) => <Line key={l.id} title={label(x)} sub={`${l.months} ${l.months === 1 ? 'mês' : 'meses'} pagos`} right={<span className="font-mono text-xs">{x.cost.toLocaleString('pt-BR')}¥/mês</span>} />)}
+        </ul>
+      </Section>
+
+      <Section title="Inimigos" count={enemies.length}>
+        <ul className="divide-y divide-line">
+          {enemies.map((e) => <Line key={e.key} title={e.name} sub={e.notes} />)}
+        </ul>
+      </Section>
+
       <Section title="Qualidades" count={quals.length}>
         <ul className="divide-y divide-line">
           {quals.map(({ qq, x }) => (
-            <Line key={qq.id + (qq.choice ?? '')} title={`${label(x)}${qq.rating > 1 ? ` ${qq.rating}` : ''}`}
+            <Line key={qq.id + (qq.choice ?? '')} title={`${label(x)}${qq.rating > 1 ? ` ${qq.rating}` : ''}`} sub={qq.choice || undefined}
               right={<span className={cx('text-xs', x.kind === 'positive' ? 'text-accent' : 'text-warn')}>{x.kind === 'positive' ? 'positiva' : 'negativa'}</span>} />
           ))}
         </ul>
@@ -288,7 +384,10 @@ export function Consulta({
 
       <Section title="Equipamento" count={gear.length} defaultOpen={false}>
         <ul className="divide-y divide-line">
-          {gear.map((g, i) => <Line key={(g.itemId ?? g.name) + i} title={g.name} sub={g.notes || undefined} right={g.qty > 1 ? `×${g.qty}` : undefined} />)}
+          {gear.map((g, i) => (
+            <Line key={(g.itemId ?? g.name) + i} title={g.rating ? `${g.name} ${g.rating}` : g.name}
+              sub={[itemStats('gear', g.itemId), g.notes].filter(Boolean).join(' · ') || undefined} right={g.qty > 1 ? `×${g.qty}` : undefined} />
+          ))}
         </ul>
       </Section>
 
