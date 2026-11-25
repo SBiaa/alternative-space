@@ -11,15 +11,18 @@ import { FichaPathfinder } from '@/components/FichaPathfinder';
 
 export const metadata: Metadata = { title: 'Ficha' };
 
-export default function CharacterPage({ params }: PageProps<'/fichas/[id]'>) {
+/** Posição da Revisão no assistente. */
+const REVIEW_STEP = 10;
+
+export default function CharacterPage({ params, searchParams }: PageProps<'/fichas/[id]'>) {
   return (
     <Suspense fallback={<Loading />}>
-      <Character params={params} />
+      <Character params={params} searchParams={searchParams} />
     </Suspense>
   );
 }
 
-async function Character({ params }: { params: PageProps<'/fichas/[id]'>['params'] }) {
+async function Character({ params, searchParams }: PageProps<'/fichas/[id]'>) {
   const { id } = await params;
   if ((await sistemaDaFicha(id, `/fichas/${id}`)) === 'pf2e') {
     const pf = await getPf2e(id);
@@ -50,6 +53,11 @@ async function Character({ params }: { params: PageProps<'/fichas/[id]'>['params
         initial={{ draft: character.draft, step: character.step }}
       />
     );
+  }
+
+  // Em jogo, reaberta para edição. Começa na Revisão, de onde dá para ir a qualquer passo.
+  if ((await searchParams).editar === '1') {
+    return <CloudWizard id={character.id} initial={{ draft: character.draft, step: REVIEW_STEP }} editing />;
   }
 
   // Finalizada: a ficha em jogo.

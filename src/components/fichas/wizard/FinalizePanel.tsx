@@ -19,7 +19,7 @@ export function FinalizePanel({ id }: { id: string }) {
   const start0 = startingBalances(result);
 
   const finalize = () => {
-    if (!confirm('Finalizar a criação? Depois disso a ficha não volta para o assistente.')) return;
+    if (!confirm('Finalizar a criação e abrir a ficha em jogo? Você ainda poderá editar a ficha depois.')) return;
     start(async () => {
       setError(undefined);
       if (!(await flushStore())) {
@@ -36,7 +36,7 @@ export function FinalizePanel({ id }: { id: string }) {
     <div className="mt-6 rounded-xl border border-accent/40 bg-accent/5 p-4">
       <h3 className="font-display text-lg font-semibold">Pronto para jogar?</h3>
       <p className="mt-1 text-sm text-muted">
-        Finalizar trava a criação e abre a ficha em jogo, onde você controla nuyen, karma, dano e missões. Passam para o
+        Finalizar abre a ficha em jogo, onde você controla nuyen, karma, dano e missões. Passam para o
         jogo <strong className="text-ink">{fmtNuyen(start0.nuyen)}</strong> e{' '}
         <strong className="text-ink">{start0.karma} de karma</strong>.
       </p>

@@ -114,6 +114,35 @@ export function inventoryFromDraft(draft: CharacterDraft): InventoryItemLike[] {
   return out;
 }
 
+export interface InventoryChange {
+  kind: InventoryKind;
+  itemId: string;
+  name: string;
+  rating: number | null;
+  /** Positivo: entrou na ficha. Negativo: saiu. */
+  qty: number;
+}
+
+/**
+ * O que mudou no equipamento quando a ficha é editada. Só a diferença vai para o
+ * inventário, para não desfazer o que aconteceu em jogo (itens gastos, vendidos, anotados).
+ */
+export function inventoryDelta(before: CharacterDraft, after: CharacterDraft): InventoryChange[] {
+  const totals = new Map<string, InventoryChange>();
+  const add = (draft: CharacterDraft, sign: 1 | -1) => {
+    for (const i of inventoryFromDraft(draft)) {
+      const itemId = i.itemId as string;
+      const key = `${i.kind}|${itemId}|${i.rating ?? ''}`;
+      const cur = totals.get(key) ?? { kind: i.kind, itemId, name: i.name, rating: i.rating, qty: 0 };
+      cur.qty += sign * i.qty;
+      totals.set(key, cur);
+    }
+  };
+  add(after, 1);
+  add(before, -1);
+  return [...totals.values()].filter((c) => c.qty !== 0);
+}
+
 export interface ImplantLine {
   key: string;
   name: string;

@@ -3,17 +3,30 @@
 import Link from 'next/link';
 import { useEffect, type ReactNode } from 'react';
 import { saveCharacterAction } from '@/app/fichas/actions';
+import { saveCharacterEditAction } from '@/app/fichas/play-actions';
 import { createCloudPersistence, hasUnsavedChanges, useSaveStatus } from '@/lib/fichas/cloudPersistence';
 import { bindStore, flushStore, unbindStore, type WizardState } from '@/lib/fichas/store';
 import { cx } from '../ui';
+import { EditDoneButton, EditDonePanel } from './EditDone';
 import { FinalizePanel } from './FinalizePanel';
 import { Wizard } from './Wizard';
 import { WizardExtrasProvider } from './WizardExtras';
 
 /** Assistente de uma ficha da conta: salva no banco sozinho. */
-export function CloudWizard({ id, initial, account }: { id: string; initial: WizardState; account?: ReactNode }) {
-  const key = `cloud:${id}`;
-  const make = () => createCloudPersistence({ id, initial, save: saveCharacterAction });
+export function CloudWizard({
+  id,
+  initial,
+  account,
+  editing = false,
+}: {
+  id: string;
+  initial: WizardState;
+  account?: ReactNode;
+  /** Ficha que já está em jogo, reaberta para edição. */
+  editing?: boolean;
+}) {
+  const key = `${editing ? 'edit' : 'cloud'}:${id}`;
+  const make = () => createCloudPersistence({ id, initial, save: editing ? saveCharacterEditAction : saveCharacterAction });
   // Na renderização, para o assistente já nascer lendo a ficha certa.
   bindStore(key, make);
 
@@ -34,12 +47,13 @@ export function CloudWizard({ id, initial, account }: { id: string; initial: Wiz
   }, [key]);
 
   return (
-    <WizardExtrasProvider value={{ savedIn: 'account', reviewActions: <FinalizePanel id={id} /> }}>
+    <WizardExtrasProvider value={{ savedIn: 'account', reviewActions: editing ? <EditDonePanel id={id} /> : <FinalizePanel id={id} /> }}>
       <Wizard
         account={account}
         actions={
           <>
             <SaveIndicator />
+            {editing && <EditDoneButton id={id} />}
             <Link
               href="/fichas"
               className="inline-flex items-center whitespace-nowrap rounded-md px-2 py-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink sm:px-3.5"

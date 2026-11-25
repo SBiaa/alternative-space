@@ -80,6 +80,11 @@ export function PlayView({
             <p className="text-sm text-muted">
               {c.draft.concept.role ? `${c.draft.concept.role} · ` : ''}
               <span className="text-accent">Em jogo</span>
+              {' · '}
+              {/* Recarrega a página de propósito: o assistente precisa da ficha mais nova do banco. */}
+              <a href={`/fichas/${c.id}?editar=1`} className="font-medium text-ink underline underline-offset-2 hover:text-accent">
+                Editar ficha
+              </a>
             </p>
           </div>
           <nav className="flex max-w-full gap-1 overflow-x-auto rounded-lg border border-line bg-surface p-1 [scrollbar-width:none]" role="tablist">
