@@ -63,6 +63,15 @@ const outputs: Record<string, unknown> = {
   gear: c.convertGear(ctx),
   cyberware: c.convertCyberware(ctx),
   bioware: c.convertBioware(ctx),
+  vehicles: c.convertVehicles(ctx),
+  vehiclemods: c.convertVehicleMods(ctx),
+  weaponaccessories: c.convertWeaponAccessories(ctx),
+  armormods: c.convertArmorMods(ctx),
+  programs: c.convertPrograms(ctx),
+  metamagics: c.convertMetamagics(ctx),
+  echoes: c.convertEchoes(ctx),
+  spirits: c.convertSpirits(ctx),
+  martialarts: c.convertMartialArts(ctx),
 };
 
 let commit = 'desconhecido';

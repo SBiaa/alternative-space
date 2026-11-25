@@ -17,6 +17,7 @@ import { QualitiesStep } from '../steps/QualitiesStep';
 import { SkillsStep } from '../steps/SkillsStep';
 import { ResourcesStep } from '../steps/ResourcesStep';
 import { ContactsStep } from '../steps/ContactsStep';
+import { ExtrasStep } from '../steps/ExtrasStep';
 import { ReviewStep } from '../steps/ReviewStep';
 
 export interface StepProps {
@@ -35,6 +36,7 @@ const STEPS: { key: StepKey; title: string; Component: (p: StepProps) => ReactNo
   { key: 'skills', title: 'Perícias', Component: SkillsStep },
   { key: 'resources', title: 'Recursos', Component: ResourcesStep },
   { key: 'contacts', title: 'Contatos', Component: ContactsStep },
+  { key: 'extras', title: 'Extras', Component: ExtrasStep },
   { key: 'review', title: 'Revisão', Component: ReviewStep },
 ];
 

@@ -1,0 +1,2839 @@
+[
+  {
+    "id": "b062f16a-52ab-40d5-8985-d71b8ee1923c",
+    "name": "Tracked Propulsion",
+    "namePt": "Tracked Propulsion",
+    "source": "R5",
+    "page": 0,
+    "category": "Model-Specific",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "7f616742-0460-46fb-bd98-b73ff6123ed4",
+    "name": "Signature Dampening",
+    "namePt": "Signature Dampening",
+    "source": "R5",
+    "page": 0,
+    "category": "Model-Specific",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "a850f813-afd4-40ce-a418-8790fe39cfa5",
+    "name": "FlashTech",
+    "namePt": "FlashTech",
+    "source": "R5",
+    "page": 0,
+    "category": "Model-Specific",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "b2e3b364-ff22-4dd7-b5ea-2990ce2e8353",
+    "name": "Enviroseal",
+    "namePt": "Enviroseal",
+    "source": "R5",
+    "page": 0,
+    "category": "Model-Specific",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "87713603-78f3-46d5-8e3c-b6fecc41203f",
+    "name": "Drone Rail",
+    "namePt": "Drone Rail",
+    "source": "R5",
+    "page": 0,
+    "category": "Model-Specific",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "f89a112e-600a-4278-8731-9b14cf3737c9",
+    "name": "Gyro-Stabilization",
+    "namePt": "Gyro-Stabilization",
+    "source": "R5",
+    "page": 0,
+    "category": "Model-Specific",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "349772a1-1ba6-4cc7-a607-20b02a31d5d1",
+    "name": "Smart Tires",
+    "namePt": "Smart Tires",
+    "source": "R5",
+    "page": 0,
+    "category": "Model-Specific",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "cec8abb4-15a0-4c74-b9f9-350969a0fce3",
+    "name": "Ruhrmetall Wolf II Troop Transport Module",
+    "namePt": "Ruhrmetall Wolf II Troop Transport Module",
+    "source": "R5",
+    "page": 77,
+    "category": "Model-Specific",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "6ac249ee-84c0-498f-9377-149ccbc2f959",
+    "name": "Acceleration Enhancement",
+    "namePt": "Acceleration Enhancement",
+    "source": "R5",
+    "page": 154,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "FixedValues(number(Acceleration = 0) * 5000 + Acceleration * 10000,number(Acceleration = 0) * 12500 + Acceleration * 25000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 2
+  },
+  {
+    "id": "06940788-ad0b-453c-bc8a-e54e6221c185",
+    "name": "Gecko Tips",
+    "namePt": "Gecko Tips",
+    "source": "R5",
+    "page": 154,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "1000 + 4000*number(Body >= 4)",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "fd32b5eb-c791-4117-a9fe-5d5d86952827",
+    "name": "Gliding System",
+    "namePt": "Gliding System",
+    "source": "R5",
+    "page": 154,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "number(Body = 0) * 1500 + Body * 3000 + (Body * 1000)*number(Body > 12)",
+      "value": null
+    },
+    "avail": {
+      "raw": "(12 + 4*number(Body > 12))R",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "956a20f7-64f3-4160-88a0-d6d6b29b0bd1",
+    "name": "Handling Enhancement",
+    "namePt": "Handling Enhancement",
+    "source": "R5",
+    "page": 154,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "FixedValues(number(Handling = 0) * 1000 + Handling*2000,number(Handling = 0) * 2500 + Handling*5000,number(Handling = 0) * 6000 + Handling*12000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(6,8,10)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 3
+  },
+  {
+    "id": "20083c34-5008-4647-9d9e-9ed230e4efe1",
+    "name": "Improved Economy",
+    "namePt": "Improved Economy",
+    "source": "R5",
+    "page": 154,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "7500",
+      "value": 7500
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "a254cd12-59c0-46ad-a291-92f0dd6da4c6",
+    "name": "Manual Control Override",
+    "namePt": "Manual Control Override",
+    "source": "R5",
+    "page": 154,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "b242a897-74d6-44da-9922-b0b1f4537609",
+    "name": "Multifuel Engine",
+    "namePt": "Multifuel Engine",
+    "source": "R5",
+    "page": 155,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "number(Body = 0) * 500 + Body * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "slots": 4
+  },
+  {
+    "id": "5acc99df-ffaf-4c43-93bc-07b552fc4c1c",
+    "name": "Off-Road Suspension",
+    "namePt": "Off-Road Suspension",
+    "source": "R5",
+    "page": 155,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "Vehicle Cost * 0.25",
+      "value": null
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "0f18b178-7950-492d-875d-a7a12ca787d3",
+    "name": "Rigger Cocoon",
+    "namePt": "Rigger Cocoon",
+    "source": "R5",
+    "page": 155,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "586911a6-fd46-4d99-9000-2c65507884ec",
+    "name": "Removed Manual Controls",
+    "namePt": "Removed Manual Controls",
+    "source": "R5",
+    "page": 155,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "95c6e249-c82f-4a9b-87ae-d438b4042990",
+    "name": "Rocket Booster",
+    "namePt": "Rocket Booster",
+    "source": "R5",
+    "page": 156,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "number(Body = 0) * 2500 + Body * 5000",
+      "value": null
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    },
+    "slots": 10
+  },
+  {
+    "id": "ea6ccca2-4294-494c-9fc7-963c3bcca12e",
+    "name": "Secondary Manual Controls",
+    "namePt": "Secondary Manual Controls",
+    "source": "R5",
+    "page": 156,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "b3494f2f-cdb1-409e-be2c-72f69ba2d10e",
+    "name": "Secondary Propulsion (Amphibious, Surface)",
+    "namePt": "Secondary Propulsion (Amphibious, Surface)",
+    "source": "R5",
+    "page": 156,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "number(Body = 0) * 100 + Body * 200",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 4
+  },
+  {
+    "id": "5d7e4ae4-6f06-4d89-a64b-fe1d714ab914",
+    "name": "Secondary Propulsion (Amphibious, Submersible)",
+    "namePt": "Secondary Propulsion (Amphibious, Submersible)",
+    "source": "R5",
+    "page": 156,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "number(Body = 0) * 1000 + Body * 2000",
+      "value": null
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "slots": 8
+  },
+  {
+    "id": "3cf666df-90cb-4eb1-8a62-2c579d9c0d4f",
+    "name": "Secondary Propulsion (Hovercraft)",
+    "namePt": "Secondary Propulsion (Hovercraft)",
+    "source": "R5",
+    "page": 156,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "number(Body = 0) * 500 + Body * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "slots": 8
+  },
+  {
+    "id": "3954393c-4708-4f2f-9f2d-213b779a8daf",
+    "name": "Secondary Propulsion (Rotor)",
+    "namePt": "Secondary Propulsion (Rotor)",
+    "source": "R5",
+    "page": 157,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "number(Body = 0) * 1500 + Body * 3000",
+      "value": null
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "slots": 10
+  },
+  {
+    "id": "cb8e67e0-6935-445b-b39b-ffe52a8b39a6",
+    "name": "Secondary Propulsion (Tracked)",
+    "namePt": "Secondary Propulsion (Tracked)",
+    "source": "R5",
+    "page": 157,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "number(Body = 0) * 500 + Body * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "slots": 6
+  },
+  {
+    "id": "d0be4702-07d2-4253-8ff7-8df1a038a615",
+    "name": "Secondary Propulsion (Walker)",
+    "namePt": "Secondary Propulsion (Walker)",
+    "source": "R5",
+    "page": 157,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "number(Body = 0) * 1000 + Body * 2000",
+      "value": null
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "slots": 8
+  },
+  {
+    "id": "ecc73836-9110-4f5f-9464-cb6ae6e954d2",
+    "name": "Speed Enhancement",
+    "namePt": "Speed Enhancement",
+    "source": "R5",
+    "page": 157,
+    "category": "Powertrain",
+    "cost": {
+      "raw": "FixedValues(number(Speed = 0) * 1000 + Speed * 2000,number(Speed = 0) * 2500 + Speed * 5000,number(Speed = 0) * 6000 + Speed * 12000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(6,8,12)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 3
+  },
+  {
+    "id": "f2d9840c-22a7-4c70-943d-ffac88fe6120",
+    "name": "Anti-Theft System",
+    "namePt": "Anti-Theft System",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "FixedValues(500,1000,2500,5000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(4,6,8R,12F)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 4
+  },
+  {
+    "id": "4dcee44f-6222-4188-bcf9-09c3cde60f2a",
+    "name": "Armor (Standard)",
+    "namePt": "Armor (Standard)",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 0
+  },
+  {
+    "id": "85a85cfd-7703-48f6-9745-d0a2b64c8b9e",
+    "name": "Armor (Concealed)",
+    "namePt": "Armor (Concealed)",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 3000",
+      "value": null
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "slots": 0
+  },
+  {
+    "id": "f9353113-4f4b-4c71-b742-eb5a6f87fc61",
+    "name": "Passenger Protection System",
+    "namePt": "Passenger Protection System",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 2000",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2,
+    "maxRating": 6
+  },
+  {
+    "id": "7dbf54b3-6921-4fb6-b0e8-2a2e5e5e84fe",
+    "name": "Personal Armor",
+    "namePt": "Personal Armor",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating)R",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 2,
+    "maxRating": 10
+  },
+  {
+    "id": "fb73c19c-c194-45fe-8235-0ac2369dabd6",
+    "name": "Special Armor Modification (Chemical)",
+    "namePt": "Special Armor Modification (Chemical)",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2,
+    "maxRating": 50
+  },
+  {
+    "id": "031312f4-3ab0-4e5e-96e4-69e035a444c1",
+    "name": "Special Armor Modification (Fire)",
+    "namePt": "Special Armor Modification (Fire)",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2,
+    "maxRating": 50
+  },
+  {
+    "id": "620c48d2-060b-4fdb-a886-611312204892",
+    "name": "Special Armor Modification (Insulation)",
+    "namePt": "Special Armor Modification (Insulation)",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2,
+    "maxRating": 50
+  },
+  {
+    "id": "958920e2-828c-4024-a700-25e5023dbdac",
+    "name": "Special Armor Modification (Nonconductivity)",
+    "namePt": "Special Armor Modification (Nonconductivity)",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2,
+    "maxRating": 50
+  },
+  {
+    "id": "242a415b-024a-4589-91ce-978a12ff04ad",
+    "name": "Special Armor Modification (Radiation)",
+    "namePt": "Special Armor Modification (Radiation)",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 400",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 2)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 2,
+    "maxRating": 50
+  },
+  {
+    "id": "df87cb45-8df9-4d6b-8c78-b2e2ed8efa81",
+    "name": "Special Armor Modification (Universal Mirror Material)",
+    "namePt": "Special Armor Modification (Universal Mirror Material)",
+    "source": "R5",
+    "page": 159,
+    "category": "Protection",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 2,
+    "maxRating": 50
+  },
+  {
+    "id": "0f5c3fc1-04d6-4cec-9e65-7baca6139e74",
+    "name": "Standard Drone Rack (Micro)",
+    "namePt": "Standard Drone Rack (Micro)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "350",
+      "value": 350
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "fa0b86df-1678-4d02-bcec-fec68831e1a8",
+    "name": "Standard Drone Rack (Mini)",
+    "namePt": "Standard Drone Rack (Mini)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "78352843-9b29-4988-a4f8-c49977641a94",
+    "name": "Standard Drone Rack (Small)",
+    "namePt": "Standard Drone Rack (Small)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "81981ae4-b62a-450e-9170-cbfaeb8af4fd",
+    "name": "Standard Drone Rack (Medium)",
+    "namePt": "Standard Drone Rack (Medium)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 3
+  },
+  {
+    "id": "f8771819-0188-444e-80a0-586f033599e4",
+    "name": "Standard Drone Rack (Large)",
+    "namePt": "Standard Drone Rack (Large)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 4
+  },
+  {
+    "id": "3f6cb34e-b817-4788-8655-4819e14a8774",
+    "name": "Landing Drone Rack (Micro)",
+    "namePt": "Landing Drone Rack (Micro)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "750",
+      "value": 750
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "943e11c1-68ab-47db-9075-e13e52247350",
+    "name": "Landing Drone Rack (Mini)",
+    "namePt": "Landing Drone Rack (Mini)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "fa4fca8f-6f19-4e03-a529-a98efeae5d89",
+    "name": "Landing Drone Rack (Small)",
+    "namePt": "Landing Drone Rack (Small)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 3
+  },
+  {
+    "id": "a7c44bc7-0fac-4853-b0b9-d62516ca5490",
+    "name": "Landing Drone Rack (Medium)",
+    "namePt": "Landing Drone Rack (Medium)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 4
+  },
+  {
+    "id": "3fbd1e16-3c76-4874-af8d-cd5cc477f9d5",
+    "name": "Landing Drone Rack (Large)",
+    "namePt": "Landing Drone Rack (Large)",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "slots": 5
+  },
+  {
+    "id": "c53ab210-db64-42ee-8568-d758ac3d7adb",
+    "name": "Gun Port",
+    "namePt": "Gun Port",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 1
+  },
+  {
+    "id": "ff06549c-fe90-427d-97cd-c1336a7ecb5a",
+    "name": "Missile Defense System",
+    "namePt": "Missile Defense System",
+    "source": "R5",
+    "page": 160,
+    "category": "Weapons",
+    "cost": {
+      "raw": "15000",
+      "value": 15000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "slots": 3
+  },
+  {
+    "id": "4a3b79f0-e582-4d4a-9c6f-4d02ccb75c91",
+    "name": "Oil Slick Sprayer",
+    "namePt": "Oil Slick Sprayer",
+    "source": "R5",
+    "page": 161,
+    "category": "Weapons",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "slots": 2
+  },
+  {
+    "id": "0f9a2625-5496-4a9f-9e2e-7deddf0a6920",
+    "name": "Ram Plate",
+    "namePt": "Ram Plate",
+    "source": "R5",
+    "page": 161,
+    "category": "Weapons",
+    "cost": {
+      "raw": "number(Body = 0) * 125 + Body * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 1
+  },
+  {
+    "id": "d7191615-cc21-40b2-94f2-b562f00f2c30",
+    "name": "Smoke Projector",
+    "namePt": "Smoke Projector",
+    "source": "R5",
+    "page": 161,
+    "category": "Weapons",
+    "cost": {
+      "raw": "750",
+      "value": 750
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 2
+  },
+  {
+    "id": "2ab400a7-c55f-4fcd-a124-f44f1ffd8ea8",
+    "name": "Smoke Projector (Thermal)",
+    "namePt": "Smoke Projector (Thermal)",
+    "source": "R5",
+    "page": 161,
+    "category": "Weapons",
+    "cost": {
+      "raw": "850",
+      "value": 850
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 2
+  },
+  {
+    "id": "1478ac87-a64b-4d5f-be3f-1ed4fb9e5cbd",
+    "name": "Road Strip Ejector",
+    "namePt": "Road Strip Ejector",
+    "source": "R5",
+    "page": 161,
+    "category": "Weapons",
+    "cost": {
+      "raw": "800",
+      "value": 800
+    },
+    "avail": {
+      "raw": "10F",
+      "value": 10,
+      "restriction": "F"
+    },
+    "slots": 2
+  },
+  {
+    "id": "4b7ce902-a8b2-4bdb-9095-05b029750dde",
+    "name": "Assembly/Disassembly",
+    "namePt": "Assembly/Disassembly",
+    "source": "R5",
+    "page": 163,
+    "category": "Body",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "90ef81fc-39d7-48b1-bf2a-de6e6b11ff90",
+    "name": "Chameleon Coating",
+    "namePt": "Chameleon Coating",
+    "source": "R5",
+    "page": 163,
+    "category": "Body",
+    "cost": {
+      "raw": "number(Body = 0) * 500 + Body * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "slots": 2
+  },
+  {
+    "id": "635a129a-954f-4037-a256-30aa4be06756",
+    "name": "Extra Entry/Exit Points",
+    "namePt": "Extra Entry/Exit Points",
+    "source": "R5",
+    "page": 164,
+    "category": "Body",
+    "cost": {
+      "raw": "2500",
+      "value": 2500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "dffbc67e-c9b9-4876-bebc-ebf424590b71",
+    "name": "Extreme Environment Modification",
+    "namePt": "Extreme Environment Modification",
+    "source": "R5",
+    "page": 164,
+    "category": "Body",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "0e2a84e1-dac3-4c4c-8826-cc3cc533394e",
+    "name": "Increased Seating",
+    "namePt": "Increased Seating",
+    "source": "R5",
+    "page": 164,
+    "category": "Body",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "25b01f7d-c553-4efc-83dc-c23c4c61b944",
+    "name": "Life Support",
+    "namePt": "Life Support",
+    "source": "R5",
+    "page": 164,
+    "category": "Body",
+    "cost": {
+      "raw": "FixedValues(number(Body = 0) * 250 + Body * 500,number(Body = 0) * 1000 + Body * 2000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(8,12)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 2
+  },
+  {
+    "id": "4f15cb92-3416-44ec-b920-03cc7033d8bd",
+    "name": "Mechanical Arm (Basic)",
+    "namePt": "Mechanical Arm (Basic)",
+    "source": "R5",
+    "page": 165,
+    "category": "Body",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "3154f81c-f85c-414d-abe4-8289aa6e9766",
+    "name": "Mechanical Arm (Articulated)",
+    "namePt": "Mechanical Arm (Articulated)",
+    "source": "R5",
+    "page": 165,
+    "category": "Body",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 3
+  },
+  {
+    "id": "74756635-ad88-437a-8123-599019aafa6c",
+    "name": "Nanomaintenance System",
+    "namePt": "Nanomaintenance System",
+    "source": "R5",
+    "page": 165,
+    "category": "Body",
+    "cost": {
+      "raw": "Rating * 5000",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 5)R",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 4
+  },
+  {
+    "id": "a4082cac-6f48-4cd1-a58d-bef334d03d1b",
+    "name": "Realistic Features",
+    "namePt": "Realistic Features",
+    "source": "R5",
+    "page": 165,
+    "category": "Body",
+    "cost": {
+      "raw": "Rating * (number(Body = 0) * 500 + Body * 1000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)R",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 4
+  },
+  {
+    "id": "b03829bf-1e15-4afe-aafc-9cda2c159fcd",
+    "name": "Smuggling Compartment",
+    "namePt": "Smuggling Compartment",
+    "source": "R5",
+    "page": 165,
+    "category": "Body",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "slots": 3
+  },
+  {
+    "id": "60481326-e91c-4ace-863e-93799ba96064",
+    "name": "Special Equipment",
+    "namePt": "Special Equipment",
+    "source": "R5",
+    "page": 165,
+    "category": "Body",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "de5bd5c7-53cd-4ffd-9e13-ec04636d50ce",
+    "name": "Smuggling Compartment Shielding",
+    "namePt": "Smuggling Compartment Shielding",
+    "source": "R5",
+    "page": 165,
+    "category": "Body",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "slots": 0
+  },
+  {
+    "id": "f6ad4db2-e318-41a3-93cf-3a28a2bae4d7",
+    "name": "Valkyrie Module",
+    "namePt": "Valkyrie Module",
+    "source": "R5",
+    "page": 166,
+    "category": "Body",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 4
+  },
+  {
+    "id": "0d0ae07c-e78a-46da-8b8c-468d7e269429",
+    "name": "Winch (Basic)",
+    "namePt": "Winch (Basic)",
+    "source": "R5",
+    "page": 166,
+    "category": "Body",
+    "cost": {
+      "raw": "750",
+      "value": 750
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "21f2a3fa-25cd-4294-bade-d10c14dba16c",
+    "name": "Winch (Enhanced)",
+    "namePt": "Winch (Enhanced)",
+    "source": "R5",
+    "page": 166,
+    "category": "Body",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "90378c20-75d8-4c66-99a1-8a7d69aee9d0",
+    "name": "Workshop",
+    "namePt": "Workshop",
+    "source": "R5",
+    "page": 166,
+    "category": "Body",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 6
+  },
+  {
+    "id": "da9d087f-b0c0-4e8a-9a2f-902d1c6fe2d6",
+    "name": "Electromagnetic Shielding",
+    "namePt": "Electromagnetic Shielding",
+    "source": "R5",
+    "page": 166,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "number(Body = 0) * 250 + Body * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 2
+  },
+  {
+    "id": "518a5fdc-3b2c-42a6-a3fb-3cb88918fe72",
+    "name": "ECM",
+    "namePt": "ECM",
+    "source": "R5",
+    "page": 166,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "(Rating * 3)F",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 2,
+    "maxRating": 6
+  },
+  {
+    "id": "831a60c3-f57b-40c7-9b4d-92906897ee90",
+    "name": "GridLink",
+    "namePt": "GridLink",
+    "source": "R5",
+    "page": 166,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "750",
+      "value": 750
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "2e9575fb-d141-4f1d-a1a0-63aadc261c97",
+    "name": "GridLink Override",
+    "namePt": "GridLink Override",
+    "source": "R5",
+    "page": 167,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "slots": 1
+  },
+  {
+    "id": "cd3a8ca7-eae6-45af-a624-649635a470e6",
+    "name": "Retrans Unit",
+    "namePt": "Retrans Unit",
+    "source": "R5",
+    "page": 168,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "6ca6085f-bdef-4af8-a88e-250a3f4a3e65",
+    "name": "Satellite Link",
+    "namePt": "Satellite Link",
+    "source": "R5",
+    "page": 168,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "73a5b64a-7197-48eb-88a3-5757c6cfa199",
+    "name": "Pilot Enhancement",
+    "namePt": "Pilot Enhancement",
+    "source": "R5",
+    "page": 167,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "FixedValues(Rating * 2000,Rating * 2000,Rating * 2000,Rating * 5000,Rating * 5000,Rating * 5000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(Rating * 2,Rating * 2,Rating * 2,Rating * 3,Rating * 3,Rating * 3)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 6
+  },
+  {
+    "id": "de59fe6d-b61b-4f28-b6e4-d8b022fd8bb0",
+    "name": "Sensor Enhancement",
+    "namePt": "Sensor Enhancement",
+    "source": "R5",
+    "page": 168,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "FixedValues(Rating * 2000,Rating * 2000,Rating * 2000,Rating * 5000,Rating * 5000,Rating * 5000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(Rating * 2,Rating * 2,Rating * 2,Rating * 3,Rating * 3,Rating * 3)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 6
+  },
+  {
+    "id": "a249d87f-ec07-4716-9c62-e26061e80eac",
+    "name": "Signature Masking",
+    "namePt": "Signature Masking",
+    "source": "R5",
+    "page": 168,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "Rating * 2000",
+      "value": null
+    },
+    "avail": {
+      "raw": "14F",
+      "value": 14,
+      "restriction": "F"
+    },
+    "slots": 0,
+    "maxRating": 6
+  },
+  {
+    "id": "bbfe9593-12ea-4873-9203-8f7063957225",
+    "name": "SunCell",
+    "namePt": "SunCell",
+    "source": "R5",
+    "page": 168,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "number(Body = 0) * 250 + Body * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "1744b643-6412-4645-8bb5-c167b908a3ca",
+    "name": "Touch Sensors",
+    "namePt": "Touch Sensors",
+    "source": "R5",
+    "page": 169,
+    "category": "Electromagnetic",
+    "cost": {
+      "raw": "number(Body = 0) * 250 + Body * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 3
+  },
+  {
+    "id": "cd063735-b801-4587-9d67-a8c35c2e3e3e",
+    "name": "Amenities (Squatter)",
+    "namePt": "Amenities (Squatter)",
+    "source": "R5",
+    "page": 169,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "8a90457a-ab4d-454e-ba9f-4e3aa5ba0a0b",
+    "name": "Amenities (Low)",
+    "namePt": "Amenities (Low)",
+    "source": "R5",
+    "page": 169,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "98fb1b08-5583-44f6-8eab-f1d236f8fe59",
+    "name": "Amenities (Middle)",
+    "namePt": "Amenities (Middle)",
+    "source": "R5",
+    "page": 169,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "4c989588-40da-4969-8c96-66be76f7ad3e",
+    "name": "Amenities (High)",
+    "namePt": "Amenities (High)",
+    "source": "R5",
+    "page": 169,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "376658ad-d040-4d1e-9c6a-1d7b2ae38609",
+    "name": "Amenities (Luxury)",
+    "namePt": "Amenities (Luxury)",
+    "source": "R5",
+    "page": 169,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "16",
+      "value": 16,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "3cdb49d6-68a5-498c-8dcd-bbddcfcbe9b4",
+    "name": "Enhanced Image Screens",
+    "namePt": "Enhanced Image Screens",
+    "source": "R5",
+    "page": 170,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "a586e8b6-2737-4baa-a343-f366d33fe57a",
+    "name": "Metahuman Adjustment",
+    "namePt": "Metahuman Adjustment",
+    "source": "R5",
+    "page": 170,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "ef9dcce5-7b1d-4469-9d3c-861dcb25684e",
+    "name": "Manual Operation",
+    "namePt": "Operação Manual",
+    "source": "SR5",
+    "page": 461,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "+1",
+      "value": 1,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "354bd92f-dafc-42a4-979c-e3631be6cf45",
+    "name": "Rigger Interface",
+    "namePt": "Interface de Fusor",
+    "source": "SR5",
+    "page": 461,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "0eab79a6-b552-4c17-8fac-a6c0e07f76e4",
+    "name": "Interior Cameras",
+    "namePt": "Interior Cameras",
+    "source": "R5",
+    "page": 171,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "ea059f62-164c-403b-89d5-8603804a64b6",
+    "name": "Searchlight",
+    "namePt": "Searchlight",
+    "source": "R5",
+    "page": 171,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "800",
+      "value": 800
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "61b5d43c-8ea5-4d31-845a-1c8ae40b78ca",
+    "name": "Vehicle Tag Eraser",
+    "namePt": "Vehicle Tag Eraser",
+    "source": "R5",
+    "page": 171,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "750",
+      "value": 750
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 0
+  },
+  {
+    "id": "a36612c7-c5a7-4072-ad0d-5e78080d12e1",
+    "name": "Yerzed Out",
+    "namePt": "Yerzed Out",
+    "source": "R5",
+    "page": 171,
+    "category": "Cosmetic",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 4
+  },
+  {
+    "id": "1a626185-b826-466c-aa73-32c02bae4bef",
+    "name": "Gecko Grips (Drone)",
+    "namePt": "Gecko Grips (Drone)",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "number(Body = 0) * 75 + Body * 150",
+      "value": null
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "slots": 1
+  },
+  {
+    "id": "b5b9cd7e-dbb3-42e9-abcd-f805f6a4b10e",
+    "name": "Realistic Features (Drone)",
+    "namePt": "Realistic Features (Drone)",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "FixedValues(number(Body = 0) * 25 + Body * Body * 100,number(Body = 0) * 125 + Body * Body * 500,number(Body = 0) * 250 + Body * Body * 1000,number(Body = 0) * 1250 + Body * Body * 5000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(2,4,8,12R)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 4
+  },
+  {
+    "id": "f5fc8f70-f627-46d8-8a4f-ea5ef3f182de",
+    "name": "Amphibious (Drone)",
+    "namePt": "Amphibious (Drone)",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "number(Body = 0) * 25 + Body * Body * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "bec278ef-6841-4538-8000-65b3f96261d7",
+    "name": "Submersible (Drone)",
+    "namePt": "Submersible (Drone)",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "number(Body = 0) * 250 + Body * Body * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 2
+  },
+  {
+    "id": "1f723236-24f2-40d4-8dc0-617726004524",
+    "name": "Assembly Time Improvement (Drone)",
+    "namePt": "Assembly Time Improvement (Drone)",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "number(Body = 0) * 50 + Body * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "a7c9a0a4-bec5-4a01-a695-5b843e581123",
+    "name": "Customized (Drone)",
+    "namePt": "Customized (Drone)",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "Variable(10-10000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "af87f3e0-aca3-4459-9d40-1573c758d137",
+    "name": "Drone Arm",
+    "namePt": "Drone Arm",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "7500",
+      "value": 7500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "a51d3e74-3e94-493e-b477-fd30511853b1",
+    "name": "Synthetic Drone Arm",
+    "namePt": "Synthetic Drone Arm",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "db9b3ae1-a2fd-4189-bf30-2c41ceeef810",
+    "name": "Primitive Drone Arm",
+    "namePt": "Primitive Drone Arm",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "7b3c14ae-d867-4316-86d1-2dc344ad6cb7",
+    "name": "Drone Leg",
+    "namePt": "Drone Leg",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "7500",
+      "value": 7500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "41117756-2827-47ef-94bf-117e14d2e00b",
+    "name": "Synthetic Drone Leg",
+    "namePt": "Synthetic Drone Leg",
+    "source": "R5",
+    "page": 125,
+    "category": "All",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 1
+  },
+  {
+    "id": "6a5c8efa-0f95-4298-a1b0-c84d569b3bfe",
+    "name": "Immobile (Drone)",
+    "namePt": "Immobile (Drone)",
+    "source": "R5",
+    "page": 126,
+    "category": "All",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": -2
+  },
+  {
+    "id": "64414de4-2d0e-43b6-855f-469cbd878f6b",
+    "name": "SkyGuide (Drone)",
+    "namePt": "SkyGuide (Drone)",
+    "source": "R5",
+    "page": 126,
+    "category": "All",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "b3ae9ac3-d846-4106-94b1-7a006ed89b7f",
+    "name": "Spotlight (Drone)",
+    "namePt": "Spotlight (Drone)",
+    "source": "R5",
+    "page": 126,
+    "category": "All",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "10f278e7-4172-4bbe-a247-598d043f72b6",
+    "name": "Suspension (Drone)",
+    "namePt": "Suspension (Drone)",
+    "source": "R5",
+    "page": 126,
+    "category": "All",
+    "cost": {
+      "raw": "number(Body = 0) * 150 + Body * 300",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "2579c17c-e682-462d-ae84-a441c48c943c",
+    "name": "Tire Mod (Drone)",
+    "namePt": "Tire Mod (Drone)",
+    "source": "R5",
+    "page": 126,
+    "category": "All",
+    "cost": {
+      "raw": "number(Body = 0) * 37.5 + Body * 75",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "ed241716-0d10-4493-83c6-aa141a854ec3",
+    "name": "Pilot Program (Drone)",
+    "namePt": "Pilot Program (Drone)",
+    "source": "R5",
+    "page": 126,
+    "category": "All",
+    "cost": {
+      "raw": "FixedValues(100,400,1800,3200,10000,20000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(4,0,8R,12R,16F,24F)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 6
+  },
+  {
+    "id": "99f438a6-7543-4bb0-a1dc-4cef3112f003",
+    "name": "Spoof Chips",
+    "namePt": "Spoof Chips",
+    "source": "R5",
+    "page": 152,
+    "category": "All",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "slots": 0
+  },
+  {
+    "id": "3ffae49d-1b3d-4214-95da-96a25f8a65f2",
+    "name": "Fragile (Drone)",
+    "namePt": "Fragile (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "All",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 99
+  },
+  {
+    "id": "9793f592-005c-4567-baeb-e725c0b49851",
+    "name": "Single Sensor (Drone)",
+    "namePt": "Single Sensor (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "All",
+    "cost": {
+      "raw": "Rating * 100",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 99
+  },
+  {
+    "id": "9ab00bed-d955-4ade-b875-b6964517c137",
+    "name": "Daihatsu-Caterpillar Horseman Passenger Pod",
+    "namePt": "Daihatsu-Caterpillar Horseman Passenger Pod",
+    "source": "R5",
+    "page": 42,
+    "category": "All",
+    "cost": {
+      "raw": "6000",
+      "value": 6000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "5bb7fb2d-e657-4fb8-9f26-cf1f15854fbc",
+    "name": "Daihatsu-Caterpillar Horseman Cargo Pod",
+    "namePt": "Daihatsu-Caterpillar Horseman Cargo Pod",
+    "source": "R5",
+    "page": 42,
+    "category": "All",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "e6e9ff78-b7f4-4fe4-969b-af1cb77c5c1b",
+    "name": "Daihatsu-Caterpillar Horseman Advanced Cargo Pod",
+    "namePt": "Daihatsu-Caterpillar Horseman Advanced Cargo Pod",
+    "source": "R5",
+    "page": 42,
+    "category": "All",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "b7052288-0255-4f41-9827-8398c914542c",
+    "name": "Daihatsu-Caterpillar Horseman Drone Pod",
+    "namePt": "Daihatsu-Caterpillar Horseman Drone Pod",
+    "source": "R5",
+    "page": 42,
+    "category": "All",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "0be26038-6118-41d0-9f62-6fb831568e52",
+    "name": "Daihatsu-Caterpillar Horseman Security Pod",
+    "namePt": "Daihatsu-Caterpillar Horseman Security Pod",
+    "source": "R5",
+    "page": 42,
+    "category": "All",
+    "cost": {
+      "raw": "5500",
+      "value": 5500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "b02bf28a-1012-452c-ac88-cb98181eded4",
+    "name": "Morphing License Plate",
+    "namePt": "Morphing License Plate",
+    "source": "R5",
+    "page": 152,
+    "category": "All",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "slots": 0
+  },
+  {
+    "id": "7eb3fa91-2774-490d-8ce2-8472daa4ae91",
+    "name": "Spike Strip",
+    "namePt": "Spike Strip",
+    "source": "R5",
+    "page": 152,
+    "category": "All",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "slots": 0
+  },
+  {
+    "id": "e81d0225-ca52-487e-8681-0d4a97482c50",
+    "name": "Zapper Strip",
+    "namePt": "Zapper Strip",
+    "source": "R5",
+    "page": 152,
+    "category": "All",
+    "cost": {
+      "raw": "2500",
+      "value": 2500
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "slots": 0
+  },
+  {
+    "id": "8cc0dcc0-e5d0-46a4-8b61-a9e0ee1fe3f6",
+    "name": "Tracking Strip",
+    "namePt": "Tracking Strip",
+    "source": "R5",
+    "page": 153,
+    "category": "All",
+    "cost": {
+      "raw": "600",
+      "value": 600
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "slots": 0
+  },
+  {
+    "id": "f7926ae0-bba6-4de0-964d-f535a8adeed5",
+    "name": "Off-Road Tires",
+    "namePt": "Off-Road Tires",
+    "source": "R5",
+    "page": 153,
+    "category": "All",
+    "cost": {
+      "raw": "Rating * 400",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "bac2fcca-1edd-4814-ba50-31d63f031d4e",
+    "name": "Racing Tires",
+    "namePt": "Racing Tires",
+    "source": "R5",
+    "page": 153,
+    "category": "All",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "aba3338c-0a54-4486-84a4-2e74524b63de",
+    "name": "Run-Flat Tires",
+    "namePt": "Run-Flat Tires",
+    "source": "R5",
+    "page": 153,
+    "category": "All",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "2f33f2b3-b57b-4abc-ba33-2ac8ecc2d476",
+    "name": "Interchangeable Bed: Armory",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "Variable(0-1000000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "65ca6542-7343-4806-aec0-f00e418a482f",
+    "name": "Interchangeable Bed: Cargo Pod",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "Variable(0-1000000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "22a0147c-ef81-4851-8cd3-9929a41d21d1",
+    "name": "Interchangeable Bed: Food Truck",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "Variable(0-1000000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "9ffbd513-f943-48d6-9a34-3474427eda63",
+    "name": "Interchangeable Bed: Sleeper Command Cabin",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "Variable(0-1000000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "30588b4a-8cec-4a7f-81ce-cfd28fcdd26c",
+    "name": "Interchangeable Bed: Transport",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "Variable(0-1000000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "d1de1fca-fd08-4ef8-af15-bbee4e156799",
+    "name": "Interchangeable Bed: Standard Drone Rack (Micro)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "350",
+      "value": 350
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "c3777b91-ed54-45b0-90a9-a4282b82acda",
+    "name": "Interchangeable Bed: Standard Drone Rack (Mini)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "053e639e-bc13-4716-82d4-94007dcdddae",
+    "name": "Interchangeable Bed: Standard Drone Rack (Small)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "8389a908-1e33-40f1-bdde-c5de3e61980a",
+    "name": "Interchangeable Bed: Standard Drone Rack (Medium)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "87f728c1-2fa6-4cbc-a8e3-380fb513b162",
+    "name": "Interchangeable Bed: Standard Drone Rack (Large)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "573ad21d-f6ab-4aae-9b89-ebf059490d1b",
+    "name": "Interchangeable Bed: Landing Drone Rack (Micro)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "750",
+      "value": 750
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "7528dd6d-665d-4361-be15-b18aa54350b2",
+    "name": "Interchangeable Bed: Landing Drone Rack (Mini)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "88422a66-0030-412b-9fc9-a57c89ec6777",
+    "name": "Interchangeable Bed: Landing Drone Rack (Small)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "6dd65053-acc0-44af-b59f-465ac1504b70",
+    "name": "Interchangeable Bed: Landing Drone Rack (Medium)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "2ad4f5e4-ac50-494b-92b5-da1cd385a6e2",
+    "name": "Interchangeable Bed: Landing Drone Rack (Large)",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "4252c6a3-a713-45a8-98cd-3a9438f2a08b",
+    "name": "Interchangeable Bed: Workshop",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "4f909435-6258-45e9-a711-fbcd42e3aca6",
+    "name": "Interchangeable Bed: Rigger Cocoon",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "1500",
+      "value": 1500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "477b7088-98c3-4314-8f5a-c46177dc2b34",
+    "name": "Interchangeable Bed: Custom",
+    "source": "R5",
+    "page": 54,
+    "category": "All",
+    "cost": {
+      "raw": "Variable(0-1000000)",
+      "value": null
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0
+  },
+  {
+    "id": "17da9812-5264-4ac6-a31c-3e8b7ddb6212",
+    "name": "Handling (Drone)",
+    "namePt": "Handling (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Handling",
+    "cost": {
+      "raw": "Rating * (number(Body = 0) * 100 + Body * 200)",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 99
+  },
+  {
+    "id": "4ee2420c-1fad-415a-83e3-7f9e72b5df11",
+    "name": "Speed (Drone)",
+    "namePt": "Speed (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Speed",
+    "cost": {
+      "raw": "Rating * (number(Body = 0) * 200 + Body * 400)",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 99
+  },
+  {
+    "id": "426b1bb7-31ec-4656-aa89-332d6877e590",
+    "name": "Acceleration (Drone)",
+    "namePt": "Acceleration (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Acceleration",
+    "cost": {
+      "raw": "Rating * (number(Body = 0) * 100 + Body * 200)",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 4",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 99
+  },
+  {
+    "id": "dfa7cdcd-5d0e-4c9c-9f0b-90bf29ac5aff",
+    "name": "Armor (Drone)",
+    "namePt": "Armor (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Armor",
+    "cost": {
+      "raw": "Rating * (number(Body = 0) * 100 + Body * 200)",
+      "value": null
+    },
+    "avail": {
+      "raw": "FixedValues(1,2,3,4,5,6,7R,8R,9R,10R,11R,12R,RatingF)",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 99
+  },
+  {
+    "id": "3389093b-869e-4a83-884e-05d2d439d41f",
+    "name": "Sensor (Drone)",
+    "namePt": "Sensor (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Sensor",
+    "cost": {
+      "raw": "Rating * 1000",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 8
+  },
+  {
+    "id": "f56c3103-e5e7-4b7c-8cdf-7d74d7196f35",
+    "name": "Handling Downgrade (Drone)",
+    "namePt": "Handling Downgrade (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Handling",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": -1
+  },
+  {
+    "id": "16aed61a-a163-4927-9b5d-7949c763abe3",
+    "name": "Speed Downgrade (Drone)",
+    "namePt": "Speed Downgrade (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Speed",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": -1
+  },
+  {
+    "id": "57a3c9c6-76ec-4f65-9747-001ca3f7515b",
+    "name": "Acceleration Downgrade (Drone)",
+    "namePt": "Acceleration Downgrade (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Acceleration",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": -1
+  },
+  {
+    "id": "e6de30bf-310e-4a3d-b44a-9d98f4618964",
+    "name": "Body Downgrade (Drone)",
+    "namePt": "Body Downgrade (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Body",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": -1
+  },
+  {
+    "id": "616bad95-cc17-47b2-b85b-14fdd0bcb27f",
+    "name": "Armor Downgrade (Drone)",
+    "namePt": "Armor Downgrade (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Armor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": -1
+  },
+  {
+    "id": "df14f2ec-c85c-4b5f-9765-98bbc7c8b7d5",
+    "name": "Sensor Downgrade (Drone)",
+    "namePt": "Sensor Downgrade (Drone)",
+    "source": "R5",
+    "page": 123,
+    "category": "Sensor",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": -1
+  }
+]

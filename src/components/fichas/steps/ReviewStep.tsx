@@ -5,7 +5,7 @@ import { replaceDraft } from '@/lib/fichas/store';
 import { exportFilename, exportJson as toJson, parseImport } from '@/lib/fichas/sr5/io';
 import { label, sr5Data } from '@/lib/fichas/sr5/data';
 import { ATTR_LABEL, fmtNuyen, isComplete, STEP_ORDER, WARE_GRADES, type StepKey } from '@/lib/fichas/sr5/rules';
-import type { AttrKey } from '@/lib/fichas/sr5/types';
+import type { AttrKey, GearItem, Vehicle } from '@/lib/fichas/sr5/types';
 import type { StepProps } from '../wizard/Wizard';
 import { useWizardExtras } from '../wizard/WizardExtras';
 import { Button, Card, cx, IssueList, StepIntro } from '../ui';
@@ -13,7 +13,7 @@ import { fmtEss, shortTalent, talentAt } from './shared';
 
 const STEP_TITLE: Record<StepKey, string> = {
   concept: 'Conceito', priorities: 'Prioridades', metatype: 'Metatipo', attributes: 'Atributos', magic: 'Magia/Ressonância',
-  qualities: 'Qualidades', skills: 'Perícias', resources: 'Recursos', contacts: 'Contatos', review: 'Karma final',
+  qualities: 'Qualidades', skills: 'Perícias', resources: 'Recursos', contacts: 'Contatos', extras: 'Extras', review: 'Karma final',
 };
 
 function download(filename: string, text: string, type: string) {
@@ -123,6 +123,10 @@ export function CharacterSheet({
   return (
     <Card className="print-sheet">
       <div className="flex flex-wrap items-end justify-between gap-2 border-b border-line pb-3">
+        {draft.portrait && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={draft.portrait} alt="" className="h-20 w-20 rounded-lg border border-line object-cover" />
+        )}
         <div>
           <h2 className="font-display text-3xl font-bold">{draft.concept.alias || draft.concept.name || 'Sem nome'}</h2>
           <p className="text-muted">
@@ -201,10 +205,26 @@ export function CharacterSheet({
         <Block title="Equipamento">
           {draft.gear.length ? (
             <Rows rows={draft.gear.map((g) => {
-              const list = { gear: sr5Data.gear, weapon: sr5Data.weapons, armor: sr5Data.armor, cyberware: sr5Data.cyberware, bioware: sr5Data.bioware }[g.kind];
+              const list: GearItem[] = { gear: sr5Data.gear, weapon: sr5Data.weapons, armor: sr5Data.armor, cyberware: sr5Data.cyberware, bioware: sr5Data.bioware, vehicle: sr5Data.vehicles, program: sr5Data.programs }[g.kind];
               const item = list.find((x) => x.id === g.itemId);
               const grade = g.grade && g.grade !== 'standard' ? ` [${WARE_GRADES[g.grade].namePt}]` : '';
-              return [`${item ? label(item) : '?'}${g.rating && g.rating > 1 ? ` ${g.rating}` : ''}${grade}`, g.qty > 1 ? `×${g.qty}` : ''];
+              const bonded = g.bonded ? ' [vinculado]' : '';
+              const host = g.loadedIn ? draft.gear.find((h) => h.key === g.loadedIn) : undefined;
+              const hostName = host ? sr5Data.gear.find((x) => x.id === host.itemId) : undefined;
+              const loaded = hostName ? ` → ${label(hostName)}` : '';
+              const mods = (g.mods ?? []).map((m) => {
+                const cat = { accessory: sr5Data.weaponAccessories, armorMod: sr5Data.armorMods, vehicleMod: sr5Data.vehicleMods }[m.kind];
+                const mi = cat.find((x) => x.id === m.itemId);
+                return mi ? label(mi) : '?';
+              });
+              const veh = item && 'handling' in item
+                ? ` (manobra ${(item as Vehicle).handling}, vel. ${(item as Vehicle).speed}, Corpo ${(item as Vehicle).body}, armadura ${(item as Vehicle).armor}, piloto ${(item as Vehicle).pilot})`
+                : '';
+              const deck = item?.device?.array ? ` (ASDF ${item.device.array.join('/')})` : '';
+              return [
+                `${item ? label(item) : '?'}${g.rating && g.rating > 1 ? ` ${g.rating}` : ''}${grade}${bonded}${loaded}${veh}${deck}${mods.length ? ` + ${mods.join(', ')}` : ''}`,
+                g.qty > 1 ? `×${g.qty}` : '',
+              ];
             })} />
           ) : <Empty />}
           {draft.lifestyles.map((l, i) => {
@@ -212,6 +232,36 @@ export function CharacterSheet({
             return <p key={i} className="mt-2 text-sm">Estilo de vida: {ls ? label(ls) : '?'} ({l.months} {l.months === 1 ? 'mês' : 'meses'})</p>;
           })}
         </Block>
+
+        {(draft.martialArts?.length ?? 0) > 0 && (
+          <Block title="Artes marciais">
+            <Rows rows={draft.martialArts!.map((m) => {
+              const art = sr5Data.martialArts.find((x) => x.id === m.id);
+              return [art ? label(art) : '?', m.techniques.join(', ') || '—'];
+            })} />
+          </Block>
+        )}
+
+        {(draft.enemies?.length ?? 0) > 0 && (
+          <Block title="Inimigos">
+            <Rows rows={draft.enemies!.map((e) => [e.name || '(sem nome)', e.notes ?? ''])} />
+          </Block>
+        )}
+
+        {draft.career && (draft.career.initiationGrade > 0 || draft.career.submersionGrade > 0 || draft.career.companions.length > 0) && (
+          <Block title="Carreira">
+            <Rows rows={[
+              ...(draft.career.initiationGrade ? [['Grau de iniciação', String(draft.career.initiationGrade)] as [string, string]] : []),
+              ...(draft.career.submersionGrade ? [['Grau de submersão', String(draft.career.submersionGrade)] as [string, string]] : []),
+            ]} />
+            <List title="Metamagias" items={draft.career.metamagicIds.map((id) => sr5Data.metamagics.find((m) => m.id === id)).filter(Boolean).map((m) => label(m!))} />
+            <List title="Ecos" items={draft.career.echoIds.map((id) => sr5Data.echoes.find((m) => m.id === id)).filter(Boolean).map((m) => label(m!))} />
+            <List title="Espíritos e sprites" items={draft.career.companions.map((c) => {
+              const sp = sr5Data.spirits.find((s) => s.id === c.spiritId);
+              return `${c.name ? `${c.name}: ` : ''}${sp ? label(sp) : '?'} ${c.force}`;
+            })} />
+          </Block>
+        )}
 
         <Block title="Contatos">
           {draft.contacts.length ? (

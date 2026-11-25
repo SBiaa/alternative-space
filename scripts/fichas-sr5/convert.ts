@@ -5,7 +5,7 @@ import type {
   Mentor, Metatype, MetatypeBonus, Metavariant, PriorityData, PriorityLetter,
   PriorityMetatypeOption, PriorityRow, PriorityTableKey, Quality, QualityEffect, Requirement,
   RequirementGroup, Skill, SkillCategory, SkillData, SkillGroup, Spell, TalentKey, TalentOption,
-  Tradition, Weapon,
+  Tradition, Weapon, Vehicle, ItemMod, Program, Metamagic, Echo, Spirit, MartialArt, DeviceSpec,
 } from '../../src/lib/fichas/sr5/types';
 import { translator, type Translations } from './i18n';
 import { arr, attr, bool, has, loadXml, num, slug, text, type XNode } from './xml';
@@ -19,6 +19,9 @@ export interface Ctx {
 const load = (ctx: Ctx, file: string) => loadXml(join(ctx.dataDir, file)).chummer;
 const inBooks = (ctx: Ctx, n: XNode) => ctx.books.has(text(n.source));
 const notHidden = (n: XNode) => !has(n.hide);
+/** Rigger 5.0: sem ele quase não há veículos, drones nem modificações; entra junto com o livro básico. */
+const RIGGER_BOOKS = new Set(['R5']);
+const inRigger = (ctx: Ctx, n: XNode) => ctx.books.has(text(n.source)) || RIGGER_BOOKS.has(text(n.source));
 const page = (n: XNode) => num(n.page);
 
 // ---------------------------------------------------------------------------
@@ -619,7 +622,36 @@ function gearList<T>(ctx: Ctx, file: string, listKey: string, itemKey: string, e
     .map((x: XNode) => ({ ...gearBase(ctx, x, t), ...extra(x) }) as T);
 }
 
-export const convertGear = (ctx: Ctx) => gearList<GearItem>(ctx, 'gear.xml', 'gears', 'gear', () => ({}));
+const FOCUS_SETTING: Record<string, string> = {
+  'Alchemical Focus': 'karmaalchemicalfocus', 'Banishing Focus': 'karmabanishingfocus', 'Binding Focus': 'karmabindingfocus',
+  'Centering Focus': 'karmacenteringfocus', 'Counterspelling Focus': 'karmacounterspellingfocus',
+  'Disenchanting Focus': 'karmadisenchantingfocus', 'Flexible Signature Focus': 'karmaflexiblesignaturefocus',
+  'Masking Focus': 'karmamaskingfocus', 'Power Focus': 'karmapowerfocus', 'Qi Focus': 'karmaqifocus',
+  'Ritual Spellcasting Focus': 'karmaritualspellcastingfocus', 'Spellcasting Focus': 'karmaspellcastingfocus',
+  'Spell Shaping Focus': 'karmaspellshapingfocus', 'Summoning Focus': 'karmasummoningfocus',
+  'Sustaining Focus': 'karmasustainingfocus', 'Weapon Focus': 'karmaweaponfocus',
+};
+
+export function focusBindKarma(ctx: Ctx, profile = 'Standard'): Record<string, number> {
+  const s = arr(load(ctx, 'settings.xml').settings.setting).find((x: XNode) => text(x.name) === profile);
+  const k = s.karmacost;
+  return Object.fromEntries(Object.entries(FOCUS_SETTING).map(([name, key]) => [name, num(k[key])]));
+}
+
+export function convertGear(ctx: Ctx): GearItem[] {
+  const bind = focusBindKarma(ctx);
+  return gearList<GearItem>(ctx, 'gear.xml', 'gears', 'gear', (x) => {
+    const out: Partial<GearItem> = {};
+    if (has(x.devicerating) && /^\d+$/.test(text(x.devicerating))) {
+      const device: DeviceSpec = { rating: num(x.devicerating) };
+      if (has(x.attributearray)) device.array = text(x.attributearray).split(',').map((n) => Number(n.trim())).filter(Number.isFinite);
+      if (has(x.programs)) device.programs = num(x.programs);
+      out.device = device;
+    }
+    if (text(x.category) === 'Foci' && bind[text(x.name)]) out.bindKarma = bind[text(x.name)];
+    return out;
+  });
+}
 
 export const convertWeapons = (ctx: Ctx) =>
   gearList<Weapon>(ctx, 'weapons.xml', 'weapons', 'weapon', (x) => ({
@@ -663,6 +695,7 @@ export function convertLifestyles(ctx: Ctx): Lifestyle[] {
 // Configurações de criação (perfil Standard do settings.xml)
 
 export function convertSettings(ctx: Ctx, profile = 'Standard'): CreationSettings {
+  const focusBind = focusBindKarma(ctx, profile);
   const s = arr(load(ctx, 'settings.xml').settings.setting).find((x: XNode) => text(x.name) === profile);
   if (!s) throw new Error(`Perfil "${profile}" não encontrado em settings.xml`);
   const k = s.karmacost;
@@ -700,5 +733,149 @@ export function convertSettings(ctx: Ctx, profile = 'Standard'): CreationSetting
       carryover: num(k.karmacarryover),
       mysticAdeptPowerPoint: num(k.karmamysadpp),
     },
+    focusBindKarma: focusBind,
+    initiation: { flat: num(k.karmainitiationflat), perGrade: num(k.karmainitiation) },
+    // Regra de Run & Gun (não está no XML): arte marcial 7, técnica 5.
+    martialArtKarma: 7,
+    martialTechniqueKarma: 5,
   };
+}
+
+
+// ---------------------------------------------------------------------------
+// Veículos, drones, modificações e programas
+
+export function convertVehicles(ctx: Ctx): Vehicle[] {
+  const t = translator(ctx.tr, 'vehicles.xml');
+  const speedOf = (raw: XNode) => Number(text(raw).split('/')[0]) || 0;
+  return arr(load(ctx, 'vehicles.xml').vehicles.vehicle)
+    .filter((x: XNode) => inRigger(ctx, x) && notHidden(x))
+    .map((x: XNode) => ({
+      ...gearBase(ctx, x, t),
+      handling: text(x.handling),
+      accel: text(x.accel),
+      speed: speedOf(x.speed),
+      pilot: num(x.pilot),
+      body: num(x.body),
+      armor: num(x.armor),
+      sensor: num(x.sensor),
+      seats: num(x.seats),
+      drone: text(x.category).startsWith('Drones'),
+    }));
+}
+
+function itemMods(ctx: Ctx, file: string, listKey: string, node: string, rigger = false): ItemMod[] {
+  const t = translator(ctx.tr, file);
+  return arr(load(ctx, file)[listKey]?.[node])
+    .filter((x: XNode) => (rigger ? inRigger(ctx, x) : inBooks(ctx, x)) && notHidden(x))
+    .map((x: XNode) => {
+      const max = has(x.maxrating) ? num(x.maxrating) : has(x.rating) ? num(x.rating) : 0;
+      return {
+        id: text(x.id),
+        name: text(x.name),
+        namePt: t(text(x.name), text(x.id)),
+        source: text(x.source),
+        page: page(x),
+        category: text(x.category) || text(x.mount) || 'Geral',
+        cost: parseCost(text(x.cost)),
+        avail: parseAvail(text(x.avail)),
+        slots: has(x.slots) ? num(x.slots) : num(text(x.armorcapacity).replace(/[[\]]/g, '')),
+        ...(max > 0 ? { maxRating: max } : {}),
+        ...(has(x.mount) ? { mount: text(x.mount) } : {}),
+      };
+    });
+}
+
+export const convertVehicleMods = (ctx: Ctx) => itemMods(ctx, 'vehicles.xml', 'mods', 'mod', true);
+export const convertWeaponAccessories = (ctx: Ctx) => itemMods(ctx, 'weapons.xml', 'accessories', 'accessory');
+export const convertArmorMods = (ctx: Ctx) => itemMods(ctx, 'armor.xml', 'mods', 'mod');
+
+export function convertPrograms(ctx: Ctx): Program[] {
+  const t = translator(ctx.tr, 'programs.xml');
+  return arr(load(ctx, 'programs.xml').programs.program)
+    .filter((x: XNode) => inBooks(ctx, x) && notHidden(x))
+    .map((x: XNode) => ({
+      id: text(x.id),
+      name: text(x.name),
+      namePt: t(text(x.name), text(x.id)),
+      source: text(x.source),
+      page: page(x),
+      category: text(x.category),
+      categoryPt: t(text(x.category)),
+      cost: parseCost(text(x.cost)),
+      avail: parseAvail(text(x.avail)),
+    }));
+}
+
+// ---------------------------------------------------------------------------
+// Metamagia, ecos, espíritos e artes marciais
+
+export function convertMetamagics(ctx: Ctx): Metamagic[] {
+  const t = translator(ctx.tr, 'metamagic.xml');
+  return arr(load(ctx, 'metamagic.xml').metamagics.metamagic)
+    .filter((x: XNode) => inBooks(ctx, x) && notHidden(x))
+    .map((x: XNode) => ({
+      id: text(x.id),
+      name: text(x.name),
+      namePt: t(text(x.name), text(x.id)),
+      source: text(x.source),
+      page: page(x),
+      adept: bool(x.adept),
+      magician: bool(x.magician),
+    }));
+}
+
+export function convertEchoes(ctx: Ctx): Echo[] {
+  const t = translator(ctx.tr, 'echoes.xml');
+  return arr(load(ctx, 'echoes.xml').echoes.echo)
+    .filter((x: XNode) => inBooks(ctx, x) && notHidden(x))
+    .map((x: XNode) => ({
+      id: text(x.id),
+      name: text(x.name),
+      namePt: t(text(x.name), text(x.id)),
+      source: text(x.source),
+      page: page(x),
+      limit: num(x.limit),
+    }));
+}
+
+const SPIRIT_CATEGORIES = new Set(['Spirits', 'Sprites']);
+const SPIRIT_ATTRS = ['bod', 'agi', 'rea', 'str', 'cha', 'int', 'log', 'wil', 'edg', 'mag', 'res'] as const;
+
+export function convertSpirits(ctx: Ctx): Spirit[] {
+  const t = translator(ctx.tr, 'critters.xml');
+  return arr(load(ctx, 'critters.xml').metatypes.metatype)
+    .filter((x: XNode) => inBooks(ctx, x) && notHidden(x) && SPIRIT_CATEGORIES.has(text(x.category)))
+    .map((x: XNode) => ({
+      id: text(x.id),
+      name: text(x.name),
+      namePt: t(text(x.name), text(x.id)),
+      source: text(x.source),
+      page: page(x),
+      category: text(x.category),
+      attributes: Object.fromEntries(
+        SPIRIT_ATTRS.map((a) => [a.toUpperCase(), text(x[`${a}min`])]).filter(([, v]) => v !== '' && v !== '0'),
+      ),
+      initiative: text(x.inimin),
+      walk: text(x.walk),
+      run: text(x.run),
+      sprint: text(x.sprint),
+      powers: arr(x.powers?.power).map(text),
+      skills: arr(x.skills?.skill).map(text),
+    }));
+}
+
+/** Artes marciais de todos os livros: não fazem parte do básico, então o filtro de livros não vale aqui. */
+export function convertMartialArts(ctx: Ctx): MartialArt[] {
+  const t = translator(ctx.tr, 'martialarts.xml');
+  return arr(load(ctx, 'martialarts.xml').martialarts?.martialart)
+    .filter((x: XNode) => notHidden(x))
+    .map((x: XNode) => ({
+      id: text(x.id),
+      name: text(x.name),
+      namePt: t(text(x.name), text(x.id)),
+      source: text(x.source),
+      page: page(x),
+      techniques: arr(x.techniques?.technique).map((q: XNode) => text(q.name)),
+    }));
 }

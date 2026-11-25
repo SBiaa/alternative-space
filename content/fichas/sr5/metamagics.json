@@ -1,0 +1,83 @@
+[
+  {
+    "id": "03bdecec-6142-4b24-8aaa-0a0827c3eb78",
+    "name": "Adept Centering",
+    "namePt": "Centragem de Adepto",
+    "source": "SR5",
+    "page": 325,
+    "adept": true,
+    "magician": false
+  },
+  {
+    "id": "e021b9ba-2cbe-4c17-865d-0ebc9a2df4cc",
+    "name": "Centering",
+    "namePt": "Centragem",
+    "source": "SR5",
+    "page": 325,
+    "adept": false,
+    "magician": true
+  },
+  {
+    "id": "099af8f9-6d04-4aa5-8645-f7204a8bf9be",
+    "name": "Fixation",
+    "namePt": "Fixação",
+    "source": "SR5",
+    "page": 325,
+    "adept": false,
+    "magician": true
+  },
+  {
+    "id": "666626f2-3605-4c48-8190-7bcbcdb2e89c",
+    "name": "Flexible Signature",
+    "namePt": "Assinatura Flexível",
+    "source": "SR5",
+    "page": 325,
+    "adept": true,
+    "magician": true
+  },
+  {
+    "id": "505d9fe3-852c-459b-8f9e-3e22c1b91b9a",
+    "name": "Masking",
+    "namePt": "Mascarar",
+    "source": "SR5",
+    "page": 326,
+    "adept": true,
+    "magician": true
+  },
+  {
+    "id": "406f096a-c093-4a02-b60f-002eb01a20b9",
+    "name": "Power Point",
+    "namePt": "Pontos de Poder",
+    "source": "SR5",
+    "page": 326,
+    "adept": true,
+    "magician": false
+  },
+  {
+    "id": "4ea558ed-0fe8-4b9e-b2fa-afffb3eb2476",
+    "name": "Quickening",
+    "namePt": "Vivificação",
+    "source": "SR5",
+    "page": 326,
+    "adept": false,
+    "magician": true
+  },
+  {
+    "id": "532c6fed-5ad1-49b3-94cd-6f640b988f70",
+    "name": "Shielding",
+    "namePt": "Blindagem",
+    "source": "SR5",
+    "page": 326,
+    "adept": false,
+    "magician": true
+  },
+  {
+    "id": "185c6889-2c45-47ee-9192-5f2fef3206a1",
+    "name": "Spell Shaping",
+    "namePt": "Moldar Feitiços",
+    "source": "SR5",
+    "page": 326,
+    "adept": false,
+    "magician": true
+  }
+]

@@ -5,8 +5,8 @@ import { GEAR_KIND_HELP, GRADE_HELP, LIFESTYLE_HELP } from '@/lib/fichas/sr5/hel
 import { uid, updateDraft } from '@/lib/fichas/store';
 import type { DraftGear, GearKind, WareGrade } from '@/lib/fichas/sr5/character';
 import { label, sr5Data } from '@/lib/fichas/sr5/data';
-import { evalExpr, fmtNuyen, WARE_GRADES } from '@/lib/fichas/sr5/rules';
-import type { Augmentation, GearItem } from '@/lib/fichas/sr5/types';
+import { evalExpr, fmtNuyen, modKindFor, WARE_GRADES } from '@/lib/fichas/sr5/rules';
+import type { Augmentation, GearItem, Vehicle } from '@/lib/fichas/sr5/types';
 import type { StepProps } from '../wizard/Wizard';
 import { BudgetMeter, Button, Card, cx, HelpTip, inputClass, matches, SearchInput, StepIntro, Stepper } from '../ui';
 import { fmtEss, nf } from './shared';
@@ -17,7 +17,76 @@ const KINDS: { key: GearKind; title: string; list: GearItem[] }[] = [
   { key: 'cyberware', title: 'Ciberware', list: sr5Data.cyberware },
   { key: 'bioware', title: 'Bioware', list: sr5Data.bioware },
   { key: 'gear', title: 'Equipamento', list: sr5Data.gear },
+  { key: 'vehicle', title: 'Veículos e drones', list: sr5Data.vehicles },
+  { key: 'program', title: 'Programas', list: sr5Data.programs },
 ];
+
+const MOD_TITLE = { accessory: 'Acessórios', armorMod: 'Modificações', vehicleMod: 'Modificações' } as const;
+
+/** Modificações instaladas num item e o seletor para instalar outra. */
+function ModEditor({ index, g, name, host }: { index: number; g: DraftGear; name: string; host: GearItem }) {
+  const mk = modKindFor(g.kind);
+  if (!mk) return null;
+  const catalog = (
+    mk === 'accessory' ? sr5Data.weaponAccessories : mk === 'armorMod' ? sr5Data.armorMods : sr5Data.vehicleMods
+  ).filter((m) => m.page > 0);
+  const mods = g.mods ?? [];
+  const body = 'body' in host ? (host as Vehicle).body : undefined;
+  const slots = mods.reduce((n, m) => {
+    const mi = catalog.find((x) => x.id === m.itemId);
+    return n + (mi ? mi.slots * (mi.maxRating ? (m.rating ?? 1) : 1) : 0);
+  }, 0);
+  return (
+    <div className="w-full rounded-md bg-surface-2 px-3 py-2 text-xs">
+      <div className="mb-1 flex items-center justify-between text-muted">
+        <span>{MOD_TITLE[mk]} de {name}</span>
+        {mk === 'vehicleMod' && body !== undefined && (
+          <span className={cx('font-mono', slots > body && 'text-danger')}>slots {slots}/{body}</span>
+        )}
+      </div>
+      {mods.map((m, j) => {
+        const mi = catalog.find((x) => x.id === m.itemId);
+        if (!mi) return null;
+        const cost = mi.cost.value ?? evalExpr(mi.cost.raw, { rating: m.rating ?? 1 });
+        return (
+          <div key={m.key} className="flex flex-wrap items-center gap-2 py-0.5">
+            <span className="min-w-32 flex-1">{label(mi)}{mi.mount ? ` · ${mi.mount}` : ''}</span>
+            {mi.maxRating && (
+              <Stepper size="sm" label={`nível de ${label(mi)}`} value={m.rating ?? 1} min={1} max={mi.maxRating}
+                onChange={(v) => updateDraft((d) => { d.gear[index].mods![j].rating = v; })} />
+            )}
+            {cost === null ? (
+              <input type="number" aria-label="Preço" placeholder="Preço ¥" className={cx(inputClass, '!w-24 !py-1')}
+                value={m.customCost ?? ''} onChange={(e) => updateDraft((d) => { d.gear[index].mods![j].customCost = Number(e.target.value) || undefined; })} />
+            ) : <span className="font-mono">{fmtNuyen(cost)}</span>}
+            <Button variant="ghost" className="!px-2 !py-0.5" aria-label={`Remover ${label(mi)}`}
+              onClick={() => updateDraft((d) => { d.gear[index].mods!.splice(j, 1); })}>✕</Button>
+          </div>
+        );
+      })}
+      <select aria-label={`Adicionar ${MOD_TITLE[mk].toLowerCase()}`} className={cx(inputClass, '!py-1 !text-xs sm:max-w-80')} value=""
+        onChange={(e) => {
+          const id = e.target.value;
+          if (!id) return;
+          const mi = catalog.find((x) => x.id === id)!;
+          updateDraft((d) => {
+            (d.gear[index].mods ??= []).push({ key: uid(), kind: mk, itemId: id, ...(mi.maxRating ? { rating: 1 } : {}) });
+          });
+        }}>
+        <option value="">+ Instalar…</option>
+        {[...new Set(catalog.map((m) => m.category))].map((cat) => (
+          <optgroup key={cat} label={cat}>
+            {catalog.filter((m) => m.category === cat).map((m) => (
+              <option key={m.id} value={m.id}>
+                {label(m)}{m.slots ? ` · ${m.slots} slot${m.slots === 1 ? '' : 's'}` : ''}{m.cost.value !== null ? ` · ${fmtNuyen(m.cost.value)}` : ''}
+              </option>
+            ))}
+          </optgroup>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 const isWare = (k: GearKind) => k === 'cyberware' || k === 'bioware';
 
@@ -166,6 +235,32 @@ export function ResourcesStep({ draft, result }: StepProps) {
                   )}
                   <Button variant="ghost" className="!px-2 !py-1" aria-label={`Remover ${label(item)}`}
                     onClick={() => updateDraft((d) => { d.gear.splice(i, 1); })}>✕</Button>
+                  {item.bindKarma ? (
+                    <label className="flex w-full items-center gap-2 text-xs text-muted">
+                      <input type="checkbox" checked={!!g.bonded} onChange={(e) => updateDraft((d) => { d.gear[i].bonded = e.target.checked; })} />
+                      Vincular ao personagem ({(g.rating ?? 1) * item.bindKarma} de karma: Força × {item.bindKarma})
+                    </label>
+                  ) : null}
+                  {g.kind === 'program' && (
+                    <label className="flex w-full items-center gap-2 text-xs text-muted">
+                      Carregado em
+                      <select aria-label="Cyberdeck" className={cx(inputClass, '!w-56 !py-1 !text-xs')} value={g.loadedIn ?? ''}
+                        onChange={(e) => updateDraft((d) => { d.gear[i].loadedIn = e.target.value || undefined; })}>
+                        <option value="">(só no estoque)</option>
+                        {draft.gear.filter((h) => sr5Data.gear.find((x) => x.id === h.itemId)?.device?.array).map((h) => (
+                          <option key={h.key} value={h.key}>{label(sr5Data.gear.find((x) => x.id === h.itemId)!)}</option>
+                        ))}
+                      </select>
+                    </label>
+                  )}
+                  {item.device?.array && (
+                    <p className="w-full text-xs text-muted">
+                      Deck: Ataque {item.device.array[0]} · Sleaze {item.device.array[1]} · Proc. de Dados {item.device.array[2]} · Firewall {item.device.array[3]}
+                      {' · '}classificação {item.device.rating} · {item.device.programs ?? 0} {item.device.programs === 1 ? 'programa' : 'programas'} ao mesmo tempo
+                      {' · '}carregados {draft.gear.filter((p) => p.kind === 'program' && p.loadedIn === g.key).reduce((n, p) => n + p.qty, 0)}
+                    </p>
+                  )}
+                  {modKindFor(g.kind) && <ModEditor index={i} g={g} name={label(item)} host={item} />}
                 </li>
               );
             })}
@@ -205,6 +300,9 @@ export function ResourcesStep({ draft, result }: StepProps) {
                     {' · '}disp. {l.avail}
                     {'damage' in item ? ` · dano ${(item as { damage: string }).damage}` : ''}
                     {'armor' in item ? ` · armadura ${(item as { armor: string }).armor}` : ''}
+                    {'handling' in item ? ` · manobra ${(item as Vehicle).handling} · vel. ${(item as Vehicle).speed} · Corpo ${(item as Vehicle).body} · piloto ${(item as Vehicle).pilot}` : ''}
+                    {item.device?.array ? ` · ASDF ${item.device.array.join('/')}` : ''}
+                    {item.bindKarma ? ` · vincular: Força × ${item.bindKarma} karma` : ''}
                     {l.ess ? ` · Ess ${fmtEss(l.ess)}` : ''}
                   </span>
                   {tooRare && <span className="block text-xs text-warn">⊘ Disponibilidade acima de 12</span>}

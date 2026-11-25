@@ -38,5 +38,29 @@
     "contact": 1,
     "carryover": 7,
     "mysticAdeptPowerPoint": 5
-  }
+  },
+  "focusBindKarma": {
+    "Alchemical Focus": 3,
+    "Banishing Focus": 2,
+    "Binding Focus": 2,
+    "Centering Focus": 3,
+    "Counterspelling Focus": 2,
+    "Disenchanting Focus": 3,
+    "Flexible Signature Focus": 3,
+    "Masking Focus": 3,
+    "Power Focus": 6,
+    "Qi Focus": 2,
+    "Ritual Spellcasting Focus": 2,
+    "Spellcasting Focus": 2,
+    "Spell Shaping Focus": 3,
+    "Summoning Focus": 2,
+    "Sustaining Focus": 2,
+    "Weapon Focus": 3
+  },
+  "initiation": {
+    "flat": 10,
+    "perGrade": 3
+  },
+  "martialArtKarma": 7,
+  "martialTechniqueKarma": 5
 }

@@ -6,7 +6,8 @@ import 'server-only';
 import { and, asc, desc, eq, max } from 'drizzle-orm';
 import { db } from '@/lib/fichas/db';
 import { characters, goals, inventory, inventorySeeded, ledger, missions } from '@/lib/fichas/db/schema';
-import type { CharacterDraft } from '@/lib/fichas/sr5/character';
+import { type Career, type CharacterDraft, emptyCareer, type Improvement } from '@/lib/fichas/sr5/character';
+import { improvementFromGoal, parseCareerChoices, planGrade } from '@/lib/fichas/sr5/career';
 import {
   inventoryFromDraft,
   ledgerReason,
@@ -16,12 +17,13 @@ import {
   parseQty,
   type NewItemInput,
 } from '@/lib/fichas/sr5/inventory';
-import { goalCost, parseGoalTarget, parseGoalTitle } from '@/lib/fichas/sr5/goals';
+import { goalCost, type GoalTarget, parseGoalTarget, parseGoalTitle } from '@/lib/fichas/sr5/goals';
 import { evaluate, isComplete } from '@/lib/fichas/sr5/rules';
 import {
   clampDamage,
   conditionLimits,
   InputError,
+  ledgerTotals,
   MAX_NOTES_LENGTH,
   MAX_TITLE_LENGTH,
   parseLedgerInput,
@@ -48,7 +50,8 @@ export async function getPlayData(id: string) {
     db().select().from(goals).where(eq(goals.characterId, id)).orderBy(asc(goals.position), asc(goals.createdAt)),
     db().select().from(inventory).where(eq(inventory.characterId, id)).orderBy(asc(inventory.createdAt)),
   ]);
-  return { character, entries, missions: missionList, goals: goalList, inventory: items };
+  const draft = await syncCareerFromGoals(id, character.draft, goalList);
+  return { character: draft === character.draft ? character : { ...character, draft }, entries, missions: missionList, goals: goalList, inventory: items };
 }
 
 /**
@@ -277,6 +280,60 @@ export async function completeGoal(id: string, goalId: string, pay: unknown): Pr
       .insert(ledger)
       .values({ characterId: id, kind: charge.currency, amount: -charge.amount, reason: `Meta: ${g.title}` });
   }
+
+  // Meta de atributo/perícia concluída: a ficha passa a refletir o novo nível.
+  const imp = improvementFromGoal(g.id, g.title, g.target, cost, charge?.amount ?? 0, new Date());
+  if (imp) await updateCareer(id, c.draft, (career) => addImprovement(career, imp));
+}
+
+function addImprovement(career: Career, imp: Improvement): Career {
+  if (career.improvements.some((i) => i.key === imp.key)) return career;
+  return { ...career, improvements: [...career.improvements, imp] };
+}
+
+/** Lê-modifica-grava a carreira dentro da ficha (campo `draft.career`). */
+async function updateCareer(id: string, draft: CharacterDraft, fn: (c: Career) => Career): Promise<CharacterDraft> {
+  const career = { ...emptyCareer(), ...draft.career };
+  const next: CharacterDraft = { ...draft, career: fn(career) };
+  await db().update(characters).set({ draft: next, updatedAt: new Date() }).where(eq(characters.id, id));
+  return next;
+}
+
+/** Metas concluídas antes de a carreira existir entram uma vez na lista de melhorias. */
+async function syncCareerFromGoals(id: string, draft: CharacterDraft, goalList: { id: string; title: string; target: GoalTarget; status: string; paid: number | null; completedAt: Date | null }[]): Promise<CharacterDraft> {
+  const result = evaluate(draft);
+  const have = new Set((draft.career?.improvements ?? []).map((i) => i.key));
+  const missing = goalList
+    .filter((g) => g.status === 'done' && !have.has(g.id))
+    .map((g) => improvementFromGoal(g.id, g.title, g.target, goalCost(g.target, result, goalList.map((x) => ({ ...x, target: x.target, status: x.status as 'done' | 'active' | 'dropped' }))), g.paid ?? 0, g.completedAt ?? new Date()))
+    .filter((i): i is Improvement => i !== null);
+  if (!missing.length) return draft;
+  return updateCareer(id, draft, (career) => missing.reduce(addImprovement, career));
+}
+
+/** Sobe um grau de iniciação (Magia) ou submersão (Ressonância), pagando em karma. */
+export async function advanceGrade(id: string, kind: unknown): Promise<void> {
+  const c = await getActive(id);
+  const plan = planGrade(kind, c.draft, evaluate(c.draft));
+  const entries = await db().select().from(ledger).where(eq(ledger.characterId, id));
+  if (ledgerTotals(entries).karma < plan.cost) throw new InputError(`Faltam ${plan.cost - ledgerTotals(entries).karma} de karma.`);
+  const word = plan.kind === 'initiation' ? 'Iniciação' : 'Submersão';
+  await db().insert(ledger).values({ characterId: id, kind: 'karma', amount: -plan.cost, reason: `${word} grau ${plan.grade}` });
+  await updateCareer(id, c.draft, (career) => ({
+    ...career,
+    [plan.kind === 'initiation' ? 'initiationGrade' : 'submersionGrade']: plan.grade,
+    improvements: [
+      ...career.improvements,
+      { key: `${plan.kind}-${plan.grade}`, kind: plan.kind, label: `${word} grau ${plan.grade}`, from: plan.grade - 1, to: plan.grade, karma: plan.cost, at: new Date().toISOString() },
+    ],
+  }));
+}
+
+/** Metamagias, ecos, espíritos e sprites: o jogador edita à vontade (sem karma). */
+export async function saveCareerChoices(id: string, raw: unknown): Promise<void> {
+  const c = await getActive(id);
+  const choices = parseCareerChoices(raw, { ...emptyCareer(), ...c.draft.career });
+  await updateCareer(id, c.draft, (career) => ({ ...career, ...choices }));
 }
 
 export async function deleteGoal(id: string, goalId: string): Promise<void> {

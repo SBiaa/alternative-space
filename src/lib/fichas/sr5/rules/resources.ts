@@ -1,6 +1,6 @@
-import type { DraftGear, GearKind, WareGrade } from '../character';
+import type { DraftGear, GearKind, GearMod, WareGrade } from '../character';
 import { label } from '../data';
-import type { Augmentation, GearItem } from '../types';
+import type { Augmentation, GearItem, ItemMod, Vehicle } from '../types';
 import { addKarma, budget, issue, round2, type Ctx } from './context';
 import { evalExpr, stripRestriction } from './expr';
 
@@ -21,8 +21,33 @@ export function findItem(ctx: Ctx, kind: GearKind, id: string): GearItem | Augme
     armor: ctx.data.armor,
     cyberware: ctx.data.cyberware,
     bioware: ctx.data.bioware,
+    vehicle: ctx.data.vehicles,
+    program: ctx.data.programs,
   }[kind];
   return list.find((x) => x.id === id);
+}
+
+const MOD_HOST: Record<GearMod['kind'], 'weapon' | 'armor' | 'vehicle'> = {
+  accessory: 'weapon',
+  armorMod: 'armor',
+  vehicleMod: 'vehicle',
+};
+
+export function modCatalog(ctx: Ctx, kind: GearMod['kind']): ItemMod[] {
+  return { accessory: ctx.data.weaponAccessories, armorMod: ctx.data.armorMods, vehicleMod: ctx.data.vehicleMods }[kind];
+}
+
+/** Quais tipos de modificação cada tipo de item aceita. */
+export function modKindFor(kind: GearKind): GearMod['kind'] | undefined {
+  return ({ weapon: 'accessory', armor: 'armorMod', vehicle: 'vehicleMod' } as Partial<Record<GearKind, GearMod['kind']>>)[kind];
+}
+
+export function modLine(mod: GearMod, item: ItemMod): { cost: number | null; avail: number | null; relative: boolean } {
+  const vars = { rating: mod.rating ?? 1, minRating: 1 };
+  const cost = item.cost.value ?? evalExpr(item.cost.raw, vars) ?? mod.customCost ?? null;
+  const relative = item.avail.raw.trim().startsWith('+');
+  const avail = item.avail.value ?? evalExpr(stripRestriction(item.avail.raw), vars);
+  return { cost, avail, relative };
 }
 
 function maxRatingOf(item: GearItem | Augmentation): number | undefined {
@@ -104,6 +129,7 @@ export function checkResources(ctx: Ctx): void {
         `${name}: disponibilidade ${line.avail} passa do limite de ${s.maxAvailability} na criação.`, path);
     }
     essenceUsed += line.essence * Math.max(1, qty);
+    spent += checkMods(ctx, g, item, line, path, name) * Math.max(1, qty);
   });
 
   // Estilo de vida
@@ -138,6 +164,48 @@ export function checkResources(ctx: Ctx): void {
     issue(ctx, 'error', 'resources', 'essence.depleted',
       `Os implantes consomem ${round2(essenceUsed)} de Essência: com 0 ou menos o personagem morre.`);
   }
+}
+
+/** Confere as modificações de um item e devolve quanto custam no total. */
+function checkMods(ctx: Ctx, g: DraftGear, item: GearItem | Augmentation, line: GearLine, path: string, name: string): number {
+  const mods = g.mods ?? [];
+  if (!mods.length) return 0;
+  const want = modKindFor(g.kind);
+  let total = 0;
+  let slots = 0;
+  mods.forEach((m, j) => {
+    const mpath = `${path}.mods.${j}`;
+    if (m.kind !== want || MOD_HOST[m.kind] !== g.kind) {
+      issue(ctx, 'error', 'resources', 'mod.host', `${name}: esse tipo de modificação não serve para este item.`, mpath);
+      return;
+    }
+    const mi = modCatalog(ctx, m.kind).find((x) => x.id === m.itemId);
+    if (!mi) {
+      issue(ctx, 'error', 'resources', 'mod.unknown', `${name}: modificação desconhecida nos livros ativos.`, mpath);
+      return;
+    }
+    const mname = label(mi);
+    const ml = modLine(m, mi);
+    if (ml.cost === null) {
+      issue(ctx, 'error', 'resources', 'mod.cost', `${name} · ${mname}: o preço varia; informe quanto vai pagar.`, mpath);
+    } else {
+      total += ml.cost;
+    }
+    const avail = ml.avail === null ? null : ml.relative ? (line.avail ?? 0) + ml.avail : ml.avail;
+    if (avail !== null && avail > ctx.s.maxAvailability) {
+      issue(ctx, 'error', 'resources', 'mod.availability',
+        `${name} · ${mname}: disponibilidade ${avail} passa do limite de ${ctx.s.maxAvailability} na criação.`, mpath);
+    }
+    slots += mi.slots * (mi.maxRating ? (m.rating ?? 1) : 1);
+  });
+  if (g.kind === 'vehicle') {
+    const body = (item as Vehicle).body ?? 0;
+    if (slots > body) {
+      issue(ctx, 'error', 'resources', 'mod.slots',
+        `${name}: as modificações usam ${slots} slots, mas o Corpo do veículo só tem ${body}.`, path);
+    }
+  }
+  return total;
 }
 
 export function fmtNuyen(n: number): string {

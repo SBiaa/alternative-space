@@ -50,6 +50,20 @@ export interface Ctx {
   };
 }
 
+const TABLES = ['standard', 'primeRunner', 'streetLevel'] as const;
+
+/** Regras da casa da ficha por cima das configurações padrão (valores fora do razoável são ignorados). */
+export function applyOptions(base: CreationSettings, o: CharacterDraft['options']): CreationSettings {
+  if (!o) return base;
+  const int = (v: unknown, min: number, max: number) => (typeof v === 'number' && Number.isInteger(v) && v >= min && v <= max ? v : undefined);
+  return {
+    ...base,
+    priorityTable: TABLES.find((t) => t === o.priorityTable) ?? base.priorityTable,
+    startingKarma: int(o.startingKarma, 0, 200) ?? base.startingKarma,
+    maxAvailability: int(o.maxAvailability, 1, 30) ?? base.maxAvailability,
+  };
+}
+
 export function createCtx(draft: CharacterDraft, data: Sr5Data): Ctx {
   const rows: Ctx['rows'] = {};
   for (const [cat, letter] of Object.entries(draft.priorities) as [PriorityCategory, PriorityLetter][]) {
@@ -68,7 +82,7 @@ export function createCtx(draft: CharacterDraft, data: Sr5Data): Ctx {
   return {
     draft,
     data,
-    s: data.settings,
+    s: applyOptions(data.settings, draft.options),
     rows,
     metatype,
     metatypeOption,

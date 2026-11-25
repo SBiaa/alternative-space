@@ -1,0 +1,74 @@
+[
+  {
+    "id": "36aa9af4-5c04-40d9-ba09-31b401cc1ff0",
+    "name": "Attack Upgrade",
+    "namePt": "Atualização de Ataque",
+    "source": "SR5",
+    "page": 258,
+    "limit": 2
+  },
+  {
+    "id": "cd2e640c-06b7-4638-9eb4-bf75c28452a2",
+    "name": "Data Processing Upgrade",
+    "namePt": "Atualização de Datagrama",
+    "source": "SR5",
+    "page": 258,
+    "limit": 2
+  },
+  {
+    "id": "4550fe9d-e5da-4b01-8115-14f7a0dfab1c",
+    "name": "Firewall Upgrade",
+    "namePt": "Atualização de Firewall",
+    "source": "SR5",
+    "page": 258,
+    "limit": 2
+  },
+  {
+    "id": "13c9f18c-a5f6-40e3-97c1-39265e1d70c2",
+    "name": "Mind Over Machine",
+    "namePt": "Mente sobre Máquina",
+    "source": "SR5",
+    "page": 258,
+    "limit": 3
+  },
+  {
+    "id": "0adbc66d-6b29-4427-b652-0a93a87804b2",
+    "name": "NeuroFilter",
+    "namePt": "NeuroFiltro",
+    "source": "SR5",
+    "page": 258,
+    "limit": 2
+  },
+  {
+    "id": "61055141-71f5-400e-9e67-cef650ce4801",
+    "name": "Overclocking",
+    "namePt": "Turbinar",
+    "source": "SR5",
+    "page": 258,
+    "limit": 1
+  },
+  {
+    "id": "dbd2fbba-8487-45cc-a92a-33813c3643b6",
+    "name": "Resonance Link",
+    "namePt": "Conexão de Ressonância",
+    "source": "SR5",
+    "page": 258,
+    "limit": 1
+  },
+  {
+    "id": "d5dbe3f7-8a44-466b-8d5d-db9f0c68ee6b",
+    "name": "Resonance [Program]",
+    "namePt": "[Programa] de Ressonância",
+    "source": "SR5",
+    "page": 258,
+    "limit": 0
+  },
+  {
+    "id": "ce98f873-d261-4f1e-8bc7-fafa3c712700",
+    "name": "Sleaze Upgrade",
+    "namePt": "Atualização de Subversão",
+    "source": "SR5",
+    "page": 258,
+    "limit": 2
+  }
+]

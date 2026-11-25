@@ -1,0 +1,5348 @@
+[
+  {
+    "id": "c0d3e7fd-d5fd-48c4-b49d-0c7dea26895d",
+    "name": "Dodge Scoot (Scooter)",
+    "namePt": "Dodge Scoot (Lambreta)",
+    "source": "SR5",
+    "page": 462,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/3",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 1,
+    "body": 4,
+    "armor": 4,
+    "sensor": 1,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "d43b2b6a-d6e6-460a-ab75-ca445db06dde",
+    "name": "Daihatsu-Caterpillar Horseman",
+    "namePt": "Daihatsu-Caterpillar Horseman",
+    "source": "R5",
+    "page": 41,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "12000",
+      "value": 12000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/1",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 2,
+    "body": 4,
+    "armor": 3,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "be4aa3ae-6725-4082-a5d2-8fa8d1e91640",
+    "name": "Ares-Segway Terrier",
+    "namePt": "Ares-Segway Terrier",
+    "source": "R5",
+    "page": 42,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "4500",
+      "value": 4500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "5/2",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 2,
+    "armor": 2,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "ce6e90f6-2be6-42f4-a1e7-b633b40604c2",
+    "name": "Horizon-Doble Revolution",
+    "namePt": "Horizon-Doble Revolution",
+    "source": "R5",
+    "page": 42,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "5/3",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 2,
+    "body": 6,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "cfafdbac-509e-49f3-a62a-5cfa8e987e0f",
+    "name": "Evo Falcon-EX",
+    "namePt": "Evo Falcon-EX",
+    "source": "R5",
+    "page": 43,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/5",
+    "accel": "1/2",
+    "speed": 2,
+    "pilot": 1,
+    "body": 7,
+    "armor": 9,
+    "sensor": 1,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "e812194e-9e7b-4769-bf77-8034a3b306de",
+    "name": "Entertainment Systems Cyclops",
+    "namePt": "Entertainment Systems Cyclops",
+    "source": "R5",
+    "page": 43,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "6500",
+      "value": 6500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/4",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 1,
+    "body": 4,
+    "armor": 4,
+    "sensor": 1,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "87435f01-f4e3-424f-a252-2415b9b988cd",
+    "name": "Echo Motors Zip",
+    "namePt": "Echo Motors Zip",
+    "source": "R5",
+    "page": 44,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "3500",
+      "value": 3500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 1,
+    "body": 6,
+    "armor": 4,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "006ea45a-cc35-496c-8d01-94eb64d8febb",
+    "name": "Yamaha Kaburaya",
+    "namePt": "Yamaha Kaburaya",
+    "source": "R5",
+    "page": 44,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "17000",
+      "value": 17000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "5/3",
+    "accel": "3",
+    "speed": 6,
+    "pilot": 1,
+    "body": 5,
+    "armor": 4,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "16c2885f-ef4a-4f06-92c8-754694790ccb",
+    "name": "Buell Spartan",
+    "namePt": "Buell Spartan",
+    "source": "R5",
+    "page": 45,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "11500",
+      "value": 11500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/4",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 2,
+    "body": 7,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "f0b4963e-d709-47a2-a290-5528c79d2cd8",
+    "name": "Harley-Davidson Nightmare",
+    "namePt": "Harley-Davidson Nightmare",
+    "source": "R5",
+    "page": 45,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "22000",
+      "value": 22000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 5,
+    "pilot": 2,
+    "body": 8,
+    "armor": 8,
+    "sensor": 3,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "801800de-858c-4e98-949d-0b429884e755",
+    "name": "Yamaha Nodachi",
+    "namePt": "Yamaha Nodachi",
+    "source": "R5",
+    "page": 45,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "28000",
+      "value": 28000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 5,
+    "pilot": 2,
+    "body": 8,
+    "armor": 9,
+    "sensor": 2,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "e61ac395-78d2-44d8-a3bd-6ac74b1d76f5",
+    "name": "Thundercloud Mustang",
+    "namePt": "Thundercloud Mustang",
+    "source": "R5",
+    "page": 46,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "11000",
+      "value": 11000
+    },
+    "avail": {
+      "raw": "3",
+      "value": 3,
+      "restriction": null
+    },
+    "handling": "4/4",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 1,
+    "body": 8,
+    "armor": 6,
+    "sensor": 1,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "69c76fc9-43e0-44b4-9ff9-4ea9f700ee81",
+    "name": "Renault-Fiat Funone",
+    "namePt": "Renault-Fiat Funone",
+    "source": "R5",
+    "page": 47,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "8500",
+      "value": 8500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/1",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 2,
+    "body": 6,
+    "armor": 4,
+    "sensor": 1,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "df7fa024-4b0d-429b-931e-ac3057d507a9",
+    "name": "Dodge Xenon",
+    "namePt": "Dodge Xenon",
+    "source": "R5",
+    "page": 47,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "18000",
+      "value": 18000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/2",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 2,
+    "body": 8,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "63609689-d809-49f7-8d41-16a23319f049",
+    "name": "Echo Motors Metaway",
+    "namePt": "Echo Motors Metaway",
+    "source": "R5",
+    "page": 47,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "24000",
+      "value": 24000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/2",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 1,
+    "body": 10,
+    "armor": 4,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "6a094997-cd2b-4094-90ff-d5648b8889fb",
+    "name": "GMC 442 Chameleon",
+    "namePt": "GMC 442 Chameleon",
+    "source": "R5",
+    "page": 48,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "14000",
+      "value": 14000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/2",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 1,
+    "body": 10,
+    "armor": 4,
+    "sensor": 1,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "7f8cbe18-eec0-4e06-8c7b-ba3f87bfb15b",
+    "name": "Mercury Comet",
+    "namePt": "Mercury Comet",
+    "source": "R5",
+    "page": 49,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/4",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 2,
+    "body": 11,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "605d4098-01c4-481b-b6ac-f2e39c528cb4",
+    "name": "SAAB Gladius 998 TI",
+    "namePt": "SAAB Gladius 998 TI",
+    "source": "R5",
+    "page": 50,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "154000",
+      "value": 154000
+    },
+    "avail": {
+      "raw": "14",
+      "value": 14,
+      "restriction": null
+    },
+    "handling": "7/3",
+    "accel": "4",
+    "speed": 9,
+    "pilot": 3,
+    "body": 10,
+    "armor": 5,
+    "sensor": 5,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "04b31d4c-55f1-43c8-a2ea-ce3002c6f577",
+    "name": "SAAB Dynamit",
+    "namePt": "SAAB Dynamit",
+    "source": "R5",
+    "page": 50,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "98000",
+      "value": 98000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "5/1",
+    "accel": "3",
+    "speed": 9,
+    "pilot": 2,
+    "body": 10,
+    "armor": 3,
+    "sensor": 3,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "6243f89d-710f-4cc7-b168-eed3723395a8",
+    "name": "GMC Phoenix",
+    "namePt": "GMC Phoenix",
+    "source": "R5",
+    "page": 51,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "32000",
+      "value": 32000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/2",
+    "accel": "3",
+    "speed": 6,
+    "pilot": 2,
+    "body": 10,
+    "armor": 6,
+    "sensor": 3,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "c8dd9bbc-532b-46c2-9a72-05c3ae4bf05f",
+    "name": "Hyundai Equus",
+    "namePt": "Hyundai Equus",
+    "source": "R5",
+    "page": 52,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "40000",
+      "value": 40000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/3",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 2,
+    "body": 12,
+    "armor": 10,
+    "sensor": 3,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "ebe75238-fb29-4913-8dc2-745bbde42db6",
+    "name": "Chevrolet Longboard",
+    "namePt": "Chevrolet Longboard",
+    "source": "R5",
+    "page": 52,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "31000",
+      "value": 31000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 1,
+    "body": 12,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "8776075a-0ef3-4aa1-8811-6fb87e96ece6",
+    "name": "Rolls-Royce Phaeton",
+    "namePt": "Rolls-Royce Phaeton",
+    "source": "R5",
+    "page": 52,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "350000",
+      "value": 350000
+    },
+    "avail": {
+      "raw": "18",
+      "value": 18,
+      "restriction": null
+    },
+    "handling": "5/3",
+    "accel": "2",
+    "speed": 5,
+    "pilot": 3,
+    "body": 16,
+    "armor": 12,
+    "sensor": 4,
+    "seats": 10,
+    "drone": false
+  },
+  {
+    "id": "b25cc2b2-f67f-4361-be28-e9451d2928fd",
+    "name": "Thundercloud Morgan",
+    "namePt": "Thundercloud Morgan",
+    "source": "R5",
+    "page": 52,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "7500",
+      "value": 7500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "3/5",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 0,
+    "body": 14,
+    "armor": 6,
+    "sensor": 0,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "ed0eb004-0d3b-44da-916a-e767e0e72ac8",
+    "name": "Tata Hotspur",
+    "namePt": "Tata Hotspur",
+    "source": "R5",
+    "page": 53,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "60000",
+      "value": 60000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "4/5",
+    "accel": "3",
+    "speed": 6,
+    "pilot": 2,
+    "body": 16,
+    "armor": 12,
+    "sensor": 2,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "e8816947-a26e-4d98-939b-e6551356c913",
+    "name": "GMC Armadillo",
+    "namePt": "GMC Armadillo",
+    "source": "R5",
+    "page": 54,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "22000",
+      "value": 22000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/4",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 1,
+    "body": 13,
+    "armor": 10,
+    "sensor": 2,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "50f40623-7ca6-4499-a64f-22d54e2bef4c",
+    "name": "Ford Percheron",
+    "namePt": "Ford Percheron",
+    "source": "R5",
+    "page": 54,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "39000",
+      "value": 39000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/3",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 4,
+    "body": 15,
+    "armor": 6,
+    "sensor": 3,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "a80bd3e7-abc4-412f-b6c0-eaa5c7585936",
+    "name": "Jeep Trailblazer",
+    "namePt": "Jeep Trailblazer",
+    "source": "R5",
+    "page": 54,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "32000",
+      "value": 32000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/4",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 1,
+    "body": 12,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "48ebf4fc-bd56-4e14-a433-6d92f18251dc",
+    "name": "Toyota Talon",
+    "namePt": "Toyota Talon",
+    "source": "R5",
+    "page": 55,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "30000",
+      "value": 30000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 2,
+    "body": 12,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 5,
+    "drone": false
+  },
+  {
+    "id": "abc43924-23f0-407d-b3d5-e96f03b9f808",
+    "name": "Nissan Hauler",
+    "namePt": "Nissan Hauler",
+    "source": "R5",
+    "page": 56,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "30000",
+      "value": 30000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/3",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 2,
+    "body": 16,
+    "armor": 8,
+    "sensor": 2,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "7190fec0-2c0e-4df8-8916-0e870fddf43c",
+    "name": "Eurocar Northstar",
+    "namePt": "Eurocar Northstar",
+    "source": "R5",
+    "page": 56,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "115000",
+      "value": 115000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "5/3",
+    "accel": "2",
+    "speed": 6,
+    "pilot": 3,
+    "body": 12,
+    "armor": 8,
+    "sensor": 5,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "45549db3-db43-42d2-bc45-8f7db70a1b19",
+    "name": "GMC Escalade",
+    "namePt": "GMC Escalade",
+    "source": "R5",
+    "page": 57,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "125000",
+      "value": 125000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "3/3",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 3,
+    "body": 16,
+    "armor": 10,
+    "sensor": 4,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "b1bfc86a-120e-45fd-b8e5-9486d43d7956",
+    "name": "Ford Econovan",
+    "namePt": "Ford Econovan",
+    "source": "R5",
+    "page": 58,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "30000",
+      "value": 30000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/2",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 2,
+    "body": 14,
+    "armor": 8,
+    "sensor": 2,
+    "seats": 10,
+    "drone": false
+  },
+  {
+    "id": "6756cbb6-02db-4450-adf8-acce13598a17",
+    "name": "Dodge Caravaner",
+    "namePt": "Dodge Caravaner",
+    "source": "R5",
+    "page": 58,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "28000",
+      "value": 28000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/2",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 2,
+    "body": 12,
+    "armor": 8,
+    "sensor": 2,
+    "seats": 7,
+    "drone": false
+  },
+  {
+    "id": "3ff3b5a3-4755-4390-9782-23a9cc34cf72",
+    "name": "GMC Universe",
+    "namePt": "GMC Universe",
+    "source": "R5",
+    "page": 59,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "30000",
+      "value": 30000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/3",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 3,
+    "body": 14,
+    "armor": 8,
+    "sensor": 2,
+    "seats": 16,
+    "drone": false
+  },
+  {
+    "id": "aa27ed63-313e-4cb3-98b9-920bb9b319b6",
+    "name": "Ares Chuck Wagon",
+    "namePt": "Ares Chuck Wagon",
+    "source": "R5",
+    "page": 59,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "40000",
+      "value": 40000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "2/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 2,
+    "body": 16,
+    "armor": 5,
+    "sensor": 2,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "4b64e3b8-bc1f-4dea-8d53-d90cf35f4315",
+    "name": "Airstream Traveler Chinook",
+    "namePt": "Airstream Traveller Chinook",
+    "source": "R5",
+    "page": 59,
+    "category": "Trucks",
+    "categoryPt": "Caminhões",
+    "cost": {
+      "raw": "145000",
+      "value": 145000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/2",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 2,
+    "body": 14,
+    "armor": 12,
+    "sensor": 2,
+    "seats": 10,
+    "drone": false
+  },
+  {
+    "id": "cb970581-0a0d-47a3-b334-9d3feea05b7d",
+    "name": "Airstream Traveler Preserve",
+    "namePt": "Airstream Traveller Preserve",
+    "source": "R5",
+    "page": 59,
+    "category": "Trucks",
+    "categoryPt": "Caminhões",
+    "cost": {
+      "raw": "134000",
+      "value": 134000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/3",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 2,
+    "body": 16,
+    "armor": 12,
+    "sensor": 3,
+    "seats": 10,
+    "drone": false
+  },
+  {
+    "id": "732a042d-631c-485a-b8c4-ce010de0b8af",
+    "name": "Airstream Traveler Outback",
+    "namePt": "Airstream Traveller Outback",
+    "source": "R5",
+    "page": 59,
+    "category": "Trucks",
+    "categoryPt": "Caminhões",
+    "cost": {
+      "raw": "158000",
+      "value": 158000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/4",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 2,
+    "body": 14,
+    "armor": 12,
+    "sensor": 4,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "7eb192ce-abcb-46ff-b29e-c39d2c0978cb",
+    "name": "Mack Hellhound",
+    "namePt": "Mack Hellhound",
+    "source": "R5",
+    "page": 60,
+    "category": "Trucks",
+    "categoryPt": "Caminhões",
+    "cost": {
+      "raw": "150000",
+      "value": 150000
+    },
+    "avail": {
+      "raw": "16R",
+      "value": 16,
+      "restriction": "R"
+    },
+    "handling": "3/2",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 3,
+    "body": 20,
+    "armor": 15,
+    "sensor": 3,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "b0b13ff4-1820-4168-834e-bec224c81bb1",
+    "name": "Omni Motors Omnibus",
+    "namePt": "Omni Motors Omnibus",
+    "source": "R5",
+    "page": 62,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "296000",
+      "value": 296000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "2/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 2,
+    "body": 18,
+    "armor": 10,
+    "sensor": 2,
+    "seats": 53,
+    "drone": false
+  },
+  {
+    "id": "e4a04ec4-62ca-49d3-bbcf-fe390bdf523e",
+    "name": "GMC Commercial G-Series",
+    "namePt": "GMC Commercial G-Series",
+    "source": "R5",
+    "page": 62,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "287000",
+      "value": 287000
+    },
+    "avail": {
+      "raw": "14",
+      "value": 14,
+      "restriction": null
+    },
+    "handling": "2/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 2,
+    "body": 18,
+    "armor": 12,
+    "sensor": 3,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "88b674d3-fd95-435c-888c-3846b6d89ea6",
+    "name": "GMC Commercial D-Series",
+    "namePt": "GMC Commercial D-Series",
+    "source": "R5",
+    "page": 63,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "248000",
+      "value": 248000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "2/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 2,
+    "body": 16,
+    "armor": 10,
+    "sensor": 2,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "49ed00fb-70b2-46d3-b10a-4e12bd89d798",
+    "name": "GMC Commercial D-Series Compact",
+    "namePt": "GMC Commercial D-Series Compact",
+    "source": "R5",
+    "page": 63,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "196000",
+      "value": 196000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "2/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 2,
+    "body": 12,
+    "armor": 8,
+    "sensor": 2,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "4bd62e1e-11e1-4b69-9f16-6073abaab680",
+    "name": "GMC Commercial DD",
+    "namePt": "GMC Commercial DD",
+    "source": "R5",
+    "page": 63,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "312000",
+      "value": 312000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "2/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 2,
+    "body": 20,
+    "armor": 12,
+    "sensor": 2,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "8cb508c2-462b-4499-9c00-ac244b9c72b6",
+    "name": "Saeder-Krupp Konstructors",
+    "namePt": "Saeder-Krupp Konstructors",
+    "source": "R5",
+    "page": 64,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "365000",
+      "value": 365000
+    },
+    "avail": {
+      "raw": "16",
+      "value": 16,
+      "restriction": null
+    },
+    "handling": "2/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 4,
+    "body": 24,
+    "armor": 18,
+    "sensor": 3,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "5ef3b170-5e8b-4d27-90db-f82c6f7c25b7",
+    "name": "Mostrans KVP-28",
+    "namePt": "Mostrans KVP-28",
+    "source": "R5",
+    "page": 64,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "87000",
+      "value": 87000
+    },
+    "avail": {
+      "raw": "16",
+      "value": 16,
+      "restriction": null
+    },
+    "handling": "2/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 4,
+    "body": 18,
+    "armor": 12,
+    "sensor": 3,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "aab15689-b3e6-4c2c-9399-cf5987af96fe",
+    "name": "Mostrans Minsk",
+    "namePt": "Mostrans Minsk",
+    "source": "R5",
+    "page": 64,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "77000",
+      "value": 77000
+    },
+    "avail": {
+      "raw": "16",
+      "value": 16,
+      "restriction": null
+    },
+    "handling": "2/2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 4,
+    "body": 16,
+    "armor": 10,
+    "sensor": 3,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "b243cb7f-3944-46a8-afef-6a4ba80e25e0",
+    "name": "Universal Hovercraft Minnesota",
+    "namePt": "Universal Hovercraft Minnesota",
+    "source": "R5",
+    "page": 65,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "130000",
+      "value": 130000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "handling": "4/4",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 3,
+    "body": 14,
+    "armor": 9,
+    "sensor": 3,
+    "seats": 14,
+    "drone": false
+  },
+  {
+    "id": "b7a2c6af-b0b3-446e-8a49-b1e6b8fd131b",
+    "name": "Vodyanoy Assault Hovercraft",
+    "namePt": "Vodyanoy Assault Hovercraft",
+    "source": "R5",
+    "page": 65,
+    "category": "Municipal/Construction",
+    "categoryPt": "Municipal/Construção",
+    "cost": {
+      "raw": "84000",
+      "value": 84000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "handling": "3/3",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 1,
+    "body": 16,
+    "armor": 16,
+    "sensor": 2,
+    "seats": 10,
+    "drone": false
+  },
+  {
+    "id": "01a51f42-7348-42ff-9b68-cde36f60743d",
+    "name": "BMW Blitzkrieg",
+    "namePt": "BMW Blitzkrieg",
+    "source": "R5",
+    "page": 66,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "46000",
+      "value": 46000
+    },
+    "avail": {
+      "raw": "14R",
+      "value": 14,
+      "restriction": "R"
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 3,
+    "body": 10,
+    "armor": 8,
+    "sensor": 4,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "3a9eeaaa-56c2-4020-ba9f-e0f7c6f9e0eb",
+    "name": "Dodge Charger",
+    "namePt": "Dodge Charger",
+    "source": "R5",
+    "page": 67,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "65000",
+      "value": 65000
+    },
+    "avail": {
+      "raw": "16R",
+      "value": 16,
+      "restriction": "R"
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 5,
+    "pilot": 4,
+    "body": 12,
+    "armor": 12,
+    "sensor": 4,
+    "seats": 5,
+    "drone": false
+  },
+  {
+    "id": "45abd151-b3d1-4367-9133-3ff458532172",
+    "name": "BMW I8 Interceptor",
+    "namePt": "BMW I8 Interceptor",
+    "source": "R5",
+    "page": 68,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "114000",
+      "value": 114000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "handling": "5/3",
+    "accel": "4",
+    "speed": 8,
+    "pilot": 4,
+    "body": 12,
+    "armor": 8,
+    "sensor": 4,
+    "seats": 3,
+    "drone": false
+  },
+  {
+    "id": "d1f39621-5c37-4b02-ad25-7e36dcd6a9d4",
+    "name": "Dodge Goliath",
+    "namePt": "Dodge Goliath",
+    "source": "R5",
+    "page": 70,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "120000",
+      "value": 120000
+    },
+    "avail": {
+      "raw": "20R",
+      "value": 20,
+      "restriction": "R"
+    },
+    "handling": "3/2",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 3,
+    "body": 16,
+    "armor": 16,
+    "sensor": 3,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "d2f3f4a9-dbb2-4c43-b45d-6e22c0760698",
+    "name": "BMW Teufelkatze",
+    "namePt": "BMW Teufelkatze",
+    "source": "R5",
+    "page": 71,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "76000",
+      "value": 76000
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    },
+    "handling": "5/4",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 3,
+    "body": 16,
+    "armor": 16,
+    "sensor": 3,
+    "seats": 7,
+    "drone": false
+  },
+  {
+    "id": "afb9137b-c488-48cd-b9b2-c846540526d8",
+    "name": "Dodge Stallion",
+    "namePt": "Dodge Stallion",
+    "source": "R5",
+    "page": 71,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "78000",
+      "value": 78000
+    },
+    "avail": {
+      "raw": "16R",
+      "value": 16,
+      "restriction": "R"
+    },
+    "handling": "3/4",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 3,
+    "body": 16,
+    "armor": 12,
+    "sensor": 3,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "7c804214-420e-48e4-8a44-f836b7fa4135",
+    "name": "Dodge Minotaur",
+    "namePt": "Dodge Minotaur",
+    "source": "R5",
+    "page": 71,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "45000",
+      "value": 45000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/5",
+    "accel": "2",
+    "speed": 5,
+    "pilot": 4,
+    "body": 14,
+    "armor": 8,
+    "sensor": 4,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "34d93e94-55af-463b-bec3-ed719dbd9d91",
+    "name": "BMW Luxus",
+    "namePt": "BMW Luxus",
+    "source": "R5",
+    "page": 73,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "398000",
+      "value": 398000
+    },
+    "avail": {
+      "raw": "14R",
+      "value": 14,
+      "restriction": "R"
+    },
+    "handling": "5/5",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 5,
+    "body": 18,
+    "armor": 16,
+    "sensor": 6,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "f0e34913-e7d1-447b-a71b-35a170703087",
+    "name": "Dodge General Command",
+    "namePt": "Dodge General Command",
+    "source": "R5",
+    "page": 74,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "344000",
+      "value": 344000
+    },
+    "avail": {
+      "raw": "18R",
+      "value": 18,
+      "restriction": "R"
+    },
+    "handling": "3/3",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 5,
+    "body": 20,
+    "armor": 16,
+    "sensor": 7,
+    "seats": 10,
+    "drone": false
+  },
+  {
+    "id": "47c2ddae-851a-4d75-8764-b80019a44616",
+    "name": "Dodge General Trailer",
+    "namePt": "Dodge General Trailer",
+    "source": "R5",
+    "page": 74,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "54000",
+      "value": 54000
+    },
+    "avail": {
+      "raw": "18R",
+      "value": 18,
+      "restriction": "R"
+    },
+    "handling": "3/3",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 3,
+    "body": 20,
+    "armor": 16,
+    "sensor": 7,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "b6b3714e-880c-4eba-9edc-cd6087945750",
+    "name": "BMW Sturmwagon",
+    "namePt": "BMW Sturmwagon",
+    "source": "R5",
+    "page": 75,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "145000",
+      "value": 145000
+    },
+    "avail": {
+      "raw": "20R",
+      "value": 20,
+      "restriction": "R"
+    },
+    "handling": "5/4",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 4,
+    "body": 17,
+    "armor": 18,
+    "sensor": 5,
+    "seats": 10,
+    "drone": false
+  },
+  {
+    "id": "945d3c12-d119-4441-a6f5-d69c6317aff2",
+    "name": "Dodge Rhino",
+    "namePt": "Dodge Rhino",
+    "source": "R5",
+    "page": 77,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "225000",
+      "value": 225000
+    },
+    "avail": {
+      "raw": "18R",
+      "value": 18,
+      "restriction": "R"
+    },
+    "handling": "4/4",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 6,
+    "body": 24,
+    "armor": 14,
+    "sensor": 7,
+    "seats": 9,
+    "drone": false
+  },
+  {
+    "id": "90234226-413e-4fac-89ce-ffce9db69b12",
+    "name": "Ruhrmetall Wolf II",
+    "namePt": "Ruhrmetall Wolf II",
+    "source": "R5",
+    "page": 77,
+    "category": "Corpsec/Police/Military",
+    "categoryPt": "Seg-Corp/Polícia/Militares",
+    "cost": {
+      "raw": "330000",
+      "value": 330000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "handling": "3/3",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 2,
+    "body": 24,
+    "armor": 12,
+    "sensor": 2,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "757fa739-7255-4ce3-bb61-ad478e4e4a99",
+    "name": "Evo Waterking",
+    "namePt": "Evo Waterking",
+    "source": "R5",
+    "page": 79,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "74000",
+      "value": 74000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 3,
+    "body": 14,
+    "armor": 8,
+    "sensor": 2,
+    "seats": 12,
+    "drone": false
+  },
+  {
+    "id": "193a6429-b4ba-4e68-a89e-5cd9a7965e50",
+    "name": "Sea Ray Cottonmouth",
+    "namePt": "Sea Ray Cottonmouth",
+    "source": "R5",
+    "page": 80,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "120000",
+      "value": 120000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "5",
+    "accel": "4",
+    "speed": 7,
+    "pilot": 3,
+    "body": 8,
+    "armor": 4,
+    "sensor": 3,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "8a3971d6-25d4-4797-add2-fad2f6a7ef09",
+    "name": "Kawasaki Stingray",
+    "namePt": "Kawasaki Stingray",
+    "source": "R5",
+    "page": 81,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "13000",
+      "value": 13000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "5",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 1,
+    "body": 8,
+    "armor": 6,
+    "sensor": 1,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "d44323ef-f8f3-4b1f-b5d1-9ae4888cd6b9",
+    "name": "Kawasaki Manta Ray",
+    "namePt": "Kawasaki Manta Ray",
+    "source": "R5",
+    "page": 81,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "16000",
+      "value": 16000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 1,
+    "body": 9,
+    "armor": 6,
+    "sensor": 1,
+    "seats": 3,
+    "drone": false
+  },
+  {
+    "id": "399b9c5f-31c0-475e-a987-caa3e60ea0eb",
+    "name": "Aztechnology Nightrunner",
+    "namePt": "Aztechnology Nightrunner",
+    "source": "R5",
+    "page": 81,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "56000",
+      "value": 56000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "5",
+    "accel": "3",
+    "speed": 6,
+    "pilot": 3,
+    "body": 12,
+    "armor": 6,
+    "sensor": 4,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "199f5570-e313-4f2a-9762-63e73f230732",
+    "name": "Zodiac Scorpio",
+    "namePt": "Zodiac Scorpio",
+    "source": "R5",
+    "page": 82,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "26000",
+      "value": 26000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 1,
+    "body": 10,
+    "armor": 6,
+    "sensor": 1,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "4fda117c-38a0-440f-899e-27b39735747b",
+    "name": "Mitsubishi Waterbug",
+    "namePt": "Mitsubishi Waterbug",
+    "source": "R5",
+    "page": 83,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "6",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 1,
+    "body": 8,
+    "armor": 4,
+    "sensor": 0,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "d7a2bfe7-f43d-420d-9ef0-164e644529be",
+    "name": "Mitsubishi Waveskipper",
+    "namePt": "Mitsubishi Waveskipper",
+    "source": "R5",
+    "page": 83,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "5",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 1,
+    "body": 10,
+    "armor": 4,
+    "sensor": 0,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "3a01a97e-9df8-4516-9f41-4ff92b465d3b",
+    "name": "Evo Water Strider",
+    "namePt": "Evo Water Strider",
+    "source": "R5",
+    "page": 84,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "11000",
+      "value": 11000
+    },
+    "avail": {
+      "raw": "16",
+      "value": 16,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 8,
+    "armor": 5,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "9dfc2603-8289-474c-842b-dd74ac406fb7",
+    "name": "Corsair Elysium",
+    "namePt": "Corsair Elysium",
+    "source": "R5",
+    "page": 85,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "78000",
+      "value": 78000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "1/3",
+    "accel": "1/2",
+    "speed": 1,
+    "pilot": 2,
+    "body": 14,
+    "armor": 10,
+    "sensor": 3,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "c7d3a2bb-bad0-49a3-964f-b48911b37dcc",
+    "name": "Corsair Panther",
+    "namePt": "Corsair Panther",
+    "source": "R5",
+    "page": 85,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "135000",
+      "value": 135000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "1/3",
+    "accel": "1/3",
+    "speed": 2,
+    "pilot": 2,
+    "body": 18,
+    "armor": 10,
+    "sensor": 3,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "db3526df-3370-4b28-84cd-e113ad69ee5a",
+    "name": "Corsair Trident",
+    "namePt": "Corsair Trident",
+    "source": "R5",
+    "page": 87,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "125000",
+      "value": 125000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "1/3",
+    "accel": "2/3",
+    "speed": 4,
+    "pilot": 2,
+    "body": 16,
+    "armor": 10,
+    "sensor": 3,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "cb6f7e79-1756-41ad-9907-09bf5b1e4039",
+    "name": "Corsair Triton",
+    "namePt": "Corsair Triton",
+    "source": "R5",
+    "page": 87,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "104000",
+      "value": 104000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "1",
+    "accel": "2",
+    "speed": 6,
+    "pilot": 2,
+    "body": 16,
+    "armor": 10,
+    "sensor": 3,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "f6b4394e-a005-4a25-8f44-1513701c07f5",
+    "name": "Blohm and Voss Classic 111",
+    "namePt": "Blohm and Voss Classic 111",
+    "source": "R5",
+    "page": 88,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "14870000",
+      "value": 14870000
+    },
+    "avail": {
+      "raw": "16",
+      "value": 16,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 4,
+    "body": 24,
+    "armor": 14,
+    "sensor": 4,
+    "seats": 14,
+    "drone": false
+  },
+  {
+    "id": "28894d1f-18c8-4a16-b117-42658a2e3fa1",
+    "name": "Lurssen Mobius",
+    "namePt": "Lurssen Mobius",
+    "source": "R5",
+    "page": 89,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "84985000",
+      "value": 84985000
+    },
+    "avail": {
+      "raw": "36",
+      "value": 36,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 6,
+    "body": 36,
+    "armor": 14,
+    "sensor": 5,
+    "seats": 22,
+    "drone": false
+  },
+  {
+    "id": "b3586f7a-f291-40b3-8ea7-ee5d82ca5586",
+    "name": "Sun Tracker Lake King",
+    "namePt": "Sun Tracker Lake King",
+    "source": "R5",
+    "page": 90,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "35000",
+      "value": 35000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "2",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 1,
+    "body": 14,
+    "armor": 8,
+    "sensor": 1,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "1312f26a-4cac-45a9-a8f2-f74b2a80a468",
+    "name": "Evo Aquavida 1",
+    "namePt": "Evo Aquavida 1",
+    "source": "R5",
+    "page": 90,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "115000",
+      "value": 115000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "2",
+    "accel": "2",
+    "speed": 1,
+    "pilot": 1,
+    "body": 20,
+    "armor": 16,
+    "sensor": 3,
+    "seats": 10,
+    "drone": false
+  },
+  {
+    "id": "ea80540c-83e1-4ff3-b411-a990e19fdc33",
+    "name": "Evo Aquavida 2",
+    "namePt": "Evo Aquavida 2",
+    "source": "R5",
+    "page": 90,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "135000",
+      "value": 135000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "2",
+    "accel": "2",
+    "speed": 1,
+    "pilot": 1,
+    "body": 20,
+    "armor": 16,
+    "sensor": 3,
+    "seats": 12,
+    "drone": false
+  },
+  {
+    "id": "ef0f8108-e057-4caf-afb0-4cc11264ccec",
+    "name": "Ultramarine Kingfisher",
+    "namePt": "Ultramarine Kingfisher",
+    "source": "R5",
+    "page": 92,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "61000",
+      "value": 61000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 3,
+    "body": 16,
+    "armor": 12,
+    "sensor": 4,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "119963e1-cdca-439d-b1d5-fd9e0ab85985",
+    "name": "American Airboat AirRanger",
+    "namePt": "American Airboat AirRanger",
+    "source": "R5",
+    "page": 92,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "25500",
+      "value": 25500
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 1,
+    "body": 10,
+    "armor": 6,
+    "sensor": 1,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "ce233f26-f8ab-4f59-96fe-d57892e18cb3",
+    "name": "American Airboat AirRanger Heavy",
+    "namePt": "American Airboat AirRanger Heavy",
+    "source": "R5",
+    "page": 92,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "35500",
+      "value": 35500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 1,
+    "body": 12,
+    "armor": 6,
+    "sensor": 1,
+    "seats": 5,
+    "drone": false
+  },
+  {
+    "id": "5a77445f-c676-4f07-805e-3aac7c3f9830",
+    "name": "GMC Riverine Security",
+    "namePt": "GMC Riverine Security",
+    "source": "R5",
+    "page": 92,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "100000",
+      "value": 100000
+    },
+    "avail": {
+      "raw": "15R",
+      "value": 15,
+      "restriction": "R"
+    },
+    "handling": "4",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 4,
+    "body": 16,
+    "armor": 12,
+    "sensor": 4,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "d72817d0-2fa7-4c97-a8ef-bc2912549d27",
+    "name": "GMC Riverine Police",
+    "namePt": "GMC Riverine Police",
+    "source": "R5",
+    "page": 92,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "154000",
+      "value": 154000
+    },
+    "avail": {
+      "raw": "15R",
+      "value": 15,
+      "restriction": "R"
+    },
+    "handling": "4",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 4,
+    "body": 16,
+    "armor": 14,
+    "sensor": 5,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "386a33be-d016-4bae-ba7a-7b0f618e92d6",
+    "name": "GMC Riverine Military",
+    "namePt": "GMC Riverine Military",
+    "source": "R5",
+    "page": 92,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "225000",
+      "value": 225000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "handling": "5",
+    "accel": "2",
+    "speed": 5,
+    "pilot": 6,
+    "body": 20,
+    "armor": 20,
+    "sensor": 6,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "13441e68-867a-42cd-88a6-f28e4fade20a",
+    "name": "Hughes Stallion WK-4",
+    "namePt": "Hughes Stallion WK-4",
+    "source": "R5",
+    "page": 95,
+    "category": "Rotorcraft",
+    "categoryPt": "Asas Rotativas",
+    "cost": {
+      "raw": "440000",
+      "value": 440000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "5",
+    "accel": "4",
+    "speed": 5,
+    "pilot": 4,
+    "body": 16,
+    "armor": 16,
+    "sensor": 4,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "9911d59b-8db1-4517-b554-49ab5d3f478d",
+    "name": "Aztechnology Agular GX-2",
+    "namePt": "Aztechnology Agular GX-2",
+    "source": "R5",
+    "page": 97,
+    "category": "Rotorcraft",
+    "categoryPt": "Asas Rotativas",
+    "cost": {
+      "raw": "500000",
+      "value": 500000
+    },
+    "avail": {
+      "raw": "28F",
+      "value": 28,
+      "restriction": "F"
+    },
+    "handling": "5",
+    "accel": "5",
+    "speed": 7,
+    "pilot": 4,
+    "body": 20,
+    "armor": 16,
+    "sensor": 5,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "319d9e3b-a0c4-4a8b-87c9-ff50eb4c3f85",
+    "name": "Aztechnology Agular GX-3AT",
+    "namePt": "Aztechnology Agular GX-3AT",
+    "source": "R5",
+    "page": 97,
+    "category": "Rotorcraft",
+    "categoryPt": "Asas Rotativas",
+    "cost": {
+      "raw": "550000",
+      "value": 550000
+    },
+    "avail": {
+      "raw": "28F",
+      "value": 28,
+      "restriction": "F"
+    },
+    "handling": "4",
+    "accel": "4",
+    "speed": 6,
+    "pilot": 4,
+    "body": 22,
+    "armor": 20,
+    "sensor": 4,
+    "seats": 10,
+    "drone": false
+  },
+  {
+    "id": "cfb98885-315b-4f6f-8291-470ce43c8df1",
+    "name": "S-K Aerospace SKA-008",
+    "namePt": "S-K Aerospace SKA-008",
+    "source": "R5",
+    "page": 98,
+    "category": "Rotorcraft",
+    "categoryPt": "Asas Rotativas",
+    "cost": {
+      "raw": "525000",
+      "value": 525000
+    },
+    "avail": {
+      "raw": "24R",
+      "value": 24,
+      "restriction": "R"
+    },
+    "handling": "6",
+    "accel": "8",
+    "speed": 5,
+    "pilot": 4,
+    "body": 16,
+    "armor": 18,
+    "sensor": 4,
+    "seats": 12,
+    "drone": false
+  },
+  {
+    "id": "d3184353-13b2-4f02-b74e-55ac1e0246de",
+    "name": "Dassault Sea Sprite",
+    "namePt": "Dassault Sea Sprite",
+    "source": "R5",
+    "page": 99,
+    "category": "Rotorcraft",
+    "categoryPt": "Asas Rotativas",
+    "cost": {
+      "raw": "400000",
+      "value": 400000
+    },
+    "avail": {
+      "raw": "18R",
+      "value": 18,
+      "restriction": "R"
+    },
+    "handling": "5",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 3,
+    "body": 18,
+    "armor": 12,
+    "sensor": 5,
+    "seats": 14,
+    "drone": false
+  },
+  {
+    "id": "6f75f984-b5bd-4fd7-b4a2-c59a9c4f9ce6",
+    "name": "Federated-Boeing PBY-70 Catalina II",
+    "namePt": "Federated-Boeing PBY-70 Catalina II",
+    "source": "R5",
+    "page": 100,
+    "category": "Fixed-Wing Aircraft",
+    "categoryPt": "Aeronaves de Asas Fixas",
+    "cost": {
+      "raw": "250000",
+      "value": 250000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "3",
+    "speed": 3,
+    "pilot": 3,
+    "body": 22,
+    "armor": 14,
+    "sensor": 4,
+    "seats": 16,
+    "drone": false
+  },
+  {
+    "id": "b4e88420-eae5-4c35-8ef2-a067012b2bf2",
+    "name": "Airbus Lift Ticket ALS-699",
+    "namePt": "Airbus Lift Ticket ALS-699",
+    "source": "R5",
+    "page": 102,
+    "category": "Rotorcraft",
+    "categoryPt": "Asas Rotativas",
+    "cost": {
+      "raw": "325000",
+      "value": 325000
+    },
+    "avail": {
+      "raw": "14",
+      "value": 14,
+      "restriction": null
+    },
+    "handling": "5",
+    "accel": "3",
+    "speed": 3,
+    "pilot": 3,
+    "body": 16,
+    "armor": 12,
+    "sensor": 4,
+    "seats": 5,
+    "drone": false
+  },
+  {
+    "id": "4bb96843-2759-4263-b5cd-56b7f5f0178f",
+    "name": "GMC Gryphon",
+    "namePt": "GMC Gryphon",
+    "source": "R5",
+    "page": 103,
+    "category": "VTOL/VSTOL",
+    "categoryPt": "VTOL/VSTOL",
+    "cost": {
+      "raw": "3200000",
+      "value": 3200000
+    },
+    "avail": {
+      "raw": "28F",
+      "value": 28,
+      "restriction": "F"
+    },
+    "handling": "5",
+    "accel": "7",
+    "speed": 8,
+    "pilot": 4,
+    "body": 24,
+    "armor": 24,
+    "sensor": 5,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "e7891e8c-3c27-4fd1-97cf-cf1384ecb829",
+    "name": "Evo-Krime Krime Wing",
+    "namePt": "Evo-Krime Krime Wing",
+    "source": "R5",
+    "page": 105,
+    "category": "VTOL/VSTOL",
+    "categoryPt": "VTOL/VSTOL",
+    "cost": {
+      "raw": "2275000",
+      "value": 2275000
+    },
+    "avail": {
+      "raw": "24F",
+      "value": 24,
+      "restriction": "F"
+    },
+    "handling": "4",
+    "accel": "5",
+    "speed": 6,
+    "pilot": 4,
+    "body": 22,
+    "armor": 18,
+    "sensor": 5,
+    "seats": 20,
+    "drone": false
+  },
+  {
+    "id": "9486c47c-7093-4897-bde9-14a522cd8394",
+    "name": "Luftshiffbau Personal Zeppelin LZP-2070",
+    "namePt": "Luftshiffbau Personal Zeppelin LZP-2070",
+    "source": "R5",
+    "page": 107,
+    "category": "LTAV",
+    "categoryPt": "LTAV",
+    "cost": {
+      "raw": "85000",
+      "value": 85000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "3",
+    "speed": 2,
+    "pilot": 5,
+    "body": 12,
+    "armor": 6,
+    "sensor": 4,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "464ef537-768b-447b-9c30-39239234b2a3",
+    "name": "Renegade Works Mothership LAVH",
+    "namePt": "Renegade Works Mothership LAVH",
+    "source": "R5",
+    "page": 105,
+    "category": "LTAV",
+    "categoryPt": "LTAV",
+    "cost": {
+      "raw": "50000",
+      "value": 50000
+    },
+    "avail": {
+      "raw": "24R",
+      "value": 24,
+      "restriction": "R"
+    },
+    "handling": "3",
+    "accel": "3",
+    "speed": 3,
+    "pilot": 3,
+    "body": 10,
+    "armor": 5,
+    "sensor": 4,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "685a5cb6-75ee-45fd-80bd-07ea669054a3",
+    "name": "Horizon Noizquito (Microdrone)",
+    "namePt": "Horizon Noizquito (Microdrone)",
+    "source": "R5",
+    "page": 128,
+    "category": "Drones: Micro",
+    "categoryPt": "Drones: Micro",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "10R",
+      "value": 10,
+      "restriction": "R"
+    },
+    "handling": "4",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 3,
+    "body": 1,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "8b1aff5b-a9a3-4fdc-a10c-de56d88e4b91",
+    "name": "Sony Goldfish (Microdrone)",
+    "namePt": "Sony Goldfish (Microdrone)",
+    "source": "R5",
+    "page": 129,
+    "category": "Drones: Micro",
+    "categoryPt": "Drones: Micro",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "handling": "2/4",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 0,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "3defffd7-c7ee-4c54-8d51-1df731842823",
+    "name": "Aerodesign Systems Condor LDSD-23 (Minidrone)",
+    "namePt": "Aerodesign Systems Condor LDSD-23 (Minidrone)",
+    "source": "R5",
+    "page": 129,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "handling": "2",
+    "accel": "0",
+    "speed": 0,
+    "pilot": 2,
+    "body": 1,
+    "armor": 0,
+    "sensor": 4,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "cf1383e9-5604-46eb-8323-522acaeada2e",
+    "name": "Aztechnology Hedgehog (Minidrone)",
+    "namePt": "Aztechnology Hedgehog (Minidrone)",
+    "source": "R5",
+    "page": 129,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "8F",
+      "value": 8,
+      "restriction": "F"
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 4,
+    "body": 1,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "cdf8a11b-c74a-4754-89b0-cb1a4bec17cd",
+    "name": "Cyberspace Designs Dragonfly (Minidrone)",
+    "namePt": "Cyberspace Designs Dragonfly (Minidrone)",
+    "source": "R5",
+    "page": 129,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 3,
+    "body": 1,
+    "armor": 3,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "b5ef225a-9a22-4dfd-bf4e-2832cbe8e064",
+    "name": "Festo Pigeon 2.0 (Minidrone)",
+    "namePt": "Festo Pigeon 2.0 (Minidrone)",
+    "source": "R5",
+    "page": 129,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 1,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "df487ee7-9009-47b0-9db8-548bed9a3361",
+    "name": "Horizon CU^3 (Minidrone)",
+    "namePt": "Horizon CU^3 (Minidrone)",
+    "source": "R5",
+    "page": 130,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 1,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "8e9830e5-16e4-40e3-9803-4036945b786d",
+    "name": "Horizon CU^3 Professional (Minidrone)",
+    "namePt": "Horizon CU^3 Professional (Minidrone)",
+    "source": "R5",
+    "page": 130,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "6000",
+      "value": 6000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 4,
+    "body": 1,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "94a53ea0-c8de-4f2f-9098-55180205d8fa",
+    "name": "Renraku Gerbil (Minidrone)",
+    "namePt": "Renraku Gerbil (Minidrone)",
+    "source": "R5",
+    "page": 130,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "4/2",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 1,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "a38e5f21-eb84-4f01-81cc-ee214d88ed96",
+    "name": "Ares Arms Sentry V (Small)",
+    "namePt": "Ares Arms Sentry V (Small)",
+    "source": "R5",
+    "page": 130,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "handling": "4/0",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 3,
+    "body": 2,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "d1289d4c-2b32-450f-bbc1-489dafe39c19",
+    "name": "Citron-Brouillard Smoke Generator (Small)",
+    "namePt": "Citron-Brouillard Smoke Generator (Small)",
+    "source": "R5",
+    "page": 131,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "fcbe7bb4-6137-4939-8d4b-10b011b33ac6",
+    "name": "Cyberspace Designs Wolfhound (Small)",
+    "namePt": "Cyberspace Designs Wolfhound (Small)",
+    "source": "R5",
+    "page": 131,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "30000",
+      "value": 30000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 4,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "d9157390-2003-4238-8738-6a24efc770f0",
+    "name": "Evo Proletarian (Small)",
+    "namePt": "Evo Proletarian (Small)",
+    "source": "R5",
+    "page": 132,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "handling": "4/2",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "6b0c07b2-6e3d-4174-a748-859fd46c090c",
+    "name": "Ferret RPD-1X (Small)",
+    "namePt": "Ferret RPD-1X (Small)",
+    "source": "R5",
+    "page": 132,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "handling": "4/2",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 3,
+    "body": 2,
+    "armor": 3,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "2e70a156-4201-48c8-935f-7223c16a1e82",
+    "name": "Festo Sewer Snake (Small)",
+    "namePt": "Festo Sewer Snake (Small)",
+    "source": "R5",
+    "page": 132,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "6000",
+      "value": 6000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1/1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "89392969-1d03-4322-9aa8-c0160ba3ee76",
+    "name": "Horizon Mini-Zep (Small)",
+    "namePt": "Horizon Mini-Zep (Small)",
+    "source": "R5",
+    "page": 132,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "2",
+    "accel": "0",
+    "speed": 0,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "68f2fddf-c530-4093-855a-f08e3924b68c",
+    "name": "Knight Errant P5 (Small)",
+    "namePt": "Knight Errant P5 (Small)",
+    "source": "R5",
+    "page": 133,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "10R",
+      "value": 10,
+      "restriction": "R"
+    },
+    "handling": "4/2",
+    "accel": "2",
+    "speed": 6,
+    "pilot": 3,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "28abf230-3bd7-4edb-bcba-f6ae28d62d3a",
+    "name": "Lone Star Castle Guard (Small)",
+    "namePt": "Lone Star Castle Guard (Small)",
+    "source": "R5",
+    "page": 133,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "handling": "4/2",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 3,
+    "body": 2,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "a836d6d5-56f3-416c-a53f-2249af400580",
+    "name": "MCT Gun Turret (Small)",
+    "namePt": "MCT Gun Turret (Small)",
+    "source": "R5",
+    "page": 133,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "handling": "0",
+    "accel": "0",
+    "speed": 0,
+    "pilot": 3,
+    "body": 2,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "68b2cf81-7fa0-4451-8096-96d9bd25c128",
+    "name": "MCT Seven (Wheelie) (Small)",
+    "namePt": "MCT Seven (Wheelie) (Small)",
+    "source": "R5",
+    "page": 134,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/2",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 1,
+    "body": 1,
+    "armor": 0,
+    "sensor": 1,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "84bc59dd-cd8f-4148-b5fa-53c3e0fe384f",
+    "name": "MCT Seven (Treads) (Small)",
+    "namePt": "MCT Seven (Treads) (Small)",
+    "source": "R5",
+    "page": 134,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 1,
+    "body": 1,
+    "armor": 0,
+    "sensor": 1,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "67bfc8e7-e8dd-4e3f-9e31-d5aa4990e4f5",
+    "name": "MCT Seven (Dirty) (Small)",
+    "namePt": "MCT Seven (Dirty) (Small)",
+    "source": "R5",
+    "page": 134,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "handling": "2/4",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 1,
+    "body": 1,
+    "armor": 0,
+    "sensor": 1,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "7cc3856f-eaaa-47a6-83f5-a5efa36efbcd",
+    "name": "MCT Seven (Quad) (Small)",
+    "namePt": "MCT Seven (Quad) (Small)",
+    "source": "R5",
+    "page": 134,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 1,
+    "body": 1,
+    "armor": 0,
+    "sensor": 1,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "4c2952dd-b400-4560-816b-1a857e3f24dd",
+    "name": "MCT Seven (Swims) (Small)",
+    "namePt": "MCT Seven (Swims) (Small)",
+    "source": "R5",
+    "page": 134,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 1,
+    "body": 1,
+    "armor": 0,
+    "sensor": 1,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "2227d4bb-9a97-460a-b90c-cf9fd4d98636",
+    "name": "MCT Seven (Hovers) (Small)",
+    "namePt": "MCT Seven (Hovers) (Small)",
+    "source": "R5",
+    "page": 134,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 1,
+    "body": 1,
+    "armor": 0,
+    "sensor": 1,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "6918401c-ae18-45cc-90e2-72a029240eed",
+    "name": "MCT Seven (Soars) (Small)",
+    "namePt": "MCT Seven (Soars) (Small)",
+    "source": "R5",
+    "page": 134,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 1,
+    "body": 1,
+    "armor": 0,
+    "sensor": 1,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "0ff86ef9-e35d-4f8f-bc64-0303f81f11c7",
+    "name": "NeoNET Prairie Dog (Small)",
+    "namePt": "NeoNET Prairie Dog (Small)",
+    "source": "R5",
+    "page": 134,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "handling": "2/4",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 3,
+    "body": 2,
+    "armor": 3,
+    "sensor": 4,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "963d0596-c0f5-40d9-8bfe-580cc1150d20",
+    "name": "PW Sundowner (Small)",
+    "namePt": "PW Sundowner (Small)",
+    "source": "R5",
+    "page": 134,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "6cef9ce0-b7b0-4d3c-933a-ef1da1580388",
+    "name": "Proteus Krake (Small)",
+    "namePt": "Proteus Krake (Small)",
+    "source": "R5",
+    "page": 136,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "18F",
+      "value": 18,
+      "restriction": "F"
+    },
+    "handling": "5",
+    "accel": "4",
+    "speed": 3,
+    "pilot": 4,
+    "body": 2,
+    "armor": 2,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "75b5192e-6d57-4ca3-b288-c733c1272cef",
+    "name": "Saab-Thyssen Bloodhound (Small)",
+    "namePt": "Saab-Thyssen Bloodhound (Small)",
+    "source": "R5",
+    "page": 136,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 4,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "ec84a3e8-00f7-4558-b21c-62fff76c33c5",
+    "name": "Renraku Dove-4 (Small)",
+    "namePt": "Renraku Dove-4 (Small)",
+    "source": "R5",
+    "page": 136,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "2f1519ae-8c34-48cb-a5ba-47eac74fff82",
+    "name": "Renraku Jardinero (Small)",
+    "namePt": "Renraku Jardinero (Small)",
+    "source": "R5",
+    "page": 136,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "2/4",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "744987eb-0503-4d1f-b49e-fb3a543b08e0",
+    "name": "Renraku Job-A-Mat (Small)",
+    "namePt": "Renraku Job-A-Mat (Small)",
+    "source": "R5",
+    "page": 137,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "0",
+    "accel": "0",
+    "speed": 0,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "d8654096-dcd5-42ce-af43-cda1c0caeb3f",
+    "name": "Renraku Pelican (Small)",
+    "namePt": "Renraku Pelican (Small)",
+    "source": "R5",
+    "page": 137,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "50d4bce4-79f1-48d4-8b38-68969802dec0",
+    "name": "Telestrian Shamus",
+    "namePt": "Telestrian Shamus",
+    "source": "R5",
+    "page": 138,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "30000",
+      "value": 30000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 3,
+    "body": 4,
+    "armor": 4,
+    "sensor": 8,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "2c2ab919-9432-4e0a-9f30-a8cc9d51f7fb",
+    "name": "Ares Cheetah (Medium)",
+    "namePt": "Ares Cheetah (Medium)",
+    "source": "R5",
+    "page": 139,
+    "category": "Drones: Medium",
+    "categoryPt": "Drones: Médio",
+    "cost": {
+      "raw": "14000",
+      "value": 14000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "handling": "4",
+    "accel": "2",
+    "speed": 6,
+    "pilot": 3,
+    "body": 2,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "671e4bc0-bd06-4158-9515-2e353f2f6123",
+    "name": "Evo Krokodil (Medium)",
+    "namePt": "Evo Krokodil (Medium)",
+    "source": "R5",
+    "page": 140,
+    "category": "Drones: Medium",
+    "categoryPt": "Drones: Médio",
+    "cost": {
+      "raw": "12000",
+      "value": 12000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 3,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "62431445-834e-424b-b4e4-ff41f36b184c",
+    "name": "Federated-Boeing Kull (Medium)",
+    "namePt": "Federated-Boeing Kull (Medium)",
+    "source": "R5",
+    "page": 140,
+    "category": "Drones: Medium",
+    "categoryPt": "Drones: Médio",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 3,
+    "body": 3,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "dd68326a-254b-44e7-b787-67a539f19e06",
+    "name": "MCT Tunneler (Medium)",
+    "namePt": "MCT Tunneler (Medium)",
+    "source": "R5",
+    "page": 140,
+    "category": "Drones: Medium",
+    "categoryPt": "Drones: Médio",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "handling": "3",
+    "accel": "0",
+    "speed": 0,
+    "pilot": 2,
+    "body": 3,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "4ca97d26-0d55-4b9e-afcb-4f10b5eea4a6",
+    "name": "Renraku LEBD-2 (Medium)",
+    "namePt": "Renraku LEBD-2 (Medium)",
+    "source": "R5",
+    "page": 140,
+    "category": "Drones: Medium",
+    "categoryPt": "Drones: Médio",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 4,
+    "body": 3,
+    "armor": 9,
+    "sensor": 4,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "39f2681c-6a20-4799-bd9a-f81636a00dbd",
+    "name": "Transys Steed (Medium)",
+    "namePt": "Transys Steed (Medium)",
+    "source": "R5",
+    "page": 141,
+    "category": "Drones: Medium",
+    "categoryPt": "Drones: Médio",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "handling": "4/2",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 3,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "9bb6d665-a59c-4146-ad2f-2ce4ef2e52c9",
+    "name": "Ares Matilda (Large)",
+    "namePt": "Ares Matilda (Large)",
+    "source": "R5",
+    "page": 141,
+    "category": "Drones: Large",
+    "categoryPt": "Drones: Grande",
+    "cost": {
+      "raw": "18000",
+      "value": 18000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "handling": "1",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 8,
+    "armor": 8,
+    "sensor": 1,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "4ea566f2-a5c0-4021-80b1-60d85dab1b27",
+    "name": "Ares Mule (Large)",
+    "namePt": "Ares Mule (Large)",
+    "source": "R5",
+    "page": 142,
+    "category": "Drones: Large",
+    "categoryPt": "Drones: Grande",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 4,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "a5700d79-5748-4c6d-a28b-8c282827a05a",
+    "name": "Ares Paladin (Large)",
+    "namePt": "Ares Paladin (Large)",
+    "source": "R5",
+    "page": 142,
+    "category": "Drones: Large",
+    "categoryPt": "Drones: Grande",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "handling": "5",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 3,
+    "body": 5,
+    "armor": 18,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "18dbdb52-cb84-43d5-8d0e-15eb5a036556",
+    "name": "CrashCart Medicart (Large)",
+    "namePt": "CrashCart Medicart (Large)",
+    "source": "R5",
+    "page": 143,
+    "category": "Drones: Large",
+    "categoryPt": "Drones: Grande",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "handling": "5",
+    "accel": "1",
+    "speed": 5,
+    "pilot": 4,
+    "body": 6,
+    "armor": 5,
+    "sensor": 4,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "4037bd7f-917a-4478-a52a-e4b73635a5c1",
+    "name": "GTS Tower (Large)",
+    "namePt": "GTS Tower (Large)",
+    "source": "R5",
+    "page": 143,
+    "category": "Drones: Large",
+    "categoryPt": "Drones: Grande",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "2",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 4,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "e0343c07-3a15-4596-bcc0-5a2d6d160a6b",
+    "name": "Saeder-Krupp MK-17D Neptune (Large)",
+    "namePt": "Saeder-Krupp MK-17D Neptune (Large)",
+    "source": "R5",
+    "page": 143,
+    "category": "Drones: Large",
+    "categoryPt": "Drones: Grande",
+    "cost": {
+      "raw": "17500",
+      "value": 17500
+    },
+    "avail": {
+      "raw": "10R",
+      "value": 10,
+      "restriction": "R"
+    },
+    "handling": "2",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 4,
+    "body": 5,
+    "armor": 3,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "bc21264d-527c-4066-b8c6-0aa24cff61cb",
+    "name": "Mitsuhama Malakim (Large)",
+    "namePt": "Mitsuhama Malakim (Large)",
+    "source": "R5",
+    "page": 143,
+    "category": "Drones: Large",
+    "categoryPt": "Drones: Grande",
+    "cost": {
+      "raw": "40000",
+      "value": 40000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "handling": "3",
+    "accel": "2",
+    "speed": 6,
+    "pilot": 4,
+    "body": 4,
+    "armor": 9,
+    "sensor": 4,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "70916e91-a7ee-477f-a4b0-14bc125c1034",
+    "name": "Ares KN-Y2: Deimos (Huge)",
+    "namePt": "Ares KN-Y2: Deimos (Huge)",
+    "source": "R5",
+    "page": 144,
+    "category": "Drones: Huge",
+    "categoryPt": "Drones: Enorme",
+    "cost": {
+      "raw": "220000",
+      "value": 220000
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 5,
+    "body": 6,
+    "armor": 18,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "e4f82e1e-1bcb-4857-a693-80cea860150e",
+    "name": "Ares KN-Y1: Phobos (Huge)",
+    "namePt": "Ares KN-Y1: Phobos (Huge)",
+    "source": "R5",
+    "page": 144,
+    "category": "Drones: Huge",
+    "categoryPt": "Drones: Enorme",
+    "cost": {
+      "raw": "250000",
+      "value": 250000
+    },
+    "avail": {
+      "raw": "16F",
+      "value": 16,
+      "restriction": "F"
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 5,
+    "body": 6,
+    "armor": 18,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "83dae489-5d31-4d39-b6fa-aefc83b3ff20",
+    "name": "Ares KN-Y4: Eris (Huge)",
+    "namePt": "Ares KN-Y4: Eris (Huge)",
+    "source": "R5",
+    "page": 144,
+    "category": "Drones: Huge",
+    "categoryPt": "Drones: Enorme",
+    "cost": {
+      "raw": "270000",
+      "value": 270000
+    },
+    "avail": {
+      "raw": "24F",
+      "value": 24,
+      "restriction": "F"
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 5,
+    "body": 6,
+    "armor": 18,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "0f1b635b-59d8-4b43-b809-76eae7f0048c",
+    "name": "Mesametric Kodiak (Huge)",
+    "namePt": "Mesametric Kodiak (Huge)",
+    "source": "R5",
+    "page": 145,
+    "category": "Drones: Huge",
+    "categoryPt": "Drones: Enorme",
+    "cost": {
+      "raw": "40000",
+      "value": 40000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "handling": "2/4",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 6,
+    "armor": 12,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "a88f58ad-f4e0-448a-ba5c-00cbdd0076f6",
+    "name": "NeoNET Avenging Angel (Huge)",
+    "namePt": "NeoNET Avenging Angel (Huge)",
+    "source": "R5",
+    "page": 145,
+    "category": "Drones: Huge",
+    "categoryPt": "Drones: Enorme",
+    "cost": {
+      "raw": "1000000",
+      "value": 1000000
+    },
+    "avail": {
+      "raw": "40F",
+      "value": 40,
+      "restriction": "F"
+    },
+    "handling": "3",
+    "accel": "2",
+    "speed": 6,
+    "pilot": 6,
+    "body": 6,
+    "armor": 12,
+    "sensor": 6,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "472a0869-4759-41cf-b529-a42b0f308f69",
+    "name": "Criado Juan",
+    "namePt": "Criado Juan",
+    "source": "R5",
+    "page": 146,
+    "category": "Drones: Anthro",
+    "categoryPt": "Drones: Antro",
+    "cost": {
+      "raw": "8000",
+      "value": 8000
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "handling": "2",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 2,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "ad77dfa1-36ae-4e66-a319-24de903652aa",
+    "name": "Horizon Little Buddy",
+    "namePt": "Horizon Little Buddy",
+    "source": "R5",
+    "page": 146,
+    "category": "Drones: Anthro",
+    "categoryPt": "Drones: Antro",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "2",
+    "accel": "1",
+    "speed": 1,
+    "pilot": 2,
+    "body": 1,
+    "armor": 0,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "54f7d700-d407-49bf-a231-83777419cbe3",
+    "name": "MCT Kenchiku-Kikai",
+    "namePt": "MCT Kenchiku-Kikai",
+    "source": "R5",
+    "page": 147,
+    "category": "Drones: Anthro",
+    "categoryPt": "Drones: Antro",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "8R",
+      "value": 8,
+      "restriction": "R"
+    },
+    "handling": "2",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 2,
+    "body": 5,
+    "armor": 3,
+    "sensor": 2,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "b448855b-57e7-435a-b523-174adb276674",
+    "name": "NeoNET Juggernaught",
+    "namePt": "NeoNET Juggernaught",
+    "source": "R5",
+    "page": 147,
+    "category": "Drones: Anthro",
+    "categoryPt": "Drones: Antro",
+    "cost": {
+      "raw": "100000",
+      "value": 100000
+    },
+    "avail": {
+      "raw": "14R",
+      "value": 14,
+      "restriction": "R"
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 4,
+    "pilot": 3,
+    "body": 6,
+    "armor": 12,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "ca18775c-3535-40e1-be69-a07905add421",
+    "name": "Saeder-Krupp Direktionssekretar",
+    "namePt": "Saeder-Krupp Direktionssekretar",
+    "source": "R5",
+    "page": 148,
+    "category": "Drones: Anthro",
+    "categoryPt": "Drones: Antro",
+    "cost": {
+      "raw": "40000",
+      "value": 40000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "handling": "4",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 4,
+    "body": 4,
+    "armor": 3,
+    "sensor": 4,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "17d1e41b-6650-45e2-b898-d047c3b8702a",
+    "name": "Shiawase i-Doll",
+    "namePt": "Shiawase i-Doll",
+    "source": "R5",
+    "page": 148,
+    "category": "Drones: Anthro",
+    "categoryPt": "Drones: Antro",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 3,
+    "body": 3,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "1e8e5e79-9d32-48fa-802c-6bf91676ae63",
+    "name": "Harley-Davidson Scorpion (Chopper)",
+    "namePt": "Harley-Davidson Scorpion (Estradeira)",
+    "source": "SR5",
+    "page": 462,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "12000",
+      "value": 12000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 1,
+    "body": 8,
+    "armor": 9,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "2df83d3e-78bb-4b42-b19f-78df8588e981",
+    "name": "Yamaha Growler (Off-Road Bike)",
+    "namePt": "Yamaha Growler (Moto Off-Road)",
+    "source": "SR5",
+    "page": 462,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/5",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 1,
+    "body": 5,
+    "armor": 5,
+    "sensor": 1,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "86374792-b881-4d9b-915a-d0e6652bbf4d",
+    "name": "Suzuki Mirage (Racing Bike)",
+    "namePt": "Suzuki Mirage (Moto de Corrida)",
+    "source": "SR5",
+    "page": 462,
+    "category": "Bikes",
+    "categoryPt": "Motocicletas",
+    "cost": {
+      "raw": "8500",
+      "value": 8500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "5/3",
+    "accel": "3",
+    "speed": 6,
+    "pilot": 1,
+    "body": 5,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "e3b51fdb-e62b-4343-b905-999056286fcb",
+    "name": "Chrysler-Nissan Jackrabbit (Subcompact)",
+    "namePt": "Chrysler-Nissan Jackrabbit (Subcompacto)",
+    "source": "SR5",
+    "page": 462,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 1,
+    "body": 8,
+    "armor": 4,
+    "sensor": 2,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "d7695e8c-1eab-4fe3-8b37-406cc73ca1d6",
+    "name": "Eurocar Westwind 3000 (Luxury Sports Car)",
+    "namePt": "Eurocar Westwind 3000 (Carro Esportivo de Luxo)",
+    "source": "SR5",
+    "page": 463,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "110000",
+      "value": 110000
+    },
+    "avail": {
+      "raw": "13",
+      "value": 13,
+      "restriction": null
+    },
+    "handling": "6/4",
+    "accel": "3",
+    "speed": 7,
+    "pilot": 3,
+    "body": 10,
+    "armor": 8,
+    "sensor": 5,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "79046746-a3fb-4eb2-a78a-82ebdeecdacc",
+    "name": "Honda Spirit (Subcompact)",
+    "namePt": "Honda Spirit (Triciclo)",
+    "source": "SR5",
+    "page": 463,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "12000",
+      "value": 12000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/2",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 1,
+    "body": 8,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "72a204fc-e4f7-4e00-9d14-7f338fb86817",
+    "name": "Hyundai Shin-Hyung (Sport Sedan)",
+    "namePt": "Hyundai Shin-Hyung (Sedan Esportivo)",
+    "source": "SR5",
+    "page": 463,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "28500",
+      "value": 28500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "5/4",
+    "accel": "3",
+    "speed": 6,
+    "pilot": 1,
+    "body": 10,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "3aed6a1c-af27-48eb-84e3-8f21875e0c65",
+    "name": "Mitsubishi Nightsky (Limousine)",
+    "namePt": "Mitsubishi Nightsky (Limusine)",
+    "source": "SR5",
+    "page": 463,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "320000",
+      "value": 320000
+    },
+    "avail": {
+      "raw": "16",
+      "value": 16,
+      "restriction": null
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 3,
+    "body": 15,
+    "armor": 15,
+    "sensor": 5,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "898906ec-f2b9-43a4-98ad-6f79230b9a0c",
+    "name": "Ford Americar (Sedan)",
+    "namePt": "Ford Americar (Sedan)",
+    "source": "SR5",
+    "page": 463,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "16000",
+      "value": 16000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4/3",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 1,
+    "body": 11,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "71600577-7cce-4f6b-9854-531460d9400a",
+    "name": "Saeder-Krupp-Bentley Concordat (Luxury Sedan)",
+    "namePt": "Saeder-Krupp-Bentley Concordat (Sedan de Luxo)",
+    "source": "SR5",
+    "page": 463,
+    "category": "Cars",
+    "categoryPt": "Carros",
+    "cost": {
+      "raw": "65000",
+      "value": 65000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "5/4",
+    "accel": "2",
+    "speed": 5,
+    "pilot": 2,
+    "body": 12,
+    "armor": 12,
+    "sensor": 4,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "30de4139-368b-4569-94c1-f65c1cd2dc26",
+    "name": "Rover 2072 (SUV)",
+    "namePt": "Rover 2072 (Van de Luxo)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Trucks",
+    "categoryPt": "Caminhões",
+    "cost": {
+      "raw": "68000",
+      "value": 68000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "5/5",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 2,
+    "body": 15,
+    "armor": 12,
+    "sensor": 4,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "56747364-dbd5-40e3-b4c1-5a361ec0c710",
+    "name": "Toyota Gopher (Heavy-Duty Pickup)",
+    "namePt": "Toyota Gopher (Pick-Up de Trabalho Pesado)",
+    "source": "SR5",
+    "page": 463,
+    "category": "Trucks",
+    "categoryPt": "Caminhões",
+    "cost": {
+      "raw": "25000",
+      "value": 25000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "5/5",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 1,
+    "body": 14,
+    "armor": 10,
+    "sensor": 2,
+    "seats": 3,
+    "drone": false
+  },
+  {
+    "id": "3ce7af9c-104c-4b74-be1b-f0b512ebea4b",
+    "name": "GMC Bulldog Step-Van (Van)",
+    "namePt": "Van GMC Bulldog (Van)",
+    "source": "SR5",
+    "page": 463,
+    "category": "Trucks",
+    "categoryPt": "Caminhões",
+    "cost": {
+      "raw": "35000",
+      "value": 35000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3/3",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 1,
+    "body": 16,
+    "armor": 12,
+    "sensor": 2,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "0ed17686-7ac3-48de-88d2-bc8738a00afa",
+    "name": "Ares Roadmaster (Armored Transport)",
+    "namePt": "Ares Roadmaster (Transporte Blindado)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Trucks",
+    "categoryPt": "Caminhões",
+    "cost": {
+      "raw": "52000",
+      "value": 52000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "3/3",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 3,
+    "body": 18,
+    "armor": 18,
+    "sensor": 3,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "7e5d30f4-ef09-4a95-8bb5-a9128557e1b0",
+    "name": "Samuvani Criscraft Otter (Sport Cruiser)",
+    "namePt": "Samuvani Criscraft Otter (Barco Recreativo)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "21000",
+      "value": 21000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 2,
+    "body": 12,
+    "armor": 6,
+    "sensor": 2,
+    "seats": 8,
+    "drone": false
+  },
+  {
+    "id": "6af4e72c-a783-4b61-8f3b-22436b635b57",
+    "name": "Yongkang Gala Trinity (Speedboat)",
+    "namePt": "Yongkang Gala Trinity (Lancha)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "37000",
+      "value": 37000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "5",
+    "accel": "3",
+    "speed": 6,
+    "pilot": 1,
+    "body": 10,
+    "armor": 6,
+    "sensor": 1,
+    "seats": 3,
+    "drone": false
+  },
+  {
+    "id": "bffc0ba9-ab14-4226-bb4e-c2db70528a06",
+    "name": "Morgan Cutlass (Patrol Boat)",
+    "namePt": "Morgan Cutlass (Barco de Patrulha)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Boats",
+    "categoryPt": "Barcos",
+    "cost": {
+      "raw": "96000",
+      "value": 96000
+    },
+    "avail": {
+      "raw": "14R",
+      "value": 14,
+      "restriction": "R"
+    },
+    "handling": "5",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 3,
+    "body": 16,
+    "armor": 10,
+    "sensor": 5,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "fb002667-22de-4156-ad17-def60a1795c0",
+    "name": "Proteus Lamprey (Sea Sled)",
+    "namePt": "Proteus Lamprey (Trenó Marítimo)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Submarines",
+    "categoryPt": "Submarinos",
+    "cost": {
+      "raw": "14000",
+      "value": 14000
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 1,
+    "body": 6,
+    "armor": 6,
+    "sensor": 3,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "f6360d94-95f1-474c-82b3-0c0d3f9575c2",
+    "name": "Vulkan Electronaut (Mini-sub)",
+    "namePt": "Vulkan Electronaut (Mini-Sub)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Submarines",
+    "categoryPt": "Submarinos",
+    "cost": {
+      "raw": "108000",
+      "value": 108000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 4,
+    "body": 12,
+    "armor": 10,
+    "sensor": 4,
+    "seats": 2,
+    "drone": false
+  },
+  {
+    "id": "590fde44-d58d-4b96-871f-406426dbabf7",
+    "name": "Artemis Industries Nightwing (Glider)",
+    "namePt": "Artemis Industries Nightwing (Ultraleve)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Fixed-Wing Aircraft",
+    "categoryPt": "Aeronaves de Asas Fixas",
+    "cost": {
+      "raw": "20000",
+      "value": 20000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "6",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 1,
+    "body": 4,
+    "armor": 0,
+    "sensor": 1,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "a383fc02-599b-4bd6-b699-bbac28162ef2",
+    "name": "Cessna C750 (Twin-Prop Airplane)",
+    "namePt": "Cessna C750 (Bimotor)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Fixed-Wing Aircraft",
+    "categoryPt": "Aeronaves de Asas Fixas",
+    "cost": {
+      "raw": "146000",
+      "value": 146000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 2,
+    "body": 18,
+    "armor": 4,
+    "sensor": 2,
+    "seats": 4,
+    "drone": false
+  },
+  {
+    "id": "af79563a-e66d-4cd4-9b1b-2d412ce54107",
+    "name": "Renault-Fiat Fokker Tundra-9 (Amphibious Jet)",
+    "namePt": "Renault-Fiat Fokker Tundra-9 (Jato Anfíbio)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Fixed-Wing Aircraft",
+    "categoryPt": "Aeronaves de Asas Fixas",
+    "cost": {
+      "raw": "300000",
+      "value": 300000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 3,
+    "body": 20,
+    "armor": 10,
+    "sensor": 3,
+    "seats": 24,
+    "drone": false
+  },
+  {
+    "id": "907833f4-30d3-4291-ba21-f165ec105b92",
+    "name": "Ares Dragon (Cargo Helicopter)",
+    "namePt": "Ares Dragon (Helicóptero de Carga)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Rotorcraft",
+    "categoryPt": "Asas Rotativas",
+    "cost": {
+      "raw": "355000",
+      "value": 355000
+    },
+    "avail": {
+      "raw": "12",
+      "value": 12,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 3,
+    "body": 22,
+    "armor": 8,
+    "sensor": 3,
+    "seats": 18,
+    "drone": false
+  },
+  {
+    "id": "9ce49c91-c231-4784-b88b-feee327fec90",
+    "name": "Nissan Hound (Transport Helicopter)",
+    "namePt": "Nissan Hound (Helicóptero de Transporte)",
+    "source": "SR5",
+    "page": 464,
+    "category": "Rotorcraft",
+    "categoryPt": "Asas Rotativas",
+    "cost": {
+      "raw": "425000",
+      "value": 425000
+    },
+    "avail": {
+      "raw": "13R",
+      "value": 13,
+      "restriction": "R"
+    },
+    "handling": "5",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 2,
+    "body": 16,
+    "armor": 16,
+    "sensor": 4,
+    "seats": 12,
+    "drone": false
+  },
+  {
+    "id": "c0e5d03c-abbd-433a-b186-0bb2b4945b4c",
+    "name": "Northrup Wasp (Autogyro)",
+    "namePt": "Northrup Wasp (Autogiro)",
+    "source": "SR5",
+    "page": 465,
+    "category": "Rotorcraft",
+    "categoryPt": "Asas Rotativas",
+    "cost": {
+      "raw": "86000",
+      "value": 86000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "handling": "5",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 3,
+    "body": 10,
+    "armor": 8,
+    "sensor": 3,
+    "seats": 1,
+    "drone": false
+  },
+  {
+    "id": "de4166ba-f6b3-4675-acef-39327c84f57f",
+    "name": "Ares Venture (LAV)",
+    "namePt": "Ares Venture (LAV)",
+    "source": "SR5",
+    "page": 465,
+    "category": "VTOL/VSTOL",
+    "categoryPt": "VTOL/VSTOL",
+    "cost": {
+      "raw": "400000",
+      "value": 400000
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "handling": "5",
+    "accel": "4",
+    "speed": 7,
+    "pilot": 4,
+    "body": 16,
+    "armor": 14,
+    "sensor": 4,
+    "seats": 6,
+    "drone": false
+  },
+  {
+    "id": "7926b1f7-9d92-4e28-9913-4d0c4d8b3c86",
+    "name": "GMC Banshee (Thunderbird)",
+    "namePt": "GMC Banshee (Thunderbird)",
+    "source": "SR5",
+    "page": 465,
+    "category": "VTOL/VSTOL",
+    "categoryPt": "VTOL/VSTOL",
+    "cost": {
+      "raw": "2500000",
+      "value": 2500000
+    },
+    "avail": {
+      "raw": "24F",
+      "value": 24,
+      "restriction": "F"
+    },
+    "handling": "6",
+    "accel": "4",
+    "speed": 8,
+    "pilot": 4,
+    "body": 20,
+    "armor": 18,
+    "sensor": 6,
+    "seats": 12,
+    "drone": false
+  },
+  {
+    "id": "37eff614-ba8d-422c-af74-5cabcdebe3ce",
+    "name": "Federated Boeing Commuter (Tilt-Wing Airplane)",
+    "namePt": "Federated Boeing Commuter (Aeronave com Rotores Móveis)",
+    "source": "SR5",
+    "page": 465,
+    "category": "VTOL/VSTOL",
+    "categoryPt": "VTOL/VSTOL",
+    "cost": {
+      "raw": "350000",
+      "value": 350000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "3",
+    "speed": 3,
+    "pilot": 3,
+    "body": 16,
+    "armor": 8,
+    "sensor": 3,
+    "seats": 30,
+    "drone": false
+  },
+  {
+    "id": "1f3308cb-837a-45c5-b581-9fef48cd4d8c",
+    "name": "Shiawase Kanmushi (Microdrone)",
+    "namePt": "Shiawase Kanmushi (Microdrone)",
+    "source": "SR5",
+    "page": 465,
+    "category": "Drones: Micro",
+    "categoryPt": "Drones: Micro",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 2,
+    "pilot": 3,
+    "body": 0,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "3be36e78-0786-45e6-bc72-6269b75c3f29",
+    "name": "Sikorsky-Bell Microskimmer (Microdrone)",
+    "namePt": "Sikorsky-Bell Microskimmer (Microdrone)",
+    "source": "SR5",
+    "page": 465,
+    "category": "Drones: Micro",
+    "categoryPt": "Drones: Micro",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 3,
+    "body": 0,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "4261d97f-2a4f-4ed3-91a4-64a69a549e37",
+    "name": "Horizon Flying Eye (Minidrone)",
+    "namePt": "Horizon Flying Eye (Minidrone)",
+    "source": "SR5",
+    "page": 465,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 3,
+    "body": 1,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "fa4686b8-3886-4bd8-bda4-737050245208",
+    "name": "Horizon Flying Eye w/Flash-Pak and Grenade (Minidrone)",
+    "namePt": "Horizon Flying Eye c/ Granada Ofuscante e de Fumaça (Minidrone)",
+    "source": "SR5",
+    "page": 465,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "2500",
+      "value": 2500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 3,
+    "body": 1,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "d187e9f7-b308-426f-ac35-957ba601c70c",
+    "name": "MCT Fly-Spy (Minidrone)",
+    "namePt": "MCT Fly-Spy (Minidrone)",
+    "source": "SR5",
+    "page": 466,
+    "category": "Drones: Mini",
+    "categoryPt": "Drones: Mini",
+    "cost": {
+      "raw": "2000",
+      "value": 2000
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "2",
+    "speed": 3,
+    "pilot": 3,
+    "body": 1,
+    "armor": 0,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "16d4e660-7014-434e-a437-08bc869c6200",
+    "name": "Aztechnology Crawler (Small)",
+    "namePt": "Aztechnology Crawler (Pequeno)",
+    "source": "SR5",
+    "page": 466,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "4000",
+      "value": 4000
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 4,
+    "body": 3,
+    "armor": 3,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "9604795c-03f2-46db-a86b-3fd16ea35c51",
+    "name": "Lockheed Optic-X2 (Small)",
+    "namePt": "Lockheed Optic-X2 (Pequeno)",
+    "source": "SR5",
+    "page": 466,
+    "category": "Drones: Small",
+    "categoryPt": "Drones: Pequeno",
+    "cost": {
+      "raw": "21000",
+      "value": 21000
+    },
+    "avail": {
+      "raw": "10",
+      "value": 10,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "3",
+    "speed": 4,
+    "pilot": 3,
+    "body": 2,
+    "armor": 2,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "c8f7e6c0-85e6-4feb-9ef0-0aeca5fba76b",
+    "name": "Ares Duelist (Medium)",
+    "namePt": "Ares Duelist (Médio)",
+    "source": "SR5",
+    "page": 466,
+    "category": "Drones: Anthro",
+    "categoryPt": "Drones: Antro",
+    "cost": {
+      "raw": "4500",
+      "value": 4500
+    },
+    "avail": {
+      "raw": "5R",
+      "value": 5,
+      "restriction": "R"
+    },
+    "handling": "3",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 3,
+    "body": 4,
+    "armor": 4,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "9186a0a7-635f-4242-a0e8-238f48b17ca2",
+    "name": "GM-Nissan Doberman (Medium)",
+    "namePt": "GM-Nissan Doberman (Médio)",
+    "source": "SR5",
+    "page": 466,
+    "category": "Drones: Medium",
+    "categoryPt": "Drones: Médio",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "handling": "5",
+    "accel": "1",
+    "speed": 3,
+    "pilot": 3,
+    "body": 4,
+    "armor": 4,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "1291ab59-2483-42ca-b7a9-503b2c354cee",
+    "name": "MCT-Nissan Roto-drone (Medium)",
+    "namePt": "MCT-Nissan Roto-Drone (Médio)",
+    "source": "SR5",
+    "page": 466,
+    "category": "Drones: Medium",
+    "categoryPt": "Drones: Médio",
+    "cost": {
+      "raw": "5000",
+      "value": 5000
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "handling": "4",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 3,
+    "body": 4,
+    "armor": 4,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "6c6893fd-a69f-4346-885b-c6ae85679d35",
+    "name": "Cyberspace Designs Dalmatian (Large)",
+    "namePt": "Cyberspace Designs Dalmatian (Grande)",
+    "source": "SR5",
+    "page": 466,
+    "category": "Drones: Large",
+    "categoryPt": "Drones: Grande",
+    "cost": {
+      "raw": "10000",
+      "value": 10000
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "handling": "5",
+    "accel": "3",
+    "speed": 5,
+    "pilot": 3,
+    "body": 5,
+    "armor": 5,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "a8c39fd9-d219-4772-9f8e-49b1d0975733",
+    "name": "Steel Lynx Combat Drone (Large)",
+    "namePt": "Drone de Combate Steel Lynx (Grande)",
+    "source": "SR5",
+    "page": 466,
+    "category": "Drones: Large",
+    "categoryPt": "Drones: Grande",
+    "cost": {
+      "raw": "25000",
+      "value": 25000
+    },
+    "avail": {
+      "raw": "10R",
+      "value": 10,
+      "restriction": "R"
+    },
+    "handling": "5",
+    "accel": "2",
+    "speed": 4,
+    "pilot": 3,
+    "body": 6,
+    "armor": 12,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  },
+  {
+    "id": "53079aac-250a-4ec5-9f0d-b8fbc6368e46",
+    "name": "Ares Garuda",
+    "namePt": "Ares Garuda",
+    "source": "R5",
+    "page": 149,
+    "category": "Drones: Missile",
+    "categoryPt": "Drones: Projétil",
+    "cost": {
+      "raw": "8500",
+      "value": 8500
+    },
+    "avail": {
+      "raw": "20F",
+      "value": 20,
+      "restriction": "F"
+    },
+    "handling": "6",
+    "accel": "2/4",
+    "speed": 3,
+    "pilot": 4,
+    "body": 2,
+    "armor": 2,
+    "sensor": 3,
+    "seats": 0,
+    "drone": true
+  }
+]

@@ -6,6 +6,8 @@ import type { NewItemInput } from '@/lib/fichas/sr5/inventory';
 import { NotFoundError } from '@/lib/fichas/server/characters';
 import {
   addInventoryItem,
+  advanceGrade,
+  saveCareerChoices,
   addLedgerEntry,
   completeGoal,
   createGoal,
@@ -115,6 +117,14 @@ export async function moveGoalAction(id: string, goalId: string, direction: -1 |
 
 export async function completeGoalAction(id: string, goalId: string, pay: boolean) {
   return run(() => completeGoal(id, goalId, pay));
+}
+
+export async function advanceGradeAction(id: string, kind: unknown) {
+  return run(() => advanceGrade(id, kind));
+}
+
+export async function saveCareerChoicesAction(id: string, raw: unknown) {
+  return run(() => saveCareerChoices(id, raw));
 }
 
 export async function deleteGoalAction(id: string, goalId: string) {

@@ -3,7 +3,7 @@
  * É isso que vai para o localStorage e para o export JSON.
  * Tudo que dá para calcular a partir daqui fica no motor de regras.
  */
-import type { PriorityCategory, PriorityLetter, TalentKey } from './types';
+import type { PriorityCategory, PriorityLetter, PriorityTableKey, TalentKey } from './types';
 
 export const DRAFT_SCHEMA_VERSION = 1 as const;
 
@@ -94,8 +94,18 @@ export interface DraftContact {
   loyalty: number;
 }
 
-export type GearKind = 'gear' | 'weapon' | 'armor' | 'cyberware' | 'bioware';
+export type GearKind = 'gear' | 'weapon' | 'armor' | 'cyberware' | 'bioware' | 'vehicle' | 'program';
 export type WareGrade = 'standard' | 'alpha' | 'used';
+
+/** Acessório de arma, modificação de armadura ou de veículo/drone instalado num item. */
+export interface GearMod {
+  key: string;
+  kind: 'accessory' | 'armorMod' | 'vehicleMod';
+  itemId: string;
+  rating?: number;
+  /** Preço informado à mão, para modificações de custo variável. */
+  customCost?: number;
+}
 
 export interface DraftGear {
   key: string;
@@ -107,6 +117,58 @@ export interface DraftGear {
   grade?: WareGrade;
   /** Preço informado à mão, para itens de custo variável. */
   customCost?: number;
+  /** Modificações instaladas (armas, armaduras, veículos e drones). */
+  mods?: GearMod[];
+  /** Programa: `key` do cyberdeck onde ele está carregado. */
+  loadedIn?: string;
+  /** Foco vinculado ao personagem (custa karma). */
+  bonded?: boolean;
+}
+
+export interface DraftMartialArt {
+  id: string;
+  /** Nomes (originais) das técnicas aprendidas desse estilo. */
+  techniques: string[];
+}
+
+export interface DraftEnemy {
+  key: string;
+  name: string;
+  notes?: string;
+}
+
+/** Espírito ou sprite que o personagem conjurou/compilou. */
+export interface Companion {
+  key: string;
+  spiritId: string;
+  /** Força (espíritos) ou Nível (sprites). */
+  force: number;
+  services: number;
+  bound: boolean;
+  name?: string;
+}
+
+/** Evolução depois da criação: o que foi comprado com karma. */
+export interface Improvement {
+  key: string;
+  kind: 'attribute' | 'skill' | 'skillGroup' | 'specialization' | 'quality' | 'spell' | 'complexForm' | 'initiation' | 'submersion' | 'martialArt' | 'other';
+  /** Atributo, id de perícia, etc. */
+  ref?: string;
+  label: string;
+  from?: number;
+  to?: number;
+  karma: number;
+  at: string;
+}
+
+/** Dados que só existem com o personagem em jogo (guardados dentro da ficha). */
+export interface Career {
+  initiationGrade: number;
+  submersionGrade: number;
+  metamagicIds: string[];
+  echoIds: string[];
+  companions: Companion[];
+  improvements: Improvement[];
 }
 
 export interface DraftLifestyle {
@@ -132,6 +194,25 @@ export interface CharacterDraft {
   lifestyles: DraftLifestyle[];
   /** Karma trocado por nuyen (até 10, 2.000¥ cada). */
   karmaToNuyen: number;
+  /** Regras da casa: mudam as configurações de criação só desta ficha. */
+  options?: DraftOptions;
+  martialArts?: DraftMartialArt[];
+  enemies?: DraftEnemy[];
+  career?: Career;
+  /** Retrato pequeno (data URL), até ~60 KB. */
+  portrait?: string;
+}
+
+export interface DraftOptions {
+  priorityTable?: PriorityTableKey;
+  startingKarma?: number;
+  maxAvailability?: number;
+}
+
+export const MAX_PORTRAIT_LENGTH = 80_000;
+
+export function emptyCareer(): Career {
+  return { initiationGrade: 0, submersionGrade: 0, metamagicIds: [], echoIds: [], companions: [], improvements: [] };
 }
 
 const zero = (): Alloc => ({ points: 0, karma: 0 });
@@ -161,6 +242,10 @@ export function createEmptyDraft(): CharacterDraft {
     gear: [],
     lifestyles: [],
     karmaToNuyen: 0,
+    options: {},
+    martialArts: [],
+    enemies: [],
+    career: emptyCareer(),
   };
 }
 
@@ -177,6 +262,10 @@ export function normalizeDraft(raw: unknown): CharacterDraft {
     attributes: { ...empty.attributes, ...d.attributes },
     special: { ...empty.special, ...d.special },
     magic: { ...empty.magic, ...d.magic },
+    options: { ...d.options },
+    martialArts: d.martialArts ?? [],
+    enemies: d.enemies ?? [],
+    career: { ...emptyCareer(), ...d.career },
   };
 }
 

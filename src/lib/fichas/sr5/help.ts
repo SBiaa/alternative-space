@@ -368,6 +368,8 @@ export const GEAR_KIND_HELP: Record<string, Help> = {
   armor: { text: 'Roupas e coletes que reduzem o dano recebido.' },
   cyberware: { text: 'Implantes de máquina. Gastam Essência.' },
   bioware: { text: 'Implantes biológicos cultivados. Gastam Essência.' },
+  vehicle: { text: 'Carros, motos, barcos e drones. Cada modificação ocupa slots, e o limite é o Corpo do veículo.' },
+  program: { text: 'Programas de Matriz. Carregue no cyberdeck: ele roda só alguns ao mesmo tempo.' },
   gear: { text: 'Todo o resto: comlinks, munição, ferramentas, drogas, identidades falsas.' },
 };
 

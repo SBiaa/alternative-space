@@ -10,6 +10,8 @@ import { applyEssence, computeAttributes } from './attributes';
 import { checkContacts } from './contacts';
 import { addKarma, budget, createCtx, issue } from './context';
 import { computeDerived } from './derived';
+import { applyCareer } from './career';
+import { checkExtras } from './extras';
 import { checkMagic } from './magic';
 import { checkPriorities, metatypeAvailability, talentAvailability } from './priorities';
 import { checkQualities, collectQualities, qualityAvailability } from './qualities';
@@ -21,7 +23,7 @@ import { checkSkills, skillAvailability } from './skills';
 export * from './result';
 export { ATTR_LABEL } from './attributes';
 export { PRIORITY_LABEL } from './priorities';
-export { WARE_GRADES, NUYEN_CARRYOVER, fmtNuyen } from './resources';
+export { WARE_GRADES, NUYEN_CARRYOVER, fmtNuyen, findItem, modCatalog, modKindFor, modLine } from './resources';
 export { evalExpr } from './expr';
 
 const BUDGET_KEYS: BudgetKey[] = [
@@ -41,6 +43,8 @@ export function evaluate(draft: CharacterDraft, data: Sr5Data = sr5Data): RulesR
   checkSkills(ctx);
   checkMagic(ctx);
   checkContacts(ctx);
+  checkExtras(ctx);
+  applyCareer(ctx);
 
   // Karma: começa com o inicial, ganha com qualidades negativas, gasta com o resto.
   addKarma(ctx, 'metatipo', ctx.metatypeOption?.karmaCost ?? 0);

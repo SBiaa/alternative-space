@@ -9,6 +9,8 @@ import { evaluate } from '@/lib/fichas/sr5/rules';
 import { CharacterSheet } from '../steps/ReviewStep';
 import { Button, Card, cx } from '../ui';
 import { Balances } from './Balances';
+import { Career } from './Career';
+import { DiceRoller } from './DiceRoller';
 import { ConditionMonitor } from './ConditionMonitor';
 import { Goals } from './Goals';
 import { Inventory } from './Inventory';
@@ -16,11 +18,13 @@ import { Missions } from './Missions';
 import { NotesField } from './NotesField';
 import type { PlayEntry, PlayGoal, PlayItem, PlayMission } from './types';
 
-type Tab = 'play' | 'inventory' | 'goals' | 'missions' | 'sheet';
+type Tab = 'play' | 'dice' | 'inventory' | 'goals' | 'career' | 'missions' | 'sheet';
 const TABS: { key: Tab; label: string }[] = [
   { key: 'play', label: 'Jogo' },
+  { key: 'dice', label: 'Dados' },
   { key: 'inventory', label: 'Inventário' },
   { key: 'goals', label: 'Metas' },
+  { key: 'career', label: 'Carreira' },
   { key: 'missions', label: 'Missões' },
   { key: 'sheet', label: 'Ficha completa' },
 ];
@@ -111,7 +115,11 @@ export function PlayView({
           </div>
         )}
 
-        {tab === 'inventory' && <Inventory id={c.id} items={inventory} entries={entries} draft={c.draft} />}
+        {tab === 'dice' && <DiceRoller result={result} />}
+
+        {tab === 'career' && <Career id={c.id} draft={c.draft} result={result} entries={entries} />}
+
+        {tab === 'inventory' &&<Inventory id={c.id} items={inventory} entries={entries} draft={c.draft} />}
 
         {tab === 'goals' &&<Goals id={c.id} goals={goals} entries={entries} result={result} />}
 
@@ -126,7 +134,7 @@ export function PlayView({
               <Button onClick={download}>Exportar JSON</Button>
             </div>
             <p className="no-print text-xs text-faint">
-              Esta é a ficha como saiu da criação. Metas concluídas e gastos de karma ainda não mudam os atributos aqui.
+              Os atributos e perícias já incluem as metas concluídas e a iniciação.
             </p>
             <CharacterSheet draft={c.draft} result={result} showRemaining={false} />
           </div>

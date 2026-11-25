@@ -1,0 +1,604 @@
+[
+  {
+    "id": "9ee8e6ad-2472-485d-ae42-d1978749b456",
+    "name": "Electrochromic Clothing",
+    "namePt": "Roupa Eletrocrômica",
+    "source": "SR5",
+    "page": 437,
+    "category": "General",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "+2",
+      "value": 2,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "3fdd4706-9052-4c6b-8c2c-61dbb5c1f16f",
+    "name": "Feedback Clothing",
+    "namePt": "Roupa Tátil",
+    "source": "SR5",
+    "page": 437,
+    "category": "General",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "8",
+      "value": 8,
+      "restriction": null
+    },
+    "slots": 3,
+    "maxRating": 1
+  },
+  {
+    "id": "142031f9-ab13-4dd0-a5a4-2cc4d06055ea",
+    "name": "(Synth)Leather",
+    "namePt": "(Sinteti)Couro",
+    "source": "SR5",
+    "page": 437,
+    "category": "Clothing",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "480b7c5d-758b-4833-8bfd-9487e2455f7d",
+    "name": "Chemical Protection",
+    "namePt": "Proteção Química",
+    "source": "SR5",
+    "page": 437,
+    "category": "General",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 6
+  },
+  {
+    "id": "1e002d2e-cd93-4cef-a666-b6c6449f4e9f",
+    "name": "Chemical Seal",
+    "namePt": "Vedação Química",
+    "source": "SR5",
+    "page": 437,
+    "category": "General",
+    "cost": {
+      "raw": "3000",
+      "value": 3000
+    },
+    "avail": {
+      "raw": "12R",
+      "value": 12,
+      "restriction": "R"
+    },
+    "slots": 6,
+    "maxRating": 1
+  },
+  {
+    "id": "dd246520-7306-40fb-88b4-c9cb031208fc",
+    "name": "Fire Resistance",
+    "namePt": "Resistente ao Fogo",
+    "source": "SR5",
+    "page": 437,
+    "category": "General",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 6
+  },
+  {
+    "id": "497b5d6b-df0c-401d-91de-42a224b1fa87",
+    "name": "Insulation",
+    "namePt": "Isolamento",
+    "source": "SR5",
+    "page": 437,
+    "category": "General",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 6
+  },
+  {
+    "id": "0cfb049a-a1bd-4daa-96be-9468c37d9c3c",
+    "name": "Nonconductivity",
+    "namePt": "Não Condutividade",
+    "source": "SR5",
+    "page": 438,
+    "category": "General",
+    "cost": {
+      "raw": "Rating * 250",
+      "value": null
+    },
+    "avail": {
+      "raw": "6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 6
+  },
+  {
+    "id": "ba32a6e9-4e6f-47fe-8fd7-c3194a5174d6",
+    "name": "Thermal Damping",
+    "namePt": "Abafamento Térmico",
+    "source": "SR5",
+    "page": 438,
+    "category": "General",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "10R",
+      "value": 10,
+      "restriction": "R"
+    },
+    "slots": 0,
+    "maxRating": 6
+  },
+  {
+    "id": "71c20b15-de11-49eb-93fe-f4d7491283e3",
+    "name": "Full Body Armor: Helmet",
+    "namePt": "Armadura Corporal Completa: Capacete Completo",
+    "source": "SR5",
+    "page": 437,
+    "category": "General",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "69423033-a7f8-4b80-96c6-0c4a91cd32aa",
+    "name": "Full Body Armor: Chemical Seal",
+    "namePt": "Armadura Corporal Completa: Vedação Química",
+    "source": "SR5",
+    "page": 437,
+    "category": "Full Body Armor Mods",
+    "cost": {
+      "raw": "6000",
+      "value": 6000
+    },
+    "avail": {
+      "raw": "+6",
+      "value": 6,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "ab16b276-00b3-402e-8629-b38e2905e12f",
+    "name": "Full Body Armor: Environment Adaptation",
+    "namePt": "Armadura Corpora Completa: Adaptação Ambiental",
+    "source": "SR5",
+    "page": 437,
+    "category": "Full Body Armor Mods",
+    "cost": {
+      "raw": "1000",
+      "value": 1000
+    },
+    "avail": {
+      "raw": "+3",
+      "value": 3,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "812a7926-3980-4c26-9935-5f1b66abacda",
+    "name": "Urban Explorer Jumpsuit: Helmet",
+    "namePt": "Macacão do Explorador Urbano: Capacete",
+    "source": "SR5",
+    "page": 437,
+    "category": "Urban Explorer Jumpsuit Accessories",
+    "cost": {
+      "raw": "100",
+      "value": 100
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "dbdaf817-9bfa-4938-a195-b53c63b53e7c",
+    "name": "Shock Frills",
+    "namePt": "Pelagem de Choque",
+    "source": "SR5",
+    "page": 438,
+    "category": "General",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 2,
+    "maxRating": 1
+  },
+  {
+    "id": "84c3dbd2-6d47-4045-a5d6-7dc926b3ff42",
+    "name": "Liner - Fire Resistance (6)",
+    "namePt": "Revestimento - Resistente ao Fogo (6)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 6)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "0cbf733c-1fd0-48ae-be2c-b3afe0036fd0",
+    "name": "Liner - Chemical Protection (6)",
+    "namePt": "Revestimento - Proteção Química (6)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 6)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "af3208a9-05b5-47bb-92a1-f3d2ea82f6f0",
+    "name": "Liner - Insulation (6)",
+    "namePt": "Revestimento - Isolamento (6)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 6)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "a2d20826-cc8f-4cb7-84b9-70aee5daae71",
+    "name": "Liner - Fire Resistance (5)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 5)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "995423dc-2fb4-405c-943f-261e6f52df15",
+    "name": "Liner - Chemical Protection (5)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 5)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "53669b97-36a8-4c54-b894-76c507933be9",
+    "name": "Liner - Insulation (5)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 5)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "b3965c7d-3e19-4aad-9dc0-1ec5b62daea5",
+    "name": "Liner - Fire Resistance (4)",
+    "namePt": "Revestimento - Resistente ao Fogo (4)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 4)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "ca385470-fdfb-4ac2-bb4d-f88de768541b",
+    "name": "Liner - Chemical Protection (4)",
+    "namePt": "Revestimento - Proteção Química (4)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 4)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "a0043353-1825-42cb-94b2-ddf35b3089b5",
+    "name": "Liner - Insulation (4)",
+    "namePt": "Revestimento - Isolamento (4)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 4)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "f22cd9de-78ce-4ec1-9485-932c47638f52",
+    "name": "Liner - Fire Resistance (3)",
+    "namePt": "Revestimento - Resistente ao Fogo (3)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 3)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "ba6e7ab8-9e19-41ea-b124-bad6c8d1a515",
+    "name": "Liner - Chemical Protection (3)",
+    "namePt": "Revestimento - Proteção Química (3)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 3)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "cee9f035-3668-4736-b0f2-7607d7156995",
+    "name": "Liner - Insulation (3)",
+    "namePt": "Revestimento - Isolamento (3)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 3)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "8a119129-4c6f-40ab-9832-a61295ee715f",
+    "name": "Liner - Fire Resistance (2)",
+    "namePt": "Revestimento - Resistente ao Fogo (2)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 2)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "fed9e56c-c1b8-4c68-a16a-4bceb011bc62",
+    "name": "Liner - Chemical Protection (2)",
+    "namePt": "Revestimento - Proteção Química (2)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 2)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "1bff09e4-ea20-4705-ac7b-5bea4a03d925",
+    "name": "Liner - Insulation (2)",
+    "namePt": "Revestimento - Isolamento (2)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 2)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "825652da-5c82-4362-b84e-9fee4c5c6fe1",
+    "name": "Liner - Fire Resistance (1)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 1)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "38942921-ff61-4cdc-937e-3afc951dfcc8",
+    "name": "Liner - Chemical Protection (1)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 1)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  },
+  {
+    "id": "2cd3a1ed-e44e-4e62-a1d8-9d7271e97575",
+    "name": "Liner - Insulation (1)",
+    "source": "SR5",
+    "page": 437,
+    "category": "Custom Liners (Rating 1)",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "maxRating": 1
+  }
+]
