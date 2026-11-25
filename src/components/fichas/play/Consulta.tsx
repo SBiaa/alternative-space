@@ -15,8 +15,18 @@ import type { PlayItem } from './types';
 const ATTRS: AttrKey[] = ['BOD', 'AGI', 'REA', 'STR', 'CHA', 'INT', 'LOG', 'WIL', 'EDG', 'MAG', 'RES'];
 
 /** Seção recolhível. Fica aberta se tem coisa e some quando a busca não acha nada nela. */
-function Section({ title, count, children, defaultOpen = true }: { title: string; count?: number; children: ReactNode; defaultOpen?: boolean }) {
-  if (count === 0) return null;
+const VIEWS = [
+  { key: 'resumo', label: 'Resumo' },
+  { key: 'pericias', label: 'Perícias' },
+  { key: 'combate', label: 'Combate' },
+  { key: 'magia', label: 'Magia e Matrix' },
+  { key: 'pessoas', label: 'Pessoas' },
+  { key: 'equip', label: 'Equipamento' },
+] as const;
+type View = (typeof VIEWS)[number]['key'];
+
+function Section({ title, count, children, defaultOpen = true, v, cur }: { title: string; count?: number; children: ReactNode; defaultOpen?: boolean; v: View; cur: View | 'all' }) {
+  if (count === 0 || (cur !== 'all' && cur !== v)) return null;
   return (
     <details open={defaultOpen} className="group rounded-xl border border-line bg-surface">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-4 py-3 font-display text-base font-semibold">
@@ -69,6 +79,9 @@ export function Consulta({
 }) {
   const [q, setQ] = useState('');
   const [edge, setEdge] = useState(false);
+  const [view, setView] = useState<View>('resumo');
+  /** Com busca, mostra tudo; sem busca, só o grupo escolhido. */
+  const cur: View | 'all' = q ? 'all' : view;
   const [rolls, setRolls] = useState<Record<string, PoolRoll>>({});
   const limits = conditionLimits(result);
   const wound = woundModifier(physical, stun, limits);
@@ -193,59 +206,95 @@ export function Consulta({
           <Stat name="Defesa" value={defense} />
           <Stat name="Resist. dano" value={soak} />
         </div>
+        <div className="flex flex-wrap gap-2" aria-label="Limites">
+          <Stat name="Limite físico" value={d.limits.physical} />
+          <Stat name="Limite mental" value={d.limits.mental} />
+          <Stat name="Limite social" value={d.limits.social} />
+        </div>
         <div className="flex flex-wrap items-center gap-3">
           <div className="min-w-48 flex-1"><SearchInput value={q} onChange={setQ} placeholder="Buscar perícia, arma, magia, contato…" /></div>
           <label className="flex items-center gap-2 text-xs text-muted">
             <input type="checkbox" checked={edge} onChange={(e) => setEdge(e.target.checked)} /> Regra do Seis
           </label>
         </div>
+        <nav className="flex gap-1 overflow-x-auto [scrollbar-width:none]" role="tablist" aria-label="Grupos da consulta">
+          {VIEWS.map((x) => (
+            <button key={x.key} type="button" role="tab" aria-selected={!q && view === x.key} onClick={() => { setQ(''); setView(x.key); }}
+              className={cx('shrink-0 whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition',
+                !q && view === x.key ? 'bg-accent text-accent-ink' : 'text-muted hover:text-ink')}>
+              {x.label}
+            </button>
+          ))}
+        </nav>
       </div>
 
-      <Section title="Atributos" defaultOpen>
+      <Section v="resumo" cur={cur} title="Atributos" defaultOpen>
         <div className="grid grid-cols-4 gap-2 py-1 sm:grid-cols-6 lg:grid-cols-12">
           {ATTRS.filter((k) => k !== 'MAG' && k !== 'RES' ? true : a[k].value > 0).map((k) => (
             <Stat key={k} name={ATTR_LABEL[k]} value={a[k].value} />
           ))}
           <Stat name="Essência" value={d.essence.toFixed(2).replace(/\.?0+$/, '')} />
         </div>
-        <p className="py-1 text-xs text-muted">
-          Limites: Físico {d.limits.physical} · Mental {d.limits.mental} · Social {d.limits.social}
-          {d.astralInitiative && ` · Astral ${d.astralInitiative.base}+${d.astralInitiative.dice}d6`}
-          {d.drainResist !== undefined && ` · Resistir a dreno ${d.drainResist}`}
-          {' '}· Compostura {d.composure} · Julgar intenções {d.judgeIntentions} · Memória {d.memory} · Levantar/carregar {d.liftCarry}
-        </p>
-        <p className="py-1 text-xs text-muted">
-          Monitor: {d.monitors.physical} físico · {d.monitors.stun} atordoamento · {d.monitors.overflow} excedente · −1 a cada {d.monitors.woundThreshold} caixas
-          {d.matrixInitiative && ` · Matrix RA ${d.matrixInitiative.ar.base}+${d.matrixInitiative.ar.dice}d6 · RV fria ${d.matrixInitiative.coldSim.base}+${d.matrixInitiative.coldSim.dice}d6 · RV quente ${d.matrixInitiative.hotSim.base}+${d.matrixInitiative.hotSim.dice}d6`}
-          {d.essenceMagicLoss > 0 && ` · Essência custou ${d.essenceMagicLoss} de Magia/Ressonância`}
-          {tradition && ` · Tradição ${label(tradition)}`}{mentor && ` · Mentor ${label(mentor)}`}
-          {career && career.initiationGrade > 0 && ` · Iniciação ${career.initiationGrade}`}
-          {career && career.submersionGrade > 0 && ` · Submersão ${career.submersionGrade}`}
-        </p>
+        <dl className="grid gap-x-6 sm:grid-cols-2">
+          {([
+            ['Iniciativa', `${d.initiative.base} + ${d.initiative.dice}d6`],
+            d.astralInitiative && ['Iniciativa astral', `${d.astralInitiative.base} + ${d.astralInitiative.dice}d6`],
+            d.matrixInitiative && ['Matrix (RA)', `${d.matrixInitiative.ar.base} + ${d.matrixInitiative.ar.dice}d6`],
+            d.matrixInitiative && ['Matrix (RV fria)', `${d.matrixInitiative.coldSim.base} + ${d.matrixInitiative.coldSim.dice}d6`],
+            d.matrixInitiative && ['Matrix (RV quente)', `${d.matrixInitiative.hotSim.base} + ${d.matrixInitiative.hotSim.dice}d6`],
+            d.drainResist !== undefined && ['Resistir a dreno', d.drainResist],
+            ['Compostura', d.composure],
+            ['Julgar intenções', d.judgeIntentions],
+            ['Memória', d.memory],
+            ['Levantar/carregar', d.liftCarry],
+            ['Monitor físico', d.monitors.physical],
+            ['Monitor atordoamento', d.monitors.stun],
+            ['Excedente', d.monitors.overflow],
+            ['−1 a cada', `${d.monitors.woundThreshold} caixas`],
+            d.essenceMagicLoss > 0 && ['Magia/Ressonância perdida', d.essenceMagicLoss],
+            tradition && ['Tradição', label(tradition)],
+            mentor && ['Mentor', label(mentor)],
+            career && career.initiationGrade > 0 && ['Iniciação', career.initiationGrade],
+            career && career.submersionGrade > 0 && ['Submersão', career.submersionGrade],
+          ] as const).flatMap((r) => (r ? [r] : [])).map(([k, v]) => (
+            <div key={k} className="flex items-baseline justify-between gap-3 border-b border-line py-1.5 text-sm">
+              <dt className="text-muted">{k}</dt>
+              <dd className="font-mono">{v}</dd>
+            </div>
+          ))}
+        </dl>
       </Section>
 
-      <Section title="Perícias" count={skills.length}>
-        <ul className="divide-y divide-line">
+      <Section v="pericias" cur={cur} title="Perícias" count={skills.length}>
+        <ul className="grid gap-2 py-2 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map(({ s, rating, spec, pool, attr }) => (
-            <Line
-              key={s.id}
-              title={<>{label(s)}{spec && <span className="text-xs text-muted"> ({spec})</span>}</>}
-              sub={`${ATTR_LABEL[s.attribute]} ${attr} + ${rating}${wound ? ` ${wound}` : ''}${spec ? ` · +2 na especialização` : ''}`}
-              right={
-                <span className="flex items-center gap-2">
-                  {rollLabel(s.id)}
-                  <button type="button" onClick={() => roll(s.id, pool)} aria-label={`Rolar ${label(s)}`}
-                    className="rounded-md border border-line px-2.5 py-1 font-mono text-sm transition hover:border-accent hover:text-accent">
-                    {Math.max(0, pool + wound)} 🎲
+            <li key={s.id} className="flex flex-col gap-2 rounded-lg border border-line p-3">
+              <div className="flex items-start justify-between gap-2">
+                <div className="min-w-0">
+                  <div className="font-medium leading-tight">{label(s)}</div>
+                  <div className="text-xs text-muted">{ATTR_LABEL[s.attribute]} {attr} + {rating}{wound ? ` ${wound}` : ''}</div>
+                </div>
+                <div className="font-mono text-2xl leading-none text-accent">{Math.max(0, pool + wound)}</div>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <button type="button" onClick={() => roll(s.id, pool)} aria-label={`Rolar ${label(s)}`}
+                  className="min-h-9 rounded-md border border-line px-3 py-1 text-sm transition hover:border-accent hover:text-accent">
+                  Rolar 🎲
+                </button>
+                {spec && (
+                  <button type="button" onClick={() => roll(s.id + ':spec', pool + 2)} aria-label={`Rolar ${label(s)} com especialização`}
+                    className="min-h-9 rounded-md border border-line px-3 py-1 text-sm transition hover:border-accent hover:text-accent">
+                    {spec} {Math.max(0, pool + 2 + wound)} 🎲
                   </button>
-                </span>
-              }
-            />
+                )}
+                {rollLabel(s.id)}{spec && rollLabel(s.id + ':spec')}
+              </div>
+            </li>
           ))}
         </ul>
       </Section>
 
-      <Section title="Armas" count={weapons.length}>
+      <Section v="combate" cur={cur} title="Armas" count={weapons.length}>
         <ul className="divide-y divide-line">
           {weapons.map((w) => (
             <Line key={w.itemId ?? w.name + w.qty} title={<>{w.name}{w.equipped && <span className="ml-2 rounded bg-accent/15 px-1.5 py-0.5 text-[10px] text-accent">em mãos</span>}</>}
@@ -254,7 +303,7 @@ export function Consulta({
         </ul>
       </Section>
 
-      <Section title="Armaduras" count={armors.length}>
+      <Section v="combate" cur={cur} title="Armaduras" count={armors.length}>
         <ul className="divide-y divide-line">
           {armors.map((w) => (
             <Line key={w.itemId ?? w.name} title={<>{w.name}{w.equipped && <span className="ml-2 rounded bg-accent/15 px-1.5 py-0.5 text-[10px] text-accent">vestindo</span>}</>}
@@ -263,7 +312,7 @@ export function Consulta({
         </ul>
       </Section>
 
-      <Section title="Magias" count={spells.length}>
+      <Section v="magia" cur={cur} title="Magias" count={spells.length}>
         <ul className="divide-y divide-line">
           {spells.map((s) => (
             <Line key={s.id} title={label(s)} sub={`${s.categoryPt ?? s.category} · ${s.type} · alcance ${s.range} · ${s.duration}${s.damage && s.damage !== 'N' ? ` · dano ${s.damage}` : ''}`} right={<span className="font-mono text-xs">dreno {s.dv}</span>} />
@@ -271,19 +320,19 @@ export function Consulta({
         </ul>
       </Section>
 
-      <Section title="Poderes de adepto" count={powers.length}>
+      <Section v="magia" cur={cur} title="Poderes de adepto" count={powers.length}>
         <ul className="divide-y divide-line">
           {powers.map(({ p, x }) => <Line key={p.id} title={`${label(x)}${x.levels ? ` ${p.level}` : ''}`} sub={x.action ? `Ação: ${x.action}` : undefined} />)}
         </ul>
       </Section>
 
-      <Section title="Formas complexas" count={forms.length}>
+      <Section v="magia" cur={cur} title="Formas complexas" count={forms.length}>
         <ul className="divide-y divide-line">
           {forms.map((s) => <Line key={s.id} title={label(s)} sub={`Alvo ${s.target} · ${s.duration}`} right={<span className="font-mono text-xs">FV {s.fv}</span>} />)}
         </ul>
       </Section>
 
-      <Section title="Cyberdecks" count={decks.length}>
+      <Section v="magia" cur={cur} title="Cyberdecks" count={decks.length}>
         <ul className="divide-y divide-line">
           {decks.map(({ g, it }) => {
             const loaded = draft.gear.filter((p) => p.kind === 'program' && p.loadedIn === g.key)
@@ -297,7 +346,7 @@ export function Consulta({
         </ul>
       </Section>
 
-      <Section title="Veículos e drones" count={vehicles.length}>
+      <Section v="equip" cur={cur} title="Veículos e drones" count={vehicles.length}>
         <ul className="divide-y divide-line">
           {vehicles.map(({ g, v }) => (
             <Line key={g.key} title={label(v)}
@@ -307,26 +356,26 @@ export function Consulta({
         </ul>
       </Section>
 
-      <Section title="Implantes" count={implants.length}>
+      <Section v="combate" cur={cur} title="Implantes" count={implants.length}>
         <ul className="divide-y divide-line">
           {implants.map(({ g, it }) => <Line key={g.key} title={`${label(it)}${g.rating ? ` ${g.rating}` : ''}`} sub={g.grade && g.grade !== 'standard' ? g.grade : undefined} />)}
         </ul>
       </Section>
 
-      <Section title="Artes marciais" count={martial.length}>
+      <Section v="combate" cur={cur} title="Artes marciais" count={martial.length}>
         <ul className="divide-y divide-line">
           {martial.map(({ m, x }) => <Line key={x.id} title={label(x)} sub={m.techniques.join(' · ') || undefined} />)}
         </ul>
       </Section>
 
-      <Section title="Metamagias e ecos" count={metamagics.length + echoes.length}>
+      <Section v="magia" cur={cur} title="Metamagias e ecos" count={metamagics.length + echoes.length}>
         <ul className="divide-y divide-line">
           {metamagics.map((m) => <Line key={m.id} title={label(m)} />)}
           {echoes.map((m) => <Line key={m.id} title={label(m)} />)}
         </ul>
       </Section>
 
-      <Section title="Espíritos e sprites" count={companions.length}>
+      <Section v="magia" cur={cur} title="Espíritos e sprites" count={companions.length}>
         <ul className="divide-y divide-line">
           {companions.map(({ c, x }) => {
             const stats = (['BOD', 'AGI', 'REA', 'STR', 'CHA', 'INT', 'LOG', 'WIL', 'EDG', 'MAG', 'RES'] as const)
@@ -342,7 +391,7 @@ export function Consulta({
         </ul>
       </Section>
 
-      <Section title="Conhecimentos e idiomas" count={knowledge.length}>
+      <Section v="pericias" cur={cur} title="Conhecimentos e idiomas" count={knowledge.length}>
         <ul className="divide-y divide-line">
           {knowledge.map((k) => (
             <Line key={k.key} title={<>{k.name}{k.specialization && <span className="text-xs text-muted"> ({k.specialization.name})</span>}</>}
@@ -352,19 +401,36 @@ export function Consulta({
         </ul>
       </Section>
 
-      <Section title="Estilo de vida" count={lifestyles.length}>
+      <Section v="pessoas" cur={cur} title="Contatos" count={contacts.length}>
+        <ul className="grid gap-2 py-2 sm:grid-cols-2 lg:grid-cols-3">
+          {contacts.map((c) => (
+            <li key={c.key} className="flex items-center justify-between gap-3 rounded-lg border border-line p-3">
+              <div className="min-w-0">
+                <div className="font-medium leading-tight">{c.name || '(sem nome)'}</div>
+                <div className="text-xs text-muted">{sr5Data.contacts.find((x) => x.id === c.archetypeId)?.name ?? 'Contato'}</div>
+              </div>
+              <div className="flex shrink-0 gap-2 text-center">
+                <div title="Conexão"><div className="text-[10px] uppercase tracking-wider text-faint">Conexão</div><div className="font-mono text-lg leading-tight">{c.connection}</div></div>
+                <div title="Lealdade"><div className="text-[10px] uppercase tracking-wider text-faint">Lealdade</div><div className="font-mono text-lg leading-tight">{c.loyalty}</div></div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section v="pessoas" cur={cur} title="Estilo de vida" count={lifestyles.length}>
         <ul className="divide-y divide-line">
           {lifestyles.map(({ l, x }) => <Line key={l.id} title={label(x)} sub={`${l.months} ${l.months === 1 ? 'mês' : 'meses'} pagos`} right={<span className="font-mono text-xs">{x.cost.toLocaleString('pt-BR')}¥/mês</span>} />)}
         </ul>
       </Section>
 
-      <Section title="Inimigos" count={enemies.length}>
+      <Section v="pessoas" cur={cur} title="Inimigos" count={enemies.length}>
         <ul className="divide-y divide-line">
           {enemies.map((e) => <Line key={e.key} title={e.name} sub={e.notes} />)}
         </ul>
       </Section>
 
-      <Section title="Qualidades" count={quals.length}>
+      <Section v="resumo" cur={cur} title="Qualidades" count={quals.length}>
         <ul className="divide-y divide-line">
           {quals.map(({ qq, x }) => (
             <Line key={qq.id + (qq.choice ?? '')} title={`${label(x)}${qq.rating > 1 ? ` ${qq.rating}` : ''}`} sub={qq.choice || undefined}
@@ -373,16 +439,7 @@ export function Consulta({
         </ul>
       </Section>
 
-      <Section title="Contatos" count={contacts.length}>
-        <ul className="divide-y divide-line">
-          {contacts.map((c) => (
-            <Line key={c.key} title={c.name || '(sem nome)'} sub={sr5Data.contacts.find((x) => x.id === c.archetypeId)?.name}
-              right={<span className="font-mono text-xs">C{c.connection} / L{c.loyalty}</span>} />
-          ))}
-        </ul>
-      </Section>
-
-      <Section title="Equipamento" count={gear.length} defaultOpen={false}>
+      <Section v="equip" cur={cur} title="Equipamento" count={gear.length}>
         <ul className="divide-y divide-line">
           {gear.map((g, i) => (
             <Line key={(g.itemId ?? g.name) + i} title={g.rating ? `${g.name} ${g.rating}` : g.name}
