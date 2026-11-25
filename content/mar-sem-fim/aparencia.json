@@ -1,0 +1,54 @@
+{
+  "silhuetas": [
+    { "id": "esguio", "nome": "Esguio" },
+    { "id": "robusto", "nome": "Robusto" },
+    { "id": "baixinho", "nome": "Baixinho" }
+  ],
+  "cores": [
+    { "id": "areia", "nome": "Areia", "valor": "#e3c9a0" },
+    { "id": "cobre", "nome": "Cobre", "valor": "#b9784f" },
+    { "id": "cacau", "nome": "Cacau", "valor": "#7a4a30" },
+    { "id": "ebano", "nome": "Ébano", "valor": "#3d2a22" },
+    { "id": "maresia", "nome": "Maresia", "valor": "#a8c4c8" },
+    { "id": "ferrugem", "nome": "Ferrugem", "valor": "#c8643c" }
+  ],
+  "chapeus": [
+    { "id": "nenhum", "nome": "Nenhum" },
+    { "id": "tricornio", "nome": "Tricórnio" },
+    { "id": "bandana", "nome": "Bandana" },
+    { "id": "palha", "nome": "Chapéu de palha" },
+    { "id": "gorro", "nome": "Gorro de lã" }
+  ],
+  "cicatrizes": [
+    { "id": "nenhuma", "nome": "Nenhuma" },
+    { "id": "olho", "nome": "Risco no olho" },
+    { "id": "bochecha", "nome": "Corte na bochecha" },
+    { "id": "tapa", "nome": "Tapa-olho" }
+  ],
+  "bandeira": {
+    "fundos": [
+      { "id": "liso", "nome": "Liso" },
+      { "id": "listras", "nome": "Listras" },
+      { "id": "diagonal", "nome": "Diagonal" },
+      { "id": "metade", "nome": "Metade" }
+    ],
+    "formas": [
+      { "id": "ancora", "nome": "Âncora" },
+      { "id": "estrela", "nome": "Estrela" },
+      { "id": "onda", "nome": "Onda" },
+      { "id": "lua", "nome": "Lua" },
+      { "id": "chave", "nome": "Chave" },
+      { "id": "vela", "nome": "Vela" }
+    ],
+    "cores": [
+      { "id": "creme", "nome": "Creme", "valor": "#ece3be" },
+      { "id": "laranja", "nome": "Laranja", "valor": "#dd5d05" },
+      { "id": "azul", "nome": "Azul", "valor": "#093f7a" },
+      { "id": "vermelho", "nome": "Vermelho", "valor": "#ab392f" },
+      { "id": "noite", "nome": "Noite", "valor": "#01121e" },
+      { "id": "musgo", "nome": "Musgo", "valor": "#3f7a52" }
+    ]
+  },
+  "nome": { "min": 2, "max": 24 },
+  "barco": { "min": 2, "max": 28 }
+}

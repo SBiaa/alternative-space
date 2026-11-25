@@ -1,0 +1,279 @@
+{
+  "slug": "mercado-das-lanternas",
+  "titulo": "O Mercado das Lanternas",
+  "tema": "fantasia",
+  "resumo": "Na noite do festival, a lanterna que acende a cidade sumiu da torre. Descubra quem levou, e por quê, antes da meia-noite.",
+  "duracaoMin": 18,
+  "classificacao": "Livre / 10+",
+  "inicio": "chegada",
+  "finalFolego": "final-folego",
+  "itens": [
+    { "id": "gota-de-cera", "nome": "Gota de cera azul", "descricao": "Ainda morna. Cheira a vela de aniversário." },
+    { "id": "chave-de-latao", "nome": "Chave de latão", "descricao": "Pequena, gasta, com um laço de fita vermelha." },
+    { "id": "fita-de-vagalume", "nome": "Fita de vagalume", "descricao": "Uma fita costurada com pontinhos de luz que piscam devagar." }
+  ],
+  "marcas": [
+    { "id": "ouvidos-do-mercado", "nome": "Ouvidos do mercado", "descricao": "As barracas contam as novidades pra você primeiro." },
+    { "id": "bilhete-da-nina", "nome": "Bilhete da Nina", "descricao": "Você sabe o segredo de uma menina corajosa." },
+    { "id": "ouvido-dos-sinos", "nome": "Ouvido dos sinos", "descricao": "Você aprendeu a reconhecer cada sino da escadaria." },
+    { "id": "amiga-da-nina", "nome": "Amiga da Nina", "descricao": "Uma menina e uma avó que sempre guardam um lugar pra você na janela." }
+  ],
+  "cenas": [
+    {
+      "id": "chegada",
+      "texto": "Você chega ao Mercado das Lanternas quando o céu já está cor de tangerina. Há barracas de chá, de pão doce, de papel colorido. Em volta, todo mundo fala baixinho e olha pro alto da torre do relógio.\n\nÉ lá que deveria estar a **Lanterna-Mãe**, a grande luz que acende todas as outras no começo do festival. O berço dela, no alto da torre, está vazio. A capitã da guarda, de braços cruzados, vira pra você: *“Disseram que você sabe achar coisas. Tem até a meia-noite.”*",
+      "opcoes": [
+        {
+          "id": "perguntar",
+          "texto": "Perguntar nas barracas se alguém viu alguma coisa",
+          "teste": { "atributo": "labia", "dificuldade": 7, "talentos": ["charmoso", "blefe", "contador"] },
+          "efeitos": {
+            "sucesso": { "marcas": ["ouvidos-do-mercado"] },
+            "custo": { "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "barracas"
+        },
+        {
+          "id": "examinar-torre",
+          "texto": "Examinar o chão ao pé da torre",
+          "teste": { "atributo": "mente", "dificuldade": 7, "talentos": ["observador", "memoria"] },
+          "efeitos": {
+            "sucesso": { "itens": ["gota-de-cera"] },
+            "custo": { "itens": ["gota-de-cera"], "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "torre"
+        },
+        {
+          "id": "seguir-gato",
+          "texto": "Seguir o gato malhado que desce correndo pelo beco",
+          "proxima": "beco"
+        }
+      ]
+    },
+    {
+      "id": "barracas",
+      "texto": "A senhora do chá limpa as mãos no avental e baixa a voz. Ela viu, sim: uma figura pequena, com um embrulho grande coberto por um cobertor xadrez, subindo apressada pelo lado da **Escadaria dos Sinos**.\n\n*“Parecia assustada. E parecia carregar uma coisa que brilhava por baixo do pano.”* Do outro lado da praça, o gato malhado também parece saber de alguma coisa.",
+      "opcoes": [
+        {
+          "id": "ir-escadaria",
+          "texto": "Ir direto pra Escadaria dos Sinos, o mais rápido que der",
+          "teste": { "atributo": "corpo", "dificuldade": 6, "talentos": ["corredor", "resistente", "escalar"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -2 }
+          },
+          "proxima": "escadaria"
+        },
+        {
+          "id": "ir-beco",
+          "texto": "Cortar caminho pelo beco dos gatos",
+          "proxima": "beco"
+        }
+      ]
+    },
+    {
+      "id": "torre",
+      "texto": "Ao pé da torre, entre as folhas secas, há pingos de cera azul que formam um caminho torto. Quem passou por aqui andava com pressa, e com as duas mãos ocupadas.\n\nOs pingos dão a volta e somem diante de uma porta de serviço, baixa, trancada. Ao lado, um vaso de flores murchas parece ter sido mexido há pouco.",
+      "opcoes": [
+        {
+          "id": "chave-vaso",
+          "texto": "Procurar uma chave escondida embaixo do vaso",
+          "teste": { "atributo": "mente", "dificuldade": 6, "talentos": ["observador", "improviso"] },
+          "efeitos": {
+            "sucesso": { "itens": ["chave-de-latao"] },
+            "custo": { "itens": ["chave-de-latao"], "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "porta-da-torre"
+        },
+        {
+          "id": "seguir-gotas",
+          "texto": "Deixar a porta pra lá e seguir os pingos de cera que descem pelo outro lado",
+          "proxima": "escadaria"
+        }
+      ]
+    },
+    {
+      "id": "beco",
+      "texto": "O gato malhado anda na frente, olhando pra trás de vez em quando, como quem confere se você vem junto. O beco é estreito e cheio de varais com lanternas apagadas, esperando a noite.\n\nNo fim dele, uma janela de vitrine acesa mostra engrenagens, ponteiros e molas: é a oficina de relógios. O gato senta na soleira e espera.",
+      "opcoes": [
+        {
+          "id": "entrar-oficina",
+          "texto": "Entrar na oficina de relógios",
+          "proxima": "oficina"
+        },
+        {
+          "id": "voltar-praca",
+          "texto": "Voltar pra praça e pensar melhor",
+          "proxima": "chegada"
+        }
+      ]
+    },
+    {
+      "id": "porta-da-torre",
+      "texto": "A porta de serviço é baixa e velha. Por baixo dela escapa um cheiro de óleo de relógio e de vela apagada. Quem entrou aqui sabia o caminho.",
+      "opcoes": [
+        {
+          "id": "abrir-chave",
+          "texto": "Abrir a porta com a chave de latão",
+          "requisito": { "item": "chave-de-latao" },
+          "proxima": "torre-alto"
+        },
+        {
+          "id": "forcar",
+          "texto": "Mexer na fechadura com um grampo até ela ceder",
+          "teste": { "atributo": "mente", "dificuldade": 8, "talentos": ["mecanico", "improviso"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -2 }
+          },
+          "proxima": "torre-alto"
+        },
+        {
+          "id": "desistir-porta",
+          "texto": "Deixar a porta e ir pela Escadaria dos Sinos",
+          "proxima": "escadaria"
+        }
+      ]
+    },
+    {
+      "id": "torre-alto",
+      "texto": "Lá em cima, o berço da Lanterna-Mãe é um círculo de ferro vazio, limpo de poeira. Num cantinho, preso com uma pedrinha, tem um bilhete escrito com letra de criança:\n\n*“Vou devolver antes da meia-noite. Prometo. Só preciso mostrar pra vovó. — Nina”*\n\nPor uma janelinha, você vê a Escadaria dos Sinos descendo a colina até um telhado com uma luz acesa na janela.",
+      "opcoes": [
+        {
+          "id": "guardar-bilhete",
+          "texto": "Guardar o bilhete e descer pela escadaria",
+          "efeitos": { "sucesso": { "marcas": ["bilhete-da-nina"] } },
+          "proxima": "escadaria"
+        }
+      ]
+    },
+    {
+      "id": "oficina",
+      "texto": "Seu Tobias, o relojoeiro, tem óculos na testa e outro par no nariz. Quando você explica, ele tira um e esfrega os olhos. *“A Nina. Minha aprendiz. Ela me perguntou ontem quanto pesava a Lanterna-Mãe.”*\n\nEle não parece bravo, só preocupado. Mexe numa gaveta e te estende uma fita costurada com pontinhos de luz: *“Pra ela enfeitar a janela da avó. Esqueceu aqui.”* Ele aponta pra colina: a avó mora no fim da Escadaria dos Sinos.",
+      "opcoes": [
+        {
+          "id": "pegar-fita",
+          "texto": "Pegar a fita de vagalume e agradecer",
+          "efeitos": { "sucesso": { "itens": ["fita-de-vagalume"] } },
+          "proxima": "escadaria"
+        }
+      ]
+    },
+    {
+      "id": "escadaria",
+      "texto": "A Escadaria dos Sinos sobe a colina em cento e vinte degraus, com um sininho pendurado em cada patamar. Vento mexendo neles faz um som de chuva fininha. No alto, uma janela acesa, pequena e quente.\n\nA noite já caiu de vez. Você precisa decidir como subir.",
+      "opcoes": [
+        {
+          "id": "subir-correndo",
+          "texto": "Subir correndo, de dois em dois degraus",
+          "teste": { "atributo": "corpo", "dificuldade": 7, "talentos": ["corredor", "resistente", "escalar"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -2 }
+          },
+          "proxima": "escadaria-meio"
+        },
+        {
+          "id": "subir-escutando",
+          "texto": "Subir devagar, escutando de onde vem cada sino",
+          "teste": { "atributo": "mente", "dificuldade": 6, "talentos": ["observador", "memoria"] },
+          "efeitos": {
+            "sucesso": { "marcas": ["ouvido-dos-sinos"] },
+            "custo": { "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "escadaria-meio"
+        }
+      ]
+    },
+    {
+      "id": "escadaria-meio",
+      "texto": "No patamar do meio há um banco de pedra e um sino maior que os outros, com uma cordinha pendurada. Daqui dá pra ver a praça inteira lá embaixo: pessoas pequenas, barracas pequenas, a torre com seu berço apagado.\n\nA janela com a luz está perto. Você ouve, bem de leve, uma voz de criança lendo em voz alta.",
+      "opcoes": [
+        {
+          "id": "descansar",
+          "texto": "Sentar no banco e respirar um pouco",
+          "efeitos": { "sucesso": { "folego": 1 } },
+          "proxima": "casa-da-vo"
+        },
+        {
+          "id": "tocar-sino",
+          "texto": "Tocar o sino de leve, pra avisar que alguém está subindo em paz",
+          "efeitos": { "sucesso": { "marcas": ["ouvido-dos-sinos"] } },
+          "proxima": "casa-da-vo"
+        }
+      ]
+    },
+    {
+      "id": "casa-da-vo",
+      "texto": "A casinha é pequena, de portas azuis. Pela janela aberta, você vê uma senhora enrolada numa manta, sorrindo, e uma menina de tranças sentada no chão, com a **Lanterna-Mãe** no colo, acesa, dourada, enorme perto dela.\n\n*“Vovó não consegue mais subir pro festival,”* diz a menina, sem se virar. *“Eu só queria que ela visse.”* Do lado de fora, os primeiros fogos de aviso estouram. A cidade está esperando a luz.",
+      "opcoes": [
+        {
+          "id": "dar-fita",
+          "texto": "Entregar a fita de vagalume pra Nina enfeitar a janela da avó",
+          "requisito": { "item": "fita-de-vagalume" },
+          "efeitos": { "sucesso": { "marcas": ["amiga-da-nina"] } },
+          "proxima": "final-bom"
+        },
+        {
+          "id": "conversar",
+          "texto": "Conversar com jeito: a lanterna volta, e a avó vai ver o festival de perto",
+          "teste": { "atributo": "labia", "dificuldade": 8, "talentos": ["charmoso", "cuidador", "contador"] },
+          "efeitos": {
+            "sucesso": { "marcas": ["amiga-da-nina"] },
+            "custo": { "folego": -1 }
+          },
+          "proxima": "final-bom",
+          "desvios": { "custo": "final-custo", "falha": "final-custo" }
+        },
+        {
+          "id": "carregar",
+          "texto": "Oferecer o braço: ajudar a avó a descer devagar até a praça",
+          "teste": { "atributo": "corpo", "dificuldade": 7, "talentos": ["resistente", "cuidador"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "final-bom",
+          "desvios": { "custo": "final-custo", "falha": "final-custo" }
+        }
+      ]
+    },
+    {
+      "id": "final-bom",
+      "texto": "Vocês descem juntas, a avó apoiada no seu braço, Nina segurando a lanterna com as duas mãos. No começo da escadaria os sinos tocam todos de uma vez, e a praça inteira vira o rosto.\n\nA Lanterna-Mãe volta ao berço, e a cidade acende uma lanterna de cada vez, da torre até a última barraca. A avó chora um pouquinho e ri um pouco mais.",
+      "opcoes": [],
+      "final": {
+        "id": "luz-compartilhada",
+        "titulo": "A luz de todo mundo",
+        "tipo": "bom",
+        "resumo": "A Lanterna-Mãe voltou ao lugar, a avó viu o festival de perto e Nina ganhou uma amiga pra vida toda."
+      }
+    },
+    {
+      "id": "final-custo",
+      "texto": "A lanterna volta ao berço antes da meia-noite, mas a avó está cansada demais pra descer, e Nina fica na janela com ela. Você sobe e desce a escadaria mais uma vez, pra levar um pedaço do festival até lá.\n\nA cidade acende, um pouco atrasada e um pouco menos barulhenta. Ninguém reclama: no fim, ninguém precisa saber de tudo, só que a luz voltou.",
+      "opcoes": [],
+      "final": {
+        "id": "luz-atrasada",
+        "titulo": "A luz que chegou por último",
+        "tipo": "custo",
+        "resumo": "A lanterna voltou, só que mais tarde e com um custo: o festival foi mais quieto, e a avó ficou na janela, vendo de longe."
+      }
+    },
+    {
+      "id": "final-folego",
+      "texto": "Seus pés pesam, e a escadaria parece ter degraus a mais do que antes. Você senta num banco de pedra, só um minuto, só pra recuperar o ar.\n\nQuem encontra você é a Nina, que volta pela escada com a Lanterna-Mãe nos braços e um cobertor xadrez nas costas. *“Eu ia devolver. Só precisava mostrar pra vovó.”* Ela sobe na torre sozinha, e a cidade acende sem que você veja. Quando acorda, o festival já cheira a pão doce, e alguém deixou uma xícara de chá quente ao seu lado.",
+      "opcoes": [],
+      "final": {
+        "id": "luz-da-madrugada",
+        "titulo": "A luz que acendeu enquanto você dormia",
+        "tipo": "alternativo",
+        "resumo": "O cansaço venceu antes da escadaria acabar. Nina devolveu a lanterna sozinha, e você acordou com o festival já aceso."
+      }
+    }
+  ]
+}

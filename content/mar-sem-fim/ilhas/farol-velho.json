@@ -1,0 +1,51 @@
+{
+  "slug": "farol-velho",
+  "nome": "Farol Velho",
+  "mar": "nascente",
+  "lado": "origem",
+  "tipo": "historia",
+  "lat": 40,
+  "lng": 80,
+  "bioma": "Ilha de estaleiros e enseadas",
+  "clima": "Ameno, com brisa constante do nascente",
+  "regraEstranha": "O farol nunca apaga, e ninguém lembra de ter acendido.",
+  "resumo": "Ilha de estaleiros pequenos e um farol que nunca apaga.",
+  "servicos": { "mercado": true, "estaleiro": true },
+  "recompensaMax": { "ouro": 90, "recompensa": 600 },
+  "historia": {
+    "inicio": "chegada",
+    "cenas": {
+      "chegada": {
+        "titulo": "A luz que não cansa",
+        "texto": "Sete estaleiros miúdos dividem a enseada, e todos trabalham de olho no farol. Mestre Odara, a mais velha, te chama pra perto. \"Esse farol nunca apaga. Hoje, pela primeira vez, a luz está tremendo.\"",
+        "opcoes": [
+          { "id": "subir", "rotulo": "Subir o farol pra ver o que houve", "proxima": "lanterna" },
+          { "id": "estaleiro", "rotulo": "Perguntar nos estaleiros se alguém mexeu em algo", "efeitos": { "recompensa": 50 }, "proxima": "estaleiro" }
+        ]
+      },
+      "lanterna": {
+        "titulo": "O coração do farol",
+        "texto": "No topo, a lente gigante está embaçada por dentro. Uma criança de estaleiro, escondida atrás do espelho, jura que só queria ver a luz de perto.",
+        "opcoes": [
+          { "id": "limpar", "rotulo": "Limpar a lente junto com a criança", "efeitos": { "recompensa": 200 }, "proxima": "fim-luz" },
+          { "id": "dar-bronca", "rotulo": "Levar a criança de volta pra casa", "efeitos": { "ouro": 20 }, "proxima": "fim-luz" }
+        ]
+      },
+      "estaleiro": {
+        "titulo": "Conversa de bancada",
+        "texto": "Entre serragem e verniz, um carpinteiro admite que trocou um parafuso da lente por um de latão. Ele está com vergonha demais pra falar sozinho.",
+        "opcoes": [
+          { "id": "ajudar", "rotulo": "Ajudar a trocar o parafuso de volta", "efeitos": { "ouro": 30, "recompensa": 100 }, "proxima": "fim-luz" },
+          { "id": "calar", "rotulo": "Dizer a todos, na frente dele", "efeitos": { "recompensa": 20 }, "proxima": "fim-luz" }
+        ]
+      },
+      "fim-luz": {
+        "titulo": "Luz firme",
+        "texto": "A chama volta a ficar parada e dourada. Mestre Odara te entrega uma pequena lasca da lente, que segura a luz do farol como uma vela de bolso. \"Pra navegar quando o mar estiver escuro.\"",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "ouro": 40, "recompensa": 250, "item": "lasca-do-farol" }
+      }
+    }
+  }
+}

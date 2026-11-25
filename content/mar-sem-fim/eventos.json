@@ -1,0 +1,106 @@
+{
+  "tipos": {
+    "tempestade": { "nome": "Tempestade", "icone": "raio" },
+    "mercante": { "nome": "Barco mercante", "icone": "barco" },
+    "criatura": { "nome": "Criatura do Mar Parado", "icone": "olho" },
+    "naufrago": { "nome": "Náufrago", "icone": "boia" }
+  },
+  "eventos": [
+    {
+      "id": "tempestade-curta",
+      "tipo": "tempestade",
+      "peso": 3,
+      "rotas": ["mar", "canal", "corrente"],
+      "titulo": "Nuvem negra no horizonte",
+      "texto": "O céu fecha numa tarde só. O vento vira, as ondas crescem e o convés começa a escorregar.",
+      "opcoes": [
+        { "id": "enfrentar", "rotulo": "Enfrentar de frente, com todas as velas", "resultado": "O barco geme, mas passa. Você sai com o casco castigado e a fama de teimoso.", "efeitos": { "casco": -12, "recompensa": 60 } },
+        { "id": "recolher", "rotulo": "Recolher as velas e esperar passar", "resultado": "A tempestade passa por cima. Você perde algumas horas e uns mantimentos, mas o barco fica inteiro.", "efeitos": { "mantimentos": -6 } }
+      ]
+    },
+    {
+      "id": "tempestade-ressaca",
+      "tipo": "tempestade",
+      "peso": 2,
+      "rotas": ["mar", "corrente"],
+      "titulo": "Ressaca sem aviso",
+      "texto": "Uma onda grande vem de lado, e a despensa abre. Caixas rolam pelo porão enquanto a água entra por uma fresta.",
+      "opcoes": [
+        { "id": "vedar", "rotulo": "Vedar a fresta primeiro", "resultado": "A água para, mas parte da comida já estava encharcada.", "efeitos": { "casco": -4, "mantimentos": -8 } },
+        { "id": "salvar", "rotulo": "Salvar a comida e vedar depois", "resultado": "A despensa se salva, mas o casco paga pelo atraso.", "efeitos": { "casco": -14 } }
+      ]
+    },
+    {
+      "id": "mercante-feira",
+      "tipo": "mercante",
+      "peso": 3,
+      "rotas": ["mar", "canal", "corrente"],
+      "titulo": "Feira sobre as ondas",
+      "texto": "Um barco mercante emparelha com o seu, todo enfeitado de bandeirolas. O capitão acena e mostra uma caixa de laranjas.",
+      "opcoes": [
+        { "id": "comprar", "rotulo": "Trocar ouro por mantimentos", "exige": { "ouro": 30 }, "resultado": "A conversa é boa e as laranjas, melhores ainda.", "efeitos": { "ouro": -30, "mantimentos": 20 } },
+        { "id": "trocar-historia", "rotulo": "Trocar uma história por um punhado de frutas", "resultado": "O capitão ri de uma das suas piadas e joga um saco de frutas no seu convés.", "efeitos": { "mantimentos": 8, "recompensa": 30 } }
+      ]
+    },
+    {
+      "id": "mercante-aviso",
+      "tipo": "mercante",
+      "peso": 2,
+      "rotas": ["mar", "corrente"],
+      "titulo": "Mercante com pressa",
+      "texto": "Um barco de carga vem de popa, com sinal de ajuda: o leme travou, e ele deriva em direção a uns recifes.",
+      "opcoes": [
+        { "id": "rebocar", "rotulo": "Lançar um cabo e rebocar", "resultado": "O capitão agradece em voz rouca e paga o que pode.", "efeitos": { "ouro": 25, "recompensa": 120, "mantimentos": -3 } },
+        { "id": "seguir", "rotulo": "Seguir viagem, sem tempo pra isso", "resultado": "Você segue sem olhar pra trás. Ninguém fica sabendo, mas você fica.", "efeitos": {} }
+      ]
+    },
+    {
+      "id": "criatura-sombra",
+      "tipo": "criatura",
+      "peso": 3,
+      "rotas": ["corrente"],
+      "titulo": "Sombra sob a quilha",
+      "texto": "A água fica lisa como vidro. Uma sombra do tamanho de uma ilha desliza debaixo do barco, devagar, sem pressa.",
+      "opcoes": [
+        { "id": "silencio", "rotulo": "Fazer silêncio total e deixar passar", "resultado": "A sombra passa sem notar você. O coração demora a voltar ao normal.", "efeitos": { "mantimentos": -4 } },
+        { "id": "cantar", "rotulo": "Cantar baixinho, pra criatura saber que você é amiga", "resultado": "A sombra para, vira um olho enorme na sua direção e segue em paz. Parece ter gostado.", "efeitos": { "recompensa": 150, "casco": -6 } }
+      ]
+    },
+    {
+      "id": "criatura-escama",
+      "tipo": "criatura",
+      "peso": 2,
+      "rotas": ["corrente"],
+      "titulo": "Escama no convés",
+      "texto": "Uma escama maior que um escudo cai no convés, brilhando. De algum lugar vem um rangido grave, como o de uma porta enorme.",
+      "opcoes": [
+        { "id": "guardar", "rotulo": "Guardar a escama como lembrança", "resultado": "Ela é leve e muda de cor ao sol. Vale um bom ouro em qualquer feira.", "efeitos": { "ouro": 40, "recompensa": 80 } },
+        { "id": "devolver", "rotulo": "Jogar a escama de volta na água, com respeito", "resultado": "A água se mexe uma vez só, como um aceno. Nada mais.", "efeitos": { "recompensa": 120 } }
+      ]
+    },
+    {
+      "id": "naufrago-balsa",
+      "tipo": "naufrago",
+      "peso": 3,
+      "rotas": ["mar", "canal", "corrente"],
+      "titulo": "Balsa à deriva",
+      "texto": "Uma balsa de tonéis vem rodando devagar, com um vulto deitado em cima. Ele acena fraco com um chapéu de palha.",
+      "opcoes": [
+        { "id": "resgatar", "rotulo": "Resgatar e dividir a comida", "resultado": "O náufrago come devagar, agradecido, e conta que vinha de uma ilha de piratas aposentados.", "efeitos": { "mantimentos": -8, "recompensa": 150, "aliado": "marujo-da-balsa" } },
+        { "id": "agua", "rotulo": "Jogar um odre de água e um cabo, deixando que ele mesmo suba", "resultado": "Ele sobe como pode, rindo e tossindo. Dá a você o que tem no bolso.", "efeitos": { "mantimentos": -3, "ouro": 15, "recompensa": 60 } }
+      ]
+    },
+    {
+      "id": "naufrago-garrafa",
+      "tipo": "naufrago",
+      "peso": 2,
+      "rotas": ["mar", "corrente"],
+      "titulo": "Garrafa com bilhete",
+      "texto": "Uma garrafa de vidro verde boia ao lado do casco. Dentro dela, um bilhete enrolado, escrito às pressas: \"Barco encalhado ao norte. Mandem ajuda.\"",
+      "opcoes": [
+        { "id": "ajudar", "rotulo": "Desviar da rota pra achar o barco encalhado", "resultado": "Você acha o barco, ajuda a desencalhar e recebe agradecimentos e um pouco de ouro.", "efeitos": { "mantimentos": -6, "ouro": 30, "recompensa": 200 } },
+        { "id": "avisar", "rotulo": "Guardar o bilhete pra entregar na próxima ilha", "resultado": "Você cumpre sua parte entregando o bilhete ao primeiro porto.", "efeitos": { "recompensa": 80 } }
+      ]
+    }
+  ]
+}

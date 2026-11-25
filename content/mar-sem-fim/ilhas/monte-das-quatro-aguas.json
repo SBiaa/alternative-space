@@ -1,0 +1,35 @@
+{
+  "slug": "monte-das-quatro-aguas",
+  "nome": "Monte das Quatro Águas",
+  "mar": "corrente",
+  "lado": "manso",
+  "tipo": "evento",
+  "lat": 0,
+  "lng": 0,
+  "bioma": "Montanha de rocha avermelhada, cortada por canais",
+  "clima": "Névoa de cachoeira e vento molhado",
+  "regraEstranha": "Os quatro mares sobem pela montanha por canais, se encontram no topo e descem juntos pra Corrente Anelar.",
+  "resumo": "A porta de entrada oficial da Corrente Anelar. Os canais dos quatro mares sobem a Espinha e se encontram no cume.",
+  "servicos": { "mercado": false, "estaleiro": false },
+  "recompensaMax": { "ouro": 0, "recompensa": 500 },
+  "historia": {
+    "inicio": "subida",
+    "cenas": {
+      "subida": {
+        "titulo": "A subida",
+        "texto": "O canal do seu mar se estreita entre paredes de pedra vermelha. A água sobe contra a gravidade, e o barco sobe junto, rangendo. Outros barcos descem pelos canais vizinhos, cada um com a bandeira do seu mar.",
+        "opcoes": [
+          { "id": "remar", "rotulo": "Subir devagar, remando junto da parede", "efeitos": { "mantimentos": -5 }, "proxima": "topo" },
+          { "id": "correnteza", "rotulo": "Aproveitar a correnteza no meio do canal", "efeitos": { "casco": -8, "recompensa": 50 }, "proxima": "topo" }
+        ]
+      },
+      "topo": {
+        "titulo": "O encontro das águas",
+        "texto": "No cume, os quatro canais se juntam num lago redondo e escuro. Dali a água desce, toda junta, em direção à Corrente Anelar. A Agulha de Maré, que estava morta no seu convés, estremece e passa a apontar firme pra frente.",
+        "fim": true,
+        "opcoes": [],
+        "efeitos": { "recompensa": 300, "agulha": true }
+      }
+    }
+  }
+}

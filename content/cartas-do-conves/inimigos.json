@@ -1,0 +1,40 @@
+{
+  "inimigos": [
+    { "slug": "gaivota-ladra", "nome": "Gaivota Ladra", "icone": "gaivota", "folego": 16, "ouro": [8, 12], "ciclo": [{ "tipo": "atacar", "valor": 5 }, { "tipo": "atacar", "valor": 4, "vezes": 2 }, { "tipo": "defender", "valor": 5 }] },
+    { "slug": "caranguejo-de-casco", "nome": "Caranguejo de Casco", "icone": "caranguejo", "folego": 22, "ouro": [8, 12], "ciclo": [{ "tipo": "defender", "valor": 8 }, { "tipo": "atacar", "valor": 7 }, { "tipo": "atacar", "valor": 9 }] },
+    { "slug": "agua-viva-errante", "nome": "Água-Viva Errante", "icone": "agua-viva", "folego": 18, "ouro": [8, 12], "ciclo": [{ "tipo": "status", "status": "encharcado", "valor": 2 }, { "tipo": "atacar", "valor": 6 }, { "tipo": "atacar", "valor": 6 }] },
+    { "slug": "contrabandista-molhado", "nome": "Contrabandista Molhado", "icone": "pirata", "folego": 32, "ouro": [12, 18], "ciclo": [{ "tipo": "atacar", "valor": 8 }, { "tipo": "status", "status": "enjoado", "valor": 1 }, { "tipo": "atacar", "valor": 11 }, { "tipo": "defender", "valor": 8 }] },
+    { "slug": "sereia-de-sal", "nome": "Sereia de Sal", "icone": "sereia", "folego": 36, "ouro": [12, 18], "ciclo": [{ "tipo": "status", "status": "enjoado", "valor": 2 }, { "tipo": "atacar", "valor": 9 }, { "tipo": "defender", "valor": 10 }, { "tipo": "atacar", "valor": 12 }] },
+    { "slug": "marujo-fantasma", "nome": "Marujo Fantasma", "icone": "fantasma", "folego": 40, "ouro": [12, 18], "ciclo": [{ "tipo": "atacar", "valor": 10 }, { "tipo": "status", "status": "encharcado", "valor": 2 }, { "tipo": "atacar", "valor": 7, "vezes": 2 }] },
+    { "slug": "moreia-da-mare-baixa", "nome": "Moreia da Maré Baixa", "icone": "moreia", "folego": 52, "ouro": [16, 22], "ciclo": [{ "tipo": "atacar", "valor": 12 }, { "tipo": "defender", "valor": 12 }, { "tipo": "atacar", "valor": 9, "vezes": 2 }] },
+    { "slug": "lampreia-trovao", "nome": "Lampreia-Trovão", "icone": "raio", "folego": 58, "ouro": [16, 22], "ciclo": [{ "tipo": "status", "status": "enjoado", "valor": 2 }, { "tipo": "atacar", "valor": 14 }, { "tipo": "atacar", "valor": 8, "vezes": 2 }, { "tipo": "defender", "valor": 10 }] }
+  ],
+  "chefe": {
+    "slug": "polvo-mor",
+    "nome": "Polvo-Mor dos Mares Parados",
+    "icone": "polvo",
+    "folego": 130,
+    "ouro": [40, 50],
+    "ciclo": [
+      { "tipo": "atacar", "valor": 10 },
+      { "tipo": "status", "status": "encharcado", "valor": 2 },
+      { "tipo": "atacar", "valor": 8, "vezes": 3 },
+      { "tipo": "defender", "valor": 16 },
+      { "tipo": "status", "status": "enjoado", "valor": 1 },
+      { "tipo": "atacar", "valor": 18 }
+    ]
+  },
+  "encontros": [
+    { "trecho": 1, "peso": 3, "inimigos": ["gaivota-ladra"] },
+    { "trecho": 1, "peso": 3, "inimigos": ["caranguejo-de-casco"] },
+    { "trecho": 1, "peso": 3, "inimigos": ["agua-viva-errante"] },
+    { "trecho": 2, "peso": 3, "inimigos": ["contrabandista-molhado"] },
+    { "trecho": 2, "peso": 3, "inimigos": ["sereia-de-sal"] },
+    { "trecho": 2, "peso": 3, "inimigos": ["marujo-fantasma"] },
+    { "trecho": 2, "peso": 2, "inimigos": ["gaivota-ladra", "agua-viva-errante"] },
+    { "trecho": 3, "peso": 3, "inimigos": ["moreia-da-mare-baixa"] },
+    { "trecho": 3, "peso": 3, "inimigos": ["lampreia-trovao"] },
+    { "trecho": 3, "peso": 2, "inimigos": ["contrabandista-molhado", "agua-viva-errante"] },
+    { "trecho": 3, "peso": 2, "inimigos": ["marujo-fantasma", "caranguejo-de-casco"] }
+  ]
+}

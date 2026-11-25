@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { RegistraLeitura } from "@/components/bichinho/RegistraLeitura";
 import { getPost, getPosts } from "@/lib/blog";
 import { formatDate } from "@/lib/blog-shared";
 import { site } from "@/config/site";
@@ -31,6 +32,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
 
   return (
     <article className="px-6 py-16">
+      <RegistraLeitura slug={slug} />
       <div className="mx-auto flex max-w-[760px] flex-col gap-6">
         <Link href="/blog" className="font-titulo text-lg font-bold text-azul">← Voltar pro blog</Link>
         <span className="font-ficha text-xs uppercase tracking-wider text-estrela">

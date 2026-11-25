@@ -1,0 +1,21 @@
+{
+  "itens": {
+    "sino-de-pedra": { "nome": "Sino de pedra", "descricao": "Pedaço do badalo do porto de Pedra Salgada. Esquenta quando o tempo vai virar." },
+    "lanterna-do-recife": { "nome": "Lanterna do Recife", "descricao": "A lanterna do avô de Tuíra, emprestada até que ele volte." },
+    "lasca-do-farol": { "nome": "Lasca do farol", "descricao": "Um caco da lente do Farol Velho. Guarda um pouco da luz dele." },
+    "apito-de-osso": { "nome": "Apito de osso", "descricao": "O apito do capitão Berro, pra chamar o vento quando ele se esconder." },
+    "relogio-sem-ponteiros": { "nome": "Relógio sem ponteiros", "descricao": "Só marca a hora em que você precisa partir." },
+    "frasco-do-reino": { "nome": "Frasco do reino", "descricao": "A água mais velha de Areal de Sal. Não abra antes da hora." },
+    "xarope-de-pinheiro": { "nome": "Xarope de pinheiro", "descricao": "Remédio da doutora Lúcia. Cheira a floresta e a lareira." },
+    "caderno-de-obras": { "nome": "Caderno de obras", "descricao": "O livro de projetos do estaleiro de Vela-Alta." },
+    "fita-dos-ventos": { "nome": "Fita dos ventos", "descricao": "A fita colorida de Quiri. Aponta por onde o vento vai." }
+  },
+  "aliados": {
+    "relojoeira": { "nome": "A relojoeira", "descricao": "Cuida do relógio do seu convés, que agora anda direitinho." },
+    "guia-do-deserto": { "nome": "Guia do deserto", "descricao": "Indicada pela rainha de Areal, conhece cada poço do mundo." },
+    "doutora-lucia": { "nome": "Doutora Lúcia", "descricao": "Prometeu embarcar quando o inverno voltar a andar." },
+    "mestra-zelia": { "nome": "Mestra Zélia", "descricao": "Mestra de obras de Vela-Alta, sempre disposta a opinar sobre seu casco." },
+    "quiri": { "nome": "Quiri", "descricao": "Garoto do Arquipélago Nuvem. Entende de vento como ninguém." },
+    "marujo-da-balsa": { "nome": "Marujo da balsa", "descricao": "Náufrago que você resgatou. Fala pouco, canta muito." }
+  }
+}

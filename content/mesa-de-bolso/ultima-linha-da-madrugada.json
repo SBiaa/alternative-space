@@ -1,0 +1,288 @@
+{
+  "slug": "ultima-linha-da-madrugada",
+  "titulo": "Última Linha da Madrugada",
+  "tema": "cidade-noturna",
+  "resumo": "Duas e quarenta, chuva fina, o metrô fechado e uma maquete frágil nos braços. O último ônibus da noite sai às 3h10.",
+  "duracaoMin": 20,
+  "classificacao": "Livre / 10+",
+  "inicio": "ponto-vazio",
+  "finalFolego": "final-folego",
+  "itens": [
+    { "id": "guarda-chuva-amarelo", "nome": "Guarda-chuva amarelo", "descricao": "Emprestado, grande demais, ótimo contra a chuva." },
+    { "id": "bilhete-azul", "nome": "Bilhete azul da linha 47", "descricao": "Um cartãozinho meio dobrado, válido só até o amanhecer." }
+  ],
+  "marcas": [
+    { "id": "amiga-do-quiosque", "nome": "Amiga do quiosque", "descricao": "Dona Neide sempre separa um café quente pra você." },
+    { "id": "conhecida-da-linha-47", "nome": "Conhecida da linha 47", "descricao": "O pessoal da madrugada já sabe quem você é." },
+    { "id": "maquete-inteira", "nome": "Maquete inteira", "descricao": "Você cuidou do trabalho da sua irmã como se fosse seu." }
+  ],
+  "cenas": [
+    {
+      "id": "ponto-vazio",
+      "texto": "Duas e quarenta da madrugada. O metrô fechou há uma hora, o ponto de ônibus pinga de chuva e a sua irmã mais nova dorme em casa sem saber que a maquete do trabalho de ciências ficou **aqui**, no outro lado da cidade, e que ela precisa dela na escola às cinco.\n\nVocê segura a caixa com as duas mãos: torres de papelão, uma ponte de palito, um moinho de papel. O painel do ponto diz que a **última linha 47** sai do Terminal Sul às 3h10. São quinze minutos a pé. Se tudo der certo.",
+      "opcoes": [
+        {
+          "id": "correr-viaduto",
+          "texto": "Cruzar o viaduto correndo até o Terminal",
+          "teste": { "atributo": "corpo", "dificuldade": 6, "talentos": ["corredor", "resistente"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -2 }
+          },
+          "proxima": "viaduto"
+        },
+        {
+          "id": "cortar-feira",
+          "texto": "Cortar caminho pela feira vazia, de memória",
+          "teste": { "atributo": "mente", "dificuldade": 6, "talentos": ["memoria", "observador"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "feira"
+        },
+        {
+          "id": "ir-quiosque",
+          "texto": "Pedir ajuda no quiosque aceso da esquina",
+          "proxima": "quiosque"
+        }
+      ]
+    },
+    {
+      "id": "quiosque",
+      "texto": "O quiosque é uma caixinha de luz amarela no meio do escuro, cheirando a café e pão na chapa. Dona Neide, de avental e toca de lã, olha a caixa, olha você, olha a chuva.\n\n*“Maquete, às três da manhã,”* ela diz, devagar. *“Deixa eu adivinhar: é pra amanhã cedo.”*",
+      "opcoes": [
+        {
+          "id": "pedir-guarda-chuva",
+          "texto": "Pedir o guarda-chuva amarelo emprestado, com jeito",
+          "teste": { "atributo": "labia", "dificuldade": 6, "talentos": ["charmoso", "blefe", "contador"] },
+          "efeitos": {
+            "sucesso": { "itens": ["guarda-chuva-amarelo"], "marcas": ["amiga-do-quiosque"] },
+            "custo": { "itens": ["guarda-chuva-amarelo"], "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "feira"
+        },
+        {
+          "id": "tomar-cafe",
+          "texto": "Tomar um café quente em pé e seguir",
+          "efeitos": { "sucesso": { "folego": 1 } },
+          "proxima": "feira"
+        }
+      ]
+    },
+    {
+      "id": "viaduto",
+      "texto": "O viaduto é um rio de poças com luzes alaranjadas boiando. Um cachorro de rua, molhado até as orelhas, resolve acompanhar você, sem pedir licença.\n\nLá embaixo, os trilhos do metrô dormem. Mais adiante, os letreiros do Terminal Sul começam a aparecer, azuis e vermelhos, borrados pela chuva.",
+      "opcoes": [
+        {
+          "id": "pular-pocas",
+          "texto": "Pular as poças sem derrubar nada",
+          "teste": { "atributo": "corpo", "dificuldade": 7, "talentos": ["corredor", "improviso"] },
+          "efeitos": {
+            "sucesso": { "marcas": ["maquete-inteira"] },
+            "custo": { "folego": -1 },
+            "falha": { "folego": -2 }
+          },
+          "proxima": "terminal"
+        },
+        {
+          "id": "ir-beirada",
+          "texto": "Ir devagar pela beirada, firme, protegendo a caixa",
+          "teste": { "atributo": "mente", "dificuldade": 5, "talentos": ["cuidador", "resistente"] },
+          "efeitos": {
+            "sucesso": { "marcas": ["maquete-inteira"] },
+            "custo": { "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "feira",
+      "texto": "A feira, sem gente, parece outro lugar: barracas fechadas com lonas, caixotes empilhados, o cheiro de fruta madura ainda no ar. No fim do corredor tem um portão de grade, e um vão por baixo das lonas.\n\nVocê já fez esse caminho de dia, mas de dia ele era mais curto.",
+      "opcoes": [
+        {
+          "id": "sob-lonas",
+          "texto": "Passar por baixo das lonas, abaixando bem, com a caixa na frente",
+          "teste": { "atributo": "corpo", "dificuldade": 6, "talentos": ["escalar", "furtivo", "improviso"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "terminal"
+        },
+        {
+          "id": "abrir-portao",
+          "texto": "Abrir o trinco do portão com um grampo de cabelo",
+          "teste": { "atributo": "mente", "dificuldade": 7, "talentos": ["mecanico", "improviso"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "terminal"
+        }
+      ]
+    },
+    {
+      "id": "terminal",
+      "texto": "O Terminal Sul é um galpão de luz fria e eco. No quadro, a linha 47 aparece em letras verdes: **plataforma 9, 3h10**. A máquina de bilhete pisca “fora de serviço”. Num guichê, um fiscal de colete cochila com o queixo no peito.\n\nSem bilhete, você não passa pela catraca. São 3h02.",
+      "opcoes": [
+        {
+          "id": "trocar-guarda-chuva",
+          "texto": "Oferecer o guarda-chuva amarelo em troca de um bilhete",
+          "requisito": { "item": "guarda-chuva-amarelo" },
+          "efeitos": { "sucesso": { "itens": ["bilhete-azul"], "marcas": ["conhecida-da-linha-47"] } },
+          "proxima": "plataforma"
+        },
+        {
+          "id": "pedir-fiscal",
+          "texto": "Acordar o fiscal com educação e explicar a situação",
+          "teste": { "atributo": "labia", "dificuldade": 8, "talentos": ["charmoso", "blefe", "contador"] },
+          "efeitos": {
+            "sucesso": { "itens": ["bilhete-azul"], "marcas": ["conhecida-da-linha-47"] },
+            "custo": { "itens": ["bilhete-azul"], "folego": -1 },
+            "falha": { "itens": ["bilhete-azul"], "folego": -1 }
+          },
+          "proxima": "plataforma"
+        },
+        {
+          "id": "esperar-calma",
+          "texto": "Esperar um instante, respirar e explicar em voz baixa quando ele acordar",
+          "teste": { "atributo": "mente", "dificuldade": 6, "talentos": ["cuidador", "resistente"] },
+          "efeitos": {
+            "sucesso": { "itens": ["bilhete-azul"] },
+            "custo": { "itens": ["bilhete-azul"], "folego": -1 },
+            "falha": { "itens": ["bilhete-azul"], "folego": -1 }
+          },
+          "proxima": "plataforma"
+        }
+      ]
+    },
+    {
+      "id": "plataforma",
+      "texto": "A catraca gira. O 47 está lá, com a porta aberta, os faróis acesos e o motor roncando baixinho. Dentro, o motorista, Seu Jair, toma café de garrafa térmica e confere o relógio.\n\n*“Última da noite,”* ele avisa, sem olhar. *“Mas a avenida da Ponte alagou. Vou ter que desviar.”* Você sobe, abraçando a caixa.",
+      "opcoes": [
+        {
+          "id": "sentar-caixa",
+          "texto": "Sentar no banco da frente, com a caixa no colo",
+          "proxima": "onibus"
+        }
+      ]
+    },
+    {
+      "id": "onibus",
+      "texto": "O ônibus anda devagar, com a chuva batendo no teto como um tambor sem pressa. Dois ou três passageiros dormem, encostados no vidro. Na esquina da avenida da Ponte, a rua inteira virou uma poça de espelho, e o motorista para.\n\n*“Dali pra frente não passa. Se alguém tiver ideia, eu escuto.”* São quatro e vinte. A escola fica a menos de um quilômetro, do outro lado.",
+      "opcoes": [
+        {
+          "id": "lembrar-jair",
+          "texto": "Lembrar o motorista que vocês já tinham combinado um jeito",
+          "requisito": { "marca": "conhecida-da-linha-47" },
+          "proxima": "ultimo-trecho"
+        },
+        {
+          "id": "propor-palmeiras",
+          "texto": "Sugerir o desvio pela Rua das Palmeiras, que você conhece",
+          "teste": { "atributo": "mente", "dificuldade": 7, "talentos": ["memoria", "observador"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "ultimo-trecho"
+        },
+        {
+          "id": "descer-passarela",
+          "texto": "Descer e seguir a pé pela passarela",
+          "proxima": "passarela"
+        }
+      ]
+    },
+    {
+      "id": "passarela",
+      "texto": "A passarela sobe em zigue-zague, escorregadia, com a água escorrendo pelos degraus. Embaixo, a avenida alagada reflete os postes. Um ciclista de capa amarela passa devagar, empurrando a bicicleta.\n\nA caixa, nos seus braços, parece mais leve do que quando você saiu. Ou é o cansaço falando mais alto.",
+      "opcoes": [
+        {
+          "id": "corrimao",
+          "texto": "Atravessar segurando firme no corrimão, um degrau por vez",
+          "teste": { "atributo": "corpo", "dificuldade": 6, "talentos": ["escalar", "resistente"] },
+          "efeitos": {
+            "custo": { "folego": -1 },
+            "falha": { "folego": -2 }
+          },
+          "proxima": "ultimo-trecho"
+        },
+        {
+          "id": "pedir-carona",
+          "texto": "Pedir pro ciclista levar a caixa na frente, enquanto você caminha ao lado",
+          "teste": { "atributo": "labia", "dificuldade": 6, "talentos": ["charmoso", "contador"] },
+          "efeitos": {
+            "sucesso": { "marcas": ["maquete-inteira"] },
+            "custo": { "folego": -1 },
+            "falha": { "folego": -1 }
+          },
+          "proxima": "ultimo-trecho"
+        }
+      ]
+    },
+    {
+      "id": "ultimo-trecho",
+      "texto": "O céu começa a clarear por trás dos prédios, uma faixa azul-clara por cima da chuva. A escola aparece no fim da rua, com o portão fechado e uma luz acesa na portaria. São quase quatro e quarenta.\n\nÉ aqui que a maquete chega, inteira, ou não.",
+      "opcoes": [
+        {
+          "id": "correr-portao",
+          "texto": "Correr até o portão, cuidando da caixa a cada passo",
+          "teste": { "atributo": "corpo", "dificuldade": 7, "talentos": ["corredor", "resistente"] },
+          "efeitos": {
+            "custo": { "folego": -1 }
+          },
+          "proxima": "final-bom",
+          "desvios": { "custo": "final-custo", "falha": "final-custo" }
+        },
+        {
+          "id": "convencer-porteiro",
+          "texto": "Chamar o porteiro e convencer ele a abrir mais cedo",
+          "teste": { "atributo": "labia", "dificuldade": 7, "talentos": ["charmoso", "blefe", "contador"] },
+          "efeitos": {
+            "custo": { "folego": -1 }
+          },
+          "proxima": "final-bom",
+          "desvios": { "custo": "final-custo", "falha": "final-custo" }
+        }
+      ]
+    },
+    {
+      "id": "final-bom",
+      "texto": "O porteiro abre o portão com um sorriso de quem também não dormiu. Você entrega a caixa, inteira, com moinho, ponte e torres no lugar. Lá dentro, os primeiros professores chegam, de capa de chuva, e olham a maquete como quem vê uma cidade pequena e certa.\n\nQuando você volta pra rua, o sol já está nascendo atrás dos prédios, e o 47 passa devagar, com o motorista buzinando duas vezes, de leve.",
+      "opcoes": [],
+      "final": {
+        "id": "maquete-no-prazo",
+        "titulo": "A maquete chegou inteira",
+        "tipo": "bom",
+        "resumo": "A maquete chegou à escola antes das cinco, sem um amassadinho, e você ganhou uma carona na memória da linha 47."
+      }
+    },
+    {
+      "id": "final-custo",
+      "texto": "Você chega ao portão com as pernas molhadas até os joelhos. A maquete chega também: uma torre amassou no caminho e o moinho está meio torto. O porteiro pega um pouco de fita e ajuda você a prender de volta.\n\nNão ficou perfeita. Mas ficou ali, firme, na mesa da sua irmã, e ela, quando chegar, vai achar que a torre torta dá um charme especial.",
+      "opcoes": [],
+      "final": {
+        "id": "maquete-amassada",
+        "titulo": "A maquete chegou, meio torta",
+        "tipo": "custo",
+        "resumo": "A maquete chegou a tempo, mas com uma torre amassada e um moinho torto. Deu pra consertar com fita e carinho."
+      }
+    },
+    {
+      "id": "final-folego",
+      "texto": "As pernas pedem trégua. Você se encosta num banco da avenida só pra respirar, com a caixa no colo, e a chuva fininha embala tudo.\n\nQuem encontra você é o Seu Jair, que passou de volta pro terminal e freou ao ver a caixa. *“Entra. Eu levo vocês dois.”* Você não chega às cinco, mas chega às seis: a professora aceita a maquete e a sua irmã, que ficou esperando no portão com o cabelo molhado, abraça você antes de abraçar a caixa.",
+      "opcoes": [],
+      "final": {
+        "id": "maquete-com-atraso",
+        "titulo": "A carona do amanhecer",
+        "tipo": "alternativo",
+        "resumo": "O cansaço pesou mais que a pressa. A maquete chegou com uma hora de atraso, de carona com o motorista, e foi aceita do mesmo jeito."
+      }
+    }
+  ]
+}

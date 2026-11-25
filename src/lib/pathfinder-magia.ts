@@ -11,6 +11,8 @@ type Conjuracao = {
   tipo: "preparada" | "espontanea";
   // Espaços num círculo recém-aberto e no nível seguinte.
   espacos: [number, number];
+  // Conjurador limitado (magus, invocador): só os dois círculos mais altos têm espaços.
+  limitado?: boolean;
 };
 
 export const CONJURACAO: Record<string, Conjuracao> = {
@@ -21,6 +23,10 @@ export const CONJURACAO: Record<string, Conjuracao> = {
   mago: { tradicao: "arcana", tipo: "preparada", espacos: [2, 3] },
   oraculo: { tradicao: "divina", tipo: "espontanea", espacos: [3, 4] },
   bruxo: { tradicao: "escolha", tipo: "preparada", espacos: [2, 3] },
+  animista: { tradicao: "divina", tipo: "preparada", espacos: [2, 3] },
+  psiquico: { tradicao: "ocultista", tipo: "espontanea", espacos: [2, 2] },
+  magus: { tradicao: "arcana", tipo: "preparada", espacos: [1, 2], limitado: true },
+  invocador: { tradicao: "escolha", tipo: "espontanea", espacos: [1, 2], limitado: true },
 };
 
 export const TRUQUES_POR_DIA = 5;
@@ -37,6 +43,15 @@ export function vagasMagia(f: { classe: string; nivel: number }): VagaMagia[] {
   if (!c) return [];
   const out: VagaMagia[] = [];
   for (let i = 1; i <= TRUQUES_POR_DIA; i++) out.push({ chave: `truque-${i}`, circulo: 0 });
+  if (c.limitado) {
+    // Círculo mais alto: 1 espaço quando abre, 2 no nível seguinte; o de baixo fica com 2.
+    const topo = Math.min(9, circuloMaximo(f.nivel));
+    for (let r = Math.max(1, topo - 1); r <= topo; r++) {
+      const qtd = r === topo && f.nivel === 2 * r - 1 ? c.espacos[0] : c.espacos[1];
+      for (let i = 1; i <= qtd; i++) out.push({ chave: `r${r}-${i}`, circulo: r });
+    }
+    return out;
+  }
   for (let r = 1; r <= 9; r++) {
     const abre = 2 * r - 1;
     if (f.nivel < abre) break;
