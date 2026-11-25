@@ -11,6 +11,7 @@ import { CharacterSheet } from '../steps/ReviewStep';
 import { Button, Card, cx } from '../ui';
 import { Balances } from './Balances';
 import { Career } from './Career';
+import { Consulta } from './Consulta';
 import { DiceRoller } from './DiceRoller';
 import { ConditionMonitor } from './ConditionMonitor';
 import { Goals } from './Goals';
@@ -19,9 +20,10 @@ import { Missions } from './Missions';
 import { NotesField } from './NotesField';
 import type { PlayEntry, PlayGoal, PlayItem, PlayMission } from './types';
 
-type Tab = 'play' | 'dice' | 'inventory' | 'goals' | 'career' | 'missions' | 'sheet';
+type Tab = 'play' | 'consult' | 'dice' | 'inventory' | 'goals' | 'career' | 'missions' | 'sheet';
 const TABS: { key: Tab; label: string }[] = [
   { key: 'play', label: 'Jogo' },
+  { key: 'consult', label: 'Consulta' },
   { key: 'dice', label: 'Dados' },
   { key: 'inventory', label: 'Inventário' },
   { key: 'goals', label: 'Metas' },
@@ -115,6 +117,8 @@ export function PlayView({
             <Balances id={c.id} entries={entries} missions={missions} />
           </div>
         )}
+
+        {tab === 'consult' && <Consulta draft={c.draft} result={result} inventory={inventory} physical={c.physicalDamage} stun={c.stunDamage} />}
 
         {tab === 'dice' && <DiceRoller result={result} />}
 
