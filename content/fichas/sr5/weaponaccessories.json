@@ -1,0 +1,492 @@
+[
+  {
+    "id": "d34a93a8-b695-4c46-8e34-0948df68d44f",
+    "name": "Silencer (Ares Light Fire 70)",
+    "namePt": "Silenciador, Ares Light Fire 70",
+    "source": "SR5",
+    "page": 425,
+    "category": "Barrel",
+    "cost": {
+      "raw": "750",
+      "value": 750
+    },
+    "avail": {
+      "raw": "6F",
+      "value": 6,
+      "restriction": "F"
+    },
+    "slots": 0,
+    "mount": "Barrel"
+  },
+  {
+    "id": "4026650e-ecd3-4514-b2c6-d03dc1d466b5",
+    "name": "Silencer (Ares Light Fire 75)",
+    "namePt": "Silenciador, Ares Light Fire 75",
+    "source": "SR5",
+    "page": 425,
+    "category": "Barrel",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "6F",
+      "value": 6,
+      "restriction": "F"
+    },
+    "slots": 0,
+    "mount": "Barrel"
+  },
+  {
+    "id": "294a6b30-6e1c-4b7d-8e93-10964647c2dd",
+    "name": "Airburst Link",
+    "namePt": "Link de Explosão Aérea",
+    "source": "SR5",
+    "page": 431,
+    "category": "Geral",
+    "cost": {
+      "raw": "600",
+      "value": 600
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "6e06df00-95b8-450f-9f2a-4a86c582d342",
+    "name": "Bipod",
+    "namePt": "Bipé",
+    "source": "SR5",
+    "page": 431,
+    "category": "Under",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": "Under"
+  },
+  {
+    "id": "7f66a669-917a-4423-bd83-cf0e0a1fb2a8",
+    "name": "Concealable Holster",
+    "namePt": "Coldre Ocultável",
+    "source": "SR5",
+    "page": 431,
+    "category": "Geral",
+    "cost": {
+      "raw": "150",
+      "value": 150
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "f46b623b-75b5-4947-a3e4-baa2930749bf",
+    "name": "Gas-Vent 1 System",
+    "namePt": "Sistema de Saída de Gás 1",
+    "source": "SR5",
+    "page": 431,
+    "category": "Barrel",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "3R",
+      "value": 3,
+      "restriction": "R"
+    },
+    "slots": 0,
+    "mount": "Barrel"
+  },
+  {
+    "id": "b3827611-f631-461e-8660-e744593ba2d2",
+    "name": "Gas-Vent 2 System",
+    "namePt": "Sistema de Saída de Gás 2",
+    "source": "SR5",
+    "page": 431,
+    "category": "Barrel",
+    "cost": {
+      "raw": "400",
+      "value": 400
+    },
+    "avail": {
+      "raw": "6R",
+      "value": 6,
+      "restriction": "R"
+    },
+    "slots": 0,
+    "mount": "Barrel"
+  },
+  {
+    "id": "6b06cf52-04fa-4034-bb10-2bcdd58c4bfb",
+    "name": "Gas-Vent 3 System",
+    "namePt": "Sistema de Saída de Gás 3",
+    "source": "SR5",
+    "page": 431,
+    "category": "Barrel",
+    "cost": {
+      "raw": "600",
+      "value": 600
+    },
+    "avail": {
+      "raw": "9R",
+      "value": 9,
+      "restriction": "R"
+    },
+    "slots": 0,
+    "mount": "Barrel"
+  },
+  {
+    "id": "baecb236-6b4a-4f7d-b9c4-25212f115d4a",
+    "name": "Gyro Mount",
+    "namePt": "Suporte de Giroscópio",
+    "source": "SR5",
+    "page": 432,
+    "category": "Under",
+    "cost": {
+      "raw": "1400",
+      "value": 1400
+    },
+    "avail": {
+      "raw": "7",
+      "value": 7,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": "Under"
+  },
+  {
+    "id": "7ca0c689-a05e-4377-ae44-3dc15abe2ee2",
+    "name": "Hidden Gun Arm Slide",
+    "namePt": "Deslizante Oculta no Braço",
+    "source": "SR5",
+    "page": 432,
+    "category": "Geral",
+    "cost": {
+      "raw": "350",
+      "value": 350
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "2905095e-937e-4dbc-aa56-3b66676e1559",
+    "name": "Imaging Scope",
+    "namePt": "Mira Telescópica",
+    "source": "SR5",
+    "page": 432,
+    "category": "Top",
+    "cost": {
+      "raw": "300",
+      "value": 300
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": "Top"
+  },
+  {
+    "id": "521f9c2e-dfb2-42a6-b707-9808ae4885de",
+    "name": "Laser Sight",
+    "namePt": "MIra Laser",
+    "source": "SR5",
+    "page": 432,
+    "category": "Top/Under",
+    "cost": {
+      "raw": "125",
+      "value": 125
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": "Top/Under"
+  },
+  {
+    "id": "12e3bb7f-0058-4c9f-ba36-3a865d52b5a0",
+    "name": "Periscope",
+    "namePt": "Periscópio",
+    "source": "SR5",
+    "page": 432,
+    "category": "Top",
+    "cost": {
+      "raw": "70",
+      "value": 70
+    },
+    "avail": {
+      "raw": "3",
+      "value": 3,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": "Top"
+  },
+  {
+    "id": "18e18bbc-f287-4455-bedf-ba349779a4cb",
+    "name": "Quick-Draw Holster",
+    "namePt": "Coldre de Saque Rápido",
+    "source": "SR5",
+    "page": 432,
+    "category": "Geral",
+    "cost": {
+      "raw": "175",
+      "value": 175
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "46596db4-6f25-4990-80cc-c4102eaf80f7",
+    "name": "Shock Pad",
+    "namePt": "Amortecedor de Recuo",
+    "source": "SR5",
+    "page": 432,
+    "category": "Geral",
+    "cost": {
+      "raw": "50",
+      "value": 50
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "0da6149e-982f-4051-825b-52c1b79c7e52",
+    "name": "Silencer/Suppressor",
+    "namePt": "Silenciador",
+    "source": "SR5",
+    "page": 432,
+    "category": "Barrel",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "9F",
+      "value": 9,
+      "restriction": "F"
+    },
+    "slots": 0,
+    "mount": "Barrel"
+  },
+  {
+    "id": "7e25eb59-3ce1-44d8-8367-527fd8c8bc1d",
+    "name": "Smart Firing Platform",
+    "namePt": "Plataforma de Tiro Inteligente",
+    "source": "SR5",
+    "page": 433,
+    "category": "Under",
+    "cost": {
+      "raw": "2500",
+      "value": 2500
+    },
+    "avail": {
+      "raw": "12F",
+      "value": 12,
+      "restriction": "F"
+    },
+    "slots": 0,
+    "mount": "Under"
+  },
+  {
+    "id": "d57d2c64-1f61-4f5f-a465-8ce0dfacec6a",
+    "name": "Smartgun System, Internal",
+    "namePt": "Sistema de Arma Inteligente, Interno",
+    "source": "SR5",
+    "page": 433,
+    "category": "Geral",
+    "cost": {
+      "raw": "Weapon Cost",
+      "value": null
+    },
+    "avail": {
+      "raw": "+2R",
+      "value": 2,
+      "restriction": "R"
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "b3562903-b1c6-4300-9f6e-25e0102aa69b",
+    "name": "Smartgun System, External",
+    "namePt": "Sistema de Arma Inteligente, Externo",
+    "source": "SR5",
+    "page": 433,
+    "category": "Top/Under",
+    "cost": {
+      "raw": "200",
+      "value": 200
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    },
+    "slots": 0,
+    "mount": "Top/Under"
+  },
+  {
+    "id": "4ed24342-276e-4455-acba-22b551e4d775",
+    "name": "Spare Clip",
+    "namePt": "Pente Extra",
+    "source": "SR5",
+    "page": 433,
+    "category": "Geral",
+    "cost": {
+      "raw": "5",
+      "value": 5
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "6763996b-0458-46ee-a6a5-f50255ace664",
+    "name": "Belt-Feed, 100-round",
+    "source": "SR5",
+    "page": 417,
+    "category": "Geral",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "61ddc4d3-25fd-405c-af5d-2455efff2509",
+    "name": "Drum Magazine, 24-round",
+    "source": "SR5",
+    "page": 417,
+    "category": "Geral",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "d45c3b70-0e12-48b5-9c69-9f86f14d593b",
+    "name": "Drum Magazine, 32-round",
+    "source": "SR5",
+    "page": 417,
+    "category": "Geral",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "6598e5fa-f2d0-4c5c-a773-570cd9d16300",
+    "name": "External Power Source",
+    "source": "SR5",
+    "page": 417,
+    "category": "Geral",
+    "cost": {
+      "raw": "0",
+      "value": 0
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "4c47baf0-6b34-4e00-8627-a0f605f84ba0",
+    "name": "Speed Loader",
+    "namePt": "Carregador Rápido",
+    "source": "SR5",
+    "page": 433,
+    "category": "Geral",
+    "cost": {
+      "raw": "25",
+      "value": 25
+    },
+    "avail": {
+      "raw": "2",
+      "value": 2,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": ""
+  },
+  {
+    "id": "28936368-9e16-498f-b028-92ec31e89a00",
+    "name": "Tripod",
+    "namePt": "Tripé",
+    "source": "SR5",
+    "page": 433,
+    "category": "Under",
+    "cost": {
+      "raw": "500",
+      "value": 500
+    },
+    "avail": {
+      "raw": "4",
+      "value": 4,
+      "restriction": null
+    },
+    "slots": 0,
+    "mount": "Under"
+  }
+]

@@ -7,7 +7,7 @@ import { replaceDraft, resetDraft, setStep } from '@/lib/fichas/store';
 import { normalizeDraft } from '@/lib/fichas/store';
 import { Wizard } from '../Wizard';
 
-const STEP = { concept: 0, priorities: 1, attributes: 3, review: 9 };
+const STEP = { concept: 0, priorities: 1, attributes: 3, review: 10 };
 
 function renderAt(step: number) {
   setStep(step);
@@ -44,7 +44,7 @@ describe('navegação', () => {
   it('passos à frente ficam bloqueados enquanto há erros antes', () => {
     renderAt(STEP.priorities);
     const locked = screen.getAllByTitle('Resolva os erros dos passos anteriores primeiro');
-    expect(locked).toHaveLength(8); // do Metatipo até a Revisão
+    expect(locked).toHaveLength(9); // do Metatipo até a Revisão
     for (const b of locked) expect(b).toBeDisabled();
     expect(within(screen.getByTitle('Conceito')).getByText('✓')).toBeInTheDocument();
   });

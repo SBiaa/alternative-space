@@ -313,6 +313,18 @@ export interface GearItem extends Sourced, Named {
   cost: Cost;
   avail: Availability;
   rating?: number;
+  /** Só em cyberdecks e commlinks: classificação do aparelho e array de atributos. */
+  device?: DeviceSpec;
+  /** Só em focos: quanto de karma custa vincular, por ponto de Força. */
+  bindKarma?: number;
+}
+
+export interface DeviceSpec {
+  rating: number;
+  /** Array ASDF do deck, na ordem Ataque, Sleaze, Proc. de Dados, Firewall (2 a 4 números). */
+  array?: number[];
+  /** Quantos programas o aparelho roda ao mesmo tempo. */
+  programs?: number;
 }
 
 export interface Weapon extends GearItem {
@@ -333,6 +345,66 @@ export interface Augmentation extends GearItem {
   /** Custo de Essência (pode ser expressão por nível, ex.: "FixedValues(2,3,5)"). */
   essence: Cost;
   maxRating?: number;
+}
+
+export interface Vehicle extends GearItem {
+  handling: string;
+  accel: string;
+  speed: number;
+  pilot: number;
+  body: number;
+  armor: number;
+  sensor: number;
+  seats: number;
+  drone: boolean;
+}
+
+/** Modificação de veículo/drone, acessório de arma ou modificação de armadura. */
+export interface ItemMod extends Sourced, Named {
+  category: string;
+  cost: Cost;
+  avail: Availability;
+  /** Slots de modificação (veículos) ou capacidade (armaduras). */
+  slots: number;
+  maxRating?: number;
+  /** Só acessórios de arma: onde encaixa (Cano, Topo...). */
+  mount?: string;
+}
+
+export interface Program extends Sourced, Named {
+  category: string;
+  categoryPt?: string;
+  cost: Cost;
+  avail: Availability;
+}
+
+export interface Metamagic extends Sourced, Named {
+  adept: boolean;
+  magician: boolean;
+}
+
+export interface Echo extends Sourced, Named {
+  /** Quantas vezes pode ser escolhido (0 = uma só). */
+  limit: number;
+}
+
+/** Espírito ou sprite (ficha de criatura, com atributos em função da Força/Nível `F`). */
+export interface Spirit extends Sourced, Named {
+  category: string;
+  /** Atributos como expressão em F (ex.: "F+3"). */
+  attributes: Partial<Record<'BOD' | 'AGI' | 'REA' | 'STR' | 'CHA' | 'INT' | 'LOG' | 'WIL' | 'EDG' | 'MAG' | 'RES', string>>;
+  initiative: string;
+  walk: string;
+  run: string;
+  sprint: string;
+  powers: string[];
+  skills: string[];
+}
+
+export interface MartialTechnique extends Sourced, Named {}
+
+export interface MartialArt extends Sourced, Named {
+  techniques: string[];
 }
 
 export interface Lifestyle extends Sourced, Named {
@@ -382,6 +454,13 @@ export interface CreationSettings {
   bannedWareGrades: string[];
   initiativeDice: { min: number; max: number };
   karmaCosts: KarmaCosts;
+  /** Karma por ponto de Força para vincular cada tipo de foco, pelo nome original. */
+  focusBindKarma: Record<string, number>;
+  /** Iniciação: karma = fixo + por grau × novo grau. */
+  initiation: { flat: number; perGrade: number };
+  /** Karma de uma arte marcial e de uma técnica (Run & Gun). */
+  martialArtKarma: number;
+  martialTechniqueKarma: number;
 }
 
 // ---------------------------------------------------------------------------

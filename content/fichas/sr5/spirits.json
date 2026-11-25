@@ -1,0 +1,388 @@
+[
+  {
+    "id": "7f0f9028-4351-4729-a363-ff8533895d1c",
+    "name": "Spirit of Air",
+    "namePt": "Espírito do Ar",
+    "source": "SR5",
+    "page": 303,
+    "category": "Spirits",
+    "attributes": {
+      "BOD": "F-2",
+      "AGI": "F+3",
+      "REA": "F+4",
+      "STR": "F-3",
+      "CHA": "F",
+      "INT": "F",
+      "LOG": "F",
+      "WIL": "F",
+      "EDG": "F/2",
+      "MAG": "F"
+    },
+    "initiative": "(F*2)+4",
+    "walk": "2/2/2",
+    "run": "4/4/4",
+    "sprint": "10/10/10",
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Concealment",
+      "Confusion",
+      "Engulf",
+      "Materialization",
+      "Movement",
+      "Sapience",
+      "Search"
+    ],
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Exotic Ranged Weapon",
+      "Perception",
+      "Unarmed Combat"
+    ]
+  },
+  {
+    "id": "4a80bfc5-da03-4896-9722-2a785d32095e",
+    "name": "Spirit of Beasts",
+    "namePt": "Espírito das Feras",
+    "source": "SR5",
+    "page": 303,
+    "category": "Spirits",
+    "attributes": {
+      "BOD": "F+2",
+      "AGI": "F+1",
+      "REA": "F",
+      "STR": "F+2",
+      "CHA": "F",
+      "INT": "F",
+      "LOG": "F",
+      "WIL": "F",
+      "EDG": "F/2",
+      "MAG": "F"
+    },
+    "initiative": "(F*2)",
+    "walk": "2/2/2",
+    "run": "4/4/4",
+    "sprint": "2/2/2",
+    "powers": [
+      "Animal Control",
+      "Astral Form",
+      "Enhanced Senses",
+      "Fear",
+      "Materialization",
+      "Movement",
+      "Sapience"
+    ],
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Perception",
+      "Unarmed Combat"
+    ]
+  },
+  {
+    "id": "285885ed-d2cb-4c02-976c-a8f81efa67cb",
+    "name": "Spirit of Earth",
+    "namePt": "Espírito da Terra",
+    "source": "SR5",
+    "page": 303,
+    "category": "Spirits",
+    "attributes": {
+      "BOD": "F+4",
+      "AGI": "F-2",
+      "REA": "F-1",
+      "STR": "F+4",
+      "CHA": "F",
+      "INT": "F",
+      "LOG": "F-1",
+      "WIL": "F",
+      "EDG": "F/2",
+      "MAG": "F"
+    },
+    "initiative": "(F*2)-1",
+    "walk": "2/2/2",
+    "run": "4/4/4",
+    "sprint": "2/2/2",
+    "powers": [
+      "Astral Form",
+      "Binding",
+      "Guard",
+      "Materialization",
+      "Movement",
+      "Sapience",
+      "Search"
+    ],
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Exotic Ranged Weapon",
+      "Perception",
+      "Unarmed Combat"
+    ]
+  },
+  {
+    "id": "3232c4f1-0b22-4799-8c80-392392f9af38",
+    "name": "Spirit of Fire",
+    "namePt": "Espírito do Fogo",
+    "source": "SR5",
+    "page": 303,
+    "category": "Spirits",
+    "attributes": {
+      "BOD": "F+1",
+      "AGI": "F+2",
+      "REA": "F+3",
+      "STR": "F-2",
+      "CHA": "F",
+      "INT": "F+1",
+      "LOG": "F",
+      "WIL": "F",
+      "EDG": "F/2",
+      "MAG": "F"
+    },
+    "initiative": "(F*2)+3",
+    "walk": "2/2/2",
+    "run": "4/4/4",
+    "sprint": "5/5/5",
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Confusion",
+      "Elemental Attack",
+      "Energy Aura",
+      "Engulf",
+      "Materialization",
+      "Sapience",
+      "Allergy"
+    ],
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Exotic Ranged Weapon",
+      "Flight",
+      "Perception",
+      "Unarmed Combat"
+    ]
+  },
+  {
+    "id": "f4794218-5a32-43c5-a8f7-784bccb4c5aa",
+    "name": "Spirit of Man",
+    "namePt": "Espírito do Homem",
+    "source": "SR5",
+    "page": 304,
+    "category": "Spirits",
+    "attributes": {
+      "BOD": "F+1",
+      "AGI": "F",
+      "REA": "F+2",
+      "STR": "F-2",
+      "CHA": "F",
+      "INT": "F+1",
+      "LOG": "F",
+      "WIL": "F",
+      "EDG": "F/2",
+      "MAG": "F"
+    },
+    "initiative": "(F*2)+2",
+    "walk": "2/2/2",
+    "run": "4/4/4",
+    "sprint": "2/2/2",
+    "powers": [
+      "Accident",
+      "Astral Form",
+      "Concealment",
+      "Confusion",
+      "Enhanced Senses",
+      "Guard",
+      "Influence",
+      "Materialization",
+      "Sapience",
+      "Search"
+    ],
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Perception",
+      "Spellcasting",
+      "Unarmed Combat"
+    ]
+  },
+  {
+    "id": "4c0349ca-be2b-4b7f-9c52-9c9db12c873e",
+    "name": "Spirit of Water",
+    "namePt": "Espírito da Água",
+    "source": "SR5",
+    "page": 304,
+    "category": "Spirits",
+    "attributes": {
+      "BOD": "F",
+      "AGI": "F+1",
+      "REA": "F+2",
+      "STR": "F",
+      "CHA": "F",
+      "INT": "F",
+      "LOG": "F",
+      "WIL": "F",
+      "EDG": "F/2",
+      "MAG": "F"
+    },
+    "initiative": "(F*2)+2",
+    "walk": "2/2/2",
+    "run": "4/4/4",
+    "sprint": "2/2/2",
+    "powers": [
+      "Astral Form",
+      "Concealment",
+      "Confusion",
+      "Engulf",
+      "Materialization",
+      "Movement",
+      "Sapience",
+      "Search",
+      "Allergy"
+    ],
+    "skills": [
+      "Assensing",
+      "Astral Combat",
+      "Exotic Ranged Weapon",
+      "Perception",
+      "Unarmed Combat"
+    ]
+  },
+  {
+    "id": "8db4f865-57b6-4363-8d1d-d2979df47cac",
+    "name": "Courier Sprite",
+    "namePt": "Sprite Mensageiro",
+    "source": "SR5",
+    "page": 258,
+    "category": "Sprites",
+    "attributes": {
+      "CHA": "F",
+      "INT": "F+3",
+      "LOG": "F+1",
+      "WIL": "F+2",
+      "RES": "F"
+    },
+    "initiative": "(F*2)+1",
+    "walk": "",
+    "run": "",
+    "sprint": "",
+    "powers": [
+      "Cookie",
+      "Hash"
+    ],
+    "skills": [
+      "Computer",
+      "Hacking"
+    ]
+  },
+  {
+    "id": "1eabd4d6-b759-4e89-8478-1d327e2755c3",
+    "name": "Crack Sprite",
+    "namePt": "Sprite Invasor",
+    "source": "SR5",
+    "page": 258,
+    "category": "Sprites",
+    "attributes": {
+      "CHA": "F",
+      "INT": "F+3",
+      "LOG": "F+2",
+      "WIL": "F+1",
+      "RES": "F"
+    },
+    "initiative": "(F*2)+2",
+    "walk": "",
+    "run": "",
+    "sprint": "",
+    "powers": [
+      "Suppression"
+    ],
+    "skills": [
+      "Computer",
+      "Electronic Warfare",
+      "Hacking"
+    ]
+  },
+  {
+    "id": "4742c36a-baa9-467b-b2c1-9dc6889a46e2",
+    "name": "Data Sprite",
+    "namePt": "Sprite de Dados",
+    "source": "SR5",
+    "page": 258,
+    "category": "Sprites",
+    "attributes": {
+      "CHA": "F-1",
+      "INT": "F",
+      "LOG": "F+4",
+      "WIL": "F+1",
+      "RES": "F"
+    },
+    "initiative": "(F*2)+4",
+    "walk": "",
+    "run": "",
+    "sprint": "",
+    "powers": [
+      "Camouflage",
+      "Watermark"
+    ],
+    "skills": [
+      "Computer",
+      "Electronic Warfare"
+    ]
+  },
+  {
+    "id": "72b6f335-4351-4af7-b103-350cb15d2bca",
+    "name": "Fault Sprite",
+    "namePt": "Sprite de Defeito",
+    "source": "SR5",
+    "page": 258,
+    "category": "Sprites",
+    "attributes": {
+      "CHA": "F+3",
+      "INT": "F",
+      "LOG": "F+1",
+      "WIL": "F+2",
+      "RES": "F"
+    },
+    "initiative": "(F*2)+1",
+    "walk": "",
+    "run": "",
+    "sprint": "",
+    "powers": [
+      "Electron Storm"
+    ],
+    "skills": [
+      "Computer",
+      "Cybercombat",
+      "Hacking"
+    ]
+  },
+  {
+    "id": "1a34d4b2-2055-47e7-b750-39aa724ce19c",
+    "name": "Machine Sprite",
+    "namePt": "Sprite de Máquina",
+    "source": "SR5",
+    "page": 258,
+    "category": "Sprites",
+    "attributes": {
+      "CHA": "F+1",
+      "INT": "F",
+      "LOG": "F+3",
+      "WIL": "F+2",
+      "RES": "F"
+    },
+    "initiative": "(F*2)+3",
+    "walk": "",
+    "run": "",
+    "sprint": "",
+    "powers": [
+      "Diagnostics",
+      "Gremlins (Sprite)",
+      "Stability"
+    ],
+    "skills": [
+      "Computer",
+      "Electronic Warfare",
+      "Hardware"
+    ]
+  }
+]

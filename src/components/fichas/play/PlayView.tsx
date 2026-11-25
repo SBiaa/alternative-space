@@ -9,16 +9,22 @@ import { evaluate } from '@/lib/fichas/sr5/rules';
 import { CharacterSheet } from '../steps/ReviewStep';
 import { Button, Card, cx } from '../ui';
 import { Balances } from './Balances';
+import { Career } from './Career';
+import { DiceRoller } from './DiceRoller';
 import { ConditionMonitor } from './ConditionMonitor';
 import { Goals } from './Goals';
+import { Inventory } from './Inventory';
 import { Missions } from './Missions';
 import { NotesField } from './NotesField';
-import type { PlayEntry, PlayGoal, PlayMission } from './types';
+import type { PlayEntry, PlayGoal, PlayItem, PlayMission } from './types';
 
-type Tab = 'play' | 'goals' | 'missions' | 'sheet';
+type Tab = 'play' | 'dice' | 'inventory' | 'goals' | 'career' | 'missions' | 'sheet';
 const TABS: { key: Tab; label: string }[] = [
   { key: 'play', label: 'Jogo' },
+  { key: 'dice', label: 'Dados' },
+  { key: 'inventory', label: 'Inventário' },
   { key: 'goals', label: 'Metas' },
+  { key: 'career', label: 'Carreira' },
   { key: 'missions', label: 'Missões' },
   { key: 'sheet', label: 'Ficha completa' },
 ];
@@ -38,12 +44,14 @@ export function PlayView({
   entries,
   missions,
   goals,
+  inventory,
   header,
 }: {
   character: PlayCharacter;
   entries: PlayEntry[];
   missions: PlayMission[];
   goals: PlayGoal[];
+  inventory: PlayItem[];
   header: ReactNode;
 }) {
   const [tab, setTab] = useState<Tab>('play');
@@ -71,7 +79,7 @@ export function PlayView({
               <span className="text-accent">Em jogo</span>
             </p>
           </div>
-          <nav className="flex gap-1 rounded-lg border border-line bg-surface p-1" role="tablist">
+          <nav className="flex max-w-full gap-1 overflow-x-auto rounded-lg border border-line bg-surface p-1 [scrollbar-width:none]" role="tablist">
             {TABS.map((t) => (
               <button
                 key={t.key}
@@ -80,7 +88,7 @@ export function PlayView({
                 aria-selected={tab === t.key}
                 onClick={() => setTab(t.key)}
                 className={cx(
-                  'rounded-md px-3 py-1.5 text-sm font-medium transition',
+                  'shrink-0 whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition',
                   tab === t.key ? 'bg-accent text-accent-ink' : 'text-muted hover:text-ink',
                 )}
               >
@@ -107,7 +115,13 @@ export function PlayView({
           </div>
         )}
 
-        {tab === 'goals' && <Goals id={c.id} goals={goals} entries={entries} result={result} />}
+        {tab === 'dice' && <DiceRoller result={result} />}
+
+        {tab === 'career' && <Career id={c.id} draft={c.draft} result={result} entries={entries} />}
+
+        {tab === 'inventory' &&<Inventory id={c.id} items={inventory} entries={entries} draft={c.draft} />}
+
+        {tab === 'goals' &&<Goals id={c.id} goals={goals} entries={entries} result={result} />}
 
         {tab === 'missions' && <Missions id={c.id} missions={missions} entries={entries} />}
 
@@ -120,7 +134,7 @@ export function PlayView({
               <Button onClick={download}>Exportar JSON</Button>
             </div>
             <p className="no-print text-xs text-faint">
-              Esta é a ficha como saiu da criação. Metas concluídas e gastos de karma ainda não mudam os atributos aqui.
+              Os atributos e perícias já incluem as metas concluídas e a iniciação.
             </p>
             <CharacterSheet draft={c.draft} result={result} showRemaining={false} />
           </div>

@@ -12,6 +12,13 @@ import type {
   ContactArchetype,
   CreationSettings,
   DataMeta,
+  Echo,
+  ItemMod,
+  MartialArt,
+  Metamagic,
+  Program,
+  Spirit,
+  Vehicle,
   GearItem,
   Lifestyle,
   Mentor,
@@ -44,6 +51,15 @@ import spells from '../../../../content/fichas/sr5/spells.json';
 import streams from '../../../../content/fichas/sr5/streams.json';
 import traditions from '../../../../content/fichas/sr5/traditions.json';
 import weapons from '../../../../content/fichas/sr5/weapons.json';
+import armormods from '../../../../content/fichas/sr5/armormods.json';
+import echoes from '../../../../content/fichas/sr5/echoes.json';
+import martialarts from '../../../../content/fichas/sr5/martialarts.json';
+import metamagics from '../../../../content/fichas/sr5/metamagics.json';
+import programs from '../../../../content/fichas/sr5/programs.json';
+import spirits from '../../../../content/fichas/sr5/spirits.json';
+import vehiclemods from '../../../../content/fichas/sr5/vehiclemods.json';
+import vehicles from '../../../../content/fichas/sr5/vehicles.json';
+import weaponaccessories from '../../../../content/fichas/sr5/weaponaccessories.json';
 
 export interface Sr5Data {
   meta: DataMeta;
@@ -66,6 +82,15 @@ export interface Sr5Data {
   gear: GearItem[];
   cyberware: Augmentation[];
   bioware: Augmentation[];
+  vehicles: Vehicle[];
+  vehicleMods: ItemMod[];
+  weaponAccessories: ItemMod[];
+  armorMods: ItemMod[];
+  programs: Program[];
+  metamagics: Metamagic[];
+  echoes: Echo[];
+  spirits: Spirit[];
+  martialArts: MartialArt[];
 }
 
 export const sr5Data: Sr5Data = {
@@ -89,6 +114,15 @@ export const sr5Data: Sr5Data = {
   gear: gear as unknown as GearItem[],
   cyberware: cyberware as unknown as Augmentation[],
   bioware: bioware as unknown as Augmentation[],
+  vehicles: vehicles as unknown as Vehicle[],
+  vehicleMods: vehiclemods as unknown as ItemMod[],
+  weaponAccessories: weaponaccessories as unknown as ItemMod[],
+  armorMods: armormods as unknown as ItemMod[],
+  programs: programs as unknown as Program[],
+  metamagics: metamagics as Metamagic[],
+  echoes: echoes as Echo[],
+  spirits: spirits as unknown as Spirit[],
+  martialArts: martialarts as MartialArt[],
 };
 
 /** Nome para exibir: pt-BR quando houver, senão o original. */

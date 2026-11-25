@@ -5,12 +5,12 @@ import { updateDraft } from '@/lib/fichas/store';
 import { PRIORITY_CATEGORIES } from '@/lib/fichas/sr5/character';
 import { label, sr5Data } from '@/lib/fichas/sr5/data';
 import { PRIORITY_LABEL } from '@/lib/fichas/sr5/rules';
-import type { PriorityCategory, PriorityLetter } from '@/lib/fichas/sr5/types';
+import type { PriorityCategory, PriorityLetter, PriorityTableKey } from '@/lib/fichas/sr5/types';
 import type { StepProps } from '../wizard/Wizard';
-import { cx, HelpTip, StepIntro } from '../ui';
+import { Card, cx, HelpTip, inputClass, StepIntro, Stepper } from '../ui';
 import { assignPriority, LETTERS, nf, shortTalent } from './shared';
 
-function cellText(cat: PriorityCategory, l: PriorityLetter): string[] {
+function cellText(cat: PriorityCategory, l: PriorityLetter, table: PriorityTableKey): string[] {
   const row = sr5Data.priorities.rows[l];
   switch (cat) {
     case 'metatype':
@@ -28,12 +28,13 @@ function cellText(cat: PriorityCategory, l: PriorityLetter): string[] {
     case 'skills':
       return [`${row.skillPoints} pontos`, row.skillGroupPoints ? `${row.skillGroupPoints} em grupos` : 'sem grupos'];
     case 'resources':
-      return [`${nf(row.resources.standard)}¥`];
+      return [`${nf(row.resources[table])}¥`];
   }
 }
 
 export function PrioritiesStep({ draft }: StepProps) {
   const p = draft.priorities;
+  const table = draft.options?.priorityTable ?? sr5Data.settings.priorityTable;
   return (
     <div className="flex flex-col gap-6">
       <StepIntro title="Prioridades">
@@ -81,7 +82,7 @@ export function PrioritiesStep({ draft }: StepProps) {
                               : 'border-transparent text-muted hover:border-line-strong hover:bg-surface-2',
                         )}
                       >
-                        {cellText(cat, l).map((t) => <span key={t}>{t}</span>)}
+                        {cellText(cat, l, table).map((t) => <span key={t}>{t}</span>)}
                       </button>
                     </td>
                   );
@@ -91,6 +92,30 @@ export function PrioritiesStep({ draft }: StepProps) {
           </tbody>
         </table>
       </div>
+
+      <Card title="Regras da casa" help={{ text: 'Para quando a mesa joga com outro nível de poder. Mexe só nesta ficha. Deixe como está para seguir o livro.' }}>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+          <label className="flex items-center gap-2">Tabela de recursos
+            <select aria-label="Tabela de recursos" className={cx(inputClass, '!w-44 !py-1.5')} value={table}
+              onChange={(e) => updateDraft((d) => { d.options = { ...d.options, priorityTable: e.target.value as PriorityTableKey }; })}>
+              <option value="standard">Padrão</option>
+              <option value="primeRunner">Prime Runner</option>
+              <option value="streetLevel">Street Level</option>
+            </select>
+          </label>
+          <label className="flex items-center gap-2">Karma inicial
+            <Stepper size="sm" label="Karma inicial" value={draft.options?.startingKarma ?? sr5Data.settings.startingKarma} min={0} max={200}
+              onChange={(v) => updateDraft((d) => { d.options = { ...d.options, startingKarma: v }; })} />
+          </label>
+          <label className="flex items-center gap-2">Disponibilidade máxima
+            <Stepper size="sm" label="Disponibilidade máxima" value={draft.options?.maxAvailability ?? sr5Data.settings.maxAvailability} min={1} max={30}
+              onChange={(v) => updateDraft((d) => { d.options = { ...d.options, maxAvailability: v }; })} />
+          </label>
+          <button type="button" className="text-xs text-muted underline hover:text-ink" onClick={() => updateDraft((d) => { d.options = {}; })}>
+            Voltar ao padrão do livro
+          </button>
+        </div>
+      </Card>
 
       <div className="grid gap-3 text-sm text-muted sm:grid-cols-2">
         <p>

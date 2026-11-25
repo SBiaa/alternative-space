@@ -1,0 +1,596 @@
+[
+  {
+    "id": "bed1f6eb-ead9-49aa-bb24-266c21d7aeb4",
+    "name": "Browse",
+    "namePt": "Navegador",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "734f653b-35ca-4b26-b837-f64662878e8f",
+    "name": "Configurator",
+    "namePt": "Configurador",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "dd35285a-7506-4b7e-8d5a-1b6ea8577e19",
+    "name": "Edit",
+    "namePt": "Edição",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "a1dd8536-d2ca-41cd-be55-4adfdc52068b",
+    "name": "Encryption",
+    "namePt": "Encriptação",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "3f2498d9-b575-474c-9b18-b959442011c5",
+    "name": "Signal Scrub",
+    "namePt": "Limpeza de Sinal",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "1861266c-9439-4816-9b1e-09ea9bbac9ec",
+    "name": "Toolbox",
+    "namePt": "Caixa de Ferramentas",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "c56fd11b-f543-4c1f-8f97-6e7a82265885",
+    "name": "Virtual Machine",
+    "namePt": "Máquina Virtual",
+    "source": "SR5",
+    "page": 245,
+    "category": "Common Programs",
+    "categoryPt": "Programas Comuns",
+    "cost": {
+      "raw": "80",
+      "value": 80
+    },
+    "avail": {
+      "raw": "0",
+      "value": 0,
+      "restriction": null
+    }
+  },
+  {
+    "id": "6968d7e3-b58f-4199-af6f-5877097a51da",
+    "name": "Armor",
+    "namePt": "Armadura",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f5a1d20b-caa2-4a53-ab42-6e71ee519702",
+    "name": "Baby Monitor",
+    "namePt": "Babá Eletrônica",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "9bc73d88-bad2-4ae9-b9ea-fe004447e493",
+    "name": "Biofeedback",
+    "namePt": "Bioretroalimentação",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f05f35c3-1c35-4bac-9ecb-1a6ebf9f89dd",
+    "name": "Biofeedback Filter",
+    "namePt": "Filtro de Bioretroalimentação",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f1329065-8e71-41d8-8090-a5e8f91cf031",
+    "name": "Blackout",
+    "namePt": "Blecaute",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "de82aad2-da77-4478-a621-85ad02d70120",
+    "name": "Decryption",
+    "namePt": "Decriptação",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "6e6805d2-504d-422e-82d2-f782a912b2a7",
+    "name": "Defuse",
+    "namePt": "Desarme",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "a52cc5e5-83f5-4bcd-9fea-4f9ff5f52765",
+    "name": "Demolition",
+    "namePt": "Demolição",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "16b4bbc1-3a19-490c-90a8-0d102f18e709",
+    "name": "Exploit",
+    "namePt": "Intrusão",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "b96ebe65-9bb5-49e7-8d23-a209eae7f9f3",
+    "name": "Fork",
+    "namePt": "Dividir",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "4a79b908-8239-4b3a-9c82-e2420be2a174",
+    "name": "Guard",
+    "namePt": "Guarda",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "d2f96d3a-9dcb-4b46-b5bd-b98a730bf1d7",
+    "name": "Hammer",
+    "namePt": "Martelo",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "01c5f885-d14f-478d-8e1d-612773035480",
+    "name": "Lockdown",
+    "namePt": "Confinamento",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "e3382b40-114e-456a-982a-f52d135527f5",
+    "name": "Mugger",
+    "namePt": "Salteador",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "ff9378d1-b6bc-4adc-8651-a9689a1b92b9",
+    "name": "Shell",
+    "namePt": "Isolação",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "f7b5a9a3-c030-4647-b043-f968913867b4",
+    "name": "Sneak",
+    "namePt": "Despistador",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "a381db11-6e7f-4472-b4ef-79a16be65ba4",
+    "name": "Stealth",
+    "namePt": "Furtividade",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "7306594f-5e07-440e-a2db-a6dfbe0b90cb",
+    "name": "Track",
+    "namePt": "Rastreador",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "1b78748c-9a1d-427f-8657-e3e2bc8fd5b5",
+    "name": "Wrapper",
+    "namePt": "Empacotador",
+    "source": "SR5",
+    "page": 245,
+    "category": "Hacking Programs",
+    "categoryPt": "Programas de Hackear",
+    "cost": {
+      "raw": "250",
+      "value": 250
+    },
+    "avail": {
+      "raw": "4R",
+      "value": 4,
+      "restriction": "R"
+    }
+  },
+  {
+    "id": "9ebde6f6-a232-4af8-9e16-b553094160fa",
+    "name": "Agent",
+    "namePt": "Agente",
+    "source": "SR5",
+    "page": 246,
+    "category": "Software",
+    "categoryPt": "Software",
+    "cost": {
+      "raw": "FixedValues([1000],[2000],[3000],[8000],[10000],[12000])",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 3",
+      "value": null,
+      "restriction": null
+    }
+  },
+  {
+    "id": "012d2de2-79cb-4f3b-9571-47c8b550a505",
+    "name": "Clearsight Autosoft",
+    "namePt": "Autosoft de Clarovisão",
+    "source": "SR5",
+    "page": 269,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    }
+  },
+  {
+    "id": "434e08f4-43c1-4684-8b65-c55f5db61405",
+    "name": "Electronic Warfare Autosoft",
+    "namePt": "Autosoft de Guerra Eletrônica",
+    "source": "SR5",
+    "page": 269,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    }
+  },
+  {
+    "id": "f4c2f78b-1659-469d-acf0-7264c8c5c65f",
+    "name": "[Model] Evasion Autosoft",
+    "namePt": "Autosoft de Evasão [Modelo]",
+    "source": "SR5",
+    "page": 269,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    }
+  },
+  {
+    "id": "e9110525-4261-4626-b765-8668eec04fd3",
+    "name": "[Model] Maneuvering Autosoft",
+    "namePt": "Autosoft de Manobragem [Modelo]",
+    "source": "SR5",
+    "page": 269,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    }
+  },
+  {
+    "id": "9255a84b-b146-4998-bb17-36c5d6b4fa7d",
+    "name": "[Model] Stealth Autosoft",
+    "namePt": "Autosoft de Furtividade [Modelo]",
+    "source": "SR5",
+    "page": 270,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    }
+  },
+  {
+    "id": "052220bd-c15e-41e6-8455-d3a7c5c8e639",
+    "name": "[Weapon] Targeting Autosoft",
+    "namePt": "Autosoft de Mira [Arma]",
+    "source": "SR5",
+    "page": 270,
+    "category": "Autosofts",
+    "categoryPt": "Autosofts",
+    "cost": {
+      "raw": "Rating * 500",
+      "value": null
+    },
+    "avail": {
+      "raw": "Rating * 2",
+      "value": null,
+      "restriction": null
+    }
+  }
+]

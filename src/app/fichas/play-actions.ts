@@ -2,8 +2,12 @@
 
 import { refresh } from 'next/cache';
 import { InputError } from '@/lib/fichas/sr5/play';
+import type { NewItemInput } from '@/lib/fichas/sr5/inventory';
 import { NotFoundError } from '@/lib/fichas/server/characters';
 import {
+  addInventoryItem,
+  advanceGrade,
+  saveCareerChoices,
   addLedgerEntry,
   completeGoal,
   createGoal,
@@ -13,9 +17,11 @@ import {
   deleteMission,
   finalizeCharacter,
   moveGoal,
+  removeInventoryItem,
   setDamage,
   setPlayNotes,
   updateGoal,
+  updateInventoryItem,
   updateMission,
 } from '@/lib/fichas/server/play';
 
@@ -57,6 +63,26 @@ export async function setPlayNotesAction(id: string, notes: unknown) {
   return run(() => setPlayNotes(id, notes));
 }
 
+export async function addInventoryItemAction(id: string, input: NewItemInput) {
+  return run(() => addInventoryItem(id, input));
+}
+
+export async function updateInventoryItemAction(
+  id: string,
+  itemId: string,
+  input: { qty?: unknown; equipped?: unknown; notes?: unknown },
+) {
+  return run(() => updateInventoryItem(id, itemId, input));
+}
+
+export async function removeInventoryItemAction(
+  id: string,
+  itemId: string,
+  input: { qty?: unknown; salePrice?: unknown } = {},
+) {
+  return run(() => removeInventoryItem(id, itemId, input));
+}
+
 export async function createMissionAction(id: string, input: { title: unknown; playedOn?: unknown }) {
   return run(() => createMission(id, input));
 }
@@ -91,6 +117,14 @@ export async function moveGoalAction(id: string, goalId: string, direction: -1 |
 
 export async function completeGoalAction(id: string, goalId: string, pay: boolean) {
   return run(() => completeGoal(id, goalId, pay));
+}
+
+export async function advanceGradeAction(id: string, kind: unknown) {
+  return run(() => advanceGrade(id, kind));
+}
+
+export async function saveCareerChoicesAction(id: string, raw: unknown) {
+  return run(() => saveCareerChoices(id, raw));
 }
 
 export async function deleteGoalAction(id: string, goalId: string) {

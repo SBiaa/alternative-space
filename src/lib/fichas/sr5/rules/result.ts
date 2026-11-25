@@ -11,6 +11,7 @@ export type StepKey =
   | 'skills'
   | 'resources'
   | 'contacts'
+  | 'extras'
   | 'review';
 
 export const STEP_ORDER: readonly StepKey[] = [
@@ -23,6 +24,7 @@ export const STEP_ORDER: readonly StepKey[] = [
   'skills',
   'resources',
   'contacts',
+  'extras',
   'review',
 ];
 

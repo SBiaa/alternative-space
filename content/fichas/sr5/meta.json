@@ -22,6 +22,15 @@
     "armor": 12,
     "gear": 362,
     "cyberware": 87,
-    "bioware": 23
+    "bioware": 23,
+    "vehicles": 198,
+    "vehiclemods": 157,
+    "weaponaccessories": 26,
+    "armormods": 32,
+    "programs": 33,
+    "metamagics": 9,
+    "echoes": 9,
+    "spirits": 11,
+    "martialarts": 53
   }
 }

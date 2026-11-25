@@ -3,7 +3,7 @@
  * O SQL que cria as tabelas fica em db/fichas.sql: mudou algo aqui, mude lá também.
  * O usuário é o do Neon Auth (mesmo id de quiz_results e perfis); não há tabela própria.
  */
-import { date, index, integer, jsonb, pgTable, primaryKey, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { boolean, date, index, integer, jsonb, pgTable, primaryKey, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import type { CharacterDraft } from '@/lib/fichas/sr5/character';
 import type { GoalTarget } from '@/lib/fichas/sr5/goals';
 
@@ -97,6 +97,43 @@ export const goals = pgTable(
   },
   (t) => [index('ficha_metas_ficha_idx').on(t.characterId, t.position)],
 );
+
+/**
+ * Inventário da ficha em jogo. Começa com o que foi comprado na criação
+ * (sem implantes) e muda conforme o jogador compra, usa, vende ou perde coisas.
+ */
+export const inventory = pgTable(
+  'ficha_inventario',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    characterId: uuid('character_id')
+      .notNull()
+      .references(() => characters.id, { onDelete: 'cascade' }),
+    kind: text('kind', { enum: ['weapon', 'armor', 'gear', 'other'] }).notNull(),
+    /** Id do item no catálogo (content/fichas/sr5); nulo para itens fora do catálogo. */
+    itemId: text('item_id'),
+    name: text('name').notNull(),
+    rating: integer('rating'),
+    qty: integer('qty').notNull().default(1),
+    /** Armas e armaduras que o personagem está levando/vestindo agora. */
+    equipped: boolean('equipped').notNull().default(false),
+    notes: text('notes').notNull().default(''),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index('ficha_inventario_ficha_idx').on(t.characterId)],
+);
+
+/**
+ * Fichas cujo equipamento da criação já foi copiado para o inventário.
+ * Fica numa tabela à parte (e não numa coluna de `fichas`) para a cópia
+ * acontecer uma vez só, inclusive nas fichas que já estavam em jogo.
+ */
+export const inventorySeeded = pgTable('ficha_inventario_iniciado', {
+  characterId: uuid('character_id')
+    .primaryKey()
+    .references(() => characters.id, { onDelete: 'cascade' }),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
 
 /** Time de jogadores. Quem tem o link de convite entra com uma ficha. */
 export const teams = pgTable('ficha_times', {

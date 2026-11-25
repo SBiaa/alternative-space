@@ -62,6 +62,27 @@ create table if not exists ficha_metas (
 );
 create index if not exists ficha_metas_ficha_idx on ficha_metas (character_id, position);
 
+-- Inventário da ficha em jogo (armas, armaduras, equipamento e itens livres; implantes ficam na ficha).
+create table if not exists ficha_inventario (
+  id uuid primary key default gen_random_uuid(),
+  character_id uuid not null references fichas (id) on delete cascade,
+  kind text not null check (kind in ('weapon', 'armor', 'gear', 'other')),
+  item_id text,
+  name text not null,
+  rating integer,
+  qty integer not null default 1 check (qty >= 1),
+  equipped boolean not null default false,
+  notes text not null default '',
+  created_at timestamptz not null default now()
+);
+create index if not exists ficha_inventario_ficha_idx on ficha_inventario (character_id);
+
+-- Fichas cujo equipamento da criação já foi copiado para o inventário (a cópia acontece uma vez só).
+create table if not exists ficha_inventario_iniciado (
+  character_id uuid primary key references fichas (id) on delete cascade,
+  created_at timestamptz not null default now()
+);
+
 -- Times de jogadores. Quem tem o link de convite entra com uma ficha.
 create table if not exists ficha_times (
   id uuid primary key default gen_random_uuid(),
