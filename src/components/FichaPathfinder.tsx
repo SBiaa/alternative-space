@@ -49,6 +49,8 @@ import { CONDICOES, MAX_HEROI, type Condicao } from "@/lib/pathfinder-condicoes"
 import { descansar, emJogo } from "@/lib/pathfinder-jogo";
 import { APARICOES, acharAparicao, aparicoesPorDia } from "@/lib/pathfinder-aparicoes";
 import { sugestoesTalento } from "@/lib/pathfinder-talentos";
+import { acharMagiaPorNome, acharTalentoPorNome, magiasDaVaga, talentosDaVaga } from "@/lib/fichas/pf2e/catalogo";
+import { BotaoCatalogo, Descricao } from "./CatalogoPathfinder";
 
 const CHAVE = "ficha-pathfinder:atual";
 
@@ -587,7 +589,7 @@ function PassoTalentos({ ficha, onChange }: { ficha: Ficha; onChange: (v: Ficha[
   return (
     <>
       <p className="m-0 text-tinta">
-        Escreva o nome de cada talento. A lista sugere os mais comuns do Player Core, mas dá pra digitar qualquer um. Talentos de ancestralidade nos níveis 1, 5, 9…; de classe no 1 e nos pares; de perícia nos pares; gerais no 3, 7, 11… A partir do 2, uma vaga de classe pode virar a dedicação de um arquétipo.
+        Escreva o nome de cada talento ou abra o 📖 catálogo pra buscar com a descrição. Dá pra digitar qualquer um. Talentos de ancestralidade nos níveis 1, 5, 9…; de classe no 1 e nos pares; de perícia nos pares; gerais no 3, 7, 11… A partir do 2, uma vaga de classe pode virar a dedicação de um arquétipo.
       </p>
       {[...porNivel].map(([n, vs]) => (
         <section key={n} className="flex flex-col gap-2 rounded-xl border-2 border-noite bg-creme-claro p-4">
@@ -609,10 +611,17 @@ function PassoTalentos({ ficha, onChange }: { ficha: Ficha; onChange: (v: Ficha[
                     className="rounded-lg border-2 border-noite bg-creme px-3 py-2 text-base text-noite"
                   />
                   <datalist id={lista}>
-                    {sugestoesTalento(v.tipo, v.nivel, ficha.ancestralidade, ficha.classe).map((s) => (
+                    {[...new Set([...talentosDaVaga(v.tipo, v.nivel, ficha.ancestralidade, ficha.classe).map((t) => t.nome), ...sugestoesTalento(v.tipo, v.nivel, ficha.ancestralidade, ficha.classe)])].map((s) => (
                       <option key={s} value={s} />
                     ))}
                   </datalist>
+                  <Descricao e={acharTalentoPorNome(ficha.talentos[v.chave] ?? "")} />
+                  <BotaoCatalogo
+                    titulo={`Talento de ${NOME_TIPO_TALENTO[v.tipo].toLowerCase()} · nível ${v.nivel}`}
+                    itens={talentosDaVaga(v.tipo, v.nivel, ficha.ancestralidade, ficha.classe)}
+                    escolhidos={Object.values(ficha.talentos)}
+                    onEscolher={(nome) => onChange({ ...ficha.talentos, [v.chave]: nome })}
+                  />
                 </label>
               );
             })}
@@ -948,19 +957,27 @@ function PassoMagias({ ficha, onChange }: { ficha: Ficha; onChange: (p: Partial<
                 </h3>
                 <div className="grid gap-2 sm:grid-cols-2">
                   {vs.map((v) => (
-                    <input
-                      key={v.chave}
-                      list={lista}
-                      value={ficha.magias[v.chave] ?? ""}
-                      maxLength={80}
-                      aria-label={`${nomeCirculo(r)}, espaço ${v.chave.split("-")[1]}`}
-                      onChange={(e) => onChange({ magias: { ...ficha.magias, [v.chave]: e.target.value } })}
-                      className="rounded-lg border-2 border-noite bg-creme px-3 py-2 text-base text-noite"
-                    />
+                    <div key={v.chave} className="flex flex-col gap-1">
+                      <input
+                        list={lista}
+                        value={ficha.magias[v.chave] ?? ""}
+                        maxLength={80}
+                        aria-label={`${nomeCirculo(r)}, espaço ${v.chave.split("-")[1]}`}
+                        onChange={(e) => onChange({ magias: { ...ficha.magias, [v.chave]: e.target.value } })}
+                        className="rounded-lg border-2 border-noite bg-creme px-3 py-2 text-base text-noite"
+                      />
+                      <Descricao e={acharMagiaPorNome(ficha.magias[v.chave] ?? "")} />
+                      <BotaoCatalogo
+                        titulo={r === 0 ? "Truques" : `Magias até o ${r}º círculo`}
+                        itens={magiasDaVaga(m.tradicao, r)}
+                        escolhidos={Object.values(ficha.magias)}
+                        onEscolher={(nome) => onChange({ magias: { ...ficha.magias, [v.chave]: nome } })}
+                      />
+                    </div>
                   ))}
                 </div>
                 <datalist id={lista}>
-                  {sugestoesMagia(m.tradicao, r).map((s) => (
+                  {[...new Set([...magiasDaVaga(m.tradicao, r).map((x) => x.nome), ...sugestoesMagia(m.tradicao, r)])].map((s) => (
                     <option key={s} value={s} />
                   ))}
                 </datalist>
