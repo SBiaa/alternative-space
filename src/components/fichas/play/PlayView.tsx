@@ -3,6 +3,7 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { setPlayNotesAction } from '@/app/fichas/play-actions';
 import type { CharacterDraft } from '@/lib/fichas/sr5/character';
+import { chummerFilename, exportChummer } from '@/lib/fichas/sr5/chummer';
 import { exportFilename, exportJson } from '@/lib/fichas/sr5/io';
 import { conditionLimits } from '@/lib/fichas/sr5/play';
 import { evaluate } from '@/lib/fichas/sr5/rules';
@@ -132,6 +133,14 @@ export function PlayView({
                 Salvar PDF / imprimir
               </Button>
               <Button onClick={download}>Exportar JSON</Button>
+              <Button onClick={() => {
+                const url = URL.createObjectURL(new Blob([exportChummer(c.draft, result, { created: true })], { type: 'application/xml' }));
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = chummerFilename(c.draft);
+                a.click();
+                URL.revokeObjectURL(url);
+              }}>Exportar para o Chummer</Button>
             </div>
             <p className="no-print text-xs text-faint">
               Os atributos e perícias já incluem as metas concluídas e a iniciação.
