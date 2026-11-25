@@ -3,6 +3,7 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { setPlayNotesAction } from '@/app/fichas/play-actions';
 import type { CharacterDraft } from '@/lib/fichas/sr5/character';
+import { chummerFilename, exportChummer } from '@/lib/fichas/sr5/chummer';
 import { exportFilename, exportJson } from '@/lib/fichas/sr5/io';
 import { conditionLimits } from '@/lib/fichas/sr5/play';
 import { evaluate } from '@/lib/fichas/sr5/rules';
@@ -10,6 +11,7 @@ import { CharacterSheet } from '../steps/ReviewStep';
 import { Button, Card, cx } from '../ui';
 import { Balances } from './Balances';
 import { Career } from './Career';
+import { Consulta } from './Consulta';
 import { DiceRoller } from './DiceRoller';
 import { ConditionMonitor } from './ConditionMonitor';
 import { Goals } from './Goals';
@@ -18,9 +20,10 @@ import { Missions } from './Missions';
 import { NotesField } from './NotesField';
 import type { PlayEntry, PlayGoal, PlayItem, PlayMission } from './types';
 
-type Tab = 'play' | 'dice' | 'inventory' | 'goals' | 'career' | 'missions' | 'sheet';
+type Tab = 'play' | 'consult' | 'dice' | 'inventory' | 'goals' | 'career' | 'missions' | 'sheet';
 const TABS: { key: Tab; label: string }[] = [
   { key: 'play', label: 'Jogo' },
+  { key: 'consult', label: 'Consulta' },
   { key: 'dice', label: 'Dados' },
   { key: 'inventory', label: 'Inventário' },
   { key: 'goals', label: 'Metas' },
@@ -115,6 +118,8 @@ export function PlayView({
           </div>
         )}
 
+        {tab === 'consult' && <Consulta draft={c.draft} result={result} inventory={inventory} physical={c.physicalDamage} stun={c.stunDamage} />}
+
         {tab === 'dice' && <DiceRoller result={result} />}
 
         {tab === 'career' && <Career id={c.id} draft={c.draft} result={result} entries={entries} />}
@@ -132,6 +137,14 @@ export function PlayView({
                 Salvar PDF / imprimir
               </Button>
               <Button onClick={download}>Exportar JSON</Button>
+              <Button onClick={() => {
+                const url = URL.createObjectURL(new Blob([exportChummer(c.draft, result, { created: true })], { type: 'application/xml' }));
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = chummerFilename(c.draft);
+                a.click();
+                URL.revokeObjectURL(url);
+              }}>Exportar para o Chummer</Button>
             </div>
             <p className="no-print text-xs text-faint">
               Os atributos e perícias já incluem as metas concluídas e a iniciação.

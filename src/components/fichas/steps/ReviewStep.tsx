@@ -2,6 +2,7 @@
 
 import { useRef, useState, type ReactNode } from 'react';
 import { replaceDraft } from '@/lib/fichas/store';
+import { chummerFilename, exportChummer } from '@/lib/fichas/sr5/chummer';
 import { exportFilename, exportJson as toJson, parseImport } from '@/lib/fichas/sr5/io';
 import { label, sr5Data } from '@/lib/fichas/sr5/data';
 import { ATTR_LABEL, fmtNuyen, isComplete, STEP_ORDER, WARE_GRADES, type StepKey } from '@/lib/fichas/sr5/rules';
@@ -32,6 +33,7 @@ export function ReviewStep({ draft, result, goTo }: StepProps) {
   const extras = useWizardExtras();
 
   const exportJson = () => download(exportFilename(draft), toJson(draft), 'application/json');
+  const exportChum = () => download(chummerFilename(draft), exportChummer(draft, result), 'application/xml');
 
   const importJson = async (file: File) => {
     try {
@@ -55,6 +57,7 @@ export function ReviewStep({ draft, result, goTo }: StepProps) {
         <div className="flex flex-wrap gap-2">
           <Button variant="primary" onClick={() => window.print()}>Salvar PDF / imprimir</Button>
           <Button onClick={exportJson}>Exportar JSON</Button>
+          <Button onClick={exportChum} disabled={!draft.metatypeId}>Exportar para o Chummer</Button>
           <Button onClick={() => fileRef.current?.click()}>Importar JSON</Button>
           <input ref={fileRef} type="file" accept="application/json,.json" className="hidden"
             onChange={(e) => { const f = e.target.files?.[0]; if (f) importJson(f); e.target.value = ''; }} />
