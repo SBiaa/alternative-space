@@ -1,6 +1,7 @@
 'use server';
 
 import { refresh } from 'next/cache';
+import type { SaveResult } from '@/lib/fichas/cloudPersistence';
 import { InputError } from '@/lib/fichas/sr5/play';
 import type { NewItemInput } from '@/lib/fichas/sr5/inventory';
 import { NotFoundError } from '@/lib/fichas/server/characters';
@@ -18,6 +19,7 @@ import {
   finalizeCharacter,
   moveGoal,
   removeInventoryItem,
+  saveCharacterEdit,
   setDamage,
   setPlayNotes,
   updateGoal,
@@ -37,6 +39,18 @@ async function run(fn: () => Promise<unknown>): Promise<ActionResult> {
     if (e instanceof InputError || e instanceof NotFoundError) return { ok: false, error: e.message };
     console.error('Falha na ficha em jogo', e);
     return { ok: false, error: 'Não deu para salvar agora. Tente de novo.' };
+  }
+}
+
+/** Autosave da edição de uma ficha em jogo. Não lança: devolve o erro para a tela mostrar. */
+export async function saveCharacterEditAction(id: string, draft: unknown): Promise<SaveResult> {
+  try {
+    const savedAt = await saveCharacterEdit(id, draft);
+    return { ok: true, savedAt: savedAt.toISOString() };
+  } catch (e) {
+    if (e instanceof InputError || e instanceof NotFoundError) return { ok: false, error: e.message };
+    console.error('Falha ao salvar a edição da ficha', e);
+    return { ok: false, error: 'Não deu para salvar agora. Tentando de novo…' };
   }
 }
 

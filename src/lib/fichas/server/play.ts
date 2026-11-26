@@ -4,13 +4,16 @@
  */
 import 'server-only';
 import { and, asc, desc, eq, max } from 'drizzle-orm';
+import type { BatchItem } from 'drizzle-orm/batch';
 import { db } from '@/lib/fichas/db';
 import { characters, goals, inventory, inventorySeeded, ledger, missions } from '@/lib/fichas/db/schema';
-import { type Career, type CharacterDraft, emptyCareer, type Improvement } from '@/lib/fichas/sr5/character';
+import { characterDisplayName, type Career, type CharacterDraft, emptyCareer, type Improvement } from '@/lib/fichas/sr5/character';
 import { improvementFromGoal, parseCareerChoices, planGrade } from '@/lib/fichas/sr5/career';
 import {
+  inventoryDelta,
   inventoryFromDraft,
   ledgerReason,
+  MAX_ITEM_QTY,
   parseItemNotes,
   parseNewItem,
   parsePrice,
@@ -29,9 +32,10 @@ import {
   parseLedgerInput,
   startingBalances,
 } from '@/lib/fichas/sr5/play';
-import { getCharacter, NotFoundError } from './characters';
+import { getCharacter, NotFoundError, parseDraft } from './characters';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const CARRYOVER_REASON = 'Sobra da criação';
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 /** Ficha do usuário, já em jogo. */
@@ -55,6 +59,75 @@ export async function getPlayData(id: string) {
 }
 
 /**
+ * Edita uma ficha que já está em jogo (autosave do assistente em modo de edição).
+ * A carreira fica como está no banco. Só a diferença de equipamento vai para o
+ * inventário, e a "Sobra da criação" acompanha o novo saldo.
+ */
+export async function saveCharacterEdit(id: string, rawDraft: unknown): Promise<Date> {
+  const c = await getActive(id);
+  await seedInventory(id, c.draft);
+  const draft: CharacterDraft = { ...parseDraft(rawDraft), career: c.draft.career };
+  const now = new Date();
+
+  const writes: BatchItem<'pg'>[] = [];
+
+  const changes = inventoryDelta(c.draft, draft);
+  if (changes.length) {
+    const rows = await db().select().from(inventory).where(eq(inventory.characterId, id)).orderBy(asc(inventory.createdAt));
+    for (const change of changes) {
+      const same = rows.filter((r) => r.kind === change.kind && r.itemId === change.itemId && (r.rating ?? null) === change.rating);
+      if (change.qty > 0) {
+        if (same[0]) {
+          const qty = Math.min(same[0].qty + change.qty, MAX_ITEM_QTY);
+          writes.push(db().update(inventory).set({ qty }).where(eq(inventory.id, same[0].id)));
+        } else {
+          writes.push(db().insert(inventory).values({ characterId: id, ...change, equipped: false, notes: '' }));
+        }
+        continue;
+      }
+      let left = -change.qty;
+      for (const row of same) {
+        if (left <= 0) break;
+        const take = Math.min(left, row.qty);
+        left -= take;
+        writes.push(
+          take === row.qty
+            ? db().delete(inventory).where(eq(inventory.id, row.id))
+            : db().update(inventory).set({ qty: row.qty - take }).where(eq(inventory.id, row.id)),
+        );
+      }
+    }
+  }
+
+  const before = startingBalances(evaluate(c.draft));
+  const after = startingBalances(evaluate(draft));
+  for (const kind of ['nuyen', 'karma'] as const) {
+    if (before[kind] === after[kind]) continue;
+    const [entry] = await db()
+      .select({ id: ledger.id })
+      .from(ledger)
+      .where(and(eq(ledger.characterId, id), eq(ledger.kind, kind), eq(ledger.reason, CARRYOVER_REASON)));
+    if (!entry) {
+      if (after[kind] > 0) writes.push(db().insert(ledger).values({ characterId: id, kind, amount: after[kind], reason: CARRYOVER_REASON }));
+    } else if (after[kind] > 0) {
+      writes.push(db().update(ledger).set({ amount: after[kind] }).where(eq(ledger.id, entry.id)));
+    } else {
+      writes.push(db().delete(ledger).where(eq(ledger.id, entry.id)));
+    }
+  }
+
+  // Tudo junto (batch = transação): ficha, inventário e saldo não ficam pela metade.
+  await db().batch([
+    db()
+      .update(characters)
+      .set({ draft, name: characterDisplayName(draft), updatedAt: now })
+      .where(and(eq(characters.id, id), eq(characters.ownerId, c.ownerId), eq(characters.status, 'active'))),
+    ...writes,
+  ]);
+  return now;
+}
+
+/**
  * Trava a criação e lança o nuyen e o karma que sobraram (até 5.000¥ e 7 de karma).
  * Só uma chamada vence: o update exige status 'draft'.
  */
@@ -73,8 +146,8 @@ export async function finalizeCharacter(id: string): Promise<void> {
 
   const start = startingBalances(result);
   const rows = [
-    start.nuyen > 0 && { characterId: id, kind: 'nuyen' as const, amount: start.nuyen, reason: 'Sobra da criação' },
-    start.karma > 0 && { characterId: id, kind: 'karma' as const, amount: start.karma, reason: 'Sobra da criação' },
+    start.nuyen > 0 && { characterId: id, kind: 'nuyen' as const, amount: start.nuyen, reason: CARRYOVER_REASON },
+    start.karma > 0 && { characterId: id, kind: 'karma' as const, amount: start.karma, reason: CARRYOVER_REASON },
   ].filter((r) => r !== false);
   if (rows.length) await db().insert(ledger).values(rows);
 }
