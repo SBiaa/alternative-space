@@ -5,6 +5,7 @@ import type { SaveResult } from '@/lib/fichas/cloudPersistence';
 import { InputError } from '@/lib/fichas/sr5/play';
 import type { NewItemInput } from '@/lib/fichas/sr5/inventory';
 import { NotFoundError } from '@/lib/fichas/server/characters';
+import { disableShare, enableShare, renewShare } from '@/lib/fichas/server/share';
 import {
   addInventoryItem,
   advanceGrade,
@@ -158,4 +159,16 @@ export async function saveCareerChoicesAction(id: string, raw: unknown) {
 
 export async function deleteGoalAction(id: string, goalId: string) {
   return run(() => deleteGoal(id, goalId));
+}
+
+export async function enableShareAction(id: string) {
+  return run(() => enableShare(id));
+}
+
+export async function renewShareAction(id: string) {
+  return run(() => renewShare(id));
+}
+
+export async function disableShareAction(id: string) {
+  return run(() => disableShare(id));
 }

@@ -159,3 +159,12 @@ export const teamMembers = pgTable(
   },
   (t) => [primaryKey({ columns: [t.teamId, t.characterId] }), index('ficha_time_membros_ficha_idx').on(t.characterId)],
 );
+
+/** Link público de uma ficha (db/ficha-links.sql). Sem linha, a ficha não está compartilhada. */
+export const sheetLinks = pgTable('ficha_links', {
+  characterId: uuid('character_id')
+    .primaryKey()
+    .references(() => characters.id, { onDelete: 'cascade' }),
+  code: text('codigo').notNull().unique(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});

@@ -6,6 +6,7 @@ import { PlayView } from '@/components/fichas/play/PlayView';
 import { CloudWizard } from '@/components/fichas/wizard/CloudWizard';
 import { getCharacter, NotFoundError } from '@/lib/fichas/server/characters';
 import { getPlayData } from '@/lib/fichas/server/play';
+import { getShareCode } from '@/lib/fichas/server/share';
 import { getPf2e, sistemaDaFicha } from '@/lib/fichas/server/pf2e';
 import { FichaPathfinder } from '@/components/FichaPathfinder';
 
@@ -62,6 +63,7 @@ async function Character({ params, searchParams }: PageProps<'/fichas/[id]'>) {
 
   // Finalizada: a ficha em jogo.
   const play = await getPlayData(id);
+  const shareCode = await getShareCode(id);
   return (
     <PlayView
       character={{
@@ -76,6 +78,7 @@ async function Character({ params, searchParams }: PageProps<'/fichas/[id]'>) {
       missions={play.missions}
       goals={play.goals}
       inventory={play.inventory}
+      shareCode={shareCode}
       header={<FichasNav />}
     />
   );

@@ -12,7 +12,6 @@ import { ATTR_LABEL, type RulesResult } from '@/lib/fichas/sr5/rules';
 import type { AttrKey } from '@/lib/fichas/sr5/types';
 import { vehicleStats, vehiclesOf } from '@/lib/fichas/sr5/vehicles';
 import { cx, inputClass, matches, SearchInput } from '../ui';
-import type { PlayItem } from './types';
 
 const ATTRS: AttrKey[] = ['BOD', 'AGI', 'REA', 'STR', 'CHA', 'INT', 'LOG', 'WIL', 'EDG', 'MAG', 'RES'];
 
@@ -83,12 +82,15 @@ export function Consulta({
   inventory,
   physical,
   stun,
+  readOnly = false,
 }: {
   draft: CharacterDraft;
   result: RulesResult;
-  inventory: PlayItem[];
+  inventory: InventoryItemLike[];
   physical: number;
   stun: number;
+  /** Link público: sem as dicas de onde editar. */
+  readOnly?: boolean;
 }) {
   const [q, setQ] = useState('');
   const [edge, setEdge] = useState(false);
@@ -100,7 +102,7 @@ export function Consulta({
   const wound = woundModifier(physical, stun, limits);
   const d = result.derived;
   const a = result.attributes;
-  const items = inventory as unknown as InventoryItemLike[];
+  const items = inventory;
   const armor = wornArmor(items);
   const show = (...texts: (string | undefined)[]) => !q || matches(texts.filter(Boolean).join(' '), q);
 
@@ -361,7 +363,8 @@ export function Consulta({
 
       {cur === 'veiculos' && vehicles.length === 0 && (
         <p className="rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-muted">
-          Nenhum veículo ou drone. Adicione na aba <strong className="text-ink">Veículos</strong>, lá em cima.
+          Nenhum veículo ou drone.
+          {!readOnly && <> Adicione na aba <strong className="text-ink">Veículos</strong>, lá em cima.</>}
         </p>
       )}
 
