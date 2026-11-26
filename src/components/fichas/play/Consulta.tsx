@@ -8,7 +8,8 @@ import { rollPool, type PoolRoll } from '@/lib/fichas/sr5/dice';
 import { itemStats, wornArmor, type InventoryItemLike } from '@/lib/fichas/sr5/inventory';
 import { conditionLimits, woundModifier } from '@/lib/fichas/sr5/play';
 import { ATTR_LABEL, type RulesResult } from '@/lib/fichas/sr5/rules';
-import type { AttrKey, Vehicle } from '@/lib/fichas/sr5/types';
+import type { AttrKey } from '@/lib/fichas/sr5/types';
+import { vehicleStats, vehiclesOf } from '@/lib/fichas/sr5/vehicles';
 import { cx, inputClass, matches, SearchInput } from '../ui';
 import type { PlayItem } from './types';
 
@@ -20,6 +21,7 @@ const VIEWS = [
   { key: 'pericias', label: 'Perícias' },
   { key: 'combate', label: 'Combate' },
   { key: 'magia', label: 'Magia e Matrix' },
+  { key: 'veiculos', label: 'Veículos' },
   { key: 'pessoas', label: 'Pessoas' },
   { key: 'equip', label: 'Equipamento' },
 ] as const;
@@ -131,11 +133,7 @@ export function Consulta({
   const weapons = items.filter((i) => i.kind === 'weapon').filter((i) => show(i.name));
   const armors = items.filter((i) => i.kind === 'armor').filter((i) => show(i.name));
   const gear = items.filter((i) => i.kind === 'gear' || i.kind === 'other').filter((i) => show(i.name));
-  const vehicles = draft.gear.flatMap((g) => {
-    if (g.kind !== 'vehicle') return [];
-    const v = sr5Data.vehicles.find((x) => x.id === g.itemId);
-    return v && show(label(v)) ? [{ g, v }] : [];
-  });
+  const vehicles = vehiclesOf(draft).filter((v) => show(v.name, label(v.vehicle), v.notes));
   const spells = draft.magic.spellIds.map((id) => sr5Data.spells.find((s) => s.id === id)).filter((s) => s && show(label(s), s.name, s.category))
     .map((s) => s!);
   const powers = draft.magic.powers.flatMap((p) => {
@@ -356,12 +354,22 @@ export function Consulta({
         </ul>
       </Section>
 
-      <Section v="equip" cur={cur} title="Veículos e drones" count={vehicles.length}>
+      {cur === 'veiculos' && vehicles.length === 0 && (
+        <p className="rounded-xl border border-dashed border-line-strong p-6 text-center text-sm text-muted">
+          Nenhum veículo ou drone. Adicione na aba <strong className="text-ink">Veículos</strong>, lá em cima.
+        </p>
+      )}
+
+      <Section v="veiculos" cur={cur} title="Veículos e drones" count={vehicles.length}>
         <ul className="divide-y divide-line">
-          {vehicles.map(({ g, v }) => (
-            <Line key={g.key} title={label(v)}
-              sub={`Manobra ${(v as Vehicle).handling} · Acel. ${(v as Vehicle).accel} · Vel. ${(v as Vehicle).speed} · Corpo ${(v as Vehicle).body} · Armadura ${(v as Vehicle).armor} · Piloto ${(v as Vehicle).pilot} · Sensor ${(v as Vehicle).sensor}`}
-              right={g.qty > 1 ? `×${g.qty}` : undefined} />
+          {vehicles.map((v) => (
+            <Line key={v.key} title={v.name}
+              sub={<>
+                {vehicleStats(v.vehicle).map(([n, value]) => `${n} ${value}`).join(' · ')}
+                {v.mods.length > 0 && <span className="block">Modificações: {v.mods.join(', ')}</span>}
+                {v.notes && <span className="block whitespace-pre-line">{v.notes}</span>}
+              </>}
+              right={v.qty > 1 ? `×${v.qty}` : undefined} />
           ))}
         </ul>
       </Section>

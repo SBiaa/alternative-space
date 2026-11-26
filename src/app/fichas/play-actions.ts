@@ -19,6 +19,9 @@ import {
   finalizeCharacter,
   moveGoal,
   removeInventoryItem,
+  addVehicle,
+  updateVehicle,
+  removeVehicle,
   saveCharacterEdit,
   setDamage,
   setPlayNotes,
@@ -52,6 +55,18 @@ export async function saveCharacterEditAction(id: string, draft: unknown): Promi
     console.error('Falha ao salvar a edição da ficha', e);
     return { ok: false, error: 'Não deu para salvar agora. Tentando de novo…' };
   }
+}
+
+export async function addVehicleAction(id: string, input: { vehicleId: unknown; name?: unknown; notes?: unknown; price?: unknown }) {
+  return run(() => addVehicle(id, input));
+}
+
+export async function updateVehicleAction(id: string, key: string, input: { name?: unknown; notes?: unknown }) {
+  return run(() => updateVehicle(id, key, input));
+}
+
+export async function removeVehicleAction(id: string, key: string, price: unknown) {
+  return run(() => removeVehicle(id, key, price));
 }
 
 export async function finalizeCharacterAction(id: string) {

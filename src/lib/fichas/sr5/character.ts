@@ -161,6 +161,16 @@ export interface Improvement {
   at: string;
 }
 
+/** Veículo ou drone adquirido em jogo (não entra no orçamento da criação). */
+export interface CareerVehicle {
+  key: string;
+  vehicleId: string;
+  /** Apelido dado pelo jogador. */
+  name?: string;
+  /** Modificações, armas, dano, autosofts… em texto livre. */
+  notes?: string;
+}
+
 /** Dados que só existem com o personagem em jogo (guardados dentro da ficha). */
 export interface Career {
   initiationGrade: number;
@@ -169,6 +179,7 @@ export interface Career {
   echoIds: string[];
   companions: Companion[];
   improvements: Improvement[];
+  vehicles?: CareerVehicle[];
 }
 
 export interface DraftLifestyle {
