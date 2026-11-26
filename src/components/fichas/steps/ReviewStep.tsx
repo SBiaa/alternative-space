@@ -5,6 +5,7 @@ import { replaceDraft } from '@/lib/fichas/store';
 import { chummerFilename, exportChummer } from '@/lib/fichas/sr5/chummer';
 import { exportFilename, exportJson as toJson, parseImport } from '@/lib/fichas/sr5/io';
 import { label, sr5Data } from '@/lib/fichas/sr5/data';
+import { lifestyleDetails, lifestyleTitle, PERMANENT_MONTHS, startingNuyenRoll } from '@/lib/fichas/sr5/lifestyle';
 import { ATTR_LABEL, fmtNuyen, isComplete, STEP_ORDER, WARE_GRADES, type StepKey } from '@/lib/fichas/sr5/rules';
 import type { AttrKey, GearItem, Vehicle } from '@/lib/fichas/sr5/types';
 import type { StepProps } from '../wizard/Wizard';
@@ -109,6 +110,7 @@ export function CharacterSheet({
 }: Omit<StepProps, 'goTo'> & { showRemaining?: boolean }) {
   const metatype = sr5Data.metatypes.find((m) => m.id === draft.metatypeId);
   const talent = talentAt(draft.priorities.talent, draft.talent);
+  const startingRoll = startingNuyenRoll(draft.lifestyles);
   const a = result.attributes;
   const d = result.derived;
   const attrs: AttrKey[] = ['BOD', 'AGI', 'REA', 'STR', 'CHA', 'INT', 'LOG', 'WIL', 'EDG'];
@@ -232,8 +234,15 @@ export function CharacterSheet({
           ) : <Empty />}
           {draft.lifestyles.map((l, i) => {
             const ls = sr5Data.lifestyles.find((x) => x.id === l.id);
-            return <p key={i} className="mt-2 text-sm">Estilo de vida: {ls ? label(ls) : '?'} ({l.months} {l.months === 1 ? 'mês' : 'meses'})</p>;
+            const details = lifestyleDetails(l, label);
+            return (
+              <p key={i} className="mt-2 text-sm">
+                Estilo de vida: {lifestyleTitle(ls ? label(ls) : '?', l)} ({l.months >= PERMANENT_MONTHS ? 'permanente' : `${l.months} ${l.months === 1 ? 'mês' : 'meses'}`})
+                {details ? ` · ${details}` : ''}
+              </p>
+            );
           })}
+          {startingRoll && <p className="mt-1 text-sm">Dinheiro inicial: {startingRoll.dice}D6 × {startingRoll.multiplier.toLocaleString('pt-BR')}¥</p>}
         </Block>
 
         {(draft.martialArts?.length ?? 0) > 0 && (

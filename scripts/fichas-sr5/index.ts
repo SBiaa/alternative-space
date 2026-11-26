@@ -58,6 +58,8 @@ const outputs: Record<string, unknown> = {
   complexforms: c.convertComplexForms(ctx),
   mentors: c.convertMentors(ctx),
   lifestyles: c.convertLifestyles(ctx),
+  lifestylequalities: c.convertLifestyleQualities(ctx),
+  cities: c.convertCities(ctx),
   weapons: c.convertWeapons(ctx),
   armor: c.convertArmor(ctx),
   gear: c.convertGear(ctx),

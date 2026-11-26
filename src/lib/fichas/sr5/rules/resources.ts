@@ -1,5 +1,6 @@
 import type { DraftGear, GearKind, GearMod, WareGrade } from '../character';
 import { label } from '../data';
+import { lifestyleMonthly, lifestyleTotal } from '../lifestyle';
 import type { Augmentation, GearItem, ItemMod, Vehicle } from '../types';
 import { addKarma, budget, issue, round2, type Ctx } from './context';
 import { evalExpr, stripRestriction } from './expr';
@@ -133,8 +134,10 @@ export function checkResources(ctx: Ctx): void {
   });
 
   // Estilo de vida
-  const pct = (ctx.metatype?.bonus.lifestyleCostPct ?? 0)
-    + ctx.effects.reduce((n, e) => n + (e.effect.type === 'lifestyleCostPct' ? e.effect.delta : 0), 0);
+  const adjust = {
+    metatypePct: ctx.metatype?.bonus.lifestyleCostPct ?? 0,
+    characterPct: ctx.effects.reduce((n, e) => n + (e.effect.type === 'lifestyleCostPct' ? e.effect.delta : 0), 0),
+  };
   draft.lifestyles.forEach((l, i) => {
     const ls = ctx.data.lifestyles.find((x) => x.id === l.id);
     if (!ls) {
@@ -144,7 +147,10 @@ export function checkResources(ctx: Ctx): void {
     if (!Number.isInteger(l.months) || l.months < 1) {
       issue(ctx, 'error', 'resources', 'lifestyle.months', `${label(ls)}: pague pelo menos 1 mês.`, `lifestyles.${i}`);
     }
-    spent += Math.round(ls.cost * (1 + pct / 100)) * Math.max(1, l.months);
+    if (l.splitCost && !l.roommates) {
+      issue(ctx, 'warning', 'resources', 'lifestyle.split', `${label(ls)}: você está dividindo os custos sem nenhum colega de casa.`, `lifestyles.${i}`);
+    }
+    spent += lifestyleTotal(lifestyleMonthly(ls, l, adjust, ctx.data), l.months);
   });
   if (!draft.lifestyles.length) {
     issue(ctx, 'warning', 'resources', 'lifestyle.none', 'Escolha um estilo de vida (onde o personagem mora) e pague pelo menos 1 mês.');

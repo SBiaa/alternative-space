@@ -413,6 +413,28 @@ export interface Lifestyle extends Sourced, Named {
   multiplier: number;
 }
 
+export type LifestyleQualityCategory = 'positive' | 'negative' | 'entertainment' | 'contract';
+
+/** Qualidade de estilo de vida (SR5 p.370) ou contrato mensal. */
+export interface LifestyleQuality extends Sourced, Named {
+  category: LifestyleQualityCategory;
+  /** ¥ por mês (contratos anuais já divididos por 12). */
+  cost: number;
+  /** % sobre o custo do estilo de vida. */
+  multiplier: number;
+  /** % aplicado só sobre o custo base, antes das outras contas. */
+  baseMultiplier: number;
+  lp: number;
+  /** Pede um texto (ex.: qual área de trabalho). */
+  chooseText?: boolean;
+  allowMultiple?: boolean;
+}
+
+export interface City {
+  name: string;
+  districts: { name: string; boroughs: string[] }[];
+}
+
 export interface ContactArchetype extends Named {
   id: string;
 }
