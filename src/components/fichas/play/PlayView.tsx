@@ -18,6 +18,7 @@ import { Goals } from './Goals';
 import { Inventory } from './Inventory';
 import { Missions } from './Missions';
 import { NotesField } from './NotesField';
+import { SharePanel } from './Share';
 import { Vehicles } from './Vehicles';
 import type { PlayEntry, PlayGoal, PlayItem, PlayMission } from './types';
 
@@ -50,6 +51,7 @@ export function PlayView({
   missions,
   goals,
   inventory,
+  shareCode,
   header,
 }: {
   character: PlayCharacter;
@@ -57,9 +59,12 @@ export function PlayView({
   missions: PlayMission[];
   goals: PlayGoal[];
   inventory: PlayItem[];
+  /** Código do link público; null = desligado, undefined = indisponível. */
+  shareCode?: string | null;
   header: ReactNode;
 }) {
   const [tab, setTab] = useState<Tab>('play');
+  const [sharing, setSharing] = useState(false);
   const result = useMemo(() => evaluate(c.draft), [c.draft]);
   const limits = conditionLimits(result);
 
@@ -87,6 +92,15 @@ export function PlayView({
               <a href={`/fichas/${c.id}?editar=1`} className="font-medium text-ink underline underline-offset-2 hover:text-accent">
                 Editar ficha
               </a>
+              {shareCode !== undefined && (
+                <>
+                  {' · '}
+                  <button type="button" aria-expanded={sharing} onClick={() => setSharing((x) => !x)}
+                    className="font-medium text-ink underline underline-offset-2 hover:text-accent">
+                    Compartilhar
+                  </button>
+                </>
+              )}
             </p>
           </div>
           <nav className="flex max-w-full gap-1 overflow-x-auto rounded-lg border border-line bg-surface p-1 [scrollbar-width:none]" role="tablist">
@@ -107,6 +121,12 @@ export function PlayView({
             ))}
           </nav>
         </div>
+
+        {sharing && shareCode !== undefined && (
+          <div className="no-print mb-4">
+            <SharePanel id={c.id} code={shareCode} />
+          </div>
+        )}
 
         {tab === 'play' && (
           <div className="grid gap-4 lg:grid-cols-2">
