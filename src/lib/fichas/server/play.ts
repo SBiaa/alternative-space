@@ -7,7 +7,8 @@ import { and, asc, desc, eq, max } from 'drizzle-orm';
 import type { BatchItem } from 'drizzle-orm/batch';
 import { db } from '@/lib/fichas/db';
 import { characters, goals, inventory, inventorySeeded, ledger, missions } from '@/lib/fichas/db/schema';
-import { characterDisplayName, type Career, type CharacterDraft, emptyCareer, type Improvement } from '@/lib/fichas/sr5/character';
+import { label, sr5Data } from '@/lib/fichas/sr5/data';
+import { characterDisplayName, type CareerVehicle, type Career, type CharacterDraft, emptyCareer, type Improvement } from '@/lib/fichas/sr5/character';
 import { improvementFromGoal, parseCareerChoices, planGrade } from '@/lib/fichas/sr5/career';
 import {
   inventoryDelta,
@@ -20,6 +21,7 @@ import {
   parseQty,
   type NewItemInput,
 } from '@/lib/fichas/sr5/inventory';
+import { MAX_VEHICLES, parseNewVehicle, parseVehicleText } from '@/lib/fichas/sr5/vehicles';
 import { goalCost, type GoalTarget, parseGoalTarget, parseGoalTitle } from '@/lib/fichas/sr5/goals';
 import { evaluate, isComplete } from '@/lib/fichas/sr5/rules';
 import {
@@ -365,6 +367,53 @@ function addImprovement(career: Career, imp: Improvement): Career {
 }
 
 /** Lê-modifica-grava a carreira dentro da ficha (campo `draft.career`). */
+// ---------------------------------------------------------------------------
+// Veículos e drones adquiridos em jogo (guardados na carreira, fora do orçamento da criação)
+
+/** Grava a lista nova e, se houver valor, o lançamento de nuyen junto. */
+async function saveVehicles(id: string, draft: CharacterDraft, vehicles: CareerVehicle[], money?: { amount: number; reason: string }) {
+  const next: CharacterDraft = { ...draft, career: { ...emptyCareer(), ...draft.career, vehicles } };
+  const update = db().update(characters).set({ draft: next, updatedAt: new Date() }).where(eq(characters.id, id));
+  if (money?.amount) {
+    await db().batch([update, db().insert(ledger).values({ characterId: id, kind: 'nuyen', ...money })]);
+  } else {
+    await update;
+  }
+}
+
+function findVehicle(draft: CharacterDraft, key: string) {
+  const list = draft.career?.vehicles ?? [];
+  const found = list.find((v) => v.key === key);
+  if (!found) throw new NotFoundError();
+  return { list, found };
+}
+
+const vehicleName = (v: CareerVehicle) => v.name || label(sr5Data.vehicles.find((x) => x.id === v.vehicleId) ?? { name: 'veículo' });
+
+export async function addVehicle(id: string, input: { vehicleId?: unknown; name?: unknown; notes?: unknown; price?: unknown }) {
+  const c = await getActive(id);
+  const list = c.draft.career?.vehicles ?? [];
+  if (list.length >= MAX_VEHICLES) throw new InputError(`No máximo ${MAX_VEHICLES} veículos e drones.`);
+  const { vehicle, price } = parseNewVehicle(input, crypto.randomUUID());
+  await saveVehicles(id, c.draft, [...list, vehicle], { amount: -price, reason: ledgerReason('Compra', vehicleName(vehicle), 1) });
+}
+
+export async function updateVehicle(id: string, key: string, input: { name?: unknown; notes?: unknown }) {
+  const c = await getActive(id);
+  const { list } = findVehicle(c.draft, key);
+  const text = parseVehicleText(input);
+  await saveVehicles(id, c.draft, list.map((v) => (v.key === key ? { ...v, ...text } : v)));
+}
+
+export async function removeVehicle(id: string, key: string, rawPrice: unknown) {
+  const c = await getActive(id);
+  const { list, found } = findVehicle(c.draft, key);
+  await saveVehicles(id, c.draft, list.filter((v) => v.key !== key), {
+    amount: parsePrice(rawPrice),
+    reason: ledgerReason('Venda', vehicleName(found), 1),
+  });
+}
+
 async function updateCareer(id: string, draft: CharacterDraft, fn: (c: Career) => Career): Promise<CharacterDraft> {
   const career = { ...emptyCareer(), ...draft.career };
   const next: CharacterDraft = { ...draft, career: fn(career) };

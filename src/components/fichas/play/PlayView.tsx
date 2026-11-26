@@ -18,14 +18,16 @@ import { Goals } from './Goals';
 import { Inventory } from './Inventory';
 import { Missions } from './Missions';
 import { NotesField } from './NotesField';
+import { Vehicles } from './Vehicles';
 import type { PlayEntry, PlayGoal, PlayItem, PlayMission } from './types';
 
-type Tab = 'play' | 'consult' | 'dice' | 'inventory' | 'goals' | 'career' | 'missions' | 'sheet';
+type Tab = 'vehicles' | 'play' | 'consult' | 'dice' | 'inventory' | 'goals' | 'career' | 'missions' | 'sheet';
 const TABS: { key: Tab; label: string }[] = [
   { key: 'play', label: 'Jogo' },
   { key: 'consult', label: 'Consulta' },
   { key: 'dice', label: 'Dados' },
   { key: 'inventory', label: 'Inventário' },
+  { key: 'vehicles', label: 'Veículos' },
   { key: 'goals', label: 'Metas' },
   { key: 'career', label: 'Carreira' },
   { key: 'missions', label: 'Missões' },
@@ -126,6 +128,8 @@ export function PlayView({
         {tab === 'consult' && <Consulta draft={c.draft} result={result} inventory={inventory} physical={c.physicalDamage} stun={c.stunDamage} />}
 
         {tab === 'dice' && <DiceRoller result={result} />}
+
+        {tab === 'vehicles' && <Vehicles id={c.id} draft={c.draft} entries={entries} />}
 
         {tab === 'career' && <Career id={c.id} draft={c.draft} result={result} entries={entries} />}
 
