@@ -5,7 +5,7 @@ import type {
   Mentor, Metatype, MetatypeBonus, Metavariant, PriorityData, PriorityLetter,
   PriorityMetatypeOption, PriorityRow, PriorityTableKey, Quality, QualityEffect, Requirement,
   RequirementGroup, Skill, SkillCategory, SkillData, SkillGroup, Spell, TalentKey, TalentOption,
-  Tradition, Weapon, Vehicle, ItemMod, Program, Metamagic, Echo, Spirit, MartialArt, DeviceSpec,
+  Tradition, Weapon, Vehicle, LifestyleQuality, LifestyleQualityCategory, City, ItemMod, Program, Metamagic, Echo, Spirit, MartialArt, DeviceSpec,
 } from '../../src/lib/fichas/sr5/types';
 import { translator, type Translations } from './i18n';
 import { arr, attr, bool, has, loadXml, num, slug, text, type XNode } from './xml';
@@ -688,6 +688,49 @@ export function convertLifestyles(ctx: Ctx): Lifestyle[] {
       cost: num(x.cost),
       dice: num(x.dice),
       multiplier: num(x.multiplier),
+    }));
+}
+
+const LIFESTYLE_CATEGORY: Record<string, LifestyleQualityCategory> = {
+  Positive: 'positive', Negative: 'negative', Contracts: 'contract',
+};
+
+export function convertLifestyleQualities(ctx: Ctx): LifestyleQuality[] {
+  const t = translator(ctx.tr, 'lifestyles.xml');
+  return arr(load(ctx, 'lifestyles.xml').qualities.quality)
+    .filter((x: XNode) => inBooks(ctx, x) && notHidden(x))
+    .map((x: XNode): LifestyleQuality => {
+      // "5000 div 12" = contrato anual pago por mês.
+      const raw = text(x.cost).trim();
+      const perYear = /^(\d+) div 12$/.exec(raw);
+      if (raw && !perYear && !/^-?\d+$/.test(raw)) throw new Error(`Custo de qualidade de estilo de vida não entendido: ${raw}`);
+      return {
+        id: text(x.id),
+        name: text(x.name),
+        namePt: t(text(x.name), text(x.id)),
+        source: text(x.source),
+        page: page(x),
+        category: LIFESTYLE_CATEGORY[text(x.category)] ?? 'entertainment',
+        cost: perYear ? Number(perYear[1]) / 12 : num(raw),
+        multiplier: num(x.multiplier),
+        baseMultiplier: num(x.multiplierbaseonly),
+        lp: num(x.lp),
+        ...(x.bonus && typeof x.bonus === 'object' && 'selecttext' in x.bonus ? { chooseText: true } : {}),
+        ...(has(x.allowmultiple) ? { allowMultiple: true } : {}),
+      };
+    });
+}
+
+/** Cidades do Chummer (nomes próprios, sem tradução). A primeira entrada é vazia. */
+export function convertCities(ctx: Ctx): City[] {
+  const names = (list: XNode) => arr(list).map((n: XNode) => text(n.name).trim()).filter(Boolean);
+  return arr(load(ctx, 'lifestyles.xml').cities.city)
+    .filter((c: XNode) => text(c.name).trim())
+    .map((c: XNode) => ({
+      name: text(c.name).trim(),
+      districts: arr(c.district)
+        .filter((d: XNode) => text(d.name).trim())
+        .map((d: XNode) => ({ name: text(d.name).trim(), boroughs: names(d.borough) })),
     }));
 }
 

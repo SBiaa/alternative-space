@@ -7,9 +7,10 @@
  * Limites conhecidos: efeitos de qualidades/implantes (a lista `improvements`
  * do Chummer) e o histórico de gastos não são exportados.
  */
-import type { CharacterDraft, DraftGear } from './character';
+import type { CharacterDraft, DraftGear, DraftLifestyle } from './character';
 import { characterDisplayName } from './character';
 import { sr5Data } from './data';
+import { paidPercentage } from './lifestyle';
 import type { RulesResult } from './rules';
 import { findItem, modCatalog } from './rules';
 import type { AttrKey, GearItem, ItemMod } from './types';
@@ -267,13 +268,7 @@ export function exportChummer(
             `${el('isquality', 'False')}${block('martialarttechniques', m.techniques.map((t) => `<martialarttechnique>${el('name', t)}${el('guid', guid())}</martialarttechnique>`))}${el('notes', '')}</martialart>`]
         : [];
     })),
-    block('lifestyles', draft.lifestyles.flatMap((l) => {
-      const ls = sr5Data.lifestyles.find((x) => x.id === l.id);
-      return ls
-        ? [`<lifestyle>${el('sourceid', ls.id)}${el('guid', guid())}${el('name', ls.name)}${el('cost', ls.cost)}${el('dice', ls.dice)}${el('multiplier', ls.multiplier)}` +
-            `${el('months', l.months)}${el('baselifestyle', ls.name)}${el('source', ls.source)}${el('page', ls.page)}${el('notes', '')}</lifestyle>`]
-        : [];
-    })),
+    block('lifestyles', draft.lifestyles.flatMap((l) => lifestyle(l, guid))),
     equipment(draft, result, guid),
     block('enemies', (draft.enemies ?? []).map((e) =>
       `<contact>${el('name', e.name)}${el('role', e.notes ?? '')}${el('connection', 1)}${el('loyalty', 1)}${el('type', 'Enemy')}${el('guid', guid())}</contact>`)),
@@ -281,6 +276,32 @@ export function exportChummer(
     el('stuncmfilled', 0),
   ];
   return `<?xml version="1.0" encoding="utf-8"?>\n<character>${body.join('')}</character>\n`;
+}
+
+const QUALITY_TYPE = { positive: 'Positive', negative: 'Negative', entertainment: 'Entertainment', contract: 'Contracts' } as const;
+
+function lifestyle(l: DraftLifestyle, guid: Guid): string[] {
+  const ls = sr5Data.lifestyles.find((x) => x.id === l.id);
+  if (!ls) return [];
+  const qualities = (l.qualities ?? []).flatMap((chosen) => {
+    const q = sr5Data.lifestyleQualities.find((x) => x.id === chosen.id);
+    if (!q) return [];
+    const category = q.category === 'contract' ? 'Contracts' : QUALITY_TYPE[q.category];
+    // Contratos anuais vão como a expressão original do Chummer, sem perder os centavos.
+    const cost = q.category === 'contract' ? `${Math.round(q.cost * 12)} div 12` : q.cost;
+    return [`<lifestylequality>${el('sourceid', q.id)}${el('guid', guid())}${el('name', q.name)}${el('category', category)}${el('extra', chosen.extra ?? '')}` +
+      `${el('cost', cost)}${el('multiplier', q.multiplier)}${el('basemultiplier', q.baseMultiplier)}${el('lp', q.lp)}${el('uselpcost', 'True')}` +
+      `${el('lifestylequalitytype', QUALITY_TYPE[q.category])}${el('lifestylequalitysource', 'Selected')}${el('free', 'False')}${el('isfreegrid', 'False')}` +
+      `${el('source', q.source)}${el('page', q.page)}${el('notes', '')}</lifestylequality>`];
+  });
+  const advanced = qualities.length > 0 || !!l.roommates;
+  return [
+    `<lifestyle>${el('sourceid', ls.id)}${el('guid', guid())}${el('name', l.name?.trim() ?? '')}${el('cost', ls.cost)}${el('dice', ls.dice)}${el('multiplier', ls.multiplier)}` +
+      `${el('months', l.months)}${el('baselifestyle', ls.name)}${el('roommates', l.roommates ?? 0)}${el('percentage', paidPercentage(l))}` +
+      `${el('splitcostwithroommates', bool(!!l.splitCost))}${el('trustfund', 'False')}${el('type', advanced ? 'Advanced' : 'Standard')}${el('increment', 'Month')}` +
+      `${el('city', l.city ?? '')}${el('district', l.district ?? '')}${el('borough', l.borough ?? '')}${block('lifestylequalities', qualities)}` +
+      `${el('source', ls.source)}${el('page', ls.page)}${el('notes', '')}</lifestyle>`,
+  ];
 }
 
 export function chummerFilename(draft: CharacterDraft): string {

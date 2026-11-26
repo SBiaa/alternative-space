@@ -82,7 +82,7 @@ describe('exportChummer', () => {
     expect(c.weapons.weapon.sourceid).toBeTruthy();
     expect(c.vehicles.vehicle.body).toBeDefined();
     expect(c.martialarts.martialart.name).toBeTruthy();
-    expect(c.lifestyles.lifestyle.name).toBe('Street');
+    expect(c.lifestyles.lifestyle.baselifestyle).toBe('Street');
   });
 
   it('cada item recebe um guid próprio', () => {

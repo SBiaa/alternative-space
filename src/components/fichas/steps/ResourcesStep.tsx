@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { GEAR_KIND_HELP, GRADE_HELP, LIFESTYLE_HELP } from '@/lib/fichas/sr5/help';
+import { GEAR_KIND_HELP, GRADE_HELP } from '@/lib/fichas/sr5/help';
 import { uid, updateDraft } from '@/lib/fichas/store';
 import type { DraftGear, GearKind, WareGrade } from '@/lib/fichas/sr5/character';
 import { label, sr5Data } from '@/lib/fichas/sr5/data';
@@ -9,7 +9,8 @@ import { evalExpr, fmtNuyen, modKindFor, WARE_GRADES } from '@/lib/fichas/sr5/ru
 import type { Augmentation, GearItem, Vehicle } from '@/lib/fichas/sr5/types';
 import type { StepProps } from '../wizard/Wizard';
 import { BudgetMeter, Button, Card, cx, HelpTip, inputClass, matches, SearchInput, StepIntro, Stepper } from '../ui';
-import { fmtEss, nf } from './shared';
+import { LifestyleCard } from './LifestyleEditor';
+import { fmtEss } from './shared';
 
 const KINDS: { key: GearKind; title: string; list: GearItem[] }[] = [
   { key: 'weapon', title: 'Armas', list: sr5Data.weapons },
@@ -122,7 +123,6 @@ export function ResourcesStep({ draft, result }: StepProps) {
     .sort((a, b) => Number(a.rare) - Number(b.rare))
     .map((x) => x.item)
     .slice(0, 60);
-  const lifestylePct = sr5Data.metatypes.find((m) => m.id === draft.metatypeId)?.bonus.lifestyleCostPct ?? 0;
 
   const add = (item: GearItem) =>
     updateDraft((d) => {
@@ -152,7 +152,7 @@ export function ResourcesStep({ draft, result }: StepProps) {
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="flex flex-col gap-6">
         <Card title="Karma em nuyen" help={{ text: 'Cada ponto de karma vira 2.000¥. Útil para quem quer mais equipamento; o karma faz falta depois para evoluir.' }}>
           <div className="flex items-center gap-4 text-sm">
             <Stepper label="karma convertido" value={draft.karmaToNuyen} max={10} onChange={(v) => updateDraft((d) => { d.karmaToNuyen = v; })} />
@@ -160,32 +160,7 @@ export function ResourcesStep({ draft, result }: StepProps) {
           </div>
         </Card>
 
-        <Card title="Estilo de vida" help={{ text: 'Onde o personagem mora e como vive. Pago por mês; pague pelo menos o primeiro.' }}>
-          {draft.lifestyles.map((l, i) => {
-            const ls = sr5Data.lifestyles.find((x) => x.id === l.id);
-            return (
-              <div key={i} className="mb-2 flex flex-wrap items-center gap-2 text-sm">
-                <select aria-label="Estilo de vida" className={cx(inputClass, '!w-48 !py-1.5')} value={l.id}
-                  onChange={(e) => updateDraft((d) => { d.lifestyles[i].id = e.target.value; })}>
-                  {sr5Data.lifestyles.map((x) => (
-                    <option key={x.id} value={x.id}>{label(x)} — {nf(Math.round(x.cost * (1 + lifestylePct / 100)))}¥/mês</option>
-                  ))}
-                </select>
-                {ls && <HelpTip help={LIFESTYLE_HELP[ls.name]} title={label(ls)} />}
-                <Stepper size="sm" label="meses" value={l.months} min={1} max={12} onChange={(v) => updateDraft((d) => { d.lifestyles[i].months = v; })} />
-                <span className="text-muted">meses</span>
-                <Button variant="ghost" className="!px-2 !py-1" aria-label="Remover estilo de vida"
-                  onClick={() => updateDraft((d) => { d.lifestyles.splice(i, 1); })}>✕</Button>
-              </div>
-            );
-          })}
-          {!draft.lifestyles.length && (
-            <Button className="text-sm" onClick={() => updateDraft((d) => {
-              d.lifestyles.push({ id: sr5Data.lifestyles.find((x) => x.name === 'Low')?.id ?? sr5Data.lifestyles[0].id, months: 1 });
-            })}>+ Escolher estilo de vida</Button>
-          )}
-          {lifestylePct > 0 && <p className="mt-2 text-xs text-faint">Seu metatipo paga {lifestylePct}% a mais (já incluído).</p>}
-        </Card>
+        <LifestyleCard draft={draft} />
       </div>
 
       {draft.gear.length > 0 && (

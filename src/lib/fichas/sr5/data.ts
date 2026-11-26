@@ -21,6 +21,8 @@ import type {
   Vehicle,
   GearItem,
   Lifestyle,
+  LifestyleQuality,
+  City,
   Mentor,
   Metatype,
   PriorityData,
@@ -39,6 +41,8 @@ import contacts from '../../../../content/fichas/sr5/contacts.json';
 import cyberware from '../../../../content/fichas/sr5/cyberware.json';
 import gear from '../../../../content/fichas/sr5/gear.json';
 import lifestyles from '../../../../content/fichas/sr5/lifestyles.json';
+import lifestyleQualities from '../../../../content/fichas/sr5/lifestylequalities.json';
+import cities from '../../../../content/fichas/sr5/cities.json';
 import mentors from '../../../../content/fichas/sr5/mentors.json';
 import meta from '../../../../content/fichas/sr5/meta.json';
 import metatypes from '../../../../content/fichas/sr5/metatypes.json';
@@ -77,6 +81,8 @@ export interface Sr5Data {
   complexForms: ComplexForm[];
   mentors: Mentor[];
   lifestyles: Lifestyle[];
+  lifestyleQualities: LifestyleQuality[];
+  cities: City[];
   weapons: Weapon[];
   armor: Armor[];
   gear: GearItem[];
@@ -109,6 +115,8 @@ export const sr5Data: Sr5Data = {
   complexForms: complexforms as ComplexForm[],
   mentors: mentors as Mentor[],
   lifestyles: lifestyles as Lifestyle[],
+  lifestyleQualities: lifestyleQualities as LifestyleQuality[],
+  cities: cities as City[],
   weapons: weapons as unknown as Weapon[],
   armor: armor as unknown as Armor[],
   gear: gear as unknown as GearItem[],

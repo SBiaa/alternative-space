@@ -1,0 +1,889 @@
+[
+  {
+    "name": "Seattle",
+    "districts": [
+      {
+        "name": "Auburn",
+        "boroughs": [
+          "Black Diamond",
+          "Bolse",
+          "Algona",
+          "Berrydale",
+          "Pacifica",
+          "Covington",
+          "Georgetown",
+          "Maple Valley",
+          "Sumner",
+          "Timberlane",
+          "Auburn",
+          "Lake Wilderness"
+        ]
+      },
+      {
+        "name": "Bellevue",
+        "boroughs": [
+          "Beaux Arts",
+          "Hunt Point",
+          "Rosemont Beach",
+          "Inglewood",
+          "Juanita",
+          "Medina",
+          "Regency Park",
+          "Yarrow Point",
+          "Bellevue",
+          "Cyde Hill",
+          "Kirkland",
+          "Newport",
+          "Bothell",
+          "Coalfield",
+          "East Gate",
+          "May Creek",
+          "Newcastle",
+          "Redmond"
+        ]
+      },
+      {
+        "name": "Downtown",
+        "boroughs": [
+          "Matthews Beach",
+          "Iverness",
+          "North Beach",
+          "Richmond Highlands",
+          "Aurora Village",
+          "Central",
+          "Columbia",
+          "Tukwila"
+        ]
+      },
+      {
+        "name": "Everett",
+        "boroughs": [
+          "Maedowdale",
+          "Edmonds",
+          "Darlington",
+          "Lynnwood",
+          "Fairmount",
+          "Pinehurst"
+        ]
+      },
+      {
+        "name": "Fort Lewis",
+        "boroughs": [
+          "Parkland (non military housing)"
+        ]
+      },
+      {
+        "name": "Puyallup",
+        "boroughs": [
+          "Puyallup City",
+          "Graham Cracker City",
+          "Hell's Kitchen",
+          "The Neon Killing"
+        ]
+      },
+      {
+        "name": "Redmond",
+        "boroughs": [
+          "Touristville",
+          "Barrens",
+          "Plastic Jungle",
+          "Glow City"
+        ]
+      },
+      {
+        "name": "Renton",
+        "boroughs": [
+          "Lake Young",
+          "Four Lakes",
+          "Renton",
+          "Issaquath",
+          "Cristopher"
+        ]
+      },
+      {
+        "name": "Snohomish",
+        "boroughs": [
+          "Bothell",
+          "Mountain Terrace",
+          "Snohomish",
+          "Tuner Corner",
+          "Cathcart"
+        ]
+      },
+      {
+        "name": "Tacoma",
+        "boroughs": [
+          "Rustin",
+          "Dupont",
+          "Fircrest",
+          "Kent",
+          "Fife"
+        ]
+      },
+      {
+        "name": "Ork Underground",
+        "boroughs": []
+      },
+      {
+        "name": "Council Island (Unofficial)",
+        "boroughs": []
+      },
+      {
+        "name": "Outremer (Unofficial)",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Pretoria-Witwatersrand-Vaal",
+    "districts": [
+      {
+        "name": "West End",
+        "boroughs": []
+      },
+      {
+        "name": "Pretoria",
+        "boroughs": []
+      },
+      {
+        "name": "Johannesburg",
+        "boroughs": []
+      },
+      {
+        "name": "Ekurhuleni",
+        "boroughs": []
+      },
+      {
+        "name": "Tshwane",
+        "boroughs": []
+      },
+      {
+        "name": "Kungwini",
+        "boroughs": []
+      },
+      {
+        "name": "Lesedi",
+        "boroughs": []
+      },
+      {
+        "name": "Midvaal",
+        "boroughs": []
+      },
+      {
+        "name": "Emfuleni",
+        "boroughs": []
+      },
+      {
+        "name": "Westonaria",
+        "boroughs": []
+      },
+      {
+        "name": "Randfontein",
+        "boroughs": []
+      },
+      {
+        "name": "Mogale",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Denver",
+    "districts": [
+      {
+        "name": "Pueblo Sector",
+        "boroughs": []
+      },
+      {
+        "name": "Sioux Sector",
+        "boroughs": []
+      },
+      {
+        "name": "UCAS Sector",
+        "boroughs": [
+          "Aurora"
+        ]
+      },
+      {
+        "name": "Aztlan Sector",
+        "boroughs": []
+      },
+      {
+        "name": "CAS Sector",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "FDC",
+    "districts": [
+      {
+        "name": "Arlington",
+        "boroughs": []
+      },
+      {
+        "name": "Alexandria",
+        "boroughs": []
+      },
+      {
+        "name": "Fairfax",
+        "boroughs": []
+      },
+      {
+        "name": "Howard County",
+        "boroughs": []
+      },
+      {
+        "name": "Montgomery County",
+        "boroughs": []
+      },
+      {
+        "name": "Prince George's County",
+        "boroughs": []
+      },
+      {
+        "name": "Washington",
+        "boroughs": []
+      },
+      {
+        "name": "Anacostia Barrens",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Portland",
+    "districts": [
+      {
+        "name": "Rivergate",
+        "boroughs": []
+      },
+      {
+        "name": "Faloma",
+        "boroughs": []
+      },
+      {
+        "name": "North Portland",
+        "boroughs": []
+      },
+      {
+        "name": "St. Johns",
+        "boroughs": []
+      },
+      {
+        "name": "East St. Johns",
+        "boroughs": []
+      },
+      {
+        "name": "Swan Island",
+        "boroughs": []
+      },
+      {
+        "name": "Downtown",
+        "boroughs": []
+      },
+      {
+        "name": "Maywood Park",
+        "boroughs": []
+      },
+      {
+        "name": "Fairview",
+        "boroughs": []
+      },
+      {
+        "name": "Gresham",
+        "boroughs": []
+      },
+      {
+        "name": "Guilds Lake",
+        "boroughs": []
+      },
+      {
+        "name": "Willamette Heights",
+        "boroughs": []
+      },
+      {
+        "name": "Progress",
+        "boroughs": []
+      },
+      {
+        "name": "Tigard",
+        "boroughs": []
+      },
+      {
+        "name": "Elk Rock",
+        "boroughs": []
+      },
+      {
+        "name": "Milwaukee",
+        "boroughs": []
+      },
+      {
+        "name": "Westmoreland",
+        "boroughs": []
+      },
+      {
+        "name": "Gladstone",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Chicago",
+    "districts": [
+      {
+        "name": "Containment Zone",
+        "boroughs": [
+          "The Core",
+          "The Noose"
+        ]
+      },
+      {
+        "name": "Corridor",
+        "boroughs": [
+          "Northside",
+          "Southside",
+          "Westside"
+        ]
+      },
+      {
+        "name": "Gary",
+        "boroughs": []
+      },
+      {
+        "name": "Joliet",
+        "boroughs": []
+      },
+      {
+        "name": "Naperville-Bolingbrook",
+        "boroughs": []
+      },
+      {
+        "name": "O'Hare Sub-Sprawl",
+        "boroughs": []
+      },
+      {
+        "name": "South Milwaukee",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Los Angeles",
+    "districts": [
+      {
+        "name": "LA Central",
+        "boroughs": [
+          "Downtown",
+          "Hollywood",
+          "East LA",
+          "South Central",
+          "Santa Monica",
+          "Westside",
+          "Long Beach",
+          "South Bay",
+          "San Fernando Valley"
+        ]
+      },
+      {
+        "name": "Inland Empire",
+        "boroughs": [
+          "Pomona",
+          "Covina Floodwall",
+          "Ontario Air Center",
+          "Pasadena",
+          "Riverside",
+          "San Bernardino"
+        ]
+      },
+      {
+        "name": "Orange County (Fun City)",
+        "boroughs": [
+          "Tustin",
+          "Irvine"
+        ]
+      },
+      {
+        "name": "San Onofre Irradiated Zone",
+        "boroughs": []
+      },
+      {
+        "name": "Barstow",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Cheyenne",
+    "districts": [
+      {
+        "name": "Anglo Town",
+        "boroughs": []
+      },
+      {
+        "name": "No Boundaries Neighborhood",
+        "boroughs": []
+      },
+      {
+        "name": "The Corporate Zone",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "New York City",
+    "districts": [
+      {
+        "name": "The Bronx",
+        "boroughs": []
+      },
+      {
+        "name": "Manhattan",
+        "boroughs": [
+          "Inwood",
+          "Washington Heights",
+          "Newtown",
+          "Riverside",
+          "Westside",
+          "Eastside",
+          "Central Park",
+          "Midtown",
+          "Times Square",
+          "Downtown",
+          "Stuyvesant",
+          "Terminal",
+          "Southside",
+          "The Village",
+          "The Pit",
+          "Soho",
+          "The Towers",
+          "City Center",
+          "Chinatown",
+          "Battery City",
+          "The Underground"
+        ]
+      },
+      {
+        "name": "Queens",
+        "boroughs": []
+      },
+      {
+        "name": "Brooklyn",
+        "boroughs": []
+      },
+      {
+        "name": "Staten Island",
+        "boroughs": []
+      },
+      {
+        "name": "Long Island",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Atlanta",
+    "districts": [
+      {
+        "name": "Downtown",
+        "boroughs": []
+      },
+      {
+        "name": "Southtown",
+        "boroughs": []
+      },
+      {
+        "name": "Norcross",
+        "boroughs": []
+      },
+      {
+        "name": "Marietta",
+        "boroughs": []
+      },
+      {
+        "name": "Douglasville",
+        "boroughs": []
+      },
+      {
+        "name": "Decatur",
+        "boroughs": []
+      },
+      {
+        "name": "Buckhead",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Berlin",
+    "districts": [
+      {
+        "name": "AGC Siemensstadt",
+        "boroughs": []
+      },
+      {
+        "name": "Aztech-Schönwalde",
+        "boroughs": []
+      },
+      {
+        "name": "Charlottenburg-Wilmersdorf",
+        "boroughs": []
+      },
+      {
+        "name": "Falkensee",
+        "boroughs": []
+      },
+      {
+        "name": "Gropiusstadt",
+        "boroughs": []
+      },
+      {
+        "name": "Köpenick",
+        "boroughs": []
+      },
+      {
+        "name": "Kreuzhain",
+        "boroughs": []
+      },
+      {
+        "name": "Lichtenberg",
+        "boroughs": []
+      },
+      {
+        "name": "Marzahn",
+        "boroughs": []
+      },
+      {
+        "name": "Mitte",
+        "boroughs": [
+          "Berliner Bankenviertel",
+          "Drakequartier",
+          "Moabit",
+          "Wedding"
+        ]
+      },
+      {
+        "name": "Oranienburg",
+        "boroughs": []
+      },
+      {
+        "name": "Pankow",
+        "boroughs": []
+      },
+      {
+        "name": "Potsdam",
+        "boroughs": []
+      },
+      {
+        "name": "Reinickendorf",
+        "boroughs": []
+      },
+      {
+        "name": "Renrakusan",
+        "boroughs": []
+      },
+      {
+        "name": "S-K Tempelhof",
+        "boroughs": [
+          "S-K Arcology",
+          "Rixdorf"
+        ]
+      },
+      {
+        "name": "Schönefeld",
+        "boroughs": []
+      },
+      {
+        "name": "Spandau",
+        "boroughs": []
+      },
+      {
+        "name": "Strausberg-Fredersdorf",
+        "boroughs": []
+      },
+      {
+        "name": "Zehlendorf",
+        "boroughs": []
+      },
+      {
+        "name": "Z-IC Tegel",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Hong Kong",
+    "districts": [
+      {
+        "name": "Northern Reaches",
+        "boroughs": []
+      },
+      {
+        "name": "Tolo Harbor",
+        "boroughs": []
+      },
+      {
+        "name": "Lantau Island",
+        "boroughs": []
+      },
+      {
+        "name": "Kwai Tsing",
+        "boroughs": []
+      },
+      {
+        "name": "Yau Tsim Mong",
+        "boroughs": []
+      },
+      {
+        "name": "Kowloon Walled City",
+        "boroughs": []
+      },
+      {
+        "name": "Kwun Tong",
+        "boroughs": []
+      },
+      {
+        "name": "Sai Kung",
+        "boroughs": []
+      },
+      {
+        "name": "Downtown",
+        "boroughs": []
+      },
+      {
+        "name": "Eastern Hong Kong",
+        "boroughs": []
+      },
+      {
+        "name": "Southern Coast",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Dubai",
+    "districts": [
+      {
+        "name": "Jebel Ali",
+        "boroughs": []
+      },
+      {
+        "name": "Jumeirah",
+        "boroughs": []
+      },
+      {
+        "name": "World Archipelago",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Europort",
+    "districts": [
+      {
+        "name": "Portoplex",
+        "boroughs": []
+      },
+      {
+        "name": "Oude Centraal",
+        "boroughs": []
+      },
+      {
+        "name": "De Kop van Zuid",
+        "boroughs": []
+      },
+      {
+        "name": "Vlaardingen",
+        "boroughs": []
+      },
+      {
+        "name": "Schiedam",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Nairobi",
+    "districts": [
+      {
+        "name": "Downtown",
+        "boroughs": []
+      },
+      {
+        "name": "Corporate Court Complex",
+        "boroughs": []
+      },
+      {
+        "name": "River Road",
+        "boroughs": []
+      },
+      {
+        "name": "Kibera",
+        "boroughs": []
+      },
+      {
+        "name": "Uplands",
+        "boroughs": []
+      },
+      {
+        "name": "Westlands",
+        "boroughs": []
+      },
+      {
+        "name": "Southern Naibori",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Tenochtitlán",
+    "districts": [
+      {
+        "name": "Ciudad Satélite",
+        "boroughs": []
+      },
+      {
+        "name": "Distrito Federal",
+        "boroughs": []
+      },
+      {
+        "name": "Zócalo",
+        "boroughs": []
+      }
+    ]
+  },
+  {
+    "name": "Neo-Tokyo",
+    "districts": [
+      {
+        "name": "Adachi",
+        "boroughs": []
+      },
+      {
+        "name": "Arakawa",
+        "boroughs": []
+      },
+      {
+        "name": "Bunkyo",
+        "boroughs": [
+          "Koishikawa",
+          "Pachinko Street",
+          "Shirow Row"
+        ]
+      },
+      {
+        "name": "Chiyoda",
+        "boroughs": [
+          "Ginza",
+          "Kasumigaseki",
+          "Kojimachi",
+          "Kudan",
+          "Nagatacho",
+          "Nihonbashi"
+        ]
+      },
+      {
+        "name": "Edogawa",
+        "boroughs": []
+      },
+      {
+        "name": "Itabashi",
+        "boroughs": []
+      },
+      {
+        "name": "Kanda",
+        "boroughs": [
+          "Akihabara",
+          "Jinbocho",
+          "Ochanomizu",
+          "Ogawamachi",
+          "Ningyocho"
+        ]
+      },
+      {
+        "name": "Katsushika",
+        "boroughs": []
+      },
+      {
+        "name": "Kita",
+        "boroughs": []
+      },
+      {
+        "name": "Koto",
+        "boroughs": []
+      },
+      {
+        "name": "Meguro",
+        "boroughs": []
+      },
+      {
+        "name": "Minato",
+        "boroughs": [
+          "Aoyama",
+          "Akasaka",
+          "Azabu",
+          "Roppongi"
+        ]
+      },
+      {
+        "name": "Nakano",
+        "boroughs": []
+      },
+      {
+        "name": "Nerima",
+        "boroughs": []
+      },
+      {
+        "name": "Odaiba",
+        "boroughs": []
+      },
+      {
+        "name": "Ota",
+        "boroughs": []
+      },
+      {
+        "name": "Setagaya",
+        "boroughs": []
+      },
+      {
+        "name": "Shibuya",
+        "boroughs": [
+          "Harajuku"
+        ]
+      },
+      {
+        "name": "Shinagawa",
+        "boroughs": []
+      },
+      {
+        "name": "Shinjuku",
+        "boroughs": [
+          "Kabukicho",
+          "Nishi-Shinjuku"
+        ]
+      },
+      {
+        "name": "Suginami",
+        "boroughs": []
+      },
+      {
+        "name": "Sumida",
+        "boroughs": []
+      },
+      {
+        "name": "Taito",
+        "boroughs": []
+      },
+      {
+        "name": "Toshima",
+        "boroughs": [
+          "Ikebukuro"
+        ]
+      },
+      {
+        "name": "Urayasu",
+        "boroughs": []
+      }
+    ]
+  }
+]

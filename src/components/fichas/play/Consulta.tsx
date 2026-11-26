@@ -3,6 +3,7 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import type { CharacterDraft } from '@/lib/fichas/sr5/character';
 import { label, sr5Data } from '@/lib/fichas/sr5/data';
+import { lifestyleAdjust, lifestyleDetails, lifestyleMonthly, lifestyleTitle, PERMANENT_MONTHS, startingNuyenRoll } from '@/lib/fichas/sr5/lifestyle';
 import { spiritAttr } from '@/lib/fichas/sr5/career';
 import { rollPool, type PoolRoll } from '@/lib/fichas/sr5/dice';
 import { itemStats, wornArmor, type InventoryItemLike } from '@/lib/fichas/sr5/inventory';
@@ -168,8 +169,12 @@ export function Consulta({
   });
   const lifestyles = draft.lifestyles.flatMap((l) => {
     const x = sr5Data.lifestyles.find((y) => y.id === l.id);
-    return x && show(label(x)) ? [{ l, x }] : [];
+    if (!x) return [];
+    const details = lifestyleDetails(l, label);
+    return show(label(x), l.name, details) ? [{ l, x, details }] : [];
   });
+  const lifestyleCharacter = lifestyleAdjust(draft);
+  const startingRoll = startingNuyenRoll(draft.lifestyles);
   const enemies = (draft.enemies ?? []).filter((e) => show(e.name, e.notes));
   const metamagics = (career?.metamagicIds ?? []).flatMap((id) => {
     const x = sr5Data.metamagics.find((y) => y.id === id);
@@ -438,8 +443,13 @@ export function Consulta({
 
       <Section v="pessoas" cur={cur} title="Estilo de vida" count={lifestyles.length}>
         <ul className="divide-y divide-line">
-          {lifestyles.map(({ l, x }) => <Line key={l.id} title={label(x)} sub={`${l.months} ${l.months === 1 ? 'mês' : 'meses'} pagos`} right={<span className="font-mono text-xs">{x.cost.toLocaleString('pt-BR')}¥/mês</span>} />)}
+          {lifestyles.map(({ l, x, details }, i) => (
+            <Line key={i} title={lifestyleTitle(label(x), l)}
+              sub={[l.months >= PERMANENT_MONTHS ? 'permanente' : `${l.months} ${l.months === 1 ? 'mês pago' : 'meses pagos'}`, details].filter(Boolean).join(' · ')}
+              right={<span className="font-mono text-xs">{Math.round(lifestyleMonthly(x, l, lifestyleCharacter)).toLocaleString('pt-BR')}¥/mês</span>} />
+          ))}
         </ul>
+        {startingRoll && <p className="mt-2 text-xs text-muted">Dinheiro inicial: {startingRoll.dice}D6 × {startingRoll.multiplier.toLocaleString('pt-BR')}¥</p>}
       </Section>
 
       <Section v="pessoas" cur={cur} title="Inimigos" count={enemies.length}>

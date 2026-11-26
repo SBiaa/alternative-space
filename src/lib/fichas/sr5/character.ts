@@ -182,9 +182,24 @@ export interface Career {
   vehicles?: CareerVehicle[];
 }
 
+export interface DraftLifestyleQuality {
+  id: string;
+  extra?: string;
+}
+
 export interface DraftLifestyle {
   id: string;
+  /** 100 = permanente. */
   months: number;
+  name?: string;
+  roommates?: number;
+  splitCost?: boolean;
+  /** Quanto o personagem paga quando divide os custos (0–100). */
+  percentage?: number;
+  qualities?: DraftLifestyleQuality[];
+  city?: string;
+  district?: string;
+  borough?: string;
 }
 
 export interface CharacterDraft {

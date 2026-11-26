@@ -1,0 +1,112 @@
+[
+  {
+    "id": "ff0cb981-4459-46e7-ab75-d8c5bcb0c486",
+    "name": "Cramped",
+    "namePt": "Apertado",
+    "source": "SR5",
+    "page": 370,
+    "category": "negative",
+    "cost": 0,
+    "multiplier": -10,
+    "baseMultiplier": 0,
+    "lp": 1
+  },
+  {
+    "id": "4fb84713-6171-409d-ad7c-ccbc44b891ad",
+    "name": "Extra Secure",
+    "namePt": "Extra Seguro",
+    "source": "SR5",
+    "page": 370,
+    "category": "positive",
+    "cost": 0,
+    "multiplier": 0,
+    "baseMultiplier": 20,
+    "lp": 1
+  },
+  {
+    "id": "ae63d09f-22a1-4c27-bc99-d82887fcef15",
+    "name": "Dangerous Area",
+    "namePt": "Área Perigosa",
+    "source": "SR5",
+    "page": 370,
+    "category": "negative",
+    "cost": 0,
+    "multiplier": -20,
+    "baseMultiplier": 0,
+    "lp": -1
+  },
+  {
+    "id": "4aff94a9-6699-4355-81ea-ff66ee5ecca1",
+    "name": "Obscure/Difficult to Find",
+    "namePt": "Obscuro/Difícil de Encontrar",
+    "source": "SR5",
+    "page": 370,
+    "category": "negative",
+    "cost": 0,
+    "multiplier": 10,
+    "baseMultiplier": 0,
+    "lp": -1
+  },
+  {
+    "id": "24c33e2d-bb97-4f82-a68d-dfa7c89a69d7",
+    "name": "Special Work Area",
+    "namePt": "Área de Trabalho Especializado",
+    "source": "SR5",
+    "page": 370,
+    "category": "positive",
+    "cost": 1000,
+    "multiplier": 0,
+    "baseMultiplier": 0,
+    "lp": 0,
+    "chooseText": true,
+    "allowMultiple": true
+  },
+  {
+    "id": "4f41448a-7d44-4a5f-a99a-e2cc1e2cc2b1",
+    "name": "DocWagon Contract, Basic",
+    "namePt": "Contrato DocWagon, Básico",
+    "source": "SR5",
+    "page": 450,
+    "category": "contract",
+    "cost": 416.6666666666667,
+    "multiplier": 0,
+    "baseMultiplier": 0,
+    "lp": 0
+  },
+  {
+    "id": "4f2d39cd-fbc7-4d02-a3eb-f8decdb9a415",
+    "name": "DocWagon Contract, Gold",
+    "namePt": "Contrato DocWagon, Ouro",
+    "source": "SR5",
+    "page": 450,
+    "category": "contract",
+    "cost": 2083.3333333333335,
+    "multiplier": 0,
+    "baseMultiplier": 0,
+    "lp": 0
+  },
+  {
+    "id": "26476ddb-52f6-4c31-b1f0-949d0ef95495",
+    "name": "DocWagon Contract, Platinum",
+    "namePt": "Contrato DocWagon, Platina",
+    "source": "SR5",
+    "page": 450,
+    "category": "contract",
+    "cost": 4166.666666666667,
+    "multiplier": 0,
+    "baseMultiplier": 0,
+    "lp": 0
+  },
+  {
+    "id": "0a58f493-a12e-4c08-b8b8-baac4c5e6591",
+    "name": "DocWagon Contract, Super-Platinum",
+    "namePt": "Contrato DocWagon, Super-Platina",
+    "source": "SR5",
+    "page": 450,
+    "category": "contract",
+    "cost": 8333.333333333334,
+    "multiplier": 0,
+    "baseMultiplier": 0,
+    "lp": 0
+  }
+]
